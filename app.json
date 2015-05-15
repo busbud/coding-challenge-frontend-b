@@ -1,0 +1,6 @@
+{
+  "name": "Bare bones webpack project",
+  "description": "Barbones webpack starter sample with react",
+  "repository": "https://github.com/cgreening/webpack-starter",
+  "keywords": ["node", "express", "webpack", "react"]
+}
