@@ -14,6 +14,7 @@ I've put together this simple webpack starter example with the following feature
 * Imagemin for processing images
 * Font handling
 * scss/sass with autoprefixer
+* Testing
 
 ## Getting started
 Clone the repository:
@@ -64,6 +65,22 @@ This will build the app and output the files to the `build` directory.
 npm run server
 ```
 This will launch the express server serving content from `build`
+
+## Testing - Experimental
+Base on [this guide](https://www.codementor.io/reactjs/tutorial/test-reactjs-components-karma-webpack) with a few tweaks.
+
+Tests live in the `test` directory and use karma, mocha and sinon. Tests run in chrome.
+
+```sh
+npm run test
+```
+Does a test run.
+
+```sh
+npm run testing
+```
+
+Runs continuous tests.
 
 ## What could be done better
 
