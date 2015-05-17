@@ -66,7 +66,9 @@ npm run server
 ```
 This will launch the express server serving content from `build`
 
-## Testing - Experimental
+## Testing (Experimental)
+Still experimenting in this area.
+
 Base on [this guide](https://www.codementor.io/reactjs/tutorial/test-reactjs-components-karma-webpack) with a few tweaks.
 
 Tests live in the `test` directory and use karma, mocha and sinon. Tests run in chrome.
