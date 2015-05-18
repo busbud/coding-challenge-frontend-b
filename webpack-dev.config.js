@@ -1,4 +1,4 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var commonConfig = require('./webpack-common.config.js');
 
 module.exports = {
   entry: [
@@ -20,44 +20,9 @@ module.exports = {
     }
   },
   module: {
-    loaders: [
-    // image loader - https://www.npmjs.com/package/image-webpack-loader
-    {
-      test: /\.(jpe?g|png|gif|svg|ico)$/i,
-      loaders: [
-      'file?hash=sha512&digest=hex&name=[hash].[ext]',
-      'image?bypassOnDebug&optimizationLevel=7&interlaced=false'
-      ]
-    }, 
-    // javascript/jsx loader - https://www.npmjs.com/package/babel-loader
-    {
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loaders: ['react-hot', 'babel-loader?stage=0&optional=runtime'],
-    }, 
-    // styles
-    {
-      test: /\.[s]?css$/,
-      loader: "style!css!autoprefixer-loader?browsers=last 2 version!sass"
-    }, 
-    // and font files - embed them if possible
-    { 
-      test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&minetype=application/font-woff" 
-    }, { 
-      test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&minetype=application/font-woff2" 
-    }, { 
-      test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&minetype=application/octet-stream" 
-    }, { 
-      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" 
-    }
-    ]
+    loaders: commonConfig.loaders
   },
   plugins: [
-  // https://www.npmjs.com/package/html-webpack-plugin - generate our html file from a template - makes it easier to include custom stuff
-  new HtmlWebpackPlugin({
-    title: 'webpack starter template',
-    filename: 'index.html',
-    template: './app/index_template.html'
-  })
+    commonConfig.indexPagePlugin
   ],
 };

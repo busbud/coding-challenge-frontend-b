@@ -88,7 +88,7 @@ Runs continuous tests.
 
 * duplicated code in the web pack config files
 
-There is a lot of duplication between the two webpack config files - this is deliberate as I wanted it to be a as clear as possible what is happening. However it does mean that if you add a new loader you have to add it to both places.
+There is a lot of duplication between the two webpack config files - this is deliberate as I wanted it to be a as clear as possible what is happening. I have refactored the obviously common stuff like loaders and the index page generation into webpack-common.config.js
 
 * probably a lot of other things - open a pull request!
 
