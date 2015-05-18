@@ -66,29 +66,31 @@ npm run server
 ```
 This will launch the express server serving content from `build`
 
-## Testing (Experimental)
-Still experimenting in this area.
+## Testing
+Testing is done using karma + mocha with sinon for stubbing ajax requests. We use the [karma-webpack preprocessor](https://github.com/webpack/karma-webpack)
 
-Base on [this guide](https://www.codementor.io/reactjs/tutorial/test-reactjs-components-karma-webpack) with a few tweaks.
+The karma config lives in `karma.conf.js` and is setup to run tests in Chrome and load up `tests.webpack.js`
 
-Tests live in the `test` directory and use karma, mocha and sinon. Tests run in chrome.
+`tests.webpack.js` loads up all the tests from the `tests` directory and bundles them all up using webpack. We then run them all at once.
+
+To do a test run:
 
 ```sh
-npm run test
+npm test
 ```
-Does a test run.
+
+And to run continuous tests which rerun everytime a file changes:
 
 ```sh
 npm run testing
 ```
 
-Runs continuous tests.
 
 ## What could be done better
 
 * duplicated code in the web pack config files
 
-There is a lot of duplication between the two webpack config files - this is deliberate as I wanted it to be a as clear as possible what is happening. I have refactored the obviously common stuff like loaders and the index page generation into webpack-common.config.js
+There is a lot of duplication between the two webpack config files - this is deliberate as I wanted it to be a as clear as possible what is happening. I have refactored the obviously common stuff like loaders and the index page generation into `webpack-common.config.js`
 
 * probably a lot of other things - open a pull request!
 
