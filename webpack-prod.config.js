@@ -2,6 +2,16 @@ var commonConfig = require('./webpack-common.config.js');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var webpack = require('webpack');
 
+
+var prodLoaders = [
+  // javascript/jsx loader - https://www.npmjs.com/package/babel-loader - without the react-hot loader
+  {
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    loaders: ['babel-loader?stage=0&optional=runtime'],
+  }
+]
+
 module.exports = {
   entry: [
   // our entry file
@@ -19,7 +29,7 @@ module.exports = {
     }
   },
   module: {
-    loaders: commonConfig.loaders
+    loaders: commonConfig.loaders.concat(prodLoaders)
   },
   plugins: [
   new webpack.optimize.DedupePlugin(),

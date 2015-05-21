@@ -14,7 +14,7 @@ module.exports = {
   {
     test: /\.jsx?$/,
     exclude: /node_modules/,
-    loaders: ['react-hot', 'babel-loader?stage=0&optional=runtime'],
+    loaders: ['babel-loader?stage=0&optional=runtime'],
   }, 
   // styles
   {
