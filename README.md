@@ -35,6 +35,23 @@ npm install
 npm run dev
 Browse to http://localhost:8080
 ```
+
+__Special note for windows users__
+
+`npm run dev` relies on being able to run two commands simultaneously, the server and the webpack dev server. This does not work on windows so you will need to open to command windows and run these commands:
+
+```sh
+npm run dev-web
+```
+
+```sh
+npm run dev-server
+```
+
+You can now browse to `http://localhost:8080`
+
+##Live Reload
+
 In `App` you'll find the single page reach app. Try opening `Components/Header.js' and modifying the text. Hit save and the browser should update with your changes.
 
 In `Server` you'll find a minimal express server. Currently it serves content from the build directory and has 1 api call to get the current time.
