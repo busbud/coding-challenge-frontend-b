@@ -19,7 +19,7 @@ module.exports = {
   ],
   output: {
     path: './build',
-    filename: 'bundle.[chunkhash].js'
+    filename: 'bundle.[hash].js'
   },
   devtool: 'eval',
   devServer: {

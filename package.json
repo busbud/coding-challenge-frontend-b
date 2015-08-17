@@ -6,7 +6,7 @@
   "scripts": {
     "dev-server": "nodemon server/index.js --watch server",
     "dev-web": "webpack-dev-server --config ./webpack-dev.config.js --hot --progress --colors --content-base build", 
-    "dev": "webpack-dev-server --config ./webpack-dev.config.js --hot --progress --colors --content-base build & nodemon server/index.js --watch server",
+    "dev": "nodemon server/index.js --watch server & webpack-dev-server --config ./webpack-dev.config.js --hot --progress --colors --content-base build",
     "build": "rm build/*; webpack --config ./webpack-prod.config.js --progress --colors",
     "start": "node server/index.js",
     "test": "karma start",

@@ -1,0 +1,40 @@
+{
+  // I want to use babel-eslint for parsing!
+  "parser": "babel-eslint",
+  "env": {
+    // I write for browser
+    "browser": true,
+    // in CommonJS
+    "node": true
+  },
+  "plugins": [
+      "react"
+  ],
+  "ecmaFeatures": {
+      "jsx": true,
+      "module": true
+  },
+  // To give you an idea how to override rule options:
+  "rules": {
+    "no-underscore-dangle": [0],
+    "quotes": 0,
+    "strict": [2, "never"],
+    "react/display-name": 1,
+    "react/jsx-boolean-value": 1,
+    "react/jsx-no-undef": 1,
+    "react/jsx-quotes": 1,
+    "react/jsx-sort-prop-types": [0],
+    "react/jsx-sort-props": [0],
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-multi-comp": 1,
+    "react/no-unknown-property": 1,
+    "react/prop-types": 1,
+    "react/react-in-jsx-scope": 1,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 0,
+    "react/wrap-multilines": 1
+  }
+}
