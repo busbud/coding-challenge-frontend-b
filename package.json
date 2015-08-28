@@ -14,7 +14,7 @@
   },
   "repository": "git@github.com:cgreening/webpack-starter.git",
   "author": "Chris Greening",
-  "license": "BSD",
+  "license": "BSD-2-Clause",
   "dependencies": {
     "compression": "^1.5.0",
     "cors": "^2.7.1",
