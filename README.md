@@ -6,7 +6,7 @@ Your challenge is to build a microsite that allows a user from NYC to find one-w
 
 ## Functional Requirements
 - Has a simple onboarding screen that will trigger the departure search
-- Lists all the departures for a given origin city (**New York - geohash: dr5reg**) and a given destination city (**Montréal - geohash: f25dvk**) for a given day (**the 14 of January 2016**) for **1** adult. 
+- Lists all the departures for a given origin city (**New York - geohash: dr5reg**) and a given destination city (**Montreal - geohash: f25dvk**) for a given day (**the 14 of January 2016**) for **1** adult. 
 - For each departure, we want, at least, to see the **departure time**, the **arrival time**, the **location name** and the **price** (use `prices.total` of the `departure`).
 
 ## Non-functional requirements
@@ -41,13 +41,13 @@ To get departures, search is initialized via the following endpoint:
 
     https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date
 
-PATH PARAMS  
+Path parameters:  
 
 - `origin` : Origin's geohash
 - `destination` : Destination's geohash
-- `outbound_date` : Outbound departure date
+- `outbound_date` : ISO 8601 Outbound departure date
 
-QUERY PARAMS:
+Querystring parameters:
 
 - `adult` : Number of adults
 - `child` : Number of children
@@ -241,7 +241,7 @@ While `complete` property from the response is false, you need to call:
 
     https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date/poll`
 
-With ***all*** the same parameters as the previous endpoint, plus:
+With ***all*** the same parameters as the previous endpoint, plus the following additional querystring parameter:
 
 - `index` : Index from which to return new departures
 
