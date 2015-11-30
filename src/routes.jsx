@@ -14,7 +14,8 @@ var routes = (
   <Route name="app" path="/" handler={Header}>
 <Route name="menu" path="/" handler={SearchMenu} />
   <Route name="language" path="/:language" handler={SearchMenu} />
-  <Route name="schedules" path="/:language/schedules" handler={SearchResults}/>
+ 
+  <Route name="schedules" path="/:language/schedules/:departure/:arrival/:date" handler={SearchResults}/>
  
     
     
@@ -24,3 +25,4 @@ var routes = (
 module.exports = routes;
 // <DefaultRoute name="default" handler={Header}/>
   // <Route name="menu" path="/" handler={SearchMenu} />
+  // <Route name="schedules" path="/:language/schedules/*" handler={SearchResults}/>

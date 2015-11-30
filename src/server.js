@@ -70,16 +70,16 @@ app.get('/:language', function (req, res) {
   });
 });
 
-app.get('/:lang/schedules', function (req, res) {
+app.get('/:language/schedules/:departure/:arrival/:date', function (req, res) {
   var props = {
-    currentLang: req.params.lang,
-    departure: req.params.depart,
-    arrive: req.params.arrive,
+    currentLang: req.params.language,
+    departure: req.params.departure,
+    arrival: req.params.arrival,
     date: req.params.date,
     passenger: req.params.passengers
   };
 
-  Router.run(routes, '/' + req.params.lang + '/schedules' , function (Handler) {
+  Router.run(routes, '/' + props.currentLang + '/schedules/' + props.departure + "/" + props.arrival + "/" + props.date, function (Handler) {
     
     // var navigation = React.renderToString(React.createElement(Header, props));
     var content = React.renderToString(React.createElement(Handler, props));

@@ -2,8 +2,10 @@ var React = require('react');
 var languages = require("../languages.js");
 var Router = require('react-router');
 var RouteHandler = require('react-router').RouteHandler;
-var Route = Router.Route, DefaultRoute = Router.DefaultRoute,
-    RouteHandler = Router.RouteHandler, Link = Router.Link;
+var Route = Router.Route;
+var DefaultRoute = Router.DefaultRoute;
+var RouteHandler = Router.RouteHandler;
+var Link = Router.Link;
     
 
 var HeaderLayout = React.createClass({

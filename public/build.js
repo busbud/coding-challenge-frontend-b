@@ -86726,8 +86726,10 @@ var React = require('react');
 var languages = require("../languages.js");
 var Router = require('react-router');
 var RouteHandler = require('react-router').RouteHandler;
-var Route = Router.Route, DefaultRoute = Router.DefaultRoute,
-    RouteHandler = Router.RouteHandler, Link = Router.Link;
+var Route = Router.Route;
+var DefaultRoute = Router.DefaultRoute;
+var RouteHandler = Router.RouteHandler;
+var Link = Router.Link;
     
 
 var HeaderLayout = React.createClass({displayName: "HeaderLayout",
@@ -86894,6 +86896,7 @@ var SearchLayout = React.createClass({displayName: "SearchLayout",
             },
             onClick: function(){
                 var language = languages[this.props.currentLang];
+                var self = this.state;
                 var props = {
                     language: this.state.currentLang,
                     arrival: this.state.arrival,
@@ -86902,8 +86905,8 @@ var SearchLayout = React.createClass({displayName: "SearchLayout",
                 }
                 
                 $(document.getElementById("props")).dangerouslySetInnerHTML={__html: 'var APP_PROPS = ' + safeStringify(props)} 
-                document.location = this.state.currentLanguage + '/schedules'
-                // router.transitionTo(');
+                document.location = this.state.currentLanguage + '/schedules/' + self.departure.geohash + '/' + self.arrival.geohash + '/' + self.date 
+
                 
                 
                 
@@ -87031,6 +87034,7 @@ var React = require('react');
 var Promise = require('bluebird');
 var request = Promise.promisifyAll(require("request"));
 var languages = require("../languages.js");
+var Router = require('react-router');
 
 var GUEST_TOKEN = "GUEST_ZX3fNR26SB-m1MBsyz196g";
 var API_URL = 'https://busbud-napi-prod.global.ssl.fastly.net';
@@ -87077,33 +87081,174 @@ function getCityInfo(city, language) {
         });
 }
 
+var DepartureWrapper = React.createClass({displayName: "DepartureWrapper",
+    render: function() {
+        var departure = this.props.departure;
+        var locations = this.props.locations;
+        var operators = this.props.operators;
+        
+        var departureTime = departure.departure_time;
+        var departureName =  locations[departure.origin_location_id].name
+        var departureAddress = locations[departure.origin_location_id].address
+        
+        var arrivalTime = departure.arrival_time;
+        var arrivalName =  locations[departure.destination_location_id].name
+        var arrivalAddress = locations[departure.destination_location_id].address
+        
+        var operator = operators[departure.operator_id]
+
+    return (
+        
+        React.createElement("div", {className: "row"}, 
+            React.createElement("div", {className: "results col-md-8 col-xs-12 col-lg-8 col-lg-push-2 col-md-push-2"}, 
+                React.createElement("div", {className: "col-xs-7"}, 
+                    React.createElement("div", {className: "row"}, 
+                        React.createElement("h2", null, "Departure"), 
+                        React.createElement("hr", null), 
+                        React.createElement("div", {className: "results-column col-xs-4"}, 
+                            React.createElement("p", null, departureTime)
+                        ), 
+                        React.createElement("div", {className: "results-column col-xs-8"}, 
+                            React.createElement("p", null, departureName, 
+                                React.createElement("br", null), " ", departureAddress
+                            )
+                        )
+                    ), 
+                    React.createElement("div", {className: "row"}, 
+                        React.createElement("h2", null, "Arrival"), 
+                        React.createElement("hr", null), 
+                        React.createElement("div", {className: "results-column col-xs-4"}, 
+                            React.createElement("p", null, arrivalTime)
+                        ), 
+                        React.createElement("div", {className: "results-column col-xs-8"}, 
+                            React.createElement("p", null, " ", arrivalName, 
+                                React.createElement("br", null), " ", arrivalAddress
+                            )
+                        )
+                    )
+                ), 
+                React.createElement("div", {className: "results-column col-xs-5"}, 
+                    React.createElement("div", {className: "results-column col-xs-12"}, 
+                        React.createElement("h2", null, "Outbound Price"), 
+                        React.createElement("hr", null), 
+                        React.createElement("p", {className: "price"}, 
+                            departure.prices.total, React.createElement("span", {className: "currency"}, " ", this.props.currency)
+                        )
+        
+                    ), 
+                    React.createElement("div", {className: "results-column col-xs-12"}, 
+        
+                        React.createElement("hr", null), 
+                        React.createElement("img", {src: operator.logo_url, alt: "operator image"}), 
+                        React.createElement("p", null, 
+                           operator.name, 
+                            React.createElement("br", null), " ", departure.class
+                           
+                        )
+                    )
+        
+                )
+            )
+        )
+        )
+    }
+})
 
 var SearchResultsLayout = React.createClass({displayName: "SearchResultsLayout",
+           mixins: [Router.State],
             getInitialState: function() {
                 return {
+                    language: this.getParams().language,
+                    departure: this.getParams().departure,
+                    arrival: this.getParams().arrival,
+                    date: this.getParams().date,
+                    searchComplete: false,
+                    outbound_departures: [],
+                    locations: {},
+                    operators: {},
                 };
             },
             componentDidMount: function() {
-                var url = DEPARTURE_URL + this.props.departure.geohash + "/" + this.props.arrival.geohash + "/" + this.props.date + "/?lang=" + this.props.langAbbr;
+                var self = this
+                var url = DEPARTURE_URL + self.state.departure + "/" + self.state.arrival + "/" + self.state.date + "/?lang=" + self.state.language + "/currency=CAD";
                 $.get(url, function(response){
-                    console.log(response);
+                    var locationObject = {}
+                    response.locations.map(function(location){
+                        return locationObject[location.id] = location
+                    })
+                    var operatorObject = {}
+                    response.operators.map(function(operator){
+                        return operatorObject[operator.id] = operator
+                    })
+                    console.log(operatorObject)
+                    console.log(locationObject)
+                    if (self.isMounted()){
+                        self.setState({
+                            arrival: response.cities[0],
+                            departure: response.cities[1],
+                            locations: locationObject,
+                            operators:  operatorObject,
+                            outbound_departures: response.outbound_departures,
+                            currency: 'CAD'
+                        });
+                    }
                     
                 });
             },
             onClick: function(){
             },
             render: function() {
-                    
+                var locations
+                var operators
+                if (this.state.outbound_departures){
+                    locations = this.state.locations
+                    operators = this.state.operators
+                }
+                //       var DeparturesArray = [];
+                //      for (var departure in this.state.outbound_departures) {
+                //          DeparturesArray.push(<Departures key={departure.id} departure={departure} locations={this.state.locations} operators={this.state.operators}/>)
+                //      }
+                //      console.log(DeparturesArray)
+                // }
+                // var currentLanguage = languages[this.state.currentLang].name;
+                // for (var lang in languages) {
+                //     languageArray.push(
+                //         <li key={languages[lang].abbr}><a href={"/" + languages[lang].abbr}>{languages[lang].name}</a></li>
+                //     );
+                // }
             return (
+              // Correct :)
+// var ListItemWrapper = React.createClass({
+//   render: function() {
+//     return <li>{this.props.data.text}</li>;
+//   }
+// });
+// var MyComponent = React.createClass({
+//   render: function() {
+//     return (
+//       <ul>
+//         {this.props.results.map(function(result) {
+//           return <ListItemWrapper key={result.id} data={result}/>;
+//         })}
+//       </ul>
+//     );
+//   }
+// });
                 React.createElement("section", {id: "search-results"}, 
                 React.createElement("div", {className: "result-header"}, 
                         React.createElement("div", {className: "row"}, 
                             React.createElement("div", {className: "col-md-8 col-xs-10 col-lg-8 col-lg-push-2 col-xs-push-1 col-md-push-2"}, 
                                 React.createElement("h4", null, "Results For Your Trip "), 
-                                React.createElement("h2", null, " ____ to _____ "), 
-                                React.createElement("h3", null, "January 14, 2016")
+                                React.createElement("h2", null, " ", this.state.departure.name, " to ", this.state.arrival.name, " "), 
+                                React.createElement("h3", null, this.state.date)
                             )
                         )
+                    ), 
+                    React.createElement("div", null, 
+                    
+                      this.state.outbound_departures.map(function(departure) {
+                           return React.createElement(DepartureWrapper, {key: departure.id, departure: departure, locations: locations, operators: operators, currency: 'CAD'});
+                        })
                     ), 
                     React.createElement("div", {className: "row"}, 
                         React.createElement("div", {className: "results col-md-8 col-xs-12 col-lg-8 col-lg-push-2 col-md-push-2"}, 
@@ -87164,7 +87309,7 @@ var SearchResultsLayout = React.createClass({displayName: "SearchResultsLayout",
 
 module.exports = SearchResultsLayout;
 
-},{"../languages.js":573,"bluebird":251,"react":442,"request":443}],573:[function(require,module,exports){
+},{"../languages.js":573,"bluebird":251,"react":442,"react-router":262,"request":443}],573:[function(require,module,exports){
 var languages = {
   en: {
     name: "English",
@@ -87217,7 +87362,8 @@ var routes = (
   React.createElement(Route, {name: "app", path: "/", handler: Header}, 
 React.createElement(Route, {name: "menu", path: "/", handler: SearchMenu}), 
   React.createElement(Route, {name: "language", path: "/:language", handler: SearchMenu}), 
-  React.createElement(Route, {name: "schedules", path: "/:language/schedules", handler: SearchResults})
+ 
+  React.createElement(Route, {name: "schedules", path: "/:language/schedules/:departure/:arrival/:date", handler: SearchResults})
  
     
     
@@ -87227,5 +87373,6 @@ React.createElement(Route, {name: "menu", path: "/", handler: SearchMenu}),
 module.exports = routes;
 // <DefaultRoute name="default" handler={Header}/>
   // <Route name="menu" path="/" handler={SearchMenu} />
+  // <Route name="schedules" path="/:language/schedules/*" handler={SearchResults}/>
 
 },{"./components/Header.jsx":570,"./components/SearchMenu.jsx":571,"./components/SearchResults.jsx":572,"react":442,"react-router":262}]},{},[569]);

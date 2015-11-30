@@ -107,6 +107,7 @@ var SearchLayout = React.createClass({
             },
             onClick: function(){
                 var language = languages[this.props.currentLang];
+                var self = this.state;
                 var props = {
                     language: this.state.currentLang,
                     arrival: this.state.arrival,
@@ -115,8 +116,8 @@ var SearchLayout = React.createClass({
                 }
                 
                 $(document.getElementById("props")).dangerouslySetInnerHTML={__html: 'var APP_PROPS = ' + safeStringify(props)} 
-                document.location = this.state.currentLanguage + '/schedules'
-                // router.transitionTo(');
+                document.location = this.state.currentLanguage + '/schedules/' + self.departure.geohash + '/' + self.arrival.geohash + '/' + self.date 
+
                 
                 
                 
