@@ -1,0 +1,208 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ubuntu/.nvm/versions/node/v4.2.1/bin/node',
+1 verbose cli   '/home/ubuntu/.nvm/versions/node/v4.2.1/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'react-dom' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.1
+4 verbose install initial load of /home/ubuntu/workspace/package.json
+5 warn package.json busbud-frontend-coding-challenge@1.0.0 No description
+6 warn package.json busbud-frontend-coding-challenge@1.0.0 No repository field.
+7 warn package.json busbud-frontend-coding-challenge@1.0.0 No README data
+8 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/bluebird/package.json
+9 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/es6-promise/package.json
+10 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/express/package.json
+11 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/flux/package.json
+12 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/jade/package.json
+13 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/merge/package.json
+14 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/node-jsx/package.json
+15 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/react/package.json
+16 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/react-dom/package.json
+17 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/react-router/package.json
+18 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/reactify/package.json
+19 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/request/package.json
+20 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/showdown/package.json
+21 info package.json node-jsx@0.12.4 license should be a valid SPDX license expression
+22 info package.json showdown@0.3.4 No license field.
+23 verbose readDependencies loading dependencies from /home/ubuntu/workspace/package.json
+24 verbose install react-dom is installed as 0.14.3
+25 silly cache add args [ 'react-dom', null ]
+26 verbose cache add spec react-dom
+27 silly cache add parsed spec Result {
+27 silly cache add   raw: 'react-dom',
+27 silly cache add   scope: null,
+27 silly cache add   name: 'react-dom',
+27 silly cache add   rawSpec: '',
+27 silly cache add   spec: '*',
+27 silly cache add   type: 'range' }
+28 silly addNamed react-dom@*
+29 verbose addNamed "*" is a valid semver range for react-dom
+30 silly addNameRange { name: 'react-dom', range: '*', hasData: false }
+31 silly mapToRegistry name react-dom
+32 silly mapToRegistry using default registry
+33 silly mapToRegistry registry https://registry.npmjs.org/
+34 silly mapToRegistry uri https://registry.npmjs.org/react-dom
+35 verbose addNameRange registry:https://registry.npmjs.org/react-dom not in flight; fetching
+36 verbose request uri https://registry.npmjs.org/react-dom
+37 verbose request no auth needed
+38 info attempt registry request try #1 at 1:00:01 AM
+39 verbose request id 85c0c14ddbce9b03
+40 verbose etag "9OJ2K9EXV8M3J537XMKG56ZWE"
+41 http request GET https://registry.npmjs.org/react-dom
+42 http 304 https://registry.npmjs.org/react-dom
+43 verbose headers { date: 'Mon, 30 Nov 2015 01:00:01 GMT',
+43 verbose headers   via: '1.1 varnish',
+43 verbose headers   'cache-control': 'max-age=60',
+43 verbose headers   etag: '"9OJ2K9EXV8M3J537XMKG56ZWE"',
+43 verbose headers   age: '49',
+43 verbose headers   connection: 'keep-alive',
+43 verbose headers   'x-served-by': 'cache-jfk1034-JFK',
+43 verbose headers   'x-cache': 'HIT',
+43 verbose headers   'x-cache-hits': '1',
+43 verbose headers   'x-timer': 'S1448845201.313635,VS0,VE0',
+43 verbose headers   vary: 'Accept' }
+44 silly get cb [ 304,
+44 silly get   { date: 'Mon, 30 Nov 2015 01:00:01 GMT',
+44 silly get     via: '1.1 varnish',
+44 silly get     'cache-control': 'max-age=60',
+44 silly get     etag: '"9OJ2K9EXV8M3J537XMKG56ZWE"',
+44 silly get     age: '49',
+44 silly get     connection: 'keep-alive',
+44 silly get     'x-served-by': 'cache-jfk1034-JFK',
+44 silly get     'x-cache': 'HIT',
+44 silly get     'x-cache-hits': '1',
+44 silly get     'x-timer': 'S1448845201.313635,VS0,VE0',
+44 silly get     vary: 'Accept' } ]
+45 verbose etag https://registry.npmjs.org/react-dom from cache
+46 verbose get saving react-dom to /home/ubuntu/.npm/registry.npmjs.org/react-dom/.cache.json
+47 silly addNameRange number 2 { name: 'react-dom', range: '*', hasData: true }
+48 silly addNameRange versions [ 'react-dom',
+48 silly addNameRange   [ '0.1.0',
+48 silly addNameRange     '0.14.0-beta1',
+48 silly addNameRange     '0.14.0-beta2',
+48 silly addNameRange     '0.14.0-beta3',
+48 silly addNameRange     '0.14.0-rc1',
+48 silly addNameRange     '0.14.0',
+48 silly addNameRange     '0.14.1',
+48 silly addNameRange     '0.14.2',
+48 silly addNameRange     '0.14.3' ] ]
+49 silly addNamed react-dom@0.14.3
+50 verbose addNamed "0.14.3" is a plain semver version for react-dom
+51 silly cache afterAdd react-dom@0.14.3
+52 verbose afterAdd /home/ubuntu/.npm/react-dom/0.14.3/package/package.json not in flight; writing
+53 verbose afterAdd /home/ubuntu/.npm/react-dom/0.14.3/package/package.json written
+54 silly install resolved [ { name: 'react-dom',
+54 silly install resolved     version: '0.14.3',
+54 silly install resolved     description: 'React package for working with the DOM.',
+54 silly install resolved     main: 'index.js',
+54 silly install resolved     repository:
+54 silly install resolved      { type: 'git',
+54 silly install resolved        url: 'git+https://github.com/facebook/react.git' },
+54 silly install resolved     keywords: [ 'react' ],
+54 silly install resolved     license: 'BSD-3-Clause',
+54 silly install resolved     bugs: { url: 'https://github.com/facebook/react/issues' },
+54 silly install resolved     homepage: 'https://github.com/facebook/react/tree/master/npm-react-dom',
+54 silly install resolved     peerDependencies: { react: '^0.14.3' },
+54 silly install resolved     scripts: { start: 'node server.js' },
+54 silly install resolved     _id: 'react-dom@0.14.3',
+54 silly install resolved     _shasum: 'b3f0aeeed1a433b20c5458e34439a51916818628',
+54 silly install resolved     _resolved: 'https://registry.npmjs.org/react-dom/-/react-dom-0.14.3.tgz',
+54 silly install resolved     _from: 'react-dom@*',
+54 silly install resolved     _npmVersion: '2.14.7',
+54 silly install resolved     _nodeVersion: '4.2.2',
+54 silly install resolved     _npmUser: { name: 'zpao', email: 'paul@oshannessy.com' },
+54 silly install resolved     maintainers: [ [Object], [Object] ],
+54 silly install resolved     dist:
+54 silly install resolved      { shasum: 'b3f0aeeed1a433b20c5458e34439a51916818628',
+54 silly install resolved        tarball: 'http://registry.npmjs.org/react-dom/-/react-dom-0.14.3.tgz' },
+54 silly install resolved     directories: {},
+54 silly install resolved     readme: 'ERROR: No README data found!' } ]
+55 info install react-dom@0.14.3 into /home/ubuntu/workspace
+56 info installOne react-dom@0.14.3
+57 verbose installOne of react-dom to /home/ubuntu/workspace not in flight; installing
+58 verbose lock using /home/ubuntu/.npm/_locks/react-dom-d54b11e55a681b6a.lock for /home/ubuntu/workspace/node_modules/react-dom
+59 silly install write writing react-dom 0.14.3 to /home/ubuntu/workspace/node_modules/react-dom
+60 verbose unbuild node_modules/react-dom
+61 info preuninstall react-dom@0.14.3
+62 info uninstall react-dom@0.14.3
+63 verbose unbuild rmStuff react-dom@0.14.3 from /home/ubuntu/workspace/node_modules
+64 info postuninstall react-dom@0.14.3
+65 silly gentlyRm /home/ubuntu/workspace/node_modules/react-dom is being purged from base /home/ubuntu/workspace
+66 verbose gentlyRm don't care about contents; nuking /home/ubuntu/workspace/node_modules/react-dom
+67 silly vacuum-fs purging /home/ubuntu/workspace/node_modules/react-dom
+68 silly vacuum-fs quitting because other entries in /home/ubuntu/workspace/node_modules
+69 verbose tar unpack /home/ubuntu/.npm/react-dom/0.14.3/package.tgz
+70 verbose tar unpacking to /home/ubuntu/workspace/node_modules/react-dom
+71 silly gentlyRm /home/ubuntu/workspace/node_modules/react-dom is being purged
+72 verbose gentlyRm don't care about contents; nuking /home/ubuntu/workspace/node_modules/react-dom
+73 silly gunzTarPerm modes [ '755', '644' ]
+74 silly gunzTarPerm extractEntry package.json
+75 silly gunzTarPerm extractEntry README.md
+76 silly gunzTarPerm extractEntry LICENSE
+77 silly gunzTarPerm extractEntry index.js
+78 silly gunzTarPerm extractEntry server.js
+79 silly gunzTarPerm extractEntry PATENTS
+80 silly gunzTarPerm extractEntry dist/react-dom-server.js
+81 silly gunzTarPerm extractEntry dist/react-dom-server.min.js
+82 silly gunzTarPerm extractEntry dist/react-dom.js
+83 silly gunzTarPerm extractEntry dist/react-dom.min.js
+84 verbose write writing to /home/ubuntu/workspace/node_modules/react-dom/package.json
+85 info preinstall react-dom@0.14.3
+86 verbose readDependencies loading dependencies from /home/ubuntu/workspace/node_modules/react-dom/package.json
+87 silly prepareForInstallMany adding react@^0.14.3 from react-dom peerDependencies
+88 warn peerDependencies The peer dependency react@^0.14.3 included from react-dom will no
+89 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+90 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+91 verbose readDependencies loading dependencies from /home/ubuntu/workspace/node_modules/react-dom/package.json
+92 silly install resolved []
+93 verbose about to build /home/ubuntu/workspace/node_modules/react-dom
+94 info build /home/ubuntu/workspace/node_modules/react-dom
+95 info linkStuff react-dom@0.14.3
+96 silly linkStuff react-dom@0.14.3 has /home/ubuntu/workspace/node_modules as its parent node_modules
+97 verbose linkBins react-dom@0.14.3
+98 verbose linkMans react-dom@0.14.3
+99 verbose rebuildBundles react-dom@0.14.3
+100 info install react-dom@0.14.3
+101 info postinstall react-dom@0.14.3
+102 verbose readDependencies loading dependencies from /home/ubuntu/workspace/package.json
+103 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/bluebird/package.json
+104 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/es6-promise/package.json
+105 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/express/package.json
+106 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/flux/package.json
+107 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/jade/package.json
+108 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/merge/package.json
+109 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/node-jsx/package.json
+110 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/react/package.json
+111 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/react-dom/package.json
+112 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/react-router/package.json
+113 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/reactify/package.json
+114 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/request/package.json
+115 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/showdown/package.json
+116 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/handlebars/package.json
+117 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/jade/package.json
+118 verbose already installed skipping react@^0.14.3 /home/ubuntu/workspace
+119 silly install resolved []
+120 verbose unlock done using /home/ubuntu/.npm/_locks/react-dom-d54b11e55a681b6a.lock for /home/ubuntu/workspace/node_modules/react-dom
+121 verbose validateInstall loading /home/ubuntu/workspace/package.json for validation
+122 verbose stack Error: The package react@0.12.2 does not satisfy its siblings' peerDependencies requirements!
+122 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.2.1/lib/node_modules/npm/lib/install.js:125:32
+122 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.2.1/lib/node_modules/npm/lib/install.js:268:7
+122 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/read-installed/read-installed.js:142:5
+122 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+122 verbose stack     at cb (/home/ubuntu/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+122 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+122 verbose stack     at cb (/home/ubuntu/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+122 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+122 verbose stack     at cb (/home/ubuntu/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+122 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+123 verbose cwd /home/ubuntu/workspace
+124 error Linux 4.2.0-c9
+125 error argv "/home/ubuntu/.nvm/versions/node/v4.2.1/bin/node" "/home/ubuntu/.nvm/versions/node/v4.2.1/bin/npm" "install" "--save" "react-dom"
+126 error node v4.2.1
+127 error npm  v2.14.7
+128 error code EPEERINVALID
+129 error peerinvalid The package react@0.12.2 does not satisfy its siblings' peerDependencies requirements!
+129 error peerinvalid Peer react-router@0.11.6 wants react@0.12.x
+129 error peerinvalid Peer react-dom@0.14.3 wants react@^0.14.3
+130 verbose exit [ 1, true ]

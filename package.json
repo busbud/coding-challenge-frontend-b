@@ -1,0 +1,29 @@
+{
+  "name": "busbud-frontend-coding-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kayla hennig",
+  "license": "ISC",
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "es6-promise": "^2.0.1",
+    "express": "~4.11.1",
+    "flux": "^2.0.1",
+    "jade": "~1.9.1",
+    "merge": "~1.2.0",
+    "node-jsx": "~0.12.4",
+    "react": "~0.12.2",
+    "react-router": "~0.11.6",
+    "reactify": "~1.0.0",
+    "showdown": "~0.3.1"
+  }
+}
