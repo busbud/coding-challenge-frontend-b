@@ -1,19 +1,19 @@
 // Reactjs and jsx utils
-require('node-jsx').install({extension: '.jsx'});
+require('node-jsx').install({
+  extension: '.jsx'
+});
 var React = require('react');
 var Router = require('react-router');
-var Header = require('./components/Header')
 
-// React App components and api
 var routes = require('./routes.jsx');
-// var Api = require('./api/ServerApi');
+
 
 // Express
 var express = require('express');
 var http = require('http');
 var app = express();
 
-// Some const
+// directory constant
 var BASEDIR = process.env.PWD;
 
 
@@ -33,93 +33,62 @@ http.createServer(app).listen(app.get('port'), function() {
 
 
 
-
-
-// Express ROUTES
-
-
-
-
 // Static routes
-app.get('/', function (req, res) {
-  Router.run(routes, '/', function (Handler) {
-    var props = {currentLang: 'en'};
-    // var navigation = React.renderToString(React.createElement(Header, props));
+app.get('/', function(req, res) {
+  Router.run(routes, '/', function(Handler) {
+    var props = {
+      currentLang: 'en'
+    };
+
     var content = React.renderToString(React.createElement(Handler, props));
     res.render('index', {
-      // navigation: navigation,
+
       content: content,
       injectedScript: safeStringify(props)
     });
   });
 });
 
-app.get('/:language', function (req, res) {
+app.get('/:language', function(req, res) {
   var currentLanguage = req.params.language;
-  // console.log(currentLanguage)
-  Router.run(routes, '/' + currentLanguage, function (Handler) {
-    var props = {currentLang: currentLanguage};
-    
-    // var navigation = React.renderToString(React.createElement(Header, props));
+
+  Router.run(routes, '/' + currentLanguage, function(Handler) {
+    var props = {
+      currentLang: currentLanguage
+    };
+
     var content = React.renderToString(React.createElement(Handler));
     res.render('index', {
-      // navigation: navigation,
+
       content: content,
       injectedScript: safeStringify(props)
     });
   });
 });
 
-app.get('/:language/schedules/:departure/:arrival/:date', function (req, res) {
+app.get('/:language/schedules/:departure/:arrival/:date/:adults', function(req, res) {
   var props = {
     currentLang: req.params.language,
     departure: req.params.departure,
     arrival: req.params.arrival,
     date: req.params.date,
-    passenger: req.params.passengers
+    adults: req.params.adults
   };
 
-  Router.run(routes, '/' + props.currentLang + '/schedules/' + props.departure + "/" + props.arrival + "/" + props.date, function (Handler) {
-    
-    // var navigation = React.renderToString(React.createElement(Header, props));
+  Router.run(routes, '/' + props.currentLang + '/schedules/' + props.departure + "/" + props.arrival + "/" + props.date + "/" + props.adults, function(Handler) {
     var content = React.renderToString(React.createElement(Handler, props));
     res.render('index', {
-      // navigation: navigation,
       content: content,
       injectedScript: safeStringify(props)
     });
   });
 });
 
-// app.get('/article/:id', function (req, res, next) {
-//   var aid = req.params.id;
-//   Router.run(routes, '/article/' + aid , function (Handler) {
-//     var content = React.renderToString(React.createElement(Handler));
-//     var injected = { list: [Api.getArticle(aid)]};
-//     res.render('index', {
-//       content: content,
-//       injectedScript: JSON.stringify(injected)
-//     });
-//   });
-// });
-
-// API routes
-// app.get('/api/article/:id', function (req, res, next) {
-//   var aid = req.params.id;
-//   var article = Api.getArticle(aid);
-//   res.send(JSON.stringify(article));
-// });
-
-// app.get('/api/articles', function (req, res, next) {
-//   var articles = Api.getArticles();
-//   res.send(JSON.stringify(articles));
-// });
 
 
 // A utility function to safely escape JSON for embedding in a <script> tag
 function safeStringify(obj) {
-    return JSON.stringify(obj).replace(/<\/script/g, '<\\/script').replace(/<!--/g, '<\\!--');
+  return JSON.stringify(obj).replace(/<\/script/g, '<\\/script').replace(/<!--/g, '<\\!--');
 }
 
 module.exports = app;
-

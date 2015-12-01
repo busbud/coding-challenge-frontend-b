@@ -217,6 +217,7 @@ var SearchResultsLayout = React.createClass({
                     departure: this.getParams().departure,
                     arrival: this.getParams().arrival,
                     date: this.getParams().date,
+                    adults: this.getParams().adults,
                     searchComplete: false,
                     outbound_departures: []
                 };
@@ -228,7 +229,7 @@ var SearchResultsLayout = React.createClass({
                 var departureArray = [];
                 var cities = {};
                 var params = self.state.departure + "/" + self.state.arrival + "/" + self.state.date;
-                var querys = "/?lang=" + self.state.language + "&currency=CAD";
+                var querys = "/?lang=" + self.state.language + "&currency=CAD&adult=" + self.state.adults;
                 var url = DEPARTURE_URL + params + querys;
                 getDepartures(url, operatorObject, locationObject, departureArray, cities, params, querys)
                 .then(function(response){

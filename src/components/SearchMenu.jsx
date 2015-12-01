@@ -96,7 +96,8 @@ var SearchLayout = React.createClass({
             },
             onClick: function() {
                 var self = this.state;
-                document.location = self.currentLanguage + '/schedules/' + self.departure.geohash + '/' + self.arrival.geohash + '/' + self.date;
+                var passengers = $("#adults").val();
+                document.location = self.currentLanguage + '/schedules/' + self.departure.geohash + '/' + self.arrival.geohash + '/' + self.date + "/" + passengers;
 
             },
             render: function() {
@@ -164,7 +165,7 @@ var SearchLayout = React.createClass({
                                                     <div className="col-lg-2 col-sm-3 passenger">
                                                         <label>{currentLanguage.adults}</label>
                                                         <div className="input-group"><span id="userIcon" className="input-group-addon"><span className="glyphicon glyphicon-user"></span></span>
-                                                            <select className="form-control" defaultValue="1" disabled>
+                                                            <select id="adults" className="form-control" defaultValue="1" disabled>
                                                                 <option value="0">0</option>
                                                                 <option value="1">1</option>
                                                                 <option value="2">2</option>

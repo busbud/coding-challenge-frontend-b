@@ -86893,7 +86893,8 @@ var SearchLayout = React.createClass({displayName: "SearchLayout",
             },
             onClick: function() {
                 var self = this.state;
-                document.location = self.currentLanguage + '/schedules/' + self.departure.geohash + '/' + self.arrival.geohash + '/' + self.date;
+                var passengers = $("#adults").val();
+                document.location = self.currentLanguage + '/schedules/' + self.departure.geohash + '/' + self.arrival.geohash + '/' + self.date + "/" + passengers;
 
             },
             render: function() {
@@ -86961,7 +86962,7 @@ var SearchLayout = React.createClass({displayName: "SearchLayout",
                                                     React.createElement("div", {className: "col-lg-2 col-sm-3 passenger"}, 
                                                         React.createElement("label", null, currentLanguage.adults), 
                                                         React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "userIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-user"})), 
-                                                            React.createElement("select", {className: "form-control", defaultValue: "1", disabled: true}, 
+                                                            React.createElement("select", {id: "adults", className: "form-control", defaultValue: "1", disabled: true}, 
                                                                 React.createElement("option", {value: "0"}, "0"), 
                                                                 React.createElement("option", {value: "1"}, "1"), 
                                                                 React.createElement("option", {value: "2"}, "2"), 
@@ -87234,6 +87235,7 @@ var SearchResultsLayout = React.createClass({displayName: "SearchResultsLayout",
                     departure: this.getParams().departure,
                     arrival: this.getParams().arrival,
                     date: this.getParams().date,
+                    adults: this.getParams().adults,
                     searchComplete: false,
                     outbound_departures: []
                 };
@@ -87245,7 +87247,7 @@ var SearchResultsLayout = React.createClass({displayName: "SearchResultsLayout",
                 var departureArray = [];
                 var cities = {};
                 var params = self.state.departure + "/" + self.state.arrival + "/" + self.state.date;
-                var querys = "/?lang=" + self.state.language + "&currency=CAD";
+                var querys = "/?lang=" + self.state.language + "&currency=CAD&adult=" + self.state.adults;
                 var url = DEPARTURE_URL + params + querys;
                 getDepartures(url, operatorObject, locationObject, departureArray, cities, params, querys)
                 .then(function(response){
@@ -87351,7 +87353,7 @@ module.exports = languages;
 },{}],574:[function(require,module,exports){
 var React = require("react");
 var Router = require('react-router');
-var DefaultRoute = Router.DefaultRoute;
+
 
 // Components
 
@@ -87363,19 +87365,12 @@ var Route = Router.Route;
 
 var routes = (
   React.createElement(Route, {name: "app", path: "/", handler: Header}, 
-React.createElement(Route, {name: "menu", path: "/", handler: SearchMenu}), 
-  React.createElement(Route, {name: "language", path: "/:language", handler: SearchMenu}), 
- 
-  React.createElement(Route, {name: "schedules", path: "/:language/schedules/:departure/:arrival/:date", handler: SearchResults})
- 
-    
-    
+    React.createElement(Route, {name: "menu", path: "/", handler: SearchMenu}), 
+    React.createElement(Route, {name: "language", path: "/:language", handler: SearchMenu}), 
+    React.createElement(Route, {name: "schedules", path: "/:language/schedules/:departure/:arrival/:date/:adults", handler: SearchResults})
   )
 );
 
 module.exports = routes;
-// <DefaultRoute name="default" handler={Header}/>
-  // <Route name="menu" path="/" handler={SearchMenu} />
-  // <Route name="schedules" path="/:language/schedules/*" handler={SearchResults}/>
 
 },{"./components/Header.jsx":570,"./components/SearchMenu.jsx":571,"./components/SearchResults.jsx":572,"react":442,"react-router":262}]},{},[569]);

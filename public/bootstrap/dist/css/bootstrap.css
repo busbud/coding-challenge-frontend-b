@@ -6777,6 +6777,7 @@ body
 .result-header h3
 {
     font-size: 1.5em;
+    font-weight: normal;
 
     margin: 0 auto;
     padding: 0 0 1rem;
