@@ -72,25 +72,13 @@ function getDepartures(url, operatorObject, locationObject, departureArray, citi
                         cities: cities
                     };
                 }
-            
-
-            })
+            });
     }
 
     
-    
-    
-    
-                
-               
-                
-    // var pollUrl = url + "&outbound_index=" + index;
-    
-
-
 var ResultHeaderWrapper = React.createClass({
     render: function(){
-        var lang = this.props.lang
+        var lang = this.props.lang;
         var _h2 = lang.loading;
         var _h4 = lang.thankyou;
         var _h3 = "";
@@ -157,7 +145,7 @@ var DepartureWrapper = React.createClass({
         
                                 { departureAddress.map(function(address){ 
                                 
-                                return <li key={address}> {address} </li>
+                                return <li key={address}> {address} </li>;
                                 
                                 } ) }
                             </ul>
@@ -227,9 +215,9 @@ var SearchResultsLayout = React.createClass({
                 var locationObject = {};
                 var departureArray = [];
                 var cities = {};
-                var params = self.state.departure + "/" + self.state.arrival + "/" + self.state.date
+                var params = self.state.departure + "/" + self.state.arrival + "/" + self.state.date;
                 var querys = "/?lang=" + self.state.language + "&currency=CAD";
-                var url = DEPARTURE_URL + params + querys
+                var url = DEPARTURE_URL + params + querys;
                 getDepartures(url, operatorObject, locationObject, departureArray, cities, params, querys)
                 .then(function(response){
 
@@ -243,7 +231,7 @@ var SearchResultsLayout = React.createClass({
                             currency: 'CAD'
                         });
                     }
-                })
+                });
                 
                     
                     
@@ -256,7 +244,7 @@ var SearchResultsLayout = React.createClass({
             render: function() {
                 var locations;
                 var operators;
-                var lang = languages[this.state.language]
+                var lang = languages[this.state.language];
                 var ResultHeader = <ResultHeaderWrapper date={this.state.date} lang={lang}/>;
                 if (this.state.outbound_departures.length){
                     ResultHeader = <ResultHeaderWrapper date={this.state.date} lang={lang} arrival={this.state.arrival} departure={this.state.departure} />;
