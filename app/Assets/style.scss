@@ -1,4 +1,5 @@
 @import url('//fonts.googleapis.com/css?family=Roboto');
+@import url('//fonts.googleapis.com/css?family=Chau+Philomene+One');
 
 * {
 	box-sizing: border-box;
@@ -6,6 +7,10 @@
 
 body {
 	font-family: 'Roboto', sans-serif;
+	background-image: url('./igloofestbg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .app {
@@ -13,8 +18,10 @@ body {
 	flex-direction: column;
 	align-items: center;
 }
-
+// ------ HEADER SECTION ------
 .header {
+	color: grey;
+	height: 30px;
 	flex-wrap: nowrap;
 	padding-top: 8px;
 	padding-bottom: 8px;
@@ -24,5 +31,99 @@ body {
 	width: 100%;
   	justify-content: center;
   	border-bottom: 1px solid #e1e1e1;
-  	background-color: #fAfAfA;
+  	background: rgba(0, 0, 0, 0.7);
+}
+
+// ------ CONTENT SECTION ------
+.content-container {
+}
+.announcement-section {
+	display:flex;
+	flex-direction:column;
+	jusify-content: center;
+	max-width:700px;
+	margin-right:auto;
+	margin-left:auto;
+}
+.page-permanent-announcement {
+	display:flex;
+	justify-content:center;
+	font-family: 'Chau Philomene One', sans-serif;
+	font-size: 40px;
+	color:#FFF;
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 25px;
+}
+.the-button {
+	margin:auto;
+	font-family: 'Chau Philomene One', sans-serif;
+	font-size: 28px;
+	height:100px;
+	width: 400px;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 25px;
+}
+
+// ------ DEPARTURES SECTION ------
+.mini-bus-pic{
+	width:auto;
+	height:100px
+}
+.departures {
+	display:flex;
+	justify-content:center;
+}
+.panel {
+	margin: 15px auto 15px auto ;
+	display:flex;
+	flex-direction: row;
+	background: rgba(255, 255, 255, 0.8);
+}
+.panel-body {
+	display:flex;
+	justify-content: space-between;
+}
+.info-box {
+	padding: 10px;
+	font-size:16px;
+	display:flex;
+	flex-direction:column;
+}
+.info-variable {
+	font-size: 14px;
+}
+.panel-footer {
+	background:none;
+	display:flex;
+	align-content: center;
+	margin:auto;
+	border: none;
+	border-left: 1px solid lightgrey;
+	border-right: 1px solid lightgrey
+}
+
+// ------ RESPONSIVENESS -------
+@media (min-width: 700px) {
+ 	.panel {
+	    max-width: 700px
+	}
+}
+@media (max-width: 700px) {
+ 	.panel-footer img{
+		height:50px;
+	}
+}
+@media (max-width: 450px) {
+	.info-box {
+		
+	}
+	.panel {
+		flex-direction:column;
+	}
+}
+@media (max-width: 600px) {
+	.panel-footer{
+		display:none;
+	}
 }

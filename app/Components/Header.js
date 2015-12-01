@@ -6,7 +6,7 @@ module.exports = React.createClass({
   render: function () {
     return (
     	<div className='header'>
-    	webpack react starter kit - header
+    		{'In fulfillment of Busbud\'s front-end-challenge-b   ---   By Nathaniel Kitzke'} 
     	</div>
 		)
 	}

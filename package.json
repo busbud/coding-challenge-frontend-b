@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "dev-server": "nodemon server/index.js --watch server",
-    "dev-web": "webpack-dev-server --config ./webpack-dev.config.js --hot --progress --colors --content-base build", 
+    "dev-web": "webpack-dev-server --config ./webpack-dev.config.js --hot --progress --colors --content-base build",
     "dev": "nodemon server/index.js --watch server & webpack-dev-server --config ./webpack-dev.config.js --hot --progress --colors --content-base build",
     "build": "rm build/*; webpack --config ./webpack-prod.config.js --progress --colors",
     "start": "node server/index.js",
@@ -18,7 +18,11 @@
   "dependencies": {
     "compression": "^1.5.0",
     "cors": "^2.7.1",
-    "express": "^4.12.4"
+    "express": "^4.12.4",
+    "moment": "^2.10.6",
+    "moment-timezone": "^0.4.1",
+    "request": "^2.67.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",
