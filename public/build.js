@@ -86725,62 +86725,70 @@ Router.run(routes, Router.HistoryLocation, function (Handler, state) {
 var React = require('react');
 var languages = require("../languages.js");
 var Router = require('react-router');
-var RouteHandler = require('react-router').RouteHandler;
-var Route = Router.Route;
-var DefaultRoute = Router.DefaultRoute;
 var RouteHandler = Router.RouteHandler;
-var Link = Router.Link;
-    
+
+// var RouteHandler = require('react-router').RouteHandler;
+// var Route = Router.Route;
+// var DefaultRoute = Router.DefaultRoute;
+// var Link = Router.Link;
+
 
 var HeaderLayout = React.createClass({displayName: "HeaderLayout",
-     mixins: [Router.State],
-    getInitialState: function() {
-        var language =  this.getParams().language
-                if  (!language){
-                    language = "en"
+            mixins: [Router.State],
+            getInitialState: function() {
+                var language = this.getParams().language;
+                if (!language) {
+                    language = "en";
                 }
-        // console.log(this.props.params.language)
-        // console.log(this.props.currentLang)
-        return {
-            currentLang: language
-        };
-    },
-    render: function() {
-        var languageArray = [];
-        var currentLanguage = languages[this.state.currentLang].name;
-        for (var lang in languages) {
-            languageArray.push(
-                React.createElement("li", {key: languages[lang].abbr}, React.createElement("a", {href: "/" + languages[lang].abbr}, languages[lang].name))
-            );
-        }
-        
-        return (
-             React.createElement("div", null, 
-            React.createElement("nav", {className: "navbar navbar-default header"}, 
-                React.createElement("div", {className: "row container-fluid"}, 
-                    React.createElement("div", {className: "navbar-header"}, 
-                        React.createElement("button", {type: "button", "data-toggle": "collapse", "data-target": "#navbar-collapse-1", "aria-expanded": "false", className: "navbar-toggle collapsed"}, React.createElement("span", {className: "sr-only"}, "Toggle navigation"), React.createElement("span", {className: "icon-bar"}), React.createElement("span", {className: "icon-bar"}), React.createElement("span", {className: "icon-bar"})), 
-                        React.createElement("div", {className: "main-column"}, 
-                            React.createElement("div", {className: "logo"}, React.createElement("a", {accessKey: "1", href: "/en/"}, React.createElement("span", null, "Logo")))
-                        )
-                    ), 
-                    React.createElement("div", {id: "navbar-collapse-1", className: "collapse navbar-collapse"}, 
-                        React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
-                            React.createElement("li", {className: "dropdown"}, React.createElement("a", {href: "#", id: "languageMenu", "data-toggle": "dropdown", role: "button", "aria-haspopup": "true", "aria-expanded": "false", className: "dropdown-toggle"}, currentLanguage, React.createElement("span", {className: "caret"})), 
-                                React.createElement("ul", {className: "dropdown-menu"}, 
- 
-                                    languageArray
-            
+                return {
+                    currentLang: language
+                };
+            },
+            render: function() {
+                    var languageArray = [];
+                    var currentLanguage = languages[this.state.currentLang].name;
+                    for (var lang in languages) {
+                        languageArray.push(
+                            React.createElement("li", {key: languages[lang].abbr}, React.createElement("a", {href: "/" + languages[lang].abbr}, languages[lang].name))
+                        );
+                    }
+
+                    return (
+                        React.createElement("div", null, 
+                            React.createElement("nav", {className: "navbar navbar-default header"}, 
+                                React.createElement("div", {className: "row container-fluid"}, 
+                                    React.createElement("div", {className: "col-lg-10 col-lg-push-1 col-md-8 col-sm-10 col-sm-push-1 col-md-push-2 col-lg-push-2"}, 
+                                        React.createElement("div", {className: "navbar-header"}, 
+                                            React.createElement("button", {type: "button", "data-toggle": "collapse", "data-target": "#navbar-collapse", "aria-expanded": "false", className: "navbar-toggle collapsed"}, 
+                                                React.createElement("span", {className: "sr-only"}, "Toggle navigation"), 
+                                                React.createElement("span", {className: "icon-bar"}), 
+                                                React.createElement("span", {className: "icon-bar"}), 
+                                                React.createElement("span", {className: "icon-bar"})
+                                            ), 
+                                            React.createElement("div", {className: "logo"}, 
+                                                React.createElement("a", {accessKey: "1", href:  "/" + this.state.currentLang}, React.createElement("span", null, "Logo"))
+                                            )
+                                        ), 
+                                        React.createElement("div", {id: "navbar-collapse", className: "collapse navbar-collapse"}, 
+                                            React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
+                                                React.createElement("li", {className: "dropdown"}, 
+                                                    React.createElement("a", {href: "#", id: "languageMenu", "data-toggle": "dropdown", role: "button", "aria-haspopup": "true", "aria-expanded": "false", className: "dropdown-toggle"}, 
+                                                        currentLanguage, 
+                                                        React.createElement("span", {className: "caret"})
+                                                    ), 
+                                                    React.createElement("ul", {className: "dropdown-menu"}, 
+                                                        languageArray
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
                                 )
-                            )
+                            ), 
+                        
+                            React.createElement(RouteHandler, null)
                         )
-                    )
-                )
-            ), 
-        
-        React.createElement(RouteHandler, null)
-        )
-        );
+                    );
     }
 });
 
@@ -86788,13 +86796,10 @@ module.exports = HeaderLayout;
 
 },{"../languages.js":573,"react":442,"react-router":262}],571:[function(require,module,exports){
 var React = require('react');
-var ReactDOM = require('react-dom');
 var Promise = require('bluebird');
 var request = Promise.promisifyAll(require("request"));
 var languages = require("../languages.js");
-var SearchResultsLayout = React.createFactory(require('./SearchResults.jsx'));
 var Router = require('react-router');
-// var history = require('react-router').History
 var router = require('../routes.jsx');
 
 var GUEST_TOKEN = "GUEST_ZX3fNR26SB-m1MBsyz196g";
@@ -86806,17 +86811,7 @@ var DEPARTURE_CITY = "New York";
 var ARRIVAL_CITY = "Montreal";
 var DATE = "2016-01-14";
 
-//default city values for initial rendering of component
-var departureCity = {
-    geohash: "dr5reg",
-    full_name: "New York, New York, United States"
-};
 
-var arrivalCity = {
-    geohash: "f25dvk",
-    full_name: "Montreal, Quebec, Canada"
-
-};
 
 // A utility function to safely escape JSON for embedding in a <script> tag
 function safeStringify(obj) {
@@ -86835,6 +86830,7 @@ function getToken() {
         });
 }
 
+//function to get the json data for the cities
 function getCityInfo(city, language) {
     var options = {
         url: API_URL + "/search?q=" + city + "&lang=" + language,
@@ -86848,6 +86844,7 @@ function getCityInfo(city, language) {
         });
 }
 
+//function to make the requests for the departure and arrival cities
 function getCities(lang) {
     var city = {};
     return getCityInfo(DEPARTURE_CITY, lang)
@@ -86860,226 +86857,299 @@ function getCities(lang) {
         });
 }
 
+
 var SearchLayout = React.createClass({displayName: "SearchLayout",
-    mixins: [Router.State],
-            // contextTypes: {
-            //     router: React.PropTypes.object
-            //   },
+            
+            mixins: [Router.State],
+            
             getInitialState: function() {
-                var language =  this.getParams().language
-                if  (!language){
-                    language = "en"
+                var language = this.getParams().language;
+                if (!language) {
+                    language = "en";
                 }
-                // console.log(language)
+
                 return {
-                    // currentLanguage: 'en',
+                    
                     currentLanguage: language,
                     date: DATE,
                     arrival: "",
-                    departure: ""
+                    departure: "",
+                    notLoaded: true
                 };
             },
             componentDidMount: function() {
                 var self = this;
-                
-
                 getCities(self.state.currentLanguage)
                     .then(function(city) {
-                        if (self.isMounted()){
+                        if (self.isMounted()) {
                             self.setState({
                                 arrival: city.arrival,
-                                departure: city.departure
+                                departure: city.departure,
+                                notLoaded: false
                             });
                         }
                     });
-                
-            },
-            onClick: function(){
-                var language = languages[this.props.currentLang];
-                var self = this.state;
-                var props = {
-                    language: this.state.currentLang,
-                    arrival: this.state.arrival,
-                    departure: this.state.departure,
-                    date: this.state.date
-                }
-                
-                $(document.getElementById("props")).dangerouslySetInnerHTML={__html: 'var APP_PROPS = ' + safeStringify(props)} 
-                document.location = this.state.currentLanguage + '/schedules/' + self.departure.geohash + '/' + self.arrival.geohash + '/' + self.date 
 
+            },
+            onClick: function() {
+                // var language = languages[this.props.currentLang];
                 
-                
-                
-                
-                
-                
+                // var props = {
+                //     language: this.state.currentLang,
+                //     arrival: this.state.arrival,
+                //     departure: this.state.departure,
+                //     date: this.state.date
+                // }
+
+                // $(document.getElementById("props")).dangerouslySetInnerHTML = {
+                //     __html: 'var APP_PROPS = ' + safeStringify(props)
+                // }
+                var self = this.state;
+                document.location = self.currentLanguage + '/schedules/' + self.departure.geohash + '/' + self.arrival.geohash + '/' + self.date;
+
             },
             render: function() {
-                // console.log(this.props.language)
-                    var currentLanguage = languages[this.state.currentLanguage];
-                    // console.log(currentLanguage)
-            return (
-                React.createElement("section", {id: "search-menu"}, 
-                    
-                
-                    React.createElement("div", {className: "main-column row"}, 
-                        React.createElement("div", {className: "column large-8 large-push-2"}, 
-                            React.createElement("div", {className: "search-form"}, React.createElement("strong", {className: "slogan"}, currentLanguage.header), 
-                                React.createElement("hr", null), 
-                                React.createElement("div", {className: "row location"}, 
-                                    React.createElement("form", null, 
-                                        React.createElement("div", {className: "form-group"}, 
-                                            React.createElement("div", {className: "col-lg-6"}, 
-                                                React.createElement("label", {htmlFor: "departure"}, currentLanguage.leaving), 
-                                                React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "mapIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-map-marker"})), 
-                                                    React.createElement("input", {type: "text", "aria-describedby": "mapIcon", id: "departure", placeholder: currentLanguage.selectCity, "data-departure-geohash": this.state.departure.geohash, value: this.state.departure.full_name, className: "form-control", disabled: true})
-                
-                                                )
-                                            )
-                                        ), 
-                                        React.createElement("div", {className: "form-group"}, 
-                                            React.createElement("div", {className: "col-lg-6"}, 
-                                                React.createElement("label", {htmlFor: "arrival"}, currentLanguage.going), 
-                                                React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "mapIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-map-marker"})), 
-                                                    React.createElement("input", {type: "text", id: "arrival", placeholder: currentLanguage.selectCity, "data-arrival-geohash": this.state.arrival.geohash, value: this.state.arrival.full_name, className: "form-control", disabled: true})
-                
-                                                )
-                                            )
-                                        )
-                                    )
-                                ), 
-                                React.createElement("div", {className: "row route"}, 
-                                    React.createElement("div", {className: "form-group"}, 
-                                        React.createElement("div", {className: "col-lg-6"}, 
-                                            React.createElement("label", null, currentLanguage.date), 
-                                            React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "calIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-calendar"})), 
-                                                React.createElement("input", {type: "text", id: "departureDate", placeholder: "Date", value: this.state.date, className: "form-control", disabled: true})
-                
-                                            )
-                                        )
-                                    ), 
-                                    React.createElement("div", {className: "form-group"}, 
-                                        React.createElement("div", {className: "col-lg-6"}, 
-                                            React.createElement("div", {className: "radio"}, 
-                                                React.createElement("label", null), 
-                                                React.createElement("label", {className: "tripSegment"}, 
-                                                    React.createElement("input", {type: "radio", name: "tripSegment", id: "oneWay", value: "OneWay", checked: true, readOnly: true}), " ", currentLanguage.oneWay
-                                                ), 
-                                                React.createElement("label", {className: "tripSegment"}, 
-                                                    React.createElement("input", {type: "radio", name: "tripSegment", id: "roundTrip", value: "roundTrip", disabled: true}), " ", currentLanguage.round
-                
-                                                )
-                                            )
-                                        )
-                                    )
-                                ), 
-                                React.createElement("div", {className: "row passengers"}, 
-                                    React.createElement("div", {className: "form-group"}, 
-                                        React.createElement("div", {className: "col-lg-2"}, 
-                                            React.createElement("label", null, currentLanguage.adults), 
-                                            React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "userIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-user"})), 
-                                                React.createElement("select", {className: "form-control", defaultValue: "1", disabled: true}, 
-                                                    React.createElement("option", {value: "0"}, "0"), 
-                                                    React.createElement("option", {value: "1"}, "1"), 
-                                                    React.createElement("option", {value: "2"}, "2"), 
-                                                    React.createElement("option", {value: "3"}, "3"), 
-                                                    React.createElement("option", {value: "4"}, "4")
-                                                )
-                                            )
-                                        ), 
-                                        React.createElement("div", {className: "col-lg-2"}, 
-                                            React.createElement("label", null, currentLanguage.children), 
-                                            React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "userIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-user"})), 
-                                                React.createElement("select", {className: "form-control", defaultValue: "0", disabled: true}, 
-                                                    React.createElement("option", {value: "0"}, "0"), 
-                                                    React.createElement("option", {value: "1"}, "1"), 
-                                                    React.createElement("option", {value: "2"}, "2"), 
-                                                    React.createElement("option", {value: "3"}, "3"), 
-                                                    React.createElement("option", {value: "4"}, "4")
-                                                )
-                                            )
-                                        ), 
-                                        React.createElement("div", {className: "col-lg-2"}, 
-                                            React.createElement("label", null, currentLanguage.seniors), 
-                                            React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "userIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-user"})), 
-                                                React.createElement("select", {className: "form-control", defaultValue: "0", disabled: true}, 
-                                                    React.createElement("option", {value: "0"}, "0"), 
-                                                    React.createElement("option", {value: "1"}, "1"), 
-                                                    React.createElement("option", {value: "2"}, "2"), 
-                                                    React.createElement("option", {value: "3"}, "3"), 
-                                                    React.createElement("option", {value: "4"}, "4")
-                                                )
-                                            )
-                                        )
-                                    )
-                                ), 
-                                React.createElement("div", {className: "row searchRow"}, 
-                                    React.createElement("div", {className: "col-lg-12"}, 
+
+                var currentLanguage = languages[this.state.currentLanguage];
+
+                return (
+                    React.createElement("section", {id: "search-menu"}, 
+                        React.createElement("div", {className: "row"}, 
+                            React.createElement("div", {className: "col-lg-10 col-lg-push-1 col-sm-10 col-sm-push-1"}, 
+                                React.createElement("div", {className: "search-form"}, 
+                                React.createElement("div", {className: "row"}, 
+                                    React.createElement("div", {className: "col-md-10 col-md-push-1 col-sm-12 col-xs-12 col-lg-10 col-lg-push-1"}, 
+                                        React.createElement("strong", {className: "slogan"}, currentLanguage.header), 
+                                            React.createElement("hr", null), 
+                                            React.createElement("div", {className: "row location"}, 
+                                                React.createElement("form", null, 
+                                                    React.createElement("div", {className: "form-group"}, 
+                                                        React.createElement("div", {className: "col-lg-6 col-sm-6 col-xs-12"}, 
+                                                            React.createElement("label", {htmlFor: "departure"}, currentLanguage.leaving), 
+                                                            React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "mapIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-map-marker"})), 
+                                                                React.createElement("input", {type: "text", "aria-describedby": "mapIcon", id: "departure", placeholder: currentLanguage.selectCity, "data-departure-geohash": this.state.departure.geohash, value: this.state.departure.full_name, className: "form-control", disabled: true})
                             
-                                        React.createElement("button", {onClick: this.onClick, className: "btn btn-primary"}, currentLanguage.search)
+                                                            )
+                                                        )
+                                                    ), 
+                                                    React.createElement("div", {className: "form-group"}, 
+                                                        React.createElement("div", {className: "col-lg-6 col-sm-6 col-xs-12"}, 
+                                                            React.createElement("label", {htmlFor: "arrival"}, currentLanguage.going), 
+                                                            React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "mapIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-map-marker"})), 
+                                                                React.createElement("input", {type: "text", id: "arrival", placeholder: currentLanguage.selectCity, "data-arrival-geohash": this.state.arrival.geohash, value: this.state.arrival.full_name, className: "form-control", disabled: true})
+                            
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            ), 
+                                            React.createElement("div", {className: "row route"}, 
+                                                React.createElement("div", {className: "form-group"}, 
+                                                    React.createElement("div", {className: "col-lg-6 col-sm-5 col-xs-12"}, 
+                                                        React.createElement("label", null, currentLanguage.date), 
+                                                        React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "calIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-calendar"})), 
+                                                            React.createElement("input", {type: "text", id: "departureDate", placeholder: "Date", value: this.state.date, className: "form-control", disabled: true})
+                            
+                                                        )
+                                                    )
+                                                ), 
+                                                React.createElement("div", {className: "form-group"}, 
+                                                    React.createElement("div", {className: "col-lg-6 col-sm-7 col-xs-12"}, 
+                                                        React.createElement("div", {className: "radio"}, 
+                                                            React.createElement("label", null), 
+                                                            React.createElement("label", {className: "tripSegment"}, 
+                                                                React.createElement("input", {type: "radio", name: "tripSegment", id: "oneWay", value: "OneWay", checked: true, readOnly: true}), " ", currentLanguage.oneWay
+                                                            ), 
+                                                            React.createElement("label", {className: "tripSegment"}, 
+                                                                React.createElement("input", {type: "radio", name: "tripSegment", id: "roundTrip", value: "roundTrip", disabled: true}), " ", currentLanguage.round
+                            
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            ), 
+                                            React.createElement("div", {className: "row passengers"}, 
+                                                React.createElement("div", {className: "form-group"}, 
+                                                    React.createElement("div", {className: "col-lg-2 col-sm-3 passenger"}, 
+                                                        React.createElement("label", null, currentLanguage.adults), 
+                                                        React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "userIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-user"})), 
+                                                            React.createElement("select", {className: "form-control", defaultValue: "1", disabled: true}, 
+                                                                React.createElement("option", {value: "0"}, "0"), 
+                                                                React.createElement("option", {value: "1"}, "1"), 
+                                                                React.createElement("option", {value: "2"}, "2"), 
+                                                                React.createElement("option", {value: "3"}, "3"), 
+                                                                React.createElement("option", {value: "4"}, "4")
+                                                            )
+                                                        )
+                                                    ), 
+                                                    React.createElement("div", {className: "col-lg-2 col-sm-3 passenger"}, 
+                                                        React.createElement("label", null, currentLanguage.children), 
+                                                        React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "userIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-user"})), 
+                                                            React.createElement("select", {className: "form-control", defaultValue: "0", disabled: true}, 
+                                                                React.createElement("option", {value: "0"}, "0"), 
+                                                                React.createElement("option", {value: "1"}, "1"), 
+                                                                React.createElement("option", {value: "2"}, "2"), 
+                                                                React.createElement("option", {value: "3"}, "3"), 
+                                                                React.createElement("option", {value: "4"}, "4")
+                                                            )
+                                                        )
+                                                    ), 
+                                                    React.createElement("div", {className: "col-lg-2 col-sm-3 passenger"}, 
+                                                        React.createElement("label", null, currentLanguage.seniors), 
+                                                        React.createElement("div", {className: "input-group"}, React.createElement("span", {id: "userIcon", className: "input-group-addon"}, React.createElement("span", {className: "glyphicon glyphicon-user"})), 
+                                                            React.createElement("select", {className: "form-control", defaultValue: "0", disabled: true}, 
+                                                                React.createElement("option", {value: "0"}, "0"), 
+                                                                React.createElement("option", {value: "1"}, "1"), 
+                                                                React.createElement("option", {value: "2"}, "2"), 
+                                                                React.createElement("option", {value: "3"}, "3"), 
+                                                                React.createElement("option", {value: "4"}, "4")
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            ), 
+                                            React.createElement("div", {className: "row searchRow"}, 
+                                                React.createElement("div", {className: "col-lg-12"}, 
+                            
+                                                    React.createElement("button", {onClick: this.onClick, className: "btn btn-primary", disabled: this.state.notLoaded}, currentLanguage.search)
+                                                )
+                                            )
+                                        )
                                     )
                                 )
                             )
                         )
                     )
-                )
-            );
-        }
+                );
+            }
 });
 
 module.exports = SearchLayout;
 
-},{"../languages.js":573,"../routes.jsx":574,"./SearchResults.jsx":572,"bluebird":251,"react":442,"react-dom":252,"react-router":262,"request":443}],572:[function(require,module,exports){
+},{"../languages.js":573,"../routes.jsx":574,"bluebird":251,"react":442,"react-router":262,"request":443}],572:[function(require,module,exports){
 var React = require('react');
 var Promise = require('bluebird');
 var request = Promise.promisifyAll(require("request"));
 var languages = require("../languages.js");
 var Router = require('react-router');
 
-var GUEST_TOKEN = "GUEST_ZX3fNR26SB-m1MBsyz196g";
-var API_URL = 'https://busbud-napi-prod.global.ssl.fastly.net';
 var DEPARTURE_URL = "https://napi.busbud.com/x-departures/";
+var ACCEPT_HEADER = "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/";
+var GUEST_TOKEN = "GUEST_ZX3fNR26SB-m1MBsyz196g";
 
-//Search Constants
-var DEPARTURE_CITY = "New York";
-var ARRIVAL_CITY = "Montreal";
-var DATE = "2016-01-14";
-
-//default city values for initial rendering of component
-var departureCity = {
-    geohash: "dr5reg",
-    full_name: "New York, New York, United States"
-};
-
-var arrivalCity = {
-    geohash: "f25dvk",
-    full_name: "Montreal, Quebec, Canada"
-
-};
-
-//function to get a new token if the default token expires
-//have not ran into this issue yet, so I am not sure the correct 
-//error/response code to check for to implement this function
-function getToken() {
-    return request.getAsync("https://busbud-napi-prod.global.ssl.fastly.net/auth/guest")
-        .then(function(response) {
-            var guestToken = (JSON.parse(response.body)).token;
-            return guestToken;
-        });
+function formatTime(time){
+    var hour = Number(time.substring(0, time.indexOf(":")));
+    var minute = Number(time.substring(time.indexOf(":") + 1, time.lastIndexOf(":")));
+    var am = " AM";
+    if (hour >=12){
+        am = " PM";
+    } 
+    if (hour > 12) {
+        hour = hour - 12;
+    }
+    if (hour < 10) {
+        hour = "0" + hour;
+    }
+    if (minute < 10) {
+        minute = "0" + minute; 
+    }
+    var formattedTime = hour + ":" + minute + am;
+    return formattedTime;
 }
 
-function getCityInfo(city, language) {
+// function getAPI(url){
+    
+//      request(options, function(err, response, body){
+//         // console.log(body)
+//         // .then(function(response) {
+//             var departures = (JSON.parse(body));
+//             return departures;
+//         });
+// }
+
+    
+function getDepartures(url, operatorObject, locationObject, departureArray, cities, params, querys) {
     var options = {
-        url: API_URL + "/search?q=" + city + "&lang=" + language,
+        url: url,
         headers: {
+            'Accept': ACCEPT_HEADER,
             'x-busbud-token': GUEST_TOKEN
         }
     };
     return request.getAsync(options)
-        .then(function(cityId) {
-            return (JSON.parse(cityId.body))[0];
-        });
-}
+                    .then(function(body){
+ var response = JSON.parse(body.body)
+                if (response.cities) {
+                    cities.departure = response.cities[0];
+                    cities.arrival = response.cities[1];
+                    response.locations.map(function(location) {
+                        locationObject[location.id] = location;
+                    });
+                }
+
+                response.operators.map(function(operator) {
+                    operatorObject[operator.id] = operator;
+                });
+                response.departures.map(function(departure) {
+                    departureArray.push(departure);
+                });
+                console.log(departureArray)
+                if (!response.complete) {
+                    var index = departureArray.length;
+
+                    var pollUrl = DEPARTURE_URL + params + "/poll" + querys + "&index=" + index;
+
+                    return getDepartures(pollUrl, operatorObject, locationObject, departureArray, cities, params, querys);
+                }
+                else {
+
+                    return {
+                        operators: operatorObject,
+                        locations: locationObject,
+                        departures: departureArray,
+                        cities: cities
+                    };
+                }
+            
+
+            })
+    }
+
+    
+    
+    
+    
+                
+               
+                
+    // var pollUrl = url + "&outbound_index=" + index;
+    
+
+
+var ResultHeaderWrapper = React.createClass({displayName: "ResultHeaderWrapper",
+    render: function(){
+        var _h2 = "Loading Your Results ...";
+        var _h4 = "thank you for choosing busbud";
+        var _h3 = "";
+        if (this.props.departure) {
+            _h4 = "Results For Your Trip";
+            _h2 = this.props.departure.name + ' to ' + this.props.arrival.name;
+            _h3 = this.props.date;
+        }
+        return (
+             React.createElement("div", {className: "result-header"}, 
+                 React.createElement("div", {className: "row"}, 
+                     React.createElement("div", {className: "col-md-8 col-xs-10 col-lg-8 col-lg-push-2 col-xs-push-1 col-md-push-2"}, 
+                         React.createElement("h4", null, _h4, " "), 
+                         React.createElement("h2", null, " ", _h2, " "), 
+                         React.createElement("h3", null, _h3)
+                     )
+                 )
+             )
+        );
+    }
+});
+
 
 var DepartureWrapper = React.createClass({displayName: "DepartureWrapper",
     render: function() {
@@ -87087,72 +87157,93 @@ var DepartureWrapper = React.createClass({displayName: "DepartureWrapper",
         var locations = this.props.locations;
         var operators = this.props.operators;
         
-        var departureTime = departure.departure_time;
-        var departureName =  locations[departure.origin_location_id].name
-        var departureAddress = locations[departure.origin_location_id].address
+        var departureInfo = departure.departure_time;
+        var departureDate = departureInfo.substring(0, departureInfo.indexOf("T"));
+        var departureTime = departureInfo.substring(departureInfo.indexOf("T") + 1);
+        var departureName =  locations[departure.origin_location_id].name;
+        var departureAddress = locations[departure.origin_location_id].address;
+        var departureTimeFormatted = formatTime(departureTime);
         
-        var arrivalTime = departure.arrival_time;
-        var arrivalName =  locations[departure.destination_location_id].name
-        var arrivalAddress = locations[departure.destination_location_id].address
+        var arrivalInfo = departure.arrival_time;
+        var arrivalDate = arrivalInfo.substring(0, arrivalInfo.indexOf("T"));
+        var arrivalTime = arrivalInfo.substring(arrivalInfo.indexOf("T") + 1);
+        var arrivalName =  locations[departure.destination_location_id].name;
+        var arrivalAddress = locations[departure.destination_location_id].address;
+        var arrivalTimeFormatted = formatTime(arrivalTime);
         
-        var operator = operators[departure.operator_id]
+        var price = (departure.prices.total/10).toFixed(2);
+        
+        var operator = operators[departure.operator_id];
 
     return (
-        
-        React.createElement("div", {className: "row"}, 
-            React.createElement("div", {className: "results col-md-8 col-xs-12 col-lg-8 col-lg-push-2 col-md-push-2"}, 
-                React.createElement("div", {className: "col-xs-7"}, 
-                    React.createElement("div", {className: "row"}, 
+        React.createElement("div", {className: "row resultsRow"}, 
+            React.createElement("div", {className: "results col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2 col-lg-10 col-lg-push-1"}, 
+                React.createElement("div", {className: "col-lg-8 col-sm-8 col-xs-12"}, 
+                    React.createElement("div", {className: "col-lg-12"}, 
                         React.createElement("h2", null, "Departure"), 
                         React.createElement("hr", null), 
-                        React.createElement("div", {className: "results-column col-xs-4"}, 
-                            React.createElement("p", null, departureTime)
+                        React.createElement("div", {className: "results-column col-sm-4 col-lg-3"}, 
+                            React.createElement("p", null, React.createElement("strong", null, departureTimeFormatted), 
+                                React.createElement("br", null), " ", departureDate
+                            )
                         ), 
-                        React.createElement("div", {className: "results-column col-xs-8"}, 
-                            React.createElement("p", null, departureName, 
-                                React.createElement("br", null), " ", departureAddress
+                        React.createElement("div", {className: "results-column col-sm-8 col-lg-9"}, 
+                            React.createElement("ul", {className: "departureAddress"}, 
+                                React.createElement("li", null, React.createElement("strong", null, departureName)), 
+        
+                                 departureAddress.map(function(address){ 
+                                
+                                return React.createElement("li", {key: address}, " ", address, " ")
+                                
+                                }) 
                             )
                         )
                     ), 
-                    React.createElement("div", {className: "row"}, 
+                    React.createElement("div", {className: "col-lg-12"}, 
                         React.createElement("h2", null, "Arrival"), 
                         React.createElement("hr", null), 
-                        React.createElement("div", {className: "results-column col-xs-4"}, 
-                            React.createElement("p", null, arrivalTime)
+                        React.createElement("div", {className: "results-column col-sm-4 col-lg-3"}, 
+                            React.createElement("p", null, React.createElement("strong", null, arrivalTimeFormatted), 
+                                React.createElement("br", null), " ", arrivalDate
+                            )
                         ), 
-                        React.createElement("div", {className: "results-column col-xs-8"}, 
-                            React.createElement("p", null, " ", arrivalName, 
-                                React.createElement("br", null), " ", arrivalAddress
+                        React.createElement("div", {className: "results-column col-sm-8 col-lg-9"}, 
+                            React.createElement("ul", {className: "departureAddress"}, 
+                                React.createElement("li", null, React.createElement("strong", null, arrivalName)), 
+                                 arrivalAddress.map(function(address){ 
+                                return React.createElement("li", {key: address}, " ", address, " ")
+                                }) 
                             )
                         )
                     )
                 ), 
-                React.createElement("div", {className: "results-column col-xs-5"}, 
-                    React.createElement("div", {className: "results-column col-xs-12"}, 
-                        React.createElement("h2", null, "Outbound Price"), 
-                        React.createElement("hr", null), 
-                        React.createElement("p", {className: "price"}, 
-                            departure.prices.total, React.createElement("span", {className: "currency"}, " ", this.props.currency)
-                        )
         
-                    ), 
-                    React.createElement("div", {className: "results-column col-xs-12"}, 
+                React.createElement("div", {className: "results-column col-sm-4 col-lg-4 col-xs-12"}, 
+                    React.createElement("div", {className: "row priceRow"}, 
+                        React.createElement("div", {className: "results-column col-lg-12"}, 
+                            React.createElement("p", {className: "price text-center"}, 
+                                price, React.createElement("span", {className: "currency"}, " ", this.props.currency)
+                            )
+                        ), 
+                        React.createElement("div", {className: "results-column col-sm-8 col-sm-push-2 col-xs-4 col-xs-push-4 col-lg-8 col-lg-push-2"}, 
         
-                        React.createElement("hr", null), 
-                        React.createElement("img", {src: operator.logo_url, alt: "operator image"}), 
-                        React.createElement("p", null, 
-                           operator.name, 
-                            React.createElement("br", null), " ", departure.class
-                           
+                            React.createElement("img", {className: "operatorLogo", src: operator.logo_url, alt: "operator image"}), 
+                            React.createElement("p", {className: "text-center"}, 
+                                operator.name, 
+                                React.createElement("br", null), " ", departure.class
+        
+                            )
                         )
                     )
         
                 )
+        
             )
         )
-        )
+
+        );
     }
-})
+});
 
 var SearchResultsLayout = React.createClass({displayName: "SearchResultsLayout",
            mixins: [Router.State],
@@ -87163,146 +87254,64 @@ var SearchResultsLayout = React.createClass({displayName: "SearchResultsLayout",
                     arrival: this.getParams().arrival,
                     date: this.getParams().date,
                     searchComplete: false,
-                    outbound_departures: [],
-                    locations: {},
-                    operators: {},
+                    outbound_departures: []
                 };
             },
             componentDidMount: function() {
-                var self = this
-                var url = DEPARTURE_URL + self.state.departure + "/" + self.state.arrival + "/" + self.state.date + "/?lang=" + self.state.language + "/currency=CAD";
-                $.get(url, function(response){
-                    var locationObject = {}
-                    response.locations.map(function(location){
-                        return locationObject[location.id] = location
-                    })
-                    var operatorObject = {}
-                    response.operators.map(function(operator){
-                        return operatorObject[operator.id] = operator
-                    })
-                    console.log(operatorObject)
-                    console.log(locationObject)
+                var self = this;
+                var operatorObject = {};
+                var locationObject = {};
+                var departureArray = [];
+                var cities = {};
+                var params = self.state.departure + "/" + self.state.arrival + "/" + self.state.date
+                var querys = "/?lang=" + self.state.language + "&currency=CAD";
+                var url = DEPARTURE_URL + params + querys
+                getDepartures(url, operatorObject, locationObject, departureArray, cities, params, querys)
+                .then(function(response){
+                    // console.log(response)
                     if (self.isMounted()){
                         self.setState({
-                            arrival: response.cities[0],
-                            departure: response.cities[1],
-                            locations: locationObject,
-                            operators:  operatorObject,
-                            outbound_departures: response.outbound_departures,
+                            departure: response.cities.departure,
+                            arrival: response.cities.arrival,
+                            locations: response.locations,
+                            operators:  response.operators,
+                            outbound_departures: response.departures,
                             currency: 'CAD'
                         });
                     }
+                })
+                
                     
-                });
-            },
-            onClick: function(){
+                    
+                    
+                    
+                    
+                    
+                    
             },
             render: function() {
-                var locations
-                var operators
-                if (this.state.outbound_departures){
-                    locations = this.state.locations
-                    operators = this.state.operators
+                var locations;
+                var operators;
+                var ResultHeader = React.createElement(ResultHeaderWrapper, {date: this.state.date});
+                if (this.state.outbound_departures.length){
+                    ResultHeader = React.createElement(ResultHeaderWrapper, {date: this.state.date, arrival: this.state.arrival, departure: this.state.departure});
+                    locations = this.state.locations;
+                    operators = this.state.operators;
                 }
-                //       var DeparturesArray = [];
-                //      for (var departure in this.state.outbound_departures) {
-                //          DeparturesArray.push(<Departures key={departure.id} departure={departure} locations={this.state.locations} operators={this.state.operators}/>)
-                //      }
-                //      console.log(DeparturesArray)
-                // }
-                // var currentLanguage = languages[this.state.currentLang].name;
-                // for (var lang in languages) {
-                //     languageArray.push(
-                //         <li key={languages[lang].abbr}><a href={"/" + languages[lang].abbr}>{languages[lang].name}</a></li>
-                //     );
-                // }
+                // console.log(locations)
+                
             return (
-              // Correct :)
-// var ListItemWrapper = React.createClass({
-//   render: function() {
-//     return <li>{this.props.data.text}</li>;
-//   }
-// });
-// var MyComponent = React.createClass({
-//   render: function() {
-//     return (
-//       <ul>
-//         {this.props.results.map(function(result) {
-//           return <ListItemWrapper key={result.id} data={result}/>;
-//         })}
-//       </ul>
-//     );
-//   }
-// });
                 React.createElement("section", {id: "search-results"}, 
-                React.createElement("div", {className: "result-header"}, 
-                        React.createElement("div", {className: "row"}, 
-                            React.createElement("div", {className: "col-md-8 col-xs-10 col-lg-8 col-lg-push-2 col-xs-push-1 col-md-push-2"}, 
-                                React.createElement("h4", null, "Results For Your Trip "), 
-                                React.createElement("h2", null, " ", this.state.departure.name, " to ", this.state.arrival.name, " "), 
-                                React.createElement("h3", null, this.state.date)
-                            )
-                        )
-                    ), 
-                    React.createElement("div", null, 
+                   
+                    ResultHeader, 
                     
-                      this.state.outbound_departures.map(function(departure) {
+                    React.createElement("div", null, 
+                        this.state.outbound_departures.map(function(departure) {
                            return React.createElement(DepartureWrapper, {key: departure.id, departure: departure, locations: locations, operators: operators, currency: 'CAD'});
                         })
-                    ), 
-                    React.createElement("div", {className: "row"}, 
-                        React.createElement("div", {className: "results col-md-8 col-xs-12 col-lg-8 col-lg-push-2 col-md-push-2"}, 
-                            React.createElement("div", {className: "col-xs-7"}, 
-                                React.createElement("div", {className: "row"}, 
-                                    React.createElement("h2", null, "Departure"), 
-                                    React.createElement("hr", null), 
-                                    React.createElement("div", {className: "results-column col-xs-4"}, 
-                                        React.createElement("p", null, "10:45pm")
-                                    ), 
-                                    React.createElement("div", {className: "results-column col-xs-8"}, 
-                                        React.createElement("p", null, "Montreal Bus Statation", 
-                                            React.createElement("br", null), " full address, H$4H5v", 
-                                            React.createElement("br", null), "Montral Quebec"
-                                        )
-                                    )
-                                ), 
-                                React.createElement("div", {className: "row"}, 
-                                    React.createElement("h2", null, "Arrival"), 
-                                    React.createElement("hr", null), 
-                                    React.createElement("div", {className: "results-column col-xs-4"}, 
-                                        React.createElement("p", null, "1:45am")
-                                    ), 
-                                    React.createElement("div", {className: "results-column col-xs-8"}, 
-                                        React.createElement("p", null, "NEW YORK CITY", 
-                                            React.createElement("br", null), " full address, H$4H5v", 
-                                            React.createElement("br", null), "Montral Quebec"
-                                        )
-                                    )
-                                )
-                            ), 
-                            React.createElement("div", {className: "results-column col-xs-5"}, 
-                                React.createElement("div", {className: "results-column col-xs-12"}, 
-                                    React.createElement("h2", null, "Outbound Price"), 
-                                    React.createElement("hr", null), 
-                                    React.createElement("p", {className: "price"}, 
-                                        "$205.00", React.createElement("span", {className: "currency"}, " CAD")
-                                    )
-                
-                                ), 
-                                React.createElement("div", {className: "results-column col-xs-12"}, 
-                
-                                    React.createElement("hr", null), 
-                                    React.createElement("p", null, 
-                                        "Image Logo", 
-                                        React.createElement("br", null), 
-                                        React.createElement("br", null), " Economy"
-                                    )
-                                )
-                
-                            )
-                        )
                     )
-            )
+                    
+                )
             );
         }
 });
@@ -87321,7 +87330,7 @@ var languages = {
     date: "Departure Date:",
     oneWay: "One Way",
     round: "Round Trip",
-    search: "Search for busses",
+    search: "Search for Buses",
     adults: "Adults",
     children: "Children",
     seniors: "Seniors"

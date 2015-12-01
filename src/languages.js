@@ -9,7 +9,7 @@ var languages = {
     date: "Departure Date:",
     oneWay: "One Way",
     round: "Round Trip",
-    search: "Search for busses",
+    search: "Search for Buses",
     adults: "Adults",
     children: "Children",
     seniors: "Seniors"

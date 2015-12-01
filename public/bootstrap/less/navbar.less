@@ -460,8 +460,10 @@
       &,
       &:hover,
       &:focus {
-        background-color: @navbar-default-link-active-bg;
+        background-color: transparent;
+        // background-color: @navbar-default-link-active-bg;
         color: @navbar-default-link-active-color;
+        // color: white;
       }
     }
 
@@ -469,19 +471,24 @@
       // Dropdowns get custom display when collapsed
       .open .dropdown-menu {
         > li > a {
-          color: @navbar-default-link-color;
+          color: white;
+          // color: @navbar-default-link-color;
           &:hover,
           &:focus {
+            // color: white;
             color: @navbar-default-link-hover-color;
-            background-color: @navbar-default-link-hover-bg;
+            background-color: transparent;
+            // background-color: @navbar-default-link-hover-bg;
           }
         }
         > .active > a {
           &,
           &:hover,
           &:focus {
+            // color: white;
             color: @navbar-default-link-active-color;
-            background-color: @navbar-default-link-active-bg;
+            background-color: transparent;
+            // background-color: @navbar-default-link-active-bg;
           }
         }
         > .disabled > a {
@@ -489,7 +496,8 @@
           &:hover,
           &:focus {
             color: @navbar-default-link-disabled-color;
-            background-color: @navbar-default-link-disabled-bg;
+            background-color: transparent;
+            // background-color: @navbar-default-link-disabled-bg;
           }
         }
       }
@@ -609,9 +617,11 @@
           background-color: @navbar-inverse-border;
         }
         > li > a {
-          color: @navbar-inverse-link-color;
+          color: white;
+          // color: @navbar-inverse-link-color;
           &:hover,
           &:focus {
+            
             color: @navbar-inverse-link-hover-color;
             background-color: @navbar-inverse-link-hover-bg;
           }

@@ -7,12 +7,10 @@
 // Core variables and mixins
 @import "variables.less";
 @import "mixins.less";
-
 // Reset and dependencies
 @import "normalize.less";
 @import "print.less";
 @import "glyphicons.less";
-
 // Core CSS
 @import "scaffolding.less";
 @import "type.less";
@@ -21,7 +19,6 @@
 @import "tables.less";
 @import "forms.less";
 @import "buttons.less";
-
 // Components
 @import "component-animations.less";
 @import "dropdowns.less";
@@ -29,204 +26,243 @@
 @import "input-groups.less";
 @import "navs.less";
 @import "navbar.less";
-@import "breadcrumbs.less";
-@import "pagination.less";
-@import "pager.less";
+// @import "breadcrumbs.less";
+// @import "pagination.less";
+// @import "pager.less";
 @import "labels.less";
-@import "badges.less";
-@import "jumbotron.less";
-@import "thumbnails.less";
-@import "alerts.less";
-@import "progress-bars.less";
-@import "media.less";
-@import "list-group.less";
-@import "panels.less";
-@import "responsive-embed.less";
-@import "wells.less";
-@import "close.less";
-
+// @import "badges.less";
+// @import "jumbotron.less";
+// @import "thumbnails.less";
+// @import "alerts.less";
+// @import "progress-bars.less";
+// @import "media.less";
+// @import "list-group.less";
+// @import "panels.less";
+// @import "responsive-embed.less";
+// @import "wells.less";
+// @import "close.less";
 // Components w/ JavaScript
-@import "modals.less";
-@import "tooltip.less";
-@import "popovers.less";
-@import "carousel.less";
-
+// @import "modals.less";
+// @import "tooltip.less";
+// @import "popovers.less";
+// @import "carousel.less";
 // Utility classes
 @import "utilities.less";
 @import "responsive-utilities.less";
 
 html, body {
-        margin: 0;
-        min-height: 300px;
-        background: #EBF0F2;
-        // min-height: 100vh;
-      }
-        /* layouts */
-      .main-column {
-        // max-width: 700px;
-        width: 100%;
-        margin: 0 auto;
-      }
-      .row{
-        max-width: 980px;
-        margin: 0 auto;
-      }
-        /* header */
-      .header {
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        background-color: #127ccb;
-        // background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDIwODkgNjkiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI3NTU5NyIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzQ5OWZjNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjA4OSIgaGVpZ2h0PSI2OSIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+);
-        // background-image: linear-gradient(bottom, #275597 0%, #499fc5 100%);
-        color: #fff;
-        padding: 10px 0;
-      }
-      .header a {
-        color: #fff;
-      }
-      .navbar{
-          margin-bottom: 0px;
-          border: none;
-          border-radius: 0;
-      }
-      // .navbar .navbar-nav li a{
-      //     color: #fff;
-      // }
-      #languageMenu{
-        color: white;
-      }
-      
-        /* logo */
-      .logo {
-        background: url("//busbud-pubweb-assets.global.ssl.fastly.net/images/logos/fc7ed21.logo-post-60@2x.png") 0 0 no-repeat;
-        background-size: 106px;
-        width: 106px;
-        height: 36px;
-      }
-      .logo a {
-        display: block;
-        height: 100%;
-      }
-      .logo a:hover {
-        text-decoration: none;
-      }
-      .logo span {
-        display: none;
-      }
-      #search-menu {
-        background-repeat: no-repeat;
-        background-color: #000;
-        background-position: center bottom;
-        background-size: cover;
-        background-image: url("//busbud-pubweb-assets.global.ssl.fastly.net/images/homepage/c70405a.bolivia.jpg");
-        box-shadow: 0 1px 0 #fff;
-        padding: 60px 0 0px 0;
-        // margin-bottom: 80px;
-        font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-weight: normal;
-        color: #293033;
-        text-shadow: 0 1px 0 #fff;
-        height: 100vh;
-      }
-      #search-menu .slogan {
-        font-weight: normal;
-        font-size: 18px;
-      }
-        /* search form */
-      .search-form {
-        background-color: #fff;
-        background-color: rgba(255, 255, 255, 0.95);
-        color: #293033;
-        border-radius: 10px;
-        background-clip: padding-box;
-        box-shadow: 0px 0px 4px 0px #000;
-        padding: 40px 80px 10px 80px;
-        // margin-bottom: 20px;
-      }
-      .search-form h1 {
-        font-weight: normal;
-        color: #293033;
-        font-size: 32px;
-        text-shadow: 0 1px 0 #fff;
-        padding-bottom: 8px;
-      }
-      .search-form .error {
-        color: #9d261d;
-      }
-      .location {
-        padding-top: .5rem;
-      }
-      .route{
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-      }
-      .btn {
-        width: 100%;
-      }
-      .tripSegment{
-        padding-right: 1rem;
-      }
-      .searchRow{
-        padding-bottom: 1rem;
-      }
-      .passengers{
-        padding-bottom: 3rem;  
-      }
-      .search-reaults{
-        background-color: #e7edf1;
-      }
-      .result-header{
-        width: 100%;
-        margin: 0 auto;
-        background-color: #31363D;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-          font-weight: normal;
-      }
-       .result-header h2{
-          color: #fff;
-          font-size: 2em;
-          padding: .4rem 0;
-         
-           margin: 0 auto;
-      }
-      .result-header h3{
-          color: #fff;
-          font-size: 1.5em;
-           padding: 0 0 1rem;
-          margin: 0 auto;
-      }
-      .result-header h4{
-        padding: 1rem 0 0;
-          color: #6f7c82;
-          font-size: 1em;
-           margin: 0 auto;
-      }
-      .results {
-        background-color: #fff;
-        background-color: rgba(255, 255, 255, 0.95);
-        color: #293033;
-        border-radius: 10px;
-        background-clip: padding-box;
-        box-shadow: 0px 0px 4px 0px #000;
-        padding: .5rem;
-      }
-      .results hr{
-        margin-top: 0;
-        border-color: #293033;
-      }
-      .results h2{
-        font-size: 1em;
-        padding: 0;
-        margin: .5rem auto;
-      }
-      .results-column{
-        padding-right: 0;
-        padding-left: 0;
-      }
-      .price {
-        font-weight: bold;
-        font-size: 2em;
-      }
-      .currency{
-        font-weight: normal;
-        font-size: .5em;
-      }
+  margin: 0;
+  background: #EBF0F2;
+}
+
+.row {
+  margin: 0;
+}
+
+
+/* header */
+
+.header {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-color: #127ccb;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.header a {
+  color: #fff;
+}
+
+.navbar {
+  margin-bottom: 0px;
+  border: none;
+  border-radius: 0;
+}
+.navbar-header{
+  padding-top: .5rem;
+}
+
+#languageMenu {
+  color: white;
+}
+
+
+/* logo */
+.logo {
+  background: url("//busbud-pubweb-assets.global.ssl.fastly.net/images/logos/fc7ed21.logo-post-60@2x.png") 0 0 no-repeat;
+  background-size: 106px;
+  width: 106px;
+  height: 36px;
+}
+
+.logo a {
+  display: block;
+  height: 100%;
+}
+
+.logo a:hover {
+  text-decoration: none;
+}
+
+.logo span {
+  display: none;
+}
+
+#search-menu {
+  background-repeat: no-repeat;
+  background-color: #000;
+  background-position: center bottom;
+  background-size: cover;
+  background-image: url("//busbud-pubweb-assets.global.ssl.fastly.net/images/homepage/c70405a.bolivia.jpg");
+  box-shadow: 0 1px 0 #fff;
+  padding: 60px 20px 80px;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #293033;
+  text-shadow: 0 1px 0 #fff;
+  min-height: 90vh;
+}
+
+#search-menu .slogan {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+
+/* search form */
+
+.search-form {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #293033;
+  border-radius: 10px;
+  background-clip: padding-box;
+  box-shadow: 0px 0px 4px 0px #000;
+  padding: 40px 0px 10px 0px;
+}
+
+.search-form h1 {
+  font-weight: normal;
+  color: #293033;
+  font-size: 32px;
+  text-shadow: 0 1px 0 #fff;
+  padding-bottom: 8px;
+}
+
+.location {
+  padding-top: .5rem;
+}
+
+.route {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.btn {
+  width: 100%;
+}
+
+.tripSegment {
+  padding-right: 1rem;
+}
+
+.searchRow {
+  padding-bottom: 1rem;
+}
+
+.passengers {
+  padding-bottom: 3rem;
+}
+.passenger {
+  width: 150px;
+}
+
+/* search form */
+
+#search-results {
+  background-color: #e7edf1;
+}
+
+.result-header {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #31363D;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  min-height: 100px;
+}
+
+.result-header h2 {
+  color: #fff;
+  font-size: 2em;
+  padding: .4rem 0;
+  margin: 0 auto;
+}
+
+.result-header h3 {
+  color: #fff;
+  font-size: 1.5em;
+  padding: 0 0 1rem;
+  margin: 0 auto;
+}
+
+.result-header h4 {
+  padding: 1rem 0 0;
+  color: #6f7c82;
+  font-size: 1em;
+  margin: 0 auto;
+}
+
+.results {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #293033;
+  border-radius: 10px;
+  background-clip: padding-box;
+  box-shadow: 0px 0px 4px 0px #000;
+  padding: 1rem .5rem;
+}
+
+.results hr {
+  margin-top: 0;
+  border-color: #293033;
+}
+
+.results h2 {
+  font-size: 1em;
+  padding-left: 1.5rem;
+  margin: .5rem auto;
+}
+
+
+.price {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.currency {
+  font-weight: normal;
+  font-size: .5em;
+}
+
+.departureAddress li {
+  list-style: none;
+}
+
+.departureAddress {
+  padding-left: 0;
+}
+
+.operatorLogo {
+  width: 100%;
+  max-height: 60px;
+  object-fit: cover;
+}
+
+.priceRow {
+  padding-top: 2rem;
+}
+
+.resultsRow {
+  margin: 2rem;
+}
