@@ -87057,15 +87057,6 @@ function formatTime(time){
     return formattedTime;
 }
 
-// function getAPI(url){
-    
-//      request(options, function(err, response, body){
-//         // console.log(body)
-//         // .then(function(response) {
-//             var departures = (JSON.parse(body));
-//             return departures;
-//         });
-// }
 
     
 function getDepartures(url, operatorObject, locationObject, departureArray, cities, params, querys) {
@@ -87093,7 +87084,7 @@ function getDepartures(url, operatorObject, locationObject, departureArray, citi
                 response.departures.map(function(departure) {
                     departureArray.push(departure);
                 });
-                console.log(departureArray)
+ 
                 if (!response.complete) {
                     var index = departureArray.length;
 
@@ -87158,8 +87149,7 @@ var DepartureWrapper = React.createClass({displayName: "DepartureWrapper",
         var locations = this.props.locations;
         var operators = this.props.operators;
         var lang = this.props.lang;
-        // console.log(this.props.lang)
-        // console.log(this.state.language)
+
         var departureInfo = departure.departure_time;
         var departureDate = departureInfo.substring(0, departureInfo.indexOf("T"));
         var departureTime = departureInfo.substring(departureInfo.indexOf("T") + 1);
@@ -87271,7 +87261,7 @@ var SearchResultsLayout = React.createClass({displayName: "SearchResultsLayout",
                 var url = DEPARTURE_URL + params + querys
                 getDepartures(url, operatorObject, locationObject, departureArray, cities, params, querys)
                 .then(function(response){
-                    // console.log(response)
+
                     if (self.isMounted()){
                         self.setState({
                             departure: response.cities.departure,
@@ -87302,8 +87292,7 @@ var SearchResultsLayout = React.createClass({displayName: "SearchResultsLayout",
                     locations = this.state.locations;
                     operators = this.state.operators;
                 }
-                // console.log(locations)
-                
+ 
             return (
                 React.createElement("section", {id: "search-results"}, 
                    
@@ -87364,7 +87353,7 @@ var languages = {
     to: "à",
     departure: 'Départ',
     arrival: 'Arrivée',
-    loading: 'Chargement Vos résultats...',
+    loading: 'Chargement Vos Résultats...',
     thankyou: "Merci d'avoir choisi Busbud"
   }
 };
