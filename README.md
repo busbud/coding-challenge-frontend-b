@@ -259,4 +259,8 @@ The response is similar to:
   "complete": true,
   "ttl": 900
 }
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 669b6e89e68559f9cff6dd669ed1c7d2af969f67
