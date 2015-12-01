@@ -2,7 +2,7 @@ var languages = {
   en: {
     name: "English",
     abbr: "en",
-    header: "Book Bus Tickets for your next trip",
+    header: "Book bus tickets for your next trip",
     selectCity: "Select a City",
     leaving: "Leaving From:",
     going: "Going To:",
@@ -17,7 +17,7 @@ var languages = {
     departure: "Departure",
     arrival: "Arrival",
     to: "to",
-    loading: 'Loading Your Results...',
+    loading: 'Loading your results...',
     thankyou: 'Thank you for choosing Busbud'
     
   },
@@ -39,7 +39,7 @@ var languages = {
     to: "à",
     departure: 'Départ',
     arrival: 'Arrivée',
-    loading: 'Chargement Vos Résultats...',
+    loading: 'Chargement de vos résultats...',
     thankyou: "Merci d'avoir choisi Busbud"
   }
 };

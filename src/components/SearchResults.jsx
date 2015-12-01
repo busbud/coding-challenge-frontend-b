@@ -8,23 +8,35 @@ var DEPARTURE_URL = "https://napi.busbud.com/x-departures/";
 var ACCEPT_HEADER = "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/";
 var GUEST_TOKEN = "GUEST_ZX3fNR26SB-m1MBsyz196g";
 
-function formatTime(time){
+function formatTime(time, currentLanguage){
     var hour = Number(time.substring(0, time.indexOf(":")));
     var minute = Number(time.substring(time.indexOf(":") + 1, time.lastIndexOf(":")));
     var am = " AM";
-    if (hour >=12){
-        am = " PM";
-    } 
-    if (hour > 12) {
-        hour = hour - 12;
-    }
-    if (hour < 10) {
-        hour = "0" + hour;
-    }
+    
     if (minute < 10) {
         minute = "0" + minute; 
     }
-    var formattedTime = hour + ":" + minute + am;
+    if (currentLanguage === 'fr') {
+        if (hour < 10) {
+            hour = "0" + hour;
+        }
+        var formattedTime = hour + ":" + minute;
+    }
+    else {
+        if (hour >=12){
+            am = " PM";
+        }
+        if (hour < 1) {
+            hour = 12;
+        }
+        if (hour > 12) {
+        hour = hour - 12;
+        }
+        if (hour < 10) {
+            hour = "0" + hour;
+        }
+        formattedTime = hour + ":" + minute + am;
+    }
     return formattedTime;
 }
 
@@ -114,14 +126,14 @@ var DepartureWrapper = React.createClass({
         var departureTime = departureInfo.substring(departureInfo.indexOf("T") + 1);
         var departureName =  locations[departure.origin_location_id].name;
         var departureAddress = locations[departure.origin_location_id].address;
-        var departureTimeFormatted = formatTime(departureTime);
+        var departureTimeFormatted = formatTime(departureTime, lang.abbr);
         
         var arrivalInfo = departure.arrival_time;
         var arrivalDate = arrivalInfo.substring(0, arrivalInfo.indexOf("T"));
         var arrivalTime = arrivalInfo.substring(arrivalInfo.indexOf("T") + 1);
         var arrivalName =  locations[departure.destination_location_id].name;
         var arrivalAddress = locations[departure.destination_location_id].address;
-        var arrivalTimeFormatted = formatTime(arrivalTime);
+        var arrivalTimeFormatted = formatTime(arrivalTime, lang.abbr);
         
         var price = (departure.prices.total/10).toFixed(2);
         
