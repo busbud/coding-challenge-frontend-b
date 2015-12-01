@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ."
   },
   "author": "kayla hennig",
@@ -14,7 +13,6 @@
       "reactify"
     ]
   },
-  "devDependencies": {},
   "dependencies": {
     "es6-promise": "^2.0.1",
     "express": "~4.11.1",
@@ -23,6 +21,11 @@
     "node-jsx": "~0.12.4",
     "react": "~0.12.2",
     "react-router": "~0.11.6",
-    "reactify": "~1.0.0"
+    "reactify": "~1.0.0",
+    "request": "^2.65.0",
+    "bluebird": "^2.10.2"
+  },
+  "devDependencies": {
+    
   }
 }
