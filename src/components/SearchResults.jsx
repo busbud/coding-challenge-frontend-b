@@ -28,15 +28,6 @@ function formatTime(time){
     return formattedTime;
 }
 
-// function getAPI(url){
-    
-//      request(options, function(err, response, body){
-//         // console.log(body)
-//         // .then(function(response) {
-//             var departures = (JSON.parse(body));
-//             return departures;
-//         });
-// }
 
     
 function getDepartures(url, operatorObject, locationObject, departureArray, cities, params, querys) {
@@ -64,7 +55,7 @@ function getDepartures(url, operatorObject, locationObject, departureArray, citi
                 response.departures.map(function(departure) {
                     departureArray.push(departure);
                 });
-                console.log(departureArray)
+ 
                 if (!response.complete) {
                     var index = departureArray.length;
 
@@ -99,12 +90,13 @@ function getDepartures(url, operatorObject, locationObject, departureArray, citi
 
 var ResultHeaderWrapper = React.createClass({
     render: function(){
-        var _h2 = "Loading Your Results ...";
-        var _h4 = "thank you for choosing busbud";
+        var lang = this.props.lang
+        var _h2 = lang.loading;
+        var _h4 = lang.thankyou;
         var _h3 = "";
         if (this.props.departure) {
-            _h4 = "Results For Your Trip";
-            _h2 = this.props.departure.name + ' to ' + this.props.arrival.name;
+            _h4 = lang.trip;
+            _h2 = this.props.departure.name + ' ' + lang.to + " " + this.props.arrival.name;
             _h3 = this.props.date;
         }
         return (
@@ -127,7 +119,8 @@ var DepartureWrapper = React.createClass({
         var departure = this.props.departure;
         var locations = this.props.locations;
         var operators = this.props.operators;
-        
+        var lang = this.props.lang;
+
         var departureInfo = departure.departure_time;
         var departureDate = departureInfo.substring(0, departureInfo.indexOf("T"));
         var departureTime = departureInfo.substring(departureInfo.indexOf("T") + 1);
@@ -151,7 +144,7 @@ var DepartureWrapper = React.createClass({
             <div className="results col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2 col-lg-10 col-lg-push-1">
                 <div className="col-lg-8 col-sm-8 col-xs-12">
                     <div className="col-lg-12">
-                        <h2>Departure</h2>
+                        <h2>{lang.departure}</h2>
                         <hr />
                         <div className="results-column col-sm-4 col-lg-3">
                             <p><strong>{departureTimeFormatted}</strong>
@@ -171,7 +164,7 @@ var DepartureWrapper = React.createClass({
                         </div>
                     </div>
                     <div className="col-lg-12">
-                        <h2>Arrival</h2>
+                        <h2>{lang.arrival}</h2>
                         <hr />
                         <div className="results-column col-sm-4 col-lg-3">
                             <p><strong>{arrivalTimeFormatted}</strong>
@@ -239,7 +232,7 @@ var SearchResultsLayout = React.createClass({
                 var url = DEPARTURE_URL + params + querys
                 getDepartures(url, operatorObject, locationObject, departureArray, cities, params, querys)
                 .then(function(response){
-                    // console.log(response)
+
                     if (self.isMounted()){
                         self.setState({
                             departure: response.cities.departure,
@@ -263,14 +256,14 @@ var SearchResultsLayout = React.createClass({
             render: function() {
                 var locations;
                 var operators;
-                var ResultHeader = <ResultHeaderWrapper date={this.state.date}/>;
+                var lang = languages[this.state.language]
+                var ResultHeader = <ResultHeaderWrapper date={this.state.date} lang={lang}/>;
                 if (this.state.outbound_departures.length){
-                    ResultHeader = <ResultHeaderWrapper date={this.state.date} arrival={this.state.arrival} departure={this.state.departure} />;
+                    ResultHeader = <ResultHeaderWrapper date={this.state.date} lang={lang} arrival={this.state.arrival} departure={this.state.departure} />;
                     locations = this.state.locations;
                     operators = this.state.operators;
                 }
-                // console.log(locations)
-                
+ 
             return (
                 <section id="search-results">
                    
@@ -278,7 +271,7 @@ var SearchResultsLayout = React.createClass({
                     
                     <div>
                         {this.state.outbound_departures.map(function(departure) {
-                           return <DepartureWrapper key={departure.id} departure={departure} locations={locations} operators={operators} currency={'CAD'}/>;
+                           return <DepartureWrapper key={departure.id} lang={lang} departure={departure} locations={locations} operators={operators} currency={'CAD'}/>;
                         })}
                     </div>
                     

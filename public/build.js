@@ -87128,12 +87128,13 @@ function getDepartures(url, operatorObject, locationObject, departureArray, citi
 
 var ResultHeaderWrapper = React.createClass({displayName: "ResultHeaderWrapper",
     render: function(){
-        var _h2 = "Loading Your Results ...";
-        var _h4 = "thank you for choosing busbud";
+        var lang = this.props.lang
+        var _h2 = lang.loading;
+        var _h4 = lang.thankyou;
         var _h3 = "";
         if (this.props.departure) {
-            _h4 = "Results For Your Trip";
-            _h2 = this.props.departure.name + ' to ' + this.props.arrival.name;
+            _h4 = lang.trip;
+            _h2 = this.props.departure.name + ' ' + lang.to + " " + this.props.arrival.name;
             _h3 = this.props.date;
         }
         return (
@@ -87156,7 +87157,9 @@ var DepartureWrapper = React.createClass({displayName: "DepartureWrapper",
         var departure = this.props.departure;
         var locations = this.props.locations;
         var operators = this.props.operators;
-        
+        var lang = this.props.lang;
+        // console.log(this.props.lang)
+        // console.log(this.state.language)
         var departureInfo = departure.departure_time;
         var departureDate = departureInfo.substring(0, departureInfo.indexOf("T"));
         var departureTime = departureInfo.substring(departureInfo.indexOf("T") + 1);
@@ -87180,7 +87183,7 @@ var DepartureWrapper = React.createClass({displayName: "DepartureWrapper",
             React.createElement("div", {className: "results col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2 col-lg-10 col-lg-push-1"}, 
                 React.createElement("div", {className: "col-lg-8 col-sm-8 col-xs-12"}, 
                     React.createElement("div", {className: "col-lg-12"}, 
-                        React.createElement("h2", null, "Departure"), 
+                        React.createElement("h2", null, lang.departure), 
                         React.createElement("hr", null), 
                         React.createElement("div", {className: "results-column col-sm-4 col-lg-3"}, 
                             React.createElement("p", null, React.createElement("strong", null, departureTimeFormatted), 
@@ -87200,7 +87203,7 @@ var DepartureWrapper = React.createClass({displayName: "DepartureWrapper",
                         )
                     ), 
                     React.createElement("div", {className: "col-lg-12"}, 
-                        React.createElement("h2", null, "Arrival"), 
+                        React.createElement("h2", null, lang.arrival), 
                         React.createElement("hr", null), 
                         React.createElement("div", {className: "results-column col-sm-4 col-lg-3"}, 
                             React.createElement("p", null, React.createElement("strong", null, arrivalTimeFormatted), 
@@ -87292,9 +87295,10 @@ var SearchResultsLayout = React.createClass({displayName: "SearchResultsLayout",
             render: function() {
                 var locations;
                 var operators;
-                var ResultHeader = React.createElement(ResultHeaderWrapper, {date: this.state.date});
+                var lang = languages[this.state.language]
+                var ResultHeader = React.createElement(ResultHeaderWrapper, {date: this.state.date, lang: lang});
                 if (this.state.outbound_departures.length){
-                    ResultHeader = React.createElement(ResultHeaderWrapper, {date: this.state.date, arrival: this.state.arrival, departure: this.state.departure});
+                    ResultHeader = React.createElement(ResultHeaderWrapper, {date: this.state.date, lang: lang, arrival: this.state.arrival, departure: this.state.departure});
                     locations = this.state.locations;
                     operators = this.state.operators;
                 }
@@ -87307,7 +87311,7 @@ var SearchResultsLayout = React.createClass({displayName: "SearchResultsLayout",
                     
                     React.createElement("div", null, 
                         this.state.outbound_departures.map(function(departure) {
-                           return React.createElement(DepartureWrapper, {key: departure.id, departure: departure, locations: locations, operators: operators, currency: 'CAD'});
+                           return React.createElement(DepartureWrapper, {key: departure.id, lang: lang, departure: departure, locations: locations, operators: operators, currency: 'CAD'});
                         })
                     )
                     
@@ -87333,7 +87337,14 @@ var languages = {
     search: "Search for Buses",
     adults: "Adults",
     children: "Children",
-    seniors: "Seniors"
+    seniors: "Seniors",
+    trip: 'Results For Your Trip',
+    departure: "Departure",
+    arrival: "Arrival",
+    to: "to",
+    loading: 'Loading Your Results...',
+    thankyou: 'Thank you for choosing Busbud'
+    
   },
   fr: {
     name: "Français",
@@ -87348,7 +87359,13 @@ var languages = {
     search: "Rechercher des bus",
     adults: "Adultes",
     children: "Enfants",
-    seniors: "Aînés"
+    seniors: "Aînés",
+    trip: "Résultats Pour Votre Voyage",
+    to: "à",
+    departure: 'Départ',
+    arrival: 'Arrivée',
+    loading: 'Chargement Vos résultats...',
+    thankyou: "Merci d'avoir choisi Busbud"
   }
 };
 

@@ -12,7 +12,14 @@ var languages = {
     search: "Search for Buses",
     adults: "Adults",
     children: "Children",
-    seniors: "Seniors"
+    seniors: "Seniors",
+    trip: 'Results For Your Trip',
+    departure: "Departure",
+    arrival: "Arrival",
+    to: "to",
+    loading: 'Loading Your Results...',
+    thankyou: 'Thank you for choosing Busbud'
+    
   },
   fr: {
     name: "Français",
@@ -27,7 +34,13 @@ var languages = {
     search: "Rechercher des bus",
     adults: "Adultes",
     children: "Enfants",
-    seniors: "Aînés"
+    seniors: "Aînés",
+    trip: "Résultats Pour Votre Voyage",
+    to: "à",
+    departure: 'Départ',
+    arrival: 'Arrivée',
+    loading: 'Chargement Vos Résultats...',
+    thankyou: "Merci d'avoir choisi Busbud"
   }
 };
 
