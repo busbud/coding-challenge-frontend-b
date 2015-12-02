@@ -59,7 +59,7 @@ module.exports = React.createClass({
   render: function () {
     return (
       <div className="content-container">
-        <div className="page-permanent-announcement">{'Busbud would like to get you to Igloofest.'}</div>
+        <div className="page-permanent-announcement">{'Hey New York! Busbud wants to get you to Igloofest.'}</div>
         <div className="on-boarding-section">
           { this.state.showButton ? <input className="the-button btn-default" ref='refreshButton' type='button' onClick={ this.onButtonClick } value='Click here to find a bus!'></input> : null}
           { this.state.showLoading ? <span className="glyphicon glyphicon-refresh spinning"></span> : null }
