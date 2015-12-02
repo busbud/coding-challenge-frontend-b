@@ -1,117 +1,262 @@
-# Simple Webpack React Starter
+ coding-challenge-frontend-b
+![igloofest](https://cloud.githubusercontent.com/assets/1574577/11387762/0ba89cb6-92fc-11e5-9fb1-3d1e6747cc88.png)
 
-## Motivation
-I couldn't find a _simple_ webpack starter template that contained all the features I wanted.
+It's getting cold in Montreal and the [Igloofest](http://igloofest.ca/en/) will kickoff very soon. 
+Your challenge is to build a microsite that allows a user from NYC to find one-way departure schedules for the festival's opening night.
 
-I've put together this simple webpack starter example with the following features:
+## Functional Requirements
+- Has a simple onboarding screen that will trigger the departure search
+- Lists all the departures for a given origin city (**New York - geohash: dr5reg**) and a given destination city (**Montreal - geohash: f25dvk**) for a given day (**the 14 of January 2016**) for **1** adult. 
+- For each departure, we want, at least, to see the **departure time**, the **arrival time**, the **location name** and the **price** (use `prices.total` of the `departure`).
 
-* Hot loading of react components
-* Proxying onto your own api server (in `server/index.js`) for api calls
-* Auto reload of api server on server file changes
-* Sourcemaps during developement
-* Sourcemaps for production builds for debugging deployed code
-* Babel for js/jsx processing
-* Imagemin for processing images
-* Font handling
-* scss/sass with autoprefixer
-* Testing
+## Non-functional requirements
 
-## Getting started
-Clone the repository:
+- The code should be hosted on github, and the repo should be shared with Busbud and submitted as a pull request
+- The microsite should be deployed to [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
-```sh
-git clone git@github.com:cgreening/simple-webpack-react-starter.git
-cd webpack-starter
-npm install
-npm run dev
-Browse to http://localhost:8080
+### Bonus
+* Localization: support for multiple languages (English, French, ...)
+* Responsive design
+
+### Remarks
+
+* You can setup your microsite any way you like; we're partial to NodeJS, ExpressJS and React
+* CSS can be written using SASS, LESS or similar higher-level language
+* All API requests need a special `Accept` HTTP Header, as described below
+
+## Supporting API
+
+For all these requests, you MUST change the Accept header to:
+
+    application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/
+
+Search is performed in two steps
+
+1. A search is initialized, and may be complete if results are served from cache
+2. An initialized and incomplete search is polled until complete
+
+### Initialize search
+
+To get departures, search is initialized via the following endpoint:
+
+    https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date
+
+Path parameters:  
+
+- `origin` : Origin's geohash
+- `destination` : Destination's geohash
+- `outbound_date` : ISO 8601 Outbound departure date
+
+Querystring parameters:
+
+- `adult` : Number of adults
+- `child` : Number of children
+- `senior` : Number of seniors
+- `lang` : ISO 3166-1 alpha-2 language code
+- `currency` : ISO 4217 currency code
+
+The response looks like:
 ```
-If you just want to start a new project without all the commit history then do:
-
-```sh
-git clone --depth=1 git@github.com:cgreening/simple-webpack-react-starter <your-project-name>
-cd <your-project-name>
-npm install
-npm run dev
-Browse to http://localhost:8080
-```
-
-__Special note for windows users__
-
-`npm run dev` relies on being able to run two commands simultaneously, the server and the webpack dev server. This does not work on windows so you will need to open to command windows and run these commands:
-
-```sh
-npm run dev-web
-```
-
-```sh
-npm run dev-server
-```
-
-You can now browse to `http://localhost:8080`
-
-##Live Reload
-
-In `App` you'll find the single page reach app. Try opening `Components/Header.js' and modifying the text. Hit save and the browser should update with your changes.
-
-In `Server` you'll find a minimal express server. Currently it serves content from the build directory and has 1 api call to get the current time.
-
-Try adding a new api endpoint and modify `Components/Content.js` so that it hits your new endpoint.
-
-You should be able to make all these changes without restarting the server manually as it should auto detect the changes and restart/reload as necessary.
-
-## Running in Development Mode
-```sh
-npm run dev
-```
-This will start the webpack dev server on the defuault port (8080). It will also start the express server from `server/index.js` using nodemon.
-
-Webpack dev server will watch for changes in the files from the `App` folder and hot load any changed modules.
-
-nodemon will watch files in the `server` folder and restart the express server if any files change.
-
-This means that you can update both your single page app and your backend during development and have the changes available immediately.
-
-## Building for Production
-```sh
-npm run build
-```
-This will build the app and output the files to the `build` directory.
-## Running the server
-```sh
-npm run server
-```
-This will launch the express server serving content from `build`
-
-## Testing
-Testing is done using karma + mocha with sinon for stubbing ajax requests. We use the [karma-webpack preprocessor](https://github.com/webpack/karma-webpack)
-
-The karma config lives in `karma.conf.js` and is setup to run tests in Chrome and load up `tests.webpack.js`
-
-`tests.webpack.js` loads up all the tests from the `tests` directory and bundles them all up using webpack. We then run them all at once.
-
-To do a test run:
-
-```sh
-npm test
+{
+  "origin_city_id": "375dd5879001acbd84a4683dedf9eed1",
+  "destination_city_id": "375dd5879001acbd84a4683ded9c875b",
+  "cities": [
+    { City },
+    { City }
+  ],
+  "locations": [
+    { Location }
+    { Location }
+  ],
+  "operators": [
+    { Operator },
+    { Operator }
+  ],
+  "departures": [
+    { XDeparture },
+    { XDeparture }
+  ],
+  "complete": false,
+  "ttl": 900,
+  "is_valid_route": true
+}
 ```
 
-And to run continuous tests which rerun everytime a file changes:
-
-```sh
-npm run testing
+Where a City is like:
+```
+   {
+      "id": "375dd5879001acbd84a4683deda84183",
+      "locale": "en",
+      "region_id": 6417,
+      "name": "New York",
+      "lat": 40.71427,
+      "lon": -74.00597,
+      "geohash": "dr5reg",
+      "timezone": "America/New_York",
+      "image_url": "/images/promos/city-blocks/new-york.jpg",
+      "legacy_url_form": "NewYork,NewYork,UnitedStates",
+      "full_name": "New York, New York, United States",
+      "region": {
+        "id": 6417,
+        "locale": "en",
+        "country_code2": "US",
+        "name": "New York",
+        "country": {
+          "code2": "US",
+          "locale": "en",
+          "code3": "USA",
+          "name": "United States",
+          "continent": "NA",
+          "default_locale": "en",
+          "default_currency": "USD",
+          "population": 310232863
+        }
+      }
+    }
+```
+Where a Location is like:
+```
+    {
+      "id": 3970,
+      "city_id": "375dd5879001acbd84a4683dedfb933e",
+      "name": "Métro Bonaventure Bus Station",
+      "address": [
+        "997 Rue St-Antoine Ouest",
+        "Montreal, QC H3C 1A6"
+      ],
+      "type": "transit_station",
+      "lat": 45.4988273060484,
+      "lon": -73.5644745826722,
+      "geohash": "f25dvfzcz"
+    }
+```
+Where an Operator is like:
+```
+    {
+      "id": "bfc27cd544ca49c18d000f2bc00c58c0",
+      "source_id": 155,
+      "profile_id": 111,
+      "name": "Greyhound",
+      "url": null,
+      "logo_url": "https://busbud-pubweb-assets-staging.global.ssl.fastly.net/images-service/operator-logos/greyhound.png?hash=1{&height,width}",
+      "display_name": "Greyhound",
+      "sellable": true,
+      "fuzzy_prices": false,
+      "sell_tickets_cutoff": {
+        "hours": 1
+      },
+      "amenities": {
+        "classes": {
+          "Normal": {
+            "display_name": "Economy",
+            "wifi": true,
+            "toilet": true,
+            "ac": true,
+            "food": false,
+            "refreshment": false,
+            "power_outlets": true,
+            "tv": false,
+            "bus_attendant": false,
+            "leg_room": false
+          },
+          "Economy": {
+            "display_name": "Economy",
+            "wifi": true,
+            "toilet": true,
+            "ac": true,
+            "food": false,
+            "refreshment": false,
+            "power_outlets": true,
+            "tv": false,
+            "bus_attendant": false,
+            "leg_room": false
+          }
+        }
+      },
+      "source": "greyhound_us",
+      "referral_deal": false,
+      "display_url": null,
+      "fraud_check": "iovation",
+      "terms": {
+        "refund": false,
+        "exchange": true,
+        "bag_allowed": true,
+        "piece_of_id": false,
+        "boarding_requirement": "printed_tkt",
+        "extra_bag_policy": true,
+        "use_new_ticket": false,
+        "exchange_cutoff": 24,
+        "nb_checked_bags": 1,
+        "kg_by_bag": 25,
+        "nb_carry_on": 1,
+        "extra_bag_cost": 1500
+      }
+    }
+```
+And an XDeparture is :
+```
+    {
+      "id": "7c5dd26a",
+      "source_id": 155,
+      "checkout_type": "new",
+      "operator_id": "bfc27cd544ca49c18d000f2bc00c58c0",
+      "origin_location_id": 1942,
+      "destination_location_id": 1938,
+      "class": "Economy",
+      "class_name": "Economy",
+      "amenities": {
+        "display_name": "Economy",
+        "wifi": true,
+        "toilet": true,
+        "ac": true,
+        "food": false,
+        "refreshment": false,
+        "power_outlets": true,
+        "tv": false,
+        "bus_attendant": false,
+        "leg_room": false
+      },
+      "available_seats": 55,
+      "prices": {
+        "total": 5200,
+        "breakdown": {
+          "base": 5200
+        },
+        "categories": {},
+        "discounted": false
+      },
+      "ticket_types": [
+        "print"
+      ],
+      "departure_timezone": "America/New_York",
+      "arrival_timezone": "America/Montreal",
+      "departure_time": "2016-01-14T00:01:00",
+      "arrival_time": "2016-01-14T07:55:00"
+    }
 ```
 
+### Poll search
 
-## What could be done better
+While the `complete` property from the response is false, you need to call:
 
-* duplicated code in the web pack config files
+    https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date/poll
 
-There is a lot of duplication between the two webpack config files - this is deliberate as I wanted it to be a as clear as possible what is happening. I have refactored the obviously common stuff like loaders and the index page generation into `webpack-common.config.js`
+with ***all*** the same parameters as the previous endpoint, plus the following additional querystring parameter:
 
-* probably a lot of other things - open a pull request!
+- `index` : Index from which to return new departures
 
-## Deploy to Heroku
-Try out the code on heroku:
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+The response is similar to:
+```
+{
+  "departures": [
+    { XDeparture },
+    { XDeparture }
+  ],
+  "operators": [
+    { Operator },
+    { Operator }
+  ],
+  "complete": true,
+  "ttl": 900
+}
+```
