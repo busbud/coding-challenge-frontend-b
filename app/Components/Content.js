@@ -22,7 +22,8 @@ module.exports = React.createClass({
         locations: [],
         operators: []
       },
-      showButton: true
+      showButton: true,
+      showLoading: false
     }
   },
 
@@ -34,26 +35,34 @@ module.exports = React.createClass({
     xhr.onload = () => {
       var newData = JSON.parse(xhr.responseText);
       var currentData = url===API_URL ? newData : this.state.travelData;
-      if(currentData.complete) this.setState({ travelData: currentData });return;
+      if(currentData.complete){
+        this.setState({ travelData: currentData });
+        this.setState({ showLoading: false });
+        return;
+      } 
       currentData.operators = currentData.operators.concat(newData.operators);
       currentData.departures = currentData.departures.concat(newData.departures);
       currentData.complete = newData.complete;
       this.setState({ travelData: currentData });
       console.log(currentData);
-      if(!currentData.complete){
-        this.requestTravelData(API_URL + '/poll?index=' + currentData.departures.length)
-      }
-      this.setState({ showButton: false });
+      this.requestTravelData(API_URL + '/poll?index=' + currentData.departures.length)
     }
     xhr.send();
+  },
+
+  onButtonClick: function(){
+    this.setState({ showButton: false });
+    this.setState({ showLoading: true });
+    this.requestTravelData(API_URL);
   },
 
   render: function () {
     return (
       <div className="content-container">
-        <div className="announcement-section">
-          <div className="page-permanent-announcement">{'Busbud would like to get you to Igloofest.'}</div>
-          { this.state.showButton ? <input className="the-button btn-default" ref='refreshButton' type='button' onClick={ this.requestTravelData.bind(this, API_URL) } value='Click here to find a bus!'></input> : null}
+        <div className="page-permanent-announcement">{'Busbud would like to get you to Igloofest.'}</div>
+        <div className="on-boarding-section">
+          { this.state.showButton ? <input className="the-button btn-default" ref='refreshButton' type='button' onClick={ this.onButtonClick } value='Click here to find a bus!'></input> : null}
+          { this.state.showLoading ? <span className="glyphicon glyphicon-refresh spinning"></span> : null }
         </div>
         <div ref="departures">
           { this.state.travelData.departures.map( function(ele, ind){

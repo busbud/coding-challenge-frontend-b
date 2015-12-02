@@ -18,6 +18,10 @@ body {
 	flex-direction: column;
 	align-items: center;
 }
+
+.main-container{
+}
+
 // ------ HEADER SECTION ------
 .header {
 	color: grey;
@@ -37,23 +41,33 @@ body {
 // ------ CONTENT SECTION ------
 .content-container {
 }
-.announcement-section {
+.page-permanent-announcement {
 	display:flex;
 	flex-direction:column;
 	jusify-content: center;
-	max-width:700px;
+	width:100%;
 	margin-right:auto;
 	margin-left:auto;
-}
-.page-permanent-announcement {
-	display:flex;
-	justify-content:center;
 	font-family: 'Chau Philomene One', sans-serif;
 	font-size: 40px;
 	color:#FFF;
 	text-align: center;
 	padding-top: 15px;
 	padding-bottom: 25px;
+	background: -moz-linear-gradient(top, rgba(51,122,183,0.85) 0%, rgba(117,171,209,0.75) 48%, rgba(122,175,211,0.75) 52%, rgba(188,224,238,0) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(51,122,183,0.85) 0%,rgba(117,171,209,0.75) 48%,rgba(122,175,211,0.75) 52%,rgba(188,224,238,0) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(51,122,183,0.85) 0%,rgba(117,171,209,0.75) 48%,rgba(122,175,211,0.75) 52%,rgba(188,224,238,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9337ab7', endColorstr='#00bce0ee',GradientType=0 ); /* IE6-9 */
+	background-size: 100vw 100% cover;
+}
+.on-boarding-section {
+	margin-top:10%;
+	display:flex;
+	flex-direction:column;
+	jusify-content: center;
+	align-content:center;
+	margin-right:auto;
+	margin-left:auto;
 }
 .the-button {
 	margin:auto;
@@ -103,6 +117,24 @@ body {
 	border-right: 1px solid lightgrey
 }
 
+// ------ Loading spinner ------
+.glyphicon.spinning {
+	text-align:center;
+	color:#FFF;
+
+	font-size: 4em;
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+}
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
 // ------ RESPONSIVENESS -------
 @media (min-width: 700px) {
  	.panel {
@@ -115,8 +147,13 @@ body {
 	}
 }
 @media (max-width: 450px) {
-	.info-box {
-		
+	.header{
+		font-size:10px;
+	}
+	.the-button {
+		font-size: 20px;
+		width: 250px;
+		height: 60px;
 	}
 	.panel {
 		flex-direction:column;
