@@ -64,23 +64,43 @@ module.exports = React.createClass({
           { this.state.showButton ? <input className="the-button btn-default" ref='refreshButton' type='button' onClick={ this.onButtonClick } value='Click here to find a bus!'></input> : null}
           { this.state.showLoading ? <span className="glyphicon glyphicon-refresh spinning"></span> : null }
         </div>
-        <div ref="departures">
+        <div className="departures">
           { this.state.travelData.departures.map( function(ele, ind){
             return([
               <div key={ind} className="panel panel-primary departure-info-panel">
                 <div className="panel-heading"><h3 className="panel-title">{'Bus '}{ind + 1}</h3></div>
                 <div className="panel-body">
                   <div className="flex-row">
-                    <div className="info-box">{'Departure Time: '}<span className="info-variable">{moment(ele.departure_time, moment.ISO_8601).format('ddd, MMM Do YYYY, h:mm a')}</span></div>
-                    <div className="info-box">{'Arrival Time: ' }<span className="info-variable">{moment(ele.arrival_time, moment.ISO_8601).format('ddd, MMM Do YYYY, h:mm a')}</span></div>
+                    <div className="info-box">
+                      {'Departure Time: '}
+                      <span className="info-variable">
+                        {moment(ele.departure_time, moment.ISO_8601).format('ddd, MMM Do YYYY, h:mm a')}
+                      </span>
+                    </div>
+                    <div className="info-box">
+                      {'Arrival Time: ' }
+                      <span className="info-variable">
+                        {moment(ele.arrival_time, moment.ISO_8601).format('ddd, MMM Do YYYY, h:mm a')}
+                      </span>
+                    </div>
                   </div>
                   <div className="flex-row">
-                    <div className="info-box">{'Location: ' }<span className="info-variable">{this.state.travelData.locations[ getIndexWithId( this.state.travelData.locations, 'id', ele.origin_location_id) ].name}</span></div>
-                    <div className="info-box">{'Price: ' }<span className="info-variable">{'$'+ele.prices.total/100}</span></div>
+                    <div className="info-box">
+                      {'Location: ' }
+                      <span className="info-variable">
+                        {this.state.travelData.locations[ getIndexWithId( this.state.travelData.locations, 'id', ele.origin_location_id) ].name}
+                      </span>
+                    </div>
+                    <div className="info-box">
+                      {'Price: ' }
+                      <span className="info-variable">
+                        {'$' + ele.prices.total/100 + ' per adult'}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="panel-footer">
-                    <img className="mini-bus-pic" src={miniBusPic} />
+                  <img className="mini-bus-pic" src={miniBusPic} />
                 </div>
               </div>
             ]);

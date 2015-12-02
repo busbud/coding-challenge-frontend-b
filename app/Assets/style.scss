@@ -69,6 +69,8 @@ body {
 	background: linear-gradient(to bottom, rgba(51,122,183,0.85) 0%,rgba(117,171,209,0.75) 48%,rgba(122,175,211,0.75) 52%,rgba(188,224,238,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9337ab7', endColorstr='#00bce0ee',GradientType=0 ); /* IE6-9 */
 	background-size: 100vw 100% cover;
+	padding-top: 3%;
+	padding-bottom: 10%;
 }
 .on-boarding-section {
 	margin-top:10%;
@@ -80,13 +82,19 @@ body {
 	margin-left:auto;
 }
 .the-button {
+
+	color: white;
 	margin:auto;
 	font-family: 'Chau Philomene One', sans-serif;
 	font-size: 28px;
 	height:100px;
 	width: 400px;
-	background: rgba(255, 255, 255, 0.5);
+	background: rgba(0, 0, 0, 0.5);
 	border-radius: 25px;
+}
+.the-button:hover {
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
 }
 
 // ------ DEPARTURES SECTION ------
@@ -95,11 +103,10 @@ body {
 	height:100px
 }
 .departures {
-	display:flex;
-	justify-content:center;
+	margin-top:-15%;
 }
 .panel {
-	margin: 15px auto 15px auto ;
+	margin: 0px auto 45px auto ;
 	display:flex;
 	flex-direction: row;
 	background: rgba(255, 255, 255, 0.8);
@@ -109,6 +116,7 @@ body {
 	justify-content: space-between;
 }
 .info-box {
+	color: #144B73;
 	padding: 10px;
 	font-size:16px;
 	display:flex;
@@ -116,6 +124,7 @@ body {
 }
 .info-variable {
 	font-size: 14px;
+	color: black;
 }
 .panel-footer {
 	background:none;
