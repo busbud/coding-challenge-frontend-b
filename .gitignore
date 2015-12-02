@@ -2,9 +2,6 @@
 logs
 *.log
 
-#build
-#build
-
 # Runtime data
 pids
 *.pid
