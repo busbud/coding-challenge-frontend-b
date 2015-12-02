@@ -1,4 +1,4 @@
- coding-challenge-frontend-b
+# coding-challenge-frontend-b
 ![igloofest](https://cloud.githubusercontent.com/assets/1574577/11387762/0ba89cb6-92fc-11e5-9fb1-3d1e6747cc88.png)
 
 It's getting cold in Montreal and the [Igloofest](http://igloofest.ca/en/) will kickoff very soon. 
