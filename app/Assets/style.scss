@@ -7,11 +7,6 @@
 
 body {
 	font-family: 'Roboto', sans-serif;
-	background-image: url('./igloofestbg.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position:center;
 }
 
 .app {
@@ -20,7 +15,21 @@ body {
 	align-items: center;
 }
 
-.main-container{
+.main-container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./igloofestbg.jpg');;
+  background-repeat: no-repeat;
+  background-position: center;
+  webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: -1;
 }
 
 // ------ HEADER SECTION ------
