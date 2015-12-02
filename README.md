@@ -8,8 +8,8 @@
 * SCSS is a magical wonderland and responsiveness is sometimes simpler to do by hand through media queries than through the use of bootstrap/foundation grids.
 * React with JSX is a powerful beast and reasoning through states makes scalability more accessible.
 
-
----- here is the original readme ---
+#
+the original readme is below ---
 # coding-challenge-frontend-b
 ![igloofest](https://cloud.githubusercontent.com/assets/1574577/11387762/0ba89cb6-92fc-11e5-9fb1-3d1e6747cc88.png)
 
