@@ -5,7 +5,7 @@ var languages = require("../languages.js");
 var Router = require('react-router');
 var router = require('../routes.jsx');
 
-var GUEST_TOKEN = "GUEST_ZX3fNR26SB-m1MBsyz196g";
+var GUEST_TOKEN = "GUEST_ofyd3W7JSEK15rrKBcvD7w";
 var API_URL = 'https://busbud-napi-prod.global.ssl.fastly.net';
 
 
