@@ -4,9 +4,8 @@ require('node-jsx').install({
 });
 var React = require('react');
 var Router = require('react-router');
-
 var routes = require('./routes.jsx');
-
+var ReactDOMServer = require('react-dom/server');
 
 // Express
 var express = require('express');
@@ -25,7 +24,8 @@ app.set("views", BASEDIR + '/public');
 app.use("/public", express.static(BASEDIR + "/public"));
 app.set('view engine', 'jade');
 
-
+// Disable etag headers on responses
+app.set('etag', false); // turn off
 
 http.createServer(app).listen(app.get('port'), function() {
   console.log("Express server listening on port " + app.get('port'));
@@ -35,12 +35,13 @@ http.createServer(app).listen(app.get('port'), function() {
 
 // Static routes
 app.get('/', function(req, res) {
+  
   Router.run(routes, '/', function(Handler) {
     var props = {
       currentLang: 'en'
     };
 
-    var content = React.renderToString(React.createElement(Handler, props));
+    var content = ReactDOMServer.renderToString(React.createElement(Handler, props));
     res.render('index', {
 
       content: content,
@@ -57,7 +58,7 @@ app.get('/:language', function(req, res) {
       currentLang: currentLanguage
     };
 
-    var content = React.renderToString(React.createElement(Handler));
+    var content = ReactDOMServer.renderToString(React.createElement(Handler));
     res.render('index', {
 
       content: content,
@@ -76,7 +77,7 @@ app.get('/:language/schedules/:departure/:arrival/:date/:adults', function(req, 
   };
 
   Router.run(routes, '/' + props.currentLang + '/schedules/' + props.departure + "/" + props.arrival + "/" + props.date + "/" + props.adults, function(Handler) {
-    var content = React.renderToString(React.createElement(Handler, props));
+    var content = ReactDOMServer.renderToString(React.createElement(Handler, props));
     res.render('index', {
       content: content,
       injectedScript: safeStringify(props)

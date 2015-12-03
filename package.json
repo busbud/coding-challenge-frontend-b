@@ -1,31 +1,40 @@
 {
   "name": "busbud-frontend-coding-challenge",
   "version": "1.0.0",
-  "description": "",
+  "description": "![igloofest](https://cloud.githubusercontent.com/assets/1574577/11387762/0ba89cb6-92fc-11e5-9fb1-3d1e6747cc88.png)",
   "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ."
   },
-  "author": "kayla hennig",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hennigk/coding-challenge-frontend-b.git"
+  },
+  "author": "Kayla Hennig",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hennigk/coding-challenge-frontend-b/issues"
+  },
   "browserify": {
     "transform": [
       "reactify"
     ]
   },
+  "homepage": "https://github.com/hennigk/coding-challenge-frontend-b#readme",
   "dependencies": {
-    "es6-promise": "^2.0.1",
-    "express": "~4.11.1",
-    "jade": "~1.9.1",
-    "merge": "~1.2.0",
-    "node-jsx": "~0.12.4",
-    "react": "~0.12.2",
-    "react-router": "~0.11.6",
-    "reactify": "~1.0.0",
-    "request": "^2.65.0",
-    "bluebird": "^2.10.2"
-  },
-  "devDependencies": {
-    
+    "bluebird": "^3.0.6",
+    "browserify": "^12.0.1",
+    "es6-promise": "^3.0.2",
+    "express": "^4.13.3",
+    "history": "^1.13.1",
+    "jade": "^1.11.0",
+    "merge": "^1.2.0",
+    "node-jsx": "^0.13.3",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-router": "^0.13.3",
+    "reactify": "^1.1.1",
+    "request": "^2.67.0"
   }
 }

@@ -61,7 +61,6 @@ var HeaderLayout = React.createClass({
                                     </div>
                                 </div>
                             </nav>
-                        
                             <RouteHandler />
                         </div>
                     );

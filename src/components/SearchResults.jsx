@@ -47,12 +47,13 @@ function getDepartures(url, operatorObject, locationObject, departureArray, citi
         url: url,
         headers: {
             'Accept': ACCEPT_HEADER,
-            'x-busbud-token': GUEST_TOKEN
+            'x-busbud-token': GUEST_TOKEN,
+            'Cache-Control': 'no-cache'
         }
     };
     return request.getAsync(options)
                     .then(function(body){
- var response = JSON.parse(body.body)
+                        var response = JSON.parse(body.body)
                 if (response.cities) {
                     cities.departure = response.cities[0];
                     cities.arrival = response.cities[1];
@@ -74,6 +75,8 @@ function getDepartures(url, operatorObject, locationObject, departureArray, citi
                     var pollUrl = DEPARTURE_URL + params + "/poll" + querys + "&index=" + index;
 
                     return getDepartures(pollUrl, operatorObject, locationObject, departureArray, cities, params, querys);
+                  
+                    
                 }
                 else {
 
