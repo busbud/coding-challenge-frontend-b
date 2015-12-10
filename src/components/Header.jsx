@@ -3,11 +3,6 @@ var languages = require("../languages.js");
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 
-// var RouteHandler = require('react-router').RouteHandler;
-// var Route = Router.Route;
-// var DefaultRoute = Router.DefaultRoute;
-// var Link = Router.Link;
-
 
 var HeaderLayout = React.createClass({
             mixins: [Router.State],
