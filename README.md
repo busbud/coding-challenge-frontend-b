@@ -237,11 +237,11 @@ And an XDeparture is :
 
 ### Poll search
 
-While `complete` property from the response is false, you need to call:
+While the `complete` property from the response is false, you need to call:
 
-    https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date/poll`
+    https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date/poll
 
-With ***all*** the same parameters as the previous endpoint, plus the following additional querystring parameter:
+with ***all*** the same parameters as the previous endpoint, plus the following additional querystring parameter:
 
 - `index` : Index from which to return new departures
 
@@ -259,4 +259,4 @@ The response is similar to:
   "complete": true,
   "ttl": 900
 }
-```
+
