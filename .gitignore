@@ -1,5 +1,5 @@
 public/bootstrap/*
-!public/bootstrap/less/bootstrap.less
+
 # Logs
 logs
 *.log
