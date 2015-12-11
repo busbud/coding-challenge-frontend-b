@@ -10,11 +10,13 @@ module.exports = React.createClass({
   displayName: 'App',
 
   render: function () {
-    return (<div className="main-container">
-              <Header/>
-              <Content/>
-              <Favicon url={ faviconUrl }/>
-            </div>)
+    return (
+    	<div className="main-container">
+	      <Header/>
+          <Content/>
+          <Favicon url={ faviconUrl }/>
+      </div>
+    )
   }
 
 });
