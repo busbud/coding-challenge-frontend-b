@@ -1,3 +1,16 @@
+# nk1tz' answer to Busbud's coding-challenge-frontend-b
+
+## [This is the webapp deployed to heroku](https://boiling-ravine-9623.herokuapp.com/)
+
+## Key points that were learned during this challenge:
+* How to setup a dev environment on local machine, automated dev updates, ngrok tunneling, webpack building, and deployement to heroku. 
+* Frameworks and libraries are well worth the slow startup cost as they alleviate work down the road.
+* SCSS is a magical wonderland and responsiveness is sometimes simpler to do by hand through media queries than through the use of bootstrap/foundation grids.
+* React with JSX is a powerful beast and reasoning through states makes scalability more accessible.
+
+#-
+
+--- the original readme is below ---
 # coding-challenge-frontend-b
 ![igloofest](https://cloud.githubusercontent.com/assets/1574577/11387762/0ba89cb6-92fc-11e5-9fb1-3d1e6747cc88.png)
 
