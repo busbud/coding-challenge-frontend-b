@@ -5,7 +5,7 @@ var LangSelector = React.createClass({
     getLangNewPath(){
         const lang = this.props.language;
         const subpath = this.props.currentPath.split('/').slice(2).join('/');
-        return '/'+lang+'/'+subpath;
+        return `/${lang}/${subpath}`;
     },
     render() {
         return (

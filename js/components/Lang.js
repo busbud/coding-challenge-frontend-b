@@ -6,6 +6,7 @@ var Lang = React.createClass({
         return (
             <div>
                 <LangSelector language='FR' currentPath={this.props.location.pathname}/>
+                <LangSelector language='ENG' currentPath={this.props.location.pathname}/>
                 {this.props.children}
             </div>
         )
