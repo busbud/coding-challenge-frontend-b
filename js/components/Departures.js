@@ -1,14 +1,18 @@
 import React from 'react';
-
 import { createStore } from 'redux';
+import h from '../lib/helpers';
 
-var result = {
+var result1 = {
     list:[
         {id:1},
         {id:2},
         {id:3}
     ],
-    complete:false
+    complete:false,
+    obj:{
+        key1:'val1',
+        key2:'val1'
+    }
 };
 
 var result2 = {
@@ -16,14 +20,19 @@ var result2 = {
         {id:4},
         {id:5}
     ],
-    complete:true
+    complete:true,
+    obj:{
+        key2:'val2',
+        key3:'val2'
+    }
 };
 
+console.log(h.mergeResult(result1,result2));
 
 var defaultState = {
     lang:'en',
     fetching:false,
-    result:{}
+    tickets:{}
 };
 
 function reducer(state=defaultState, action) {
@@ -35,10 +44,10 @@ function reducer(state=defaultState, action) {
 
                 store.dispatch({
                     type:'RECEIVED_DEPARTURES',
-                    result: result.list
+                    tickets: result1
                 });
 
-                if (!result.complete) {
+                if (!result1.complete) {
                     store.dispatch({
                         type:'POLL_DEPARTURES'
                     });
@@ -47,24 +56,24 @@ function reducer(state=defaultState, action) {
 
             return {
                 ...state,
-                tickets:[],
+                tickets:{},
                 fetching:true
             };
         case 'POLL_DEPARTURES':
-            console.log('polling');
+            console.log('poll');
 
             setTimeout(function(){
 
                 store.dispatch({
                     type:'RECEIVED_DEPARTURES',
-                    result: state.tickets.concat(result2.list)
+                    tickets: h.mergeResult(state.tickets,result2)
                 });
 
             },2000);
 
             return {
                 ...state,
-                isFetching:true
+                fetching:true
             };
         case 'RECEIVED_DEPARTURES':
             console.log('received');
@@ -110,7 +119,7 @@ var Departures = React.createClass({
         })
     },
     render() {
-        var departures = store.getState().tickets;
+        var departures = store.getState().tickets.list || [];
 
         return (
             <div>
