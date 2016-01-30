@@ -23,6 +23,8 @@ Note: Redux is not 100% necessary as data can be handled in the state of the Dep
 However, Redux adds flexibility and is likely to scale well when adding filtering/sorting components. 
 
 
+## ToDo later
+- use redux-thunk to add middleware, in order to avoid dispatching inside of the reducer. 
 
 -----
 # coding-challenge-frontend-b
