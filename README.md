@@ -1,3 +1,30 @@
+# Comments about the proposed solution
+
+## Selected technologies
+- React to build UI components
+- Redux implementation of Flux architecture to control the data flow
+- superagent to perform api calls
+- React Router to handle navigation, browser history and pass params down the hierarchy
+
+Why Redux?
+This coding challenge makes a good candidate to learn Flux architecture, Redux supposedly being a simple implementation of it.
+
+## Dev process steps
+1. Learning React and Redux
+2. Design of the solution:
+* What are the reducer actions of my app?
+* How to generate new state asynchronously?
+* When the user changes the language of the app, how to notify the Departures component to fetch new data? 
+
+**Solution**: 
+- Use the router to handle language change, providing the language as props passed to the Departures component (child component).
+- Keep data in reducer. The Departures component will fetch data when mounted and will refetch when will receive new props.   
+Note: Redux is not 100% necessary as data can be handled in the state of the Departures component, in the case of our simple app.
+However, Redux adds flexibility and is likely to scale well when adding filtering/sorting components. 
+
+
+
+-----
 # coding-challenge-frontend-b
 ![igloofest](https://cloud.githubusercontent.com/assets/1574577/11387762/0ba89cb6-92fc-11e5-9fb1-3d1e6747cc88.png)
 
