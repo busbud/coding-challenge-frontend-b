@@ -21,8 +21,9 @@ var result2 = {
 
 
 var defaultState = {
-    isFetching:false,
-    tickets:[]
+    lang:'en',
+    fetching:false,
+    result:{}
 };
 
 function reducer(state=defaultState, action) {
@@ -34,7 +35,7 @@ function reducer(state=defaultState, action) {
 
                 store.dispatch({
                     type:'RECEIVED_DEPARTURES',
-                    tickets: result.list
+                    result: result.list
                 });
 
                 if (!result.complete) {
@@ -47,7 +48,7 @@ function reducer(state=defaultState, action) {
             return {
                 ...state,
                 tickets:[],
-                isFetching:true
+                fetching:true
             };
         case 'POLL_DEPARTURES':
             console.log('polling');
@@ -56,7 +57,7 @@ function reducer(state=defaultState, action) {
 
                 store.dispatch({
                     type:'RECEIVED_DEPARTURES',
-                    tickets: state.tickets.concat(result2.list)
+                    result: state.tickets.concat(result2.list)
                 });
 
             },2000);
@@ -70,8 +71,7 @@ function reducer(state=defaultState, action) {
             return {
                 ...state,
                 tickets: action.tickets,
-                isFetching:false
-
+                fetching:false
             };
 
         default:
