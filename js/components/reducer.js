@@ -2,33 +2,8 @@ import { createStore } from 'redux';
 import h from '../lib/helpers';
 import request from 'superagent';
 
-//var result1 = {
-//    list:[
-//        {id:1},
-//        {id:2},
-//        {id:3}
-//    ],
-//    complete:false,
-//    obj:{
-//        key1:'val1',
-//        key2:'val1'
-//    }
-//};
-//
-//var result2 = {
-//    list:[
-//        {id:4},
-//        {id:5}
-//    ],
-//    complete:true,
-//    obj:{
-//        key2:'val2',
-//        key3:'val2'
-//    }
-//};
 
 function fetch(params,query,poll=false) {
-    console.log(poll);
     return request
         .get(`https://napi.busbud.com/x-departures/${params.origin}/${params.destination}/${params.outbound_date}${(()=>{return poll? '/poll':''})()}`)
         .set('Accept', 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/')
@@ -39,73 +14,81 @@ function fetch(params,query,poll=false) {
 var defaultState = {
     //lang:'en',
     fetching:false,
-    tickets:{}
+    result:{}
 };
 
 function tickets(state=defaultState, action) {
     switch (action.type) {
-        case 'FETCH_DEPARTURES':
-            console.log('fetching');
-            let params = action.params;
-            let query = action.query;
 
-            fetch(params,query)
+        case 'FETCH_DEPARTURES':
+            console.log('action fetch');
+            fetch(action.params,action.query)
                 .end((err,res) => {
                     if (err) {
                         //dispatch error
                     }
                     else {
-                        console.log('fetched');
-                        console.log(res);
-                        //store.dispatch({
-                        //            type:'RECEIVED_DEPARTURES',
-                        //            tickets: result1
-                        //        });
-                        //this.setState({
-                        //    repos: res.body
-                        //});
+                        console.log('fetched done');
+                        console.log(res.body);
+                        let result = res.body;
+                        //let result = {...res.body,complete:false}; // testing poll
+
+                        store.dispatch({
+                            type:'RECEIVED_DEPARTURES',
+                            result: result
+                        });
+
+                        if (!result.complete) {
+                            store.dispatch({
+                                type:'POLL_DEPARTURES',
+                                result: result,
+                                params: action.params,
+                                query: action.query
+                            });
+                        }
+
+                        if (!result.is_valid_route){
+                            //dispatch invalid_route
+                        }
                     }
                 });
-            //setTimeout(function(){
-            //
-            //    store.dispatch({
-            //        type:'RECEIVED_DEPARTURES',
-            //        tickets: result1
-            //    });
-            //
-            //    if (!result1.complete) {
-            //        store.dispatch({
-            //            type:'POLL_DEPARTURES'
-            //        });
-            //    }
-            //},2000);
-
             return {
                 ...state,
-                tickets:{},
+                result:{},
                 fetching:true
             };
+
         case 'POLL_DEPARTURES':
-            console.log('poll');
+            console.log('action poll');
+            let index = action.result.departures.length;
+            let query = {...action.query,index:index};
+            fetch(action.params,query,true)
+                .end((err,res) => {
+                    if (err) {
+                        //dispatch error
+                    }
+                    else {
+                        console.log('poll fetch done');
+                        console.log(res.body);
+                        let result = res.body;
 
-            setTimeout(function(){
-
-                store.dispatch({
-                    type:'RECEIVED_DEPARTURES',
-                    tickets: h.mergeResult(state.tickets,result2)
+                        store.dispatch({
+                            type:'RECEIVED_DEPARTURES',
+                            result: result
+                        });
+                    }
                 });
-
-            },2000);
-
             return {
                 ...state,
                 fetching:true
             };
+
         case 'RECEIVED_DEPARTURES':
-            console.log('received');
+            console.log('action received');
+            console.log('action.result',action.result);
             return {
                 ...state,
-                tickets: action.tickets,
+                result: action.result,
                 fetching:false
             };
 

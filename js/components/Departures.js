@@ -72,7 +72,7 @@ let Departures = React.createClass({
     render() {
         const {store} = this.props;
 
-        var departures = store.getState().tickets.list || [];
+        var departures = store.getState().result || [];
 
         return (
             <div>
@@ -80,11 +80,11 @@ let Departures = React.createClass({
                 <p>{this.props.params.lang}</p>
                 <ul>
                     {
-                        departures.map((ticket) => {
-                            return (
-                                <li key={ticket.id}>{ticket.id}</li>
-                            )
-                        })
+                        //departures.map((ticket) => {
+                        //    return (
+                        //        <li key={ticket.id}>{ticket.id}</li>
+                        //    )
+                        //})
                     }
                 </ul>
 
