@@ -7,14 +7,16 @@ var result = {
         {id:1},
         {id:2},
         {id:3}
-    ]
+    ],
+    complete:false
 };
 
 var result2 = {
     list:[
         {id:4},
         {id:5}
-    ]
+    ],
+    complete:true
 };
 
 
@@ -35,6 +37,11 @@ function reducer(state=defaultState, action) {
                     tickets: result.list
                 });
 
+                if (!result.complete) {
+                    store.dispatch({
+                        type:'POLL_DEPARTURES'
+                    });
+                }
             },2000);
 
             return {
