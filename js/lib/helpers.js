@@ -22,6 +22,51 @@ function mergeResult(res1,res2){
     return {...res1,...mergedRes2}
 }
 
+function getFormattedTime(timeString){
+    let options = {
+        timeZone: 'UTC',
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+
+    let date = new Date(Date.parse(timeString));
+
+    return date.toLocaleTimeString('en-US',options)
+}
+
+function getTicketLocations(result, ticket){
+    let locations = {
+        origin:{},
+        destination:{}
+    };
+
+    result.locations.reduce(function(acc,el){
+        if (el.id === ticket.origin_location_id) {
+            acc.origin = el;
+        }
+        if (el.id === ticket.destination_location_id){
+            acc.destination = el;
+        }
+        return acc;
+    },locations);
+
+    return locations
+}
+
+function getTicketOperator(result, ticket){
+    return result.operators.find(function(el){
+        return el.id === ticket.operator_id
+    })
+}
+
+function getLogo100(url){
+    return url.replace(/{[^{]+}/g,'100');
+}
+
 export default {
-    mergeResult: mergeResult
+    mergeResult: mergeResult,
+    getFormattedTime:getFormattedTime,
+    getTicketLocations:getTicketLocations,
+    getTicketOperator:getTicketOperator,
+    getLogo100:getLogo100
 }

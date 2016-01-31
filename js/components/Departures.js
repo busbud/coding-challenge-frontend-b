@@ -1,4 +1,8 @@
 import React from 'react';
+import h from '../lib/helpers';
+import Ticket from './Ticket';
+import Paper from 'material-ui/lib/paper';
+
 
 let count = 0;
 //const parameters = {
@@ -72,19 +76,26 @@ let Departures = React.createClass({
     render() {
         const {store} = this.props;
 
-        var departures = store.getState().result || [];
+        var result = store.getState().result;
+        var departures = result.departures || [];
+
+        console.log(departures);
 
         return (
-            <div>
+            <div className="row">
                 <h2>Departures</h2>
-                <p>{this.props.params.lang}</p>
-                <ul>
+                <ul className="ticket columns small-12">
                     {
-                        //departures.map((ticket) => {
-                        //    return (
-                        //        <li key={ticket.id}>{ticket.id}</li>
-                        //    )
-                        //})
+                        departures.map((ticket) => {
+                            let locations = h.getTicketLocations(result,ticket);
+                            let operator = h.getTicketOperator(result,ticket);
+
+                            return (
+                            <li className="ticket_item" key={ticket.id}>
+                                <Paper className="ticket_item_paper" children={<Ticket operator={operator} locations={locations} ticket={ticket}/>}/>
+                            </li>
+                            )
+                        })
                     }
                 </ul>
 
