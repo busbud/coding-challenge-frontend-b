@@ -40,6 +40,7 @@ function getTicketLocations(result, ticket){
         destination:{}
     };
 
+
     result.locations.reduce(function(acc,el){
         if (el.id === ticket.origin_location_id) {
             acc.origin = el;
@@ -50,6 +51,14 @@ function getTicketLocations(result, ticket){
         return acc;
     },locations);
 
+    locations.origin.city = result.cities[0];
+    locations.destination.city = result.cities[1];
+
+    if (locations.origin.city.id !== locations.origin.city_id) {
+        locations.origin.city = result.cities[1];
+        locations.destination.city = result.cities[0];
+    }
+
     return locations
 }
 
@@ -59,8 +68,9 @@ function getTicketOperator(result, ticket){
     })
 }
 
-function getLogo100(url){
+function getResizedLogo(url){
     return url.replace(/{[^{]+}/g,'100');
+    //return url.replace(/{width}/g,width).replace(/{height}/g,height);
 }
 
 export default {
@@ -68,5 +78,5 @@ export default {
     getFormattedTime:getFormattedTime,
     getTicketLocations:getTicketLocations,
     getTicketOperator:getTicketOperator,
-    getLogo100:getLogo100
+    getResizedLogo:getResizedLogo
 }

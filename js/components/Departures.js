@@ -82,9 +82,9 @@ let Departures = React.createClass({
         console.log(departures);
 
         return (
-            <div className="row">
+            <div className="">
                 <h2>Departures</h2>
-                <ul className="ticket columns small-12">
+                <ul className="ticket">
                     {
                         departures.map((ticket) => {
                             let locations = h.getTicketLocations(result,ticket);
