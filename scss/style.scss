@@ -16,5 +16,10 @@ body {
   color:  #333333;
 }
 
+.lang-bar {
+  text-align: center;
+}
+
 @import 'home';
+@import 'header';
 @import 'departures';
