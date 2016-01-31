@@ -86,7 +86,7 @@ let Departures = React.createClass({
         return (
             <div className="">
                 <SearchBar className="search-bar"/>
-                <FilterBar/>
+                <FilterBar className="filter-bar"/>
                 <ul className="ticket">
                     {
                         departures.map((ticket) => {
