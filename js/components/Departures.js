@@ -1,10 +1,7 @@
-import h from '../lib/helpers';
-
 import React from 'react';
-import Ticket from './Ticket';
 import SearchBar from './SearchBar';
 import FilterBar from './FilterBar';
-import Paper from 'material-ui/lib/paper';
+import TicketList from './TicketList';
 
 let count = 0;
 //const parameters = {
@@ -76,32 +73,13 @@ let Departures = React.createClass({
         return {params,query}
     },
     render() {
-        const {store} = this.props;
-
-        var result = store.getState().result;
-        var departures = result.departures || [];
-
-        console.log(departures);
-
         return (
             <div className="">
-                <SearchBar className="search-bar"/>
-                <FilterBar className="filter-bar"/>
-                <ul className="ticket">
-                    {
-                        departures.map((ticket) => {
-                            let locations = h.getTicketLocations(result,ticket);
-                            let operator = h.getTicketOperator(result,ticket);
-
-                            return (
-                            <li className="ticket_item" key={ticket.id}>
-                                <Paper className="ticket_item_paper" children={<Ticket operator={operator} locations={locations} ticket={ticket}/>}/>
-                            </li>
-                            )
-                        })
-                    }
-                </ul>
-
+                <SearchBar {...this.props}/>
+                <div className="row">
+                    <FilterBar {...this.props}/>
+                    <TicketList {...this.props}/>
+                </div>
             </div>
         )
     }

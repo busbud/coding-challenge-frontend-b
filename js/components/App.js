@@ -1,5 +1,5 @@
 import React from 'react';
-import store from './reducer';
+import {store} from './reducer';
 
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();

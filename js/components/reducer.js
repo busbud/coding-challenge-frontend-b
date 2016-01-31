@@ -1,7 +1,24 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import h from '../lib/helpers';
 import request from 'superagent';
 
+function getDeparturesList(departures,visibility){
+    switch (visibility) {
+        case 'SORT_BY_PRICE':
+            return departures.sort(function(a,b){
+                return a.prices.total > b.prices.total;
+            });
+        case 'SORT_BY_DEPARTURE_TIME':
+            console.log('sort by time');
+            return departures.sort(function(a,b){
+                const aTime = new Date(Date.parse(a.departure_time));
+                const bTime = new Date(Date.parse(b.departure_time));
+                return aTime > bTime;
+            });
+        default:
+            return departures;
+    }
+}
 
 function fetch(params,query,poll=false) {
     return request
@@ -14,10 +31,14 @@ function fetch(params,query,poll=false) {
 var defaultState = {
     //lang:'en',
     fetching:false,
-    result:{}
+    result:{},
+    sort:'',
+    filter:''
 };
 
-function tickets(state=defaultState, action) {
+function tickets(
+    state={fetching:false, result:{}},
+    action) {
     switch (action.type) {
 
         case 'FETCH_DEPARTURES':
@@ -97,6 +118,48 @@ function tickets(state=defaultState, action) {
     }
 }
 
-let store = createStore(tickets);
+function sortBy(state='SORT_BY_PRICE', action) {
+    switch (action.type) {
+        case 'SORT':
+            return action.sortBy;
+        default:
+            return state;
+    }
+}
 
-export default store;
+function filter(state='', action) {
+    let filteredResult = {};
+
+    switch (action.type) {
+
+        case 'FILTER_BY':
+
+            return {
+                ...state,
+                ...filteredResult
+            };
+
+        case 'FILTER_BY':
+
+            return {
+                ...state,
+                ...filteredResult
+            };
+
+        default:
+            return state;
+    }
+}
+
+const app = combineReducers({
+    tickets: tickets,
+    sortBy: sortBy,
+    filter: filter
+});
+
+let store = createStore(app);
+
+export default {
+    store:store,
+    getDeparturesList:getDeparturesList
+};

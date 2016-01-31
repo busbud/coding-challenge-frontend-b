@@ -4,36 +4,54 @@ import ListItem from 'material-ui/lib/lists/list-item';
 import Divider from 'material-ui/lib/divider';
 import Checkbox from 'material-ui/lib/checkbox';
 
+var VisibilityLink = React.createClass({
+    dispatchAction(){
+        const actionType = this.props.actionType;
+        const store = this.props.store;
+
+        console.log('price');
+        store.dispatch({
+            type: "SORT",
+            sortBy: actionType
+        });
+    },
+    render(){
+        const text = this.props.text;
+
+        return (
+            <ListItem
+                primaryText={text}
+                onTouchTap={this.dispatchAction}
+            />
+        )
+    }
+});
+
 var FilterBar = React.createClass({
     render() {
         return (
-            <div>
-                <List subheader="General">
-                    <ListItem
-                        primaryText="Profile photo"
-                        secondaryText="Change your Google+ profile photo"
-                    />
-                    <ListItem
-                        primaryText="Show your status"
-                        secondaryText="Your status is visible to everyone you use with"
-                    />
+            <div className="filter-bar column">
+                <List subheader="Sort By">
+                    <VisibilityLink store={this.props.store} text='Price' actionType='SORT_BY_PRICE'/>
+                    <VisibilityLink store={this.props.store} text='Departure time' actionType='SORT_BY_DEPARTURE_TIME'/>
+
                 </List>
                 <Divider />
-                <List subheader="Hangout notifications">
+                <List subheader="Filter">
                     <ListItem
                         leftCheckbox={<Checkbox />}
-                        primaryText="Notifications"
-                        secondaryText="Allow notifications"
+                        primaryText="Operators"
+                        secondaryText="list"
                     />
                     <ListItem
                         leftCheckbox={<Checkbox />}
-                        primaryText="Sounds"
-                        secondaryText="Hangouts message"
+                        primaryText="..."
+                        secondaryText=".."
                     />
                     <ListItem
                         leftCheckbox={<Checkbox />}
-                        primaryText="Video sounds"
-                        secondaryText="Hangouts video call"
+                        primaryText="..."
+                        secondaryText=".."
                     />
                 </List>
             </div>
