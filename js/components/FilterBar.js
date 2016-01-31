@@ -9,7 +9,6 @@ var VisibilityLink = React.createClass({
         const actionType = this.props.actionType;
         const store = this.props.store;
 
-        console.log('price');
         store.dispatch({
             type: "SORT",
             sortBy: actionType
@@ -29,11 +28,14 @@ var VisibilityLink = React.createClass({
 
 var FilterBar = React.createClass({
     render() {
+        const store = this.props.store;
+        const lg = store.getState().language;
+
         return (
             <div className="filter-bar column">
-                <List subheader="Sort By">
-                    <VisibilityLink store={this.props.store} text='Price' actionType='SORT_BY_PRICE'/>
-                    <VisibilityLink store={this.props.store} text='Departure time' actionType='SORT_BY_DEPARTURE_TIME'/>
+                <List subheader={lg.sortBy || 'sort'}>
+                    <VisibilityLink store={store} text='Price' actionType='SORT_BY_PRICE'/>
+                    <VisibilityLink store={store} text='Departure time' actionType='SORT_BY_DEPARTURE_TIME'/>
 
                 </List>
                 <Divider />

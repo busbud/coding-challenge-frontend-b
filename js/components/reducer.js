@@ -1,6 +1,18 @@
 import { createStore, combineReducers } from 'redux';
 import h from '../lib/helpers';
 import request from 'superagent';
+import languagePack from '../lib/language_pack';
+
+function getLangPack(lang){
+    switch (lang) {
+        case 'fr':
+            return languagePack.french;
+        default:
+            return languagePack.english;
+    }
+}
+
+function getCurrentLang(lang) {}
 
 function getDeparturesList(departures,visibility){
     switch (visibility) {
@@ -28,13 +40,6 @@ function fetch(params,query,poll=false) {
 }
 
 
-var defaultState = {
-    //lang:'en',
-    fetching:false,
-    result:{},
-    sort:'',
-    filter:''
-};
 
 function tickets(
     state={fetching:false, result:{}},
@@ -42,15 +47,13 @@ function tickets(
     switch (action.type) {
 
         case 'FETCH_DEPARTURES':
-            console.log('action fetch');
+            console.log('fetch departures');
             fetch(action.params,action.query)
                 .end((err,res) => {
                     if (err) {
                         //dispatch error
                     }
                     else {
-                        console.log('fetched done');
-                        console.log(res.body);
                         let result = res.body;
                         //let result = {...res.body,complete:false}; // testing poll
 
@@ -80,7 +83,7 @@ function tickets(
             };
 
         case 'POLL_DEPARTURES':
-            console.log('action poll');
+            console.log('polling');
             let index = action.result.departures.length;
             let query = {...action.query,index:index};
             fetch(action.params,query,true)
@@ -89,7 +92,6 @@ function tickets(
                         //dispatch error
                     }
                     else {
-                        console.log('poll fetch done');
                         console.log(res.body);
                         let result = res.body;
 
@@ -105,8 +107,7 @@ function tickets(
             };
 
         case 'RECEIVED_DEPARTURES':
-            console.log('action received');
-            console.log('action.result',action.result);
+            console.log('departures received');
             return {
                 ...state,
                 result: action.result,
@@ -128,8 +129,6 @@ function sortBy(state='SORT_BY_PRICE', action) {
 }
 
 function filter(state='', action) {
-    let filteredResult = {};
-
     switch (action.type) {
 
         case 'FILTER_BY':
@@ -151,15 +150,26 @@ function filter(state='', action) {
     }
 }
 
+function language(state=getLangPack('en'), action) {
+    switch (action.type) {
+        case 'CHANGE_LANGUAGE':
+            console.log(action.language);
+            return getLangPack(action.language);
+        default:
+            return state;
+    }
+}
+
 const app = combineReducers({
     tickets: tickets,
     sortBy: sortBy,
-    filter: filter
+    filter: filter,
+    language:language
 });
 
 let store = createStore(app);
 
 export default {
     store:store,
-    getDeparturesList:getDeparturesList
+    getDeparturesList:getDeparturesList,
 };

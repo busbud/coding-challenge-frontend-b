@@ -18,6 +18,11 @@ body {
 
 .lang-bar {
   text-align: center;
+
+  a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.87);
+  }
 }
 
 @import 'home';

@@ -13,8 +13,6 @@ var TicketList = React.createClass({
         var departures = result.departures || [];
         let departuresList = getDeparturesList(departures,store.getState().sortBy) || departures;
 
-        console.log(departures);
-
         return (
             <ul className="ticket column">
                 {
