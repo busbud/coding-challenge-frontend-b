@@ -1,8 +1,10 @@
-import React from 'react';
 import h from '../lib/helpers';
-import Ticket from './Ticket';
-import Paper from 'material-ui/lib/paper';
 
+import React from 'react';
+import Ticket from './Ticket';
+import SearchBar from './SearchBar';
+import FilterBar from './FilterBar';
+import Paper from 'material-ui/lib/paper';
 
 let count = 0;
 //const parameters = {
@@ -83,7 +85,8 @@ let Departures = React.createClass({
 
         return (
             <div className="">
-                <h2>Departures</h2>
+                <SearchBar className="search-bar"/>
+                <FilterBar/>
                 <ul className="ticket">
                     {
                         departures.map((ticket) => {
