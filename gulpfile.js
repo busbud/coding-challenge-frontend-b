@@ -26,7 +26,7 @@ gulp.task('styles',function() {
 
   // Compiles CSS
   gulp.src('scss/style.scss')
-    .pipe(sass())
+    .pipe(sass({includePaths: ['node_modules/foundation-sites/scss']}))
     .pipe(autoprefixer())
     .pipe(gulp.dest('./build/css/'))
     .pipe(reload({stream:true}))

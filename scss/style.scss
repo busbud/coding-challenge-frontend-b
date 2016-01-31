@@ -1,3 +1,7 @@
+@import 'foundation_settings';
+@import 'foundation';
+@include foundation-flex-grid;
+
 html {
   box-sizing: border-box;
 }
@@ -12,3 +16,4 @@ body {
 }
 
 @import 'home';
+@import 'departures';
