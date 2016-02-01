@@ -1,23 +1,15 @@
 .header {
-  font-family: 'Lato',sans-serif;
-   background-color: rgba(255,255,255,0.2);
-    maring:0;
-    overflow: hidden;
+  font-family: 'Lato', sans-serif;
+  background-color: rgba(255, 255, 255, 0.2);
+  maring: 0;
+  overflow: hidden;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 
-  &_title{
+  &_title {
     text-align: center;
     color: white;
-    margin:0 1em;
+    margin: 0 1em;
     font-weight: 100;
-  }
-
-  &_igloo-logo {
-    text-align: center;
-
-    margin: 0 20px;
-    img {
-      max-width: 400px;
-    }
   }
 
   &_busbud-logo {

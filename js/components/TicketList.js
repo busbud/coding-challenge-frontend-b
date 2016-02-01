@@ -14,16 +14,14 @@ var TicketList = React.createClass({
         let departuresList = getDeparturesList(departures,store.getState().sortBy) || departures;
 
         return (
-            <ul className="ticket column">
+            <ul className="ticket_list column">
                 {
                     departuresList.map((ticket) => {
                         let locations = h.getTicketLocations(result,ticket);
                         let operator = h.getTicketOperator(result,ticket);
 
                         return (
-                            <li className="ticket_item" key={ticket.id}>
-                                <Paper className="ticket_item_paper" children={<Ticket operator={operator} locations={locations} ticket={ticket}/>}/>
-                            </li>
+                            <Ticket key={ticket.id} operator={operator} locations={locations} ticket={ticket}/>
                         )
                     })
                 }

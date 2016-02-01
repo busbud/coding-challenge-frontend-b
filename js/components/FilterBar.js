@@ -19,6 +19,7 @@ var VisibilityLink = React.createClass({
 
         return (
             <ListItem
+                className="sortType"
                 primaryText={text}
                 onTouchTap={this.dispatchAction}
             />
@@ -32,30 +33,31 @@ var FilterBar = React.createClass({
         const lg = store.getState().language;
 
         return (
-            <div className="filter-bar column">
-                <List subheader={lg.sortBy || 'sort'}>
+            <div className="filter-bar column small-12 medium-3" id="filter-bar">
+                <List className='filter-bar_sort' subheader={lg.sortBy || 'sort'} style={{borderRadius:0}}>
                     <VisibilityLink store={store} text='Price' actionType='SORT_BY_PRICE'/>
                     <VisibilityLink store={store} text='Departure time' actionType='SORT_BY_DEPARTURE_TIME'/>
-
                 </List>
-                <Divider />
-                <List subheader="Filter">
-                    <ListItem
-                        leftCheckbox={<Checkbox />}
-                        primaryText="Operators"
-                        secondaryText="list"
-                    />
-                    <ListItem
-                        leftCheckbox={<Checkbox />}
-                        primaryText="..."
-                        secondaryText=".."
-                    />
-                    <ListItem
-                        leftCheckbox={<Checkbox />}
-                        primaryText="..."
-                        secondaryText=".."
-                    />
-                </List>
+                {
+                //<Divider />
+                //<List subheader="Filter" style={{borderRadius:0}}>
+                //    <ListItem
+                //        leftCheckbox={<Checkbox />}
+                //        primaryText="Operators"
+                //        secondaryText="list"
+                //    />
+                //    <ListItem
+                //        leftCheckbox={<Checkbox />}
+                //        primaryText="..."
+                //        secondaryText=".."
+                //    />
+                //    <ListItem
+                //        leftCheckbox={<Checkbox />}
+                //        primaryText="..."
+                //        secondaryText=".."
+                //    />
+                //</List>
+                }
             </div>
         )
     }

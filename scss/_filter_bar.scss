@@ -1,3 +1,14 @@
 .filter-bar {
-  max-width: 300px;
+  //max-width: 250px;
+  padding:0;
+  margin-bottom: 5px;
+
+  &_sort {
+    display: flex;
+    padding: 0 !important;
+
+    @include breakpoint(medium) {
+      display: block;
+    }
+  }
 }

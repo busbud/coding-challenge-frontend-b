@@ -49,11 +49,13 @@ let Departures = React.createClass({
     render() {
         return (
             <div className="row departures">
-                <div className="columns align-center">
+                <div className="columns">
                     <SearchBar {...this.props}/>
-                    <div className="departures_result row">
-                        <FilterBar {...this.props}/>
-                        <TicketList {...this.props}/>
+                    <div className="departures_result">
+                        <div className="row">
+                            <FilterBar {...this.props}/>
+                            <TicketList {...this.props}/>
+                        </div>
                     </div>
                 </div>
             </div>
