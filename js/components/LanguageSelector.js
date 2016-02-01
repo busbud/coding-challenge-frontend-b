@@ -46,7 +46,7 @@ var LanguageSelector = React.createClass({
                         <IconButton iconClassName="material-icons" onTouchTap={this.handleToggle}>close</IconButton>
                     </MenuItem>
                     <MenuItem onTouchTap={this.handleClose}><Link to={this.getLangNewPath('en')}>English</Link></MenuItem>
-                    <MenuItem onTouchTap={this.handleClose}><Link to={this.getLangNewPath('fr')}>French</Link></MenuItem>
+                    <MenuItem onTouchTap={this.handleClose}><Link to={this.getLangNewPath('fr')}>Français</Link></MenuItem>
                 </LeftNav>
             </div>
 

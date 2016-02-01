@@ -35,8 +35,8 @@ var FilterBar = React.createClass({
         return (
             <div className="filter-bar column small-12 medium-3" id="filter-bar">
                 <List className='filter-bar_sort' subheader={lg.sortBy || 'sort'} style={{borderRadius:0}}>
-                    <VisibilityLink store={store} text='Price' actionType='SORT_BY_PRICE'/>
-                    <VisibilityLink store={store} text='Departure time' actionType='SORT_BY_DEPARTURE_TIME'/>
+                    <VisibilityLink store={store} text={lg.price} actionType='SORT_BY_PRICE'/>
+                    <VisibilityLink store={store} text={lg.departure_time} actionType='SORT_BY_DEPARTURE_TIME'/>
                 </List>
                 {
                 //<Divider />
