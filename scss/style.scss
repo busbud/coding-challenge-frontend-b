@@ -17,9 +17,10 @@ body {
 }
 
 .wrapper {
-  background-color: LightSkyBlue;
+  background-color:  #0d0d0d;
 }
-@import 'home';
+
+@import 'landing';
 @import 'header';
 @import 'departures';
 @import 'search_bar';

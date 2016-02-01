@@ -1,0 +1,83 @@
+.gallery {
+  width:100vw;
+  margin:0;
+  padding:0;
+  display: flex;
+  //display: none;
+  flex-flow: row wrap;
+
+  &_item {
+    list-style:none;
+    overflow: hidden;
+    width: 50vw;
+    height: 25vh;
+
+    @include breakpoint(medium) {
+      width: 20vw;
+      height: 30vh;
+    }
+
+    img {
+      height:100%;
+      width: auto;
+    }
+  }
+}
+
+.home-section {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  color: white;
+  font-family: Raleway,sans-serif;
+  font-size: 2em;
+
+  &_ticket{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    flex: 1 0 auto;
+    @include breakpoint(medium) {
+      flex-flow: row nowrap;
+    }
+  }
+
+  &_igloofestlogo {
+    margin: 0 auto;
+
+    @include breakpoint(medium) {
+      max-height: 240px;
+      margin: 0 2em;
+    }
+  }
+
+  &_link {
+    flex-basis: 100%;
+    padding: 1em;
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    font-size: 2em;
+    margin-left: 20vw;
+
+    @include breakpoint(medium) {
+      box-shadow: 0 0 10px black;
+      font-size: 1em;
+      margin-left: 0;
+    }
+
+    &:hover {
+      background-color: #ffcc33;
+    }
+  }
+
+  &_busbudlogo{
+    text-align: center;
+    padding: 0.5em;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+    flex: none;
+  }
+}

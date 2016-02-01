@@ -3,6 +3,10 @@
   &_list {
     padding: 0 5px;
     margin: 0;
+
+    @include breakpoint(medium) {
+      padding: 0 0 0 5px;
+    }
   }
 
   &_item {

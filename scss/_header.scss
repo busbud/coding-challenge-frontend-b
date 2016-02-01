@@ -1,19 +1,18 @@
 .header {
   font-family: 'Lato', sans-serif;
   background-color: rgba(255, 255, 255, 0.2);
-  maring: 0;
   overflow: hidden;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 
   &_title {
     text-align: center;
     color: white;
-    margin: 0 1em;
+    margin: 0;
     font-weight: 100;
   }
 
   &_busbud-logo {
-    margin: 0 20px;
+    margin: 0;
     height: 100%;
     img {
       max-width: 200px;
