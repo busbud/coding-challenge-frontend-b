@@ -13,6 +13,11 @@
     height: 25vh;
 
     @include breakpoint(medium) {
+      width: 25vw;
+      height: 30vh;
+    }
+
+    @include breakpoint(large) {
       width: 20vw;
       height: 30vh;
     }
@@ -39,15 +44,18 @@
     flex-flow: row wrap;
     align-items: center;
     flex: 1 0 auto;
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
       flex-flow: row nowrap;
     }
   }
 
   &_igloofestlogo {
     margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
 
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
+      width: auto;
       max-height: 240px;
       margin: 0 2em;
     }
@@ -59,10 +67,10 @@
     color: black;
     text-decoration: none;
     background-color: white;
-    font-size: 2em;
+    //font-size: 1em;
     margin-left: 20vw;
 
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
       box-shadow: 0 0 10px black;
       font-size: 1em;
       margin-left: 0;
