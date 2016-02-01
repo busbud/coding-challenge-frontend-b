@@ -1,65 +1,7 @@
-.ticket {
-  padding: 0 10px;
+.departures {
 
-  &_item {
-    list-style: none;
-    margin: 10px 0;
+  &_result{
 
-    &_paper {
-      //padding: 0.1em;
-    }
-
-    &_innerwrapper {
-      //padding: 0.5em;
-      //margin: 0 1em;
-    }
-
-    &_info, &_route {
-      border-top: 1px solid LightSkyBlue;
-    }
-
-    &_arrow {
-      padding:0;
-      color: gray;
-    }
-
-    &_cityname {
-      color:gray;
-    }
-
-    &_time {
-      font-size: larger;
-    }
-
-    &_operator {
-      text-align: center;
-      border-right:1px solid LightSkyBlue ;
-
-      &_logo {
-        width: 100%;
-        max-width: 100px;
-      }
-    }
-    
-    &_price {
-      text-align: center;
-      font-size: 1.3em;
-      color:  LightSkyBlue;
-    }
-
-    &_currency {
-      font-size: 0.7em;
-    }
-
-    &_class {
-      padding: 0.5em;
-      color:white;
-      font-size: 0.9em;
-      background-color: LightSkyBlue ;
-
-      div {
-        padding: 0 0.5em;
-      }
-    }
   }
 }
+

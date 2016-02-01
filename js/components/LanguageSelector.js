@@ -25,17 +25,17 @@ var LanguageSelector = React.createClass({
     },
     render() {
         return (
-            <div>
+            <div className="lang-bar">
                 <IconButton
                     iconClassName="material-icons"
-                    tooltip="Change Language"
                     tooltipPosition="bottom-right"
                     onTouchTap={this.handleToggle}
+                    iconStyle={{color:'LightSkyBlue'}}
                 >
                     language
                 </IconButton>
                 <LeftNav
-                    className='lang-bar'
+                    className='lang-bar_menu'
                     docked={false}
                     width={100}
                     open={this.state.open}
