@@ -2,6 +2,9 @@
   "name": "Busbud-front-end-coding-challenge",
   "version": "0.1.0",
   "main": "index.html",
+  "engines": {
+    "node": "0.12.9"
+  },
   "description": "Busbud front-end coding challenge",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
