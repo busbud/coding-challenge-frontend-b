@@ -11,7 +11,7 @@ var SearchBar = React.createClass({
                     <p>One-way ticket</p>
                 </div>
                 <div className="columns">
-                    <label for="">From</label>
+                    <div className="columns small-12 medium-5 header_igloo-logo"><img src="http://igloofest.ca/public/app/uploads/images/5661d13eecfee.png" alt="igloofest logo"/></div>
                 </div>
             </div>
         )

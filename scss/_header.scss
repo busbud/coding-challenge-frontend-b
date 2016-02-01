@@ -1,18 +1,14 @@
 .header {
   font-family: 'Lato',sans-serif;
-
-  &_mainbar {
-    background-color: rgba(255,255,255,0.2);
+   background-color: rgba(255,255,255,0.2);
     maring:0;
     overflow: hidden;
 
-    &_title{
-      text-align: center;
-      color: white;
-      margin:0 1em;
-      font-weight: 100;
-      display: inline-block;
-    }
+  &_title{
+    text-align: center;
+    color: white;
+    margin:0 1em;
+    font-weight: 100;
   }
 
   &_igloo-logo {
@@ -21,17 +17,16 @@
     margin: 0 20px;
     img {
       max-width: 400px;
-      width:100%;
     }
   }
 
   &_busbud-logo {
-    text-align: center;
-
     margin: 0 20px;
+    height: 100%;
     img {
       max-width: 200px;
-      width:100%;
+      max-height: 40px;
+      width: auto;
     }
   }
 

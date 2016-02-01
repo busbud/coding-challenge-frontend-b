@@ -30,15 +30,10 @@ var Home = React.createClass({
         const store = this.props.store;
         return (
             <div className="wrapper">
-                <div className="header">
-                    <div className="header_mainbar">
-                        <LanguageSelector currentPath={this.props.location.pathname}/>
-                        <h1 className="header_mainbar_title">Busbud front-end coding challenge</h1>
-                    </div>
-                    <div className="row align-middle align-center">
-                        <div className="columns small-12 medium-5 header_igloo-logo"><img src="http://igloofest.ca/public/app/uploads/images/5661d13eecfee.png" alt="igloofest logo"/></div>
-                        <div className="columns small-12 medium-5 header_busbud-logo"><img src="https://busbud-pubweb-assets.global.ssl.fastly.net/images/logos/fc7ed21.logo-post-60@2x.png" alt="busbud logo"/></div>
-                    </div>
+                <div className="header row align-middle">
+                    <LanguageSelector currentPath={this.props.location.pathname}/>
+                    <div className="header_busbud-logo"><a href="https://www.busbud.com/en" target="_blank"><img src="https://busbud-pubweb-assets.global.ssl.fastly.net/images/logos/fc7ed21.logo-post-60@2x.png" alt="busbud logo"/></a></div>
+                    <h1 className="header_title">Front-end coding challenge</h1>
                 </div>
                 {this.getChildrenWithStore()}
             </div>
