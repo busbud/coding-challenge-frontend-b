@@ -15,15 +15,6 @@
     background-color: white;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 
-    &_paper {
-      //padding: 0.1em;
-    }
-
-    &_innerwrapper {
-      //padding: 0.5em;
-      //margin: 0 1em;
-    }
-
     &_arrow {
       padding:0;
       color: gray;
@@ -84,6 +75,12 @@
 
     &_fetching{
       text-align: center;
+      background-color:  #0d0d0d;
+    }
+
+    &_refresh{
+      color: white;
+      background-color:  #0d0d0d;
     }
   }
 }

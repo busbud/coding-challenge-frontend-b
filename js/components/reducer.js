@@ -51,7 +51,11 @@ function tickets(
             fetch(action.params,action.query)
                 .end((err,res) => {
                     if (err) {
-                        //dispatch error
+                        //console.log(err);
+                        store.dispatch({
+                            type:'NO_RESULT',
+                            result: {},
+                        });
                     }
                     else {
                         let result = res.body;
@@ -108,6 +112,14 @@ function tickets(
 
         case 'RECEIVED_DEPARTURES':
             console.log('departures received');
+            return {
+                ...state,
+                result: action.result,
+                fetching:false
+            };
+
+        case 'NO_RESULT':
+            console.log('No result');
             return {
                 ...state,
                 result: action.result,

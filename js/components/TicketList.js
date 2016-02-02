@@ -53,16 +53,19 @@ var TicketList = React.createClass({
 
         if (store.getState().tickets.fetching) {
             return (
-                <li className="ticket_item_fetching">
+                <li className="ticket_item ticket_item_fetching">
                     <CircularProgress/>
                 </li>
             )
         }
     },
     renderRefresh(departures){
-        if (departures.length) {
+        const {store} = this.props;
+
+        if (!store.getState().tickets.fetching && !departures.length) {
+            console.log('here');
             return (
-                <li>No results, please refresh</li>
+                <li className="ticket_item ticket_item_refresh">No results, please refresh</li>
             )
         }
     },
