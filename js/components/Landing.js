@@ -71,7 +71,7 @@ var Landing = React.createClass({
                 <div className="home-section">
                     <div className="home-section_ticket">
                         <img className="home-section_igloofestlogo" src="http://igloofest.ca/public/app/uploads/images/5661d13eecfee.png" alt="igloofest logo"/>
-                        <Link className="home-section_link" to="/fr/departures/dr5reg/f25dvk/2016-02-05">GET YOUR BUS TICKET NOW!</Link>
+                        <Link className="home-section_link" to="/en/departures/dr5reg/f25dvk/2016-02-05">GET YOUR BUS TICKET NOW!</Link>
                     </div>
                     <div className="home-section_busbudlogo"><img src="https://busbud-pubweb-assets.global.ssl.fastly.net/images/logos/fc7ed21.logo-post-60@2x.png" alt="busbud logo"/></div>
                 </div>

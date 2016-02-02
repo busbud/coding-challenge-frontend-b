@@ -14,7 +14,7 @@ var routes = (
         <Route path="/" component={App}>
             <IndexRoute component={Landing}/>
             <Route path=":lang" component={Home}>
-                <Route path="departures/:origin/:dest/:date" component={Departures}/>
+                <Route path="departures(/:origin/:dest/:date)" component={Departures}/>
             </Route>
             <Route path="*" component={NotFound}/>
         </Route>
