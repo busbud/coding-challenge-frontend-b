@@ -73,7 +73,7 @@ var Landing = React.createClass({
     renderProgress(){
         if (!this.state.galleryFetched) {
             return (
-                <LinearProgress className="content-section_progress-bar" mode="indeterminate"/>
+                <LinearProgress className="content-section_progress-bar" style={{marginBottom:'10px'}} mode="indeterminate"/>
             )
         }
     },
