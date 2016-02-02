@@ -52,10 +52,11 @@
   &_igloofestlogo {
     margin: 0 auto;
     width: 100%;
+    height:auto;
     max-width: 600px;
 
     @include breakpoint(large) {
-      width: auto;
+      //width: auto;
       max-height: 240px;
       margin: 0 2em;
     }
