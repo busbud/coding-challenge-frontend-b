@@ -7,14 +7,20 @@
   },
   "description": "Busbud front-end coding challenge",
   "scripts": {
-    "start": "node ."
+    "postinstall": "gulp production",
+    "start": "node server.js"
   },
   "author": "Nora Top",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "2.9.11",
+    "watchify": "3.4.0"
+  },
+  "dependencies": {
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
     "babel": "5.8.23",
     "babelify": "6.4.0",
-    "browser-sync": "2.9.11",
     "browserify": "11.2.0",
     "connect-history-api-fallback": "1.1.0",
     "foundation-sites": "^6.1.2",
@@ -30,10 +36,8 @@
     "loose-envify": "^1.1.0",
     "material-ui": "^0.14.3",
     "re-base": "1.2.1",
-    "react": "0.14.0",
     "react-addons-css-transition-group": "0.14.0",
     "react-catalyst": "0.3.0",
-    "react-dom": "0.14.0",
     "react-mixin": "3.0.0",
     "react-redux": "^4.1.0",
     "react-router": "1.0.0-rc3",
@@ -42,11 +46,6 @@
     "redux-devtools": "^3.0.1",
     "superagent": "^1.6.1",
     "vinyl-buffer": "1.0.0",
-    "vinyl-source-stream": "1.1.0",
-    "watchify": "3.4.0"
-  },
-  "dependencies": {
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "vinyl-source-stream": "1.1.0"
   }
 }
