@@ -1,5 +1,7 @@
 # Comments about the proposed solution
 
+The microsite is deployed [here](http://busbud-front-end-challenge.herokuapp.com).
+
 ## Selected technologies
 - React to build UI components
 - Redux implementation of Flux architecture to control the data flow
@@ -19,12 +21,22 @@ This coding challenge makes a good candidate to learn Flux architecture, Redux s
 **Solution**: 
 - Use the router to handle language change, providing the language as props passed to the Departures component (child component).
 - Keep data in reducer. The Departures component will fetch data when mounted and will refetch when will receive new props.   
-Note: Redux is not 100% necessary as data can be handled in the state of the Departures component, in the case of our simple app.
-However, Redux adds flexibility and is likely to scale well when adding filtering/sorting components. 
+- The state of the lives in a single unique store (redux). The store is initiated as a props in the App component and then passed to children as props. This solution is chosen to respect React principles specifying the data flow in the App. 
+Other options to address this concern:
+* Import the store with require (or import)
+* Use React context to access the store. This would have been the easiest way. However, according to the React documentation, the context API is not stable and should be used *sparingly*.
+
+## Left todo
+- use redux-thunk to add middleware, in order to avoid dispatching inside of the reducer.
+- refactoring: extract some components.
+- add documentation in code.
+- add Moment.js to handle dates format.
+- bugs: toLocaleTimeString is not supported by Safari. Need to code alternative.
+- Fetching departures occurs on componentDidMount for now, and has to be moved to a 'search' form that is not included yet.
+- add more sort and filter options like operators...
+- add switch like currency.
 
 
-## ToDo later
-- use redux-thunk to add middleware, in order to avoid dispatching inside of the reducer. 
 
 -----
 # coding-challenge-frontend-b

@@ -18,7 +18,7 @@ var TicketList = React.createClass({
         })
     },
     componentWillUnmount() {
-        this.unsubcribed();
+        this.unsubcribe();
     },
     componentWillReceiveProps(nextProps){
         const {store} = nextProps;

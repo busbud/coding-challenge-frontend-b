@@ -26,7 +26,6 @@ function mergeResult(res1,res2){
 // Return the time (hour, minute) for a localisation given as the language. NOT SUPPORTED BY SAFARI WHICH RETURN FULL TIME IN US FORMAT
 function getFormattedTime(timeString,lang){
     let options = {
-        timeZone: 'UTC',
         hour: '2-digit',
         minute: '2-digit'
     };
