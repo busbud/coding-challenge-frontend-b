@@ -51,12 +51,18 @@ var TicketList = React.createClass({
     renderFetching(){
         const {store} = this.props;
 
-        console.log(store.getState().tickets.fetching);
         if (store.getState().tickets.fetching) {
             return (
                 <li className="ticket_item_fetching">
                     <CircularProgress/>
                 </li>
+            )
+        }
+    },
+    renderRefresh(departures){
+        if (departures.length) {
+            return (
+                <li>No results, please refresh</li>
             )
         }
     },
@@ -80,6 +86,7 @@ var TicketList = React.createClass({
                     })
                 }
                 {this.renderFetching()}
+                {this.renderRefresh(departures)}
             </ul>
         )
     }
