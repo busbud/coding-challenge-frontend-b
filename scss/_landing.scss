@@ -3,8 +3,8 @@
   margin:0;
   padding:0;
   display: flex;
-  //display: none;
   flex-flow: row wrap;
+  //justify-content: center;
 
   &_item {
     list-style:none;
@@ -29,7 +29,7 @@
   }
 }
 
-.home-section {
+.content-section {
   position: fixed;
   width: 100vw;
   height: 100vh;

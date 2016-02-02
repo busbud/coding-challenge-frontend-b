@@ -1,7 +1,7 @@
 import React from 'react';
 import Paper from 'material-ui/lib/paper';
 import Ticket from './Ticket';
-
+import CircularProgress from 'material-ui/lib/circular-progress';
 import h from '../lib/helpers';
 import {getDeparturesList} from './reducer';
 
@@ -48,6 +48,18 @@ var TicketList = React.createClass({
 
         return {params,query}
     },
+    renderFetching(){
+        const {store} = this.props;
+
+        console.log(store.getState().tickets.fetching);
+        if (store.getState().tickets.fetching) {
+            return (
+                <li className="ticket_item_fetching">
+                    <CircularProgress/>
+                </li>
+            )
+        }
+    },
     render() {
         const lang = this.props.params.lang;
         const {store} = this.props;
@@ -67,6 +79,7 @@ var TicketList = React.createClass({
                         )
                     })
                 }
+                {this.renderFetching()}
             </ul>
         )
     }
