@@ -7,7 +7,7 @@ var Schedule = React.createClass({
     var departures = [];
     for(var i = 0; i < this.props.departures.length; i++) {
       departures.push(
-        <Departure data={this.props.departures[i]} itemId={this.props.departures[i].id} />
+        <Departure data={this.props.departures[i]} />
       );
     }
     return (
