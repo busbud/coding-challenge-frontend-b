@@ -49,10 +49,11 @@ var TicketList = React.createClass({
         return {params,query}
     },
     render() {
+        const lang = this.props.params.lang;
         const {store} = this.props;
-        var result = store.getState().tickets.result;
-        var departures = result.departures || [];
-        let departuresList = getDeparturesList(departures,store.getState().sortBy) || departures;
+        const result = store.getState().tickets.result;
+        const departures = result.departures || [];
+        const departuresList = getDeparturesList(departures,store.getState().sortBy) || departures;
 
         return (
             <ul className="ticket_list column">
@@ -62,7 +63,7 @@ var TicketList = React.createClass({
                         let operator = h.getTicketOperator(result,ticket);
 
                         return (
-                            <Ticket key={ticket.id} operator={operator} locations={locations} ticket={ticket}/>
+                            <Ticket key={ticket.id} operator={operator} locations={locations} ticket={ticket} lang={lang}/>
                         )
                     })
                 }

@@ -22,7 +22,7 @@ function mergeResult(res1,res2){
     return {...res1,...mergedRes2}
 }
 
-function getFormattedTime(timeString){
+function getFormattedTime(timeString,lang){
     let options = {
         timeZone: 'UTC',
         hour: '2-digit',
@@ -31,7 +31,7 @@ function getFormattedTime(timeString){
 
     let date = new Date(Date.parse(timeString));
 
-    return date.toLocaleTimeString('en-US',options)
+    return date.toLocaleTimeString(lang,options)
 }
 
 function getTicketLocations(result, ticket){

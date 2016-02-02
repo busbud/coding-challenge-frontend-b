@@ -4,10 +4,11 @@ import Amenities from './Amenities';
 
 var Ticket = React.createClass({
     render() {
-        let ticket = this.props.ticket;
-        let origin = this.props.locations.origin;
-        let destination = this.props.locations.destination;
-        let operator = this.props.operator;
+        const ticket = this.props.ticket;
+        const origin = this.props.locations.origin;
+        const destination = this.props.locations.destination;
+        const operator = this.props.operator;
+        const lang = this.props.lang;
 
         return (
             <li className="ticket_item">
@@ -16,13 +17,13 @@ var Ticket = React.createClass({
                         <div className="row align-middle align-spaced">
                             <div className="columns small-5">
                                 <p className="ticket_item_cityname">{origin.city.name}</p>
-                                <p className="ticket_item_time"><b>{h.getFormattedTime(ticket.departure_time)}</b></p>
+                                <p className="ticket_item_time"><b>{h.getFormattedTime(ticket.departure_time,lang)}</b></p>
                                 <p>{origin.name}</p>
                             </div>
                             <div className="columns small-1 ticket_item_arrow"><i className="material-icons">arrow_forward</i></div>
                             <div className="columns small-5">
                                 <p className="ticket_item_cityname">{destination.city.name}</p>
-                                <p className="ticket_item_time"><b>{h.getFormattedTime(ticket.arrival_time)}</b></p>
+                                <p className="ticket_item_time"><b>{h.getFormattedTime(ticket.arrival_time,lang)}</b></p>
                                 <p>{destination.name}</p>
                             </div>
                         </div>
