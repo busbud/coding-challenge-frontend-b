@@ -1,9 +1,7 @@
 var source = require('vinyl-source-stream');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var browserify = require('browserify');
 var babelify = require('babelify');
-var watchify = require('watchify');
 var notify = require('gulp-notify');
 
 var sass = require('gulp-sass');
@@ -12,9 +10,12 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var buffer = require('vinyl-buffer');
 
+if (process.env.NODE_ENV !== 'production') {var browserify = require('browserify')}
+if (process.env.NODE_ENV !== 'production') {var watchify = require('watchify')}
+
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
-var historyApiFallback = require('connect-history-api-fallback');
+if (process.env.NODE_ENV !== 'production') {var historyApiFallback = require('connect-history-api-fallback')}
 
 
 /*
