@@ -1,6 +1,6 @@
 # Comments about the proposed solution
 
-The microsite is deployed [here](http://busbud-front-end-challenge.herokuapp.com).
+**The microsite is deployed [here](http://busbud-front-end-challenge.herokuapp.com).**
 
 ## Selected technologies
 - React to build UI components
