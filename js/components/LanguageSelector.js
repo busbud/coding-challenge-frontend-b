@@ -24,12 +24,16 @@ var LanguageSelector = React.createClass({
         return `/${lang}/${subpath}`;
     },
     render() {
+        const store = this.props.store;
+        const lg = store.getState().language;
+
         return (
             <div className="lang-bar">
                 <IconButton
                     iconClassName="material-icons"
-                    //tooltip="Change language"
-                    tooltipPosition="bottom-right"
+                    tooltip={lg.changeLangText}
+                    tooltipPosition="right"
+                    touch={true}
                     onTouchTap={this.handleToggle}
                     iconStyle={{color:'LightSkyBlue'}}
                 >
