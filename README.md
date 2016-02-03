@@ -1,12 +1,37 @@
+#Challenge Solution
+
+The following notes and descriptions cover the solution for the coding challenge quoted below.
+
+The microsite instance has been deployed to Heroku and is available at [coding-challenge-frontend-b.herokuapp.com](http://coding-challenge-frontend-b.herokuapp.com/).
+
+###Notable Features:
+- Responsive design
+- Ability to change the website language (text, labels, tooltips) without page reload
+
+###Core Dependencies Breakdown:
+- [React](https://facebook.github.io/react/)
+- [Express](http://expressjs.com/)
+- [webpack](https://webpack.github.io/)
+- [Material UI](http://www.material-ui.com/#/) components
+- [Counterpart](https://github.com/martinandert/counterpart) + [Material Translate](https://github.com/martinandert/react-translate-component) component
+
+###Installation Guide
+- run `npm install` inside the root folder
+- put the proper background image into **AppContainer** folder
+- run `webpack -p` inside **build** folder
+- to start the app at `localhost:8080`, run `node app.js` inside the root folder
+
+##
+
 # coding-challenge-frontend-b
 ![igloofest](https://cloud.githubusercontent.com/assets/1574577/11387762/0ba89cb6-92fc-11e5-9fb1-3d1e6747cc88.png)
 
-It's getting cold in Montreal and the [Igloofest](http://igloofest.ca/en/) is kicking in high gear! 
+It's getting cold in Montreal and the [Igloofest](http://igloofest.ca/en/) is kicking in high gear!
 Your challenge is to build a microsite that allows a traveler from NYC to find one-way departure schedules for the festival's closing weekend.
 
 ## Functional Requirements
 - Has a simple onboarding screen that will trigger the departure search
-- Lists all the departures for a given origin city (**New York - geohash: dr5reg**) and a given destination city (**Montreal - geohash: f25dvk**) for a given day (**the 5th of February 2016**) for **1** adult. 
+- Lists all the departures for a given origin city (**New York - geohash: dr5reg**) and a given destination city (**Montreal - geohash: f25dvk**) for a given day (**the 5th of February 2016**) for **1** adult.
 - For each departure, we want, at least, to see the **departure time**, the **arrival time**, the **location name** and the **price** (use `prices.total` of the `departure`).
 
 ## Non-functional requirements
