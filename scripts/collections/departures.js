@@ -20,7 +20,7 @@ var Departures = Backbone.Collection.extend({
   },
 
   parseImageURL: function(url) {
-    return url.split('?')[0]
+    return url.split('?')[0];
   },
 
   addMissingZero: function(i) {
