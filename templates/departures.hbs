@@ -1,0 +1,51 @@
+<nav>
+  <ul class="container">
+    <li><a href="/">{{copy.home-link}}</a></li>
+  </ul>
+</nav>
+
+<div class="hero" style="background:linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), url('{{departures.[0].destinationCityImage}}');
+background-size:cover; background-position: center center;"></div>
+
+<div class="container">
+
+  <ul class="departures-list twelve columns">
+    {{#each departures }}
+      <li class="departure-details">
+        <span class="row">
+          {{originCity}} &rarr; {{destinationCity}}
+        </span>
+        <div class="row">
+
+          <div class="trip-details trip-details__price two columns">
+            <p>${{price}}</p>
+          </div>
+
+          <div class="trip-details trip-details__origin three columns">
+            <p class="time">{{departureTime}}</p>
+            <p class="location">{{originName}}</p>
+          </div>
+
+          <div class="trip-details trip-details__destination three columns">
+            <p class="time">{{arrivalTime}}</p>
+            <p class="location">{{destinationName}}</p>
+          </div>
+
+          <div class="trip-details trip-details__actions four columns">
+
+            <div class="amenities">
+              {{#each amenities}}
+                {{#if this}}
+                  <span class={{@key}} title={{@key}}></span>
+                {{/if}}
+              {{/each }}
+            </div>
+
+            <button class="primary" id="book">{{../copy.book-now-link}}</button>
+          </div>
+
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>

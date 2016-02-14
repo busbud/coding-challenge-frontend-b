@@ -1,0 +1,19 @@
+.call-to-action {
+  text-align: center;
+  margin-top: 120px;
+  h1 {
+    color: $white;
+    margin-bottom: 50px;
+  }
+
+  a {
+    color: $white;
+    background: $yellow;
+    padding: 12px 30px;
+    text-decoration: none;
+
+    &:hover {
+      background: darken($yellow, 5%);
+    }
+  }
+}

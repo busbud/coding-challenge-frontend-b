@@ -1,0 +1,34 @@
+{
+  "name": "busbud-challenge",
+  "version": "1.0.0",
+  "description": "Quick SPA displaying bus routes from NYC to Montreal using Busbud's API",
+  "main": "bundle.js",
+  "scripts": {
+    "watch-js": "watchify -t hbsfy ./scripts/app.js -o bundle.js",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "build-css": "node-sass --include-path scss ./styles/styles.scss ./styles.css",
+    "watch": "npm run watch-js & npm run watch-css",
+    "min-css" : "cleancss ./styles.css -o ./styles.css",
+    "min-js" : "uglifyjs ./bundle.js -o ./bundle.js --compress",
+    "build-prod" : "npm run min-css & npm run min-js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "Busbud",
+    "Backbone"
+  ],
+  "author": "Andres Roget",
+  "license": "ISC",
+  "dependencies": {
+    "backbone": "^1.2.3",
+    "express": "^4.13.4",
+    "jquery": "^2.2.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "handlebars": "^4.0.5",
+    "hbsfy": "^2.5.0",
+    "watchify": "^3.7.0"
+  }
+}

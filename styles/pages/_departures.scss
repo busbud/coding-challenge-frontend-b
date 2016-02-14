@@ -1,0 +1,143 @@
+.hero {
+  height: 400px;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.departures-list {
+  margin-top: -300px;
+  background: $white;
+  padding-left: 0;
+}
+
+.departure-details {
+  list-style: none;
+  margin-bottom: 0;
+  padding: 20px 50px;
+  border-bottom: 4px solid $yellow;
+
+  @media all and (max-width: 767px) {
+    padding: 20px;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: lighten($white, 5%);
+    .primary {
+      background: darken($primary__button, 20%);
+    }
+  }
+
+  span {
+    display: block;
+    margin-bottom: 20px;
+    color: lighten($font__color, 40%);
+
+    @media all and (max-width:766px) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.trip-details {
+  p {
+    margin-bottom: 0;
+  }
+
+  &.trip-details__price{
+    margin-top: 15px;
+    font-size: 30px;
+
+    @media all and (max-width: 766px) {
+      text-align: center;
+    }
+  }
+
+  .time {
+    color: $red;
+    text-decoration: underline;
+  }
+
+  &.trip-details__origin {
+    position: relative;
+
+    @media all and (min-width: 950px) {
+      &:after {
+        content: '>';
+        color: $yellow;
+        font-size: 30px;
+        display: block;
+        position: absolute;
+        left: 90%;
+        right: 0;
+        top: 15%;
+        bottom: 0;
+      }
+    }
+  }
+
+  &.trip-details__destination,
+  &.trip-details__origin {
+    @media all and (max-width: 766px) {
+      text-align: center;
+      float: left;
+      width: 50%;
+      margin: 10px auto 30px auto;
+    }
+  }
+}
+
+.amenities {
+  text-align: right;
+  margin-top: 10px;
+
+  @media all and (max-width:766px) {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  span {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    padding-right: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &.wifi {
+      background-image: url('../public/svg/wifi.svg');
+    }
+    &.toilet {
+      background-image: url('../public/svg/toilet.svg');
+    }
+    &.ac {
+      background-image: url('../public/svg/ac.svg');
+    }
+    &.food {
+      background-image: url('../public/svg/food.svg');
+    }
+    &.refreshment {
+      background-image: url('../public/svg/refreshment.svg');
+    }
+    &.power_outlets {
+      background-image: url('../public/svg/power_outlets.svg');
+    }
+    &.tv {
+      background-image: url('../public/svg/tv.svg');
+    }
+    &.bus_attendant {
+      background-image: url('../public/svg/bus_attendant.svg');
+    }
+    &.leg_room {
+      background-image: url('../public/svg/leg_room.svg');
+    }
+    &.display_name {
+      background-image: url('../public/svg/dollar.svg');
+    }
+  }
+}
