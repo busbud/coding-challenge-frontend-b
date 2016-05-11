@@ -1,0 +1,91 @@
+@import (reference) "config.less";
+@import (reference) "grid-builders.less";
+
+@padder: 10px;
+
+.gridBase(@p) {
+    display: block;
+    float: left;
+    margin: 0;
+    box-sizing: border-box;
+    padding: @p;
+    vertical-align: top;
+    position: relative;
+    &:before {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
+
+
+/* desktop grid */
+@media screen and (min-width:@desktopMinWidth) {
+    .dg {
+        .gridBase(@desktopPadding);
+    }
+
+    .gridBuilder(1, dg);
+    .columnBuilder(1, dg);
+
+    .hide-on-desktop {
+        display: none !important;
+    }
+}
+
+
+/* tablet grid */
+@media screen and (min-width:@tabletMinWidth) and (max-width:@tabletMaxWidth) {
+    // "launch point" for extending tablet grids
+    .tg {
+        .gridBase(@tabletPadding);
+    }
+
+    .gridBuilder(1, tg);
+    .columnBuilder(1, tg);
+
+    .hide-on-tablet {
+        display: none !important;
+    }
+}
+
+/* mobile grid */
+@media screen and (max-width:@mobileMaxWidth) {
+    // "launch point" for extending mobile grids
+    .mg {
+        .gridBase(@mobilePadding);
+    }
+
+    .gridBuilder(1, mg);
+    .columnBuilder(1, mg);
+
+    .hide-on-mobile {
+        display: none !important;
+    }
+}
+
+@media print {
+    .pg {
+        .gridBase(@printPadding);
+    }
+
+    .gridBuilder(1, pg);
+    .columnBuilder(1, pg);
+
+    .hide-on-print {
+        display: none !important;
+    }
+}
+
+// must be set last due to cascade
+.grid-parent(@p) {
+    .gridBase(@p);
+}
+
+.grid-parent {
+    .gridBase(0);
+}

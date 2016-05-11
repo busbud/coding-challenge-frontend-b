@@ -1,0 +1,43 @@
+@import (reference) "config.less";
+
+.gridBuilder (@index, @className) when (@index <= length(@gridSizes)) {
+    @p: extract(@gridSizes, @index);
+    @name: replace(~"@{p}","\..*$", "");
+
+    //we are going to use this class twice, so just calculate it once
+    @gridClass: ~'.@{className}-@{name}';
+
+    //this is your extender feature, which does not do so for the initial .grid_1
+    //which was set above as our launch point.
+    @{gridClass} {
+        .extender() when (@className = dg) {
+            &:extend(.dg);
+        }
+        .extender() when (@className = tg) {
+            &:extend(.tg);
+        }
+        .extender() when (@className = mg) {
+            &:extend(.mg);
+        }
+        .extender() when (@className = pg) {
+            &:extend(.pg);
+        }
+        .extender();
+    }
+
+    //iterate the loop just as you were doing
+    .gridBuilder(@index + 1, @className);
+}
+
+
+.columnBuilder (@index, @className) when (@index <= length(@gridSizes)) {
+    @p: (extract(@gridSizes, @index) / @gridColumns) * 100;
+    @name: extract(@gridSizes, @index);
+    @name2: replace(~"@{name}","\..*$", "");
+
+    .@{className}-@{name2} {
+        width: unit(@p, %);
+    }
+
+    .columnBuilder(@index + 1, @className);
+}
