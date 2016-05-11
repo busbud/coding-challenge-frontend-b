@@ -1,0 +1,132 @@
+@import (reference) "definitions.less";
+
+.result {
+  .clearfix();
+  max-width: 720px;
+  width: ~"calc(100% - 10px)";
+  background-color: #fff;
+  border-radius: 3px;
+  margin: 10px auto;
+  box-sizing: border-box;
+  &__departure {
+    .clearfix();
+    height: 150px;
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    @media (max-width:@mobileMaxWidth) {
+      height: auto;
+      border-left: 1px solid rgba(0,0,0,0.10);
+      border-right: 1px solid rgba(0,0,0,0.10);
+    }
+  }
+  &__carrier {
+    height: 150px;
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    border-left: 1px solid rgba(0,0,0,0.10);
+    border-right: 1px solid rgba(0,0,0,0.10);
+  }
+  &__cost {
+    height: 150px;
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    @media (max-width:@mobileMaxWidth) {
+      border-right: 1px solid rgba(0,0,0,0.10);
+    }
+  }
+  &__rating {
+    float: left;
+    height: 40px;
+    //width: 100px;
+    text-align: center;
+    line-height: 40px;
+    svg {
+      width: 20px;
+      height: 20px;
+      vertical-align: top;
+    }
+  }
+  &__amenities {
+    float: left;
+    //width: ~"calc(75% - 100px)";
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border-left: 1px solid rgba(0,0,0,0.10);
+    @media (max-width:@mobileMaxWidth) {
+      border-right: 1px solid rgba(0,0,0,0.10);
+    }
+  }
+  &__select {
+    float: left;
+    //width: 25%;
+    height: 40px;
+    padding: 0;
+    button {
+      display: block;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      line-height: 40px;
+      color: #fff;
+      background-color: orange;
+      border: none;
+      border-radius: 0 0 3px 0;
+    }
+  }
+}
+
+.departure {
+  .clearfix();
+  margin: 10px 0 20px 10px;
+  &__location {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__time {
+    display: block;
+    float: left;
+    font-size: 1.3em;
+    width: 90px;
+    @media (max-width:@mobileMaxWidth) {
+      float: none;
+      width: 100%;
+    }
+  }
+  &__terminal {
+    font-size: 1.3em;
+  }
+  &__city {
+    display: block;
+    color: rgba(0,0,0,0.50);
+  }
+}
+
+.carrier {
+  text-align: center;
+  &__logo {
+    height: 100px;
+    line-height: 100px;
+    vertical-align: middle;
+    img {
+      display: inline-block;
+      height: auto;
+      max-height: 100%;
+      width: auto;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.cost {
+  text-align: center;
+  padding-top: 40px;
+  &__amount {
+    font-size: 2em;
+    sup {
+      font-size: 0.5em;
+      margin: 0 0 0 5px;
+      top: -8px;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <title>BusBud Frontend test b</title>
+
+        <link rel="stylesheet" type="text/css" href="/css/styles.min.css" />
+    </head>
+
+    <body>
+        <div id="searchPage" class="page isActive">
+            <nav class="mainMenu">
+                <div class="changeLanguage">
+                    <a href="{{changeLangURL}}" alt="{{targetLang}}">{{targetLang}}</a>
+                </div>
+            </nav>
+
+            <div class="searchBox">
+                <h1 class="searchBox__title">{{i18n "search-box-title"}}</h1>
+                <div class="dg-50 tg-50 mg-100">
+                    <label>
+                        <span class="fieldLabel">{{i18n "leaving-from"}}</span>
+                        <input type="text" value="New-York, New-York, United States" placeholder="Select a city" required="required" readonly="readonly"/>
+                    </label>
+                </div>
+
+                <div class="dg-50 tg-50 mg-100">
+                    <label>
+                        <span class="fieldLabel">{{i18n "going-to"}}</span>
+                        <input type="text" value="Montreal, Quebec, Canada" placeholder="Select a city" required="required" readonly="readonly" />
+                    </label>
+                </div>
+
+                <div class="dg-50 tg-50 mg-100">
+                    <label>
+                        <span class="fieldLabel">{{i18n "departure-date"}}</span>
+                        <input type="date" value="2016-07-29" placeholder="yyyy-mm-dd" required="required" readonly="readonly" />
+                    </label>
+                </div>
+
+                <div class="dg-50 tg-50 mg-100">
+                    <label>
+                        <span class="fieldLabel">{{i18n "adults"}}</span>
+                        <select>
+                            <option value="1" selected="selected">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="dg-100 tg-100 mg-100">
+                    <input class="searchBox__button" data-action="search" type="button" value='{{i18n "search-for-buses"}}' />
+                </div>
+            </div>
+        </div>
+
+        <div id="resultsPage" class="page">
+            <nav class="mainMenu">
+                <input id="backToSearch" class="searchBox__button" data-action="show-search" type="button" value='{{i18n "back-to-search"}}' />
+                <div class="changeLanguage">
+                    <a href="{{changeLangURL}}" alt="{{targetLang}}">{{targetLang}}</a>
+                </div>
+            </nav>
+
+            <div id="resultsContainer" class="grid-parent dg-100 tg-100 mg-100">
+
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="/js/app.min.js"></script>
+        <script type="text/javascript" src="/js/compiledTemplates.js"></script>
+    </body>
+</html>

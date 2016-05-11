@@ -1,0 +1,69 @@
+@import (reference) "definitions.less";
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  position: absolute;
+  top: 0;
+}
+
+#searchPage {
+  transform: translate(-100%);
+  //left: -100%;
+  &.isActive {
+    transform: translate(0);
+  }
+}
+
+#resultsPage {
+  transform: translate(100%);
+  background-color: rgba(30,30,50,0.15);
+  &.isActive {
+    transform: translate(0);
+  }
+}
+
+#searchPage, #resultsPage {
+  transition: all 0.5s ease;
+}
+
+.mainMenu {
+  height: 2em;
+  padding: 0;
+  width: 100%;
+  max-width: 720px;
+  margin: 10px auto 20px auto;
+  line-height: 2em;
+  .clearfix();
+  .changeLanguage {
+    width: 20px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    float: right;
+    display: inline-block;
+    height: 2em;
+    line-height: 2em;
+    a {
+      text-decoration: none;
+      color: rgba(31, 36, 43, 0.9);
+    }
+  }
+  #backToSearch {
+    height: 2em;
+    line-height: 2em;
+    width: auto;
+    display: inline-block;
+    float: left;
+    font-size: 1em;
+    margin: 0;
+  }
+}
