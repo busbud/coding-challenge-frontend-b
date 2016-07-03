@@ -1,3 +1,34 @@
+# Coding frontend challenge attempt
+
+WIP.
+
+## Server
+
+Install dependencies using:
+  ```
+  npm install
+  ```
+
+Launch the server using:
+ ```  
+ npm start
+ ```
+
+Start development mode (both webpack watching and nodemon to hot reload the node server):
+ ```
+ npm run dev
+ ```
+
+Launch tests:
+ ```
+ npm test
+ ```
+
+If you wish to build bundle files (launch webpack in both development & production mode), files will be in `/dist` folder after running this:
+ ```
+ npm run build
+ ```
+
 # coding-challenge-frontend-b
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 

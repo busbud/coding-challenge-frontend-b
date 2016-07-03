@@ -1,0 +1,11 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title #{title}
+    body
+        #app
+        if isProduction
+            script(type="text/javascript",src="dist/app.bundle.min.js",charset="utf-8")
+        else
+            script(type="text/javascript",src="dist/app.bundle.js",charset="utf-8")
