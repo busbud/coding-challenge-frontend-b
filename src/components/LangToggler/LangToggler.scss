@@ -1,0 +1,15 @@
+@import "../../vars";
+
+.lang-toggler {
+
+    &__link {
+
+        text-decoration: none;
+        cursor: pointer;
+        font-variant: small-caps;
+
+        &:hover {
+            background-color: $dark-blue;
+        }
+    }
+}

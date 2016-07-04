@@ -1,0 +1,20 @@
+/*************************
+ *  General stylesheet
+ ************************/
+
+/** Import vars first **/
+@import "./vars";
+/** Import susy configuration */
+@import "./susy";
+
+/* Makes border-box properties */
+@include border-box-sizing;
+
+
+/**
+ *  General styling
+ **/
+
+body {
+    background-color: $light-blue;
+}

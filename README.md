@@ -14,7 +14,7 @@ Launch the server using:
  npm start
  ```
 
-Start development mode (both webpack watching and nodemon to hot reload the node server):
+Start development mode (both webpack watching and node server.js):
  ```
  npm run dev
  ```

@@ -1,9 +1,14 @@
 //get webpack
 const webpack = require('webpack');
 //check if we're in production to avoid having minified bundle file in development
-const isProduction = (process.env.NODE_ENV === 'production');
+const env = process.env.NODE_ENV;
+const isProduction = ( env === 'production');
 //prepare plugins (depending on environemment)
-var plugins = [];
+var plugins = [
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(env || 'development')
+    })
+];
 if (isProduction) {
     plugins.push(
         new webpack.optimize.UglifyJsPlugin({
@@ -18,17 +23,24 @@ if (isProduction) {
 }
 
 module.exports = {
-     entry: './src/app.js',
-     output: {
+    context: __dirname + '/src',
+    entry: './index.js',
+    output: {
         path: './dist',
         filename: isProduction ? 'app.bundle.min.js' : 'app.bundle.js'
-     },
-     module: {
-        loaders: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader',
-        }]
-     },
+    },
+    module: {
+        loaders: [
+            //ES6
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+            },
+            //SCSS
+            {   test: /\.scss$/, 
+                loaders: ['style', 'css', 'sass']
+            }
+        ]
+    },
     plugins: plugins
  };

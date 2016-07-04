@@ -8,9 +8,9 @@ shared.behavior('shared server tests', function(envSpecificData) {
     //start the server before starting the tests
     before(() => {
         //first ensure we are actually reloading the server
-        delete require.cache[require.resolve('../server')];
+        delete require.cache[require.resolve('../../server')];
         //then load the server
-        server = require('../server');
+        server = require('../../server');
     });
 
     //close the server when we're done testing

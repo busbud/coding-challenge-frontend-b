@@ -1,0 +1,15 @@
+@import "../../vars";
+@import "../../susy";
+
+.header {
+    @include span(12);
+    background-color: $dark-blue;
+
+    &__welcome-message {
+        font-size: 32px;
+
+        &--active {
+            color: red;
+        }
+    }
+}
