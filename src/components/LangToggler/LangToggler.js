@@ -5,17 +5,20 @@ class LangToggler extends React.Component {
   constructor(props) {
     super(props);
   }
-  render() {
+  onClick(e) { console.log('this',this);
+    e.preventDefault();
+
     //define the next lang based on the current one
     let nextLang = this.props.lang == 'en' ? 'fr' : 'en';
+
+    this.props.onClick(nextLang);
+  }
+  render() {
 
     return (
         <div className="lang-toggler">
             <a  className="lang-toggler__link"
-                onClick={(e) => {
-                    e.preventDefault();
-                    this.props.onClick(nextLang);
-                }}>
+                onClick={this.onClick.bind(this)}>
                 {this.props.lang}
             </a>
       </div>

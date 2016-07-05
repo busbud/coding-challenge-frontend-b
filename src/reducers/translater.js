@@ -37,11 +37,13 @@ const translater = (state = {lang: 'en', translations: {}}, action) => {
         default:
 
             //try to guess the default language based on the browser prefs
-            var userLang = navigator.language || navigator.userLanguage;
-            if (userLang && 'string' === typeof userLang && userLang.length >= 2) {
-                //ensure we have the proper lang format
-                //and save the lang in the default state lang property
-                state.lang = userLang.substr(0, 2).toLowerCase(); 
+            if (typeof navigator !== 'undefined') {
+                var userLang = navigator.language || navigator.userLanguage;
+                if (userLang && 'string' === typeof userLang && userLang.length >= 2) {
+                    //ensure we have the proper lang format
+                    //and save the lang in the default state lang property
+                    state.lang = userLang.substr(0, 2).toLowerCase(); 
+                }
             }
 
             //init translations using the state 
