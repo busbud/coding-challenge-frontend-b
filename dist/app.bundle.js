@@ -35932,7 +35932,7 @@
 /* 614 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {"use strict";
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/* WEBPACK VAR INJECTION */(function(global) {"use strict";
 
 	var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
@@ -38351,7 +38351,7 @@
 	                if (userLang && 'string' === typeof userLang && userLang.length >= 2) {
 	                    //ensure we have the proper lang format
 	                    //and save the lang in the default state lang property
-	                    state.lang = userLang.substr(0, 2).toLowerCase();
+	                    state.lang = userLang.substr(0, 2).toUpperCase();
 	                }
 	            }
 
@@ -39610,6 +39610,7 @@
 	 **/
 
 	var mapStateToProps = function mapStateToProps(state) {
+	  console.log('state', state);
 	  return {
 	    translations: state.translater.translations
 	  };
@@ -39770,7 +39771,7 @@
 	      e.preventDefault();
 
 	      //define the next lang based on the current one
-	      var nextLang = this.props.lang == 'en' ? 'fr' : 'en';
+	      var nextLang = this.props.lang == 'EN' ? 'FR' : 'EN';
 
 	      this.props.onClick(nextLang);
 	    }

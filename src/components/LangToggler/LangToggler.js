@@ -9,7 +9,7 @@ class LangToggler extends React.Component {
     e.preventDefault();
 
     //define the next lang based on the current one
-    let nextLang = this.props.lang == 'en' ? 'fr' : 'en';
+    let nextLang = this.props.lang == 'EN' ? 'FR' : 'EN';
 
     this.props.onClick(nextLang);
   }

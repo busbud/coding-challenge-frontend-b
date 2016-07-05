@@ -42,7 +42,7 @@ const translater = (state = {lang: 'EN', translations: {}}, action) => {
                 if (userLang && 'string' === typeof userLang && userLang.length >= 2) {
                     //ensure we have the proper lang format
                     //and save the lang in the default state lang property
-                    state.lang = userLang.substr(0, 2).toLowerCase(); 
+                    state.lang = userLang.substr(0, 2).toUpperCase(); 
                 }
             }
 
