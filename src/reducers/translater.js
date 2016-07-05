@@ -1,7 +1,7 @@
 
 /**
  * getTranslation(): get an object with the translations based on the param
- *  fallbacks to 'en' language
+ *  fallbacks to 'EN' language
  *  
  *  The translations file should be fetched remotely only when needed to optimize 
  *  the app performance and reduce the js file size. Also, single translation files 
@@ -13,7 +13,7 @@
 const getTranslation = (lang) => {
 
     switch(lang) {
-        case 'fr': 
+        case 'FR': 
             return {
                 welcomeText: 'Bienvenue !'
             };
@@ -27,7 +27,7 @@ const getTranslation = (lang) => {
 /**
  *  translater() is the reducer here, use it to init or 'load' proper translation
  **/
-const translater = (state = {lang: 'en', translations: {}}, action) => {
+const translater = (state = {lang: 'EN', translations: {}}, action) => {
     switch (action.type) {
         case 'TOGGLE_LANG':
             return {

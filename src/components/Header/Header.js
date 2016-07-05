@@ -12,10 +12,10 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <div className="header">
-        <div className="header__welcome-message">{this.props.translations.welcomeText}</div>
+      <header className="header">
+        <h1 className="header__welcome-message">{this.props.translations.welcomeText}</h1>
         <LangTogglerContainer />
-      </div>
+      </header>
     );
   }
 }

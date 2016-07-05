@@ -33,8 +33,10 @@
     "mocha-lcov-reporter": "^1.2.0",
     "mocha-shared": "^0.2.0",
     "node-sass": "^3.8.0",
+    "qs": "^6.2.0",
     "react-addons-test-utils": "^15.2.0",
     "react-tools": "^0.13.3",
+    "redux-thunk": "^2.1.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "supertest": "^1.2.0",
@@ -45,6 +47,7 @@
   "dependencies": {
     "compression": "^1.6.2",
     "express": "^4.14.0",
+    "isomorphic-fetch": "^2.2.1",
     "jade": "^1.11.0",
     "localforage": "^1.4.2",
     "react": "^15.2.0",

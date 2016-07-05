@@ -5,7 +5,7 @@ class LangToggler extends React.Component {
   constructor(props) {
     super(props);
   }
-  onClick(e) { console.log('this',this);
+  onClick(e) {
     e.preventDefault();
 
     //define the next lang based on the current one
