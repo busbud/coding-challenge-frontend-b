@@ -1,18 +1,17 @@
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import LangToggler from '../../../src/components/LangToggler/LangToggler';
+import DeparturesList from '../../../src/components/DeparturesList/DeparturesList';
 import shared from './shared.js'
 
 
-function setup() {
-    let props = {
-      lang: 'EN',
-      onClick: () => {}
-    };
+function setup(props = {
+      isFetching: true,
+      data: {}
+    }) {
 
     let renderer = TestUtils.createRenderer();
-    renderer.render(<LangToggler {...props}/>);
+    renderer.render(<DeparturesList {...props}/>);
     let output = renderer.getRenderOutput();
 
     return {
@@ -22,7 +21,7 @@ function setup() {
     };
 }
 
-describe('LangToggler Component', () => {
+describe('DeparturesList Component', () => {
 
     //launch common tests
     shared(setup);
@@ -31,18 +30,19 @@ describe('LangToggler Component', () => {
       const { output } = setup();
 
       expect(output.type).toBe('div');
-      expect(output.props.className).toBe('lang-toggler');
+      expect(output.props.className).toBe('departures-list');
 
-      let button = output.props.children;
+      /*let loader = output.props.children.shift();
 
       expect(button.type).toBe('button');
-      expect(button.props.className).toBe('lang-toggler__link');
+      expect(button.props.className).toBe('lang-toggler__link');*/
+      //@TODO
     });
 
-    it('should have the proper event listener', () => {
+    it('should display loader when fetching', () => {
       const { output, props } = setup();
-      let button = output.props.children;
-      expect(button.props.onClick).toBeA('function');
+
+      //@TODO
     });
 
 });

@@ -8,8 +8,17 @@
         cursor: pointer;
         font-variant: small-caps;
 
+        color: $dark-blue;;
+        font: 700 18px "PT Sans", Helvetica, Arial;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: 0.3s;
+
+        padding: 8px;
+
         &:hover {
-            background-color: $dark-blue;
+            background-color: $rose;
+            color: white;
         }
     }
 }

@@ -17,10 +17,12 @@ class LangToggler extends React.Component {
 
     return (
         <div className="lang-toggler">
-            <a  className="lang-toggler__link"
+            <button className="lang-toggler__link"
+                role="button"
+                onKeyDown={this.onClick.bind(this)}
                 onClick={this.onClick.bind(this)}>
                 {this.props.lang}
-            </a>
+            </button>
       </div>
     );
   }

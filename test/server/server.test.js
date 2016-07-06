@@ -1,6 +1,10 @@
 var request = require('supertest');
 var shared = require('mocha-shared');
 
+//ensure the NODE_ENV and PORT are resetted
+process.env.NODE_ENV ? delete process.env.NODE_ENV : null;
+process.env.PORT ? delete process.env.PORT : null;
+
 shared.behavior('shared server tests', function(envSpecificData) {
 
     var server;

@@ -11,7 +11,6 @@ import allReducers from './reducers';
 import { fetchApiIfNeeded } from './actions';
 import App from './components/App/App';
 
-
 import './index.scss';
 
 //This is our entry point for the bb frontend challenge app

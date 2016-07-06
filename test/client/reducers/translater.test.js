@@ -19,12 +19,12 @@ describe('Redux translater reducer', () => {
 
     let reduced = reducer(
       {
-        lang: 'en',
+        lang: 'EN',
         translations: {}
       },
       {
         type: 'TOGGLE_LANG',
-        lang: 'fr'
+        lang: 'FR'
       }
     );
 

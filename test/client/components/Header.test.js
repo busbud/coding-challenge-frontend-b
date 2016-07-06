@@ -3,8 +3,10 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import Header from '../../../src/components/Header/Header';
 import LangTogglerContainer from '../../../src/components/LangToggler/LangTogglerContainer';
+import shared from './shared.js'
 
 
+//setup component
 function setup() {
     let props = {
       translations: {}
@@ -21,8 +23,11 @@ function setup() {
     };
 }
 
+//start test for the component
 describe('Header Component', () => {
 
+    //launch common tests
+    shared(setup);
 
     it('should render correctly', () => {
       const { output } = setup();

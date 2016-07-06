@@ -3,10 +3,17 @@
 
 .header {
     @include span(12);
-    background-color: $dark-blue;
+    background-color: $light-blue;
 
     &__welcome-message {
-        font-size: 32px;
+        font-size: 52px;
+        line-height: 100%;
+        font-family: Oswald;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        color: white;
+        text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
 
         &--active {
             color: red;
