@@ -78,7 +78,7 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	__webpack_require__(643);
+	__webpack_require__(646);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48426,7 +48426,7 @@
 
 	var _Content2 = _interopRequireDefault(_Content);
 
-	__webpack_require__(641);
+	__webpack_require__(644);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48637,8 +48637,10 @@
 	        'div',
 	        { className: 'lang-toggler' },
 	        _react2.default.createElement(
-	          'a',
+	          'button',
 	          { className: 'lang-toggler__link',
+	            role: 'button',
+	            onKeyDown: this.onClick.bind(this),
 	            onClick: this.onClick.bind(this) },
 	          this.props.lang
 	        )
@@ -49249,7 +49251,11 @@
 
 	var _Departure2 = _interopRequireDefault(_Departure);
 
-	__webpack_require__(639);
+	var _Loader = __webpack_require__(639);
+
+	var _Loader2 = _interopRequireDefault(_Loader);
+
+	__webpack_require__(642);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49298,7 +49304,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'departures-list' },
-	        isFetching ? 'loading' : '',
+	        isFetching ? '<Loader />' : '',
 	        hydratedFilteredDepartures.map(function (departure) {
 	          return _react2.default.createElement(_Departure2.default, { key: departure.id, departure: departure });
 	        })
@@ -49438,10 +49444,104 @@
 /* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(640);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Loader = function (_React$Component) {
+	  _inherits(Loader, _React$Component);
+
+	  function Loader(props) {
+	    _classCallCheck(this, Loader);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Loader).call(this, props));
+	  }
+
+	  _createClass(Loader, [{
+	    key: 'render',
+	    value: function render() {
+	      var big = this.props.big;
+
+
+	      return _react2.default.createElement('div', { className: 'loader' });
+	    }
+	  }]);
+
+	  return Loader;
+	}(_react2.default.Component);
+
+	Loader.propTypes = {
+	  big: _react.PropTypes.bool
+	};
+
+	exports.default = Loader;
+
+/***/ },
+/* 640 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(640);
+	var content = __webpack_require__(641);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(627)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Loader.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Loader.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 641 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(626)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**\n * Colors based on Osheaga website's colors\n **/\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 642 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(643);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(627)(content, {});
@@ -49461,7 +49561,7 @@
 	}
 
 /***/ },
-/* 640 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(626)();
@@ -49475,13 +49575,13 @@
 
 
 /***/ },
-/* 641 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(642);
+	var content = __webpack_require__(645);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(627)(content, {});
@@ -49501,7 +49601,7 @@
 	}
 
 /***/ },
-/* 642 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(626)();
@@ -49515,13 +49615,13 @@
 
 
 /***/ },
-/* 643 */
+/* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(644);
+	var content = __webpack_require__(647);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(627)(content, {});
@@ -49541,7 +49641,7 @@
 	}
 
 /***/ },
-/* 644 */
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(626)();

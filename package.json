@@ -4,7 +4,7 @@
   "description": "A microsite for the busbud front-end challenge.",
   "main": "server.js",
   "scripts": {
-    "postinstall": "webpack",
+    "postinstall": "",
     "build": "webpack && NODE_ENV=production webpack",
     "start": "node server.js",
     "dev": "concurrently --kill-others \"node server.js\" \"webpack --progress --colors --watch\" ",
