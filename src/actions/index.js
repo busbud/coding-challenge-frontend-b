@@ -12,6 +12,17 @@ export const toggleLang = (lang) => {
     };
 };
 
+
+/**
+ * toggleCurrency action
+ **/
+export const toggleCurrency = (currency) => {
+    return {
+        type: 'TOGGLE_CURRENCY',
+        currency: currency
+    };
+};
+
 /**
  *  Api actions
  **/
@@ -69,9 +80,8 @@ function fetchApi(params, queryParams) {
 
             //if the request is not complete: redispatch with polling status (index)
             if (!json.complete) {
-                console.log('json.departures.length',json.departures.length);
                 let newQueryParams = Object.assign({}, queryParams, {
-                    index: json.departures.length + (queryParams.index || 0) //@TODO: test if the index is correct
+                    index: json.departures.length + (queryParams.index || 0)
                 });
                 dispatch(fetchApiIfNeeded(params, newQueryParams));
             }

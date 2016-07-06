@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import localForage from 'localForage';
 import allReducers from './reducers';
-import { fetchApiIfNeeded } from './actions';
+import { fetchApiIfNeeded, getQueryParams } from './actions';
 import App from './components/App/App';
 
 import './index.scss';
@@ -22,7 +22,29 @@ const store = createStore(allReducers, applyMiddleware(thunkMiddleware)/*, autoR
 //persistStore(store, { storage: localForage });
 
 
+let currentState
+function handleChange() {
+    let previousState = Object.assign({}, currentState);
+    currentState = store.getState(); 
+    console.log('state IN handleChange',currentState, previousState);
+
+    if (previousState && previousState.translater && previousState.currency) {
+      //Trigger API fetch if the lang or the currency has changed
+      if (  previousState.translater.lang != currentState.translater.lang ||
+            previousState.currency != currentState.currency
+        ) {
+
+            store.dispatch(fetchApiIfNeeded(undefined, getQueryParams(currentState.translater.lang, currentState.currency)));
+      }
+    }
+}
+//Subscribe for changes
+let unsubscribe = store.subscribe(handleChange)
+//Fetch API
 store.dispatch(fetchApiIfNeeded());
+
+
+
 
 //Render the main App in the '#challenge' div
 render(

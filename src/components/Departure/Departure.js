@@ -7,10 +7,13 @@ class Departure extends React.Component {
   }
   render() {
 
-    let { departure } = this.props;
+    const { departure, currency, lang } = this.props;
 
     //console.log('departure',departure);
-
+    //format data before rendering
+    const longLang = lang === 'FR' ? 'fr-FR' : 'en-US';
+    const l10nPrice = new Intl.NumberFormat(longLang, {style:'currency', currency: currency});
+    
     return (
       <div className="departure">
         <div className="departure__departure-time">
@@ -23,7 +26,7 @@ class Departure extends React.Component {
             {departure.destination_location_id}
         </div>
         <div className="departure__price">
-            {departure.prices.total}
+            {l10nPrice.format(departure.prices.total)}
         </div>
       </div>
     );
@@ -31,7 +34,9 @@ class Departure extends React.Component {
 }
 
 Departure.propTypes = {
-    departure: PropTypes.object.isRequired
+    departure: PropTypes.object.isRequired,
+    currency: PropTypes.string,
+    lang: PropTypes.string
 };
 
 export default Departure;

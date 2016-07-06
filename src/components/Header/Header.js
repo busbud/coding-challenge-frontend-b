@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import LangTogglerContainer from '../LangToggler/LangTogglerContainer';
+import CurrencyTogglerContainer from '../CurrencyToggler/CurrencyTogglerContainer';
 import './Header.scss';
 
 /**
@@ -13,8 +14,10 @@ class Header extends React.Component {
   render() {
     return (
       <header className="header">
+        <img className="header__logo" src="assets/images/osheaga.png" />
         <h1 className="header__welcome-message">{this.props.translations.welcomeText}</h1>
         <LangTogglerContainer />
+        <CurrencyTogglerContainer />
       </header>
     );
   }

@@ -1,6 +1,7 @@
 import React from 'react';
-import FiltersList from '../FiltersList/FiltersList';
+import FiltersContainer from '../Filters/FiltersContainer';
 import DeparturesListContainer from '../DeparturesList/DeparturesListContainer';
+import './Content.scss';
 
 class Content extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Content extends React.Component {
     return (
         <section className="content">
             <DeparturesListContainer />
-            <FiltersList />
+            <FiltersContainer />
         </section>
     );
   }

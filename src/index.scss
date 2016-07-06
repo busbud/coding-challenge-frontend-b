@@ -4,8 +4,13 @@
 
 /** Import vars first **/
 @import "./vars";
-/** Import susy configuration */
+
+/** Import susy configuration **/
 @import "./susy";
+
+/** Import shared scss **/
+@import "./shared/Block";
+@import "./shared/HeaderAction";
 
 /* Makes border-box properties */
 @include border-box-sizing;
@@ -17,4 +22,16 @@
 
 body {
     background-color: $light-blue;
+    padding: 0;
+    margin: 0;
+
+    font: 500 16px/21px 'PT sans', Helvetica, Arial;
 }
+
+h1, h2, h3 {
+    color: white;
+    font-family: Oswald;
+    font-weight: 700;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+

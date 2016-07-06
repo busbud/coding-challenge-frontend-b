@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Departure from '../Departure/Departure';
+import DepartureContainer from '../Departure/DepartureContainer';
 import Loader from '../Loader/Loader';
 
 import './DeparturesList.scss';
@@ -31,9 +31,9 @@ class DeparturesList extends React.Component {
 
     return (
       <div className="departures-list">
-        {isFetching ? '<Loader />' : ''}
+        {isFetching ? <Loader big={false} /> : <Loader big={true} />}
         {hydratedFilteredDepartures.map((departure) => {
-            return <Departure key={departure.id} departure={departure} />;
+            return <DepartureContainer key={departure.id} departure={departure} />;
         })}
       </div>
     );

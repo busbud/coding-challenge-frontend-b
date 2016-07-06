@@ -5,18 +5,19 @@
     @include span(12);
     background-color: $light-blue;
 
+    padding: $section-padding;
+
+    &__logo {
+        display: block;
+        width: 50%;
+        max-width: 304px;
+        margin: auto;
+    }
+
     &__welcome-message {
         font-size: 52px;
-        line-height: 100%;
-        font-family: Oswald;
-        font-weight: 700;
+        line-height: 68px;
         text-transform: uppercase;
         margin-bottom: 20px;
-        color: white;
-        text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
-
-        &--active {
-            color: red;
-        }
     }
 }

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleLang } from '../../actions';
+import { toggleLang, fetchApiIfNeeded } from '../../actions';
 import LangToggler from './LangToggler';
 
 /**
@@ -12,10 +12,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => { 
   return {
     onClick: (newLang) => {
-      dispatch(toggleLang(newLang));
+        //dispatch a TOGGLE_LANG action
+        dispatch(toggleLang(newLang));
     }
   };
 };

@@ -72,13 +72,13 @@
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _actions = __webpack_require__(610);
+	var _actions = __webpack_require__(611);
 
-	var _App = __webpack_require__(619);
+	var _App = __webpack_require__(620);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	__webpack_require__(646);
+	__webpack_require__(659);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -90,6 +90,23 @@
 	//We're using local forage to avoid the state being truncated by the local storage limit on most of the browsers
 	//persistStore(store, { storage: localForage });
 
+	var currentState = void 0;
+	function handleChange() {
+	    var previousState = Object.assign({}, currentState);
+	    currentState = store.getState();
+	    console.log('state IN handleChange', currentState, previousState);
+
+	    if (previousState && previousState.translater && previousState.currency) {
+	        //Trigger API fetch if the lang or the currency has changed
+	        if (previousState.translater.lang != currentState.translater.lang || previousState.currency != currentState.currency) {
+
+	            store.dispatch((0, _actions.fetchApiIfNeeded)(undefined, (0, _actions.getQueryParams)(currentState.translater.lang, currentState.currency)));
+	        }
+	    }
+	}
+	//Subscribe for changes
+	var unsubscribe = store.subscribe(handleChange);
+	//Fetch API
 	store.dispatch((0, _actions.fetchApiIfNeeded)());
 
 	//Render the main App in the '#challenge' div
@@ -37958,7 +37975,11 @@
 
 	var _translater2 = _interopRequireDefault(_translater);
 
-	var _api = __webpack_require__(609);
+	var _currency = __webpack_require__(609);
+
+	var _currency2 = _interopRequireDefault(_currency);
+
+	var _api = __webpack_require__(610);
 
 	var _api2 = _interopRequireDefault(_api);
 
@@ -37966,6 +37987,7 @@
 
 	var allReducers = (0, _redux.combineReducers)({
 	  translater: _translater2.default,
+	  currency: _currency2.default,
 	  api: _api2.default
 	});
 
@@ -37997,11 +38019,13 @@
 	    switch (lang) {
 	        case 'FR':
 	            return {
-	                welcomeText: 'Bienvenue !'
+	                welcomeText: 'Rendez-vous au festival Osheaga cet été !',
+	                poweredBy: 'Propulsé par'
 	            };
 	        default:
 	            return {
-	                welcomeText: 'Welcome !'
+	                welcomeText: 'Let\'s go to the Osheaga festival this summer !',
+	                poweredBy: 'Powered by'
 	            };
 	    }
 	};
@@ -38021,18 +38045,21 @@
 	            };
 	        default:
 
-	            //try to guess the default language based on the browser prefs
-	            if (typeof navigator !== 'undefined') {
-	                var userLang = navigator.language || navigator.userLanguage;
-	                if (userLang && 'string' === typeof userLang && userLang.length >= 2) {
-	                    //ensure we have the proper lang format
-	                    //and save the lang in the default state lang property
-	                    state.lang = userLang.substr(0, 2).toUpperCase();
+	            if (!state.translations || Object.keys(state.translations).length == 0) {
+	                //try to guess the default language based on the browser prefs
+	                if (typeof navigator !== 'undefined') {
+	                    var userLang = navigator.language || navigator.userLanguage;
+	                    if (userLang && 'string' === typeof userLang && userLang.length >= 2) {
+	                        //ensure we have the proper lang format
+	                        //and save the lang in the default state lang property
+	                        state.lang = userLang.substr(0, 2).toUpperCase();
+	                    }
 	                }
+
+	                //init translations using the state
+	                state.translations = getTranslation(state.lang);
 	            }
 
-	            //init translations using the state
-	            state.translations = getTranslation(state.lang);
 	            return state;
 	    }
 	};
@@ -38041,6 +38068,33 @@
 
 /***/ },
 /* 609 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	/**
+	 *  currency() is the reducer here, use it to init the currency
+	 **/
+	var currency = function currency() {
+	    var state = arguments.length <= 0 || arguments[0] === undefined ? 'CAD' : arguments[0];
+	    var action = arguments[1];
+
+	    switch (action.type) {
+	        case 'TOGGLE_CURRENCY':
+	            return action.currency;
+	        default:
+	            return state;
+	    }
+	};
+
+	exports.default = currency;
+
+/***/ },
+/* 610 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38090,6 +38144,8 @@
 	var api = function api() {
 	    var state = arguments.length <= 0 || arguments[0] === undefined ? {
 	        isFetching: false,
+	        lang: '',
+	        currency: '',
 	        departures: {}
 	    } : arguments[0];
 	    var action = arguments[1];
@@ -38097,19 +38153,33 @@
 
 	    switch (action.type) {
 	        case 'FETCH_API_REQUEST':
+
+	            //reset data if we changed the queryParams
+	            var newData = {};
+	            if (action.queryParams.lang == state.lang || action.queryParams.currency == state.currency) {
+	                newData = state.data;
+	            }
+
 	            return Object.assign({}, state, {
 	                isFetching: true,
-	                error: null
+	                lang: action.queryParams.lang,
+	                currency: action.queryParams.currency,
+	                error: null,
+	                data: newData
 	            });
 	        case 'FETCH_API_SUCCESS':
 	            return Object.assign({}, state, {
 	                isFetching: false,
+	                lang: action.queryParams.lang,
+	                currency: action.queryParams.currency,
 	                error: null,
 	                data: getNewData(state, action)
 	            });
 	        case 'FETCH_API_FAILURE':
 	            return Object.assign({}, state, {
 	                isFetching: false,
+	                lang: action.queryParams.lang,
+	                currency: action.queryParams.currency,
 	                error: action.error,
 	                data: {}
 	            });
@@ -38121,7 +38191,7 @@
 	exports.default = api;
 
 /***/ },
-/* 610 */
+/* 611 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38129,19 +38199,19 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.toggleLang = undefined;
+	exports.toggleCurrency = exports.toggleLang = undefined;
 	exports.getQueryParams = getQueryParams;
 	exports.fetchApiIfNeeded = fetchApiIfNeeded;
 
-	var _isomorphicFetch = __webpack_require__(611);
+	var _isomorphicFetch = __webpack_require__(612);
 
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
-	var _qs = __webpack_require__(613);
+	var _qs = __webpack_require__(614);
 
 	var _qs2 = _interopRequireDefault(_qs);
 
-	var _lodash = __webpack_require__(617);
+	var _lodash = __webpack_require__(618);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -38154,6 +38224,16 @@
 	    return {
 	        type: 'TOGGLE_LANG',
 	        lang: lang
+	    };
+	};
+
+	/**
+	 * toggleCurrency action
+	 **/
+	var toggleCurrency = exports.toggleCurrency = function toggleCurrency(currency) {
+	    return {
+	        type: 'TOGGLE_CURRENCY',
+	        currency: currency
 	    };
 	};
 
@@ -38210,9 +38290,8 @@
 
 	            //if the request is not complete: redispatch with polling status (index)
 	            if (!json.complete) {
-	                console.log('json.departures.length', json.departures.length);
 	                var newQueryParams = Object.assign({}, queryParams, {
-	                    index: json.departures.length + (queryParams.index || 0) //@TODO: test if the index is correct
+	                    index: json.departures.length + (queryParams.index || 0)
 	                });
 	                dispatch(fetchApiIfNeeded(params, newQueryParams));
 	            }
@@ -38275,7 +38354,7 @@
 	//@TODO: handle lang TOGGLE
 
 /***/ },
-/* 611 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38284,11 +38363,11 @@
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(612);
+	__webpack_require__(613);
 	module.exports = self.fetch.bind(self);
 
 /***/ },
-/* 612 */
+/* 613 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38733,13 +38812,13 @@
 	})(typeof self !== 'undefined' ? self : undefined);
 
 /***/ },
-/* 613 */
+/* 614 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Stringify = __webpack_require__(614);
-	var Parse = __webpack_require__(616);
+	var Stringify = __webpack_require__(615);
+	var Parse = __webpack_require__(617);
 
 	module.exports = {
 	    stringify: Stringify,
@@ -38747,14 +38826,14 @@
 	};
 
 /***/ },
-/* 614 */
+/* 615 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	var Utils = __webpack_require__(615);
+	var Utils = __webpack_require__(616);
 
 	var arrayPrefixGenerators = {
 	    brackets: function brackets(prefix) {
@@ -38891,7 +38970,7 @@
 	};
 
 /***/ },
-/* 615 */
+/* 616 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39061,12 +39140,12 @@
 	};
 
 /***/ },
-/* 616 */
+/* 617 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Utils = __webpack_require__(615);
+	var Utils = __webpack_require__(616);
 
 	var defaults = {
 	    delimiter: '&',
@@ -39227,7 +39306,7 @@
 	};
 
 /***/ },
-/* 617 */
+/* 618 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol?"symbol":typeof obj;};/**
@@ -48387,7 +48466,7 @@
 	// presence of an AMD loader. See http://requirejs.org/docs/errors.html#mismatch
 	// for more details. Use `_.noConflict` to remove Lodash from the global object.
 	(freeSelf||{})._=_;// Some AMD build optimizers like r.js check for condition patterns like the following:
-	if("function"=='function'&&_typeof(__webpack_require__(618))=='object'&&__webpack_require__(618)){// Define as an anonymous module so, through path mapping, it can be
+	if("function"=='function'&&_typeof(__webpack_require__(619))=='object'&&__webpack_require__(619)){// Define as an anonymous module so, through path mapping, it can be
 	// referenced as the "underscore" module.
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(){return _;}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));}// Check for `exports` after `define` in case a build optimizer adds an `exports` object.
 	else if(freeModule){// Export for Node.js.
@@ -48397,7 +48476,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(295)(module), (function() { return this; }())))
 
 /***/ },
-/* 618 */
+/* 619 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -48405,7 +48484,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 619 */
+/* 620 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48418,15 +48497,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _HeaderContainer = __webpack_require__(620);
+	var _HeaderContainer = __webpack_require__(621);
 
 	var _HeaderContainer2 = _interopRequireDefault(_HeaderContainer);
 
-	var _Content = __webpack_require__(630);
+	var _Content = __webpack_require__(635);
 
 	var _Content2 = _interopRequireDefault(_Content);
 
-	__webpack_require__(644);
+	var _FooterContainer = __webpack_require__(653);
+
+	var _FooterContainer2 = _interopRequireDefault(_FooterContainer);
+
+	__webpack_require__(657);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48435,14 +48518,15 @@
 	        'div',
 	        { className: 'app' },
 	        _react2.default.createElement(_HeaderContainer2.default, null),
-	        _react2.default.createElement(_Content2.default, null)
+	        _react2.default.createElement(_Content2.default, null),
+	        _react2.default.createElement(_FooterContainer2.default, null)
 	    );
 	};
 
 	exports.default = App;
 
 /***/ },
-/* 620 */
+/* 621 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48453,7 +48537,7 @@
 
 	var _reactRedux = __webpack_require__(482);
 
-	var _Header = __webpack_require__(621);
+	var _Header = __webpack_require__(622);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
@@ -48475,7 +48559,7 @@
 	exports.default = HeaderContainer;
 
 /***/ },
-/* 621 */
+/* 622 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48490,11 +48574,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LangTogglerContainer = __webpack_require__(622);
+	var _LangTogglerContainer = __webpack_require__(623);
 
 	var _LangTogglerContainer2 = _interopRequireDefault(_LangTogglerContainer);
 
-	__webpack_require__(628);
+	var _CurrencyTogglerContainer = __webpack_require__(629);
+
+	var _CurrencyTogglerContainer2 = _interopRequireDefault(_CurrencyTogglerContainer);
+
+	__webpack_require__(633);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48523,12 +48611,14 @@
 	      return _react2.default.createElement(
 	        'header',
 	        { className: 'header' },
+	        _react2.default.createElement('img', { className: 'header__logo', src: 'assets/images/osheaga.png' }),
 	        _react2.default.createElement(
 	          'h1',
 	          { className: 'header__welcome-message' },
 	          this.props.translations.welcomeText
 	        ),
-	        _react2.default.createElement(_LangTogglerContainer2.default, null)
+	        _react2.default.createElement(_LangTogglerContainer2.default, null),
+	        _react2.default.createElement(_CurrencyTogglerContainer2.default, null)
 	      );
 	    }
 	  }]);
@@ -48543,7 +48633,7 @@
 	exports.default = Header;
 
 /***/ },
-/* 622 */
+/* 623 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48554,9 +48644,9 @@
 
 	var _reactRedux = __webpack_require__(482);
 
-	var _actions = __webpack_require__(610);
+	var _actions = __webpack_require__(611);
 
-	var _LangToggler = __webpack_require__(623);
+	var _LangToggler = __webpack_require__(624);
 
 	var _LangToggler2 = _interopRequireDefault(_LangToggler);
 
@@ -48575,6 +48665,7 @@
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    onClick: function onClick(newLang) {
+	      //dispatch a TOGGLE_LANG action
 	      dispatch((0, _actions.toggleLang)(newLang));
 	    }
 	  };
@@ -48585,7 +48676,7 @@
 	exports.default = LangTogglerContainer;
 
 /***/ },
-/* 623 */
+/* 624 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48600,7 +48691,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(624);
+	__webpack_require__(625);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48638,7 +48729,7 @@
 	        { className: 'lang-toggler' },
 	        _react2.default.createElement(
 	          'button',
-	          { className: 'lang-toggler__link',
+	          { className: 'header-action lang-toggler__link',
 	            role: 'button',
 	            onKeyDown: this.onClick.bind(this),
 	            onClick: this.onClick.bind(this) },
@@ -48659,16 +48750,16 @@
 	exports.default = LangToggler;
 
 /***/ },
-/* 624 */
+/* 625 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(625);
+	var content = __webpack_require__(626);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(627)(content, {});
+	var update = __webpack_require__(628)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -48685,21 +48776,21 @@
 	}
 
 /***/ },
-/* 625 */
+/* 626 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(626)();
+	exports = module.exports = __webpack_require__(627)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "/**\n * Colors based on Osheaga website's colors\n **/\n.lang-toggler__link {\n  text-decoration: none;\n  cursor: pointer;\n  font-variant: small-caps;\n  color: #006694;\n  font: 700 18px \"PT Sans\", Helvetica, Arial;\n  cursor: pointer;\n  text-transform: uppercase;\n  transition: 0.3s;\n  padding: 8px; }\n  .lang-toggler__link:hover {\n    background-color: #C74680;\n    color: white; }\n", ""]);
+	exports.push([module.id, "/**\n * Colors based on Osheaga website's / Busbud app's colors\n **/\n/**\n *  Other vars\n **/\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 626 */
+/* 627 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -48754,7 +48845,7 @@
 	};
 
 /***/ },
-/* 627 */
+/* 628 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -49006,44 +49097,46 @@
 
 
 /***/ },
-/* 628 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(629);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(627)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Header.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Header.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
 /* 629 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(626)();
-	// imports
+	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
-	// module
-	exports.push([module.id, "/**\n * Colors based on Osheaga website's colors\n **/\n/**\n * Susy grid configuration \n **/\n/* Changing Susy default global settings */\n.header {\n  width: 100%;\n  float: left;\n  margin-left: 0;\n  margin-right: 0;\n  background-color: #85C7E6; }\n  .header__welcome-message {\n    font-size: 52px;\n    line-height: 100%;\n    font-family: Oswald;\n    font-weight: 700;\n    text-transform: uppercase;\n    margin-bottom: 20px;\n    color: white;\n    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2); }\n    .header__welcome-message--active {\n      color: red; }\n", ""]);
+	var _reactRedux = __webpack_require__(482);
 
-	// exports
+	var _actions = __webpack_require__(611);
 
+	var _CurrencyToggler = __webpack_require__(630);
+
+	var _CurrencyToggler2 = _interopRequireDefault(_CurrencyToggler);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 *  Container for CurrencyToggler : map props to redux store
+	 **/
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    currency: state.currency
+	  };
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return {
+	    onClick: function onClick(newCurrency) {
+	      dispatch((0, _actions.toggleCurrency)(newCurrency));
+	    }
+	  };
+	};
+
+	var CurrencyTogglerContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_CurrencyToggler2.default);
+
+	exports.default = CurrencyTogglerContainer;
 
 /***/ },
 /* 630 */
@@ -49061,13 +49154,169 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _FiltersList = __webpack_require__(631);
+	__webpack_require__(631);
 
-	var _FiltersList2 = _interopRequireDefault(_FiltersList);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var _DeparturesListContainer = __webpack_require__(634);
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CurrencyToggler = function (_React$Component) {
+	  _inherits(CurrencyToggler, _React$Component);
+
+	  function CurrencyToggler(props) {
+	    _classCallCheck(this, CurrencyToggler);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(CurrencyToggler).call(this, props));
+	  }
+
+	  _createClass(CurrencyToggler, [{
+	    key: 'onClick',
+	    value: function onClick(e) {
+	      e.preventDefault();
+
+	      //define the next currency based on the current one
+	      var nextCurrency = this.props.currency == 'CAD' ? 'USD' : 'CAD';
+
+	      this.props.onClick(nextCurrency);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'currency-toggler' },
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'header-action currency-toggler__link',
+	            role: 'button',
+	            onKeyDown: this.onClick.bind(this),
+	            onClick: this.onClick.bind(this) },
+	          this.props.currency
+	        )
+	      );
+	    }
+	  }]);
+
+	  return CurrencyToggler;
+	}(_react2.default.Component);
+
+	CurrencyToggler.propTypes = {
+	  currency: _react.PropTypes.string.isRequired,
+	  onClick: _react.PropTypes.func.isRequired
+	};
+
+	exports.default = CurrencyToggler;
+
+/***/ },
+/* 631 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(632);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(628)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./CurrencyToggler.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./CurrencyToggler.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 632 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(627)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**\n * Colors based on Osheaga website's / Busbud app's colors\n **/\n/**\n *  Other vars\n **/\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 633 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(634);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(628)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Header.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Header.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 634 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(627)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**\n * Colors based on Osheaga website's / Busbud app's colors\n **/\n/**\n *  Other vars\n **/\n/**\n * Susy grid configuration \n **/\n/* Changing Susy default global settings */\n.header {\n  width: 100%;\n  float: left;\n  margin-left: 0;\n  margin-right: 0;\n  background-color: #85C7E6;\n  padding: 1em; }\n  .header__logo {\n    display: block;\n    width: 50%;\n    max-width: 304px;\n    margin: auto; }\n  .header__welcome-message {\n    font-size: 52px;\n    line-height: 68px;\n    text-transform: uppercase;\n    margin-bottom: 20px; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 635 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _FiltersContainer = __webpack_require__(636);
+
+	var _FiltersContainer2 = _interopRequireDefault(_FiltersContainer);
+
+	var _DeparturesListContainer = __webpack_require__(640);
 
 	var _DeparturesListContainer2 = _interopRequireDefault(_DeparturesListContainer);
+
+	__webpack_require__(651);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49093,7 +49342,7 @@
 	        'section',
 	        { className: 'content' },
 	        _react2.default.createElement(_DeparturesListContainer2.default, null),
-	        _react2.default.createElement(_FiltersList2.default, null)
+	        _react2.default.createElement(_FiltersContainer2.default, null)
 	      );
 	    }
 	  }]);
@@ -49104,7 +49353,44 @@
 	exports.default = Content;
 
 /***/ },
-/* 631 */
+/* 636 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _reactRedux = __webpack_require__(482);
+
+	var _Filters = __webpack_require__(637);
+
+	var _Filters2 = _interopRequireDefault(_Filters);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 *  Container for Filters : map props to redux store
+	 **/
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    isFetching: state.api.isFetching,
+	    data: state.api.data
+	  };
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return {};
+	};
+
+	var FiltersContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Filters2.default);
+
+	exports.default = FiltersContainer;
+
+/***/ },
+/* 637 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49119,7 +49405,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(632);
+	__webpack_require__(638);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49155,23 +49441,23 @@
 	exports.default = FiltersList;
 
 /***/ },
-/* 632 */
+/* 638 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(633);
+	var content = __webpack_require__(639);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(627)(content, {});
+	var update = __webpack_require__(628)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./FiltersList.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./FiltersList.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Filters.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Filters.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -49181,21 +49467,21 @@
 	}
 
 /***/ },
-/* 633 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(626)();
+	exports = module.exports = __webpack_require__(627)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "/**\n * Colors based on Osheaga website's colors\n **/\n", ""]);
+	exports.push([module.id, "/**\n * Colors based on Osheaga website's / Busbud app's colors\n **/\n/**\n *  Other vars\n **/\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 634 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49206,14 +49492,14 @@
 
 	var _reactRedux = __webpack_require__(482);
 
-	var _DeparturesList = __webpack_require__(635);
+	var _DeparturesList = __webpack_require__(641);
 
 	var _DeparturesList2 = _interopRequireDefault(_DeparturesList);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
-	 *  Container for DepartureList : map props to redux store
+	 *  Container for DeparturesList : map props to redux store
 	 **/
 
 	var mapStateToProps = function mapStateToProps(state) {
@@ -49232,7 +49518,7 @@
 	exports.default = DeparturesListContainer;
 
 /***/ },
-/* 635 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49247,15 +49533,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Departure = __webpack_require__(636);
+	var _DepartureContainer = __webpack_require__(642);
 
-	var _Departure2 = _interopRequireDefault(_Departure);
+	var _DepartureContainer2 = _interopRequireDefault(_DepartureContainer);
 
-	var _Loader = __webpack_require__(639);
+	var _Loader = __webpack_require__(646);
 
 	var _Loader2 = _interopRequireDefault(_Loader);
 
-	__webpack_require__(642);
+	__webpack_require__(649);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49304,9 +49590,9 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'departures-list' },
-	        isFetching ? '<Loader />' : '',
+	        isFetching ? _react2.default.createElement(_Loader2.default, { big: false }) : _react2.default.createElement(_Loader2.default, { big: true }),
 	        hydratedFilteredDepartures.map(function (departure) {
-	          return _react2.default.createElement(_Departure2.default, { key: departure.id, departure: departure });
+	          return _react2.default.createElement(_DepartureContainer2.default, { key: departure.id, departure: departure });
 	        })
 	      );
 	    }
@@ -49323,7 +49609,44 @@
 	exports.default = DeparturesList;
 
 /***/ },
-/* 636 */
+/* 642 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _reactRedux = __webpack_require__(482);
+
+	var _Departure = __webpack_require__(643);
+
+	var _Departure2 = _interopRequireDefault(_Departure);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 *  Container for Departure: map props to redux store
+	 **/
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    lang: state.translater.lang,
+	    currency: state.currency
+	  };
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return {};
+	};
+
+	var DepartureContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Departure2.default);
+
+	exports.default = DepartureContainer;
+
+/***/ },
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49338,7 +49661,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(637);
+	__webpack_require__(644);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49360,9 +49683,16 @@
 	  _createClass(Departure, [{
 	    key: 'render',
 	    value: function render() {
-	      var departure = this.props.departure;
+	      var _props = this.props;
+	      var departure = _props.departure;
+	      var currency = _props.currency;
+	      var lang = _props.lang;
 
 	      //console.log('departure',departure);
+	      //format data before rendering
+
+	      var longLang = lang === 'FR' ? 'fr-FR' : 'en-US';
+	      var l10nPrice = new Intl.NumberFormat(longLang, { style: 'currency', currency: currency });
 
 	      return _react2.default.createElement(
 	        'div',
@@ -49385,7 +49715,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'departure__price' },
-	          departure.prices.total
+	          l10nPrice.format(departure.prices.total)
 	        )
 	      );
 	    }
@@ -49395,22 +49725,24 @@
 	}(_react2.default.Component);
 
 	Departure.propTypes = {
-	  departure: _react.PropTypes.object.isRequired
+	  departure: _react.PropTypes.object.isRequired,
+	  currency: _react.PropTypes.string,
+	  lang: _react.PropTypes.string
 	};
 
 	exports.default = Departure;
 
 /***/ },
-/* 637 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(638);
+	var content = __webpack_require__(645);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(627)(content, {});
+	var update = __webpack_require__(628)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -49427,21 +49759,21 @@
 	}
 
 /***/ },
-/* 638 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(626)();
+	exports = module.exports = __webpack_require__(627)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "/**\n * Colors based on Osheaga website's colors\n **/\n", ""]);
+	exports.push([module.id, "/**\n * Colors based on Osheaga website's / Busbud app's colors\n **/\n/**\n *  Other vars\n **/\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 639 */
+/* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49456,7 +49788,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(640);
+	__webpack_require__(647);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49478,8 +49810,8 @@
 	  _createClass(Loader, [{
 	    key: 'render',
 	    value: function render() {
-	      var big = this.props.big;
-
+	      console.log('this.props', this.props);
+	      var big = this.props.big; //@TODO: handle big loader
 
 	      return _react2.default.createElement('div', { className: 'loader' });
 	    }
@@ -49495,16 +49827,16 @@
 	exports.default = Loader;
 
 /***/ },
-/* 640 */
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(641);
+	var content = __webpack_require__(648);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(627)(content, {});
+	var update = __webpack_require__(628)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -49521,30 +49853,30 @@
 	}
 
 /***/ },
-/* 641 */
+/* 648 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(626)();
+	exports = module.exports = __webpack_require__(627)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "/**\n * Colors based on Osheaga website's colors\n **/\n", ""]);
+	exports.push([module.id, "/**\n * Colors based on Osheaga website's / Busbud app's colors\n **/\n/**\n *  Other vars\n **/\n.loader {\n  width: 40px;\n  height: 40px;\n  margin: 100px auto;\n  background-color: white;\n  border-radius: 100%;\n  animation: sk-scaleout 1.0s infinite ease-in-out; }\n\n@keyframes sk-scaleout {\n  0% {\n    transform: scale(0); }\n  100% {\n    transform: scale(1);\n    opacity: 0; } }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 642 */
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(643);
+	var content = __webpack_require__(650);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(627)(content, {});
+	var update = __webpack_require__(628)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -49561,30 +49893,210 @@
 	}
 
 /***/ },
-/* 643 */
+/* 650 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(626)();
+	exports = module.exports = __webpack_require__(627)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "/**\n * Colors based on Osheaga website's colors\n **/\n", ""]);
+	exports.push([module.id, "/**\n * Colors based on Osheaga website's / Busbud app's colors\n **/\n/**\n *  Other vars\n **/\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 644 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(645);
+	var content = __webpack_require__(652);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(627)(content, {});
+	var update = __webpack_require__(628)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Content.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Content.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 652 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(627)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**\n * Colors based on Osheaga website's / Busbud app's colors\n **/\n/**\n *  Other vars\n **/\n/**\n * Susy grid configuration \n **/\n/* Changing Susy default global settings */\n.content {\n  width: 100%;\n  float: left;\n  margin-left: 0;\n  margin-right: 0;\n  background-color: #006694; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 653 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _reactRedux = __webpack_require__(482);
+
+	var _Footer = __webpack_require__(654);
+
+	var _Footer2 = _interopRequireDefault(_Footer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 *  Container for Footer : map props to redux store
+	 **/
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    translations: state.translater.translations
+	  };
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return {};
+	};
+
+	var FooterContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Footer2.default);
+
+	exports.default = FooterContainer;
+
+/***/ },
+/* 654 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(655);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 *  Component
+	 **/
+
+	var Footer = function (_React$Component) {
+	  _inherits(Footer, _React$Component);
+
+	  function Footer() {
+	    _classCallCheck(this, Footer);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).call(this));
+	  }
+
+	  _createClass(Footer, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'footer',
+	        { className: 'footer' },
+	        _react2.default.createElement('img', { className: 'footer__logo', src: 'https://busbud-pubweb-assets.global.ssl.fastly.net/images/logos/fc7ed21.logo-post-60@2x.png' }),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'footer__message' },
+	          this.props.translations.poweredBy
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Footer;
+	}(_react2.default.Component);
+
+	Footer.propTypes = {
+	  translations: _react.PropTypes.object.isRequired
+	};
+
+	exports.default = Footer;
+
+/***/ },
+/* 655 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(656);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(628)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Footer.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Footer.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 656 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(627)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**\n * Colors based on Osheaga website's / Busbud app's colors\n **/\n/**\n *  Other vars\n **/\n/**\n * Susy grid configuration \n **/\n/* Changing Susy default global settings */\n.footer {\n  width: 100%;\n  float: left;\n  margin-left: 0;\n  margin-right: 0;\n  background-color: #31363D;\n  padding: 1em; }\n  .footer__logo {\n    height: 36px;\n    float: right;\n    margin-right: 4px; }\n  .footer__message {\n    font-size: 14px;\n    line-height: 44px;\n    color: white;\n    float: right;\n    margin-right: 12px;\n    vertical-align: bottom; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 657 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(658);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(628)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -49601,30 +50113,30 @@
 	}
 
 /***/ },
-/* 645 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(626)();
+	exports = module.exports = __webpack_require__(627)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "/**\n * Colors based on Osheaga website's colors\n **/\n/**\n *  App block specific styling\n **/\n", ""]);
+	exports.push([module.id, "/**\n * Colors based on Osheaga website's / Busbud app's colors\n **/\n/**\n *  Other vars\n **/\n/**\n *  App block specific styling\n **/\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 646 */
+/* 659 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(647);
+	var content = __webpack_require__(660);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(627)(content, {});
+	var update = __webpack_require__(628)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -49641,15 +50153,15 @@
 	}
 
 /***/ },
-/* 647 */
+/* 660 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(626)();
+	exports = module.exports = __webpack_require__(627)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "/*************************\n *  General stylesheet\n ************************/\n/** Import vars first **/\n/**\n * Colors based on Osheaga website's colors\n **/\n/** Import susy configuration */\n/**\n * Susy grid configuration \n **/\n/* Changing Susy default global settings */\n/* Makes border-box properties */\n*, *:before, *:after {\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n/**\n *  General styling\n **/\nbody {\n  background-color: #85C7E6; }\n", ""]);
+	exports.push([module.id, "/*************************\n *  General stylesheet\n ************************/\n/** Import vars first **/\n/**\n * Colors based on Osheaga website's / Busbud app's colors\n **/\n/**\n *  Other vars\n **/\n/** Import susy configuration **/\n/**\n * Susy grid configuration \n **/\n/* Changing Susy default global settings */\n/** Import shared scss **/\n.block {\n  background-color: #C74680;\n  color: white; }\n\n.header-action {\n  text-decoration: none;\n  cursor: pointer;\n  font-variant: small-caps;\n  background-color: transparent;\n  border: none;\n  color: #006694;\n  font: 700 18px \"PT Sans\", Helvetica, Arial;\n  cursor: pointer;\n  text-transform: uppercase;\n  transition: 0.3s;\n  padding: 8px;\n  margin: 8px;\n  float: right; }\n  .header-action:hover {\n    background-color: #C74680;\n    color: white; }\n\n/* Makes border-box properties */\n*, *:before, *:after {\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n/**\n *  General styling\n **/\nbody {\n  background-color: #85C7E6;\n  padding: 0;\n  margin: 0;\n  font: 500 16px/21px 'PT sans', Helvetica, Arial; }\n\nh1, h2, h3 {\n  color: white;\n  font-family: Oswald;\n  font-weight: 700;\n  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2); }\n", ""]);
 
 	// exports
 

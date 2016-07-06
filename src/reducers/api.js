@@ -36,24 +36,40 @@ function getNewData(state, action) {
 
 const api = (state = {
     isFetching: false,
+    lang:'',
+    currency:'',
     departures: {}
     }, action) => {
 
     switch (action.type) {
         case 'FETCH_API_REQUEST':
+
+            //reset data if we changed the queryParams
+            let newData = {};
+            if (action.queryParams.lang == state.lang || action.queryParams.currency == state.currency) {
+                newData = state.data;
+            }
+
             return Object.assign({}, state, {
                 isFetching: true,
-                error: null
+                lang: action.queryParams.lang,
+                currency: action.queryParams.currency,
+                error: null,
+                data: newData
             });
         case 'FETCH_API_SUCCESS':
             return Object.assign({}, state, {
                 isFetching: false,
+                lang: action.queryParams.lang,
+                currency: action.queryParams.currency,
                 error: null,
                 data: getNewData(state, action)
             });
         case 'FETCH_API_FAILURE':
             return Object.assign({}, state, {
                 isFetching: false,
+                lang: action.queryParams.lang,
+                currency: action.queryParams.currency,
                 error: action.error,
                 data: {}
             });

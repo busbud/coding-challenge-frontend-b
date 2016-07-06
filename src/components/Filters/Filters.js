@@ -1,5 +1,5 @@
 import React from 'react';
-import './FiltersList.scss';
+import './Filters.scss';
 
 class FiltersList extends React.Component {
   constructor(props) {

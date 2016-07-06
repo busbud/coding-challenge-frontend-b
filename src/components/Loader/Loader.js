@@ -6,8 +6,8 @@ class Loader extends React.Component {
     super(props);
   }
   render() {
-
-    let { big } = this.props;
+console.log('this.props',this.props);
+    let { big } = this.props; //@TODO: handle big loader
 
     return (
       <div className="loader">

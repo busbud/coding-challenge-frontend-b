@@ -15,11 +15,13 @@ const getTranslation = (lang) => {
     switch(lang) {
         case 'FR': 
             return {
-                welcomeText: 'Bienvenue !'
+                welcomeText: 'Rendez-vous au festival Osheaga cet été !',
+                poweredBy: 'Propulsé par',
             };
         default:
             return {
-                welcomeText: 'Welcome !'
+                welcomeText: 'Let\'s go to the Osheaga festival this summer !',
+                poweredBy: 'Powered by',
             };
     }
 };
@@ -36,18 +38,21 @@ const translater = (state = {lang: 'EN', translations: {}}, action) => {
             };
         default:
 
-            //try to guess the default language based on the browser prefs
-            if (typeof navigator !== 'undefined') {
-                var userLang = navigator.language || navigator.userLanguage;
-                if (userLang && 'string' === typeof userLang && userLang.length >= 2) {
-                    //ensure we have the proper lang format
-                    //and save the lang in the default state lang property
-                    state.lang = userLang.substr(0, 2).toUpperCase(); 
+            if (!state.translations || Object.keys(state.translations).length == 0) {
+                //try to guess the default language based on the browser prefs
+                if (typeof navigator !== 'undefined') {
+                    var userLang = navigator.language || navigator.userLanguage;
+                    if (userLang && 'string' === typeof userLang && userLang.length >= 2) {
+                        //ensure we have the proper lang format
+                        //and save the lang in the default state lang property
+                        state.lang = userLang.substr(0, 2).toUpperCase(); 
+                    }
                 }
+
+                //init translations using the state 
+                state.translations = getTranslation(state.lang);
             }
 
-            //init translations using the state 
-            state.translations = getTranslation(state.lang);
             return state;
     }
 };

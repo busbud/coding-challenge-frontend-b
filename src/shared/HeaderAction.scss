@@ -1,0 +1,24 @@
+.header-action {
+
+    text-decoration: none;
+    cursor: pointer;
+    font-variant: small-caps;
+    background-color: transparent;
+    border: none;
+
+    color: $dark-blue;
+    font: 700 18px "PT Sans", Helvetica, Arial;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+
+    padding: 8px;
+    margin: 8px;
+
+    float: right;
+
+    &:hover {
+        background-color: $rose;
+        color: white;
+    }
+}

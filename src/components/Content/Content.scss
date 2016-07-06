@@ -1,0 +1,8 @@
+@import "../../vars";
+@import "../../susy";
+
+.content {
+    @include span(12);
+    background-color: $dark-blue;
+
+}

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import DeparturesList from './DeparturesList';
 
 /**
- *  Container for DepartureList : map props to redux store
+ *  Container for DeparturesList : map props to redux store
  **/
 
 const mapStateToProps = (state) => {
