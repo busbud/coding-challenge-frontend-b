@@ -35,10 +35,10 @@ describe('Header Component', () => {
       expect(output.type).toBe('header');
       expect(output.props.className).toBe('container header');
 
-      let [ img, h1, langToggler ] = output.props.children;
+      let [ logo, h1, langToggler ] = output.props.children;
 
-      expect(img.type).toBe('img');
-      expect(img.props.className).toBe('header__logo');
+      expect(logo.type).toBe('a');
+      expect(logo.props.className).toBe('header-link');
 
       expect(h1.type).toBe('h1');
       expect(h1.props.className).toBe('header__welcome-message');

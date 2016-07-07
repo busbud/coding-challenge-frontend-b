@@ -34,10 +34,10 @@ describe('Footer Component', () => {
       expect(output.type).toBe('footer');
       expect(output.props.className).toBe('footer');
 
-      let [ img, span ] = output.props.children;
+      let [ logo, span ] = output.props.children;
 
-      expect(img.type).toBe('img');
-      expect(img.props.className).toBe('footer__logo');
+      expect(logo.type).toBe('a');
+      expect(logo.props.className).toBe('footer-link');
 
       expect(span.type).toBe('span');
       expect(span.props.className).toBe('footer__message');

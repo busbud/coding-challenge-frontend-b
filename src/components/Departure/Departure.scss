@@ -52,7 +52,7 @@
         justify-content: center;
 
         &__departure-time, &__arrival-time {
-            flex: 0 1 50px;
+            flex: 0 1 72px;
             font-weight:700;
         }
 
@@ -62,14 +62,29 @@
 
         &__separator {
             flex: 0 1 100%;
-            text-align: center;
-            color: lighten($gray, 20%);
+
+            &-inner {
+                margin-left: 22px;
+                border-left: 2px dotted lighten($gray, 30%);
+                min-height: 24px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+            }
         }
 
          /** Tablet **/
         @media (min-width: $tablet-width) {
             border-bottom:none;
             border-right:1px $border-color solid;
+        }
+        /** Desktop **/
+        @media (min-width: $desktop-width) {
+            &__separator {
+                &-inner {
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                }
+            }
         }
     }
 
@@ -85,10 +100,14 @@
 
         &__logo {
             flex:0 0 auto;
+
+            height: 80px;
+            width: 140px;
+
             /** Tablet **/
             @media (min-width: $tablet-width) {
                 flex:0 0 auto;
-                max-height: 80px;
+                
             }
         }
         &__type {
@@ -114,6 +133,10 @@
         &__total {
             text-align: center;
             font-size: 16px;
+
+            color: $dark-blue;
+            font: 700 18px "PT Sans", Helvetica, Arial;
+            text-transform: uppercase;
         }
 
         &__select-button {

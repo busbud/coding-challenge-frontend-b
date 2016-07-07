@@ -14,7 +14,9 @@ class Header extends React.Component {
   render() {
     return (
       <header className="container header">
-        <img className="header__logo" src="assets/images/osheaga.png" alt="osheaga logo" />
+        <a className="header-link" href="http://www.osheaga.com/" alt="Busbud's website">
+          <img className="header-link__logo" src="assets/images/osheaga.png" alt="Osheaga logo" />
+        </a>
         <h1 className="header__welcome-message">{this.props.translations.welcomeText}</h1>
         <LangTogglerContainer />
         <CurrencyTogglerContainer />

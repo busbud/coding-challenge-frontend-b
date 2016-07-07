@@ -70,10 +70,25 @@ function failFetchingDepartures(params, queryParams, error) {
     };
 }
 
+let refresher;
+export function createRefresher(ttl, dispatch) {
+    //wait the ttl then redispatch (to keep list up-to-date)
+    if (!refresher) {
+
+        const diffInMs = Math.ceil(ttl)*1000;
+        refresher = setTimeout(() => {
+            dispatch(fetchApiIfNeeded());
+            //reset the timer
+            clearTimeout(refresher);
+            refresher = null;
+        }, diffInMs + 1000);//Add 1 second to ensure the new data will def. be available
+    }
+}
+
 /**
  *  fetchApi() : do the actual api request
  **/
-let refresher;
+
 function fetchApi(params, queryParams) {
 
     let isPoll = queryParams.hasOwnProperty('index');
@@ -93,25 +108,19 @@ function fetchApi(params, queryParams) {
 
             //calculate the expiration date from the TTL (assuming TTL is in seconds)
             if (json && json.ttl) {
+
                 let diffInMs = Math.ceil(json.ttl)*1000;
                 json.expireDate = new Date(diffInMs + (+new Date()));
 
-                //wait the ttl then redispatch (to keep list up-to-date)
-                if (!refresher) {
-                    refresher = setTimeout(() => {
-                        dispatch(fetchApiIfNeeded());
-                        //reset the timer
-                        clearTimeout(refresher);
-                        refresher = null;
-                    }, diffInMs);
-                }
+                //ceate a refresher to make sure we always have up-to-date data
+                createRefresher(json.ttl, dispatch);
             }
 
             //wait a little bit before redispatching: 
             //for some reason, fetch() stop querying the server after ~10 consecutive tries.
             //since the poll takes sometime more time to complete the list of departures,
             //we're applying a light delay between requests:
-            //setTimeout(() => {
+            setTimeout(() => {
                 dispatch(receiveDepartures(params, queryParams, json));
 
                 //if the request is not complete: redispatch with polling status (index)
@@ -122,7 +131,7 @@ function fetchApi(params, queryParams) {
                     
                     dispatch(fetchApiIfNeeded(params, newQueryParams));
                 }
-            //},300);//I know this is bad, but I can't do any other way (poor documentation of the fetch() wrapper...)
+            },300);//I know this is bad, but I can't do any other way (poor documentation of the fetch() wrapper...)
         })
         .catch(error => failFetchingDepartures(params, queryParams, error));
     };
@@ -131,11 +140,13 @@ function fetchApi(params, queryParams) {
 function shouldFetchApi(state, params, queryParams) {
 
     //determine if the data is expired by comparing the previously stored property expireDate (Date) to now.
-    let isExpired = state.api && state.api.data && state.api.data.expireDate && new Date(state.api.data.expireDate) < new Date();
-    console.log('isExpired',isExpired);
+    let isExpired = !(state.api && state.api.data && state.api.data.expireDate) || new Date(state.api.data.expireDate) < new Date();
+
     //fetch only if the queries have changed or if the TTL expired for the current query
-    if (!_.isEqual(state.api.lang, queryParams.lang) || !_.isEqual(state.api.currency, queryParams.currency) || isExpired) {
-        console.log('shouldFetchApi');
+    if (!_.isEqual(state.api.lang, queryParams.lang) ||
+        !_.isEqual(state.api.currency, queryParams.currency) ||
+        !_.isUndefined(queryParams.index) ||
+        (isExpired && !state.api.isFetching)) {
         return true;
     }
     return false;

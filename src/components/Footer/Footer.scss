@@ -7,11 +7,15 @@
 
     padding: $section-padding;
 
-    &__logo {
-        height: 36px;
+    &-link {
         float:right;
         margin-right: 4px;
+
+        &__logo {
+            height: 36px;    
+        }    
     }
+    
 
     &__message {
         font-size: 14px;
