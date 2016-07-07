@@ -185,6 +185,7 @@ main {
     right: 15px;
     width: 20px;
     height: 20px;
+    padding: 0;
     border: 2px solid #ccc;
     border-radius: 100%;
     background: transparent;
@@ -305,9 +306,8 @@ main {
   }
 
   &-currency {
-    position: absolute;
-    top: 4px;
     font-size: 10px;
+    vertical-align: super;
   }
 }
 
@@ -396,7 +396,7 @@ main {
     }
 
     &-currency {
-      top: 2px;
+      font-size: 9px;
     }
 
     & > * {

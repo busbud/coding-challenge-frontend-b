@@ -28,7 +28,7 @@ function SearchResult({ time, departing, arriving, price, operator }) {
       <div className="searchResult-cost">
         <div className="searchResult-price-group">
           <span className="searchResult-price">${price.price}</span>
-          <span className="searchResult-currency">{price.currency}</span>
+          <sup className="searchResult-currency">{price.currency}</sup>
         </div>
       </div>
     </div>
