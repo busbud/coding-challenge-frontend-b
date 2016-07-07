@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="7px" height="39px" viewBox="0 0 7 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>From ... To</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-Landscape-Modal" transform="translate(-544.000000, -160.000000)">
+            <g id="Modal" transform="translate(440.000000, 94.000000)">
+                <g id="From-...-To" transform="translate(105.000000, 67.000000)">
+                    <circle id="Oval-2" stroke="#CCCCCC" cx="2.5" cy="2.5" r="2.5"></circle>
+                    <path d="M2.5,7.5 L2.5,28.5" id="Line" stroke="#CCCCCC" stroke-dasharray="1,2"></path>
+                    <path d="M0.14718641,32.347156 C0.519099253,33.8039831 2.63802083,37.9621094 2.63802083,37.9621094 C2.63802083,37.9621094 4.76121734,33.3386131 4.91941064,32.1320609 C4.97200582,31.9301745 5,31.7183564 5,31.5 C5,30.1192881 3.88071187,29 2.5,29 C1.11928813,29 -4.79616347e-14,30.1192881 -4.79616347e-14,31.5 C-4.79616347e-14,31.7973684 0.0519188891,32.0826105 0.14718641,32.347156 Z M2.5,33 C3.32842712,33 4,32.3284271 4,31.5 C4,30.6715729 3.32842712,30 2.5,30 C1.67157288,30 1,30.6715729 1,31.5 C1,32.3284271 1.67157288,33 2.5,33 Z" id="Combined-Shape" fill="#D8D8D8"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

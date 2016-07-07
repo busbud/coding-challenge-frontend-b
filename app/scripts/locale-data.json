@@ -1,0 +1,20 @@
+{
+  "en": {
+    "ctaText": {
+        "line1": "Haven't booked your transport for Osheaga?",
+        "line2": "Let Busbud take the wheel.",
+      },
+    "ctaButton": "Search for busses",
+    "to": "to",
+    "en": "English",
+    "fr": "French"
+  },
+  "fr": {
+    "ctaText": {
+      "line1": "N'a pas réservé votre transport pour Osheaga?",
+      "line2": "Laissez Busbud prendre le volant."
+    },
+    "ctaButton": "Rechercher des bus",
+    "to": "à"
+  }
+}
