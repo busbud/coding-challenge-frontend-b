@@ -2,9 +2,7 @@
 @import "../../susy";
 
 .header {
-    @include span(12);
     background-color: $light-blue;
-
     padding: $section-padding;
 
     &__logo {
@@ -20,4 +18,5 @@
         text-transform: uppercase;
         margin-bottom: 20px;
     }
+
 }

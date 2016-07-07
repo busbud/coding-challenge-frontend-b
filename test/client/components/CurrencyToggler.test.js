@@ -2,7 +2,7 @@ import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import CurrencyToggler from '../../../src/components/CurrencyToggler/CurrencyToggler';
-import shared from './shared.js'
+import shared from './shared.js';
 
 
 function setup() {
@@ -35,7 +35,7 @@ describe('CurrencyToggler Component', () => {
       let button = output.props.children;
 
       expect(button.type).toBe('button');
-      expect(button.props.className).toBe('currency-toggler__link');
+      expect(button.props.className).toBe('header-action currency-toggler__link');
     });
 
     it('should have the proper event listener', () => {

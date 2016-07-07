@@ -1,0 +1,86 @@
+@import "../../vars";
+@import "../../susy";
+
+.route {
+    @include span(10);
+    @include push(1);
+
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -20px;
+
+    box-shadow: $box-shadow;
+
+    opacity: 0;
+    transition: 1s opacity;
+    &--visible {
+        opacity: 1;
+    }
+
+    @media (min-width: $tablet-width) {
+        flex-wrap: nowrap;
+    }
+
+    /** Desktop **/
+    @media (min-width: $desktop-width) {
+        @include span(8);
+        @include push(2);
+    }
+
+    /** Large Desktop **/
+    @media (min-width: $large-width) {
+        @include span(6);
+        @include push(3);
+    }
+
+    &-item {
+
+        flex:1 1 100%;
+        background-color: $white;
+        padding: 10px;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        border-bottom: 1px $light-blue solid;
+
+        &:first-child {
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+        }
+        &:nth-child(2) {
+        }
+        &:last-child {
+            flex-shrink:0;
+            border-bottom-right-radius: $border-radius;
+            border-bottom-left-radius: $border-radius;
+            border: none;
+        }
+
+        &__icon {
+            margin-right: 10px;
+        }
+
+        @media (min-width: $tablet-width) {
+
+            flex-grow:1;
+            flex-basis:auto;
+
+            border-right: 1px $light-blue solid;
+            border-bottom: none;
+
+            &:first-child {
+                border-bottom-left-radius: $border-radius;
+                border-top-left-radius: $border-radius;
+            }
+            &:last-child {
+                flex-shrink:0;
+                border-bottom-right-radius: $border-radius;
+                border-top-right-radius: $border-radius;
+                border: none;
+            }
+        }
+    }
+
+}

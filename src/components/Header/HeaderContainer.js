@@ -5,7 +5,7 @@ import Header from './Header';
  *  Container for Header : map props to redux store
  **/
 
-const mapStateToProps = (state) => { console.log('state',state);
+const mapStateToProps = (state) => {
   return {
     translations: state.translater.translations
   };

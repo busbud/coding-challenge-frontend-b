@@ -5,8 +5,8 @@ import React from 'react';
 import a11y from 'react-a11y';
 
 //This reg-exp matches BEM class names
-//I did not write it, but got it here: https://regex101.com/r/yP0eM7/1 (source: https://github.com/brigade/scss-lint/issues/240)
-let cssBEMRegExp = new RegExp("^([\.\%]?[a-z]*[-]?[a-z0-9\-]*)(\.[a-z0-9\-]*)?(__[a-z0-9]*[-]?[a-z0-9\-]*)?(--[a-z0-9]*[-]?[a-z0-9\-]*)?(\:[a-z]*)*$","");
+//I did not write it, but got it here: https://regex101.com/r/yP0eM7/1 and mofidied it (source: https://github.com/brigade/scss-lint/issues/240)
+let cssBEMRegExp = new RegExp("^([\.\%]?[a-z]*[-]?[a-z0-9\-]*)(\.[a-z0-9\-]*)?(__[a-z0-9]*[-]?[a-z0-9\-]*)?(--[a-z0-9]*[-]?[a-z0-9\-]*)?(\:[a-z]*)*","");
 
 const shared = function(setup) {
     describe('shared component check', function() {
@@ -16,7 +16,7 @@ const shared = function(setup) {
         afterEach(() => a11y.restoreAll());
 
         it('should be a11y compliant', () => {
-            const { output } = setup();
+            setup();
 
             //a11y check is done by 'react-a11y', nothing special to do here.
         });
@@ -39,11 +39,11 @@ const shared = function(setup) {
                     children.map(child => {
                         if (child && child.props && child.props.className) {
                             expect(child.props.className).toMatch(cssBEMRegExp);
-                            checkChildren(child.props.children)
+                            checkChildren(child.props.children);
                         }
                     });
                 }
-            }
+            };
 
             //recursively check children
             checkChildren(output.props.children);

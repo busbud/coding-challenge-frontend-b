@@ -1,6 +1,146 @@
 @import "../../vars";
-
+@import "../../susy";
 
 .departure {
 
+    @include span(10);
+    @include push(1);
+
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+
+    box-shadow: $box-shadow;
+
+    border-radius: $border-radius;
+    background-color: rgba($white, .9);
+    &:hover {
+        background-color: $white;
+    }
+
+    opacity:0;
+    animation: fadeIn .4s ease-in 0s 1; 
+    animation-fill-mode: forwards;
+
+    transition: .8s background-color;
+
+     /** Tablet **/
+    @media (min-width: $tablet-width) {
+        flex-wrap: nowrap;
+    }
+     /** Desktop **/
+    @media (min-width: $desktop-width) {
+        @include span(8);
+        @include push(2);
+    }
+
+    /** Large Desktop **/
+    @media (min-width: $large-width) {
+        @include span(6);
+        @include push(3);
+    }
+
+    $border-color: lighten($gray, 50%);
+
+    &-route {
+        flex-grow: 2;
+        border-bottom:1px $border-color solid;
+        padding: 10px 10px;
+
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        &__departure-time, &__arrival-time {
+            flex: 0 1 50px;
+            font-weight:700;
+        }
+
+        &__departure-location, &__arrival-location {
+            flex: 1 0;
+        }
+
+        &__separator {
+            flex: 0 1 100%;
+            text-align: center;
+            color: lighten($gray, 20%);
+        }
+
+         /** Tablet **/
+        @media (min-width: $tablet-width) {
+            border-bottom:none;
+            border-right:1px $border-color solid;
+        }
+    }
+
+    &-company {
+        flex:1 1 340px;
+        border-bottom:1px $border-color solid; 
+        padding: 10px 10px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &__logo {
+            flex:0 0 auto;
+            /** Tablet **/
+            @media (min-width: $tablet-width) {
+                flex:0 0 auto;
+                max-height: 80px;
+            }
+        }
+        &__type {
+            text-align: center;
+            font-size:12px;
+            color: $gray;
+        }
+         /** Tablet **/
+        @media (min-width: $tablet-width) {
+            padding:0 10px;
+            border-bottom:none;
+            border-right:1px $border-color solid;
+        }
+    }
+    &-price {
+        flex: 1 0 150px;
+        padding:10px 10px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        &__total {
+            text-align: center;
+            font-size: 16px;
+        }
+
+        &__select-button {
+            display: block;
+            width: 100%;
+            border-radius: $border-radius;
+            background-color: $rose;
+            color: $white;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 8px;
+            text-align: center;
+
+            transition: .2s background-color;
+
+            &:hover {
+                background-color: darken($rose, 10%);
+            }
+        }
+         /** Tablet **/
+        @media (min-width: $tablet-width) {
+            padding:0 10px;
+        }
+    }
+}
+
+@keyframes fadeIn { 
+    from { opacity:0; } 
+    to { opacity:1; } 
 }

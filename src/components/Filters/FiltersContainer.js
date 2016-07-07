@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { changeSort } from '../../actions';
 import Filters from './Filters';
 
 /**
@@ -7,13 +8,17 @@ import Filters from './Filters';
 
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.api.isFetching,
-    data: state.api.data
+    translations: state.translater.translations,
+    sort: state.sort
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    onClick: (sort) => {
+      dispatch(changeSort(sort));
+    }
+  };
 };
 
 const FiltersContainer = connect(mapStateToProps, mapDispatchToProps)(Filters);

@@ -8,7 +8,8 @@ import DeparturesList from './DeparturesList';
 const mapStateToProps = (state) => {
   return {
     isFetching: state.api.isFetching,
-    data: state.api.data
+    data: state.api.data,
+    sort: state.sort
   };
 };
 

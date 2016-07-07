@@ -1,15 +1,20 @@
 @import "../../vars";
-
+@import "../../susy";
 
 .loader {
 
-  width: 40px;
-  height: 40px;
-  margin: 100px auto;
-  background-color: white;
+    @include span(10);
+    @include push(1);
 
-  border-radius: 100%;  
-  animation: sk-scaleout 1.0s infinite ease-in-out;
+    &__animation {
+        width: 40px;
+        height: 40px;
+        margin: 100px auto;
+        background-color: white;
+
+        border-radius: 100%;  
+        animation: sk-scaleout 1.0s infinite ease-in-out;
+    }
 }
 
 @keyframes sk-scaleout {

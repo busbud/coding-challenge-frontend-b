@@ -13,8 +13,8 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <header className="header">
-        <img className="header__logo" src="assets/images/osheaga.png" />
+      <header className="container header">
+        <img className="header__logo" src="assets/images/osheaga.png" alt="osheaga logo" />
         <h1 className="header__welcome-message">{this.props.translations.welcomeText}</h1>
         <LangTogglerContainer />
         <CurrencyTogglerContainer />

@@ -8,7 +8,6 @@
 
     color: $dark-blue;
     font: 700 18px "PT Sans", Helvetica, Arial;
-    cursor: pointer;
     text-transform: uppercase;
     transition: 0.3s;
 
@@ -19,6 +18,6 @@
 
     &:hover {
         background-color: $rose;
-        color: white;
+        color: $white;
     }
 }

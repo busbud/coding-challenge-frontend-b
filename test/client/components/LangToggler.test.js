@@ -2,7 +2,7 @@ import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import LangToggler from '../../../src/components/LangToggler/LangToggler';
-import shared from './shared.js'
+import shared from './shared.js';
 
 
 function setup() {
@@ -36,7 +36,7 @@ describe('LangToggler Component', () => {
       let button = output.props.children;
 
       expect(button.type).toBe('button');
-      expect(button.props.className).toBe('lang-toggler__link');
+      expect(button.props.className).toBe('header-action lang-toggler__link');
     });
 
     it('should have the proper event listener', () => {

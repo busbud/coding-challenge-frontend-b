@@ -2,11 +2,12 @@ import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import DeparturesList from '../../../src/components/DeparturesList/DeparturesList';
-import shared from './shared.js'
+import Loader from '../../../src/components/Loader/Loader';
+import shared from './shared.js';
 
 
 function setup(props = {
-      isFetching: true,
+      isFetching: false,
       data: {}
     }) {
 
@@ -32,17 +33,26 @@ describe('DeparturesList Component', () => {
       expect(output.type).toBe('div');
       expect(output.props.className).toBe('departures-list');
 
-      /*let loader = output.props.children.shift();
+      let [ emptyDepartures, loader ] = output.props.children;
 
-      expect(button.type).toBe('button');
-      expect(button.props.className).toBe('lang-toggler__link');*/
-      //@TODO
+      expect(emptyDepartures.length).toBe(0);
+      expect(loader).toBe(null);
+
     });
 
     it('should display loader when fetching', () => {
-      const { output, props } = setup();
+      const { output } = setup({
+        isFetching: true,
+        data: {}
+      });
 
-      //@TODO
+      expect(output.type).toBe('div');
+      expect(output.props.className).toBe('departures-list');
+
+      let [ emptyDepartures, loader ] = output.props.children;
+
+      expect(emptyDepartures.length).toBe(0);
+      expect(loader.type).toBe(Loader);
     });
 
 });

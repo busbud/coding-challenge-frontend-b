@@ -32,7 +32,7 @@ describe('Redux translater reducer', () => {
     expect(reduced).to.have.all.keys('lang', 'translations');
     expect(reduced.translations).to.be.an('object');
     expect(reduced.translations).to.have.any.keys('welcomeText');
-    expect(reduced.translations.welcomeText).to.be.equal('Bienvenue !');
+    expect(reduced.translations.welcomeText).to.be.equal('Rendez-vous au festival Osheaga cet été !');
   });
 
 

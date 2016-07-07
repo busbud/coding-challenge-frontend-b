@@ -2,23 +2,17 @@ import React, { PropTypes } from 'react';
 import './Loader.scss';
 
 class Loader extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-console.log('this.props',this.props);
-    let { big } = this.props; //@TODO: handle big loader
+    constructor(props) {
+        super(props);
+    }
+    render() {
 
-    return (
-      <div className="loader">
-        
-      </div>
-    );
-  }
+        return (
+            <div className="loader">
+                <div className="loader__animation"></div>
+            </div>
+        );
+    }
 }
-
-Loader.propTypes = {
-    big: PropTypes.bool
-};
 
 export default Loader;

@@ -17,11 +17,21 @@ const getTranslation = (lang) => {
             return {
                 welcomeText: 'Rendez-vous au festival Osheaga cet été !',
                 poweredBy: 'Propulsé par',
+                select: 'Sélectionner',
+                sortBy: 'Classer par',
+                sortBydepartureDate: 'Heure de départ',
+                sortByprice: 'Prix',
+                sortBycompany: 'Compagnie de bus',
             };
         default:
             return {
                 welcomeText: 'Let\'s go to the Osheaga festival this summer !',
                 poweredBy: 'Powered by',
+                select: 'Select',
+                sortBy: 'Sort by',
+                sortBydepartureDate: 'Departure time',
+                sortByprice: 'Price',
+                sortBycompany: 'Bus company',
             };
     }
 };

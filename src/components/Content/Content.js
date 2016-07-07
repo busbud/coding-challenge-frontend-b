@@ -1,6 +1,7 @@
 import React from 'react';
 import FiltersContainer from '../Filters/FiltersContainer';
 import DeparturesListContainer from '../DeparturesList/DeparturesListContainer';
+import RouteContainer from '../Route/RouteContainer';
 import './Content.scss';
 
 class Content extends React.Component {
@@ -10,8 +11,9 @@ class Content extends React.Component {
   render() {
     return (
         <section className="content">
-            <DeparturesListContainer />
+            <RouteContainer />
             <FiltersContainer />
+            <DeparturesListContainer />
         </section>
     );
   }

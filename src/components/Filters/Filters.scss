@@ -1,6 +1,64 @@
 @import "../../vars";
+@import "../../susy";
 
+.filters {
+    @include span(10);
+    @include push(1);
 
-.filters-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items:baseline;
+    margin-top: 20px;
+    color: $white;
 
+    /** Tablet **/
+    @media (min-width: $tablet-width) {
+        flex-wrap: nowrap;
+    }
+
+    /** Desktop **/
+    @media (min-width: $desktop-width) {
+        @include span(8);
+        @include push(2);
+    }
+
+    /** Large Desktop **/
+    @media (min-width: $large-width) {
+        @include span(6);
+        @include push(3);
+    }
+
+    &__button {
+
+        /* 100% on smartphones */
+        flex-basis: 100%;
+
+        cursor: pointer;
+        font-variant: small-caps;
+        background-color: transparent;
+        border: none;
+        font-size: 16px;
+
+        color: $white;
+        text-transform: uppercase;
+        transition: .3s;
+
+        padding: 8px;
+        margin: 8px;
+
+        float: right;
+
+        &--active {
+            background-color: lighten($rose, 4%);
+        }
+        &:hover {
+            background-color: $rose;
+        }
+
+        /** auto-basis on tablet and up **/
+        @media (min-width: $tablet-width) {
+            flex-basis: auto;
+        }
+
+    }
 }

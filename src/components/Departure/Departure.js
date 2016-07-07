@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import moment from 'moment';
 import './Departure.scss';
 
 class Departure extends React.Component {
@@ -7,27 +8,63 @@ class Departure extends React.Component {
   }
   render() {
 
-    const { departure, currency, lang } = this.props;
+    const { departure, currency, lang, translations } = this.props;
 
-    //console.log('departure',departure);
-    //format data before rendering
-    const longLang = lang === 'FR' ? 'fr-FR' : 'en-US';
-    const l10nPrice = new Intl.NumberFormat(longLang, {style:'currency', currency: currency});
+    const busbudUrl = 'https://www.busbud.com/en/bus-schedules-results/dr5reg/f25dvk?outbound-date=2016-07-29&return-date=&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code=&currency='+currency;
+
+    //prepare data formatters
+    const timeFormat = lang === 'FR' ? 'HH:mm' : 'h:mm A';
+
+    let price = departure.price;
+    //unfortunately, Intl is not working on Safari (at least)
+    /*
+        const longLang = lang === 'FR' ? 'fr-FR' : 'en-US';
+        const l10nPrice = new Intl.NumberFormat(longLang, {style:'currency', currency: currency});  
+        price = l10nPrice.format(price);
+    */
+    price = lang === 'FR' ? ''+price+' $'+currency : currency+'$ '+price;
     
+
     return (
-      <div className="departure">
-        <div className="departure__departure-time">
-            {departure.departure_time}
+      <div className="departure departure--visible">
+        <div className="departure-route">
+            <div className="departure-route__departure-time">
+                {moment(departure.departure_time).format(timeFormat)}
+            </div>
+            <div className="departure-route__departure-location">
+                {departure.departure_location.name}
+            </div>
+            <div className="departure-route__separator">
+                <i className="fa fa-arrow-down"></i>
+            </div>
+            <div className="departure-route__arrival-time">
+                {moment(departure.arrival_time).format(timeFormat)}
+            </div>
+            <div className="departure-route__arrival-location">
+                {departure.arrival_location.name}
+            </div>
         </div>
-        <div className="departure__arrival-time">
-            {departure.arrival_time}
+        <div className="departure-company">    
+            <img className="departure-company__logo" 
+                 src={departure.operator.logo_url} 
+                 title={departure.operator.display_name} 
+                 alt={departure.operator.display_name}  />
+            <div className="departure-company__type">
+                {departure.class_name}
+            </div>
         </div>
-        <div className="departure__location-name">
-            {departure.destination_location_id}
+        <div className="departure-price">
+            <div className="departure-price__total">
+                {price}
+            </div>
+            <a className="departure-price__select-button" 
+               href={busbudUrl} 
+               role="button"
+               aria-label={translations.select}>
+                {translations.select}
+            </a>
         </div>
-        <div className="departure__price">
-            {l10nPrice.format(departure.prices.total)}
-        </div>
+        
       </div>
     );
   }
@@ -35,8 +72,9 @@ class Departure extends React.Component {
 
 Departure.propTypes = {
     departure: PropTypes.object.isRequired,
-    currency: PropTypes.string,
-    lang: PropTypes.string
+    currency: PropTypes.string.isRequired,
+    lang: PropTypes.string.isRequired,
+    translations: PropTypes.object.isRequired
 };
 
 export default Departure;

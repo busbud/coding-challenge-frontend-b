@@ -1,5 +1,6 @@
 //get webpack
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 //check if we're in production to avoid having minified bundle file in development
 const env = process.env.NODE_ENV;
 const isProduction = ( env === 'production');
@@ -38,9 +39,12 @@ module.exports = {
             },
             //SCSS
             {   test: /\.scss$/, 
-                loaders: ['style', 'css', 'sass']
+                loaders: ['style', 'css', 'postcss', 'sass']
             }
         ]
     },
-    plugins: plugins
+    plugins: plugins,
+    postcss: function () {
+        return [autoprefixer];
+    }
  };

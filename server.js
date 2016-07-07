@@ -18,7 +18,7 @@ app.use(compression());
 app.use('/dist', express.static(__dirname + '/dist'));
 app.use('/assets', express.static(__dirname + '/assets'));
 //Define the default page title
-app.locals.title = 'Osheaga w/ Busbud !';
+app.locals.title = 'Osheaga with Busbud !';
 //Allow the template to "know" if we're in production
 app.locals.isProduction = env === 'production';
 //Don't minify html when in developpment

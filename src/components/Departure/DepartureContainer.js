@@ -8,7 +8,8 @@ import Departure from './Departure';
 const mapStateToProps = (state) => {
   return {
     lang: state.translater.lang,
-    currency: state.currency
+    currency: state.currency,
+    translations: state.translater.translations
   };
 };
 

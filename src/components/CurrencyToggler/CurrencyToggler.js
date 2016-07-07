@@ -5,9 +5,7 @@ class CurrencyToggler extends React.Component {
   constructor(props) {
     super(props);
   }
-  onClick(e) {
-    e.preventDefault();
-
+  onClick() {
     //define the next currency based on the current one
     let nextCurrency = this.props.currency == 'CAD' ? 'USD' : 'CAD';
 
