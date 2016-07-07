@@ -1,3 +1,5 @@
+Hosted on Heroku: https://busbud-frontend-challenge.herokuapp.com/
+
 ## Commands
 
 Install dependencies:
