@@ -6,7 +6,7 @@ Microsite that allows a traveler from NYC to find one-way departure schedules fo
 
 The microsite is hosted here:   [https://bz-bb-frontend-challenge.herokuapp.com](https://bz-bb-frontend-challenge.herokuapp.com)
 
-## Pre-requesites
+## Prerequisites
 
 - `NodeJS >= 4.4.*`
 - `npm >= 2.15.*`
