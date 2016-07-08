@@ -38175,7 +38175,7 @@
 
 	        formattedData.departures.map(function (departure, currentIndex) {
 	            //do not reformat previously formatted data (when coming from poll)
-	            if (typeof index === 'undefined' || index >= currentIndex) {
+	            if (typeof index === 'undefined' || !departure.display || !departure.display.operator || !departure.display.departure_location) {
 
 	                //Get all departure display infos
 	                departure.display = {
@@ -38229,6 +38229,16 @@
 	                            return existingLocation.id == location.id;
 	                        })) {
 	                            newData.locations.push(location);
+	                        }
+	                    });
+	                }
+	                //the operators must not be duplicated, so we're checking if it does not exist first
+	                if (newData.operators && action.json.operators) {
+	                    action.json.operators.forEach(function (operator) {
+	                        if (!newData.operators.find(function (existingOperator) {
+	                            return existingOperator.id == operator.id;
+	                        })) {
+	                            newData.operators.push(operator);
 	                        }
 	                    });
 	                }
@@ -38344,8 +38354,6 @@
 
 	var _lodash = __webpack_require__(619);
 
-	var _lodash2 = _interopRequireDefault(_lodash);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
@@ -38412,7 +38420,7 @@
 	var refresher = void 0;
 	function createRefresher(ttl, dispatch) {
 	    //wait the ttl then redispatch (to keep list up-to-date)
-	    if (!refresher) {
+	    if (!refresher && ttl && ttl > 0) {
 
 	        var diffInMs = Math.ceil(ttl) * 1000;
 	        refresher = setTimeout(function () {
@@ -38467,7 +38475,7 @@
 
 	                    dispatch(fetchApiIfNeeded(params, newQueryParams));
 	                }
-	            }, 300); //I know this is bad, but I can't do any other way (poor documentation of the fetch() wrapper...)
+	            }, json.complete ? 1 : 1000); //I know this is bad, but I can't do any other way (poor documentation of the fetch() wrapper...)
 	        }).catch(function (error) {
 	            return failFetchingDepartures(params, queryParams, error);
 	        });
@@ -38480,7 +38488,8 @@
 	    var isExpired = !(state.api && state.api.data && state.api.data.expireDate) || new Date(state.api.data.expireDate) < new Date();
 
 	    //fetch only if the queries have changed or if the TTL expired for the current query
-	    if (!_lodash2.default.isEqual(state.api.lang, queryParams.lang) || !_lodash2.default.isEqual(state.api.currency, queryParams.currency) || !_lodash2.default.isUndefined(queryParams.index) || isExpired && !state.api.isFetching) {
+	    if ((0, _lodash.isEqual)(state.api.lang, queryParams.lang) || !(0, _lodash.isEqual)(state.api.currency, queryParams.currency) || !(0, _lodash.isUndefined)(queryParams.index) || isExpired && !state.api.isFetching) {
+
 	        return true;
 	    }
 	    return false;
@@ -49769,8 +49778,6 @@
 
 	var _lodash = __webpack_require__(619);
 
-	var _lodash2 = _interopRequireDefault(_lodash);
-
 	__webpack_require__(753);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -49803,13 +49810,13 @@
 	        switch (sort) {
 	          case 'departureDate':
 	            //order by dateDeparture ASC
-	            return _lodash2.default.orderBy(departures, 'display.departure_time');
+	            return (0, _lodash.orderBy)(departures, 'display.departure_time');
 	          case 'price':
 	            //order by price ASC
-	            return _lodash2.default.orderBy(departures, 'display.price');
+	            return (0, _lodash.orderBy)(departures, 'display.price');
 	          case 'company':
 	            //order by operator's name ASC
-	            return _lodash2.default.orderBy(departures, 'display.operator.display_name');
+	            return (0, _lodash.orderBy)(departures, 'display.operator.display_name');
 	          default:
 	            return departures;
 	        }

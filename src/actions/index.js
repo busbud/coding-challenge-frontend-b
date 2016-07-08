@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import qs from 'qs';
-import _ from 'lodash';
+import { isEqual, isUndefined } from 'lodash';
 
 /**
  * toggleLang action
@@ -73,7 +73,7 @@ function failFetchingDepartures(params, queryParams, error) {
 let refresher;
 export function createRefresher(ttl, dispatch) {
     //wait the ttl then redispatch (to keep list up-to-date)
-    if (!refresher) {
+    if (!refresher && ttl && ttl > 0) {
 
         const diffInMs = Math.ceil(ttl)*1000;
         refresher = setTimeout(() => {
@@ -131,7 +131,7 @@ function fetchApi(params, queryParams) {
                     
                     dispatch(fetchApiIfNeeded(params, newQueryParams));
                 }
-            },300);//I know this is bad, but I can't do any other way (poor documentation of the fetch() wrapper...)
+            }, json.complete ? 1 : 1000);//I know this is bad, but I can't do any other way (poor documentation of the fetch() wrapper...)
         })
         .catch(error => failFetchingDepartures(params, queryParams, error));
     };
@@ -143,10 +143,11 @@ function shouldFetchApi(state, params, queryParams) {
     let isExpired = !(state.api && state.api.data && state.api.data.expireDate) || new Date(state.api.data.expireDate) < new Date();
 
     //fetch only if the queries have changed or if the TTL expired for the current query
-    if (!_.isEqual(state.api.lang, queryParams.lang) ||
-        !_.isEqual(state.api.currency, queryParams.currency) ||
-        !_.isUndefined(queryParams.index) ||
+    if (isEqual(state.api.lang, queryParams.lang) ||
+        !isEqual(state.api.currency, queryParams.currency) ||
+        !isUndefined(queryParams.index) ||
         (isExpired && !state.api.isFetching)) {
+
         return true;
     }
     return false;

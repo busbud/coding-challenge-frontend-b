@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import DepartureContainer from '../Departure/DepartureContainer';
 import Loader from '../Loader/Loader';
-import _ from 'lodash';
+import { orderBy }from 'lodash';
 
 import './DeparturesList.scss';
 
@@ -20,13 +20,13 @@ class DeparturesList extends React.Component {
       switch (sort) {
         case 'departureDate': 
           //order by dateDeparture ASC
-          return _.orderBy(departures, 'display.departure_time');
+          return orderBy(departures, 'display.departure_time');
         case 'price': 
           //order by price ASC
-          return _.orderBy(departures, 'display.price');
+          return orderBy(departures, 'display.price');
         case 'company': 
           //order by operator's name ASC
-          return _.orderBy(departures, 'display.operator.display_name');
+          return orderBy(departures, 'display.operator.display_name');
         default:
         return departures;
       }

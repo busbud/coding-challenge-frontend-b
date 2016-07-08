@@ -29,7 +29,7 @@
 
         formattedData.departures.map((departure, currentIndex) => {
             //do not reformat previously formatted data (when coming from poll)
-            if (typeof index === 'undefined' || index >= currentIndex) {
+            if (typeof index === 'undefined' || !departure.display || !departure.display.operator || !departure.display.departure_location ) {
 
                 //Get all departure display infos
                 departure.display = {
@@ -74,6 +74,14 @@ function getNewData(state, action) {
             action.json.locations.forEach((location) => {
                 if (!newData.locations.find(existingLocation => existingLocation.id == location.id)) {
                     newData.locations.push(location);
+                }
+            });
+        }
+        //the operators must not be duplicated, so we're checking if it does not exist first
+        if (newData.operators && action.json.operators) {
+            action.json.operators.forEach((operator) => {
+                if (!newData.operators.find(existingOperator => existingOperator.id == operator.id)) {
+                    newData.operators.push(operator);
                 }
             });
         }
