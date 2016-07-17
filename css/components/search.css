@@ -1,9 +1,0 @@
-#search { background: #066491; margin-bottom: 30px; }
-#search .search-bar { background: white; margin-top: 15px; margin-bottom: 15px; -moz-border-radius: 1px; -webkit-border-radius: 1px; border-radius: 1px; }
-@media screen and (max-width: 640px) { #search .search-bar { text-align: center; } }
-#search .search-bar > div, #search .search-bar > a { line-height: 35px; border-right: 1px solid #65C5E2; color: #066491; }
-#search .search-bar > div:nth-child(4), #search .search-bar > div:nth-child(5), #search .search-bar > a:nth-child(4), #search .search-bar > a:nth-child(5) { text-align: center; border: none; }
-#search .search-bar > div:nth-child(5), #search .search-bar > a:nth-child(5) { background: #DB4392; color: white; text-decoration: none; }
-#search .search-bar > div:nth-child(5):hover, #search .search-bar > a:nth-child(5):hover { background: #c52679; }
-
-/*# sourceMappingURL=search.css.map */

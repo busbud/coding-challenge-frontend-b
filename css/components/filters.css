@@ -1,9 +1,0 @@
-#filters { margin-bottom: 20px; }
-#filters .filter { line-height: 30px; }
-@media screen and (max-width: 640px) { #filters .filter { text-align: center !important; margin: 5px 0; } }
-#filters .filter:last-child { text-align: right; }
-#filters .filter span { margin-right: 20px; }
-#filters .filter a { padding: 5px 10px; color: #066491; text-decoration: none; cursor: pointer; }
-#filters .filter a.active { background: #066491; color: white; }
-
-/*# sourceMappingURL=filters.css.map */
