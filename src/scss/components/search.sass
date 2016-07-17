@@ -1,0 +1,26 @@
+@import '../variables'
+@import 'compass'
+
+#search
+	background: $blue
+	margin-bottom: 30px
+	.search-bar
+		background: white
+		margin-top: 15px
+		margin-bottom: 15px
+		+border-radius(1px)
+		@media screen and (max-width: 640px)
+			text-align: center
+		> div, > a
+			line-height: 35px
+			border-right: 1px solid $light_blue
+			color: $blue
+			&:nth-child(4), &:nth-child(5)
+				text-align: center
+				border: none
+			&:nth-child(5)
+				background: $pink
+				color: white
+				text-decoration: none
+				&:hover
+					background: darken($pink, 10%)

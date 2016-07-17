@@ -1,0 +1,96 @@
+@import '../variables'
+@import 'compass'
+
+.result
+	background: white
+	margin-top: 10px
+	margin-bottom: 10px
+	+border-radius('1px')
+	box-shadow: -4px 4px 0 #28abd3
+	animation: fadeIn 0.5s
+	.price-block, .details-block, .operator-block
+		min-height: 130px
+	.price-block
+		border-left: 1px solid #cbdde2
+		@media screen and (max-width: 640px)
+			border: none
+		.desc
+			color: $blue
+			font-size: .9em
+			margin: 4px 0
+			text-align: center
+			font-style: italic
+		.price
+			font-family: Oswald, Helvetica, Arial
+			text-align: center
+			font-size: 1.7em
+			color: $blue
+			text-shadow: -2px 2px 0px $light_blue
+			margin: 10px 0
+			letter-spacing: 2px
+			white-space: nowrap
+			&::after
+				font-size: .35em
+				vertical-align: top
+				margin-left: 2px
+				position: absolute
+				content: attr(data-currency)
+	.btn
+		background: $pink
+		outline: none
+		color: white
+		margin: 10px auto
+		display: block
+		width: 75%
+		text-align: center
+		padding: 10px
+		text-decoration: none
+		font-family: Oswald, Helvetica, Arial
+		letter-spacing: 2px
+		text-transform: uppercase
+		&:hover
+			background: darken($pink, 10%)
+	.details-block
+		.detail-departure
+			margin-top: 20px
+			margin-bottom: 30px
+			position: relative
+			&::before
+				content: ""
+				border-left: 2px dotted $grey
+				position: absolute
+				left: 23px
+				height: 34px
+				top: 25px
+		.detail-address, .detail-city
+			display: block
+			text-overflow: ellipsis
+			white-space: nowrap
+			overflow: hidden
+		.detail-address
+			font-size: 1.1em
+			.detail-time
+				margin-right: 15px
+				font-weight: bold
+		.detail-city
+			font-size: 0.9em
+			color: $grey
+			padding-left: 60px
+		.time-en
+			&.detail-departure::before
+				left: 38px
+			.detail-city
+				padding-left: 93px
+	.operator-block
+		border-right: 1px solid #cbdde2
+		text-align: center
+		@media screen and (max-width: 640px)
+			border: none
+		.operator-logo
+			width: 100%
+			max-width: 120px
+		.operator-icons
+			color: $blue
+			padding: 5px
+			> span
+				margin: 0 2px

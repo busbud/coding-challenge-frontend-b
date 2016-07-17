@@ -1,0 +1,21 @@
+@import "../variables.sass"
+
+#filters
+	margin-bottom: 20px
+	.filter
+		line-height: 30px
+		@media screen and (max-width: 640px)
+			text-align: center !important
+			margin: 5px 0
+		&:last-child
+			text-align: right
+		span
+			margin-right: 20px
+		a
+			padding: 5px 10px
+			color: $blue
+			text-decoration: none
+			cursor: pointer
+			&.active
+				background: $blue
+				color: white
