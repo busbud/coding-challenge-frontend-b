@@ -21,13 +21,17 @@ RUN gem install compass --no-rdoc --no-ri
 RUN npm install gulp -g
 
 # Copy npm packages' list to install
-COPY package.json  /project/
+COPY package.json  /
+
+# Install npm packages
+RUN npm install
+
+CMD ["ln", "-s", "/node_modules", "/project/node_modules"]
 
 # Change current folder
 WORKDIR /project
 
-# Install npm packages
-RUN npm install
+
 
 # Run gulp
 CMD ["gulp"]
