@@ -51,5 +51,8 @@ gulp.task('watch', function () {
 	gulp.watch('./src/js/**/*.{jsx,js}', ['react']);
 });
 
+// Build all assets
+gulp.task('build', ['compass', 'react']);
+
 // Run all tasks if no args
 gulp.task('default', ['watch']);
