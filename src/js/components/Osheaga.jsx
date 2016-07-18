@@ -167,20 +167,18 @@ const Osheaga = React.createClass({
 					<div className="rect5"></div>
 				</div> : ''}
 				{departures.length ? <Filters setSearchState={this.setSearchState} sort={this.state.search.sort} currency={this.state.search.currency} lang={osheaga.state.lang}></Filters> : ''}
-				<div className="row">
-					{departures.map(function(d) {
-						var operator = osheaga.findOperator(d.operator_id);
-						if (!operator)
-							return;
-						var departure = osheaga.findLocation(d.origin_location_id);
-						if (!departure)
-							return;
-						var arrival = osheaga.findLocation(d.destination_location_id);
-						if (!arrival)
-							return;
-						return <Result key={d.id} price={d.prices.total} currency={osheaga.state.search.currency} operator={operator} link={d.links.deeplink} amenities={d.amenities} departure={departure} arrival={arrival} departureTime={d.departure_time} arrivalTime={d.arrival_time} lang={osheaga.state.lang} travelClass={d.class_name}></Result>
-					})}
-				</div>
+				{departures.map(function(d) {
+					var operator = osheaga.findOperator(d.operator_id);
+					if (!operator)
+						return;
+					var departure = osheaga.findLocation(d.origin_location_id);
+					if (!departure)
+						return;
+					var arrival = osheaga.findLocation(d.destination_location_id);
+					if (!arrival)
+						return;
+					return <Result key={d.id} price={d.prices.total} currency={osheaga.state.search.currency} operator={operator} link={d.links.deeplink} amenities={d.amenities} departure={departure} arrival={arrival} departureTime={d.departure_time} arrivalTime={d.arrival_time} lang={osheaga.state.lang} travelClass={d.class_name}></Result>
+				})}
 				<footer>
 					<i className="fa fa-code" aria-hidden="true"></i> <span dangerouslySetInnerHTML={{__html: translations.with}}></span> <i className="fa fa-heart-o" aria-hidden="true"></i> <span dangerouslySetInnerHTML={{__html: translations.for}}></span> <img src="img/busbud.png" alt="busbud" />
 				</footer>
