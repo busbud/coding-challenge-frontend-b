@@ -1090,13 +1090,13 @@ class BusBud extends React.Component<{}, BusData>{
         ]
         return <div>
         <form className="form-horizontal">
-            {data.map( (d:[string, string, any]) => <Labeled ID={d[0]} label={d[1]}>{d[2]}</Labeled>)}
+            {data.map( (d:[string, string, any], i: number) => <Labeled ID={d[0]} label={d[1]} key={i}>{d[2]}</Labeled>)}
         </form>
 
         <table className="table table-striped table-bordered">
             <tbody>
                 <tr>
-                {'Departure Time,Arrival Time,Origin,Destination,Price'.split(',').map( s => <th>{s}</th>)}
+                {'Departure Time,Arrival Time,Origin,Destination,Price'.split(',').map( (s, i) => <th key={i}>{s}</th>)}
                 </tr>
                 {
                     this.state.returnData.departures.map( (dep: Departure, i: number) => <tr key={i}> 
@@ -1154,15 +1154,11 @@ class BusBud extends React.Component<{}, BusData>{
     }
 
     handleClick = (e: any) => {
-        e.preventDefault()
-        e.stopPropagation()
-        let origin = $('#origin').val()
-        let destination = $('#destination').val()
-        let outbound_date = $('#outbound_date').val()
-        let adults = $('#adults').val()
-        let lang= $('#lang').val()
-        let url = `https://napi.busbud.com/x-departures/${origin}/${destination}/${outbound_date}`
-        let params = `?adult=1&lang=${lang}`
+        let d: any = {}
+        'origin destination outbound_date adults lang'.split(' ').map(
+            (id: string, i: number, a: string[])=> d[id]=$('#'+id).val())
+        let url = `https://napi.busbud.com/x-departures/${d.origin}/${d.destination}/${d.outbound_date}`
+        let params = `?adult=${d.adults}&lang=${d.lang}`
         this.request(url, params, 0, true)
     }
 }

@@ -1106,15 +1106,10 @@
 	            $.ajax(url1, settings);
 	        };
 	        this.handleClick = function (e) {
-	            e.preventDefault();
-	            e.stopPropagation();
-	            var origin = $('#origin').val();
-	            var destination = $('#destination').val();
-	            var outbound_date = $('#outbound_date').val();
-	            var adults = $('#adults').val();
-	            var lang = $('#lang').val();
-	            var url = "https://napi.busbud.com/x-departures/" + origin + "/" + destination + "/" + outbound_date;
-	            var params = "?adult=1&lang=" + lang;
+	            var d = {};
+	            'origin destination outbound_date adults lang'.split(' ').map(function (id, i, a) { return d[id] = $('#' + id).val(); });
+	            var url = "https://napi.busbud.com/x-departures/" + d.origin + "/" + d.destination + "/" + d.outbound_date;
+	            var params = "?adult=" + d.adults + "&lang=" + d.lang;
 	            _this.request(url, params, 0, true);
 	        };
 	        this.state = {
@@ -1139,7 +1134,7 @@
 	            ],
 	            ["submit", "", React.createElement("button", {type: "button", className: "btn btn-default", onClick: this.handleClick}, "Submit")]
 	        ];
-	        return React.createElement("div", null, React.createElement("form", {className: "form-horizontal"}, data.map(function (d) { return React.createElement(Labeled, {ID: d[0], label: d[1]}, d[2]); })), React.createElement("table", {className: "table table-striped table-bordered"}, React.createElement("tbody", null, React.createElement("tr", null, 'Departure Time,Arrival Time,Origin,Destination,Price'.split(',').map(function (s) { return React.createElement("th", null, s); })), this.state.returnData.departures.map(function (dep, i) { return React.createElement("tr", {key: i}, React.createElement("td", null, dep.departure_time), React.createElement("td", null, dep.arrival_time), React.createElement("td", null, _this.locationById(dep.origin_location_id).name), React.createElement("td", null, _this.locationById(dep.destination_location_id).name), React.createElement("td", null, dep.prices.total)); }))));
+	        return React.createElement("div", null, React.createElement("form", {className: "form-horizontal"}, data.map(function (d, i) { return React.createElement(Labeled, {ID: d[0], label: d[1], key: i}, d[2]); })), React.createElement("table", {className: "table table-striped table-bordered"}, React.createElement("tbody", null, React.createElement("tr", null, 'Departure Time,Arrival Time,Origin,Destination,Price'.split(',').map(function (s, i) { return React.createElement("th", {key: i}, s); })), this.state.returnData.departures.map(function (dep, i) { return React.createElement("tr", {key: i}, React.createElement("td", null, dep.departure_time), React.createElement("td", null, dep.arrival_time), React.createElement("td", null, _this.locationById(dep.origin_location_id).name), React.createElement("td", null, _this.locationById(dep.destination_location_id).name), React.createElement("td", null, dep.prices.total)); }))));
 	    };
 	    BusBud.prototype.componentDidMount = function () {
 	        $('#outbound_date').datepicker({
