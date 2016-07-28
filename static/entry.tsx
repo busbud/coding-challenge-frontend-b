@@ -1068,51 +1068,35 @@ class BusBud extends React.Component<{}, BusData>{
         return _.find(this.state.returnData.locations, (l: Location) => l.id == id)
     }
     render(){
+        let data = [
+             ["origin", "From", <select className="form-control" id="origin">
+                                    <option value="dr5reg">New York</option>
+                               </select>]
+            ,["destination", "To",  <select className="form-control" id="destination">
+                                        <option value="f25dvk">Montréal</option>
+                                    </select>]
+            ,["outbound_date", "Date", <input type="text" id="outbound_date" className="form-control"/>]
+            ,["adults", "Adults", <input type="text" id="adults" className="form-control" defaultValue="1"/>]
+            ,["lang", "Language", 
+                                    <select className="form-control" id="lang">
+                                    {
+                                        langs.map( (lang: Lang, i: number) => 
+                                                  <option value={lang.Code} key={i}>{lang.Name}</option>
+                                                 )
+                                    }
+                                    </select>
+            ]
+            ,["submit", "", <button type="button" className="btn btn-default" onClick={this.handleClick}>Submit</button>]
+        ]
         return <div>
         <form className="form-horizontal">
-            <Labeled ID="origin" label="From">
-                <select className="form-control" id="origin">
-                    <option value="dr5reg">New York</option>
-                </select>
-            </Labeled>
-
-            <Labeled ID="destination" label="To">
-                <select className="form-control" id="destination">
-                    <option value="f25dvk">Montréal</option>
-                </select>
-            </Labeled>
-
-            <Labeled ID="outbound_date" label="Date">
-                <input type="text" id="outbound_date" className="form-control"/>
-            </Labeled>
-
-            <Labeled ID="adults" label="Adults">
-                <input type="text" id="adults" className="form-control" defaultValue="1"/>
-            </Labeled>
-
-            <Labeled ID="lang" label="Language">
-                <select className="form-control" id="lang">
-                {
-                    langs.map( (lang: Lang, i: number) => 
-                        <option value={lang.Code} key={i}>{lang.Name}</option>
-                             )
-                }
-                </select>
-            </Labeled>
-
-            <Labeled ID="submit" label="">
-                    <button type="button" className="btn btn-default" onClick={this.handleClick}>Submit</button>
-            </Labeled>
-
+            {data.map( (d:[string, string, any]) => <Labeled ID={d[0]} label={d[1]}>{d[2]}</Labeled>)}
         </form>
+
         <table className="table table-striped table-bordered">
             <tbody>
                 <tr>
-                    <th>Departure Time</th>
-                    <th>Arrival Time</th>
-                    <th>Origin</th>
-                    <th>Destination</th>
-                    <th>Price</th>
+                {'Departure Time,Arrival Time,Origin,Destination,Price'.split(',').map( s => <th>{s}</th>)}
                 </tr>
                 {
                     this.state.returnData.departures.map( (dep: Departure, i: number) => <tr key={i}> 

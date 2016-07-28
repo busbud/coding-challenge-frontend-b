@@ -1127,9 +1127,19 @@
 	    }
 	    BusBud.prototype.render = function () {
 	        var _this = this;
-	        return React.createElement("div", null, React.createElement("form", {className: "form-horizontal"}, React.createElement(Labeled, {ID: "origin", label: "From"}, React.createElement("select", {className: "form-control", id: "origin"}, React.createElement("option", {value: "dr5reg"}, "New York"))), React.createElement(Labeled, {ID: "destination", label: "To"}, React.createElement("select", {className: "form-control", id: "destination"}, React.createElement("option", {value: "f25dvk"}, "Montréal"))), React.createElement(Labeled, {ID: "outbound_date", label: "Date"}, React.createElement("input", {type: "text", id: "outbound_date", className: "form-control"})), React.createElement(Labeled, {ID: "adults", label: "Adults"}, React.createElement("input", {type: "text", id: "adults", className: "form-control", defaultValue: "1"})), React.createElement(Labeled, {ID: "lang", label: "Language"}, React.createElement("select", {className: "form-control", id: "lang"}, langs.map(function (lang, i) {
-	            return React.createElement("option", {value: lang.Code, key: i}, lang.Name);
-	        }))), React.createElement(Labeled, {ID: "submit", label: ""}, React.createElement("button", {type: "button", className: "btn btn-default", onClick: this.handleClick}, "Submit"))), React.createElement("table", {className: "table table-striped table-bordered"}, React.createElement("tbody", null, React.createElement("tr", null, React.createElement("th", null, "Departure Time"), React.createElement("th", null, "Arrival Time"), React.createElement("th", null, "Origin"), React.createElement("th", null, "Destination"), React.createElement("th", null, "Price")), this.state.returnData.departures.map(function (dep, i) { return React.createElement("tr", {key: i}, React.createElement("td", null, dep.departure_time), React.createElement("td", null, dep.arrival_time), React.createElement("td", null, _this.locationById(dep.origin_location_id).name), React.createElement("td", null, _this.locationById(dep.destination_location_id).name), React.createElement("td", null, dep.prices.total)); }))));
+	        var data = [
+	            ["origin", "From", React.createElement("select", {className: "form-control", id: "origin"}, React.createElement("option", {value: "dr5reg"}, "New York"))],
+	            ["destination", "To", React.createElement("select", {className: "form-control", id: "destination"}, React.createElement("option", {value: "f25dvk"}, "Montréal"))],
+	            ["outbound_date", "Date", React.createElement("input", {type: "text", id: "outbound_date", className: "form-control"})],
+	            ["adults", "Adults", React.createElement("input", {type: "text", id: "adults", className: "form-control", defaultValue: "1"})],
+	            ["lang", "Language",
+	                React.createElement("select", {className: "form-control", id: "lang"}, langs.map(function (lang, i) {
+	                    return React.createElement("option", {value: lang.Code, key: i}, lang.Name);
+	                }))
+	            ],
+	            ["submit", "", React.createElement("button", {type: "button", className: "btn btn-default", onClick: this.handleClick}, "Submit")]
+	        ];
+	        return React.createElement("div", null, React.createElement("form", {className: "form-horizontal"}, data.map(function (d) { return React.createElement(Labeled, {ID: d[0], label: d[1]}, d[2]); })), React.createElement("table", {className: "table table-striped table-bordered"}, React.createElement("tbody", null, React.createElement("tr", null, 'Departure Time,Arrival Time,Origin,Destination,Price'.split(',').map(function (s) { return React.createElement("th", null, s); })), this.state.returnData.departures.map(function (dep, i) { return React.createElement("tr", {key: i}, React.createElement("td", null, dep.departure_time), React.createElement("td", null, dep.arrival_time), React.createElement("td", null, _this.locationById(dep.origin_location_id).name), React.createElement("td", null, _this.locationById(dep.destination_location_id).name), React.createElement("td", null, dep.prices.total)); }))));
 	    };
 	    BusBud.prototype.componentDidMount = function () {
 	        $('#outbound_date').datepicker({
