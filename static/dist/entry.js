@@ -1013,12 +1013,7 @@ var Labled = (function (_super) {
     }
     Labled.prototype.render = function () {
         var p = this.props;
-        return (<div className="form-group">
-            <label htmlFor={p.ID} className="col-sm-2 control-label">{p.label}</label>
-            <div className="col-sm-10">
-                {this.children}
-            </div>
-        </div>);
+        return (React.createElement("div", {className: "form-group"}, React.createElement("label", {htmlFor: p.ID, className: "col-sm-2 control-label"}, p.label), React.createElement("div", {className: "col-sm-10"}, this.children)));
     };
     return Labled;
 }(React.Component));
@@ -1080,83 +1075,15 @@ var BusBud = (function (_super) {
             returnData: {
                 departures: [],
                 locations: [],
-                complete: false
+                complete: false,
             }
         };
     }
     BusBud.prototype.render = function () {
         var _this = this;
-        return <div>
-        <form className="form-horizontal">
-            <div className="form-group">
-                <label htmlFor="origin" className="col-sm-2 control-label">From</label>
-                <div className="col-sm-10">
-                    <select className="form-control" id="origin">
-                        <option value="dr5reg">New York</option>
-                    </select>
-                </div>
-            </div>
-
-            <div className="form-group">
-                <label htmlFor="destination" className="col-sm-2 control-label">From</label>
-                <div className="col-sm-10">
-                    <select className="form-control" id="destination">
-                        <option value="f25dvk">Montréal</option>
-                    </select>
-                </div>
-            </div>
-
-            <div className="form-group">
-                <label htmlFor="outbound_date" className="col-sm-2 control-label">Date</label>
-                <div className="col-sm-10">
-                    <input type="text" id="outbound_date" className="form-control"/>
-                </div>
-            </div>
-
-            <div className="form-group">
-                <label htmlFor="adults" className="col-sm-2 control-label">Adults</label>
-                <div className="col-sm-10">
-                    <input type="text" id="adults" className="form-control" defaultValue="1"/>
-                </div>
-            </div>
-
-            <div className="form-group">
-                <label htmlFor="lang" className="col-sm-2 control-label">Language</label>
-                <div className="col-sm-10">
-                    <select className="form-control" id="lang">
-                    {langs.map(function (lang, i) {
-            return <option value={lang.Code} key={i}>{lang.Name}</option>;
-        })}
-                    </select>
-                </div>
-            </div>
-
-            <div className="form-group">
-                <label className="col-sm-2 control-label"></label>
-                <div className="col-sm-10">
-                    <button type="button" className="btn btn-default" onClick={this.handleClick}>Submit</button>
-                </div>
-            </div>
-        </form>
-        <table className="table table-striped table-bordered">
-            <tbody>
-                <tr>
-                    <th>Departure Time</th>
-                    <th>Arrival Time</th>
-                    <th>Origin</th>
-                    <th>Destination</th>
-                    <th>Price</th>
-                </tr>
-                {this.state.returnData.departures.map(function (dep, i) { return <tr key={i}> 
-                        <td>{dep.departure_time}</td>
-                        <td>{dep.arrival_time}</td>
-                        <td>{_this.locationById(dep.origin_location_id).name}</td>
-                        <td>{_this.locationById(dep.destination_location_id).name}</td>
-                        <td>{dep.prices.total}</td>
-                    </tr>; })}
-            </tbody>
-        </table>
-        </div>;
+        return React.createElement("div", null, React.createElement("form", {className: "form-horizontal"}, React.createElement("div", {className: "form-group"}, React.createElement("label", {htmlFor: "origin", className: "col-sm-2 control-label"}, "From"), React.createElement("div", {className: "col-sm-10"}, React.createElement("select", {className: "form-control", id: "origin"}, React.createElement("option", {value: "dr5reg"}, "New York")))), React.createElement("div", {className: "form-group"}, React.createElement("label", {htmlFor: "destination", className: "col-sm-2 control-label"}, "From"), React.createElement("div", {className: "col-sm-10"}, React.createElement("select", {className: "form-control", id: "destination"}, React.createElement("option", {value: "f25dvk"}, "Montréal")))), React.createElement("div", {className: "form-group"}, React.createElement("label", {htmlFor: "outbound_date", className: "col-sm-2 control-label"}, "Date"), React.createElement("div", {className: "col-sm-10"}, React.createElement("input", {type: "text", id: "outbound_date", className: "form-control"}))), React.createElement("div", {className: "form-group"}, React.createElement("label", {htmlFor: "adults", className: "col-sm-2 control-label"}, "Adults"), React.createElement("div", {className: "col-sm-10"}, React.createElement("input", {type: "text", id: "adults", className: "form-control", defaultValue: "1"}))), React.createElement("div", {className: "form-group"}, React.createElement("label", {htmlFor: "lang", className: "col-sm-2 control-label"}, "Language"), React.createElement("div", {className: "col-sm-10"}, React.createElement("select", {className: "form-control", id: "lang"}, langs.map(function (lang, i) {
+            return React.createElement("option", {value: lang.Code, key: i}, lang.Name);
+        })))), React.createElement("div", {className: "form-group"}, React.createElement("label", {className: "col-sm-2 control-label"}), React.createElement("div", {className: "col-sm-10"}, React.createElement("button", {type: "button", className: "btn btn-default", onClick: this.handleClick}, "Submit")))), React.createElement("table", {className: "table table-striped table-bordered"}, React.createElement("tbody", null, React.createElement("tr", null, React.createElement("th", null, "Departure Time"), React.createElement("th", null, "Arrival Time"), React.createElement("th", null, "Origin"), React.createElement("th", null, "Destination"), React.createElement("th", null, "Price")), this.state.returnData.departures.map(function (dep, i) { return React.createElement("tr", {key: i}, React.createElement("td", null, dep.departure_time), React.createElement("td", null, dep.arrival_time), React.createElement("td", null, _this.locationById(dep.origin_location_id).name), React.createElement("td", null, _this.locationById(dep.destination_location_id).name), React.createElement("td", null, dep.prices.total)); }))));
     };
     BusBud.prototype.componentDidMount = function () {
         $('#outbound_date').datepicker({
@@ -1166,4 +1093,5 @@ var BusBud = (function (_super) {
     };
     return BusBud;
 }(React.Component));
-ReactDOM.render(<BusBud />, document.getElementById("react_div"));
+ReactDOM.render(React.createElement(BusBud, null), document.getElementById("react_div"));
+//# sourceMappingURL=entry.js.map

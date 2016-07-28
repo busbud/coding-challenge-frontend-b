@@ -8,6 +8,7 @@ interface Lang{
     Code: string;
 
 }
+
 let langs: Lang[] = [
     {
         Name: "Afghanistan",
@@ -1006,6 +1007,25 @@ let langs: Lang[] = [
         Code: "ZW"
     }
 ]
+
+interface LabeldProps{
+    ID: string;
+    label: string
+}
+
+class Labeled extends React.Component<LabeldProps, {}>{
+    render(){
+        let p = this.props
+        return(
+        <div className="form-group">
+            <label htmlFor={p.ID} className="col-sm-2 control-label">{p.label}</label>
+            <div className="col-sm-10">
+                {this.props.children}
+            </div>
+        </div>)
+    }
+}
+
 interface Location{
     id: number;
     name: string;
@@ -1031,6 +1051,7 @@ interface BusData{
     returnData: ReturnData
 }
 
+
 class BusBud extends React.Component<{}, BusData>{
     constructor(props: any){
         super(props)
@@ -1046,61 +1067,43 @@ class BusBud extends React.Component<{}, BusData>{
     locationById = (id: number) => {
         return _.find(this.state.returnData.locations, (l: Location) => l.id == id)
     }
-
     render(){
         return <div>
         <form className="form-horizontal">
-            <div className="form-group">
-                <label htmlFor="origin" className="col-sm-2 control-label">From</label>
-                <div className="col-sm-10">
-                    <select className="form-control" id="origin">
-                        <option value="dr5reg">New York</option>
-                    </select>
-                </div>
-            </div>
+            <Labeled ID="origin" label="From">
+                <select className="form-control" id="origin">
+                    <option value="dr5reg">New York</option>
+                </select>
+            </Labeled>
 
-            <div className="form-group">
-                <label htmlFor="destination" className="col-sm-2 control-label">From</label>
-                <div className="col-sm-10">
-                    <select className="form-control" id="destination">
-                        <option value="f25dvk">Montréal</option>
-                    </select>
-                </div>
-            </div>
+            <Labeled ID="destination" label="To">
+                <select className="form-control" id="destination">
+                    <option value="f25dvk">Montréal</option>
+                </select>
+            </Labeled>
 
-            <div className="form-group">
-                <label htmlFor="outbound_date" className="col-sm-2 control-label">Date</label>
-                <div className="col-sm-10">
-                    <input type="text" id="outbound_date" className="form-control"/>
-                </div>
-            </div>
+            <Labeled ID="outbound_date" label="Date">
+                <input type="text" id="outbound_date" className="form-control"/>
+            </Labeled>
 
-            <div className="form-group">
-                <label htmlFor="adults" className="col-sm-2 control-label">Adults</label>
-                <div className="col-sm-10">
-                    <input type="text" id="adults" className="form-control" defaultValue="1"/>
-                </div>
-            </div>
+            <Labeled ID="adults" label="Adults">
+                <input type="text" id="adults" className="form-control" defaultValue="1"/>
+            </Labeled>
 
-            <div className="form-group">
-                <label htmlFor="lang" className="col-sm-2 control-label">Language</label>
-                <div className="col-sm-10">
-                    <select className="form-control" id="lang">
-                    {
-                        langs.map( (lang: Lang, i: number) => 
-                            <option value={lang.Code} key={i}>{lang.Name}</option>
-                                 )
-                    }
-                    </select>
-                </div>
-            </div>
+            <Labeled ID="lang" label="Language">
+                <select className="form-control" id="lang">
+                {
+                    langs.map( (lang: Lang, i: number) => 
+                        <option value={lang.Code} key={i}>{lang.Name}</option>
+                             )
+                }
+                </select>
+            </Labeled>
 
-            <div className="form-group">
-                <label className="col-sm-2 control-label"></label>
-                <div className="col-sm-10">
+            <Labeled ID="submit" label="">
                     <button type="button" className="btn btn-default" onClick={this.handleClick}>Submit</button>
-                </div>
-            </div>
+            </Labeled>
+
         </form>
         <table className="table table-striped table-bordered">
             <tbody>
