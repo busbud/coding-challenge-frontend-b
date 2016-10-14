@@ -5,9 +5,10 @@ System to display bus tickets available between two locations for a specific dat
 1. React.js, Node.js, ES6ish.
 2. localization support, including city names (Montreal vs Montréal)
 3. Support for multiple systems via config payload, which is determined by the hostname
-4. Countdown timer!
-4. Video?
-5. Bleeding edge things
+4. Responsive!
+5. Countdown timer!
+6. Video?
+7. Bleeding edge things
 
 ### Sample systems
 1. http://osheaga.freshtapes.com
