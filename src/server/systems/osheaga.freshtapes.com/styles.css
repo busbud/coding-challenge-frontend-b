@@ -1,0 +1,20 @@
+@import 'https://fonts.googleapis.com/css?family=Indie+Flower';
+
+.tagLineBanner {
+	font-family: 'Indie Flower', cursive;
+}
+.splashBackground {
+	background-image: url(bkg.jpg);
+}
+.logo {
+	background-image: url(logo.png);
+}
+.locale-fr .logo {
+	background-image: url(logo.fr.png);
+}
+.locale-en .logo {
+	background-image: url(logo.en.png);
+}
+svg.icon {
+	fill: #00476a !important;
+}

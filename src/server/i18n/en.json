@@ -1,0 +1,14 @@
+{
+	"ORIGIN_NAME" : "Origin",
+	"DESTINATION_NAME" : "Departure",
+	"EVENT_NAME" : "the event",
+	"TAG_LINE" : "Experience Life. Buy a ticket, and the trip will happen.",
+	"DEPARTURES_HEADER" : "Bus departures from ${ORIGIN_NAME} to ${DESTINATION_NAME}, just in time for ${EVENT_NAME}.",
+	"DAYS" : "days",
+	"HOURS" : "hours",
+	"MINUTES" : "minutes",
+	"SECONDS" : "seconds",
+	"PICKUP" : "Pickup",
+	"DROP_OFF" : "Drop off",
+	"BUY" : "Buy"
+}

@@ -1,0 +1,23 @@
+{
+	"origin" : {
+		"geoHash": "dr5reg"
+	},
+	"destination" : {
+		"geoHash": "9qce7r"
+	},
+	"currency": "USD",
+	"eventStartTime" : "2017-04-08T19:20:30+05:00",
+	"departureDate" : "2017-06-07",
+	"i18n" : {
+		"default" : {
+			"ORIGIN_NAME" : "New York",
+			"DESTINATION_NAME" : "Sacremento",
+			"EVENT_NAME" : "Pitchfork"
+		}
+	},
+	"video" : {
+		"muted" : false,
+		"autoPlay" : true,
+		"src" : "http://elasticbeanstalk-us-west-2-449102139501.s3.amazonaws.com/impulse/systems/pitchfork.freshtapes.com/splash.mp4"
+	}
+}

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+
+.tagLineBanner {
+	font-family: 'Shadows Into Light', cursive;
+}
+.splashBackground {
+	background-image: url(illustration.png);
+}
+.logo {
+	background-image: url(bonaroo.png);
+	height: 325px !important;
+}
+svg.icon {
+	fill: #CCC !important;
+}

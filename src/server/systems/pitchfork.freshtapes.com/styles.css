@@ -1,0 +1,10 @@
+
+.splashBackground {
+	background-image: url(bkg.jpg);
+}
+.logo {
+	background-image: url(logo.png);
+}
+svg.icon {
+	fill: #CCC !important;
+}
