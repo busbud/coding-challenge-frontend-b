@@ -15,14 +15,15 @@ var gulp        = require('gulp'),
 	runSequence = require('run-sequence'),
 	del         = require('del'),
 	args        = require('yargs').argv,
-	packageJson = require('./package.json'),
+	packageJSON = require('./package.json'),
+  buildJSON   = require('./buildinfo.json'),
 	path        = require('path'),
 	
-	BUILD_DIR   = path.resolve(__dirname, 'build'),
-	SOURCE_DIR  = path.resolve(__dirname, 'src'),
-	APP_DIR     = path.resolve(__dirname, SOURCE_DIR, 'client/app');
+	BUILD_DIR   = path.resolve(__dirname, 'public'),
+	SOURCE_DIR  = path.resolve(__dirname, 'client'),
+	APP_DIR     = path.resolve(__dirname, SOURCE_DIR, 'app');
 	
-	//Probably a better way to do this. Still getting used to the webpack / ES6 build stuff
+	//Probably a better way to do this. Still getting used to the webpack / ES6 universe
 	process.env.NODE_ENV = args.debug ? 'development' : 'production';
 	process.env.PROD_ENV = args.debug ? '0' : '1';
 	  
@@ -39,14 +40,8 @@ gulp.task('clean', function () {
   return del([BUILD_DIR+'/**/*']);
 });
 
-gulp.task('build/directories', function() {
-	if (!fs.existsSync(BUILD_DIR)) {
-		return fs.mkdirSync(BUILD_DIR);
-	}
-})
-
 gulp.task('build', function(callback) {
-    return runSequence('build/directories', 'build/js', 'build/jsx', 'build/vendors', 'build/css', 'build/html', 'build/images', 'build/package.json', 'build/server', callback);
+    return runSequence('build/css', 'build/html', 'build/images', 'build/buildinfo', 'build/jsx', callback);
 });
 
 /* 
@@ -55,21 +50,21 @@ gulp.task('build', function(callback) {
 */
 gulp.task('build/css', function() {
 
-    var lessStream = gulp.src(SOURCE_DIR+'/client/**/*.less')
+    var lessStream = gulp.src(SOURCE_DIR+'/**/*.less')
         .pipe(less())
 		.on('error', errorEater)
         .pipe(concat('less-files.less'));
 
-    var scssStream = gulp.src(SOURCE_DIR+'/client/**/*.scss')
+    var scssStream = gulp.src(SOURCE_DIR+'/**/*.scss')
         .pipe(sass())
 		.on('error', errorEater)
         .pipe(concat('scss-files.scss'));
     
-    var cssStream = gulp.src(SOURCE_DIR+'/client/**/*.css')
+    var cssStream = gulp.src(SOURCE_DIR+'/**/*.css')
 		.on('error', errorEater)
         .pipe(concat('css-files.css'));
 
-  var vendorStream = gulp.src(packageJson.vendorsCSS || [])
+  var vendorStream = gulp.src(packageJSON.vendorsCSS || [])
     	.on('error', errorEater)
         .pipe(concat('css-vendors-files.css'));
 		
@@ -77,31 +72,12 @@ gulp.task('build/css', function() {
         .pipe(concat('styles.css'))
         .pipe(cleanCSS())
 		.on('error', errorEater)
-        .pipe(gulp.dest(BUILD_DIR+'/public/'));
+        .pipe(gulp.dest(BUILD_DIR));
 
     return mergedStream;
 });
 
-/* 
-  Builds the JS files.
-  Concatenates, uglifies.
-*/
-gulp.task('build/js', function() {
-	
-  return gulp.src(SOURCE_DIR+'/client/**/*.js')
-    .pipe(sourcemaps.init())
-    .pipe(babel({
-        presets: ["es2015", "react"]
-    }))
-	.on('error', errorEater)
-    .pipe(concat('scripts.js'))
-	.pipe(args.debug ? gutil.noop() : uglify().on('error', gutil.log))
-	.pipe(sourcemaps.write())
-    .pipe(gulp.dest(BUILD_DIR+'/public/'));
-	
-});
-
-/* 
+/*
   Builds the JSX files via WebPack
 */
 gulp.task('build/jsx', function() {
@@ -110,7 +86,7 @@ gulp.task('build/jsx', function() {
 		entry: APP_DIR + '/App.jsx',
 		devtool: 'source-map',
 		output: {
-			path: BUILD_DIR + '/public/',
+			path: BUILD_DIR,
 			filename: 'bundle.js'
 		},
 		module : {
@@ -123,113 +99,81 @@ gulp.task('build/jsx', function() {
 			]
 		},
 		plugins: !args.debug ? [
-			new webpack.DefinePlugin({
-				'process.env': {
-					NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-				}
-			}),
-			new webpack.optimize.UglifyJsPlugin({
-				compress: { warnings: false }
-			})
+			new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) } }),
+			new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
 		] : []
 	};
 
-	return gulp.src(SOURCE_DIR+'/client/app/index.jsx')
+	return gulp.src(SOURCE_DIR+'/app/index.jsx')
 		.pipe(sourcemaps.init())
 		.pipe(gulpWebpack(webpackConfig, webpack))
 		.on('error', errorEater)
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(BUILD_DIR+'/public/'));
+		.pipe(gulp.dest(BUILD_DIR));
 	
-});
-
-/* 
-  Concats all of the vendor scripts defined in package.json into a single resource (public/vendors.js)
-*/
-gulp.task('build/vendors', function() {
-  return gulp.src(packageJson.vendorsJS || [])
-    .pipe(sourcemaps.init())
-    .pipe(concat('vendors.js'))
-	.pipe(sourcemaps.write())
-    .pipe(gulp.dest(BUILD_DIR+'/public/'));
-});
-
-/* 
-  Copies the server scripts into the build directory
-*/
-gulp.task('build/server', function() {
-  return gulp.src([SOURCE_DIR+'/server/**/*'])
-    .pipe(gulp.dest(BUILD_DIR+'/'));
 });
 
 /* 
   Copies the html files into the build directory
 */
 gulp.task('build/html', function() {
-  return gulp.src(SOURCE_DIR+'/client/*.html')
-    .pipe(gulp.dest(BUILD_DIR+'/public/'));
+  return gulp.src(SOURCE_DIR+'/**/*.html')
+    .pipe(gulp.dest(BUILD_DIR));
 });
 
 /* 
   Copies the image files into the build directory
 */
 gulp.task('build/images', function() {
-  return gulp.src(SOURCE_DIR+'/client/images/**/*.*')
-    .pipe(gulp.dest(BUILD_DIR+'/public/images/'));
+  return gulp.src(SOURCE_DIR+'/images/**/*.*')
+    .pipe(gulp.dest(BUILD_DIR+'/images/'));
 });
 
 /*
   Burns a build number into package.json
 */
-gulp.task('build/package.json', function() {
+gulp.task('build/buildinfo', function() {
 	
 	var buildTimeStamp = new Date().getTime();
-	if(typeof packageJson.initialBuildTimeStamp !== 'number') {
-		packageJson.initialBuildTimeStamp = buildTimeStamp
+	if(typeof buildJSON.initialBuildTimeStamp !== 'number') {
+		buildJSON.initialBuildTimeStamp = buildTimeStamp
 	}
 
 	//Build number is number of hours which have passed since the first build
-	packageJson.buildNumber = ((buildTimeStamp - packageJson.initialBuildTimeStamp) / 1000 / 60 / 60).toFixed(3);
+	buildJSON.buildNumber = ((buildTimeStamp - buildJSON.initialBuildTimeStamp) / 1000 / 60 / 60).toFixed(3);
 	
-	return fs.writeFile('package.json', JSON.stringify(packageJson, null, 4), (err) => {
+	return fs.writeFile('buildinfo.json', JSON.stringify(buildJSON, null, 4), (err) => {
 		if (err) throw err;
-		  return gulp.src(['package.json'])
-			.pipe(gulp.dest(BUILD_DIR));
 	});
 	
 });
 
 gulp.task('watch', function() {
   gulp.watch(
-    [SOURCE_DIR+'/server/**'], 
-    ['build/server', 'build/package.json']
+    ['./server/**'], 
+    ['build/buildinfo']
   );
   gulp.watch(
-    [SOURCE_DIR+'/client/**/*.html'], 
-    ['build/html', 'build/package.json']
+    [SOURCE_DIR+'/**/*.html'], 
+    ['build/html', 'build/buildinfo']
   );
   gulp.watch(
-    [SOURCE_DIR+'/client/images/**/*.*'], 
-    ['build/images', 'build/package.json']
-  );
-
-  gulp.watch(
-    [SOURCE_DIR+'/client/**/*.js'],
-    ['build/js', 'build/package.json']
+    [SOURCE_DIR+'/images/**/*.*'], 
+    ['build/images', 'build/buildinfo']
   );
   gulp.watch(
-    [SOURCE_DIR+'/client/**/*.jsx'],
-    ['build/jsx', 'build/package.json']
+    [SOURCE_DIR+'/app/**/*.jsx'],
+    ['build/jsx', 'build/buildinfo']
   );
   gulp.watch(
     [
-		SOURCE_DIR+'/client/styles/*.scss', 
-		SOURCE_DIR+'/client/styles/*.less', 
-		SOURCE_DIR+'/client/styles/*.css'
+		SOURCE_DIR+'/styles/*.scss', 
+		SOURCE_DIR+'/styles/*.less', 
+		SOURCE_DIR+'/styles/*.css'
 	], 
     [
 		'build/css', 
-		'build/package.json'
+		'build/buildinfo'
 	]
   );
 });

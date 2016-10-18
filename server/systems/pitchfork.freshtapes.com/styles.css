@@ -1,0 +1,12 @@
+body {
+  background-color: #4b8881;
+}
+.splashBackground {
+	background-image: url(bkg.jpg);
+}
+header .logo {
+	background-image: url(logo.png);
+}
+svg.icon {
+	fill: #CCC !important;
+}

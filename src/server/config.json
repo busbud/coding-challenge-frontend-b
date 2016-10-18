@@ -1,7 +1,0 @@
-{
-	"API_AUTH_TOKEN" : "GUEST_W1yITeGYRPieNFaIUoka1w",
-	"API_HOST" : "napi.busbud.com",
-	"API_BASE_PATH" : "/",
-	"API_PORT" : 443,
-	"SYSTEMS_CONFIG_LOCATION" : "http://jaredsavage.com/projects/impulse/systems/"
-}

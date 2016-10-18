@@ -1,0 +1,23 @@
+{
+	"origin" : {
+		"geoHash": "dpz88g"
+	},
+	"destination" : {
+		"geoHash": "f25dvk"
+	},
+	"currency": "CAD",
+	"eventStartTime" : "2017-07-16T19:20:30+05:00",
+	"departureDate" : "2017-07-15",
+	"locales" : {
+		"default" : {
+			"ORIGIN_NAME" : "Toronto",
+			"DESTINATION_NAME" : "Montreal",
+			"EVENT_NAME" : "Heavy MTL"
+		}
+	},
+	"video" : {
+		"muted" : false,
+		"autoPlay" : true,
+		"src" : "http://jaredsavage.com/projects/impulse/systems/heavymtl.freshtapes.com/splash.mp4"
+	}
+}

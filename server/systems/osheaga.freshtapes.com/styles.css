@@ -1,0 +1,35 @@
+@import 'https://fonts.googleapis.com/css?family=Indie+Flower';
+
+body {
+  animation: 10s cycleColors linear infinite;
+}
+
+@keyframes cycleColors {
+  12.5% { background-color: #066491 }
+  25.0% { background-color: #65c5e2 }
+  37.5% { background-color: #f1c6aa }
+  50.0% { background-color: #e5e281 }
+  62.5% { background-color: #add399 }
+  75.0% { background-color: #e499ae }
+  87.5% { background-color: #db4392 }
+  100% { background-color: #066491 }
+}
+
+.tagLineBanner {
+	font-family: 'Indie Flower', cursive;
+}
+.splashBackground {
+	background-image: url(bkg.jpg);
+}
+header .logo {
+	background-image: url(logo.png);
+}
+.locale-fr header .logo {
+	background-image: url(logo.fr.png);
+}
+.locale-en header .logo {
+	background-image: url(logo.en.png);
+}
+svg.icon {
+	fill: #00476a !important;
+}
