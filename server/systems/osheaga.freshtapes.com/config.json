@@ -20,7 +20,6 @@
 	},
 	"video" : {
 		"muted" : true,
-		"autoPlay" : true,
-		"src" : "http://jaredsavage.com/projects/impulse/systems/osheaga.freshtapes.com/splash.mp4"
+		"autoPlay" : true
 	}
 }

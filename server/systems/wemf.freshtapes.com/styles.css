@@ -5,12 +5,6 @@ body {
 .tagLineBanner {
 	font-family: 'Shadows Into Light', cursive;
 }
-.splashBackground {
-	background-image: url(bkg.jpg);
-}
-header .logo {
-	background-image: url(logo.png);
-}
 svg.icon {
 	fill: #CCC !important;
 }

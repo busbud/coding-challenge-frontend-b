@@ -9,11 +9,7 @@ body {
 .listHeader {
   font-size: 15px; font-size: 1.5rem;
 }
-.splashBackground {
-	background-image: url(bkg.jpg);
-}
 header .logo {
-	background-image: url(logo.png);
 	height: 325px;
 }
 svg.icon {

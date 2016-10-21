@@ -1,6 +1,8 @@
-import React            from 'react';
-import Icon             from './Icon.jsx';
-import LoadingAnimation from './LoadingAnimation.jsx';
+import React            from 'react'
+import ReactTooltip     from 'react-tooltip'
+import Icon             from './Icon.jsx'
+import LoadingAnimation from './LoadingAnimation.jsx'
+
 class Departure extends React.Component {
 
 	constructor(props) {
@@ -13,11 +15,11 @@ class Departure extends React.Component {
 	formatPrice(number, currency) {
 		return (number / 100).toLocaleString("en-US", {style:"currency", currency: this.props.config.currency});
 	}
- 
+
 	render() {
 
 		var dep = this.state.departure;
-
+		
 		if(dep) {
 
 			let amenityIcons = Object.keys(dep.amenities)
@@ -26,13 +28,20 @@ class Departure extends React.Component {
 				}.bind(this))
 				.map(function(amenity, i) {
 					return (
-						<Icon key={i} src={'/images/icons/'+amenity+'.svg#Layer_1'} />
+						<div 
+							key={i} 
+							data-tip={this.props.config.strings['AMENITY_'+amenity.toUpperCase()]} 
+							data-for={'ToolTip'} 
+							data-place='top'>
+							<Icon src={'/images/icons/'+amenity+'.svg#Layer_1'}/>
+						</div>
 					);
 				}.bind(this));
 
 			return (
 				<div className="departure" data-departureid={dep.id}>
 					<div className="depatureInner">
+				
 						<div className="row">
 						
 							<div className="col-xs-6 col-sm-3">
@@ -70,7 +79,7 @@ class Departure extends React.Component {
 									</div>
 								</div>
 								<div className="row">
-									<div className="col-xs-12">
+									<div className="col-xs-12 amenities">
 										{amenityIcons}
 									</div>
 								</div>
@@ -101,10 +110,7 @@ class Departure extends React.Component {
 				</div>
 			)
 
-
-
 		}
-		
 	}
 }
 

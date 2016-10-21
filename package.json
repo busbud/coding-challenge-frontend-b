@@ -18,6 +18,7 @@
     "moment": "^2.15.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-tooltip": "^3.2.1",
     "yargs": "^5.0.0"
   },
   "devDependencies": {

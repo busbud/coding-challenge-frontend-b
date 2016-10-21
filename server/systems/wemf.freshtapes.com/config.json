@@ -17,7 +17,6 @@
 	},
 	"video" : {
 		"muted" : true,
-		"autoPlay" : true,
-		"src" : "http://jaredsavage.com/projects/impulse/systems/wemf.freshtapes.com/splash.mp4"
+		"autoPlay" : true
 	}
 }

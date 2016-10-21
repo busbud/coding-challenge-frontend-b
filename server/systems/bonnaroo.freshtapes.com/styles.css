@@ -5,11 +5,7 @@ body {
 .tagLineBanner {
 	font-family: 'Shadows Into Light', cursive;
 }
-.splashBackground {
-	background-image: url(illustration.png);
-}
 header .logo {
-	background-image: url(bonaroo.png);
 	height: 325px;
 }
 svg.icon {

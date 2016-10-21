@@ -22,12 +22,10 @@ let API = {
 
 	fetchDepartures: function fetchDepartures(op) {
 
-		return new Promise(function(resolve, reject) {
-
 			op = op || {};
-			let r = {operators: {}, departures: [], locations: {}, cities: {}};
+			let r = {operators: {}, departures: [], locations: {}, cities: {}}, departureTracker = [];
 
-			var innerFetchDepartures = function() {
+			let innerFetchDepartures = function() {
 
 				let qURL = [
 						'/x-departures',
@@ -51,7 +49,8 @@ let API = {
 					url: qURL, 
 					data : qData,
 					headers: qHeaders
-				}).then(function(result) {
+				})
+				.then(function(result) {
 				
 					//Map the arrays of locations, cities, operators onto an object by id so they're easier to reference.
 					function appendToResultsBank(key, indexAttr) {
@@ -66,46 +65,51 @@ let API = {
 					appendToResultsBank('cities','id');
 					appendToResultsBank('locations','id');
 
-					if(!!result.departures && result.departures.length > 0) {
+					result.departures.forEach(function(d) {
 
-						//Some property mapping to make it easier to consume later
-						result.departures.forEach(function(d) {
-							Object.assign(d, {
-								departure_display_time    : moment(d.departure_time).locale(API.locale).format('LT'),
-								arrival_display_time      : moment(d.arrival_time).locale(API.locale).format('LT'),
-								origin_location_name      : r.locations[d.origin_location_id].name,
-								destination_location_name : r.locations[d.destination_location_id].name,
-								operator_display_name     : r.operators[d.operator_id].display_name,
-								operator_logo             : r.operators[d.operator_id].logo_url
-							})
-						}.bind(this))
-						
-						//All the mapping
-						r.destination_city_id = result.destination_city_id
-						r.origin_city_id      = result.origin_city_id
-						r.departures          = r.departures.concat(result.departures)
-						r.destination_city_id = result.destination_city_id
-						r.destination_city_id = result.destination_city_id
+						if(typeof departureTracker[d.id] === 'undefined') {
 
-					}
+							departureTracker[d.id] = true;
+
+							r.departures.push(Object.assign(
+								d, 
+								{
+									departure_display_time    : moment(d.departure_time).locale(API.locale).format('LT'),
+									arrival_display_time      : moment(d.arrival_time).locale(API.locale).format('LT'),
+									origin_location_name      : r.locations[d.origin_location_id].name,
+									destination_location_name : r.locations[d.destination_location_id].name,
+									operator_display_name     : r.operators[d.operator_id].display_name,
+									operator_logo             : r.operators[d.operator_id].logo_url
+								}
+							));
+
+						}
+
+					}.bind(this))
+
+					//All the mapping
+					r.destination_city_id = result.destination_city_id
+					r.origin_city_id      = result.origin_city_id
+
+					op.onData(r);
 
 					if(result.complete) {
 
 						//Saw ths happen a few times. Complete, but no results.
-						if(!!r.departures && r.departures.length === 0) {
-							reject({error:'No results found'});
+						if(!!r.departures && Object.keys(r.departures).length === 0) {
+							op.onError({error:'No results found'});
 						} else {
 							r.ttl = result.ttl;
-							resolve(r);
+							op.onComplete(r);
 						}
 
 
 					} else if(!!op.pollIndex && op.pollIndex > 15) {
 						
 						if(r.departures.length > 0) {
-							resolve(r);
+							op.onComplete(r);
 						} else {
-							reject({error:'No results found'});
+							op.onError({error:'No results found'});
 						}
 						
 					} else {
@@ -116,12 +120,11 @@ let API = {
 					}
 					
 				}.bind(this));
+				
 			}.bind(this);
 
 			innerFetchDepartures();
 
-		}.bind(this))
-		
 	}
 }
 

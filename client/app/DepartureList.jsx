@@ -1,90 +1,98 @@
-import React     from 'react';
-import moment    from 'moment';
-import API       from './API.jsx';
-import Departure from './Departure.jsx';
+import React            from 'react'
+import ReactTooltip     from 'react-tooltip'
+import moment           from 'moment'
+import API              from './API.jsx'
+import Departure        from './Departure.jsx'
+import LoadingAnimation from './LoadingAnimation.jsx'
 
 class DepartureList extends React.Component {
 
-	constructor(props) {
-		super(props);
-		this.state = { 
-			results: { departures: [false, false, false, false, false]},
-			config: this.props.config
-		};
-		this.fetch = this.fetch.bind(this);
-	}
-  
-	fetch() {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      loading: true,
+      results: { departures: [], loading: true },
+      config: this.props.config
+    };
+    this.fetch = this.fetch.bind(this);
+  }
 
-		if(this.fetchInterval) clearTimeout(this.fetchInterval);
+  fetch() {
 
-			this.setState({
-				error: false
-			});
+    if(this.refetchInterval) clearTimeout(this.refetchInterval);
 
-		API
-		.setConfig(this.state.config)
-		.fetchDepartures({
-			origin:        this.state.config.origin.geoHash,
-			destination:   this.state.config.destination.geoHash,
-			departureDate: this.state.config.departureDate
-		})
-		.then(function(data) {
-			
-			this.setState({
-				results: data
-			});
+      this.setState({
+        error: false,
+        loading: true
+      });
 
-			//When our results expire, reload them
-			this.fetchInterval = setTimeout(this.fetch, data.ttl*1000);
+    API
+      .setConfig(this.state.config)
+      .fetchDepartures({
+        origin:        this.state.config.origin.geoHash,
+        destination:   this.state.config.destination.geoHash,
+        departureDate: this.state.config.departureDate,
+        onData: function(data) {
 
-		}.bind(this))
-		.catch(function(err) {
-			this.setState({
-				error: err.error
-			})
-			
-		}.bind(this))
-	}
+          this.setState({ results: data })
 
-	componentDidMount() {
+        }.bind(this),
+        onComplete: function(data) {
 
-		this.fetch();
-				
-	}
+          this.refetchInterval = setTimeout(this.fetch, data.ttl*1000);
+          this.setState({ loading: false });
 
-	render() {
-		
-		if(this.state.error) {
-			return (
-				<div className="DepartureList">
-					<div className="row">
-						<div className="col-xs-12">
-						<div className="errorBanner">
-							{this.state.error} <button onClick={this.fetch}>Try again</button>
-						</div>
-							
-						</div>
-						<div className="col-xs-12">
-							
-						</div>
-					</div>
-				</div>
-			);
-		}
-			var departures = this.state.results.departures.map(function(departure, i) {
-				return (
-					<Departure key={departure.id || i} data={departure} config={this.state.config}/>
-				);
-			}.bind(this));
-			
-			return (
-				<div className="DepartureList">
-					{departures}
-				</div>
-			);
-		
-	}
+        }.bind(this),
+        onError: function(err) {
+
+          this.setState({ error: err.error, loading: false })
+
+        }.bind(this)
+      })
+
+  }
+
+  componentDidUpdate() {
+    ReactTooltip.rebuild()
+  }
+
+  componentDidMount() {
+    this.fetch();
+  }
+
+  render() {
+    
+    if(this.state.error) {
+
+      return (
+        <div className="departureList">
+          <div className="row">
+            <div className="col-xs-12">
+              <div className="errorBanner">
+                {this.state.error} <button onClick={this.fetch}>Try again</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+    } else {
+      
+      var departures = this.state.results.departures.map(function(d, i) {
+        return (
+          <Departure key={d.id || i} data={d} config={this.state.config}/>
+        )
+      }.bind(this))
+
+      return (
+        <div className="departureList">
+          {departures}
+          <LoadingAnimation active={this.state.loading} />
+        </div>
+      )
+    
+    }
+  }
 }
 
 export default DepartureList;

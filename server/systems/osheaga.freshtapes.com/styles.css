@@ -18,17 +18,11 @@ body {
 .tagLineBanner {
 	font-family: 'Indie Flower', cursive;
 }
-.splashBackground {
-	background-image: url(bkg.jpg);
-}
-header .logo {
-	background-image: url(logo.png);
-}
 .locale-fr header .logo {
-	background-image: url(logo.fr.png);
+	background-image: url(logo.fr.png) !important;
 }
 .locale-en header .logo {
-	background-image: url(logo.en.png);
+	background-image: url(logo.en.png) !important;
 }
 svg.icon {
 	fill: #00476a !important;

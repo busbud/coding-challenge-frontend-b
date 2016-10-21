@@ -1,0 +1,144 @@
+@import "Shared.less";
+
+.departure {
+
+  .box-style;
+  .rem(font-size, 1.4);
+  .rem(margin-top, 1.5);
+  .rem(margin-right, -0.8);
+  .rem(margin-bottom, 1.5);
+  .rem(margin-left, -0.8);
+  overflow:hidden;
+  perspective-origin: 50% 0%;
+  animation: 1s slideInParentBump 0s ease-in-out;
+  position:relative;
+
+  .departureLogo {
+    .rem(height, 8);
+    background-size:contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  
+  svg.icon {
+    .rem(height, 3.2);
+    .rem(width, 3.2);
+  }
+
+  .departureHeader {
+    .rem(padding, 1.5);
+    background-color: @accentColor;
+    color: #ffffff;
+    
+    img {
+      .rem(height, 3.2);
+    }
+  }
+
+  @media @mobile {
+    .rem(margin-right, 1.5);
+    .rem(margin-left, 1.5);
+  }
+
+  .depatureInner {
+    .rem(padding, 1.5);
+    transform-origin: 50% 0%;
+    color: @accentColor;
+    background-color: @accentColorContrast;
+    animation: 0.65s slideIn ease-in-out;
+
+    /* Faint dividing lines within departures */
+    > div > div {
+      box-shadow: 1px 0px 0px rgba(0,0,0,0.05);
+    }
+
+    .button {
+      width:100%;
+    }
+
+    .labelText {
+      color: #666;
+    }
+    .time {
+      .rem(font-size, 1.8);
+      font-weight: Bold;
+      color: #000;
+    }
+    .location {
+      .rem(font-size, 1.2);
+      color: #000;
+    }
+    .amenities > * {
+      float:left;
+      position:relative;
+    }
+    .price {
+      .rem(font-size, 2.4);
+      .rem(height, 4);
+      color: #000;
+    }
+    .currency {
+      .rem(font-size, 1.2);
+      .rem(margin-left, 0.8);
+    }
+    .buy {
+      text-align: right;
+    }
+
+    @media @mobile {
+
+      animation: none;
+
+      /* Faint dividing lines within departures */
+      > div > div:nth-child(3), 
+      > div > div:nth-child(4) {
+        box-shadow: 0px -1px 0px rgba(0,0,0,0.05);
+        .rem(padding-top, 1.5);
+        .rem(margin-top, 1.5);
+      }
+
+      .button {
+        margin-top:0;
+        width:auto;
+      }
+
+    }
+  }
+}
+
+/*
+  Animations
+*/
+@keyframes slideIn {
+  0%   { transform: translate(0, 100%); opacity:0; }
+  100% { transform: translate(0, 0%); opacity:1; }
+}
+
+@keyframes slideInParentBump {
+  0%   { transform: translate(0, 0%); opacity:1; max-height:0px; }
+  60%  { transform: translate(0, 0%); opacity:1; max-height:120px; }
+  65%  { transform: translate(0, -3px); opacity:1; }
+  100% { transform: translate(0, 0%); opacity:1; }
+}
+
+@keyframes slideInParentBumpSuperFancy {
+  0%   { transform: translate(0, 0%) scale(0.0) rotateZ(10deg); opacity:0; max-height:0px; }
+  60%  { transform: translate(0, 0%) scale(1.0) rotateZ(0deg); opacity:1; max-height:120px; }
+  65%  { transform: translate(0, -3px) scale(1.02) rotateZ(0deg); opacity:1; }
+  100% { transform: translate(0, 0%) scale(1.0) rotateZ(0deg); opacity:1; }
+}
+
+/* Light-weight animations for mobile devices */
+@media @mobile {
+
+  @keyframes slideIn {
+    0%   { transform: translate(0, 100%); opacity:0; }
+    100% { transform: translate(0, 0%); opacity:1; }
+  }
+
+  @keyframes slideInParentBump {
+    0% { opacity:0; }
+    100% { opacity:1; }
+  }  
+    
+}

@@ -1,0 +1,75 @@
+@import "Shared.less";
+
+svg.icon {
+  color:  @accentColor;
+  fill:   @accentColor;
+  .rem(width, 4);
+  .rem(height, 4);
+}
+
+  button.iconToggle {
+    .rem(height, 4);
+    .rem(width, 4);
+    .rem(min-width, 4);
+
+    padding:0 !important;
+    margin:0;
+    top:0;
+    right:0;
+    background-size: 100% 100%;
+    background-color: transparent;
+    border-width: 0;
+    outline: none;
+    position:relative;
+
+    svg.icon {
+      position:absolute;
+      left:0;
+      top:0;
+    }
+
+  }
+
+  /* Anything is a button! */
+  button, .button {
+    .rem(min-width,     11);
+    .rem(height,        3.7);
+    .rem(line-height,   3.5);
+    .rem(padding-left,  2.0);
+    .rem(padding-right, 2.0);
+    .rem(border-radius, 0.2);
+    .rem(font-size,     1.4);
+    cursor: default;
+    border-width: 0;
+    background-color: @accentColor;
+    font-weight:bold;
+    color: @accentColorContrast;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out;
+    box-shadow: inset 0 2px 10px -3px rgba(255,255,255,.5),inset 0 0px 0px 1px rgba(0,0,0,.25);
+  }
+  button:hover, .button:hover {
+    background-color: lighten(@accentColor, 10%);
+  }
+  button:active, .button:active {
+    transition: none;
+    background-color: darken(@accentColor, 10%);
+    margin-top:1px;
+    margin-bottom:-1px;
+    box-shadow: inset 0 0px 0px 1px rgba(0,0,0,.25);
+  }
+
+    @media @mobile {
+      .button {
+        .rem(line-height, 6);
+        .rem(height, 6);
+        min-width:auto;
+      }
+    }
+
+    button.iconToggle {
+      box-shadow: none !important;
+      background-color: transparent !important;
+    }

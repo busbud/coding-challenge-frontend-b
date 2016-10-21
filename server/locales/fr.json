@@ -1,8 +1,8 @@
 {
-	"ORIGIN_NAME" : "Ville d'origine",
-	"DESTINATION_NAME" : "Ville de départ",
+	"ORIGIN_NAME" : "Ville de départ",
+	"DESTINATION_NAME" : "Ville d'arrivée",
 	"EVENT_NAME" : "l'événement",
-	"TAG_LINE" : "Sentant impulsif? Acheter le billet, et le voyage se passera.",
+	"TAG_LINE" : "Vivez pleinement. Achetez un billet, et le voyage arrivera",
 	"DEPARTURES_HEADER" : "Départ des bus de ${ORIGIN_NAME} à ${DESTINATION_NAME}, pour ${DEPARTURE_DATE}. Juste à temps pour ${EVENT_NAME}.",
 	"DAYS" : "jours",
 	"HOURS" : "heures",
@@ -13,5 +13,9 @@
 	"BUY" : "Acheter",
 	"BUILT_IN_MONTREAL" : "Construit à Montréal",
 	"PAGE_FOOTER_TEXT" : "Propulsé par Busbud, Inc. © 2016",
-	"DEPARTURE_DATE" : ""
+	"DEPARTURE_DATE" : "",
+	"AMENITY_TOILET" : "Toilette",
+	"AMENITY_POWER_OUTLETS" : "Prises de courant",
+	"AMENITY_AC" : "Climatisation",
+	"AMENITY_WIFI" : "WiFi"
 }

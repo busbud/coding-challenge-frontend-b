@@ -18,8 +18,8 @@ class CountDownBanner extends React.Component {
 			let d1 = new Date(this.props.endTime),
 					d2 = new Date(),
 					t  = Math.abs(d2.getTime() - d1.getTime()),
-					r = [], 
-					s = this.props.config.strings;
+					r  = [], 
+					s  = this.props.config.strings;
 				
 					t /= 1000; r.push((t % 60).toFixed(0) + s.SECONDS);
 					t /= 60;   r.push((t % 60).toFixed(0) + s.MINUTES);

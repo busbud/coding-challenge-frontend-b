@@ -3,7 +3,7 @@
 /*
   Configuration
 */
-var config = {
+let config = {
   "API_AUTH_TOKEN" : "GUEST_BWjr2IYsQ0ynIMfkWbNJcA",
   "API_HOST" : "napi.busbud.com",
   "API_PORT" : 443,

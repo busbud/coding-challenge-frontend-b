@@ -13,5 +13,9 @@
 	"BUY" : "Buy",
 	"BUILT_IN_MONTREAL" : "Built in Montreal",
 	"PAGE_FOOTER_TEXT" : "Powered by Busbud, Inc. © 2016",
-	"DEPARTURE_DATE" : ""
+	"DEPARTURE_DATE" : "",
+	"AMENITY_TOILET" : "Toilet paper included!",
+	"AMENITY_POWER_OUTLETS" : "Power Outlets",
+	"AMENITY_AC" : "Air Conditioning",
+	"AMENITY_WIFI" : "WiFi"
 }

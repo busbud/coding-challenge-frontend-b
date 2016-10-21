@@ -12,13 +12,21 @@
 		"default" : {
 			"ORIGIN_NAME" : "New York",
 			"DESTINATION_NAME" : "Nashville",
-			"EVENT_NAME" : "Bonaroo",
+			"EVENT_NAME" : "Bonnaroo",
 			"DEPARTURE_DATE" : "June 6th"
 		}
 	},
 	"video" : {
 		"muted" : false,
 		"autoPlay" : false,
-		"src" : "http://jaredsavage.com/projects/impulse/systems/bonaroo.freshtapes.com/splash.mp4"
+		"src" : "system/res/splash.mp4"
+	},
+	"style" : {
+		"background" : {
+			"src" : "system/res/illustration.png"
+		},
+		"logo" : {
+			"src" : "system/res/bonaroo.png"
+		}
 	}
 }
