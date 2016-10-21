@@ -3,11 +3,11 @@ body {
   background-color: #571178;
 }
 .tagLineBanner {
-	font-family: 'Shadows Into Light', cursive;
+  font-family: 'Shadows Into Light', cursive;
 }
 header .logo {
-	height: 325px;
+  height: 325px;
 }
 svg.icon {
-	fill: #CCC !important;
+  fill: #CCC !important;
 }

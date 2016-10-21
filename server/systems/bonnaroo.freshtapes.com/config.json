@@ -1,32 +1,32 @@
 {
-	"origin" : {
-		"geoHash": "dr5reg"
-	},
-	"destination" : {
-		"geoHash": "dn6m9p"
-	},
-	"currency": "USD",
-	"eventStartTime" : "2017-06-08T19:20:30+05:00",
-	"departureDate" : "2017-06-07",
-	"locales" : {
-		"default" : {
-			"ORIGIN_NAME" : "New York",
-			"DESTINATION_NAME" : "Nashville",
-			"EVENT_NAME" : "Bonnaroo",
-			"DEPARTURE_DATE" : "June 6th"
-		}
-	},
-	"video" : {
-		"muted" : false,
-		"autoPlay" : false,
-		"src" : "system/res/splash.mp4"
-	},
-	"style" : {
-		"background" : {
-			"src" : "system/res/illustration.png"
-		},
-		"logo" : {
-			"src" : "system/res/bonaroo.png"
-		}
-	}
+  "origin" : {
+    "geoHash": "dr5reg"
+  },
+  "destination" : {
+    "geoHash": "dn6m9p"
+  },
+  "currency": "USD",
+  "eventStartTime" : "2017-06-08T19:20:30+05:00",
+  "departureDate" : "2017-06-07",
+  "locales" : {
+    "default" : {
+      "ORIGIN_NAME" : "New York",
+      "DESTINATION_NAME" : "Nashville",
+      "EVENT_NAME" : "Bonnaroo",
+      "DEPARTURE_DATE" : "June 6th"
+    }
+  },
+  "video" : {
+    "muted" : false,
+    "autoPlay" : false,
+    "src" : "system/res/splash.mp4"
+  },
+  "style" : {
+    "background" : {
+      "src" : "system/res/illustration.png"
+    },
+    "logo" : {
+      "src" : "system/res/bonaroo.png"
+    }
+  }
 }

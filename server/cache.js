@@ -12,7 +12,7 @@ let pub = {},
       return Object.keys(pri.cache).length;
     }
 
-    pub.exists = function get(key) {
+    pub.exists = function exists(key) {
       return typeof pri.cache[String(key)] !== 'undefined';
     }
 
@@ -20,7 +20,7 @@ let pub = {},
       return pri.cache[String(key)];
     }
 
-    pub.clear = function clearCache() {
+    pub.clear = function clear() {
       pri.cache = {};
     }
 

@@ -45,7 +45,7 @@ class LoadingAnimation extends React.Component {
     }
   }
 
-	render() {
+  render() {
     var activeClass = this.state.active ? ' active' : '';
 
     if(this.state.visibleInDOM) {
@@ -58,7 +58,7 @@ class LoadingAnimation extends React.Component {
     } else {
       return null;
     }
-	}
+  }
 }
 
 export default LoadingAnimation;

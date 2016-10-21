@@ -1,22 +1,22 @@
 {
-	"origin" : {
-		"geoHash": "dr5reg"
-	},
-	"destination" : {
-		"geoHash": "dn6m9p"
-	},
-	"currency": "CAD",
-	"eventStartTime" : "2017-06-07T19:20:30+05:00",
-	"departureDate" : "2017-06-06",
-	"locales" : {
-		"default" : {
-			"ORIGIN_NAME" : "New York",
-			"DESTINATION_NAME" : "Nashville",
-			"EVENT_NAME" : "Bonaroo"
-		}
-	},
-	"video" : {
-		"muted" : true,
-		"autoPlay" : true
-	}
+  "origin" : {
+    "geoHash": "dr5reg"
+  },
+  "destination" : {
+    "geoHash": "dn6m9p"
+  },
+  "currency": "CAD",
+  "eventStartTime" : "2017-06-07T19:20:30+05:00",
+  "departureDate" : "2017-06-06",
+  "locales" : {
+    "default" : {
+      "ORIGIN_NAME" : "New York",
+      "DESTINATION_NAME" : "Nashville",
+      "EVENT_NAME" : "Bonaroo"
+    }
+  },
+  "video" : {
+    "muted" : true,
+    "autoPlay" : true
+  }
 }

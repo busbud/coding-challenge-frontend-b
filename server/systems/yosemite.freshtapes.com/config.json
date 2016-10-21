@@ -1,18 +1,18 @@
 {
-	"origin" : {
-		"geoHash": "f25dvk"
-	},
-	"destination" : {
-		"geoHash": "9qce7r"
-	},
-	"currency": "USD",
-	"eventStartTime" : "2017-10-01T00:00:00+07:00",
-	"departureDate" : "2017-10-01",
-	"locales" : {
-		"default" : {
-			"ORIGIN_NAME" : "Montreal",
-			"DESTINATION_NAME" : "Sacramento",
-			"EVENT_NAME" : "Yosemite National Park 127th Anniversary"
-		}
-	}
+  "origin" : {
+    "geoHash": "f25dvk"
+  },
+  "destination" : {
+    "geoHash": "9qce7r"
+  },
+  "currency": "USD",
+  "eventStartTime" : "2017-10-01T00:00:00+07:00",
+  "departureDate" : "2017-10-01",
+  "locales" : {
+    "default" : {
+      "ORIGIN_NAME" : "Montreal",
+      "DESTINATION_NAME" : "Sacramento",
+      "EVENT_NAME" : "Yosemite National Park 127th Anniversary"
+    }
+  }
 }
