@@ -12,6 +12,7 @@
   perspective-origin: 50% 0%;
   animation: 1s slideInParentBump 0s ease-in-out;
   position:relative;
+  background-color: #fff;
 
   .departureLogo {
     .rem(height, 8);
@@ -110,13 +111,6 @@
 */
 @keyframes slideIn {
   0%   { transform: translate(0, 100%); opacity:0; }
-  100% { transform: translate(0, 0%); opacity:1; }
-}
-
-@keyframes slideInParentBump {
-  0%   { transform: translate(0, 0%); opacity:1; max-height:0px; }
-  60%  { transform: translate(0, 0%); opacity:1; max-height:120px; }
-  65%  { transform: translate(0, -3px); opacity:1; }
   100% { transform: translate(0, 0%); opacity:1; }
 }
 
