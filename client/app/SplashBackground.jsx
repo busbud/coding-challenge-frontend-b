@@ -7,7 +7,7 @@ class SplashBackground extends React.Component {
 		super(props);
 		this.state = {
 			video: this.props.video,
-			paused: true,
+			paused: !this.props.video.autoPlay,
 			canplay: false,
 			disabled: this.props.disabled
 		};
@@ -26,12 +26,16 @@ class SplashBackground extends React.Component {
   }
 
   onCanPlay() {
+
 		this.setState({
-			canplay: true
+			canplay: true,
+			paused: !this.state.video.autoPlay
 		})
+
 		if(this.state.video.autoPlay) {
 			this.togglePlayback(true);
 		}
+
   }
 
 	toggleSound(val) {
