@@ -1,0 +1,58 @@
+@import "Shared.less";
+
+.banner {
+
+  .box-style;
+  
+  .rem(font-size, 2.6);
+  .rem(padding, 1.5);
+  .rem(min-height, 6.6);
+  .rem(line-height, 3.6);
+  text-align: center;
+  
+  @media @mobile {
+    .mobile-header-text;
+    .rem(min-height, 5);
+    .rem(line-height, 3.0);
+    width:100%;
+    position:relative;
+    transform: none;
+    bottom:auto;
+    left:0;
+    right:0;
+  }
+  
+}
+
+.tagLineBanner {
+
+  .banner;
+  .rem(margin-bottom, 3);
+  background-color: #2b2b2b;
+  color: #fff;
+  
+  @media @mobile {
+    margin-bottom:0;
+  }
+
+}
+
+.countDownBanner {
+
+  .banner;
+  
+  background-color: #000;
+  color: #fff;
+  
+}
+
+.errorBanner {
+
+  .banner;
+  box-shadow: none;
+
+  button {
+    margin: 15px auto 0px auto;
+  }
+
+}

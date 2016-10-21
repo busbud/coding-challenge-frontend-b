@@ -1,0 +1,21 @@
+{
+  "ORIGIN_NAME" : "Origin",
+  "DESTINATION_NAME" : "Departure",
+  "EVENT_NAME" : "the event",
+  "TAG_LINE" : "Experience Life. Buy a ticket, and the trip will happen.",
+  "DEPARTURES_HEADER" : "Buses from ${ORIGIN_NAME} to ${DESTINATION_NAME}, leaving ${DEPARTURE_DATE}. Just in time for ${EVENT_NAME}.",
+  "DAYS" : "days",
+  "HOURS" : "hours",
+  "MINUTES" : "minutes",
+  "SECONDS" : "seconds",
+  "PICKUP" : "Pickup",
+  "DROP_OFF" : "Drop off",
+  "BUY" : "Buy",
+  "BUILT_IN_MONTREAL" : "Built in Montreal",
+  "PAGE_FOOTER_TEXT" : "Powered by Busbud, Inc. © 2016",
+  "DEPARTURE_DATE" : "",
+  "AMENITY_TOILET" : "Toilet paper included!",
+  "AMENITY_POWER_OUTLETS" : "Power Outlets",
+  "AMENITY_AC" : "Air Conditioning",
+  "AMENITY_WIFI" : "WiFi"
+}

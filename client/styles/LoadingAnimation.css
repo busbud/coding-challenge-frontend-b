@@ -1,0 +1,57 @@
+
+/*
+  Loading box + spinner
+*/
+.loadingAnimation {
+  position:relative;
+  width:48px;
+  height:0px;
+  color : rgba(0,0,0,1);
+  z-index : 10000;
+  transition : 0.5s opacity ease-in-out, 0.5s height 0.5s ease-in-out;
+  font-family: Courier,"Courier New", Consolas, monospace;
+  font-size:12px;
+  opacity: 0;
+  margin: 0 auto 0 auto;
+}
+
+.loadingAnimation.cover {
+  left:0px; right:0px; top:0px; bottom:0px; height:100%; width: 100%;
+  position : absolute;  
+}
+
+.loadingAnimation.active {
+  opacity: 1;
+  height:100px;
+}
+
+.loadingAnimation.active.cover {
+  height:100%;
+}
+
+  .loadingAnimationSpinner {
+    width:48px;
+    height:48px;
+    border-top-left-radius:50%;
+    border-bottom-right-radius:50%;
+    position:absolute;
+    transform-origin: 50% 50%;
+    left:50%;
+    top:50%;
+    margin:-24px;
+    animation: orbit 3s infinite alternate;
+    border: 3px solid rgb(222,222,222);
+  }
+  .loadingAnimationSpinner:nth-child(1) {
+    animation: orbit2 3s infinite alternate;
+  }
+
+  @keyframes orbit {
+    0% { transform: rotateZ(0deg)}
+    100% { transform: rotateZ(-270deg)}
+  }
+  
+  @keyframes orbit2 {
+    0% { transform: rotateZ(-270deg)}
+    100% { transform: rotateZ(0deg)}
+  }

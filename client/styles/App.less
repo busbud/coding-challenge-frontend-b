@@ -1,0 +1,135 @@
+@import "Shared.less";
+
+html, body {
+  width:100vw;
+  font-family: arial, helvetica;
+  background-color: #FFF;
+  color:#000;
+  padding:0;
+  margin:0;
+  font-size:62.5%;
+  font-family: 'Open Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center top;
+}
+
+@media @mobile {
+  body {
+    background-image: none !important; /* Override the style tag that is set directly */
+  }
+}
+
+#app {
+  z-index:1;
+  position:relative;
+  width:100vw;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+
+#app > div.initializing {
+  min-height:200vh; /* So we can scroll before the page content has loaded */
+}
+
+.videoPresent #main {
+  padding-top:100vh;
+  @media @mobile {
+    padding-top:0;
+  }
+}
+
+header {
+
+  .center-boxed;
+
+  .logo {
+    .rem(margin-top, 4.5);
+    .rem(margin-right, 0);
+    .rem(margin-bottom, 4.5);
+    .rem(margin-left, 0);
+    .rem(height, 28);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: height 0.3s ease-in-out;
+  }
+  
+  @media @mobile {
+    max-width:100%;
+
+    .logo {
+      .rem(height, 8) !important;
+      .rem(margin-top, 1.5) !important;
+      .rem(margin-bottom, 1.5) !important;
+      margin-left: 5vw !important;
+      margin-right: 5vw !important;
+      max-width:90vw;
+    }
+  }
+
+}
+
+section {
+
+  .box-style;
+  .center-boxed;
+  .clear-fix;
+
+  perspective: 500px;
+  transform-style: preserve-3d;
+  background-color:#fff;
+  z-index:2;
+
+  .listHeader {
+    .box-style;
+    .rem(padding, 1.5);
+    .rem(font-size, 2.4);
+    .rem(line-height, 4);
+    color: #000;
+    text-align: center;
+  }
+  
+  @media @mobile {
+    max-width:100%;
+    .listHeader {
+      .mobile-header-text;
+    }
+  }
+}
+
+footer {
+
+  .box-style;
+  .rem(font-size, 1.2);
+  .rem(margin-top, 40);
+  width: 100%;
+  position: relative;
+  text-align: center;
+  background-color: #fff;
+  z-index:2;
+
+  .logo {
+    .rem(height, 6);
+    .rem(margin-top, 1.5);
+    background-repeat: no-repeat;
+    background-image: url(/images/busbud.logo.png);
+    background-size: contain;
+    background-position: center center;
+  }
+
+  .text {
+    .rem(margin-top,0.5);
+    .rem(margin-bottom,2);
+    .rem(padding-left,3);
+    .rem(padding-right,3);
+  }
+
+  @media @mobile {
+    margin-top:0px;
+  }
+}

@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch');
+body {
+  background-color: #000;
+  font-family: 'Cabin Sketch', cursive;
+}
+.countDownBanner {
+  background-image: url(wood2.jpg);
+  background-size: cover;
+  color: #fff !important;
+  box-shadow: inset 1px 11px 8px -8px rgba(255,255,255,0.4);
+  border-radius: 0px 0px 0px 0px;
+  min-height:0px;
+  padding-bottom: 5px;
+}
+.tagLineBanner {
+  background-image: url(wood2.jpg);
+  background-size: cover;
+  color: #fff !important;
+  margin-bottom: 0;
+  min-height:0px;
+}
+header .logo {
+  height:160px;
+}
+section .listHeader {
+  color: #fff;
+  background-color: transparent;
+}
+svg.icon {
+  fill: #FFF !important;
+}
+.button {
+  font-family: helvetica, arial;
+}
+section {
+  background-image: url(wood2.jpg);
+  color: #fff;
+  box-shadow: inset 0px -2px 9px 0px rgba(0,0,0,1), 0px 5px 0px 0px rgb(0,0,0);
+  border-radius: 0px 0px 4px 4px;
+  background-color:#000;
+}
+.departure {
+  border-radius:4px;
+  margin-bottom: 30px;
+  box-shadow: inset 1px 2px 8px 0px rgba(255,255,255,0.2), inset 0px -2px 9px 0px rgba(0,0,0,1), 5px 5px 30px rgb(0, 0, 0);
+  background-image: url(cast-iron.jpg);
+}
+.departure .depatureInner {
+  background-color: transparent;
+  color: #fff;
+  border-radius:4px;
+}
+
+.departure .depatureInner .price, 
+.departure .depatureInner .time, 
+.departure .depatureInner .location, 
+.departure .depatureInner .labelText {
+  color: #fff;
+}
+.departure .depatureInner .labelText {
+  opacity: 0.7;
+}
+.mobile .departure .depatureInner>div>div:nth-child(3), .mobile .departure .depatureInner>div>div:nth-child(4) {
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+.desktop .departure .depatureInner>div>div {
+    box-shadow: 1px 0 0 rgba(255,255,255,0.08);
+}
+footer {
+  background-image: url(cast-iron.jpg);
+  color: #FFF;
+  box-shadow: inset 1px 2px 8px 0px rgba(255,255,255,0.2);
+}
+a, a:hover, a:visited {
+  color: #FFF;
+}

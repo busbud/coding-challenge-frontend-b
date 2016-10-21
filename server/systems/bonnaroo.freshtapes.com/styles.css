@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+body {
+  background-color: #571178;
+}
+.tagLineBanner {
+  font-family: 'Shadows Into Light', cursive;
+}
+header .logo {
+  height: 325px;
+}
+svg.icon {
+  fill: #CCC !important;
+}
