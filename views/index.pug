@@ -33,7 +33,7 @@ block content
                div(class="col-md-8 col-sm-8 col-xs-8")
                    div(class="departure col-md-6 col-sm-12")
                        div(class="col-md-6 col-sm-12 datetime")
-                           <% let departure_moment = moment(departures[i].departure_datetime);  %>
+                           <% var departure_moment = moment(departures[i].departure_datetime);  %>
                            <%- departure_moment.format("DD MMM YYYY") %>
                            <%- departure_moment.format("h:mma") %>
                        div(class="col-md-6 col-sm-12 location")
@@ -46,7 +46,7 @@ block content
                            <% } %>
                    div(class="arrival col-md-6 col-sm-12")
                        div(class="col-md-6 col-sm-12 datetime")
-                           <% let arrival_moment = moment(departures[i].arrival_datetime);  %>
+                           <% var arrival_moment = moment(departures[i].arrival_datetime);  %>
                            <%- arrival_moment.format("DD MMM YYYY") %>
                            <%- arrival_moment.format("h:mma") %>
                        div(class="col-md-6 col-sm-12 location")
