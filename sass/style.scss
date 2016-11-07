@@ -1,0 +1,63 @@
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@media(max-width: $screen-xs-max){
+    .arrival, .call-to-action {
+        margin-top:1rem;
+    }
+}
+
+@media(min-width: $screen-sm-min){
+    .arrival {
+        margin-top:1rem;
+    }
+}
+
+#departures:empty {
+    background:url(/images/spinner.gif) center center no-repeat;
+    min-height:100px;
+}
+
+.row[data-departure-id] {
+    margin:1rem;
+}
+
+.price .cents {
+    font-size: .65em;
+    vertical-align: super;
+}
+
+#onboarding {
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index:100;
+  background:white;
+  padding:1rem;
+
+  img { margin:auto; }
+  .content {
+    min-height: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* It's looking like ChardinJS wasn't the best choice for this  */
+html.busbud-challenge {
+    .chardinjs-show-element {
+        color:white;
+    }
+    .chardinjs-tooltip.chardinjs-top:after {
+        bottom:-25px;
+    } 
+    .chardinjs-tooltip.chardinjs-top:after {
+        height:25px;
+    }
+    .chardinjs-tooltip.chardinjs-top {
+        margin-top:-25px;
+    }
+}
