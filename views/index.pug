@@ -1,0 +1,68 @@
+extends layout
+
+block content
+
+  div(id="onboarding")
+      div(class="content")
+          div(class="row")
+              div(class="col-md-5 col-sm-12 text-center")
+                  img(class="img-responsive",
+                      src="https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png")
+              div(class="col-md-7 col-sm-12")
+                  p
+                      | Welcome to Richard's BusBud coding challenge!
+                  p
+                      | This webpage will help you plan a trip from New York to Montreal on August 4th, for the 
+                      a(href="http://www.osheaga.com/") Osheaga Festival Music et Arts
+                      | .
+                  button(id="lets-get-started",
+                         type="button",
+                         class="btn btn-primary btn-lg btn-block")
+                      | Let's get started!
+                  p
+                      em This is a really small app so I don't know what else to do for an "onboarding" screen. This really feels more like a 90s splash screen.
+    
+
+  h1 Bus Bud Challenge
+
+  div(id="departures")
+
+  script(type="text/x-underscore", id="departures-template")
+      <% for(var i=0; i<departures.length; i++) { %>
+           div(data-departure-id!="<%- departures[i].id %>", class="row")
+               div(class="col-md-8 col-sm-8 col-xs-8")
+                   div(class="departure col-md-6 col-sm-12")
+                       div(class="col-md-6 col-sm-12 datetime")
+                           <% let departure_moment = moment(departures[i].departure_datetime);  %>
+                           <%- departure_moment.format("DD MMM YYYY") %>
+                           <%- departure_moment.format("h:mma") %>
+                       div(class="col-md-6 col-sm-12 location")
+                           <% if(departures[i].departure_location.google_maps) { %>
+                               a(target="_blank",
+                                 href!="<%- departures[i].departure_location.google_maps %>")
+                                   <%- departures[i].departure_location.name %>
+                           <% } else { %>
+                               <%- departures[i].departure_location.name %>
+                           <% } %>
+                   div(class="arrival col-md-6 col-sm-12")
+                       div(class="col-md-6 col-sm-12 datetime")
+                           <% let arrival_moment = moment(departures[i].arrival_datetime);  %>
+                           <%- arrival_moment.format("DD MMM YYYY") %>
+                           <%- arrival_moment.format("h:mma") %>
+                       div(class="col-md-6 col-sm-12 location")
+                           <% if(departures[i].arrival_location.google_maps) { %>
+                               a(target="_blank",
+                                 href!="<%- departures[i].arrival_location.google_maps %>") <%- departures[i].arrival_location.name %>
+                           <% } else { %>
+                               <%- departures[i].arrival_location.name %>
+                           <% } %>
+               div(class="col-md-2 col-sm-2 col-xs-4 text-right price")
+                   span(class="dollars") <%- "$"+parseInt((departures[i].prices_total)/100) %>
+                   | .
+                   span(class="cents") <%- departures[i].prices_total%100 %>
+               div(class="col-md-2 col-sm-2 col-xs-12 call-to-action")
+                   a(href!="<%- departures[i].links.deeplink %>", class="btn btn-primary btn-lg btn-block") Select
+           hr
+      <% } %>
+
+  script(type="text/javascript", src="/javascripts/index.js")
