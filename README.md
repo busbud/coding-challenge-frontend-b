@@ -6,6 +6,7 @@ Projects built with kyt require **Node 6.0+**.
 
 Good to know:
 
+* To install dependencies: `npm install`
 * To run webpack dev server: `npm run dev`
 * To build: `npm run build`
 * To serve the built files: `npm start`
