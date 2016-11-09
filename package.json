@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "kyt": "^0.3.0",
+    "compression": "^1.6.2",
+    "enzyme": "^2.4.1",
+    "express": "^4.14.0",
+    "react": "^15.3.0",
+    "react-addons-test-utils": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-router": "^2.6.1"
+  },
+  "scripts": {
+    "dev": "kyt dev",
+    "build": "kyt build",
+    "start": "kyt start",
+    "test": "kyt test",
+    "test-watch": "kyt test -- --watch",
+    "test-coverage": "kyt test -- --coverage",
+    "lint": "kyt lint",
+    "lint-style": "kyt lint-style",
+    "proto": "kyt proto",
+    "kyt:help": "kyt --help"
+  }
+}
