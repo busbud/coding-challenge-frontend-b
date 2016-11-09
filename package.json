@@ -20,5 +20,20 @@
     "lint-style": "kyt lint-style",
     "proto": "kyt proto",
     "kyt:help": "kyt --help"
-  }
+  },
+  "name": "coding-challenge-frontend-b",
+  "description": "Initialized with [kyt](https://github.com/NYTimes/kyt), a great (early-stage) tool that manages your dev configuration, and optionally, your initial project setup, for you.",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samushighwind/coding-challenge-frontend-b.git"
+  },
+  "keywords": [
+    "OSHEAGA"
+  ],
+  "author": "Ben Wiley",
+  "bugs": {
+    "url": "https://github.com/samushighwind/coding-challenge-frontend-b/issues"
+  },
+  "homepage": "https://github.com/samushighwind/coding-challenge-frontend-b#readme"
 }
