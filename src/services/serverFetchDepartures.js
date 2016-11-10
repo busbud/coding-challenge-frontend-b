@@ -3,7 +3,8 @@ import qs from 'qs';
 
 import fetch from './fetch';
 
-const endpoint = 'https://napi.busbud.com/x-departures/:origin/:destination/:outboundDate';
+const initialEndpoint = 'https://napi.busbud.com/x-departures/:origin/:destination/:outboundDate';
+const pollEndpoint = 'https://napi.busbud.com/x-departures/:origin/:destination/:outboundDate/poll';
 
 const applyParameters = (baseUrl, pathParams, queryParams) => (
   Object.keys(pathParams).reduce((memo, param) => (
@@ -17,7 +18,11 @@ const headers = () => ({
 });
 
 const fetchDepartures = (pathParams, queryParams) => fetch(
-  applyParameters(endpoint, pathParams, queryParams),
+  applyParameters(
+    queryParams.index ? pollEndpoint : initialEndpoint,
+    pathParams,
+    queryParams
+  ),
   { headers: headers() }
 ).then(res => res.json());
 
