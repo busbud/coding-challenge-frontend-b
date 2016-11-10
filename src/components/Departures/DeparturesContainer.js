@@ -41,11 +41,16 @@ class DeparturesContainer extends Component {
       index,
     }).then(data => {
       this.setState({
-        departures: [...this.state.departures, ...data.departures],
+        departures: [
+          ...this.state.departures,
+          ...data.departures.filter(a =>
+            this.state.departures.every(b => a.id !== b.id)
+          )
+        ],
         complete: data.complete,
       }, () => {
         if (!data.complete) {
-          setTimeout(() => this.fetch(this.state.departures.length), 400);
+          setTimeout(() => this.fetch(this.state.departures.length), 200);
         }
       });
     }).catch(err => console.error(err)) // TODO: real error handling

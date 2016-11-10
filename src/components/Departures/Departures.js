@@ -25,7 +25,9 @@ const Departures = ({
       <span className={styles.data}>{new Date(date).toLocaleDateString()}</span>{' '}
     </div>
     <div className={styles.departures}>
-      {departures.map((departure, i) => <Departure key={i} {...departure} />)}
+      {departures.map(departure =>
+        <Departure key={departure.id} {...departure} />
+      )}
     </div>
     {!complete && <LoadingText />}
   </div>
