@@ -1,0 +1,10 @@
+@import './variables';
+
+:global {
+  * {
+    box-sizing: border-box;
+  }
+  img {
+    max-width: 100%;
+  }
+}
