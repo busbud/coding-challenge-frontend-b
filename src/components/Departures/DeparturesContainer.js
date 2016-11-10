@@ -49,8 +49,8 @@ class DeparturesContainer extends Component {
         ],
         complete: data.complete,
       }, () => {
-        if (!data.complete) {
-          setTimeout(() => this.fetch(this.state.departures.length), 200);
+        if (!this.state.complete) {
+          setTimeout(() => this.fetch(this.state.departures.length, 200));
         }
       });
     }).catch(err => console.error(err)) // TODO: real error handling
