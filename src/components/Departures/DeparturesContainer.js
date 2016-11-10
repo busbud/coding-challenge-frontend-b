@@ -20,9 +20,10 @@ class DeparturesContainer extends Component {
         name: 'Montréal',
         geohash: 'f25dvk',
       },
-      date: '31 July 2017',
+      date: '29 July 2017',
       adultCount: 1,
       departures: [],
+      complete: false,
     };
   }
 
@@ -41,9 +42,10 @@ class DeparturesContainer extends Component {
     }).then(data => {
       this.setState({
         departures: [...this.state.departures, ...data.departures],
+        complete: data.complete,
       }, () => {
         if (!data.complete) {
-          setTimeout(() => this.fetch(this.state.departures.length), 200);
+          setTimeout(() => this.fetch(this.state.departures.length), 400);
         }
       });
     }).catch(err => console.error(err)) // TODO: real error handling

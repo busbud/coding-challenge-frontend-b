@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 import styles from './styles.scss';
 
 import Departure from '../Departure';
+import LoadingText from '../LoadingText';
 
 const Departures = ({
   origin,
@@ -10,6 +11,7 @@ const Departures = ({
   date,
   adultCount,
   departures,
+  complete,
 }) => (
   <div>
     <div className={styles.subheading}>
@@ -25,6 +27,7 @@ const Departures = ({
     <div className={styles.departures}>
       {departures.map((departure, i) => <Departure key={i} {...departure} />)}
     </div>
+    {!complete && <LoadingText />}
   </div>
 );
 
@@ -34,6 +37,7 @@ Departures.propTypes = {
   date: React.PropTypes.string,
   adultCount: React.PropTypes.number,
   departures: React.PropTypes.array,
+  complete: React.PropTypes.bool,
 };
 
 export default Departures;
