@@ -11,7 +11,7 @@ const fetchDepartures = ({
   adult=0,
   child=0,
   senior=0,
-  lang='en-CA',
+  lang='en',
   currency='CAD',
   index,
 }) => fetch(
