@@ -1,3 +1,4 @@
+import dotEnvSafe from 'dotenv-safe';
 
 import express from 'express';
 import compression from 'compression';
@@ -7,6 +8,11 @@ import { renderToString } from 'react-dom/server';
 
 import App from '../components/App';
 import template from './template';
+
+import fetchDepartures from '../services/serverFetchDepartures';
+
+// Include environment variables from .env.
+dotEnvSafe.load();
 
 const clientAssets = require(KYT.ASSETS_MANIFEST); // eslint-disable-line import/no-dynamic-require
 const app = express();
@@ -20,12 +26,39 @@ app.use(compression());
 // Setup the public directory so that we can server static assets.
 app.use(express.static(path.join(process.cwd(), KYT.PUBLIC_DIR)));
 
-app.get('/', (request, response) => {
-  response.send(template({
+app.get('/', (req, res) => {
+  res.end(template({
     root: renderToString(<App />),
     jsBundle: clientAssets.main.js,
     cssBundle: clientAssets.main.css,
   }));
 });
+
+const handleError = (err, res) => {
+  switch(err.type) {
+    case 'Unauthorized':
+      return res.status(401).json(err).end();
+    case 'InputInvalid':
+      return res.status(400).json(err).end();
+    default:
+      return res.status(500).json(err).end();
+  }
+};
+
+app.get(
+  '/departures/:origin/:destination/:outboundDate',
+  (req, res) => {
+    fetchDepartures(req.params, req.query)
+      .then(data => {
+        if (data.error) {
+          return handleError(data.error, res);
+        }
+        res.json(data).end();
+      })
+      .catch(err => {
+        handleError(err, res);
+      });
+  }
+);
 
 app.listen(parseInt(KYT.SERVER_PORT, 10));

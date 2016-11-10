@@ -11,6 +11,10 @@ Good to know:
 * To build: `npm run build`
 * To serve the built files: `npm start`
 
+**Important**
+
+In order for API requests to work, the `X-Busbud-Token` must be included in a `.env` file, which can be copied from `.env.example` at the project root.
+
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 
 It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)! 
