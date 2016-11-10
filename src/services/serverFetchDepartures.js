@@ -19,7 +19,7 @@ const headers = () => ({
 
 const fetchDepartures = (pathParams, queryParams) => fetch(
   applyParameters(
-    queryParams.index ? pollEndpoint : initialEndpoint,
+    queryParams.index === undefined ? initialEndpoint : pollEndpoint,
     pathParams,
     queryParams
   ),
