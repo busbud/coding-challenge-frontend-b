@@ -13,7 +13,7 @@ const fetchDepartures = ({
   senior=0,
   lang='en-CA',
   currency='CAD',
-  index=0,
+  index,
 }) => fetch(
   path.join('/departures', origin, destination, outboundDate) +
   '?' + qs.stringify({ adult, child, senior, lang, currency, index })

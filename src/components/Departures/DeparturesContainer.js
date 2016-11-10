@@ -20,7 +20,7 @@ class DeparturesContainer extends Component {
         name: 'Montréal',
         geohash: 'f25dvk',
       },
-      date: '29 July 2017',
+      date: '31 July 2017',
       adultCount: 1,
       departures: [],
     };
@@ -30,7 +30,7 @@ class DeparturesContainer extends Component {
     this.fetch();
   }
 
-  fetch(index = 0) {
+  fetch(index) {
     const { origin, destination, date, adultCount } = this.state;
     fetchDepartures({
       origin: origin.geohash,
@@ -38,13 +38,14 @@ class DeparturesContainer extends Component {
       outboundDate: new Date(date).toISOString().slice(0, 10),
       adult: adultCount,
       index,
-    }).then(departures => {
+    }).then(data => {
       this.setState({
-        departures: [...this.state.departures, departures],
+        departures: [...this.state.departures, ...data.departures],
+      }, () => {
+        if (!data.complete) {
+          setTimeout(() => this.fetch(this.state.departures.length), 200);
+        }
       });
-      if (!departures.complete) {
-        setTimeout(() => this.fetch(index + 1), 500);
-      }
     }).catch(err => console.error(err)) // TODO: real error handling
   }
 
