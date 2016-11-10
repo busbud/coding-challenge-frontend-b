@@ -10,8 +10,6 @@ const Departures = ({
   date,
   adultCount,
   departures,
-  allDeparturesFetched,
-  fetchNextBatch,
 }) => (
   <div>
     <div className={styles.subheading}>
@@ -27,9 +25,6 @@ const Departures = ({
     <div className={styles.departures}>
       {departures.map((departure, i) => <Departure key={i} {...departure} />)}
     </div>
-    {departures.length && (
-      <button onClick={fetchNextBatch}>Get More Departures</button>
-    )}
   </div>
 );
 
@@ -39,8 +34,6 @@ Departures.propTypes = {
   date: React.PropTypes.string,
   adultCount: React.PropTypes.number,
   departures: React.PropTypes.array,
-  allDeparturesFetched: React.PropTypes.bool,
-  fetchNextBatch: React.PropTypes.func,
 };
 
 export default Departures;
