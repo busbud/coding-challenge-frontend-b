@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import moment from 'moment';
 
 import styles from './styles.scss';
 
@@ -10,6 +11,7 @@ const Departures = ({
   destination,
   date,
   adultCount,
+  currency,
   departures,
   complete,
 }) => (
@@ -22,7 +24,7 @@ const Departures = ({
       for{' '}
       <span className={styles.data}>{`${adultCount} adult`}</span>{' '}
       on{' '}
-      <span className={styles.data}>{new Date(date).toLocaleDateString()}</span>{' '}
+      <span className={styles.data}>{moment(date).format('D MMM YYYY')}</span>{' '}
     </div>
     <div className={styles.departures}>
       {departures.map(departure =>
@@ -31,6 +33,7 @@ const Departures = ({
           key={departure.id}
           originName={origin.name}
           destinationName={destination.name}
+          currency={currency}
         />
       )}
     </div>
@@ -43,6 +46,7 @@ Departures.propTypes = {
   destination: React.PropTypes.object,
   date: React.PropTypes.string,
   adultCount: React.PropTypes.number,
+  currency: React.PropTypes.string,
   departures: React.PropTypes.array,
   complete: React.PropTypes.bool,
 };

@@ -11,8 +11,8 @@ const fetchDepartures = ({
   adult=0,
   child=0,
   senior=0,
-  lang='en',
-  currency='CAD',
+  lang,
+  currency,
   index,
 }) => fetch(
   path.join('/departures', origin, destination, outboundDate) +

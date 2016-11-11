@@ -9,6 +9,7 @@
     "express": "^4.14.0",
     "fetch-ponyfill": "^3.0.2",
     "kyt": "^0.3.0",
+    "moment": "^2.16.0",
     "object-assign": "^4.1.0",
     "qs": "^6.3.0",
     "react": "^15.3.0",

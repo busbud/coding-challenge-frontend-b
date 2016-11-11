@@ -23,6 +23,8 @@ class DeparturesContainer extends Component {
         geohash: 'f25dvk',
       },
       date: '2 July 2017',
+      language: 'en',
+      currency: 'CAD',
       adultCount: 1,
       departures: [],
       complete: false,
@@ -34,12 +36,14 @@ class DeparturesContainer extends Component {
   }
 
   fetch(index) {
-    const { origin, destination, date, adultCount } = this.state;
+    const { origin, destination, date, language, currency, adultCount } = this.state;
     fetchDepartures({
       origin: origin.geohash,
       destination: destination.geohash,
       outboundDate: new Date(date).toISOString().slice(0, 10),
       adult: adultCount,
+      lang: language,
+      currency,
       index,
     }).then(data => {
       this.setState({
