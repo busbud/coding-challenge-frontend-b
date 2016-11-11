@@ -47,5 +47,6 @@
   "devDependencies": {
     "reset-css": "^2.2.0",
     "skeleton-scss": "^2.0.4"
-  }
+  },
+  "engines" : { "node" : ">6.0.0" }
 }
