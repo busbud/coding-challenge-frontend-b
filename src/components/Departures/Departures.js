@@ -6,6 +6,10 @@ import styles from './styles.scss';
 import Departure from '../Departure';
 import LoadingText from '../LoadingText';
 
+const formatDate = dateTimeString => moment(
+  new Date(dateTimeString).toISOString()
+).format('D MMM YYYY');
+
 const Departures = ({
   origin,
   destination,
@@ -24,7 +28,7 @@ const Departures = ({
       for{' '}
       <span className={styles.data}>{`${adultCount} adult`}</span>{' '}
       on{' '}
-      <span className={styles.data}>{moment(date).format('D MMM YYYY')}</span>{' '}
+      <span className={styles.data}>{formatDate(date)}</span>{' '}
     </div>
     <div className={styles.departures}>
       {departures.map(departure =>

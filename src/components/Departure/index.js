@@ -3,6 +3,10 @@ import moment from 'moment';
 
 import styles from './styles.scss';
 
+const formatTime = dateTimeString => moment(
+  new Date(dateTimeString).toISOString()
+).format('h:mm a');
+
 const Departure = ({
   departure_time,
   arrival_time,
@@ -15,8 +19,8 @@ const Departure = ({
 }) => (
   <div className={styles.departure}>
     <div className={styles.info}>
-      <div><strong>Departure time:</strong> {moment(departure_time).format('h:mm a')}</div>
-      <div><strong>Arrival time:</strong> {moment(arrival_time).format('h:mm a')}</div>
+      <div><strong>Departure time:</strong> {formatTime(departure_time)}</div>
+      <div><strong>Arrival time:</strong> {formatTime(arrival_time)}</div>
       <div><strong>Start location:</strong> {originName}</div>
       <div><strong>End location:</strong> {destinationName}</div>
       <div><strong>Price:</strong>${(total / 100).toFixed(2)} {currency}</div>
