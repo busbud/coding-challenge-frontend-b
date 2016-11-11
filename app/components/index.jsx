@@ -1,12 +1,11 @@
 import React from 'react';
-import SearchBar from './searchBar';
+import SearchBar from './searchBar.jsx';
 
 export default class IndexPage extends React.Component {
     render() {
         return (
             <div>
-                <SearchBar placeHolder="Leaving from"/>
-                <SearchBar placeHolder="Going to"/>
+                <SearchBar placeHolder1="Leaving from" placeHolder2="Going to"/>
             </div>
         );
     }
