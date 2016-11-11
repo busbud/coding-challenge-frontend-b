@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "classnames": "^2.2.5",
     "compression": "^1.6.2",
     "dotenv-safe": "^3.0.0",
     "enzyme": "^2.4.1",
@@ -39,5 +40,8 @@
   "bugs": {
     "url": "https://github.com/samushighwind/coding-challenge-frontend-b/issues"
   },
-  "homepage": "https://github.com/samushighwind/coding-challenge-frontend-b#readme"
+  "homepage": "https://github.com/samushighwind/coding-challenge-frontend-b#readme",
+  "devDependencies": {
+    "skeleton-scss": "^2.0.4"
+  }
 }

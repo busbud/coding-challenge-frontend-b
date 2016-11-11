@@ -1,3 +1,4 @@
+@import './skeleton_custom';
 @import './variables';
 
 :global {
@@ -6,9 +7,5 @@
   }
   img {
     max-width: 100%;
-  }
-  body {
-    font-family: $font-family;
-    color: $text-color;
   }
 }
