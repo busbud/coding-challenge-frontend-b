@@ -5,6 +5,8 @@ import compression from 'compression';
 import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import ServerRouter from 'react-router/ServerRouter';
+import createServerRenderContext from 'react-router/createServerRenderContext';
 
 import App from '../components/App';
 import template from './template';
@@ -25,14 +27,6 @@ app.use(compression());
 
 // Setup the public directory so that we can server static assets.
 app.use(express.static(path.join(process.cwd(), KYT.PUBLIC_DIR)));
-
-app.get('/', (req, res) => {
-  res.end(template({
-    root: renderToString(<App />),
-    jsBundle: clientAssets.main.js,
-    cssBundle: clientAssets.main.css,
-  }));
-});
 
 const handleError = (err, res) => {
   switch(err.type) {
@@ -60,5 +54,17 @@ app.get(
       });
   }
 );
+
+app.get('*', (req, res) => {
+  res.end(template({
+    root: renderToString(
+      <ServerRouter location={req.url} context={createServerRenderContext()}>
+        <App />
+      </ServerRouter>
+    ),
+    jsBundle: clientAssets.main.js,
+    cssBundle: clientAssets.main.css,
+  }));
+});
 
 app.listen(parseInt(KYT.SERVER_PORT, 10));

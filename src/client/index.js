@@ -2,6 +2,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import BrowserRouter from 'react-router/BrowserRouter';
 
 import App from '../components/App';
 
@@ -10,7 +11,9 @@ const root = document.querySelector('#root');
 const mount = (RootComponent) => {
   render(
     <AppContainer>
-      <RootComponent />
+      <BrowserRouter>
+        <RootComponent />
+      </BrowserRouter>
     </AppContainer>,
     root
   );
