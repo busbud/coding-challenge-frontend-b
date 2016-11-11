@@ -1,4 +1,7 @@
 @import './variables';
+:global {
+  @import '~reset-css/reset';
+}
 @import './skeleton_custom';
 
 :global {

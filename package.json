@@ -42,6 +42,7 @@
   },
   "homepage": "https://github.com/samushighwind/coding-challenge-frontend-b#readme",
   "devDependencies": {
+    "reset-css": "^2.2.0",
     "skeleton-scss": "^2.0.4"
   }
 }
