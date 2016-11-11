@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import arrayFind from 'array-find';
+import objectAssign from 'object-assign';
 
 import Departures from './Departures';
 import fetchDepartures from '../../services/clientFetchDepartures';
@@ -20,7 +22,7 @@ class DeparturesContainer extends Component {
         name: 'Montréal',
         geohash: 'f25dvk',
       },
-      date: '29 July 2017',
+      date: '2 July 2017',
       adultCount: 1,
       departures: [],
       complete: false,
@@ -41,7 +43,17 @@ class DeparturesContainer extends Component {
       index,
     }).then(data => {
       this.setState({
-        departures: [...this.state.departures, ...data.departures],
+        departures: [
+          ...this.state.departures,
+          ...data.departures.map(departure => {
+            const operator = arrayFind(data.operators, operator =>
+              departure.operator_id === operator.id
+            );
+            return Object.assign({}, departure, {
+              operator,
+            });
+          }),
+        ],
         complete: data.complete,
       }, () => {
         if (!this.state.complete) {

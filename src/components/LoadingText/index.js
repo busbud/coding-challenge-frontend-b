@@ -9,6 +9,7 @@ class LoadingText extends Component {
       ellipses: 0
     };
     this.ellipsesLimit = 3;
+    this.frameDuration = 200;
   }
 
   componentDidMount() {
@@ -17,7 +18,7 @@ class LoadingText extends Component {
       this.setState({
         ellipses: ellipses < this.ellipsesLimit ? ellipses + 1 : 0
       });
-    }, 300);
+    }, this.frameDuration);
   }
 
   componentWillUnmount() {
