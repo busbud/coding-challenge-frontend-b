@@ -53,7 +53,7 @@ class DeparturesContainer extends Component {
             const operator = arrayFind(data.operators, operator =>
               departure.operator_id === operator.id
             );
-            return Object.assign({}, departure, {
+            return objectAssign({}, departure, {
               operator,
             });
           }),
