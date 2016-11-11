@@ -15,7 +15,7 @@ export default vo => `
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo+2:400,600">
     ${vo.cssBundle ? '<link rel="stylesheet" href="' + vo.cssBundle + '">' : ''}
 
-    <title>Universal React Starter Kyt</title>
+    <title>Ride a Bus to the Osheaga Festival!</title>
   </head>
 
   <body>
