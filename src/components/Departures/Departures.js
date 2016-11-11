@@ -26,7 +26,12 @@ const Departures = ({
     </div>
     <div className={styles.departures}>
       {departures.map(departure =>
-        <Departure key={departure.id} {...departure} />
+        <Departure
+          {...departure}
+          key={departure.id}
+          originName={origin.name}
+          destinationName={destination.name}
+        />
       )}
     </div>
     {!complete && <LoadingText />}
