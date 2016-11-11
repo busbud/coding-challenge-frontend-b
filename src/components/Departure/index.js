@@ -33,4 +33,15 @@ const Departure = ({
   </div>
 );
 
+Departure.propTypes = {
+  departure_time: React.PropTypes.string,
+  arrival_time: React.PropTypes.string,
+  originName: React.PropTypes.string,
+  destinationName: React.PropTypes.string,
+  prices: React.PropTypes.object,
+  links: React.PropTypes.object,
+  operator: React.PropTypes.object,
+  currency: React.PropTypes.string,
+};
+
 export default Departure;
