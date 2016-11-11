@@ -7,10 +7,6 @@ module.exports = function(grunt) {
             clean: ['./build/*', './dist/*']
         },
 
-        eslint: {
-            target: ['./app/*.js']
-        },
-
         copy: {
             font: {
                 expand: true,
@@ -22,54 +18,67 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: './node_modules/',
                 flatten: true,
-                src: ['angular/angular.min.js', 'angular-route/angular-route.min.js',
-                    'moment/min/moment.min.js', 'bootstrap/dist/css/bootstrap.min.css',
-                    'angular-ui-swiper/dist/angular-ui-swiper.js'
-                ],
+                src: ['bootstrap/dist/css/bootstrap.min.css'],
                 dest: './dist/'
             },
-
             views: {
                 expand: true,
                 cwd: './app/',
                 src: ['**/*.html'],
                 flatten: true,
                 dest: './dist/'
-            },
-
-            components: {
-                expand: true,
-                cwd: './app/',
-                src: ['components'],
-                flatten: true,
-                dest: './dist/'
             }
         },
-        babel: {
-            options: {
-                sourceMap: true,
-                presets: ['es2015', 'react']
-            },
+
+        browserify: {
             dist: {
-                files: {
-                    "dist/app.js": "app/**/*.js"
+                options: {
+                    transform: [
+                        ['babelify', {
+                            presets: ['es2015', 'react']
+                        }]
+                    ]
+                },
+                src: ['app/app-client.js'],
+                dest: 'dist/app.js',
+            }
+        },
+
+        watch: {
+            browserify: {
+                files: ['app/**/*.jsx'],
+                tasks: ['browserify']
+            }
+        },
+
+
+        browserSync: {
+
+            dev: {
+                bsFiles: {
+                    src: [
+                        'dist/**'
+                    ]
+                },
+                options: {
+                    watchTask: true,
+                    server: './dist'
                 }
             }
         }
-
     });
 
 
     //load grunt tasks
-    grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks("grunt-browserify");
+    grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-run');
-    grunt.loadNpmTasks('load-grunt-tasks');
+    grunt.loadNpmTasks('grunt-babel');
+    grunt.loadNpmTasks('grunt-browser-sync');
 
     //register grunt default task
-    grunt.registerTask('test', ['eslint', 'clean', 'copy']);
-    grunt.registerTask('default', ['eslint', 'clean', 'copy']);
+    grunt.registerTask('test', ['clean', 'copy']);
+    grunt.registerTask('default', ['clean', 'copy', 'browserify']);
+    grunt.registerTask('dev', ['clean', 'copy', 'browserify', 'browserSync', 'watch']);
 }
