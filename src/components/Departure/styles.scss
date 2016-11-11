@@ -1,0 +1,9 @@
+@import '../../shared-styles/variables';
+
+.departure {
+  margin-bottom: $padding;
+  display: flex;
+  background-color: $light-background;
+  padding: $padding;
+  border-radius: $border-radius;
+}

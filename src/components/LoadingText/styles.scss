@@ -1,4 +1,6 @@
+@import '../../shared-styles/variables';
+
 .loading {
   text-align: center;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.1 * $padding;
 }

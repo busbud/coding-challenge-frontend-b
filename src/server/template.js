@@ -14,7 +14,7 @@ export default vo => `
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo+2:400,600">
     ${vo.cssBundle ? '<link rel="stylesheet" href="' + vo.cssBundle + '">' : ''}
 
     <title>Universal React Starter Kyt</title>
