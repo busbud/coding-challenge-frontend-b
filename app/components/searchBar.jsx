@@ -30,7 +30,7 @@ export default class SearchBar extends React.Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6 col-md-offset-3">
+                    <div className="col-md-6 col-md-offset-3" style={{"textAlign":"center"}}>
                         <form className="form-inline" onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <input type="text" className="form-control" onClick={() => this.handleClick(1)} placeholder={this.props.placeHolder1} value={this.state.textInput1} readOnly></input>

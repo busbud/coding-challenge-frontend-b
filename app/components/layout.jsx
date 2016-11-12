@@ -14,7 +14,11 @@ export default class Layout extends React.Component {
                         </div>
                     </div>
                 </header>
-                <div className="app-content">{this.props.children}</div>
+                <div className="container">
+                    <div className="row">
+                        <div className="app-content">{this.props.children}</div>
+                    </div>
+                </div>
                 <footer></footer>
             </div>
         );

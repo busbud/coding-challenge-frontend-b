@@ -24,7 +24,7 @@ module.exports = function(grunt) {
             views: {
                 expand: true,
                 cwd: './app/',
-                src: ['**/*.html', '**/*.css'],
+                src: ['**/*.html', '**/*.css', '**/*.png'],
                 flatten: true,
                 dest: './dist/'
             }
