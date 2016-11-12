@@ -13,7 +13,9 @@ export default class SearchBar extends React.Component {
     }
 
     handleSubmit(event) {
+      if(this.state.textInput1 && this.state.textInput2){
         this.props.onSubmit();
+      }
         event.preventDefault();
     }
 
