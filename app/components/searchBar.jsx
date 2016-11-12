@@ -14,6 +14,7 @@ export default class SearchBar extends React.Component {
 
     handleSubmit(event) {
         this.props.onSubmit();
+        event.preventDefault();
     }
 
     handleClick(event) {
