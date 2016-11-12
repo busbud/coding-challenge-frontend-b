@@ -24,7 +24,7 @@ module.exports = function(grunt) {
             views: {
                 expand: true,
                 cwd: './app/',
-                src: ['**/*.html'],
+                src: ['**/*.html', '**/*.css'],
                 flatten: true,
                 dest: './dist/'
             }
@@ -48,12 +48,14 @@ module.exports = function(grunt) {
             browserify: {
                 files: ['app/**/*.jsx'],
                 tasks: ['browserify']
+            },
+            views:{
+                files: ['app/**/*.css', 'app/**/*.html'],
+                tasks: ['copy:views']
             }
         },
 
-
         browserSync: {
-
             dev: {
                 bsFiles: {
                     src: [
