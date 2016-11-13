@@ -9,12 +9,12 @@ export default class IndexPage extends React.Component {
         super(props);
         this.state = {
             origin: {
-                value: "Montreal",
-                geoHash: "f25dvk"
-            },
-            destination: {
                 value: "New York",
                 geoHash: "dr5reg"
+            },
+            destination: {
+                value: "Montreal",
+                geoHash: "f25dvk"
             },
             date: new Date("August 4 2017"),
             departures: ''
@@ -22,8 +22,7 @@ export default class IndexPage extends React.Component {
     }
 
     search() {
-        departureAPI.fetchDeparture(this.state.origin.geoHash, this.state.destination.geoHash, this.state.date )
-        .then((response) => {
+        departureAPI.fetchDeparture(this.state.origin.geoHash, this.state.destination.geoHash, this.state.date).then((response) => {
             return response.json();
         }).then((json) => {
             this.setState({departures: json});
