@@ -32,3 +32,28 @@ input, textarea{
 ul {
   list-style-type: none;
 }
+
+li {
+  padding: 20px;
+}
+
+.operatorImage{
+  max-height: 100px;
+  padding-bottom: 20px;
+}
+
+.departureTime{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.departureLocation{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
