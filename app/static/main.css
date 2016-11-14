@@ -33,13 +33,12 @@ ul {
   list-style-type: none;
 }
 
-li {
-  padding: 20px;
-}
-
 .operatorImage{
   max-height: 100px;
   padding-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .departureTime{
@@ -52,8 +51,24 @@ li {
   padding-bottom: 15px;
 }
 
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
+table{
+  background: GhostWhite !important;
+  table-layout: fixed;
+  padding : 20px;
+}
+
+.departureTime{
+  width: 10%;
+}
+
+.departureLocation{
+  width: 40%:
+}
+
+.departureOperator{
+  width:25%;
+}
+.departurePrice{
+  width: 25%;
+  text-align: center;
 }
