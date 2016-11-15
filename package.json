@@ -4,7 +4,8 @@
   "description": "A microsite for a busbud route",
   "main": "index.js",
   "scripts": {
-    "start": "grunt",
+    "postinstall": "grunt heroku",
+    "start": "node dist/server.js",
     "test": "grunt test"
   },
   "repository": {
