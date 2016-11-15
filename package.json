@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "grunt deploy",
-    "start": "node dist/server.js",
+    "start": "node dist/server.js"
   },
   "repository": {
     "type": "git",
