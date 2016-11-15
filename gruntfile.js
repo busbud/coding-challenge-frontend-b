@@ -84,7 +84,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-browserify");
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-browser-sync');
 
     //register grunt default task
