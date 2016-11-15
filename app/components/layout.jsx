@@ -9,7 +9,7 @@ export default class Layout extends React.Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-1 col-sm-offset-1" id="pageName">
-                                Callumbud
+                                Osheagabud
                             </div>
                         </div>
                     </div>

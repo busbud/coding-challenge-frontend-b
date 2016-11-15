@@ -87,7 +87,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browser-sync');
 
     //register grunt default task
-    grunt.registerTask('deploy', ['clean', 'copy', 'browserify']);
+    grunt.registerTask('heroku', ['clean', 'copy', 'browserify']);
     grunt.registerTask('default', ['clean', 'copy', 'browserify']);
     grunt.registerTask('dev', ['clean', 'copy', 'browserify', 'browserSync', 'watch']);
 }
