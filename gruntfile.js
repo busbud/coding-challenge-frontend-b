@@ -24,9 +24,17 @@ module.exports = function(grunt) {
             views: {
                 expand: true,
                 cwd: './app/',
-                src: ['**/*.html', '**/*.css', '**/*.png'],
+                src: ['**/*.html', '**/*.css', '**/*.png', '**/*.ejs'],
                 flatten: true,
                 dest: './dist/'
+            },
+            js: {
+                expand: true,
+                cwd: './app/',
+                src: ['server.js'],
+                flatten: true,
+                dest: './dist/'
+
             }
         },
 
@@ -80,6 +88,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browser-sync');
 
     //register grunt default task
+    grunt.registerTask('heroku', ['clean', 'copy', 'browserify']);
     grunt.registerTask('test', ['clean', 'copy']);
     grunt.registerTask('default', ['clean', 'copy', 'browserify']);
     grunt.registerTask('dev', ['clean', 'copy', 'browserify', 'browserSync', 'watch']);
