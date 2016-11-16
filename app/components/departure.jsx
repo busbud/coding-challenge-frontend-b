@@ -18,7 +18,10 @@ export default class Departure extends React.Component {
             })[0],
             operator: this.props.operators.filter(operator => {
                 return operator.id == this.props.departure.operator_id;
-            })[0]
+            })[0],
+            originCity: this.props.cities[0],
+            destinationCity: this.props.cities[1]
+
         }
     }
 
@@ -31,15 +34,22 @@ export default class Departure extends React.Component {
                             <tbody>
                                 <tr>
                                     <td className="departureTime">{this.formatAMPM(this.state.departureTime)}</td>
-                                    <td className="departureLocation">{this.state.origin.name}</td>
+                                    <td className="departureLocation">
+                                      <div>{this.state.origin.name}</div>
+                                      <div className="cityName">{this.state.originCity.name}</div>
+                                    </td>
                                     <td className="departureOperator" rowSpan="2">
                                         <img src={this.state.operator.logo_url} className="img-responsive operatorImage vertical-align:middle" alt="Operator"></img>
+                                        <div className="text-center">{this.props.departure.class}</div>
                                     </td>
-                                    <td className="departurePrice" rowSpan="2">{this.state.departurePrice}</td>
+                                    <td className="departurePrice" rowSpan="2">${this.state.departurePrice} {this.props.currency}</td>
                                 </tr>
                                 <tr>
                                     <td className="departureTime">{this.formatAMPM(this.state.arrivalTime)}</td>
-                                    <td className="departureLocation">{this.state.destination.name}</td>
+                                    <td className="departureLocation">
+                                      <div>{this.state.destination.name}</div>
+                                      <div  className="cityName">{this.state.destinationCity.name}</div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

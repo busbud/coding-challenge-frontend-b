@@ -72,3 +72,7 @@ table{
   width: 25%;
   text-align: center;
 }
+
+.cityName {
+  color: grey
+}
