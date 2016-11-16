@@ -1,9 +1,6 @@
 var express = require('express');
 var app = express();
-import {
-    fetchDeparture,
-    pollDeparture
-} from 'serverDepartureAPI.js';
+var api = require('./serverDepartureAPI.js');
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -11,20 +8,30 @@ var port = process.env.PORT || 8080;
 
 app.set('view engine', 'ejs');
 
-app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname + '/public'));
 //app.use(express.static(__dirname + '/dist'));
 
 // set the home page route
 app.get('/', function(req, res) {
-    res.render('index');
+    res.render('./public/index');
 });
 
-app.get('/x-departures/:origin/:destination/:date}', function(req, res) {
-    fetchDeparture(req.origin, req.destination, req.date, req.query).then((result) => res.send(result));
+app.get('/x-departures/:origin/:destination/:date', function(req, res) {
+    console.log("Departure request");
+    api.fetchDeparture(req.params.origin, req.params.destination, req.params.date, req.query).then(response => {
+        return response.json();
+    }).then(json => {
+        res.send(json);
+    });
 });
 
-app.get('/x-departures/:origin/:destination/:date/poll}', function(req, res) {
-    pollDeparture(req.origin, req.destination, req.date, req.query).then((result) => res.send(result));
+app.get('/x-departures/:origin/:destination/:date/poll', function(req, res) {
+    console.log("Poll request");
+    api.pollDeparture(req.params.origin, req.params.destination, req.params.date, req.query).then(response => {
+        return response.json();
+    }).then(json => {
+        res.send(json);
+    });
 });
 
 app.listen(port, function() {

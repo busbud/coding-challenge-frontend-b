@@ -12,26 +12,26 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: './app/shared/font',
                 src: ['**/*.eot', '**/*.svg', '**/*.ttf', '**/*.woff', '**/*.woff2'],
-                dest: './dist/'
+                dest: './dist/public/'
             },
             node_modules: {
                 expand: true,
                 cwd: './node_modules/',
                 flatten: true,
                 src: ['bootstrap/dist/css/bootstrap.min.css'],
-                dest: './dist/'
+                dest: './dist/public/'
             },
             views: {
                 expand: true,
                 cwd: './app/',
                 src: ['**/*.html', '**/*.css', '**/*.png', '**/*.ejs'],
                 flatten: true,
-                dest: './dist/'
+                dest: './dist/public/'
             },
             js: {
                 expand: true,
                 cwd: './app/',
-                src: ['server.js'],
+                src: ['server.js', 'serverDepartureAPI.js' ],
                 flatten: true,
                 dest: './dist/'
 
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
                     ]
                 },
                 src: ['app/app-client.js'],
-                dest: 'dist/app.js',
+                dest: 'dist/public/app.js',
             }
         },
 
@@ -56,6 +56,10 @@ module.exports = function(grunt) {
             browserify: {
                 files: ['app/**/*.jsx', 'app/**/*.js'],
                 tasks: ['browserify']
+            },
+            server:{
+                files: ['app/server.js', 'app/components/serverDepartureAPI.js'],
+                tasks: ['copy:js']
             },
             views:{
                 files: ['app/**/*.css', 'app/**/*.html'],

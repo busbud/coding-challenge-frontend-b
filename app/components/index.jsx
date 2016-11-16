@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from './searchBar.jsx';
 import {fetchDeparture, pollDeparture} from "./clientDepartureAPI.js";
 import Departure from './departure.jsx';
+import update from 'immutability-helper';
 import 'whatwg-fetch'
 
 export default class IndexPage extends React.Component {
@@ -27,55 +28,60 @@ export default class IndexPage extends React.Component {
                 senior: 0,
                 lang: "en",
                 currency: "CAD"
-            }
+            },
+            loading: false
 
         };
     }
 
     search() {
+        this.setState({loading: true});
         fetchDeparture(this.state.origin.geoHash, this.state.destination.geoHash, this.state.date, this.state.query).then(response => {
             return response.json();
         }).then(json => {
-
             this.setState({departureJSON: json});
-            if(!this.state.departureJSON.complete){
+            this.setState({loading: !json.complete});
+            if(!json.complete){
               this.poll();
             }
         })
-
-
-
     }
 
     poll() {
-        if (!this.state.departureJSON.complete) {
-            pollDeparture(this.state.origin.geoHash, this.state.destination.geoHash, this.state.date, this.state.query, this.state.departureJSON.departures.length).then(response => {
-                return response.json();
-            }).then(json => {
+        pollDeparture(this.state.origin.geoHash, this.state.destination.geoHash, this.state.date, this.state.query, this.state.departureJSON.departures.length).then(response => {
+            return response.json();
+        }).then(json => {
+            if(json.departures.length > 0){
+              this.setState({loading: false});
+              var newJSON = update(this.state.departureJSON,
+                {departures: {$push: json.departures}},
+                {operators: {$push: json.operators}},
+                {complete: {$set: json.complete}}
+              );
+              this.setState({departureJSON: newJSON});
+            }
 
-                var newDepartures =   this.state.departureJSON.departures.slice();
-                newDepartures.push(json.departures);
-                this.setState({
-                    departureJSON: {
-                        departures: newDepartures,
-                        operators: json.operators
-                    }
-                });
-                if (!this.state.departureJSON.complete) {
-                    this.poll()
-                }
-            })
+            if (!json.complete) {
+                this.poll();
+            }
+        });
 
-        }
     }
 
     render() {
+        let loadingString ="";
+        if (this.state.loading) {
+          loadingString ="Loading...";
+        } else {
+          loadingString ="";
+        }
         return (
             <div>
                 <img src="osheaga.png" alt="Osheaga" className="img-responsive center-block"></img>
                 <div>
                     <SearchBar value1={this.state.origin.value} value2={this.state.destination.value} placeHolder1="Leaving from" placeHolder2="Going to" onSubmit={() => this.search()}/>
                 </div>
+                <div className="text-center">{loadingString}</div>
                 <ul>
                     {this.state.departureJSON.departures.map(departure => {
                         return (
@@ -84,8 +90,8 @@ export default class IndexPage extends React.Component {
                                   operators={this.state.departureJSON.operators} currency={this.state.query.currency}/>
                             </li>
                         )
-                    })
-}
+                     })
+                    }
                 </ul>
             </div>
 

@@ -1,5 +1,4 @@
 import React from 'react';
-
 export default class Departure extends React.Component {
 
     constructor(props) {
@@ -42,7 +41,7 @@ export default class Departure extends React.Component {
                                         <img src={this.state.operator.logo_url} className="img-responsive operatorImage vertical-align:middle" alt="Operator"></img>
                                         <div className="text-center">{this.props.departure.class}</div>
                                     </td>
-                                    <td className="departurePrice" rowSpan="2">${this.state.departurePrice} {this.props.currency}</td>
+                                    <td className="departurePrice" rowSpan="2">${this.state.departurePrice/100} {this.props.currency}</td>
                                 </tr>
                                 <tr>
                                     <td className="departureTime">{this.formatAMPM(this.state.arrivalTime)}</td>
