@@ -8,7 +8,7 @@ export function fetchDeparture(origin, destination, date, query){
             method: 'GET',
             headers: {
                 'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-                'X-Busbud-Token': ''
+                'X-Busbud-Token': process.env.BUSBUD_TOKEN
             }
         });
       }
@@ -20,7 +20,7 @@ export function pollDeparture(origin, destination, date, query, index){
       method: 'GET',
       headers: {
           'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-          'X-Busbud-Token': ''
+          'X-Busbud-Token': process.env.BUSBUD_TOKEN
       }
   });
 
