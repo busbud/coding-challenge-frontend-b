@@ -1,5 +1,9 @@
 var express = require('express');
 var app = express();
+import {
+    fetchDeparture,
+    pollDeparture
+} from 'serverDepartureAPI.js';
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -12,9 +16,15 @@ app.use(express.static(__dirname + '/'));
 
 // set the home page route
 app.get('/', function(req, res) {
-
-    // ejs render automatically looks in the views folder
     res.render('index');
+});
+
+app.get('/x-departures/:origin/:destination/:date}', function(req, res) {
+    fetchDeparture(req.origin, req.destination, req.date, req.query).then((result) => res.send(result));
+});
+
+app.get('/x-departures/:origin/:destination/:date/poll}', function(req, res) {
+    pollDeparture(req.origin, req.destination, req.date, req.query).then((result) => res.send(result));
 });
 
 app.listen(port, function() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from './searchBar.jsx';
-import {fetchDeparture, pollDeparture} from "./departureAPI.js";
+import {fetchDeparture, pollDeparture} from "./clientDepartureAPI.js";
 import Departure from './departure.jsx';
 import 'whatwg-fetch'
 
