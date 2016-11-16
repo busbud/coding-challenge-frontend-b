@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from './searchBar.jsx';
-import {departureAPI} from "./departureAPI.js";
+import {fetchDeparture} from "./departureAPI.js";
 import Departure from './departure.jsx';
 import 'whatwg-fetch'
 
@@ -25,11 +25,10 @@ export default class IndexPage extends React.Component {
     }
 
     search() {
-        departureAPI.fetchDeparture(this.state.origin.geoHash, this.state.destination.geoHash, this.state.date).then(response => {
+        fetchDeparture(this.state.origin.geoHash, this.state.destination.geoHash, this.state.date).then(response => {
             return response.json();
         }).then(json => {
             this.setState({departureJSON: json});
-            console.log(this.state.departureJSON);
         })
 
     }

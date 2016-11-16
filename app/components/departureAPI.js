@@ -2,9 +2,7 @@
 import 'whatwg-fetch'
 
 
-class DepartureAPI {
-
-      fetchDeparture(origin, destination, date){
+export function fetchDeparture(origin, destination, date){
 
         return fetch(`https://napi.busbud.com/x-departures/${origin}/${destination}/${date.toISOString().slice(0, 10)}`, {
             method: 'GET',
@@ -16,12 +14,6 @@ class DepartureAPI {
       }
 
 
-      pollDeparture(origin, destination, date){
+export function pollDeparture(origin, destination, date){
 
       }
-
-
-}
-
-
-export let departureAPI = new DepartureAPI();
