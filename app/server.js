@@ -17,7 +17,6 @@ app.get('/', function(req, res) {
 });
 
 app.get('/x-departures/:origin/:destination/:date', function(req, res) {
-    console.log("Departure request");
     api.fetchDeparture(req.params.origin, req.params.destination, req.params.date, req.query).then(response => {
         return response.json();
     }).then(json => {
@@ -26,7 +25,6 @@ app.get('/x-departures/:origin/:destination/:date', function(req, res) {
 });
 
 app.get('/x-departures/:origin/:destination/:date/poll', function(req, res) {
-    console.log("Poll request");
     api.pollDeparture(req.params.origin, req.params.destination, req.params.date, req.query).then(response => {
         return response.json();
     }).then(json => {

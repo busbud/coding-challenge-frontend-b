@@ -12,8 +12,7 @@ exports.fetchDeparture = function(origin, destination, date, query) {
     });
 }
 
-exports.pollDeparture = function(origin, destination, date, query, index) {
-    query.index = index;
+exports.pollDeparture = function(origin, destination, date, query) {
     return fetch(`https://napi.busbud.com/x-departures/${origin}/${destination}/${date}/poll?${querystring.stringify(query)}`, {
         method: 'GET',
         headers: {

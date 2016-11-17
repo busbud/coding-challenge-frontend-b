@@ -51,15 +51,13 @@ export default class IndexPage extends React.Component {
         pollDeparture(this.state.origin.geoHash, this.state.destination.geoHash, this.state.date, this.state.query, this.state.departureJSON.departures.length).then(response => {
             return response.json();
         }).then(json => {
-            if(json.departures.length > 0){
-              this.setState({loading: false});
-              var newJSON = update(this.state.departureJSON,
-                {departures: {$push: json.departures}},
-                {operators: {$push: json.operators}},
-                {complete: {$set: json.complete}}
-              );
-              this.setState({departureJSON: newJSON});
-            }
+            this.setState({loading: false});
+            var newJSON = update(this.state.departureJSON,{
+              departures: {$push: json.departures},
+              operators: {$push: json.operators},
+              complete: {$set: json.complete}
+            });
+            this.setState({departureJSON: newJSON});
 
             if (!json.complete) {
                 this.poll();
