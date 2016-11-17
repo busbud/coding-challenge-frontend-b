@@ -1,0 +1,78 @@
+header {
+  text-align: center;
+  background: #127ccb;
+  color: white;
+}
+header .container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+header img {
+  display: block;
+  margin: 0 auto 20px;
+}
+
+@media (min-width: 768px) {
+  header .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+form  {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+input, textarea{
+    background-color:white;
+    color: white;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.operatorImage{
+  max-height: 100px;
+  padding-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.departureTime{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.departureLocation{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+table{
+  background: GhostWhite !important;
+  table-layout: fixed;
+  padding : 20px;
+}
+
+.departureTime{
+  width: 10%;
+}
+
+.departureLocation{
+  width: 40%:
+}
+
+.departureOperator{
+  width:25%;
+}
+.departurePrice{
+  width: 25%;
+  text-align: center;
+}
+
+.cityName {
+  color: grey
+}
