@@ -34,6 +34,15 @@ export default class IndexPage extends React.Component {
         };
     }
 
+    isSearching() {
+      if (this.state.loading) {
+        return (<div ><i className="fa fa-spinner fa-pulse fa-fw"></i> Loading...</div>)
+      }
+      else {
+        return null;
+      }
+    }
+
     search() {
         this.setState({loading: true});
         fetchDeparture(this.state.origin.geoHash, this.state.destination.geoHash, this.state.date, this.state.query).then(response => {
@@ -79,7 +88,7 @@ export default class IndexPage extends React.Component {
                 <div>
                     <SearchBar value1={this.state.origin.value} value2={this.state.destination.value} placeHolder1="Leaving from" placeHolder2="Going to" onSubmit={() => this.search()}/>
                 </div>
-                <div className="text-center">{loadingString}</div>
+                <div className="text-center">{this.isSearching()}</div>
                 <ul>
                     {this.state.departureJSON.departures.map(departure => {
                         return (

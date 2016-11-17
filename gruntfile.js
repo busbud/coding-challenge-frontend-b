@@ -18,8 +18,14 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: './node_modules/',
                 flatten: true,
-                src: ['bootstrap/dist/css/bootstrap.min.css'],
+                src: ['bootstrap/dist/css/bootstrap.min.css','font-awesome/css/**', 'font-awesome/fonts/**'],
                 dest: './dist/public/'
+            },
+            font_awesome:{
+              expand: true,
+              cwd: './node_modules/font-awesome/',
+              src: ['css/**', 'fonts/**'],
+              dest: './dist/public/'
             },
             views: {
                 expand: true,
