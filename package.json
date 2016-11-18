@@ -4,7 +4,9 @@
   "description": "malcolm laing's solution",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "webpack -p",
+    "dev": "webpack-dev-server --inline --hot"
   },
   "repository": {
     "type": "git",
@@ -13,7 +15,7 @@
   "keywords": [
     "reactjs",
     "webpack",
-    "react-hot-loader",
+    "webpack-dev-server",
     "nodejs"
   ],
   "author": "malcolm laing",
@@ -28,12 +30,13 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "file-loader": "^0.9.0",
-    "react-hot-loader": "^3.0.0-beta.6",
     "webpack": "^1.3.0",
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0"
   }
 }
