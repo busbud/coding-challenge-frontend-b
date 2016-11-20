@@ -1,7 +1,6 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var values = require('postcss-modules-values');
-var path = require('path');
 
 module.exports = {
   context: __dirname + '/app',
@@ -11,7 +10,7 @@ module.exports = {
   },
   output: {
     filename: 'app.js',
-    path: path.join(__dirname, 'dist'),                // output path
+    path: __dirname + '/dist',
   },
   module: {
   loaders: [
@@ -23,17 +22,7 @@ module.exports = {
         presets: ['es2015', 'react']
       },
     },
-    {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader?modules=true',
-      include: /flexboxgrid/
-    },
-    {
-      test: /\.css$/,
-      loader: 'style!css!postcss',
-      include: path.join(__dirname, 'node_modules'),
-      exclude: /flexboxgrid/
-    },
+    { test: /\.css$/, loader: "style-loader!css-loader" },
     { test: /\.png$/, loader: "url-loader?limit=100000" },
     { test: /\.jpg$/, loader: "file-loader" },
     {
@@ -41,14 +30,5 @@ module.exports = {
       loader: "file?name=[name].[ext]",
     },
   ],
-  },
-  plugins: [
-  new ExtractTextPlugin('example.css', { allChunks: true }),  // compiled css (single file only)
-  // new webpack.HotModuleReplacementPlugin(),
-  // new webpack.NoErrorsPlugin(),
-  // new webpack.DefinePlugin({
-  //   'process.env.NODE_ENV': JSON.stringify('development')
-  // })
-]
-
+},
 }
