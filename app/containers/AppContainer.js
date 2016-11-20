@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 class AppContainer extends React.Component {
   render() {
     return (
-      <div className={cx('test')}>
+      <div className={cx('app')}>
         Hello {this.props.name}!
       </div>
     );

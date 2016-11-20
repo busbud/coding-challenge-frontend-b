@@ -13,22 +13,28 @@ module.exports = {
     path: __dirname + '/dist',
   },
   module: {
-  loaders: [
-    {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['es2015', 'react']
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        },
       },
-    },
-    { test: /\.css$/, loader: "style-loader!css-loader" },
-    { test: /\.png$/, loader: "url-loader?limit=100000" },
-    { test: /\.jpg$/, loader: "file-loader" },
-    {
-      test: /\.html$/,
-      loader: "file?name=[name].[ext]",
-    },
+      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader') },
+      { test: /\.png$/, loader: "url-loader?limit=100000" },
+      { test: /\.jpg$/, loader: "file-loader" },
+      {
+        test: /\.html$/,
+        loader: "file?name=[name].[ext]",
+      },
+    ],
+  },
+  postcss: [
+    values
   ],
-},
+  plugins: [
+    new ExtractTextPlugin('style.css', { allChunks: true })
+  ]
 }
