@@ -1,0 +1,6 @@
+@value colors: "../layout/colors.css";
+@value color-blue from colors;
+
+.test {
+  color: color-blue;
+}

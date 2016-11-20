@@ -1,3 +1,7 @@
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var values = require('postcss-modules-values');
+
 module.exports = {
   context: __dirname + '/app',
   entry: {
