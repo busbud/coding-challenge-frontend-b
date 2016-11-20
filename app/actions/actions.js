@@ -6,20 +6,14 @@ function requestData() {
 };
 
 function receiveData(json) {
-
-  if (!json.complete) {
-    console.log('poll');
-    // call again
-  }
-	return function(dispatch) {
-		return {
-      type: types.RECV_DATA,
-		    data: json
-    }
+	return{
+		type: types.RECV_DATA,
+		data: json
 	}
 };
 
 function receiveError(json) {
+  console.log('receive Error');
 	return {
 		type: types.RECV_ERROR,
 		data: json
@@ -35,12 +29,12 @@ export function fetchData(url) {
 			method: 'get',
 			responseType: 'json'
 		})
-			.then(function(response) {
-        console.log('response', response.data);
+			.then(response => {
+        console.log('response', response.data)
 				dispatch(receiveData(response.data));
-			})
-			.catch(function(response){
-				dispatch(receiveError(response.data));
-			})
+      }, (error) => {
+				dispatch(receiveError(error));
+        }
+			)
 	}
 };

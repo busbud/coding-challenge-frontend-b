@@ -2,7 +2,6 @@ import * as types from '../actions/actionTypes';
 import { combineReducers } from 'redux'; //might need to remove
 // import { routerStateReducer } from 'redux-react-router';
 
-
 function exampleReducer(state = {
 	isLoading: false,
 	data: [],

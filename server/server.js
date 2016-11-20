@@ -6,11 +6,9 @@ require("../env.js");
 var axios = require('axios');
 var app = express();
 
-console.log(process.env);
-
 var instance = axios.create({
   baseURL: 'https://napi.busbud.com',
-  timeout: 1000,
+  timeout: 20000,
   headers: {
     'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
     'X-Busbud-Token': process.env.BUSBUD_KEY || ''
@@ -26,14 +24,10 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
 
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
 
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
 
     // Pass to next layer of middleware
     next();
@@ -53,11 +47,9 @@ router.get('/', function(req, res) {
       currency: 'CAD'
     })
       .then(function(response) {
-        res.send( response.data);
+        res.send( response.data );
       }).catch(function(error) {
-        // console.log(error);
         res.send( error );
-        // res.json({ error });
       });
 });
 
