@@ -1,6 +1,6 @@
 import * as types from '../actions/actionTypes';
 import { combineReducers } from 'redux'; //might need to remove
-// import { routerStateReducer } from 'redux-react-router';
+import moment from 'moment';
 
 function pollReducer(state = {
 	isLoading: false,
@@ -12,25 +12,36 @@ function pollReducer(state = {
 	 action = null) {
 		 switch(action.type) {
  			case types.RECV_POLL_ERROR:
- 				return Object.assign({}, state, {isLoading: false, data: action.data, error: true});
+				return {
+					...state,
+					isLoading: false,
+					data: action.data,
+					error: true
+				};
 			case types.RECV_POLL_DATA:
-				return Object.assign({}, state, {
+				return {
+					...state,
 					isLoading: false,
 					data: {
 						...action.data,
-						departures: [
-							...state.data.departures,
-							...action.data.departures
-						],
-						operators: [
-							...state.data.operators,
-							...action.data.operators
-						]
+						// check if we have to merge the contents of past requests...
+						// departures: [
+						// 	...state.data.departures,
+						// 	...action.data.departures
+						// ],
+						// operators: [
+						// 	...state.data.operators,
+						// 	...action.data.operators
+						// ]
 					},
 					error: false
-				});
+				};
  			case types.REQ_POLL_DATA:
- 				return Object.assign({}, state, {isLoading: true, error: false });
+				return {
+					...state,
+					isLoading: true,
+					error: false,
+				};
  			default:
  				return state;
  		}
@@ -39,6 +50,17 @@ function pollReducer(state = {
 
 function queryReducer(state = {
 	isLoading: false,
+	params: {
+		origin: {
+			name: 'New York',
+			geohash: 'dr5reg'
+		},
+		destination: {
+			name: 'Montreal',
+			geohash: 'f25dvk'
+		},
+		date: moment("2017-07-21")
+	},
 	data: {
 		departures: [],
 		operators: [],
@@ -48,11 +70,25 @@ function queryReducer(state = {
 , action = null) {
 	switch(action.type) {
 		case types.RECV_ERROR:
-			return Object.assign({}, state, {isLoading: false, data: action.data, error: true});
+			return {
+				...state,
+				isLoading: false,
+				data: action.data,
+				error: true,
+			};
 		case types.RECV_DATA:
-			return Object.assign({}, state, {isLoading: false, data: action.data, error: false });
+			return {
+				...state,
+				isLoading: false,
+				data: action.data,
+				error: false,
+			};
 		case types.REQ_DATA:
-			return Object.assign({}, state, {isLoading: true, error: false });
+			return {
+				...state,
+				isLoading: true,
+				error: false
+			};
 
 		default:
 			return state;

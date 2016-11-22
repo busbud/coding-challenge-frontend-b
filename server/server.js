@@ -17,9 +17,6 @@ var instance = axios.create({
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
-app.disable('etag');
-app.disable('x-powered-by');
-
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -27,9 +24,6 @@ app.use(function (req, res, next) {
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET');
-
-    // Request headers you wish to allow
-    // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
 
     // Pass to next layer of middleware
     next();

@@ -24,12 +24,11 @@ function receiveError(json) {
 	}
 };
 
-const date = '2017-01-19';
 
 export function fetchData(url, params) {
 	return function(dispatch) {
 		dispatch(requestData());
-		return instance.get('/x-departures/dr5reg/f25dvk/' + date,
+		return instance.get(url,
 			{
 				params
 			})
@@ -63,7 +62,7 @@ function receivePollError(json) {
 export function fetchPollData(url, params) {
 	return function(dispatch) {
 		dispatch(requestPollData());
-		return instance.get('/x-departures/dr5reg/f25dvk/' + date + '/poll', {
+		return instance.get(url, {
 			params
 			})
 			.then(response => {

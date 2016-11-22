@@ -10,11 +10,11 @@ const cx = classNames.bind(styles);
 
 class AppContainer extends React.Component {
   componentDidMount() {
-    // don't do this here
-    const { fetchDepartures, pollDepartures } = this.props;
-    fetchDepartures().then(() => {
+    // don't do this here - move to button
+
+    const { fetchDepartures, pollDepartures, query } = this.props;
+    fetchDepartures(query.params.origin.geohash, query.params.destination.geohash, query.params.date.format('YYYY-MM-DD')).then(() => {
       if (!this.props.query.data.complete) {
-        console.log('query after', this.props.query);
         const index = this.props.query.data.departures.length;
         this.poll(index);
       }
@@ -22,10 +22,12 @@ class AppContainer extends React.Component {
   }
 
   poll(index) {
-    this.props.pollDepartures(index).then((result) => {
-      if (!this.props.poll.data.complete) {
-        const index = this.props.poll.data.departures.length;
-        return this.poll(index);
+    const { query, pollDepartures, poll } = this.props;
+    console.log('poll', poll)
+    pollDepartures(query.params.origin.geohash, query.params.destination.geohash, query.params.date.format('YYYY-MM-DD'), index).then((result) => {
+      if (!poll.data.complete) {
+        const newIndex = poll.data.departures.length;
+        return this.poll(newIndex);
       }
     });
   }
@@ -35,7 +37,7 @@ class AppContainer extends React.Component {
 
     const allDepartures = [ ...query.data.departures, ...poll.data.departures];
     const allOperators = [ ...query.data.operators, ...poll.data.operators];
-    console.log('query', query);
+
     return (
       <div className={cx('app')}>
         <Grid>
@@ -80,8 +82,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchDepartures: () => {
-      return dispatch(fetchData('x-departures', {
+    fetchDepartures: (origin, destination, date) => {
+      return dispatch(fetchData(`x-departures/${origin}/${destination}/${date}`, {
         adult: 1,
         child: 0,
         senior: 0,
@@ -89,8 +91,8 @@ function mapDispatchToProps(dispatch) {
         currency: 'CAD'
       }))
     },
-    pollDepartures: (index) => {
-      return dispatch(fetchPollData('poll-x-departures', {
+    pollDepartures: (origin, destination, date, index) => {
+      return dispatch(fetchPollData(`x-departures/${origin}/${destination}/${date}/poll`, {
         adult: 1,
         child: 0,
         senior: 0,
