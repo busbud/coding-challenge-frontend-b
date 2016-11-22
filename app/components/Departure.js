@@ -7,26 +7,28 @@ import { Row, Col } from 'react-flexbox-grid';
 const cx = classNames.bind(styles);
 
 const Departure = ({departure, destination, operator, origin}) => {
-  console.log(operator);
   const departureTime = moment(departure.departure_time).format('h:mm a');
   const arrivalTime = moment(departure.arrival_time).format('h:mm a');
-
-  console.log(departureTime);
   return (
     <div className={cx('departure-box')}>
       <Row>
-        <Col xs={2}>
-          <p>{ departureTime }</p>
+        <Col xs={2} className={cx('time-section')}>
+          <p className={cx('departure')}>{ departureTime }</p>
           <i className="fa fa-arrow-down" aria-hidden="true"></i>
           <p>{ arrivalTime }</p>
         </Col>
-        <Col xs={4}>
+        <Col xs={4} className={cx('city-section')}>
           <p>{destination.name}</p>
+          <p className={cx('city-name')}>city name</p>
           <p>{origin.name}</p>
-
+          <p className={cx('city-name')}>city name</p>
         </Col>
-        <Col xs={3}>{operator.name}</Col>
-        <Col xs={3}>Price</Col>
+        <Col xs={3} className={cx('bordered')}>
+          <p>{operator.name}</p>
+        </Col>
+        <Col xs={3}>
+          <p>${departure.prices.total / 100 }</p>
+        </Col>
       </Row>
     </div>
   );

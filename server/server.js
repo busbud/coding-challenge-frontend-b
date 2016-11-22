@@ -17,6 +17,8 @@ var instance = axios.create({
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
+app.disable('etag');
+app.disable('x-powered-by');
 
 app.use(function (req, res, next) {
 
@@ -27,7 +29,7 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'GET');
 
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+    // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
 
     // Pass to next layer of middleware
     next();
@@ -37,14 +39,20 @@ var router = express.Router();              // get an instance of the express Ro
 
 app.use('/api', router);
 
-router.get('/', function(req, res) {
-    instance.get('/x-departures/dr5reg/f25dvk/2017-08-03',
+router.get('/x-departures/:origin/:destination/:outbound_date', function(req, res) {
+    var params = {
+      origin: req.params.origin,
+      destination: req.params.destination,
+      outboundDate: req.params.outbound_date
+    };
+
+    instance.get('/x-departures/' + params.origin + '/' + params.destination + '/' + params.outboundDate,
     {
-      adult: 1,
-      child: 0,
-      senior: 0,
-      lang: 'en',
-      currency: 'CAD'
+      adult: req.query.adult,
+      child: req.query.child,
+      senior: req.query.senior,
+      lang: req.query.lang,
+      currency: req.query.currency
     })
       .then(function(response) {
         res.send( response.data );
@@ -53,7 +61,29 @@ router.get('/', function(req, res) {
       });
 });
 
+router.get('/x-departures/:origin/:destination/:outbound_date/poll', function(req, res) {
 
+    var params = {
+      origin: req.params.origin,
+      destination: req.params.destination,
+      outboundDate: req.params.outbound_date
+    };
+
+    instance.get('/x-departures/' + params.origin + '/' + params.destination + '/' + params.outboundDate + '/poll',
+    {
+      adult: req.query.adult,
+      child: req.query.child,
+      senior: req.query.senior,
+      lang: req.query.lang,
+      currency: req.query.currency,
+      index: req.query.index
+    })
+      .then(function(response) {
+        res.send( response.data );
+      }).catch(function(error) {
+        res.send( error );
+      });
+});
 
   // Initialize the app.
 var server = app.listen(process.env.PORT || 8081, function () {

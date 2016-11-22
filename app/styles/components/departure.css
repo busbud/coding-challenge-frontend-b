@@ -1,2 +1,32 @@
+@value colors: "../layout/colors.css";
+@value color-light-black, color-black, color-light from colors;
+
+
 .departure-box {
+  /*border: 1px solid color-black;*/
+  border-radius: 3px;
+  padding: 0 10px;
+  margin: 15px 0;
+  box-shadow: color-light-black 0px 1px 6px, color-light-black 0px 1px 4px
+}
+
+.time-section  {
+
+}
+
+.time-section > p.departure {
+  font-weight: bold;
+}
+
+.city-section {
+
+}
+
+.city-section > .city-name {
+  color: color-light;
+}
+
+.bordered {
+  border-left: 1px solid color-light-black;
+  border-right: 1px solid color-light-black;
 }
