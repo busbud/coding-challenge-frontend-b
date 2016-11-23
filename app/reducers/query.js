@@ -12,7 +12,8 @@ export default function queryReducer(state = {
 			name: 'Montreal',
 			geohash: 'f25dvk'
 		},
-		date: moment("2017-07-21")
+		date: moment("2017-07-28"),
+		currency: 'CAD'
 	},
 	data: {
 		departures: [],

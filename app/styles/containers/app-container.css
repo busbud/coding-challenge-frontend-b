@@ -1,11 +1,12 @@
 @value colors: "../layout/colors.css";
-@value color-blue, color-background, color-background-transparent, color-dark-gray from colors;
+@value color-blue, color-background, color-background-transparent, color-dark-gray, color-black, color-light-black from colors;
 @value fonts: "../layout/fonts.css";
 @value main-font from fonts;
 
 body {
   font-family: main-font;
   margin: 0;
+  padding: 15px;
 }
 
 .app {
@@ -13,9 +14,10 @@ body {
   min-height: 100vh;
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
 }
 
-
+/* in order to have the fixed background attachment without having terrible scrolling, this is necessary */
 .app:before {
   content: ' ';
   position: fixed;
@@ -29,19 +31,11 @@ body {
   z-index: -1;
 }
 
-.app:after {
-  /*content: '';
-  background-color: color-background-transparent;
-  opacity: 0.5;
-  position: absolute;
-  height: 100%;
-  width: 100%;*/
-}
-
 .center-loading {
   position: absolute;
   top: 50%;
   left: 50%;
+  color: white;
   transform: translate(-50%, -50%);
 }
 
@@ -56,11 +50,29 @@ body {
   text-align: center;
 }
 
+.header p {
+  font-size: 1.25rem;
+}
+
 button.fetch-button {
-  border: 1px solid color-dark-gray;
+  border: 1px solid color-background;
   color: color-dark-gray;
+  background: color-background;
+  border-radius: 3px;
+  padding: 15px 25x;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  transition: 0.4s all ease-in;
+}
+
+button.fetch-button:hover {
+  cursor: pointer;
   background: transparent;
-  border-radius: 0;
-  padding: 20px;
-  font-size: 2rem;
+  color: color-background;
+  transition: 0.4s all ease-out;
+}
+
+.leader {
+  composes: card from '../layout/common.css';
+  text-align: center;
 }

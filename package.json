@@ -7,7 +7,7 @@
     "test": "test",
     "build": "webpack",
     "start": "node server/server.js",
-    "dev": "webpack-dev-server --inline --hot"
+    "dev": "webpack-dev-server --port 8082 --inline --hot"
   },
   "repository": {
     "type": "git",

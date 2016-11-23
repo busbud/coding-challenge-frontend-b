@@ -11,6 +11,7 @@ try {
 }
 
 var axios = require('axios');
+
 var app = express();
 
 var instance = axios.create({
@@ -23,22 +24,20 @@ var instance = axios.create({
 });
 
 app.use('/dist', publicPath)
-
-app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
-app.use(function (req, res, next) {
 
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET');
-
-    // Pass to next layer of middleware
-    next();
-});
-
-
+// app.use(function (req, res, next) {
+//
+//     // Website you wish to allow to connect
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//
+//     // Request methods you wish to allow
+//     res.setHeader('Access-Control-Allow-Methods', 'GET');
+//
+//     // Pass to next layer of middleware
+//     next();
+// });
+//
 
 app.get('/', function(req, res) {
   res.sendFile(indexPath);
@@ -57,11 +56,13 @@ router.get('/x-departures/:origin/:destination/:outbound_date', function(req, re
 
     instance.get('/x-departures/' + params.origin + '/' + params.destination + '/' + params.outboundDate,
     {
-      adult: req.query.adult,
-      child: req.query.child,
-      senior: req.query.senior,
-      lang: req.query.lang,
-      currency: req.query.currency
+      params: {
+        adult: req.query.adult,
+        child: req.query.child,
+        senior: req.query.senior,
+        lang: req.query.lang,
+        currency: req.query.currency
+      }
     })
       .then(function(response) {
         res.send( response.data );
@@ -80,12 +81,14 @@ router.get('/x-departures/:origin/:destination/:outbound_date/poll', function(re
 
     instance.get('/x-departures/' + params.origin + '/' + params.destination + '/' + params.outboundDate + '/poll',
     {
-      adult: req.query.adult,
-      child: req.query.child,
-      senior: req.query.senior,
-      lang: req.query.lang,
-      currency: req.query.currency,
-      index: req.query.index
+      params: {
+        adult: req.query.adult,
+        child: req.query.child,
+        senior: req.query.senior,
+        lang: req.query.lang,
+        currency: req.query.currency,
+        index: req.query.index
+      }
     })
       .then(function(response) {
         res.send( response.data );

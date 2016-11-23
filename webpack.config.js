@@ -2,6 +2,9 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var values = require('postcss-modules-values');
 
+// this works well for development, but I should have a prod config, and my webpack-dev-server infers with my nodejs server.
+// I should be using webpack to run that as well...
+
 module.exports = {
   context: __dirname + '/app',
   entry: {

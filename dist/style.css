@@ -1,8 +1,17 @@
 
+.common__card___vySmO {
+  border: 1px solid #000000;
+  border-radius: 3px;
+  padding: 10px 10px;
+  margin: 15px 0;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 6px, rgba(0, 0, 0, 0.5) 0px 1px 4px;
+}
 
 body {
   font-family: 'Catamaran', sans-serif;
   margin: 0;
+  padding: 15px;
 }
 
 .app-container__app___1V546 {
@@ -10,9 +19,10 @@ body {
   min-height: 100vh;
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
 }
 
-
+/* in order to have the fixed background attachment without having terrible scrolling, this is necessary */
 .app-container__app___1V546:before {
   content: ' ';
   position: fixed;
@@ -20,25 +30,17 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  background-image: linear-gradient(rgba(76, 166, 255, 0.3), rgba(76, 166, 255, 0.3)), url(87eb9285f4806619a5ddc510e806aeb8.jpg);
+  background-image: linear-gradient(rgba(76, 166, 255, 0.5), rgba(76, 166, 255, 0.5)), url(87eb9285f4806619a5ddc510e806aeb8.jpg);
   background-size: cover;
   will-change: transform;
   z-index: -1;
-}
-
-.app-container__app___1V546:after {
-  /*content: '';
-  background-color: color-background-transparent;
-  opacity: 0.5;
-  position: absolute;
-  height: 100%;
-  width: 100%;*/
 }
 
 .app-container__center-loading___SU6ns {
   position: absolute;
   top: 50%;
   left: 50%;
+  color: white;
   transform: translate(-50%, -50%);
 }
 
@@ -53,25 +55,44 @@ body {
   text-align: center;
 }
 
+.app-container__header___M8JtM p {
+  font-size: 1.25rem;
+}
+
 button.app-container__fetch-button___3aB-O {
-  border: 1px solid #3c3838;
+  border: 1px solid #4ca6ff;
   color: #3c3838;
+  background: #4ca6ff;
+  border-radius: 3px;
+  padding: 15px 25x;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  transition: 0.4s all ease-in;
+}
+
+button.app-container__fetch-button___3aB-O:hover {
+  cursor: pointer;
   background: transparent;
-  border-radius: 0;
-  padding: 20px;
-  font-size: 2rem;
+  color: #4ca6ff;
+  transition: 0.4s all ease-out;
+}
+
+.app-container__leader___2vi1X {
+  text-align: center;
 }
 .departure__departure-box___3Jly1 {
-  border: 1px solid #000000;
-  border-radius: 3px;
-  padding: 0 10px;
-  margin: 15px 0;
-  background: white;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 6px, rgba(0, 0, 0, 0.5) 0px 1px 4px
 }
 
 .departure__time-section___3Mhwf  {
 
+}
+
+p.departure__price___2_Tvx {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.departure__operator-name___22ml4 {
+  text-align: center;
 }
 
 .departure__time-section___3Mhwf > p.departure__departure___3SdN2 {
@@ -89,6 +110,27 @@ button.app-container__fetch-button___3aB-O {
 .departure__bordered___2TFHY {
   border-left: 1px solid rgba(0, 0, 0, 0.5);
   border-right: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.departure__purchase-section___DX701 {
+  text-align: center;
+}
+
+.departure__purchase-ticket-btn___neVo3 {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 15px;
+  background: #4ca6ff;
+  border: 1px solid #4ca6ff;
+  padding: 5px 25px;
+  transition: 0.4s all ease-out;
+
+}
+
+.departure__purchase-ticket-btn___neVo3:hover {
+  color: #4ca6ff;
+  background: transparent;
+  transition: 0.4s all ease-in;
 }
 .flexboxgrid__container-fluid___10rYK,
 .flexboxgrid__container___2_wHV {

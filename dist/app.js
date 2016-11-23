@@ -23247,6 +23247,10 @@
 
 	var _headerImage2 = _interopRequireDefault(_headerImage);
 
+	var _moment = __webpack_require__(212);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -23269,6 +23273,11 @@
 	  }
 
 	  _createClass(AppContainer, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      // this.getDepartures();
+	    }
+	  }, {
 	    key: 'getDepartures',
 	    value: function getDepartures() {
 	      var _this2 = this;
@@ -23278,7 +23287,8 @@
 	          pollDepartures = _props.pollDepartures,
 	          query = _props.query;
 
-	      fetchDepartures(query.params.origin.geohash, query.params.destination.geohash, query.params.date.format('YYYY-MM-DD')).then(function () {
+
+	      fetchDepartures(query.params.origin.geohash, query.params.destination.geohash, query.params.date.format('YYYY-MM-DD'), query.params.currency).then(function () {
 	        if (!_this2.props.query.data.complete) {
 	          var index = _this2.props.query.data.departures.length;
 	          _this2.poll(index);
@@ -23296,7 +23306,7 @@
 	          poll = _props2.poll;
 
 
-	      pollDepartures(query.params.origin.geohash, query.params.destination.geohash, query.params.date.format('YYYY-MM-DD'), index).then(function (result) {
+	      pollDepartures(query.params.origin.geohash, query.params.destination.geohash, query.params.date.format('YYYY-MM-DD'), query.params.currency, index).then(function (result) {
 	        if (!poll.data.complete) {
 	          var newIndex = poll.data.departures.length;
 	          return _this3.poll(newIndex);
@@ -23328,24 +23338,43 @@
 	            _react2.default.createElement(
 	              _reactFlexboxGrid.Col,
 	              { xs: 12, md: 6, mdOffset: 3, className: cx('header') },
-	              _react2.default.createElement('img', { src: _headerImage2.default }),
+	              _react2.default.createElement('img', { alt: 'osheaga header', src: _headerImage2.default })
+	            ),
+	            _react2.default.createElement(
+	              _reactFlexboxGrid.Col,
+	              { xs: 12, xsOffset: 0, md: 8, mdOffset: 2 },
 	              _react2.default.createElement(
-	                'p',
-	                null,
-	                'Going to Osheaga? Find the bus that fits your schedule.'
-	              ),
-	              allDepartures.length === 0 && _react2.default.createElement(
-	                'button',
-	                { className: cx('fetch-button'), onClick: function onClick() {
-	                    _this4.getDepartures();
-	                  } },
-	                'Fetch Departures'
+	                'div',
+	                { className: cx('leader') },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  'Going to Osheaga? The festival starts ',
+	                  query.params.date.format('dddd, MMMM Do YYYY'),
+	                  '!'
+	                ),
+	                allDepartures.length === 0 && _react2.default.createElement(
+	                  'div',
+	                  null,
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'Click the button below to get bus times to get you to Montreal in time for the action.'
+	                  ),
+	                  _react2.default.createElement(
+	                    'button',
+	                    { className: cx('fetch-button'), onClick: function onClick() {
+	                        _this4.getDepartures();
+	                      } },
+	                    'Get bus times!'
+	                  )
+	                )
 	              )
 	            ),
 	            _react2.default.createElement(
 	              _reactFlexboxGrid.Col,
 	              { xs: 12 },
-	              query.isLoading && _react2.default.createElement(
+	              query.isLoading && !query.error && _react2.default.createElement(
 	                'div',
 	                { className: cx('center-loading') },
 	                _react2.default.createElement('i', { className: 'fa fa-circle-o-notch fa-spin fa-3x fa-fw' }),
@@ -23353,12 +23382,27 @@
 	                  'span',
 	                  { className: 'sr-only' },
 	                  'Loading...'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  'Loading initial data...'
 	                )
 	              ),
-	              poll.isLoading && _react2.default.createElement(
+	              poll.isLoading && !poll.error && _react2.default.createElement(
 	                'div',
-	                null,
-	                'Is Loading Polling'
+	                { className: cx('center-loading') },
+	                _react2.default.createElement('i', { className: 'fa fa-spinner fa-spin fa-3x fa-fw' }),
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'sr-only' },
+	                  'Poll Loading...'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  'Loading more departures...'
+	                )
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -23367,6 +23411,7 @@
 	              allDepartures.map(function (departure) {
 	                return _react2.default.createElement(_Departure2.default, {
 	                  key: departure.id,
+	                  currency: query.params.currency,
 	                  destination: query.data.locations.filter(function (location) {
 	                    return location.id === departure.destination_location_id;
 	                  })[0],
@@ -23400,22 +23445,22 @@
 
 	function mapDispatchToProps(dispatch) {
 	  return {
-	    fetchDepartures: function fetchDepartures(origin, destination, date) {
+	    fetchDepartures: function fetchDepartures(origin, destination, date, currency) {
 	      return dispatch((0, _actions.fetchData)('x-departures/' + origin + '/' + destination + '/' + date, {
 	        adult: 1,
 	        child: 0,
 	        senior: 0,
 	        lang: 'en',
-	        currency: 'CAD'
+	        currency: currency
 	      }));
 	    },
-	    pollDepartures: function pollDepartures(origin, destination, date, index) {
+	    pollDepartures: function pollDepartures(origin, destination, date, currency, index) {
 	      return dispatch((0, _actions.fetchPollData)('x-departures/' + origin + '/' + destination + '/' + date + '/poll', {
 	        adult: 1,
 	        child: 0,
 	        senior: 0,
 	        lang: 'en',
-	        currency: 'CAD',
+	        currency: currency,
 	        index: index
 	      }));
 	    }
@@ -23430,7 +23475,7 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"colors":"\"../layout/colors.css\"","color-blue":"#0c77f8","color-background":"#4ca6ff","color-background-transparent":"rgba(76, 166, 255, 0.3)","color-dark-gray":"#3c3838","fonts":"\"../layout/fonts.css\"","main-font":"'Catamaran', sans-serif","app":"app-container__app___1V546","center-loading":"app-container__center-loading___SU6ns","header":"app-container__header___M8JtM","fetch-button":"app-container__fetch-button___3aB-O"};
+	module.exports = {"colors":"\"../layout/colors.css\"","color-blue":"#0c77f8","color-background":"#4ca6ff","color-background-transparent":"rgba(76, 166, 255, 0.5)","color-dark-gray":"#3c3838","color-black":"#000000","color-light-black":"rgba(0, 0, 0, 0.5)","fonts":"\"../layout/fonts.css\"","main-font":"'Catamaran', sans-serif","app":"app-container__app___1V546","center-loading":"app-container__center-loading___SU6ns","header":"app-container__header___M8JtM","fetch-button":"app-container__fetch-button___3aB-O","leader":"app-container__leader___2vi1X common__card___vySmO"};
 
 /***/ },
 /* 210 */
@@ -23524,11 +23569,13 @@
 	      operator = _ref.operator,
 	      origin = _ref.origin,
 	      destinationCity = _ref.destinationCity,
-	      originCity = _ref.originCity;
+	      originCity = _ref.originCity,
+	      currency = _ref.currency;
 
 
 	  var departureTime = (0, _moment2.default)(departure.departure_time).format('h:mm a');
 	  var arrivalTime = (0, _moment2.default)(departure.arrival_time).format('h:mm a');
+	  var duration = _moment2.default.duration(departure.duration, 'minutes').humanize();
 
 	  return _react2.default.createElement(
 	    'div',
@@ -23549,6 +23596,16 @@
 	          'p',
 	          null,
 	          arrivalTime
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Total time: ',
+	          _react2.default.createElement('br', null),
+	          ' ',
+	          _react2.default.createElement('i', { className: 'fa fa-clock-o', 'aria-hidden': 'true' }),
+	          ' ',
+	          duration
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -23562,6 +23619,7 @@
 	        _react2.default.createElement(
 	          'p',
 	          { className: cx('city-name') },
+	          'Departure: ',
 	          originCity
 	        ),
 	        _react2.default.createElement(
@@ -23572,6 +23630,7 @@
 	        _react2.default.createElement(
 	          'p',
 	          { className: cx('city-name') },
+	          'Arrival: ',
 	          destinationCity
 	        )
 	      ),
@@ -23580,18 +23639,30 @@
 	        { xs: 3, className: cx('bordered') },
 	        _react2.default.createElement(
 	          'p',
-	          null,
+	          { className: cx('operator-name') },
 	          operator.name
 	        )
 	      ),
 	      _react2.default.createElement(
 	        _reactFlexboxGrid.Col,
-	        { xs: 3 },
+	        { xs: 3, className: cx('purchase-section') },
+	        _react2.default.createElement(
+	          'p',
+	          { className: cx('price') },
+	          '$',
+	          departure.prices.total / 100,
+	          ' ',
+	          currency
+	        ),
 	        _react2.default.createElement(
 	          'p',
 	          null,
-	          '$',
-	          departure.prices.total / 100
+	          'one way per person'
+	        ),
+	        _react2.default.createElement(
+	          'a',
+	          { target: '_BLANK', className: cx('purchase-ticket-btn'), href: departure.links.deeplink },
+	          'Buy'
 	        )
 	      )
 	    )
@@ -23599,6 +23670,7 @@
 	};
 
 	Departure.propTypes = {
+	  currency: _react.PropTypes.string,
 	  departure: _react.PropTypes.object,
 	  operator: _react.PropTypes.object,
 	  origin: _react.PropTypes.object,
@@ -38450,7 +38522,7 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"colors":"\"../layout/colors.css\"","color-light-black":"rgba(0, 0, 0, 0.5)","color-black":"#000000","color-light":"rgb(111, 124, 130)","departure-box":"departure__departure-box___3Jly1","time-section":"departure__time-section___3Mhwf","departure":"departure__departure___3SdN2","city-section":"departure__city-section___3h4zj","city-name":"departure__city-name___1KZ7C","bordered":"departure__bordered___2TFHY"};
+	module.exports = {"colors":"\"../layout/colors.css\"","color-light-black":"rgba(0, 0, 0, 0.5)","color-black":"#000000","color-light":"rgb(111, 124, 130)","color-background":"#4ca6ff","departure-box":"departure__departure-box___3Jly1 common__card___vySmO","time-section":"departure__time-section___3Mhwf","price":"departure__price___2_Tvx","operator-name":"departure__operator-name___22ml4","departure":"departure__departure___3SdN2","city-section":"departure__city-section___3h4zj","city-name":"departure__city-name___1KZ7C","bordered":"departure__bordered___2TFHY","purchase-section":"departure__purchase-section___DX701","purchase-ticket-btn":"departure__purchase-ticket-btn___neVo3"};
 
 /***/ },
 /* 323 */
@@ -40503,7 +40575,8 @@
 					name: 'Montreal',
 					geohash: 'f25dvk'
 				},
-				date: (0, _moment2.default)("2017-07-21")
+				date: (0, _moment2.default)("2017-07-28"),
+				currency: 'CAD'
 			},
 			data: {
 				departures: [],

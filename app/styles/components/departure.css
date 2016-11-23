@@ -1,18 +1,21 @@
 @value colors: "../layout/colors.css";
-@value color-light-black, color-black, color-light from colors;
+@value color-light-black, color-black, color-light, color-background from colors;
 
 
 .departure-box {
-  border: 1px solid color-black;
-  border-radius: 3px;
-  padding: 0 10px;
-  margin: 15px 0;
-  background: white;
-  box-shadow: color-light-black 0px 1px 6px, color-light-black 0px 1px 4px
+  composes: card from '../layout/common.css';
 }
 
 .time-section  {
 
+}
+
+p.price {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.operator-name {
+  text-align: center;
 }
 
 .time-section > p.departure {
@@ -30,4 +33,25 @@
 .bordered {
   border-left: 1px solid color-light-black;
   border-right: 1px solid color-light-black;
+}
+
+.purchase-section {
+  text-align: center;
+}
+
+.purchase-ticket-btn {
+  text-decoration: none;
+  color: color-light-black;
+  margin-top: 15px;
+  background: color-background;
+  border: 1px solid color-background;
+  padding: 5px 25px;
+  transition: 0.4s all ease-out;
+
+}
+
+.purchase-ticket-btn:hover {
+  color: color-background;
+  background: transparent;
+  transition: 0.4s all ease-in;
 }
