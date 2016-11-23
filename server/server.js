@@ -1,6 +1,10 @@
 var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
+var indexPath = path.join(__dirname, '/../dist/index.html')
+var publicPath = express.static(path.join(__dirname, '../dist'))
+
+
 require("../env.js");
 
 var axios = require('axios');
@@ -15,6 +19,8 @@ var instance = axios.create({
   }
 });
 
+app.use('/dist', publicPath)
+
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
@@ -28,6 +34,12 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+
+
+
+app.get('/', function(req, res) {
+  res.sendFile(indexPath);
+})
 
 var router = express.Router();              // get an instance of the express Router
 
