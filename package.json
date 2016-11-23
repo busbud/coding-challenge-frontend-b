@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "build": "webpack -p",
+    "build": "webpack",
+    "start": "node server/server.js",
     "dev": "webpack-dev-server --inline --hot"
   },
   "repository": {
