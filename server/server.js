@@ -4,8 +4,11 @@ var bodyParser = require("body-parser");
 var indexPath = path.join(__dirname, '/../dist/index.html')
 var publicPath = express.static(path.join(__dirname, '../dist'))
 
-
-require("../env.js");
+try {
+  require("../env.js");
+} catch(error) {
+  console.log('Please create an env file');
+}
 
 var axios = require('axios');
 var app = express();
