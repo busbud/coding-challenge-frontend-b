@@ -24,20 +24,6 @@ var instance = axios.create({
 });
 
 app.use('/dist', publicPath)
-app.use(bodyParser.json());
-
-// app.use(function (req, res, next) {
-//
-//     // Website you wish to allow to connect
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//
-//     // Request methods you wish to allow
-//     res.setHeader('Access-Control-Allow-Methods', 'GET');
-//
-//     // Pass to next layer of middleware
-//     next();
-// });
-//
 
 app.get('/', function(req, res) {
   res.sendFile(indexPath);

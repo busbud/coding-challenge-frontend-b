@@ -17,7 +17,6 @@ class AppContainer extends React.Component {
   getDepartures() {
     const { fetchDepartures, pollDepartures, query } = this.props;
 
-
     fetchDepartures(query.params.origin.geohash, query.params.destination.geohash, query.params.date.format('YYYY-MM-DD'), query.params.currency).then(() => {
       if (!this.props.query.data.complete) {
         const index = this.props.query.data.departures.length;

@@ -71,7 +71,7 @@
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
 	  { store: store },
-	  _react2.default.createElement(_AppContainer2.default, { name: 'World' })
+	  _react2.default.createElement(_AppContainer2.default, null)
 	), document.getElementById('app'));
 
 /***/ },
