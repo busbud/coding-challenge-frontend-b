@@ -37,11 +37,8 @@ body {
 }
 
 .app-container__center-loading___SU6ns {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   color: white;
-  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .app-container__header___M8JtM {
