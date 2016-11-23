@@ -1,5 +1,9 @@
 @value color-blue: #0c77f8;
 @value color-black: #000000;
+@value color-dark-gray: #3c3838;
 
-@value color-light-black: rgba(0, 0, 0, 0.1);
+@value color-light-black: rgba(0, 0, 0, 0.5);
 @value color-light: rgb(111, 124, 130);
+
+@value color-background: #4ca6ff;
+@value color-background-transparent: rgba(76, 166, 255, 0.3);

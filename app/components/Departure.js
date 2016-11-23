@@ -6,9 +6,11 @@ import { Row, Col } from 'react-flexbox-grid';
 
 const cx = classNames.bind(styles);
 
-const Departure = ({departure, destination, operator, origin}) => {
+const Departure = ({departure, destination, operator, origin, destinationCity, originCity}) => {
+
   const departureTime = moment(departure.departure_time).format('h:mm a');
   const arrivalTime = moment(departure.arrival_time).format('h:mm a');
+
   return (
     <div className={cx('departure-box')}>
       <Row>
@@ -18,10 +20,11 @@ const Departure = ({departure, destination, operator, origin}) => {
           <p>{ arrivalTime }</p>
         </Col>
         <Col xs={4} className={cx('city-section')}>
-          <p>{destination.name}</p>
-          <p className={cx('city-name')}>city name</p>
           <p>{origin.name}</p>
-          <p className={cx('city-name')}>city name</p>
+          <p className={cx('city-name')}>{ originCity }</p>
+          <p>{destination.name}</p>
+          <p className={cx('city-name')}>{ destinationCity }</p>
+
         </Col>
         <Col xs={3} className={cx('bordered')}>
           <p>{operator.name}</p>
@@ -38,7 +41,9 @@ Departure.propTypes = {
   departure: PropTypes.object,
   operator: PropTypes.object,
   origin: PropTypes.object,
-  destination: PropTypes.object
+  originCity: PropTypes.string,
+  destination: PropTypes.object,
+  destinationCity: PropTypes.string
 };
 
 export default Departure;
