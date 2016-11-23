@@ -38776,7 +38776,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	var instance = _axios2.default.create({
-		baseURL: 'http://localhost:8081/api',
+		baseURL: '/api',
 		timeout: 20000
 	});
 
