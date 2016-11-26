@@ -1,0 +1,25 @@
+.banner_background {
+  background: #cd437d;
+}
+.banner_background img {
+  display: block;
+  margin: 0 auto;
+  padding: 50px;
+}
+.result_list {
+  list-style: none;
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+.result_list .result_item {
+  background: #7dc8e5;
+  border-radius: 10px;
+  margin: 40px 0px;
+}
+.result_list .result_item .bus_info,
+.result_list .result_item .logo_container {
+  display: inline-block;
+  width: 50%;
+}
+/*# sourceMappingURL=style.css.map */
