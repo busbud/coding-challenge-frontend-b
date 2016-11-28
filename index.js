@@ -16,7 +16,7 @@ app.set('view engine', 'html')
 
 app.get('/', require('./routes').index);
 app.get('/search', require('./routes').search);
-
+app.get('/initial_search', require('./routes').initial_search);
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
