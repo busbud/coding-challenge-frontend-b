@@ -35,7 +35,7 @@ class ResultsList extends React.Component {
             <ul> 
                 {this.props.list.map(function(listValue){
                     console.info('listValue : ' + JSON.stringify(listValue));
-                    return <li key={listValue.title.toString()}> {listValue.title.toString() + '  (' + listValue.releaseYear.toString() + ')'} </li>;
+                    return <li key={listValue.name.toString()}> {listValue.name.toString() + '  (' + listValue.profile_id.toString() + ')'} </li>;
                 })}
             </ul>
         );
@@ -58,11 +58,17 @@ class Finder extends React.Component {
             value:'clicked',
             message:'En attente des résultats'
         });
-        return fetch('https://facebook.github.io/react-native/movies.json')
+        return fetch('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-08-04?adult=1&child=0&senior=0&lang=CA&currency=CAD', {
+            headers: {
+                'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
+                'x-busbud-token' : 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
+            }
+        })
             .then((response) => response.json())
             .then((responseJson) => {
-                const movies = Array.from(responseJson.movies);
-                this.movies = movies;
+                console.log(JSON.stringify(responseJson));
+                const operators = Array.from(responseJson.operators);
+                this.operators = operators;
                 this.setState({
                     value:'found',
                     message:'Résultats trouvées'
@@ -78,8 +84,8 @@ class Finder extends React.Component {
             console.log('On est dans le if avec value : ' + this.state.value + ' et message : ' + this.state.message);
             return <p> {this.state.message} </p>;
         } else if (this.state.value == ('found')) {
-            console.log('On est dans le found avec value : ' + this.state.value + ' et movies : ' + this.movies);
-            return <ResultsList list={this.movies} />;
+            console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.operators);
+            return <ResultsList list={this.operators} />;
         }
     }
 

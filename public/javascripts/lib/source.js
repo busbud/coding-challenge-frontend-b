@@ -84,9 +84,9 @@ var ResultsList = function (_React$Component) {
                     console.info('listValue : ' + JSON.stringify(listValue));
                     return _react2.default.createElement(
                         'li',
-                        { key: listValue.title.toString() },
+                        { key: listValue.name.toString() },
                         ' ',
-                        listValue.title.toString() + '  (' + listValue.releaseYear.toString() + ')',
+                        listValue.name.toString() + '  (' + listValue.profile_id.toString() + ')',
                         ' '
                     );
                 })
@@ -121,11 +121,17 @@ var Finder = function (_React$Component2) {
                 value: 'clicked',
                 message: 'En attente des résultats'
             });
-            return fetch('https://facebook.github.io/react-native/movies.json').then(function (response) {
+            return fetch('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-08-04?adult=1&child=0&senior=0&lang=CA&currency=CAD', {
+                headers: {
+                    'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
+                    'x-busbud-token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
+                }
+            }).then(function (response) {
                 return response.json();
             }).then(function (responseJson) {
-                var movies = Array.from(responseJson.movies);
-                _this3.movies = movies;
+                console.log(JSON.stringify(responseJson));
+                var operators = Array.from(responseJson.operators);
+                _this3.operators = operators;
                 _this3.setState({
                     value: 'found',
                     message: 'Résultats trouvées'
@@ -147,8 +153,8 @@ var Finder = function (_React$Component2) {
                     ' '
                 );
             } else if (this.state.value == 'found') {
-                console.log('On est dans le found avec value : ' + this.state.value + ' et movies : ' + this.movies);
-                return _react2.default.createElement(ResultsList, { list: this.movies });
+                console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.operators);
+                return _react2.default.createElement(ResultsList, { list: this.operators });
             }
         }
     }, {
