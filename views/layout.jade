@@ -2,6 +2,18 @@ doctype html
 html
   head
     title= title
+
     link(rel='stylesheet', href='/stylesheets/style.css')
+
+
+    //jQuery
+    script(src="/bower_components/jquery/dist/jquery.min.js", type="text/javascript")
+
+    // Bootstrap
+    link(href="/bower_components/bootstrap/dist/css/bootstrap.min.css", rel='stylesheet')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js', type="text/javascript")
+
+
   body
+    include navbar
     block content
