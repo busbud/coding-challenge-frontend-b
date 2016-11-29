@@ -1,17 +1,32 @@
+@background-col: #92BAC2;
+@nav-height: 50px;
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.content {
+	min-height: 100vh;
+	background-color: @background-col;
 }
 
 a {
-  color: #00B7FF;
+	color: #00B7FF;
 }
 
 nav {
 	border-bottom: 1px #eee solid;
+	height: @nav-height;
 }
 
 nav img {
 	height: 100%;
 	width: auto;
+}
+
+.title {
+	margin-top: calc(~"5vh + 50px");
+}
+
+img.title {
 }

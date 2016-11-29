@@ -1,1 +1,1 @@
-body{padding:50px;font:14px "Lucida Grande",Helvetica,Arial,sans-serif}a{color:#00B7FF}nav{border-bottom:1px #eee solid}nav img{height:100%;width:auto}
+body{font:14px "Lucida Grande",Helvetica,Arial,sans-serif}.content{min-height:100vh;background-color:#92bac2}a{color:#00B7FF}nav{border-bottom:1px #eee solid;height:50px}nav img{height:100%;width:auto}.title{margin-top:calc(5vh + 50px)}
