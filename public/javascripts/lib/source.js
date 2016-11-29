@@ -80,13 +80,13 @@ var ResultsList = function (_React$Component) {
             return _react2.default.createElement(
                 'ul',
                 null,
-                this.props.list.map(function (listValue) {
-                    console.info('listValue : ' + JSON.stringify(listValue));
+                this.props.departures.map(function (depart) {
+                    console.info('depart : ' + JSON.stringify(depart));
                     return _react2.default.createElement(
                         'li',
-                        { key: listValue.name.toString() },
+                        { key: depart.prices.total.toString() },
                         ' ',
-                        listValue.name.toString() + '  (' + listValue.profile_id.toString() + ')',
+                        depart.prices.total.toString() + '  (' + depart.departure_timezone.toString() + ')',
                         ' '
                     );
                 })
@@ -105,6 +105,7 @@ var Finder = function (_React$Component2) {
 
         var _this2 = _possibleConstructorReturn(this, (Finder.__proto__ || Object.getPrototypeOf(Finder)).call(this));
 
+        _this2.i = 0;
         _this2.state = {
             value: 'init',
             message: ''
@@ -113,15 +114,20 @@ var Finder = function (_React$Component2) {
     }
 
     _createClass(Finder, [{
-        key: 'getMoviesFromApiAsync',
-        value: function getMoviesFromApiAsync() {
+        key: 'callApi',
+        value: function callApi(index) {
             var _this3 = this;
 
-            this.setState({
-                value: 'clicked',
-                message: 'En attente des résultats'
-            });
-            return fetch('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-08-04?adult=1&child=0&senior=0&lang=CA&currency=CAD', {
+            var poll = '';
+            if (index == '') {
+                console.log('First callApi : ');
+                this.i = 0;
+            } else {
+                poll = '/poll';
+                console.log('Multimple callApi : ' + index);
+            }
+
+            fetch('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-03-01' + poll + '?adult=1&child=0&senior=0&lang=CA&currency=CAD' + index, {
                 headers: {
                     'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
                     'x-busbud-token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
@@ -130,15 +136,34 @@ var Finder = function (_React$Component2) {
                 return response.json();
             }).then(function (responseJson) {
                 console.log(JSON.stringify(responseJson));
-                var operators = Array.from(responseJson.operators);
-                _this3.operators = operators;
+                var response = responseJson;
                 _this3.setState({
                     value: 'found',
-                    message: 'Résultats trouvées'
+                    message: 'Résultats trouvées',
+                    operators: response.operators,
+                    departures: response.departures
                 });
+                if (!response.complete) {
+                    console.info('Not complete : ' + response.complete);
+                    console.info('this.i : ' + _this3.i);
+                    _this3.i++;
+                    console.info('this.i incremented : ' + _this3.i);
+                    _this3.callApi('&index=' + _this3.i);
+                } else {
+                    console.info('Complete : ' + response.complete);
+                }
             }).catch(function (error) {
                 console.error(error);
             });
+        }
+    }, {
+        key: 'startResearch',
+        value: function startResearch() {
+            this.setState({
+                value: 'clicked',
+                message: 'En attente des résultats'
+            });
+            this.callApi('');
         }
     }, {
         key: 'setMessage',
@@ -153,8 +178,8 @@ var Finder = function (_React$Component2) {
                     ' '
                 );
             } else if (this.state.value == 'found') {
-                console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.operators);
-                return _react2.default.createElement(ResultsList, { list: this.operators });
+                console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.state.operators);
+                return _react2.default.createElement(ResultsList, { operators: this.state.operators, departures: this.state.departures });
             }
         }
     }, {
@@ -166,7 +191,7 @@ var Finder = function (_React$Component2) {
                 'div',
                 { className: 'finder' },
                 _react2.default.createElement(SearchBar, { onClick: function onClick() {
-                        return _this4.getMoviesFromApiAsync();
+                        return _this4.startResearch();
                     } }),
                 _react2.default.createElement(
                     'div',

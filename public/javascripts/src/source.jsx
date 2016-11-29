@@ -33,9 +33,9 @@ class ResultsList extends React.Component {
     render(){
         return (
             <ul> 
-                {this.props.list.map(function(listValue){
-                    console.info('listValue : ' + JSON.stringify(listValue));
-                    return <li key={listValue.name.toString()}> {listValue.name.toString() + '  (' + listValue.profile_id.toString() + ')'} </li>;
+                {this.props.departures.map(function(depart){
+                    console.info('depart : ' + JSON.stringify(depart));
+                    return <li key={depart.prices.total.toString()}> {depart.prices.total.toString() + '  (' + depart.departure_timezone.toString() + ')'} </li>;
                 })}
             </ul>
         );
@@ -47,36 +47,61 @@ class Finder extends React.Component {
     
     constructor() {
         super();
+        this.i = 0;
         this.state = {
             value: 'init',
             message: ''
         }
     };
 
-    getMoviesFromApiAsync() {
-        this.setState({
-            value:'clicked',
-            message:'En attente des résultats'
-        });
-        return fetch('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-08-04?adult=1&child=0&senior=0&lang=CA&currency=CAD', {
+    callApi(index){
+        let poll = '';
+        if(index == ''){
+            console.log('First callApi : ');
+            this.i = 0;
+        } else {
+            poll = '/poll';
+            console.log('Multimple callApi : ' + index);
+        }
+
+        fetch('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-03-01'+poll+'?adult=1&child=0&senior=0&lang=CA&currency=CAD'+index, {
             headers: {
                 'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
                 'x-busbud-token' : 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
             }
         })
-            .then((response) => response.json())
-            .then((responseJson) => {
-                console.log(JSON.stringify(responseJson));
-                const operators = Array.from(responseJson.operators);
-                this.operators = operators;
-                this.setState({
-                    value:'found',
-                    message:'Résultats trouvées'
-                });
-            })
-            .catch((error) => {
-                console.error(error);
+        .then((response) => response.json())
+        .then((responseJson) => {
+            console.log(JSON.stringify(responseJson));
+            const response = responseJson;
+            this.setState({
+                value:'found',
+                message:'Résultats trouvées',
+                operators: response.operators,
+                departures: response.departures
             });
+            if(!response.complete){
+                console.info('Not complete : ' + response.complete);
+                console.info('this.i : ' + this.i);
+                this.i++;
+                console.info('this.i incremented : ' + this.i);
+                this.callApi('&index='+ this.i);
+            } else {
+                console.info('Complete : ' + response.complete);
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
+    };
+
+    startResearch() {
+        this.setState({
+            value:'clicked',
+            message:'En attente des résultats'
+        });
+        this.callApi('');
     };
 
     setMessage() {
@@ -84,15 +109,15 @@ class Finder extends React.Component {
             console.log('On est dans le if avec value : ' + this.state.value + ' et message : ' + this.state.message);
             return <p> {this.state.message} </p>;
         } else if (this.state.value == ('found')) {
-            console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.operators);
-            return <ResultsList list={this.operators} />;
+            console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.state.operators);
+            return <ResultsList operators={this.state.operators} departures={this.state.departures}/>;
         }
     }
 
     render() {
         return (
             <div className="finder">
-                <SearchBar onClick={()=>this.getMoviesFromApiAsync()}/>
+                <SearchBar onClick={()=>this.startResearch()}/>
                 <div className="results-list" id='resultsList'>
                     {this.setMessage()}
                 </div>
