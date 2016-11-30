@@ -23,6 +23,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "loaders.css": "^0.1.2"
   }
 }

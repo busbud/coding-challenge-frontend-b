@@ -1,8 +1,16 @@
-@background-col: #92BAC2;
+@background-col: #fff;
 @nav-height: 50px;
+@result-height: 180px;
+@color-light: #efefef;
+@primary-color: #E499AE;
+@font-color: #01273a;
+@dark-color: #F5F5F5;
+@import '/bower_components/loaders.css/src/animations/line-scale.scss';
 
 body {
-	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	color: @font-color;
+	font-size: 14px;
+	font-family:  'Open Sans', "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 .content {
@@ -15,8 +23,8 @@ a {
 }
 
 nav {
-	border-bottom: 1px #eee solid;
 	height: @nav-height;
+	.bordered
 }
 
 nav img {
@@ -26,14 +34,115 @@ nav img {
 
 .title {
 	margin-top: calc(~"5vh + 50px");
+	margin-bottom: 5vh;
+	font-weight: lighter;
+	letter-spacing: 5px;
 }
 
 #container {
 	width: 100%;
 }
 
+.bordered {
+	border: 1px #aaa solid;
+	border-radius: 3px;
+	box-shadow: 1px 1px 1px 1px darkgray;
+}
+
 .media {
-	min-height: 180px;
-	background-color: #fff;
-	border: 3px #aaa solid;
+	min-height: @result-height;
+	background-color: @color-light;
+	.bordered
+}
+
+.media-left {
+	width: 40%;
+	height: @result-height;
+	border-right: 1px #ddd solid;
+	div {
+		text-align: center;
+		vertical-align: middle;
+		height: @result-height/3;
+	}
+	p,i{
+		height: @result-height/3;
+		display: block;
+		vertical-align: middle;
+		text-align: center;
+		margin: 5px !important;
+	}
+}
+
+.media-right {
+	width: 25%;
+	border-left: 1px #ddd solid;
+}
+
+.media-object {
+	max-width: 80%;
+}
+
+.search-bar {
+	padding: 20px;
+	background-color: @color-light;
+	.bordered
+}
+
+.search__item {
+	width: 100%;
+	height: 60px;
+}
+
+.search__field{
+	width: 90% !important;
+}
+
+#search__button{
+	button {
+		border-radius: 0;
+		margin-top: 23px;
+		box-shadow: 1px 1px 1px 1px darkgray;
+	}
+}
+
+.info__group{
+	height: @result-height/3;
+}
+
+.info__item{
+	display: inline;
+	height: 100%;
+	padding: 5px;
+	&:hover {
+		coloc: @dark-color;
+	}
+}
+
+#resultsList {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding: 15px;
+	background-color: @background-col;
+	border: 1px #aaa solid;
+	border-radius: 3px;
+}
+
+.info__icons {
+	display: inline;
+}
+
+#price {
+	font-weight: 700;
+}
+
+#hours {
+	font-weight: 300;
+}
+
+.loader-hidden {
+  display: none;
+}
+
+.loader-active {
+  display: block;
 }

@@ -10,6 +10,12 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+var _reactLoaders = require('react-loaders');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -18,91 +24,228 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function SearchBar(props) {
-    return _react2.default.createElement(
-        'div',
-        { className: 'search-bar' },
-        _react2.default.createElement(
-            'form',
-            { className: 'form-inline' },
-            _react2.default.createElement(
-                'div',
-                { className: 'form-group' },
-                _react2.default.createElement(
-                    'label',
-                    { htmlFor: 'origin' },
-                    'Origin'
-                ),
-                _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'origin', placeholder: 'New York' })
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: 'form-group' },
-                _react2.default.createElement(
-                    'label',
-                    { htmlFor: 'destination' },
-                    'Destination'
-                ),
-                _react2.default.createElement('h4', { className: 'form-control', id: 'destination' }),
-                ' OSHEAGA'
-            ),
-            _react2.default.createElement(
-                'button',
-                { className: 'btn btn-warning', onClick: function onClick() {
-                        props.onClick();
-                    } },
-                'Find my trip !'
-            )
-        )
-    );
-}
+var SearchBar = function (_React$Component) {
+    _inherits(SearchBar, _React$Component);
 
-function ResultItem(props) {
-    return _react2.default.createElement(
-        'div',
-        { className: 'media' },
-        _react2.default.createElement(
-            'div',
-            { className: 'media-right  media-middle' },
-            _react2.default.createElement(
-                'h4',
-                null,
-                ' ',
-                props.location_dep.name,
-                ' '
-            ),
-            _react2.default.createElement(
-                'h4',
-                null,
-                ' ',
-                props.location_arr.name,
-                ' '
-            )
-        ),
-        _react2.default.createElement(
-            'div',
-            { className: 'media-body' },
-            _react2.default.createElement(
-                'h4',
-                { className: 'media-heading' },
-                props.departure.departure_time + ' - ' + props.departure.arrival_time
-            ),
-            _react2.default.createElement(
-                'p',
-                null,
-                ' Blabla '
-            )
-        ),
-        _react2.default.createElement(
-            'div',
-            { className: 'media-right  media-middle' },
-            _react2.default.createElement('img', { className: 'media-object', src: props.operator.logo_url })
-        )
-    );
-}
+    function SearchBar(props) {
+        _classCallCheck(this, SearchBar);
 
-var ResultsList = function (_React$Component) {
-    _inherits(ResultsList, _React$Component);
+        return _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).call(this, props));
+    }
+
+    _createClass(SearchBar, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'search-bar' },
+                _react2.default.createElement(
+                    'form',
+                    { className: 'form-inline' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'form-group search__item col-md-4 col-xs-12' },
+                            _react2.default.createElement(
+                                'label',
+                                { htmlFor: 'origin' },
+                                'Origin'
+                            ),
+                            _react2.default.createElement(
+                                'select',
+                                { name: 'origin', id: 'origin', className: 'form-control search__field center-block' },
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'new-york' },
+                                    'New-York'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'form-group search__item col-md-4 col-xs-12' },
+                            _react2.default.createElement(
+                                'label',
+                                { htmlFor: 'destination' },
+                                'Destination'
+                            ),
+                            _react2.default.createElement('input', { type: 'text', className: 'form-control  center-block search__field', id: 'destination', placeholder: 'OSHEAGA !', disabled: true })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { id: 'search__button', className: 'form-group  center-block search__item col-md-4 col-xs-12' },
+                            _react2.default.createElement(
+                                'button',
+                                { className: 'btn btn-warning search__field', onClick: function onClick() {
+                                        _this2.props.onClick();
+                                    } },
+                                'Find my trip !'
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return SearchBar;
+}(_react2.default.Component);
+
+var ResultItem = function (_React$Component2) {
+    _inherits(ResultItem, _React$Component2);
+
+    function ResultItem(props) {
+        _classCallCheck(this, ResultItem);
+
+        return _possibleConstructorReturn(this, (ResultItem.__proto__ || Object.getPrototypeOf(ResultItem)).call(this, props));
+    }
+
+    _createClass(ResultItem, [{
+        key: 'checkWifi',
+        value: function checkWifi() {
+            if (this.props.departure.amenities.wifi) {
+                return _react2.default.createElement(
+                    'i',
+                    { className: 'fa fa-wifi info__item', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Wifi available !' },
+                    ' '
+                );
+            }
+        }
+    }, {
+        key: 'checkToilet',
+        value: function checkToilet() {
+            if (this.props.departure.amenities.toilet) {
+                return _react2.default.createElement(
+                    'i',
+                    { className: 'fa fa-bath info__item', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Toilets available !' },
+                    ' '
+                );
+            }
+        }
+    }, {
+        key: 'checkAC',
+        value: function checkAC() {
+            if (this.props.departure.amenities.ac) {
+                return _react2.default.createElement(
+                    'i',
+                    { className: 'fa fa-thermometer-empty info__item', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'AC available !' },
+                    ' '
+                );
+            }
+        }
+    }, {
+        key: 'checkFood',
+        value: function checkFood() {
+            if (this.props.departure.amenities.food) {
+                return _react2.default.createElement(
+                    'i',
+                    { className: 'fa fa-shopping-basket info__item', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Food available !' },
+                    ' '
+                );
+            }
+        }
+    }, {
+        key: 'checkTV',
+        value: function checkTV() {
+            if (this.props.departure.amenities.tv) {
+                return _react2.default.createElement(
+                    'i',
+                    { className: 'fa fa-television info__item', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'TV available !' },
+                    ' '
+                );
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'media' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'media-left  media-middle' },
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'p',
+                            { className: 'text-center' },
+                            ' ',
+                            this.props.location_dep.name,
+                            ' '
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement('i', { className: 'fa fa-arrow-down fa-2x text-center', 'aria-hidden': 'true' })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'p',
+                            { className: 'text-center' },
+                            ' ',
+                            this.props.location_arr.name,
+                            ' '
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'media-body' },
+                    _react2.default.createElement(
+                        'h4',
+                        { className: 'info__group' },
+                        _react2.default.createElement(
+                            'p',
+                            { id: 'price', className: 'info__item pull-right' },
+                            ' ' + this.props.departure.prices.total / 100 + ' $CAD'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'h3',
+                        { className: 'info__group center-block text-center' },
+                        _react2.default.createElement(
+                            'p',
+                            { id: 'hours', className: 'info__item' },
+                            ' ' + (0, _moment2.default)(this.props.departure.departure_time).format('hh:mmA') + ' - ' + (0, _moment2.default)(this.props.departure.arrival_time).format('hh:mmA')
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'h5',
+                        { className: 'info__icons center-block text-center' },
+                        _react2.default.createElement(
+                            'i',
+                            { className: 'fa fa-clock-o info__item', 'aria-hidden': 'true' },
+                            ' '
+                        ),
+                        this.checkWifi(),
+                        this.checkToilet(),
+                        this.checkAC(),
+                        this.checkFood(),
+                        this.checkTV()
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'media-right  media-middle' },
+                    _react2.default.createElement('img', { className: 'media-object center-block', src: this.props.operator.logo_url })
+                )
+            );
+        }
+    }]);
+
+    return ResultItem;
+}(_react2.default.Component);
+
+var ResultsList = function (_React$Component3) {
+    _inherits(ResultsList, _React$Component3);
 
     function ResultsList(props) {
         _classCallCheck(this, ResultsList);
@@ -135,26 +278,26 @@ var ResultsList = function (_React$Component) {
     return ResultsList;
 }(_react2.default.Component);
 
-var Finder = function (_React$Component2) {
-    _inherits(Finder, _React$Component2);
+var Finder = function (_React$Component4) {
+    _inherits(Finder, _React$Component4);
 
     function Finder() {
         _classCallCheck(this, Finder);
 
-        var _this2 = _possibleConstructorReturn(this, (Finder.__proto__ || Object.getPrototypeOf(Finder)).call(this));
+        var _this5 = _possibleConstructorReturn(this, (Finder.__proto__ || Object.getPrototypeOf(Finder)).call(this));
 
-        _this2.i = 0;
-        _this2.state = {
+        _this5.i = 0;
+        _this5.state = {
             value: 'init',
             message: ''
         };
-        return _this2;
+        return _this5;
     }
 
     _createClass(Finder, [{
         key: 'callApi',
         value: function callApi(index) {
-            var _this3 = this;
+            var _this6 = this;
 
             var poll = '';
             if (index == '') {
@@ -176,10 +319,10 @@ var Finder = function (_React$Component2) {
             }).then(function (responseJson) {
                 console.log(JSON.stringify(responseJson));
                 var response = responseJson;
-                var new_operators = _this3.state.operators ? _this3.state.operators.concat(response.operators) : response.operators;
-                var new_locations = _this3.state.locations ? _this3.state.locations.concat(response.locations) : response.locations;
-                var new_departures = _this3.state.departures ? _this3.state.departures.concat(response.departures) : response.departures;
-                _this3.setState({
+                var new_operators = _this6.state.operators ? _this6.state.operators.concat(response.operators) : response.operators;
+                var new_locations = _this6.state.locations ? _this6.state.locations.concat(response.locations) : response.locations;
+                var new_departures = _this6.state.departures ? _this6.state.departures.concat(response.departures) : response.departures;
+                _this6.setState({
                     value: 'found',
                     message: 'Résultats trouvées',
                     operators: new_operators,
@@ -187,14 +330,17 @@ var Finder = function (_React$Component2) {
                     departures: new_departures
                 });
                 if (!response.complete) {
-                    _this3.i++;
-                    console.info('this.i incremented : ' + _this3.i);
-                    _this3.callApi('&index=' + _this3.i);
+                    _this6.i++;
+                    console.info('this.i incremented : ' + _this6.i);
+                    _this6.callApi('&index=' + _this6.i);
                 } else {
                     console.info('Complete : ' + response.complete);
                     //If complete but no result, launch again
-                    if (typeof _this3.state.operators == 'undefined') {
-                        _this3.callApi('');
+                    if (typeof _this6.state.operators == 'undefined' || _this6.state.operators.length < 1) {
+                        console.log('Launch again the callApi');
+                        _this6.callApi('');
+                    } else {
+                        console.log('We don\'t launch again since this.state.operators : ' + _this6.state.operators);
                     }
                 }
             }).catch(function (error) {
@@ -205,39 +351,50 @@ var Finder = function (_React$Component2) {
         key: 'startResearch',
         value: function startResearch() {
             if (typeof this.state.operators == 'undefined') {
+                console.log('this.state.operators is not defined');
                 this.setState({
                     value: 'clicked',
                     message: 'En attente des résultats'
                 });
                 this.callApi('');
+            } else if (this.state.operators.length < 1) {
+                console.log('this.state.operators is defined but empty');
+                this.callApi('');
+            } else {
+                console.log('this.state.operators is defined : ' + this.state.operators);
             }
+        }
+    }, {
+        key: 'renderLoader',
+        value: function renderLoader() {
+            return _react2.default.createElement(_reactLoaders.Loader, { type: 'line-scale', active: 'true' });
         }
     }, {
         key: 'setMessage',
         value: function setMessage() {
             if (this.state.value == 'clicked') {
+                //return <Loader type="pacman" />;
                 return _react2.default.createElement(
                     'p',
                     null,
-                    ' ',
-                    this.state.message,
-                    ' '
+                    ' En attente des r\xE9sultats '
                 );
             } else if (this.state.value == 'found') {
                 console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.state.operators);
+                //return <Loader type="line-scale" active="true" />;
                 return _react2.default.createElement(ResultsList, { operators: this.state.operators, departures: this.state.departures, locations: this.state.locations });
             }
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this4 = this;
+            var _this7 = this;
 
             return _react2.default.createElement(
                 'div',
                 { className: 'finder' },
                 _react2.default.createElement(SearchBar, { onClick: function onClick() {
-                        return _this4.startResearch();
+                        return _this7.startResearch();
                     } }),
                 _react2.default.createElement(
                     'div',
