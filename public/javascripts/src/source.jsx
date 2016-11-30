@@ -13,15 +13,27 @@ function SearchBar(props){
                 <label htmlFor="destination">Destination</label>
                 <h4 className="form-control" id="destination"/> OSHEAGA
             </div>
-            <button className="btn btn-default" onClick={()=>{props.onClick()}}>Find my trip !</button>
+            <button className="btn btn-warning" onClick={()=>{props.onClick()}}>Find my trip !</button>
         </form>
     </div>
   )
 }
 
-function ResultsItem(props){
+function ResultItem(props){
     return (
-        <p> Result </p>
+        <div className='media'>
+            <div className='media-right  media-middle'>
+                <h4> {props.location_dep.name} </h4>
+                <h4> {props.location_arr.name} </h4>
+            </div>
+            <div className="media-body">
+                <h4 className="media-heading">{props.departure.departure_time + ' - ' + props.departure.arrival_time}</h4>
+                <p> Blabla </p>
+            </div>
+            <div className='media-right  media-middle'>
+                <img className='media-object' src={props.operator.logo_url}/>
+            </div>
+        </div>
     );
 }
 
@@ -32,11 +44,19 @@ class ResultsList extends React.Component {
 
     render(){
         return (
-            <ul> 
+            <ul className='media-list'> 
                 {this.props.departures.map(function(depart){
-                    console.info('depart : ' + JSON.stringify(depart));
-                    return <li key={depart.prices.total.toString()}> {depart.prices.total.toString() + '  (' + depart.departure_timezone.toString() + ')'} </li>;
-                })}
+                    let dep_op = this.props.operators.find(function(op){
+                        return op.id == depart.operator_id;
+                    });
+                    let dep_loc = this.props.locations.find(function(loc){
+                        return loc.id == depart.origin_location_id;
+                    });
+                    let arr_loc = this.props.locations.find(function(loc){
+                        return loc.id == depart.destination_location_id;
+                    });
+                    return <ResultItem departure={depart} operator={dep_op} location_dep={dep_loc} location_arr={arr_loc}/>;
+                }, this)}
             </ul>
         );
     }
@@ -63,8 +83,9 @@ class Finder extends React.Component {
             poll = '/poll';
             console.log('Multimple callApi : ' + index);
         }
-
-        fetch('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-03-01'+poll+'?adult=1&child=0&senior=0&lang=CA&currency=CAD'+index, {
+        const url = 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-03-01'+poll+'?adult=1&child=0&senior=0&lang=CA&currency=CAD'+index;
+        console.info('called url : ' + url);
+        fetch(url, {
             headers: {
                 'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
                 'x-busbud-token' : 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
@@ -74,20 +95,26 @@ class Finder extends React.Component {
         .then((responseJson) => {
             console.log(JSON.stringify(responseJson));
             const response = responseJson;
+            const new_operators = this.state.operators ? this.state.operators.concat(response.operators) : response.operators;
+            const new_locations = this.state.locations ? this.state.locations.concat(response.locations) : response.locations;
+            const new_departures = this.state.departures ? this.state.departures.concat(response.departures) : response.departures;
             this.setState({
                 value:'found',
                 message:'Résultats trouvées',
-                operators: response.operators,
-                departures: response.departures
+                operators: new_operators,
+                locations: new_locations,
+                departures: new_departures
             });
             if(!response.complete){
-                console.info('Not complete : ' + response.complete);
-                console.info('this.i : ' + this.i);
                 this.i++;
                 console.info('this.i incremented : ' + this.i);
                 this.callApi('&index='+ this.i);
             } else {
                 console.info('Complete : ' + response.complete);
+                //If complete but no result, launch again
+                if (typeof this.state.operators == 'undefined'){
+                    this.callApi('');
+                }
             }
         })
         .catch((error) => {
@@ -97,20 +124,21 @@ class Finder extends React.Component {
     };
 
     startResearch() {
-        this.setState({
-            value:'clicked',
-            message:'En attente des résultats'
-        });
-        this.callApi('');
+        if (typeof this.state.operators == 'undefined'){
+            this.setState({
+                value:'clicked',
+                message:'En attente des résultats'
+            });
+            this.callApi('');
+        }
     };
 
     setMessage() {
         if (this.state.value == ('clicked')) {
-            console.log('On est dans le if avec value : ' + this.state.value + ' et message : ' + this.state.message);
             return <p> {this.state.message} </p>;
         } else if (this.state.value == ('found')) {
             console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.state.operators);
-            return <ResultsList operators={this.state.operators} departures={this.state.departures}/>;
+            return <ResultsList operators={this.state.operators} departures={this.state.departures} locations={this.state.locations}/>;
         }
     }
 

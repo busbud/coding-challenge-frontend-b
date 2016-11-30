@@ -48,7 +48,7 @@ function SearchBar(props) {
             ),
             _react2.default.createElement(
                 'button',
-                { className: 'btn btn-default', onClick: function onClick() {
+                { className: 'btn btn-warning', onClick: function onClick() {
                         props.onClick();
                     } },
                 'Find my trip !'
@@ -57,11 +57,47 @@ function SearchBar(props) {
     );
 }
 
-function ResultsItem(props) {
+function ResultItem(props) {
     return _react2.default.createElement(
-        'p',
-        null,
-        ' Result '
+        'div',
+        { className: 'media' },
+        _react2.default.createElement(
+            'div',
+            { className: 'media-right  media-middle' },
+            _react2.default.createElement(
+                'h4',
+                null,
+                ' ',
+                props.location_dep.name,
+                ' '
+            ),
+            _react2.default.createElement(
+                'h4',
+                null,
+                ' ',
+                props.location_arr.name,
+                ' '
+            )
+        ),
+        _react2.default.createElement(
+            'div',
+            { className: 'media-body' },
+            _react2.default.createElement(
+                'h4',
+                { className: 'media-heading' },
+                props.departure.departure_time + ' - ' + props.departure.arrival_time
+            ),
+            _react2.default.createElement(
+                'p',
+                null,
+                ' Blabla '
+            )
+        ),
+        _react2.default.createElement(
+            'div',
+            { className: 'media-right  media-middle' },
+            _react2.default.createElement('img', { className: 'media-object', src: props.operator.logo_url })
+        )
     );
 }
 
@@ -79,17 +115,19 @@ var ResultsList = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'ul',
-                null,
+                { className: 'media-list' },
                 this.props.departures.map(function (depart) {
-                    console.info('depart : ' + JSON.stringify(depart));
-                    return _react2.default.createElement(
-                        'li',
-                        { key: depart.prices.total.toString() },
-                        ' ',
-                        depart.prices.total.toString() + '  (' + depart.departure_timezone.toString() + ')',
-                        ' '
-                    );
-                })
+                    var dep_op = this.props.operators.find(function (op) {
+                        return op.id == depart.operator_id;
+                    });
+                    var dep_loc = this.props.locations.find(function (loc) {
+                        return loc.id == depart.origin_location_id;
+                    });
+                    var arr_loc = this.props.locations.find(function (loc) {
+                        return loc.id == depart.destination_location_id;
+                    });
+                    return _react2.default.createElement(ResultItem, { departure: depart, operator: dep_op, location_dep: dep_loc, location_arr: arr_loc });
+                }, this)
             );
         }
     }]);
@@ -126,8 +164,9 @@ var Finder = function (_React$Component2) {
                 poll = '/poll';
                 console.log('Multimple callApi : ' + index);
             }
-
-            fetch('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-03-01' + poll + '?adult=1&child=0&senior=0&lang=CA&currency=CAD' + index, {
+            var url = 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-03-01' + poll + '?adult=1&child=0&senior=0&lang=CA&currency=CAD' + index;
+            console.info('called url : ' + url);
+            fetch(url, {
                 headers: {
                     'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
                     'x-busbud-token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
@@ -137,20 +176,26 @@ var Finder = function (_React$Component2) {
             }).then(function (responseJson) {
                 console.log(JSON.stringify(responseJson));
                 var response = responseJson;
+                var new_operators = _this3.state.operators ? _this3.state.operators.concat(response.operators) : response.operators;
+                var new_locations = _this3.state.locations ? _this3.state.locations.concat(response.locations) : response.locations;
+                var new_departures = _this3.state.departures ? _this3.state.departures.concat(response.departures) : response.departures;
                 _this3.setState({
                     value: 'found',
                     message: 'Résultats trouvées',
-                    operators: response.operators,
-                    departures: response.departures
+                    operators: new_operators,
+                    locations: new_locations,
+                    departures: new_departures
                 });
                 if (!response.complete) {
-                    console.info('Not complete : ' + response.complete);
-                    console.info('this.i : ' + _this3.i);
                     _this3.i++;
                     console.info('this.i incremented : ' + _this3.i);
                     _this3.callApi('&index=' + _this3.i);
                 } else {
                     console.info('Complete : ' + response.complete);
+                    //If complete but no result, launch again
+                    if (typeof _this3.state.operators == 'undefined') {
+                        _this3.callApi('');
+                    }
                 }
             }).catch(function (error) {
                 console.error(error);
@@ -159,17 +204,18 @@ var Finder = function (_React$Component2) {
     }, {
         key: 'startResearch',
         value: function startResearch() {
-            this.setState({
-                value: 'clicked',
-                message: 'En attente des résultats'
-            });
-            this.callApi('');
+            if (typeof this.state.operators == 'undefined') {
+                this.setState({
+                    value: 'clicked',
+                    message: 'En attente des résultats'
+                });
+                this.callApi('');
+            }
         }
     }, {
         key: 'setMessage',
         value: function setMessage() {
             if (this.state.value == 'clicked') {
-                console.log('On est dans le if avec value : ' + this.state.value + ' et message : ' + this.state.message);
                 return _react2.default.createElement(
                     'p',
                     null,
@@ -179,7 +225,7 @@ var Finder = function (_React$Component2) {
                 );
             } else if (this.state.value == 'found') {
                 console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.state.operators);
-                return _react2.default.createElement(ResultsList, { operators: this.state.operators, departures: this.state.departures });
+                return _react2.default.createElement(ResultsList, { operators: this.state.operators, departures: this.state.departures, locations: this.state.locations });
             }
         }
     }, {
