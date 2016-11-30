@@ -32,7 +32,8 @@ exports.initial_search = function(req, res){
 exports.search = function(req, res){
 	response = res
 	var request = require('request');
-	query_string = "?adult="+req.query.adult+"&senior="+req.query.senior+"&child="+req.query.child+"&lang=en"+"&currency="+req.query.currency
+	query_string = "?adult="+req.query.adult+"&senior="+req.query.senior+"&child="+req.query.child+"&lang=en"+"&currency="+req.query.currency+"&index="+req.query.index
+	console.log(query_string)
 	request({
 	    headers: {
 				    'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',

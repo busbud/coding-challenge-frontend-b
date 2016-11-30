@@ -6,59 +6,147 @@ var App = React.createClass({
     getInitialState: function(){
         return{
             searchResults: [],
-            search_status: false
+            search_status: false,
+            temp_result:{}
         }
     },
-    showResults: function(response){
+    showResults: function(response, search_url){
         final_departure_list = new Array()
-        departure_list = response.departures
         operator_obj_list = response.operators
         location_obj_list = response.locations
         stop_list = response.cities
         origin_city_id = response.origin_city_id
         destination_city_id = response.destination_city_id
-        $.each(departure_list, function(index, depart_item){
-            departure_obj = {}
-            departure_obj.departure_time = moment(depart_item.departure_time).format("HH:MM");
-            departure_obj.arrival_time = moment(depart_item.arrival_time).format("HH:MM");
-            departure_obj.link = depart_item.links.deeplink
-            departure_obj.price = depart_item.prices.total/100
-            departure_obj.class = depart_item.class
-            depart_location_id = depart_item.origin_location_id
-            $.each(location_obj_list, function(index, location_obj){
-                if(depart_location_id == location_obj.id){
-                    departure_obj.depart_location = location_obj.name
-                }
+        departure_list = response.departures
+        general_info = {
+            "operator_obj_list":operator_obj_list,
+            "location_obj_list":location_obj_list,
+            "stop_list":stop_list,
+            "origin_city_id":origin_city_id,
+            "destination_city_id":destination_city_id
+        }
+        if(!response.complete){
+            this.pollSearch(search_url, departure_list.length, general_info)
+        }else{
+            this.setState({
+                search_status: false
             })
-            $.each(stop_list, function(index, city_obj){
-                if(origin_city_id == city_obj.id){
-                    departure_obj.depart_city = city_obj.name
-                }
+            // departure_list = response.departures
+            $.each(departure_list, function(index, depart_item){
+                departure_obj = {}
+                departure_obj.departure_time = moment(depart_item.departure_time).format("HH:MM");
+                departure_obj.arrival_time = moment(depart_item.arrival_time).format("HH:MM");
+                departure_obj.link = depart_item.links.deeplink
+                departure_obj.price = depart_item.prices.total/100
+                departure_obj.class = depart_item.class
+                depart_location_id = depart_item.origin_location_id
+                $.each(location_obj_list, function(index, location_obj){
+                    if(depart_location_id == location_obj.id){
+                        departure_obj.depart_location = location_obj.name
+                    }
+                })
+                $.each(stop_list, function(index, city_obj){
+                    if(origin_city_id == city_obj.id){
+                        departure_obj.depart_city = city_obj.name
+                    }
+                })
+                dest_location_id = depart_item.destination_location_id
+                $.each(location_obj_list, function(index, location_obj){
+                    if(dest_location_id == location_obj.id){
+                        departure_obj.dest_location = location_obj.name
+                    }
+                })
+                $.each(stop_list, function(index, city_obj){
+                    if(destination_city_id == city_obj.id){
+                        departure_obj.arrival_city= city_obj.name
+                    }
+                })
+                operator_id =depart_item.operator_id
+                operator_img = ""
+                $.each(operator_obj_list, function(index, operator_obj){
+                    if(operator_id == operator_obj.id){
+                        departure_obj.operator_img = operator_obj.logo_url
+                    }
+                })
+                final_departure_list.push(departure_obj)
             })
-            dest_location_id = depart_item.destination_location_id
-            $.each(location_obj_list, function(index, location_obj){
-                if(dest_location_id == location_obj.id){
-                    departure_obj.dest_location = location_obj.name
-                }
+            searchResults =  final_departure_list
+            this.setState({
+                searchResults: final_departure_list,
             })
-            $.each(stop_list, function(index, city_obj){
-                if(destination_city_id == city_obj.id){
-                    departure_obj.arrival_city= city_obj.name
-                }
-            })
-            operator_id =depart_item.operator_id
-            operator_img = ""
-            $.each(operator_obj_list, function(index, operator_obj){
-                if(operator_id == operator_obj.id){
-                    departure_obj.operator_img = operator_obj.logo_url
-                }
-            })
-            final_departure_list.push(departure_obj)
+        }
+
+    },
+    pollSearch:function(search_url, index, general_info){
+        final_departure_list = new Array()
+        // search_url = search_url.split("?")
+        // poll_params = search_url[1]
+        // search_url = "/search?"+poll_params+"&index="+index
+        $.ajax({
+            type:"GET",
+            url: search_url,
+            success:function(data){
+                data = $.parseJSON(data)
+                this.showResults(data, search_url)
+
+            }.bind(this)
+                // result_data = $.parseJSON(data)
+                // console.log(data)
+                // console.log(result_data)
+                // this.setState({
+                //     search_status: false,
+                // })
+                // operator_obj_list = general_info.operators
+                // location_obj_list = general_info.locations
+                // stop_list = general_info.cities
+                // origin_city_id = general_info.origin_city_id
+                // destination_city_id = general_info.destination_city_id
+                // departure_list = result_data.departures
+                // $.each(departure_list, function(index, depart_item){
+                //     departure_obj = {}
+                //     departure_obj.departure_time = moment(depart_item.departure_time).format("HH:MM");
+                //     departure_obj.arrival_time = moment(depart_item.arrival_time).format("HH:MM");
+                //     departure_obj.link = depart_item.links.deeplink
+                //     departure_obj.price = depart_item.prices.total/100
+                //     departure_obj.class = depart_item.class
+                //     depart_location_id = depart_item.origin_location_id
+                //     $.each(location_obj_list, function(index, location_obj){
+                //         if(depart_location_id == location_obj.id){
+                //             departure_obj.depart_location = location_obj.name
+                //         }
+                //     })
+                //     $.each(stop_list, function(index, city_obj){
+                //         if(origin_city_id == city_obj.id){
+                //             departure_obj.depart_city = city_obj.name
+                //         }
+                //     })
+                //     dest_location_id = depart_item.destination_location_id
+                //     $.each(location_obj_list, function(index, location_obj){
+                //         if(dest_location_id == location_obj.id){
+                //             departure_obj.dest_location = location_obj.name
+                //         }
+                //     })
+                //     $.each(stop_list, function(index, city_obj){
+                //         if(destination_city_id == city_obj.id){
+                //             departure_obj.arrival_city= city_obj.name
+                //         }
+                //     })
+                //     operator_id =depart_item.operator_id
+                //     operator_img = ""
+                //     $.each(operator_obj_list, function(index, operator_obj){
+                //         if(operator_id == operator_obj.id){
+                //             departure_obj.operator_img = operator_obj.logo_url
+                //         }
+                //     })
+                //     final_departure_list.push(departure_obj)
+                // })
+                // searchResults =  final_departure_list
+                // this.setState({
+                //     searchResults: final_departure_list,
+                // })
+            // }.bind(this)
         })
-        searchResults =  final_departure_list
-        this.setState({
-            searchResults: final_departure_list,
-        })
+
     },
     search:function(search_url){
         this.setState({
@@ -69,25 +157,8 @@ var App = React.createClass({
             url:search_url,
             success:function(data){
                 data = $.parseJSON(data)
-                if (data.complete){
-                    this.showResults(data)
-                    this.setState({
-                        search_status: false
-                    })
-                }
-                else{
-                    $.ajax({
-                        type:"GET",
-                        url:search_url,
-                        success:function(data){
-                            data = $.parseJSON(data)
-                            this.showResults(data)
-                            this.setState({
-                                search_status: false
-                            })
-                        }.bind(this)
-                    })
-                }
+                this.showResults(data, search_url)
+
             }.bind(this)
         })
     },
