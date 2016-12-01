@@ -46,23 +46,38 @@ class SearchBar extends React.Component {
                         </div>
                     </div>
                     <div className='row'>
-                        <div className="form-group search__item col-xs-6">
+                        <div className="form-group search__item col-xs-6 col-sm-2">
+                            <div className="btn-group filter__group pull-right">
+                                <label>Langue : </label>
+                            </div>
+                        </div>
+                        <div className="form-group search__item col-xs-6 col-sm-3">
+                            <div className="btn-group filter__group">
+                                <div className={"btn btn-default filter__button " + (this.props.english ? "active" : "")} onClick={()=>{this.props.onEnglish();}}>
+                                    <p className="">EN</p>
+                                </div>
+                                <div className={"btn btn-default filter__button " + (this.props.french ? "active" : "")} onClick={()=>{this.props.onFrench();}}>
+                                    <p className="">FR</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="form-group search__item col-xs-6 col-sm-3">
                             <div className="btn-group filter__group pull-right">
                                 <label>Préférences : </label>
                             </div>
                         </div>
-                        <div className="form-group search__item col-xs-6">
+                        <div className="form-group search__item col-xs-6 col-sm-4">
                             <div className="btn-group filter__group">
-                                <div className={"btn btn-default filter__button " + (this.props.wifiFilter ? "active" : "")} onClick={()=>{this.props.onWifiFilter(); this.click('wifi')}}>
+                                <div className={"btn btn-default filter__button " + (this.props.wifiFilter ? "active" : "")} onClick={()=>{this.props.onWifiFilter();}}>
                                     <i className="fa fa-wifi"></i>
                                 </div>
-                                <div className={"btn btn-default filter__button " + (this.props.toiletFilter ? "active" : "")} onClick={()=>{this.props.onToiletFilter(); this.click('toilet')}}>
+                                <div className={"btn btn-default filter__button " + (this.props.toiletFilter ? "active" : "")} onClick={()=>{this.props.onToiletFilter();}}>
                                     <i className="fa fa-bath"></i>
                                 </div>
-                                <div className={"btn btn-default filter__button " + (this.props.acFilter ? "active" : "")} onClick={()=>{this.props.onACFilter(); this.click('ac')}}>
+                                <div className={"btn btn-default filter__button " + (this.props.acFilter ? "active" : "")} onClick={()=>{this.props.onACFilter();}}>
                                     <i className="fa fa-thermometer-empty"></i>
                                 </div>
-                                <div className={"btn btn-default filter__button " + (this.props.tvFilter ? "active" : "")} onClick={()=>{this.props.onTVFilter(); this.click('tv')}}>
+                                <div className={"btn btn-default filter__button " + (this.props.tvFilter ? "active" : "")} onClick={()=>{this.props.onTVFilter();}}>
                                     <i className="fa fa-television"></i>
                                 </div>
                             </div>
@@ -233,7 +248,6 @@ class Finder extends React.Component {
             const new_locations = this.state.locations ? this.state.locations.concat(response.locations) : response.locations;
             const new_departures = this.state.departures ? this.state.departures.concat(response.departures) : response.departures;
             this.setState({
-                active: false,
                 message:'Résultats trouvées',
                 operators: new_operators,
                 locations: new_locations,
@@ -246,12 +260,14 @@ class Finder extends React.Component {
             } else {
                 console.info('Complete : ' + response.complete);
                 //If complete but no result, launch again
-                if (typeof this.state.operators == 'undefined' || this.state.operators.length < 1){
+                if (this.state.departures.length < 1){
                     console.log('Launch again the callApi');
                     this.callApi('');
                 } else {
-                    console.log('We don\'t launch again since this.state.operators : ' + this.state.operators);
-
+                    console.log('We don\'t launch again since this.state.departures.length : ' + this.state.departures.length);
+                    this.setState({
+                        active: false
+                    });
                 }
             }
         })

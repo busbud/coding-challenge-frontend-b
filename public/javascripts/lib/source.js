@@ -110,7 +110,50 @@ var SearchBar = function (_React$Component) {
                         { className: 'row' },
                         _react2.default.createElement(
                             'div',
-                            { className: 'form-group search__item col-xs-6' },
+                            { className: 'form-group search__item col-xs-6 col-sm-2' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'btn-group filter__group pull-right' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'Langue : '
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'form-group search__item col-xs-6 col-sm-3' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'btn-group filter__group' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: "btn btn-default filter__button " + (this.props.english ? "active" : ""), onClick: function onClick() {
+                                            _this2.props.onEnglish();
+                                        } },
+                                    _react2.default.createElement(
+                                        'p',
+                                        { className: '' },
+                                        'EN'
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: "btn btn-default filter__button " + (this.props.french ? "active" : ""), onClick: function onClick() {
+                                            _this2.props.onFrench();
+                                        } },
+                                    _react2.default.createElement(
+                                        'p',
+                                        { className: '' },
+                                        'FR'
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'form-group search__item col-xs-6 col-sm-3' },
                             _react2.default.createElement(
                                 'div',
                                 { className: 'btn-group filter__group pull-right' },
@@ -123,35 +166,35 @@ var SearchBar = function (_React$Component) {
                         ),
                         _react2.default.createElement(
                             'div',
-                            { className: 'form-group search__item col-xs-6' },
+                            { className: 'form-group search__item col-xs-6 col-sm-4' },
                             _react2.default.createElement(
                                 'div',
                                 { className: 'btn-group filter__group' },
                                 _react2.default.createElement(
                                     'div',
                                     { className: "btn btn-default filter__button " + (this.props.wifiFilter ? "active" : ""), onClick: function onClick() {
-                                            _this2.props.onWifiFilter();_this2.click('wifi');
+                                            _this2.props.onWifiFilter();
                                         } },
                                     _react2.default.createElement('i', { className: 'fa fa-wifi' })
                                 ),
                                 _react2.default.createElement(
                                     'div',
                                     { className: "btn btn-default filter__button " + (this.props.toiletFilter ? "active" : ""), onClick: function onClick() {
-                                            _this2.props.onToiletFilter();_this2.click('toilet');
+                                            _this2.props.onToiletFilter();
                                         } },
                                     _react2.default.createElement('i', { className: 'fa fa-bath' })
                                 ),
                                 _react2.default.createElement(
                                     'div',
                                     { className: "btn btn-default filter__button " + (this.props.acFilter ? "active" : ""), onClick: function onClick() {
-                                            _this2.props.onACFilter();_this2.click('ac');
+                                            _this2.props.onACFilter();
                                         } },
                                     _react2.default.createElement('i', { className: 'fa fa-thermometer-empty' })
                                 ),
                                 _react2.default.createElement(
                                     'div',
                                     { className: "btn btn-default filter__button " + (this.props.tvFilter ? "active" : ""), onClick: function onClick() {
-                                            _this2.props.onTVFilter();_this2.click('tv');
+                                            _this2.props.onTVFilter();
                                         } },
                                     _react2.default.createElement('i', { className: 'fa fa-television' })
                                 )
@@ -378,7 +421,6 @@ var Finder = function (_React$Component4) {
         _this5.i = 0;
         _this5.state = {
             active: false,
-            value: 'init',
             wifiFilter: false,
             acFilter: false,
             tvFilter: false,
@@ -420,8 +462,6 @@ var Finder = function (_React$Component4) {
                 var new_locations = _this6.state.locations ? _this6.state.locations.concat(response.locations) : response.locations;
                 var new_departures = _this6.state.departures ? _this6.state.departures.concat(response.departures) : response.departures;
                 _this6.setState({
-                    active: false,
-                    value: 'found',
                     message: 'Résultats trouvées',
                     operators: new_operators,
                     locations: new_locations,
@@ -434,11 +474,14 @@ var Finder = function (_React$Component4) {
                 } else {
                     console.info('Complete : ' + response.complete);
                     //If complete but no result, launch again
-                    if (typeof _this6.state.operators == 'undefined' || _this6.state.operators.length < 1) {
+                    if (_this6.state.departures.length < 1) {
                         console.log('Launch again the callApi');
                         _this6.callApi('');
                     } else {
-                        console.log('We don\'t launch again since this.state.operators : ' + _this6.state.operators);
+                        console.log('We don\'t launch again since this.state.departures.length : ' + _this6.state.departures.length);
+                        _this6.setState({
+                            active: false
+                        });
                     }
                 }
             }).catch(function (error) {
@@ -452,7 +495,6 @@ var Finder = function (_React$Component4) {
                 console.log('this.state.operators is defined but empty');
                 this.setState({
                     active: true,
-                    value: 'clicked',
                     message: 'En attente des résultats'
                 });
                 this.callApi('');
@@ -479,7 +521,6 @@ var Finder = function (_React$Component4) {
     }, {
         key: 'setMessage',
         value: function setMessage() {
-            console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.state.operators);
             return _react2.default.createElement(
                 'div',
                 null,
