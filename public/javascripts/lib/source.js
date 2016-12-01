@@ -30,10 +30,28 @@ var SearchBar = function (_React$Component) {
     function SearchBar(props) {
         _classCallCheck(this, SearchBar);
 
-        return _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).call(this, props));
+
+        _this.state = {
+            wifi: false,
+            ac: false,
+            toilet: false,
+            tv: false
+        };
+        return _this;
     }
 
     _createClass(SearchBar, [{
+        key: 'click',
+        value: function click(type) {
+            this.setState({
+                wifi: this.props.wifiFilter,
+                ac: this.props.acFilter,
+                toilet: this.props.toiletFilter,
+                tv: this.props.tvFilter
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
@@ -42,7 +60,7 @@ var SearchBar = function (_React$Component) {
                 'div',
                 { className: 'search-bar' },
                 _react2.default.createElement(
-                    'form',
+                    'div',
                     { className: 'form-inline' },
                     _react2.default.createElement(
                         'div',
@@ -86,6 +104,59 @@ var SearchBar = function (_React$Component) {
                                 'Find my trip !'
                             )
                         )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'form-group search__item col-xs-6' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'btn-group filter__group pull-right' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'Pr\xE9f\xE9rences : '
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'form-group search__item col-xs-6' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'btn-group filter__group' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: "btn btn-default filter__button " + (this.props.wifiFilter ? "active" : ""), onClick: function onClick() {
+                                            _this2.props.onWifiFilter();_this2.click('wifi');
+                                        } },
+                                    _react2.default.createElement('i', { className: 'fa fa-wifi' })
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: "btn btn-default filter__button " + (this.props.toiletFilter ? "active" : ""), onClick: function onClick() {
+                                            _this2.props.onToiletFilter();_this2.click('toilet');
+                                        } },
+                                    _react2.default.createElement('i', { className: 'fa fa-bath' })
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: "btn btn-default filter__button " + (this.props.acFilter ? "active" : ""), onClick: function onClick() {
+                                            _this2.props.onACFilter();_this2.click('ac');
+                                        } },
+                                    _react2.default.createElement('i', { className: 'fa fa-thermometer-empty' })
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: "btn btn-default filter__button " + (this.props.tvFilter ? "active" : ""), onClick: function onClick() {
+                                            _this2.props.onTVFilter();_this2.click('tv');
+                                        } },
+                                    _react2.default.createElement('i', { className: 'fa fa-television' })
+                                )
+                            )
+                        )
                     )
                 )
             );
@@ -105,6 +176,24 @@ var ResultItem = function (_React$Component2) {
     }
 
     _createClass(ResultItem, [{
+        key: 'hideOnFilter',
+        value: function hideOnFilter() {
+            var filters = ['wifi', 'toilet', 'ac', 'tv'];
+            var hide = false;
+            filters.map(function (filter) {
+                console.info('Filter, in map with filter = ' + filter);
+                console.info('this.props[filter+"Filter"] : ' + this.props[filter + 'Filter']);
+                if (this.props[filter + 'Filter']) {
+                    console.log('A filter is active : ' + filter);
+                    if (!this.props.departure.amenities[filter]) {
+                        console.log('The filter hide a departure');
+                        hide = true;
+                    }
+                }
+            }, this);
+            return hide ? 'media hidden' : 'media';
+        }
+    }, {
         key: 'checkWifi',
         value: function checkWifi() {
             if (this.props.departure.amenities.wifi) {
@@ -164,7 +253,7 @@ var ResultItem = function (_React$Component2) {
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { className: 'media' },
+                { className: this.hideOnFilter() },
                 _react2.default.createElement(
                     'div',
                     { className: 'media-left  media-middle' },
@@ -269,7 +358,7 @@ var ResultsList = function (_React$Component3) {
                     var arr_loc = this.props.locations.find(function (loc) {
                         return loc.id == depart.destination_location_id;
                     });
-                    return _react2.default.createElement(ResultItem, { departure: depart, operator: dep_op, location_dep: dep_loc, location_arr: arr_loc });
+                    return _react2.default.createElement(ResultItem, { departure: depart, operator: dep_op, location_dep: dep_loc, location_arr: arr_loc, wifiFilter: this.props.wifiFilter, acFilter: this.props.acFilter, toiletFilter: this.props.toiletFilter, tvFilter: this.props.tvFilter });
                 }, this)
             );
         }
@@ -288,8 +377,16 @@ var Finder = function (_React$Component4) {
 
         _this5.i = 0;
         _this5.state = {
+            active: false,
             value: 'init',
-            message: ''
+            wifiFilter: false,
+            acFilter: false,
+            tvFilter: false,
+            toiletFilter: false,
+            message: '',
+            operators: [],
+            locations: [],
+            departures: []
         };
         return _this5;
     }
@@ -323,6 +420,7 @@ var Finder = function (_React$Component4) {
                 var new_locations = _this6.state.locations ? _this6.state.locations.concat(response.locations) : response.locations;
                 var new_departures = _this6.state.departures ? _this6.state.departures.concat(response.departures) : response.departures;
                 _this6.setState({
+                    active: false,
                     value: 'found',
                     message: 'Résultats trouvées',
                     operators: new_operators,
@@ -350,15 +448,14 @@ var Finder = function (_React$Component4) {
     }, {
         key: 'startResearch',
         value: function startResearch() {
-            if (typeof this.state.operators == 'undefined') {
-                console.log('this.state.operators is not defined');
+            if (this.state.operators.length < 1) {
+                console.log('this.state.operators is defined but empty');
                 this.setState({
+                    active: true,
                     value: 'clicked',
                     message: 'En attente des résultats'
                 });
                 this.callApi('');
-            } else if (this.state.operators.length < 1) {
-                console.log('this.state.operators is defined but empty');
                 this.callApi('');
             } else {
                 console.log('this.state.operators is defined : ' + this.state.operators);
@@ -367,23 +464,65 @@ var Finder = function (_React$Component4) {
     }, {
         key: 'renderLoader',
         value: function renderLoader() {
-            return _react2.default.createElement(_reactLoaders.Loader, { type: 'line-scale', active: 'true' });
+            if (this.state.active) {
+                return _react2.default.createElement(
+                    'div',
+                    { className: 'loader-container' },
+                    _react2.default.createElement(
+                        'h4',
+                        { className: 'text-center' },
+                        ' En attente de r\xE9sultats...'
+                    )
+                );
+            }
         }
     }, {
         key: 'setMessage',
         value: function setMessage() {
-            if (this.state.value == 'clicked') {
-                //return <Loader type="pacman" />;
-                return _react2.default.createElement(
-                    'p',
-                    null,
-                    ' En attente des r\xE9sultats '
-                );
-            } else if (this.state.value == 'found') {
-                console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.state.operators);
-                //return <Loader type="line-scale" active="true" />;
-                return _react2.default.createElement(ResultsList, { operators: this.state.operators, departures: this.state.departures, locations: this.state.locations });
-            }
+            console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.state.operators);
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'div',
+                    { className: 'loader__container' },
+                    this.renderLoader()
+                ),
+                _react2.default.createElement(ResultsList, { operators: this.state.operators, departures: this.state.departures, locations: this.state.locations, wifiFilter: this.state.wifiFilter, acFilter: this.state.acFilter, toiletFilter: this.state.toiletFilter, tvFilter: this.state.tvFilter }),
+                ';'
+            );
+        }
+    }, {
+        key: 'wifiFiltering',
+        value: function wifiFiltering() {
+            var boo = this.state.wifiFilter ? false : true;
+            this.setState({
+                wifiFilter: boo
+            });
+        }
+    }, {
+        key: 'acFiltering',
+        value: function acFiltering() {
+            var boo = this.state.acFilter ? false : true;
+            this.setState({
+                acFilter: boo
+            });
+        }
+    }, {
+        key: 'tvFiltering',
+        value: function tvFiltering() {
+            var boo = this.state.tvFilter ? false : true;
+            this.setState({
+                tvFilter: boo
+            });
+        }
+    }, {
+        key: 'toiletFiltering',
+        value: function toiletFiltering() {
+            var boo = this.state.toiletFilter ? false : true;
+            this.setState({
+                toiletFilter: boo
+            });
         }
     }, {
         key: 'render',
@@ -395,7 +534,15 @@ var Finder = function (_React$Component4) {
                 { className: 'finder' },
                 _react2.default.createElement(SearchBar, { onClick: function onClick() {
                         return _this7.startResearch();
-                    } }),
+                    }, onWifiFilter: function onWifiFilter() {
+                        return _this7.wifiFiltering();
+                    }, onACFilter: function onACFilter() {
+                        return _this7.acFiltering();
+                    }, onTVFilter: function onTVFilter() {
+                        return _this7.tvFiltering();
+                    }, onToiletFilter: function onToiletFilter() {
+                        return _this7.toiletFiltering();
+                    }, wifiFilter: this.state.wifiFilter, toiletFilter: this.state.toiletFilter, acFilter: this.state.acFilter, tvFilter: this.state.tvFilter }),
                 _react2.default.createElement(
                     'div',
                     { className: 'results-list', id: 'resultsList' },

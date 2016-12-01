@@ -24,6 +24,7 @@ a {
 
 nav {
 	height: @nav-height;
+	background-color: @dark-color;
 	.bordered
 }
 
@@ -41,6 +42,11 @@ nav img {
 
 #container {
 	width: 100%;
+}
+
+.container__big {
+	padding: 15px;
+	.bordered
 }
 
 .bordered {
@@ -105,6 +111,14 @@ nav img {
 	}
 }
 
+.filter__group {
+	margin-top: 26px;
+	label {
+		margin-top: 7px;
+		margin-bottom: 0px;
+	}
+}
+
 .info__group{
 	height: @result-height/3;
 }
@@ -137,6 +151,9 @@ nav img {
 
 #hours {
 	font-weight: 300;
+}
+
+.loader__container {
 }
 
 .loader-hidden {

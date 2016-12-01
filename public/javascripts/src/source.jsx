@@ -1,19 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Moment from 'moment';
-import {Loader} from 'react-loaders'
+import {Loader} from 'react-loaders';
 
 
 
 class SearchBar extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            wifi: false,
+            ac: false,
+            toilet: false,
+            tv: false
+        }
     };
+
+    click(type) {
+        this.setState({
+            wifi: this.props.wifiFilter,
+            ac: this.props.acFilter,
+            toilet: this.props.toiletFilter,
+            tv: this.props.tvFilter
+        });
+    }
 
     render (){
         return (
             <div className='search-bar'>
-                <form className="form-inline">
+                <div className="form-inline">
                     <div className='row'>
                         <div className="form-group search__item col-md-4 col-xs-12">
                             <label htmlFor="origin">Origin</label>
@@ -29,7 +45,30 @@ class SearchBar extends React.Component {
                             <button className="btn btn-warning search__field" onClick={()=>{this.props.onClick()}}>Find my trip !</button>
                         </div>
                     </div>
-                </form>
+                    <div className='row'>
+                        <div className="form-group search__item col-xs-6">
+                            <div className="btn-group filter__group pull-right">
+                                <label>Préférences : </label>
+                            </div>
+                        </div>
+                        <div className="form-group search__item col-xs-6">
+                            <div className="btn-group filter__group">
+                                <div className={"btn btn-default filter__button " + (this.props.wifiFilter ? "active" : "")} onClick={()=>{this.props.onWifiFilter(); this.click('wifi')}}>
+                                    <i className="fa fa-wifi"></i>
+                                </div>
+                                <div className={"btn btn-default filter__button " + (this.props.toiletFilter ? "active" : "")} onClick={()=>{this.props.onToiletFilter(); this.click('toilet')}}>
+                                    <i className="fa fa-bath"></i>
+                                </div>
+                                <div className={"btn btn-default filter__button " + (this.props.acFilter ? "active" : "")} onClick={()=>{this.props.onACFilter(); this.click('ac')}}>
+                                    <i className="fa fa-thermometer-empty"></i>
+                                </div>
+                                <div className={"btn btn-default filter__button " + (this.props.tvFilter ? "active" : "")} onClick={()=>{this.props.onTVFilter(); this.click('tv')}}>
+                                    <i className="fa fa-television"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -39,6 +78,23 @@ class ResultItem extends React.Component {
     constructor(props) {
         super(props);
     };
+
+    hideOnFilter() {
+        const filters = ['wifi', 'toilet', 'ac', 'tv'];
+        let hide = false;
+        filters.map(function(filter){
+            console.info('Filter, in map with filter = ' + filter);
+            console.info('this.props[filter+"Filter"] : ' + this.props[filter+'Filter']);
+            if(this.props[filter+'Filter']){
+                console.log('A filter is active : ' + filter);
+                if(!this.props.departure.amenities[filter]){
+                    console.log('The filter hide a departure');
+                    hide = true;
+                }
+            }
+        }, this);
+        return (hide ? 'media hidden' : 'media');
+    }
 
     checkWifi() {
         if (this.props.departure.amenities.wifi){
@@ -72,7 +128,7 @@ class ResultItem extends React.Component {
 
     render() {
         return (
-            <div className='media'>
+            <div className={this.hideOnFilter()}>
                 <div className='media-left  media-middle'>
                     <div>
                         <p className='text-center'> {this.props.location_dep.name} </p>
@@ -126,7 +182,7 @@ class ResultsList extends React.Component {
                     let arr_loc = this.props.locations.find(function(loc){
                         return loc.id == depart.destination_location_id;
                     });
-                    return <ResultItem departure={depart} operator={dep_op} location_dep={dep_loc} location_arr={arr_loc}/>;
+                    return <ResultItem departure={depart} operator={dep_op} location_dep={dep_loc} location_arr={arr_loc} wifiFilter={this.props.wifiFilter} acFilter={this.props.acFilter} toiletFilter={this.props.toiletFilter} tvFilter={this.props.tvFilter}/>;
                 }, this)}
             </ul>
         );
@@ -140,8 +196,15 @@ class Finder extends React.Component {
         super();
         this.i = 0;
         this.state = {
-            value: 'init',
-            message: ''
+            active: false,
+            wifiFilter: false,
+            acFilter: false,
+            tvFilter: false,
+            toiletFilter: false,
+            message: '',
+            operators: [],
+            locations: [],
+            departures: []
         }
     };
 
@@ -170,7 +233,7 @@ class Finder extends React.Component {
             const new_locations = this.state.locations ? this.state.locations.concat(response.locations) : response.locations;
             const new_departures = this.state.departures ? this.state.departures.concat(response.departures) : response.departures;
             this.setState({
-                value:'found',
+                active: false,
                 message:'Résultats trouvées',
                 operators: new_operators,
                 locations: new_locations,
@@ -199,15 +262,13 @@ class Finder extends React.Component {
     };
 
     startResearch() {
-        if (typeof this.state.operators == 'undefined'){
-            console.log('this.state.operators is not defined');
+        if ( this.state.operators.length < 1){
+            console.log('this.state.operators is defined but empty');
             this.setState({
-                value:'clicked',
+                active: true,
                 message:'En attente des résultats'
             });
             this.callApi('');
-        } else if ( this.state.operators.length < 1){
-            console.log('this.state.operators is defined but empty');
             this.callApi('');
         } else {
             console.log('this.state.operators is defined : ' + this.state.operators);
@@ -215,23 +276,57 @@ class Finder extends React.Component {
     };
 
     renderLoader() {
-        return <Loader type="line-scale" active="true" />
+        if (this.state.active){
+            return (
+                <div className="loader-container">
+                    <h4 className='text-center'> En attente de résultats...</h4>
+                </div>
+            )
+        }
     }
     setMessage() {
-        if (this.state.value == ('clicked' )) {
-            //return <Loader type="pacman" />;
-            return <p> En attente des résultats </p>
-        } else if (this.state.value == ('found')) {
-            console.log('On est dans le found avec value : ' + this.state.value + ' et operators : ' + this.state.operators);
-            //return <Loader type="line-scale" active="true" />;
-            return <ResultsList operators={this.state.operators} departures={this.state.departures} locations={this.state.locations}/>;
-        }
+        return (
+            <div>
+                <div className='loader__container'>
+                    {this.renderLoader()}
+                </div>
+                <ResultsList operators={this.state.operators} departures={this.state.departures} locations={this.state.locations} wifiFilter={this.state.wifiFilter} acFilter={this.state.acFilter} toiletFilter={this.state.toiletFilter} tvFilter={this.state.tvFilter}/>;
+            </div>
+        )
+    }
+
+    wifiFiltering() {
+        const boo = this.state.wifiFilter ? false : true;
+        this.setState({
+            wifiFilter: boo
+        })
+    }
+
+    acFiltering() {
+        const boo = this.state.acFilter ? false : true;
+        this.setState({
+            acFilter: boo
+        })
+    }
+
+    tvFiltering() {
+        const boo = this.state.tvFilter ? false : true;
+        this.setState({
+            tvFilter: boo
+        })
+    }
+
+    toiletFiltering() {
+        const boo = this.state.toiletFilter ? false : true;
+        this.setState({
+            toiletFilter: boo
+        })
     }
 
     render() {
         return (
             <div className="finder">
-                <SearchBar onClick={()=>this.startResearch()}/>
+                <SearchBar onClick={()=>this.startResearch()} onWifiFilter={()=>this.wifiFiltering()} onACFilter={()=>this.acFiltering()} onTVFilter={()=>this.tvFiltering()} onToiletFilter={()=>this.toiletFiltering()} wifiFilter={this.state.wifiFilter} toiletFilter={this.state.toiletFilter} acFilter={this.state.acFilter} tvFilter={this.state.tvFilter}/>
                 <div className="results-list" id='resultsList'>
                     {this.setMessage()}
                 </div>
