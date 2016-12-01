@@ -13,12 +13,10 @@
     "express": "~4.13.4",
     "jade": "~1.11.0",
     "less-middleware": "1.0.x",
-    "loaders.css": "^0.1.2",
     "moment": "^2.17.0",
     "morgan": "~1.7.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "react-loaders": "^2.3.0",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {

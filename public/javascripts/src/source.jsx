@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Moment from 'moment';
-import {Loader} from 'react-loaders';
+import * as locales from 'moment/min/locales';
 
 
 
@@ -32,38 +32,38 @@ class SearchBar extends React.Component {
                 <div className="form-inline">
                     <div className='row'>
                         <div className="form-group search__item col-md-4 col-xs-12">
-                            <label htmlFor="origin">Origin</label>
+                            <label htmlFor="origin">{this.props.words[0]}</label>
                             <select name="origin" id="origin" className="form-control search__field center-block" >
                                 <option value="new-york">New-York</option>
                             </select>
                         </div>
                         <div className="form-group search__item col-md-4 col-xs-12">
-                            <label htmlFor="destination">Destination</label>
+                            <label htmlFor="destination">{this.props.words[1]}</label>
                             <input type='text' className="form-control  center-block search__field" id="destination" placeholder="OSHEAGA !" disabled/>
                         </div>
                         <div id='search__button' className="form-group  center-block search__item col-md-4 col-xs-12">
-                            <button className="btn btn-warning search__field" onClick={()=>{this.props.onClick()}}>Find my trip !</button>
+                            <button className="btn btn-warning search__field" onClick={()=>{this.props.onClick()}}>{this.props.words[2]}</button>
                         </div>
                     </div>
                     <div className='row'>
                         <div className="form-group search__item col-xs-6 col-sm-2">
                             <div className="btn-group filter__group pull-right">
-                                <label>Langue : </label>
+                                <label>{this.props.words[3] + ' :' }</label>
                             </div>
                         </div>
                         <div className="form-group search__item col-xs-6 col-sm-3">
                             <div className="btn-group filter__group">
-                                <div className={"btn btn-default filter__button " + (this.props.english ? "active" : "")} onClick={()=>{this.props.onEnglish();}}>
+                                <div className={"btn btn-default filter__button " + (this.props.english ? "active" : "")} onClick={()=>{this.props.onEnglish()}}>
                                     <p className="">EN</p>
                                 </div>
-                                <div className={"btn btn-default filter__button " + (this.props.french ? "active" : "")} onClick={()=>{this.props.onFrench();}}>
+                                <div className={"btn btn-default filter__button " + (this.props.french ? "active" : "")} onClick={()=>{this.props.onFrench()}}>
                                     <p className="">FR</p>
                                 </div>
                             </div>
                         </div>
                         <div className="form-group search__item col-xs-6 col-sm-3">
                             <div className="btn-group filter__group pull-right">
-                                <label>Préférences : </label>
+                                <label>{this.props.words[4] + ' :' }</label>
                             </div>
                         </div>
                         <div className="form-group search__item col-xs-6 col-sm-4">
@@ -99,7 +99,6 @@ class ResultItem extends React.Component {
         let hide = false;
         filters.map(function(filter){
             console.info('Filter, in map with filter = ' + filter);
-            console.info('this.props[filter+"Filter"] : ' + this.props[filter+'Filter']);
             if(this.props[filter+'Filter']){
                 console.log('A filter is active : ' + filter);
                 if(!this.props.departure.amenities[filter]){
@@ -141,6 +140,22 @@ class ResultItem extends React.Component {
         }
     }
 
+    getDateFormat(){
+        if (this.props.lang == 'en-ca'){
+            return 'dddd, MMMM Do YYYY';
+        } else {
+            return 'dddd Do MMMM YYYY';
+        }
+    }
+
+    getHourFormat(){
+        if (this.props.lang == 'en-ca'){
+            return 'hh:mmA';
+        } else {
+            return 'HH:mm';
+        }
+    }
+
     render() {
         return (
             <div className={this.hideOnFilter()}>
@@ -159,11 +174,13 @@ class ResultItem extends React.Component {
                     <h4 className='info__group'>
                         <p id='price' className="info__item pull-right">{' ' + (this.props.departure.prices.total/100) + ' $CAD'}</p>
                     </h4>
-                    <h3 className='info__group center-block text-center'>
-                        <p id='hours' className="info__item">{' ' + Moment(this.props.departure.departure_time).format('hh:mmA') + ' - ' + Moment(this.props.departure.arrival_time).format('hh:mmA')}</p>
-                    </h3>
+                    <div className='info__group'>
+                        <h3 className='center-block text-center'>
+                            <p id='hours' className="info__item">{' ' + Moment(this.props.departure.departure_time).format(this.getHourFormat()) + ' - ' + Moment(this.props.departure.arrival_time).format(this.getHourFormat())}</p>
+                        </h3>
+                        <p className='center-block text-center'> {Moment('2017-03-01').locale(this.props.lang).format(this.getDateFormat())} </p>
+                    </div>
                     <h5 className='info__icons center-block text-center'>
-                        <i className="fa fa-clock-o info__item" aria-hidden="true"> </i>
                         {this.checkWifi()}
                         {this.checkToilet()}
                         {this.checkAC()}
@@ -197,7 +214,7 @@ class ResultsList extends React.Component {
                     let arr_loc = this.props.locations.find(function(loc){
                         return loc.id == depart.destination_location_id;
                     });
-                    return <ResultItem departure={depart} operator={dep_op} location_dep={dep_loc} location_arr={arr_loc} wifiFilter={this.props.wifiFilter} acFilter={this.props.acFilter} toiletFilter={this.props.toiletFilter} tvFilter={this.props.tvFilter}/>;
+                    return <ResultItem departure={depart} operator={dep_op} location_dep={dep_loc} location_arr={arr_loc} lang={this.props.lang} wifiFilter={this.props.wifiFilter} acFilter={this.props.acFilter} toiletFilter={this.props.toiletFilter} tvFilter={this.props.tvFilter}/>;
                 }, this)}
             </ul>
         );
@@ -210,29 +227,48 @@ class Finder extends React.Component {
     constructor() {
         super();
         this.i = 0;
+        this.words_en = ['Departure', 'Destination', 'Find my trip !', 'Language', 'Amenities']
+        this.words_fr = ['Départ', 'Arrivée', 'Allez !', 'Langue', 'Préférences']
         this.state = {
             active: false,
             wifiFilter: false,
+            english: true,
+            french: false,
+            lang: 'en-ca',
             acFilter: false,
             tvFilter: false,
             toiletFilter: false,
             message: '',
             operators: [],
             locations: [],
-            departures: []
+            departures: [],
+            words: this.words_en
         }
     };
 
-    callApi(index){
+    startResearch() {
+        if ( this.state.departures.length < 1){
+            console.log('this.state.departures is defined but empty');
+            this.setState({
+                active: true,
+                message:'En attente des résultats'
+            });
+            this.callApi('', this.state.lang);
+        } else {
+            console.log('this.state.departures is defined : ' + this.state.departures);
+        }
+    };
+
+    callApi(index, lang){
         let poll = '';
         if(index == ''){
             console.log('First callApi : ');
             this.i = 0;
         } else {
             poll = '/poll';
-            console.log('Multimple callApi : ' + index);
+            console.log('Multiple callApi : ' + index);
         }
-        const url = 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-03-01'+poll+'?adult=1&child=0&senior=0&lang=CA&currency=CAD'+index;
+        const url = 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-03-01'+poll+'?adult=1&child=0&senior=0&lang='+ lang +'&currency=CAD'+index;
         console.info('called url : ' + url);
         fetch(url, {
             headers: {
@@ -256,13 +292,13 @@ class Finder extends React.Component {
             if(!response.complete){
                 this.i++;
                 console.info('this.i incremented : ' + this.i);
-                this.callApi('&index='+ this.i);
+                this.callApi('&index='+ this.i, this.state.lang);
             } else {
                 console.info('Complete : ' + response.complete);
                 //If complete but no result, launch again
                 if (this.state.departures.length < 1){
                     console.log('Launch again the callApi');
-                    this.callApi('');
+                    this.callApi('', this.state.lang);
                 } else {
                     console.log('We don\'t launch again since this.state.departures.length : ' + this.state.departures.length);
                     this.setState({
@@ -277,20 +313,6 @@ class Finder extends React.Component {
 
     };
 
-    startResearch() {
-        if ( this.state.operators.length < 1){
-            console.log('this.state.operators is defined but empty');
-            this.setState({
-                active: true,
-                message:'En attente des résultats'
-            });
-            this.callApi('');
-            this.callApi('');
-        } else {
-            console.log('this.state.operators is defined : ' + this.state.operators);
-        }
-    };
-
     renderLoader() {
         if (this.state.active){
             return (
@@ -300,13 +322,14 @@ class Finder extends React.Component {
             )
         }
     }
+
     setMessage() {
         return (
             <div>
                 <div className='loader__container'>
                     {this.renderLoader()}
                 </div>
-                <ResultsList operators={this.state.operators} departures={this.state.departures} locations={this.state.locations} wifiFilter={this.state.wifiFilter} acFilter={this.state.acFilter} toiletFilter={this.state.toiletFilter} tvFilter={this.state.tvFilter}/>;
+                <ResultsList operators={this.state.operators} departures={this.state.departures} lang={this.state.lang} english={this.state.english} french={this.state.french} locations={this.state.locations} wifiFilter={this.state.wifiFilter} acFilter={this.state.acFilter} toiletFilter={this.state.toiletFilter} tvFilter={this.state.tvFilter}/>;
             </div>
         )
     }
@@ -339,10 +362,32 @@ class Finder extends React.Component {
         })
     }
 
+    onEnglish() {
+        if(this.state.french){
+            this.setState({
+                english: true,
+                french: false,
+                lang: 'en-ca',
+                words: this.words_en
+            });
+        }
+    }
+
+    onFrench() {
+        if(this.state.english){
+            this.setState({
+                english: false,
+                french: true,
+                lang: 'FR',
+                words: this.words_fr
+            });
+        }
+    }
+
     render() {
         return (
             <div className="finder">
-                <SearchBar onClick={()=>this.startResearch()} onWifiFilter={()=>this.wifiFiltering()} onACFilter={()=>this.acFiltering()} onTVFilter={()=>this.tvFiltering()} onToiletFilter={()=>this.toiletFiltering()} wifiFilter={this.state.wifiFilter} toiletFilter={this.state.toiletFilter} acFilter={this.state.acFilter} tvFilter={this.state.tvFilter}/>
+                <SearchBar onClick={()=>this.startResearch()} onEnglish={()=>this.onEnglish()} onFrench={()=>this.onFrench()} onWifiFilter={()=>this.wifiFiltering()} onACFilter={()=>this.acFiltering()} onTVFilter={()=>this.tvFiltering()} onToiletFilter={()=>this.toiletFiltering()} words={this.state.words} wifiFilter={this.state.wifiFilter} toiletFilter={this.state.toiletFilter} acFilter={this.state.acFilter} tvFilter={this.state.tvFilter} english={this.state.english} french={this.state.french}/>
                 <div className="results-list" id='resultsList'>
                     {this.setMessage()}
                 </div>

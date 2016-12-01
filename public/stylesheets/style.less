@@ -1,14 +1,12 @@
 @background-col: #fff;
+@medium-color: #fbfbfb;
+@dark-color: #F5F5F5;
+@darker-color: #f2f2f2;
+@border-color: #ddd;
 @nav-height: 50px;
 @result-height: 180px;
-@color-light: #efefef;
-@primary-color: #E499AE;
-@font-color: #01273a;
-@dark-color: #F5F5F5;
-@import '/bower_components/loaders.css/src/animations/line-scale.scss';
 
 body {
-	color: @font-color;
 	font-size: 14px;
 	font-family:  'Open Sans', "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -33,6 +31,12 @@ nav img {
 	width: auto;
 }
 
+.header{
+    margin-bottom: 20px;
+    border-bottom: 1px @border-color solid;
+    background-color: @darker-color;
+}
+
 .title {
 	margin-top: calc(~"5vh + 50px");
 	margin-bottom: 5vh;
@@ -46,7 +50,9 @@ nav img {
 
 .container__big {
 	padding: 15px;
-	.bordered
+	border: 1px @border-color solid;
+	border-radius: 3px;
+    background-color: @darker-color;
 }
 
 .bordered {
@@ -57,18 +63,18 @@ nav img {
 
 .media {
 	min-height: @result-height;
-	background-color: @color-light;
+	background-color: @medium-color;
 	.bordered
 }
 
 .media-left {
-	width: 40%;
-	height: @result-height;
-	border-right: 1px #ddd solid;
+	width: 30%;
+	min-height: @result-height;
+	border-right: 1px @border-color solid;
 	div {
 		text-align: center;
 		vertical-align: middle;
-		height: @result-height/3;
+		min-height: @result-height/3;
 	}
 	p,i{
 		height: @result-height/3;
@@ -76,12 +82,13 @@ nav img {
 		vertical-align: middle;
 		text-align: center;
 		margin: 5px !important;
+		padding-top: 10px;
 	}
 }
 
 .media-right {
 	width: 25%;
-	border-left: 1px #ddd solid;
+	border-left: 1px @border-color solid;
 }
 
 .media-object {
@@ -90,7 +97,7 @@ nav img {
 
 .search-bar {
 	padding: 20px;
-	background-color: @color-light;
+	background-color: @medium-color;
 	.bordered
 }
 
@@ -108,6 +115,12 @@ nav img {
 		border-radius: 0;
 		margin-top: 23px;
 		box-shadow: 1px 1px 1px 1px darkgray;
+		background-color: #066491;
+		border-color: #066491;
+		&:hover {
+			background-color: #DB4392;
+			border-color: #DB4392;
+		}
 	}
 }
 
@@ -133,9 +146,6 @@ nav img {
 	display: inline;
 	height: 100%;
 	padding: 5px;
-	&:hover {
-		coloc: @dark-color;
-	}
 }
 
 #resultsList {
@@ -145,6 +155,7 @@ nav img {
 	background-color: @background-col;
 	border: 1px #aaa solid;
 	border-radius: 3px;
+    .bordered
 }
 
 .info__icons {
@@ -157,15 +168,4 @@ nav img {
 
 #hours {
 	font-weight: 300;
-}
-
-.loader__container {
-}
-
-.loader-hidden {
-  display: none;
-}
-
-.loader-active {
-  display: block;
 }

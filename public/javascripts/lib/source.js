@@ -14,7 +14,11 @@ var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
-var _reactLoaders = require('react-loaders');
+var _locales = require('moment/min/locales');
+
+var locales = _interopRequireWildcard(_locales);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71,7 +75,7 @@ var SearchBar = function (_React$Component) {
                             _react2.default.createElement(
                                 'label',
                                 { htmlFor: 'origin' },
-                                'Origin'
+                                this.props.words[0]
                             ),
                             _react2.default.createElement(
                                 'select',
@@ -89,7 +93,7 @@ var SearchBar = function (_React$Component) {
                             _react2.default.createElement(
                                 'label',
                                 { htmlFor: 'destination' },
-                                'Destination'
+                                this.props.words[1]
                             ),
                             _react2.default.createElement('input', { type: 'text', className: 'form-control  center-block search__field', id: 'destination', placeholder: 'OSHEAGA !', disabled: true })
                         ),
@@ -101,7 +105,7 @@ var SearchBar = function (_React$Component) {
                                 { className: 'btn btn-warning search__field', onClick: function onClick() {
                                         _this2.props.onClick();
                                     } },
-                                'Find my trip !'
+                                this.props.words[2]
                             )
                         )
                     ),
@@ -117,7 +121,7 @@ var SearchBar = function (_React$Component) {
                                 _react2.default.createElement(
                                     'label',
                                     null,
-                                    'Langue : '
+                                    this.props.words[3] + ' :'
                                 )
                             )
                         ),
@@ -160,7 +164,7 @@ var SearchBar = function (_React$Component) {
                                 _react2.default.createElement(
                                     'label',
                                     null,
-                                    'Pr\xE9f\xE9rences : '
+                                    this.props.words[4] + ' :'
                                 )
                             )
                         ),
@@ -225,7 +229,6 @@ var ResultItem = function (_React$Component2) {
             var hide = false;
             filters.map(function (filter) {
                 console.info('Filter, in map with filter = ' + filter);
-                console.info('this.props[filter+"Filter"] : ' + this.props[filter + 'Filter']);
                 if (this.props[filter + 'Filter']) {
                     console.log('A filter is active : ' + filter);
                     if (!this.props.departure.amenities[filter]) {
@@ -292,6 +295,24 @@ var ResultItem = function (_React$Component2) {
             }
         }
     }, {
+        key: 'getDateFormat',
+        value: function getDateFormat() {
+            if (this.props.lang == 'en-ca') {
+                return 'dddd, MMMM Do YYYY';
+            } else {
+                return 'dddd Do MMMM YYYY';
+            }
+        }
+    }, {
+        key: 'getHourFormat',
+        value: function getHourFormat() {
+            if (this.props.lang == 'en-ca') {
+                return 'hh:mmA';
+            } else {
+                return 'HH:mm';
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -341,22 +362,28 @@ var ResultItem = function (_React$Component2) {
                         )
                     ),
                     _react2.default.createElement(
-                        'h3',
-                        { className: 'info__group center-block text-center' },
+                        'div',
+                        { className: 'info__group' },
+                        _react2.default.createElement(
+                            'h3',
+                            { className: 'center-block text-center' },
+                            _react2.default.createElement(
+                                'p',
+                                { id: 'hours', className: 'info__item' },
+                                ' ' + (0, _moment2.default)(this.props.departure.departure_time).format(this.getHourFormat()) + ' - ' + (0, _moment2.default)(this.props.departure.arrival_time).format(this.getHourFormat())
+                            )
+                        ),
                         _react2.default.createElement(
                             'p',
-                            { id: 'hours', className: 'info__item' },
-                            ' ' + (0, _moment2.default)(this.props.departure.departure_time).format('hh:mmA') + ' - ' + (0, _moment2.default)(this.props.departure.arrival_time).format('hh:mmA')
+                            { className: 'center-block text-center' },
+                            ' ',
+                            (0, _moment2.default)('2017-03-01').locale(this.props.lang).format(this.getDateFormat()),
+                            ' '
                         )
                     ),
                     _react2.default.createElement(
                         'h5',
                         { className: 'info__icons center-block text-center' },
-                        _react2.default.createElement(
-                            'i',
-                            { className: 'fa fa-clock-o info__item', 'aria-hidden': 'true' },
-                            ' '
-                        ),
                         this.checkWifi(),
                         this.checkToilet(),
                         this.checkAC(),
@@ -401,7 +428,7 @@ var ResultsList = function (_React$Component3) {
                     var arr_loc = this.props.locations.find(function (loc) {
                         return loc.id == depart.destination_location_id;
                     });
-                    return _react2.default.createElement(ResultItem, { departure: depart, operator: dep_op, location_dep: dep_loc, location_arr: arr_loc, wifiFilter: this.props.wifiFilter, acFilter: this.props.acFilter, toiletFilter: this.props.toiletFilter, tvFilter: this.props.tvFilter });
+                    return _react2.default.createElement(ResultItem, { departure: depart, operator: dep_op, location_dep: dep_loc, location_arr: arr_loc, lang: this.props.lang, wifiFilter: this.props.wifiFilter, acFilter: this.props.acFilter, toiletFilter: this.props.toiletFilter, tvFilter: this.props.tvFilter });
                 }, this)
             );
         }
@@ -419,23 +446,43 @@ var Finder = function (_React$Component4) {
         var _this5 = _possibleConstructorReturn(this, (Finder.__proto__ || Object.getPrototypeOf(Finder)).call(this));
 
         _this5.i = 0;
+        _this5.words_en = ['Departure', 'Destination', 'Find my trip !', 'Language', 'Amenities'];
+        _this5.words_fr = ['Départ', 'Arrivée', 'Allez !', 'Langue', 'Préférences'];
         _this5.state = {
             active: false,
             wifiFilter: false,
+            english: true,
+            french: false,
+            lang: 'en-ca',
             acFilter: false,
             tvFilter: false,
             toiletFilter: false,
             message: '',
             operators: [],
             locations: [],
-            departures: []
+            departures: [],
+            words: _this5.words_en
         };
         return _this5;
     }
 
     _createClass(Finder, [{
+        key: 'startResearch',
+        value: function startResearch() {
+            if (this.state.departures.length < 1) {
+                console.log('this.state.departures is defined but empty');
+                this.setState({
+                    active: true,
+                    message: 'En attente des résultats'
+                });
+                this.callApi('', this.state.lang);
+            } else {
+                console.log('this.state.departures is defined : ' + this.state.departures);
+            }
+        }
+    }, {
         key: 'callApi',
-        value: function callApi(index) {
+        value: function callApi(index, lang) {
             var _this6 = this;
 
             var poll = '';
@@ -444,9 +491,9 @@ var Finder = function (_React$Component4) {
                 this.i = 0;
             } else {
                 poll = '/poll';
-                console.log('Multimple callApi : ' + index);
+                console.log('Multiple callApi : ' + index);
             }
-            var url = 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-03-01' + poll + '?adult=1&child=0&senior=0&lang=CA&currency=CAD' + index;
+            var url = 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-03-01' + poll + '?adult=1&child=0&senior=0&lang=' + lang + '&currency=CAD' + index;
             console.info('called url : ' + url);
             fetch(url, {
                 headers: {
@@ -470,13 +517,13 @@ var Finder = function (_React$Component4) {
                 if (!response.complete) {
                     _this6.i++;
                     console.info('this.i incremented : ' + _this6.i);
-                    _this6.callApi('&index=' + _this6.i);
+                    _this6.callApi('&index=' + _this6.i, _this6.state.lang);
                 } else {
                     console.info('Complete : ' + response.complete);
                     //If complete but no result, launch again
                     if (_this6.state.departures.length < 1) {
                         console.log('Launch again the callApi');
-                        _this6.callApi('');
+                        _this6.callApi('', _this6.state.lang);
                     } else {
                         console.log('We don\'t launch again since this.state.departures.length : ' + _this6.state.departures.length);
                         _this6.setState({
@@ -487,21 +534,6 @@ var Finder = function (_React$Component4) {
             }).catch(function (error) {
                 console.error(error);
             });
-        }
-    }, {
-        key: 'startResearch',
-        value: function startResearch() {
-            if (this.state.operators.length < 1) {
-                console.log('this.state.operators is defined but empty');
-                this.setState({
-                    active: true,
-                    message: 'En attente des résultats'
-                });
-                this.callApi('');
-                this.callApi('');
-            } else {
-                console.log('this.state.operators is defined : ' + this.state.operators);
-            }
         }
     }, {
         key: 'renderLoader',
@@ -529,7 +561,7 @@ var Finder = function (_React$Component4) {
                     { className: 'loader__container' },
                     this.renderLoader()
                 ),
-                _react2.default.createElement(ResultsList, { operators: this.state.operators, departures: this.state.departures, locations: this.state.locations, wifiFilter: this.state.wifiFilter, acFilter: this.state.acFilter, toiletFilter: this.state.toiletFilter, tvFilter: this.state.tvFilter }),
+                _react2.default.createElement(ResultsList, { operators: this.state.operators, departures: this.state.departures, lang: this.state.lang, english: this.state.english, french: this.state.french, locations: this.state.locations, wifiFilter: this.state.wifiFilter, acFilter: this.state.acFilter, toiletFilter: this.state.toiletFilter, tvFilter: this.state.tvFilter }),
                 ';'
             );
         }
@@ -566,6 +598,30 @@ var Finder = function (_React$Component4) {
             });
         }
     }, {
+        key: 'onEnglish',
+        value: function onEnglish() {
+            if (this.state.french) {
+                this.setState({
+                    english: true,
+                    french: false,
+                    lang: 'en-ca',
+                    words: this.words_en
+                });
+            }
+        }
+    }, {
+        key: 'onFrench',
+        value: function onFrench() {
+            if (this.state.english) {
+                this.setState({
+                    english: false,
+                    french: true,
+                    lang: 'FR',
+                    words: this.words_fr
+                });
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this7 = this;
@@ -575,6 +631,10 @@ var Finder = function (_React$Component4) {
                 { className: 'finder' },
                 _react2.default.createElement(SearchBar, { onClick: function onClick() {
                         return _this7.startResearch();
+                    }, onEnglish: function onEnglish() {
+                        return _this7.onEnglish();
+                    }, onFrench: function onFrench() {
+                        return _this7.onFrench();
                     }, onWifiFilter: function onWifiFilter() {
                         return _this7.wifiFiltering();
                     }, onACFilter: function onACFilter() {
@@ -583,7 +643,7 @@ var Finder = function (_React$Component4) {
                         return _this7.tvFiltering();
                     }, onToiletFilter: function onToiletFilter() {
                         return _this7.toiletFiltering();
-                    }, wifiFilter: this.state.wifiFilter, toiletFilter: this.state.toiletFilter, acFilter: this.state.acFilter, tvFilter: this.state.tvFilter }),
+                    }, words: this.state.words, wifiFilter: this.state.wifiFilter, toiletFilter: this.state.toiletFilter, acFilter: this.state.acFilter, tvFilter: this.state.tvFilter, english: this.state.english, french: this.state.french }),
                 _react2.default.createElement(
                     'div',
                     { className: 'results-list', id: 'resultsList' },
