@@ -3,6 +3,9 @@
  */
 
 var App = React.createClass({
+    getDefaultProps:function(){
+        // usages: set css for elements without identifiers
+    },
     getInitialState: function(){
         return{
             searchResults: [],
@@ -79,72 +82,13 @@ var App = React.createClass({
     },
     pollSearch:function(search_url, index, general_info){
         final_departure_list = new Array()
-        // search_url = search_url.split("?")
-        // poll_params = search_url[1]
-        // search_url = "/search?"+poll_params+"&index="+index
         $.ajax({
             type:"GET",
             url: search_url,
             success:function(data){
                 data = $.parseJSON(data)
                 this.showResults(data, search_url)
-
             }.bind(this)
-                // result_data = $.parseJSON(data)
-                // console.log(data)
-                // console.log(result_data)
-                // this.setState({
-                //     search_status: false,
-                // })
-                // operator_obj_list = general_info.operators
-                // location_obj_list = general_info.locations
-                // stop_list = general_info.cities
-                // origin_city_id = general_info.origin_city_id
-                // destination_city_id = general_info.destination_city_id
-                // departure_list = result_data.departures
-                // $.each(departure_list, function(index, depart_item){
-                //     departure_obj = {}
-                //     departure_obj.departure_time = moment(depart_item.departure_time).format("HH:MM");
-                //     departure_obj.arrival_time = moment(depart_item.arrival_time).format("HH:MM");
-                //     departure_obj.link = depart_item.links.deeplink
-                //     departure_obj.price = depart_item.prices.total/100
-                //     departure_obj.class = depart_item.class
-                //     depart_location_id = depart_item.origin_location_id
-                //     $.each(location_obj_list, function(index, location_obj){
-                //         if(depart_location_id == location_obj.id){
-                //             departure_obj.depart_location = location_obj.name
-                //         }
-                //     })
-                //     $.each(stop_list, function(index, city_obj){
-                //         if(origin_city_id == city_obj.id){
-                //             departure_obj.depart_city = city_obj.name
-                //         }
-                //     })
-                //     dest_location_id = depart_item.destination_location_id
-                //     $.each(location_obj_list, function(index, location_obj){
-                //         if(dest_location_id == location_obj.id){
-                //             departure_obj.dest_location = location_obj.name
-                //         }
-                //     })
-                //     $.each(stop_list, function(index, city_obj){
-                //         if(destination_city_id == city_obj.id){
-                //             departure_obj.arrival_city= city_obj.name
-                //         }
-                //     })
-                //     operator_id =depart_item.operator_id
-                //     operator_img = ""
-                //     $.each(operator_obj_list, function(index, operator_obj){
-                //         if(operator_id == operator_obj.id){
-                //             departure_obj.operator_img = operator_obj.logo_url
-                //         }
-                //     })
-                //     final_departure_list.push(departure_obj)
-                // })
-                // searchResults =  final_departure_list
-                // this.setState({
-                //     searchResults: final_departure_list,
-                // })
-            // }.bind(this)
         })
 
     },
@@ -161,6 +105,11 @@ var App = React.createClass({
 
             }.bind(this)
         })
+    },
+    componentDidMount: function(){
+        // this is invoked after the component is mounted so here add datetime picker
+        console.log($(this.getDOMNode()).find(".date"))
+        $(this.getDOMNode()).find(".date").datepicker({ dateFormat: 'yy-mm-dd' })
     },
     render:function(){
         return(
@@ -179,8 +128,15 @@ var App = React.createClass({
 var SearchBox = React.createClass({
     createAjax:function(){
         var currency = React.findDOMNode(this.refs.currency_group).value;
-        var search_url = "/initial_search?adult=1&child=0&senior=0&lang=en&currency="+currency
-        this.props.search(search_url)
+        var date = React.findDOMNode(this.refs.date).value;
+        if (date ==""){
+            alert("Pick a date before search")
+        }
+        else{
+            var search_url = "/initial_search?date="+date+"&adult=1&child=0&senior=0&lang=en&currency="+currency
+            this.props.search(search_url)
+        }
+
     },
     render:function(){
         return(
@@ -189,7 +145,7 @@ var SearchBox = React.createClass({
                     <div className="input_container">
                         <input type="text" className="depature" value="NEW YORK" readOnly></input>
                         <input type="text" className="destination" value="MONTREAL" readOnly></input>
-                        <input type="text" className="date" value="2017-07-29" readOnly></input>
+                        <input type="text" className="date" ref="date" placeholder="Pick a date" readOnly></input>
                         <select className="currency_group" ref="currency_group">
                             <option value="CAD">CAD</option>
                             <option value="USD">USD</option>
