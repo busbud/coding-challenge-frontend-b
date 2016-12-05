@@ -1,0 +1,180 @@
+body {
+  background: #7b4397;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #7b4397, #dc2430);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #7b4397, #dc2430);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+body input[type="text"] {
+  padding: 10px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+  text-align: center;
+}
+body input[type="text"]:focus {
+  box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+.banner_background img {
+  display: block;
+  margin: 0 auto;
+  padding: 50px;
+  width: 50%;
+}
+@media screen and (max-width: 640px) {
+  .banner_background img {
+    width: 100%;
+  }
+}
+.search_section {
+  text-align: center;
+  margin: 0 auto;
+  width: 80%;
+  padding: 20px;
+}
+.search_section .input_container {
+  width: 80%;
+  margin: 0 auto;
+}
+.search_section .input_container input {
+  margin: 20px;
+  border: 0px;
+  text-align: center;
+  border-radius: 5px;
+}
+.search_section .search {
+  width: 100px;
+  height: 50px;
+  margin: 25px 0px;
+  border: 0px;
+  background: white;
+  border-radius: 5px;
+}
+.search_section .search i {
+  font-size: 35px;
+  margin-right: 30px;
+  line-height: 50px;
+}
+.search_section .search span {
+  font-size: 24px;
+  line-height: 50px;
+  font-weight: 200;
+  vertical-align: top;
+}
+.loading_container {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0px 30px 30px 30px;
+}
+.loading_container i {
+  font-size: 24px;
+  color: white;
+}
+.loading_container span {
+  color: white;
+  margin-left: 5px;
+}
+.result_list {
+  list-style: none;
+  width: 70%;
+  margin: 0 auto;
+  display: block;
+  padding-left: 0px;
+}
+@media screen and (max-width: 640px) {
+  .result_list {
+    width: 100%;
+  }
+}
+.result_list .result_item {
+  background: #7dc8e5;
+  border-radius: 10px;
+  margin: 40px 0px;
+}
+.result_list .result_item .bus_info,
+.result_list .result_item .logo_container {
+  display: inline-block;
+  vertical-align: top;
+}
+.result_list .result_item .bus_info {
+  width: 70%;
+}
+@media screen and (max-width: 640px) {
+  .result_list .result_item .bus_info {
+    width: 100%;
+  }
+}
+.result_list .result_item .bus_info div {
+  padding: 20px;
+  padding-bottom: 0px;
+  border-right: 5px solid #9d3872;
+}
+.result_list .result_item .bus_info div .time {
+  font-size: 15px;
+  font-weight: 600;
+}
+.result_list .result_item .bus_info div .time span.location {
+  font-size: 14px;
+  text-align: right;
+  font-weight: 200;
+  float: right;
+}
+@media screen and (max-width: 640px) {
+  .result_list .result_item .bus_info div .time span.location {
+    width: 70%;
+  }
+}
+.result_list .result_item .bus_info div .time span.location span.city {
+  margin-left: 5px;
+  font-weight: 800;
+}
+.result_list .result_item .bus_info div .price {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: right;
+}
+.result_list .result_item .bus_info div .price span.number {
+  font-size: 16px;
+  font-weight: 800;
+}
+.result_list .result_item .bus_info div .price span.currency {
+  font-size: 12px;
+  font-weight: 200;
+  margin-left: 5px;
+}
+.result_list .result_item .bus_info div .seat {
+  text-align: right;
+  font-weight: 200;
+}
+.result_list .result_item .logo_container {
+  width: 30%;
+}
+@media screen and (max-width: 640px) {
+  .result_list .result_item .logo_container {
+    display: none;
+  }
+}
+.result_list .result_item .logo_container .flex_container {
+  display: flex;
+  height: 157px;
+  align-items: center;
+}
+.result_list .result_item .logo_container .flex_container img {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+.result_list .result_item .booking_link {
+  padding: 20px;
+}
+.result_list .result_item .booking_link a {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  color: #066491;
+}
+/*# sourceMappingURL=style.css.map */
