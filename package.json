@@ -18,6 +18,7 @@
   "homepage": "https://github.com/rombevillard/coding-challenge-frontend-b#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "pug": "^2.0.0-beta6"
+    "pug": "^2.0.0-beta6",
+    "request": "^2.79.0"
   }
 }
