@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import Home from './Home.jsx';
 
-export default class App extends Component {
+export class App extends Component {
   render() {
     return (
-      
       <div>
-        {this.props.children}
+        <Home />
       </div>
     );
   }

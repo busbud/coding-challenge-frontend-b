@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Router, browserHistory } from 'react-router';
 
-
-import App from './components/app';
-import routes from './routes';
+import { App } from './components/App.jsx';
 
 require('./assets/stylesheets/base.scss');
+require('./assets/stylesheets/departure-list.scss');
 
-ReactDom.render( <Router history={browserHistory} routes={routes} />, document.querySelector('#app') );
+ReactDom.render( <App />, document.getElementById('app') );
