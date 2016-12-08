@@ -1,10 +1,11 @@
 {
   "name": "busbudcodingchallenge-romainbevillard",
   "version": "1.0.0",
-  "description": "Coding challenge for Busbud hiring process",
+  "description": "Coding challenge for Busbud hiring process, server app",
   "main": "index.js",
   "scripts": {
-    "dev": "cd ./public && webpack && cd .. && node app.js"
+    "dev": "cd ./public && webpack --display-error-details && cd .. && node app.js",
+    "production": "cd ./public && webpack && cd .. && node app.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/rombevillard/coding-challenge-frontend-b#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "pug": "^2.0.0-beta6",
     "request": "^2.79.0"
