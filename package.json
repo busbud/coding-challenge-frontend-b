@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "cd ./public && webpack --display-error-details && cd .. && node app.js",
-    "production": "cd ./public && webpack && cd .. && node app.js"
+    "start": "webpack --config ./public/webpack.config.js --progress --colors && node app.js",
+    "postinstall": "webpack --config ./public/webpack.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "pug": "^2.0.0-beta6",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "webpack": "^1.13.3"
   }
 }

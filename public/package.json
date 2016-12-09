@@ -4,7 +4,7 @@
   "description": "Challenge for Busbud hiring process, client app",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot"
+    "start": "webpack-dev-server --inline --hot"
   },
   "repository": {
     "type": "git",
