@@ -37,12 +37,10 @@ const Home = React.createClass({
   },
 
   getDepartures: function() {
-    console.log('getDepartures');
     this.setState({ loading: true });
 
     axios.get('/api/departures?lang='+counterpart.getLocale())
       .then((response) => {
-        console.log(response);
         this.setState({
           loading: false,
           departures: response.data.departures,
