@@ -4,7 +4,9 @@
   "description": "Coding challenge for Busbud hiring process, server app",
   "main": "server.js",
   "scripts": {
-    "start": "webpack --config ./webpack.config.js --progress --colors && node server.js"
+    "dev": "webpack -p --config ./webpack.config.js --progress && nodemon server.js",
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "repository": {
     "type": "git",
