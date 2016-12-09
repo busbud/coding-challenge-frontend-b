@@ -1,0 +1,24 @@
+.departure-card {
+  margin-bottom: 5px;
+  width: 90vw !important;
+
+  .mdl-card__title {
+    background: #e91e63;
+    color: white;
+    display: block;
+
+    .mdl-card__title-text {
+      font-size: 18px;
+    }
+  }
+
+  .mdl-card__menu {
+    color: white;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    padding: 5px;
+    background: darkmagenta;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,36 @@
+html {
+  margin: 0;
+  padding: 0;
+  background: url(/static/img/background.jpg) no-repeat center fixed;
+  background-size: cover;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(156, 39, 176, 0.7);
+}
+
+#app {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+
+  h1, h3 {
+    color: white;
+  }
+
+  p {
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+  }
+}
