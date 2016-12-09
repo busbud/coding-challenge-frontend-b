@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import find from 'lodash/find';
+import counterpart from 'counterpart';
 
 import Departure from './Departure.jsx';
 import Loader from './Loader.jsx';
@@ -17,10 +18,10 @@ const DepartureList = React.createClass ({
         // get pretty date formats from ISO
         var departureISODate = new Date(departure.departure_time);
         var arrivalISODate = new Date(departure.arrival_time);
-        var departureDate = departureISODate.toLocaleDateString();
-        var arrivalDate = arrivalISODate.toLocaleDateString();
-        var departureTime = departureISODate.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
-        var arrivalTime = arrivalISODate.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+        var departureDate = departureISODate.toLocaleDateString(counterpart.getLocale());
+        var arrivalDate = arrivalISODate.toLocaleDateString(counterpart.getLocale());
+        var departureTime = departureISODate.toLocaleTimeString([counterpart.getLocale()], {hour: '2-digit', minute: '2-digit'});
+        var arrivalTime = arrivalISODate.toLocaleTimeString([counterpart.getLocale()], {hour: '2-digit', minute: '2-digit'});
         var amenities = departure.amenities;
         var deeplink = departure.links.deeplink;
 
@@ -52,7 +53,7 @@ const DepartureList = React.createClass ({
       );
     }
 
-    return (<p>Nothing to render</p>);
+    return (<span></span>)
   }
 });
 

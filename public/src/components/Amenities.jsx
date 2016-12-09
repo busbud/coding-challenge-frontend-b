@@ -1,4 +1,5 @@
 import React from 'react';
+import Translate from 'react-translate-component';
 
 const Amenities = React.createClass({
   render: function() {
@@ -11,12 +12,17 @@ const Amenities = React.createClass({
       }
       {this.props.amenities.ac &&
         <span>          
-          <span id='ac' className="material-icons" title='Air conditioned'>ac_unit</span>
+          <span id='ac' className="material-icons" title={Translate.translate('Amenities.ac')}>ac_unit</span>
         </span>        
       }
       {this.props.amenities.toilet &&
         <span>          
           <span id='wc' className="material-icons" title='Toilet'>wc</span>
+        </span>        
+      }
+      {this.props.amenities.power_outlets &&
+        <span>          
+          <span id='refreshments' className="material-icons" title='Power outlets'>power</span>
         </span>        
       }
       {this.props.amenities.bus_attendant &&
