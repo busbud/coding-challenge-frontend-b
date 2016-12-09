@@ -1,5 +1,4 @@
 import React from 'react';
-import Translate from 'react-translate-component';
 
 const Amenities = React.createClass({
   render: function() {
