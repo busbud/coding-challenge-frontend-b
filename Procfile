@@ -1,0 +1,1 @@
+web: cd ./public && webpack && cd .. && node app.js
