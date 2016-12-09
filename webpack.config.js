@@ -21,7 +21,7 @@ module.exports = {
     ]
   },
   output: {
-    path: 'public/dist',
+    path: 'dist',
     filename: 'bundle.js'
   },
   plugins: [

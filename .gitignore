@@ -28,4 +28,4 @@ node_modules
 public/node_modules
 
 # webpack bundled files
-public/dist
+dist

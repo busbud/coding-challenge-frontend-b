@@ -9,7 +9,8 @@ app.set('view engine', 'pug');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use('/static', express.static('public'));
+app.use('/static', express.static('static'));
+app.use('/dist', express.static('dist'));
 
 router(app);
 
