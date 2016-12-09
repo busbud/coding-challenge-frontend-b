@@ -12,7 +12,7 @@ const Amenities = React.createClass({
       }
       {this.props.amenities.ac &&
         <span>          
-          <span id='ac' className="material-icons" title={Translate.translate('Amenities.ac')}>ac_unit</span>
+          <span id='ac' className="material-icons" title='Air conditioner'>ac_unit</span>
         </span>        
       }
       {this.props.amenities.toilet &&
