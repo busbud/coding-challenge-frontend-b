@@ -1,0 +1,7 @@
+{
+  "name": "sylvain-busbud-frontend-challenge",
+  "dependencies": {
+    "foundation-sites": "~6.2.0",
+    "angular": "1.6.0"
+  }
+}

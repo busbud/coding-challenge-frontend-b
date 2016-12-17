@@ -1,0 +1,75 @@
+.main-form {
+	padding: $global-padding*2 $global-padding;
+	background-color: $secondary-color;
+
+	.row.large-collapse {
+		@include breakpoint(large up) {
+			background-color: $white;
+		}
+	}
+	.input-group {
+		@include breakpoint(large up) {
+			margin-bottom: 0;
+		}
+	}
+
+	.input-group-label {
+		height: rem-calc(39);
+	}
+
+	input {
+		margin-bottom: 0;
+
+		@include breakpoint(large up) {
+			&:not(.button) {
+				border-right: 1px solid $light-gray;
+				&:focus {
+					border-right: 1px solid $light-gray;
+				}
+			}
+		}
+	}
+
+	input[disabled] {
+		background-color: $white;
+		opacity: 1;
+		cursor: auto;
+	}
+
+	@include element('button') {
+		margin-bottom: 0;
+		border: none;
+		height: rem-calc(39);
+		font-weight: bold;
+		text-transform: uppercase;
+		.icon-bus {
+			display: none;
+		}
+		&.button:disabled {
+			padding-top: 0;
+			padding-bottom: 0;
+			font-size: 20px;
+			background-color: #e6e6e6;
+			color: $primary-color;
+			transition: none;
+			cursor: wait;
+
+			.icon-bus {
+  			display: inline-block;
+				animation: shake 2s ease infinite;
+			}
+		}
+	}
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(-5px, 0) rotate(-10deg);
+  }
+  50% {
+    transform: translate(5px, 0) rotate(10deg);
+  }
+  100% {
+    transform: translate(-5px, 0) rotate(-10deg);
+  }
+}

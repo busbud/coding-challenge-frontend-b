@@ -1,0 +1,17 @@
+// We load the classic grid since IE9 does not support flex
+@import '../components/foundation-sites/scss/foundation';
+@import 'settings';
+@include foundation-grid;
+
+.old-ie {
+	margin: 16px auto;
+	padding: 16px;
+	width: 100%;
+	max-width: 768px;
+	text-align:center;
+	background-color: $secondary-color;
+	color: $white;
+	a {
+		color: $primary-color;
+	}
+}

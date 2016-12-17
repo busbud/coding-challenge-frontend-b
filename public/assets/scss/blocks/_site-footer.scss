@@ -1,0 +1,14 @@
+.site-footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 9999;
+	padding-top: $global-padding*2;
+	padding-bottom: $global-padding*2;
+	width: 100%;
+  background-color: $dark-gray;
+  @include element('copy') {
+  	margin-bottom: 0;
+  	color: $white;
+  }
+}
