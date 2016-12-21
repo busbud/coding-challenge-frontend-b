@@ -147,7 +147,7 @@
     				name: operatorData.name,
     				logo_url: operatorData.logo_url
     			};
-    			cleanedDeparture.price = departure.prices.total;
+    			cleanedDeparture.price = departure.prices.total/100;
     			$scope.departures.push(cleanedDeparture);
     		});
     		$scope.ready = true;
