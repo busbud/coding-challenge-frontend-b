@@ -1,0 +1,7 @@
+.sidebar {
+	padding-top: $global-padding*2;
+
+	@include element('widget') {
+		padding-bottom: $global-padding;
+	}
+}

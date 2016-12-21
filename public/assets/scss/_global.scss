@@ -1,0 +1,64 @@
+/**
+ * BEM mixins
+ */
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+/**
+ * General
+ */
+body, html {
+  min-width: 300px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+}
+
+a {
+  transition: color ease .25s;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  vertical-align: middle;
+}
+
+.off-canvas-content, .off-canvas {
+  min-height: 100vh;
+}
+
+.off-canvas {
+  height: 100%;
+  &:not(.is-open) {
+    .close-button, .menu {
+      visibility: hidden;
+      transition: visibility linear .5s;
+    }
+  }
+  .menu {
+    padding-top: 2rem;
+  }
+}
+
+.main {
+  padding-top: $global-padding*2;
+  padding-bottom: rem-calc(89);
+}
+
+.top-bar-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: $global-width;
+}
+
+.title-bar-right {
+  line-height: 38px;
+}

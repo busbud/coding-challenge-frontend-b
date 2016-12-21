@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Busbud Frontend Challenge - Sylvain Hamann</title>
+        <meta name="description" content="coding-challenge-frontend-b">
+        <meta property="og:title" content="Busbud Frontend Challenge - Sylvain Hamann">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="">
+        <meta property="og:image" content="assets/images/share.png">
+        <meta property="og:image:width" content="512">
+        <meta property="og:image:height" content="512">
+        <meta property="og:description" content="coding-challenge-frontend-b">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Busbud Frontend Challenge - Sylvain Hamann">
+        <meta name="twitter:description" content="coding-challenge-frontend-b">
+        <meta name="twitter:image" content="assets/images/share.png">
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="assets/stylesheets/challenge.css">
+        <!--[if lt IE 10]>
+        <link rel="stylesheet" href="assets/stylesheets/ie9.css">
+        <![endif]-->
+    </head>
+    <body ng-app="DeparturesApp">
+        <!--[if lt IE 9]>
+          <style>
+            .off-canvas-wrapper{display:none;}
+          </style>
+          <div class="old-ie">
+            <img
+                   width="170"
+                   src="assets/images/busbud-logo.png"
+                   alt="Busbud logo">
+          </div>
+        <![endif]-->
+        <!--[if lt IE 10]>
+          <div class="old-ie">
+              <p>Your browser is out of date! It looks like you are using an old version of Internet Explorer. For the best experience on the web, please update your browser.</p>
+              <p><a href="http://browsehappy.com/" target="_blank">Update now</a></p>
+          </div>
+        <![endif]-->
+        <div class="off-canvas-wrapper">
+          <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+            <nav class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+              <button class="close-button" aria-label="Close menu" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <ul class="vertical menu">
+                <li><a href="https://github.com/busbud/coding-challenge-frontend-b">Challenge Repository</a></li>
+                <li><a href="https://www.busbud.com/">Busbud</a></li>
+                <li><a href="https://shamann.fr/">Sylvain Hamann</a></li>
+              </ul>
+            </nav>
+            <div class="off-canvas-content" data-off-canvas-content>
+              <header>
+                  <div class="title-bar hide-for-medium">
+                    <div class="text-center title-bar-left">
+                      <img src="assets/images/busbud-logo.png" width="106" height="36" alt="Busbud logo">
+                    </div>
+                    <div class="title-bar-right">
+                      <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
+                    </div>
+                  </div>
+                  <div class="top-bar show-for-medium">
+                    <div class="top-bar-container">
+                      <div class="top-bar-title">
+                          <img src="assets/images/busbud-logo.png" width="106" height="36" alt="Busbud logo">
+                      </div>
+                      <nav class="top-bar-right">
+                        <ul class="menu">
+                          <li><a href="https://www.busbud.com/">Busbud</a></li>
+                          <li><a href="https://github.com/busbud/coding-challenge-frontend-b">Challenge Repository</a></li>
+                          <li><a href="https://shamann.fr/">Sylvain Hamann</a></li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+              </header>
+              <main class="main" ng-controller="departuresController">
+                <div class="row">
+                  <div class="column">
+                    <h1 class="text-center">Your bus ticket to</h1>
+                    <figure class="text-center">
+                      <img src="assets/images/festival-logo.png" alt="Osheaga logo" width="280" height="161">
+                    </figure>
+                    <p>Prepare your travel* to Osheaga Festival with <strong>Busbud</strong>!
+                    <br>
+                    <small>*The offer is limited for <strong>one adult</strong> only from <strong>New York City</strong> on the <strong>29th of July 2016</strong>.</small></p>
+                  </div>
+                </div>
+                <form class="main-form" autocomplete="off" novalidate ng-submit="seeDepartures()">
+                  <div class="row large-collapse align-center">
+                    <div class="small-12 medium-6 large-2 columns">
+                      <div class="input-group">
+                        <span class="input-group-label">
+                          <span class="icon-location-arrow"></span>
+                        </span>
+                        <input type="text" value="New York City" disabled required placeholder="Leaving from">
+                      </div>
+                    </div>
+                    <div class="small-12 medium-6 large-2 columns">
+                      <div class="input-group">
+                        <span class="input-group-label">
+                          <span class="icon-map-marker"></span>
+                        </span>
+                        <input type="text" value="Montreal" disabled required placeholder="Going to">
+                      </div>
+                    </div>
+                    <div class="small-12 medium-6 large-2 columns">
+                      <div class="input-group">
+                        <span class="input-group-label">
+                          <span class="icon-calendar"></span>
+                        </span>
+                        <input type="text" value="2017-07-29" disabled required placeholder="Departure date">
+                      </div>
+                    </div>
+                    <div class="small-12 medium-6 large-2 columns">
+                      <div class="input-group">
+                        <span class="input-group-label">
+                          <span class="icon-user"></span>
+                        </span>
+                        <input type="text" disabled required value="1" placeholder="Passengers">
+                      </div>
+                    </div>
+                    <div class="small-12 medium-6 large-4 columns">
+                      <button type="submit" class="main-form__button button expanded" ng-disabled="wait">
+                        <span ng-hide="wait">
+                          See departure schedules
+                        </span>
+                        <span ng-show="wait">
+                          <span class="icon-bus"></span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <section class="departures-container row" ng-class="{'departures-container--show':ready}">
+                  <aside class="show-for-medium medium-3 large-2 columns sidebar">
+                    <fieldset class="sidebar__widget">
+                      <legend>Order by</legend>
+                      <input type="radio" name="comparator" value="departure_time" id="earliest" ng-model="orderby.comparator"><label for="earliest">Earliest</label><br>
+                      <input type="radio" name="comparator" value="-departure_time" id="latest" ng-model="orderby.comparator"><label for="latest">Latest</label><br>
+                      <input type="radio" name="comparator" value="price" id="cheapest" ng-model="orderby.comparator"><label for="cheapest">Cheapest</label><br>
+                      <input type="radio" name="comparator" value="-price" id="expensive" ng-model="orderby.comparator"><label for="expensive">Highest price</label>
+                    </fieldset>
+                  </aside>
+                  <div class="small-12 medium-9 large-8 columns">
+                    <article class="departure" ng-repeat="departure in departures | orderBy:orderby.comparator">
+                      <div class="row">
+                        <div class="small-12 medium-8 large-6 columns">
+                          <div class="row">
+                            <div class="small-12 large-4 columns">
+                              <strong>{{departure.departure_time | date:'shortTime'}}</strong>
+                              <div class="departure__info icon-arrow-down show-for-large"></div>
+                            </div>
+                            <div class="small-12 large-8 columns">
+                              {{departure.origin_location}}
+                              <br>
+                              <small class="departure__info">{{departure.origin_city}}</small>
+                            </div>
+                          </div>
+                          <div class="departure__info departure__info--block icon-arrow-down"></div>
+                          <div class="row">
+                            <div class="small-12 large-4 columns">
+                              {{departure.arrival_time | date:'shortTime'}}
+                            </div>
+                            <div class="small-12 large-8 columns">
+                              {{departure.destination_location}}
+                              <br>
+                              <small class="departure__info">{{departure.destination_city}}</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="small-12 medium-4 large-3 columns align-self-middle text-center departure__logo">
+                          <img ng-src="{{departure.operator.logo_url}}" alt="{{departure.operator.name}}" width="100">
+                        </div>
+                        <div class="small-12 large-3 columns text-center align-self-middle">
+                          <strong class="departure__price">{{departure.price | currency:"USD$"}}</strong>
+                          <small class="departure__info">One-way per person</small>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </section>
+              </main>
+              <footer class="site-footer">
+                <div class="row">
+                  <p class="column text-center site-footer__copy">
+                    Made by <a class="site-footer__link" href="https://shamann.fr">Sylvain Hamann</a>
+                  </p>
+                </div>
+              </footer>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="assets/javascript/challenge.js"></script>
+    </body>
+</html>
