@@ -7,6 +7,7 @@ var merge = require('merge-stream');
 var sourcemaps = require('gulp-sourcemaps');
 var runSequence = require('run-sequence');
 var shell = require('gulp-shell');
+var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 
 gulp.task('build', function(cb) {
@@ -48,6 +49,7 @@ gulp.task('build:css', function(cb) {
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write('./'))
+    .pipe(concat('style.css'))
     .pipe(gulp.dest('./public/css'));
 });
 

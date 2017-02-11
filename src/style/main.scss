@@ -1,0 +1,141 @@
+/* ==============================
+   SETTINGS
+   ============================== */
+
+$wrapper-width: 600px;
+$default-spacing: 12px;
+$width-fractions: 1 2 3 4 !default;
+
+$header-color: #31363d;
+$body-color: #e7edf1;
+$text-color: #6f7c82;
+
+/* ==============================
+   RESET
+   ============================== */
+
+html {
+  box-sizing: border-box;
+  font-family: Helvetica, sans-serif;
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+
+  color: $text-color;
+  background-color: $body-color;
+}
+
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: inherit;
+    color: inherit;
+  }
+}
+
+html, body {
+  margin:  0;
+  padding: 0;
+}
+
+/* ==============================
+   WRAPPER
+   ============================== */
+
+.o-wrapper {
+  display: block;
+  padding-right: $default-spacing;
+  padding-left:  $default-spacing;
+  margin-right: auto;
+  margin-left:  auto;
+  max-width: $wrapper-width;
+}
+
+/* ==============================
+   LAYOUT
+   ============================== */
+
+.o-layout {
+  display: block;
+  margin:  0;
+  padding: 0;
+  list-style: none;
+  margin-left: -$default-spacing;
+}
+
+  .o-layout__item {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    padding-left: $default-spacing;
+  }
+
+/* ==============================
+  HEADER
+  ============================== */
+
+.o-header {
+  background-color: $header-color;
+  color: #ffffff;
+  overflow:auto;
+}
+
+  .o-title {
+    margin: 0;
+
+    .fa {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .o-subtitle {
+    font-weight: bold;
+  }
+
+/* ==============================
+  DEPARTURE
+  ============================== */
+
+.c-departure {
+  display: block;
+  background-color: #ffffff;
+  border-radius: 3px;
+  border: 1px solid $text-color;
+}
+
+  .c-departure__price {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+/* ==============================
+   SPACING
+   ============================== */
+
+.u-margin-top {
+  margin-top: $default-spacing;
+}
+
+.u-margin-bottom {
+  margin-bottom: $default-spacing;
+}
+
+.u-padding {
+  padding: $default-spacing;
+}
+
+/* ==============================
+   WIDTHS
+   ============================== */
+
+@each $denominator in $width-fractions {
+  @for $numerator from 1 through $denominator {
+    .u-#{$numerator}-#{$denominator} {
+      width: ($numerator / $denominator) * 100% !important;
+    }
+  }
+}

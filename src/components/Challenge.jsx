@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import { DepartureList } from './DepartureList';
 import { fetchDepartures } from '../lib/busbud';
 
@@ -58,10 +59,20 @@ export class Challenge extends Component {
   render() {
     return (
       <div>
-        <div>
-          New York - Montreal
+        <div className="o-header">
+          <div className="o-wrapper u-padding">
+            <h1 className="o-title">
+              New York
+              <i className="fa fa-arrow-right" />
+              Montreal
+            </h1>
+            <div className="o-subtitle">
+              {moment('2017-07-29').format('ll')}
+            </div>
+          </div>
         </div>
-        <div>
+
+        <div className="o-wrapper">
           <DepartureList departures={this.state.departures} />
         </div>
       </div>
