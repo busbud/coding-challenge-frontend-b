@@ -31,6 +31,9 @@ gulp.task('build:js', function(cb) {
           loader: 'babel-loader',
         }],
       },
+      resolve: {
+        extensions: ['', '.js', '.jsx']
+      },
       externals: {
         'react': 'React',
         'react-dom': 'ReactDOM',

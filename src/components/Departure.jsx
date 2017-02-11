@@ -21,3 +21,7 @@ export function Departure(props) {
     </div>
   );
 }
+
+Departure.propTypes = {
+  departure: React.PropTypes.object.isRequired,
+};

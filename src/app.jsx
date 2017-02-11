@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Challenge } from './components/challenge.jsx';
+import { Challenge } from './components/Challenge';
 
 ReactDOM.render(
   <Challenge />,
