@@ -131,8 +131,6 @@ export class Challenge extends Component {
       <div>
         <div className="o-header">
           <div className="o-wrapper u-padding">
-            {this.state.isLoading ? <div className="loading" /> : ''}
-
             <div className="o-logo margin-bottom">
               <img src="https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png" alt="Osheaga" />
             </div>
@@ -164,6 +162,10 @@ export class Challenge extends Component {
               </option>
             ))}
           </select>
+        </div>
+
+        <div className="u-text-center">
+          {this.state.isLoading ? <span className="loading" /> : ''}
         </div>
 
         <div className="o-wrapper">

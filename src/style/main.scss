@@ -110,9 +110,7 @@ img {
   ============================== */
 
 .loading {
-  @include spinner(28px, 3px solid #ffffff);
-
-  float: right;
+  @include spinner(28px, 3px solid $text-color);
 }
 
 /* ==============================
