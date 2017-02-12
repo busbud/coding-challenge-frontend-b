@@ -2,17 +2,17 @@ import React from 'react';
 import { Departure } from './Departure';
 
 export function DepartureList(props) {
-  const orderSplit = props.order.split('/');
-  const orderKey = orderSplit[0].split('.');
-  const orderDirection = orderSplit[1] || 'ASC';
+  const sortSplit = props.sort.split('/');
+  const sortKey = sortSplit[0].split('.');
+  const sortDirection = sortSplit[1] || 'ASC';
 
   const departures = props.departures.sort((a, b) => {
-    const direction = orderDirection === 'ASC' ? 1 : -1;
+    const direction = sortDirection === 'ASC' ? 1 : -1;
 
     let aValue = a;
     let bValue = b;
 
-    orderKey.forEach((key) => {
+    sortKey.forEach((key) => {
       aValue = aValue[key];
       bValue = bValue[key];
     });
@@ -35,9 +35,9 @@ export function DepartureList(props) {
 
 DepartureList.propTypes = {
   departures: React.PropTypes.array.isRequired,
-  order: React.PropTypes.string,
+  sort: React.PropTypes.string,
 };
 
 DepartureList.defaultProps = {
-  order: 'departure_time/ASC',
+  sort: 'departure_time/ASC',
 };

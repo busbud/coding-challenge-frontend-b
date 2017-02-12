@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment-timezone';
 import _ from 'lodash';
+import i18n from '../lib/i18n';
 
 import { DepartureList } from './DepartureList';
 import { Loading } from './Loading';
@@ -15,13 +16,15 @@ export class Challenge extends Component {
     this.subscription = null;
 
     this.state = {
-      lang: 'fr',
+      lang: 'en',
       currency: 'CAD',
-      order: 'departure_time/ASC',
+      sort: 'departure_time/ASC',
       locations: [],
       departures: [],
       isLoading: false,
     };
+
+    moment.locale('en');
   }
 
   componentDidMount() {
@@ -106,6 +109,9 @@ export class Challenge extends Component {
     this.setState({
       lang,
     });
+
+    i18n.changeLanguage(lang);
+    moment.locale(lang);
   }
 
   handleCurrency(currency) {
@@ -114,9 +120,9 @@ export class Challenge extends Component {
     });
   }
 
-  handleOrder(order) {
+  handleSort(sort) {
     this.setState({
-      order,
+      sort,
     });
   }
 
@@ -126,7 +132,7 @@ export class Challenge extends Component {
         <div className="o-header">
           <div className="o-wrapper u-padding">
             <div className="o-logo margin-bottom">
-              <img src="/images/logo.png" alt="Osheaga" />
+              <img src={`/images/logo_${this.state.lang}.png`}alt="Osheaga" />
             </div>
           </div>
         </div>
@@ -146,10 +152,10 @@ export class Challenge extends Component {
           <div className="o-layout">
             <div className="o-layout__item u-1-4 u-m-1-1">
               <Filters
-                order={this.state.order}
+                sort={this.state.sort}
                 lang={this.state.lang}
                 currency={this.state.currency}
-                onChangeOrder={order => this.handleOrder(order)}
+                onChangeSort={sort => this.handleSort(sort)}
                 onChangeLang={lang => this.handleLang(lang)}
                 onChangeCurrency={currency => this.handleCurrency(currency)}
               />
@@ -161,7 +167,7 @@ export class Challenge extends Component {
 
               <DepartureList
                 departures={this.state.departures}
-                order={this.state.order}
+                sort={this.state.sort}
               />
             </div>
           </div>
@@ -170,3 +176,7 @@ export class Challenge extends Component {
     );
   }
 }
+
+Challenge.propTypes = {
+  t: React.PropTypes.any,
+};
