@@ -10,34 +10,36 @@ export function Departure(props) {
   const dateDiff = parseInt(arrivalTime.format('MD'), 10) - parseInt(departureTime.format('MD'), 10);
 
   return (
-    <div className="c-departure u-padding u-margin-bottom">
+    <div className="c-departure u-margin-bottom">
       <div className="o-layout">
-        <div className="o-layout__item u-padding u-3-4">
-          <div className="o-layout">
-            <div className="o-layout__item u-1-4">
-              {departureTime.format('H:mm')}
+        <div className="o-layout__item u-3-4 u-m-1-1">
+          <div className="u-padding">
+            <div className="o-layout">
+              <div className="o-layout__item u-1-4">
+                {departureTime.format('H:mm')}
 
-              <div className="c-departure__arrow">
-                <i className="fa fa-arrow-down" />
-                <span className="c-departure__offset">{dateDiff > 0 ? `+${dateDiff}` : ''}</span>
+                <div className="c-departure__arrow">
+                  <i className="fa fa-arrow-down" />
+                  <span className="c-departure__offset">{dateDiff > 0 ? `+${dateDiff}` : ''}</span>
+                </div>
+              </div>
+              <div className="o-layout__item u-3-4">
+                {props.departure.origin.name}
               </div>
             </div>
-            <div className="o-layout__item u-3-4">
-              {props.departure.origin.name}
-            </div>
-          </div>
 
-          <div className="o-layout">
-            <div className="o-layout__item u-1-4">
-              {arrivalTime.format('H:mm')}
-            </div>
-            <div className="o-layout__item u-3-4">
-              {props.departure.destination.name}
+            <div className="o-layout">
+              <div className="o-layout__item u-1-4">
+                {arrivalTime.format('H:mm')}
+              </div>
+              <div className="o-layout__item u-3-4">
+                {props.departure.destination.name}
+              </div>
             </div>
           </div>
         </div>
-        <div className="o-layout__item u-padding u-1-4">
-          <div className="c-departure__price">
+        <div className="o-layout__item u-1-4 u-m-1-1">
+          <div className="c-departure__price u-padding">
             &euro;{Math.round(props.departure.prices.total / 100)}
           </div>
         </div>
@@ -49,4 +51,3 @@ export function Departure(props) {
 Departure.propTypes = {
   departure: React.PropTypes.object.isRequired,
 };
-
