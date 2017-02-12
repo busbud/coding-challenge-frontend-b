@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment-timezone';
+import currencies from 'currencies';
 
 export function Departure(props) {
   const departureTime = moment(props.departure.departure_time)
@@ -8,6 +9,7 @@ export function Departure(props) {
     .tz(props.departure.arrival_timezone);
 
   const dateDiff = parseInt(arrivalTime.format('MD'), 10) - parseInt(departureTime.format('MD'), 10);
+  const currencySymbol = currencies.get(props.departure.prices.currency).symbol;
 
   return (
     <div className="c-departure u-margin-bottom">
@@ -40,7 +42,7 @@ export function Departure(props) {
         </div>
         <div className="o-layout__item u-1-4 u-m-1-1">
           <div className="c-departure__price u-padding">
-            &euro;{Math.round(props.departure.prices.total / 100)}
+            {currencySymbol}{Math.round(props.departure.prices.total / 100)}
           </div>
         </div>
       </div>

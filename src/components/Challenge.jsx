@@ -5,6 +5,22 @@ import _ from 'lodash';
 import { DepartureList } from './DepartureList';
 import { fetchDepartures } from '../lib/busbud';
 
+const langs = [{
+  code: 'fr',
+  name: 'Français',
+}, {
+  code: 'en',
+  name: 'English',
+}];
+
+const currencies = [{
+  code: 'eur',
+  name: '€',
+}, {
+  code: 'cad',
+  name: '$',
+}];
+
 export class Challenge extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +28,8 @@ export class Challenge extends Component {
     this.subscription = null;
 
     this.state = {
+      lang: 'en',
+      currency: 'cad',
       locations: [],
       departures: [],
       isLoading: false,
@@ -20,6 +38,15 @@ export class Challenge extends Component {
 
   componentDidMount() {
     this.fetchDepartures();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.lang !== this.state.lang
+      || prevState.currency !== this.state.currency
+    ) {
+      this.fetchDepartures();
+    }
   }
 
   componentDidUnmount() {
@@ -38,8 +65,8 @@ export class Challenge extends Component {
       destination: 'f25dvk', // Montreal
       outbound_date: '2017-07-29',
       adult: 1,
-      lang: 'fr',
-      currency: 'eur',
+      lang: this.state.lang,
+      currency: this.state.currency,
     }).subscribe(
       // Concat departures
       (response) => {
@@ -87,6 +114,18 @@ export class Challenge extends Component {
     }
   }
 
+  handleLang(lang) {
+    this.setState({
+      lang,
+    });
+  }
+
+  handleCurrency(currency) {
+    this.setState({
+      currency,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -101,6 +140,24 @@ export class Challenge extends Component {
               {moment('2017-07-29').format('ll')}
             </div>
           </div>
+        </div>
+
+        <div className="o-wrapper o-margin-top o-margin-bottom">
+          <select value={this.state.lang} onChange={e => this.handleLang(e.target.value)}>
+            {langs.map(lang => (
+              <option value={lang.code}>
+                {lang.name}
+              </option>
+            ))}
+          </select>
+
+          <select value={this.state.currency} onChange={e => this.handleCurrency(e.target.value)}>
+            {currencies.map(currency => (
+              <option value={currency.code}>
+                {currency.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="o-wrapper">
