@@ -28,10 +28,12 @@ export class Challenge extends Component {
   }
 
   componentDidMount() {
+    // Fetch departures on mount
     this.fetchDepartures();
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // Re-fetch departures when needed
     if (
       prevState.lang !== this.state.lang
       || prevState.currency !== this.state.currency
@@ -41,70 +43,91 @@ export class Challenge extends Component {
   }
 
   componentDidUnmount() {
+    // Cancel subscription when unmounting the component
     this.cancelFetch();
   }
 
+  /**
+   * Fetch departures from the Api
+   */
   fetchDepartures() {
+    // Reset state values
     this.setState({
       locations: [],
       departures: [],
       isLoading: true,
     });
 
-    this.subscription = fetchDepartures({
-      origin: 'dr5reg', // New-York
-      destination: 'f25dvk', // Montreal
-      outbound_date: '2017-07-29',
-      adult: 1,
-      lang: this.state.lang,
-      currency: this.state.currency,
-    }).subscribe(
-      // Concat departures
-      (response) => {
-        this.setState((prevState) => {
-          const locations = prevState.locations.concat(response.locations);
-          const departures = prevState.departures.concat(
-            response.departures.map((departure) => {
-              const originLocation = _.find(locations, {
-                id: departure.origin_location_id,
-              });
+    // Launch search, and keep track of the subscription
+    this.subscription =
 
-              const destinationLocation = _.find(locations, {
-                id: departure.destination_location_id,
-              });
+      fetchDepartures({
+        origin: 'dr5reg', // New-York
+        destination: 'f25dvk', // Montreal
+        outbound_date: '2017-07-29',
+        adult: 1,
+        lang: this.state.lang,
+        currency: this.state.currency,
+      })
 
-              return Object.assign(departure, {
-                origin: originLocation,
-                destination: destinationLocation,
-              });
-            })
-          );
+      .subscribe(
+        // On next
+        (response) => {
+          // Update state with received data
+          this.setState((prevState) => {
+            // Concat locations
+            const locations = prevState.locations.concat(response.locations);
+            // Add locations data and concat departures
+            const departures = prevState.departures.concat(
+              response.departures.map((departure) => {
+                const originLocation = _.find(locations, {
+                  id: departure.origin_location_id,
+                });
 
-          return {
-            departures,
-            locations,
-          };
-        });
-      },
+                const destinationLocation = _.find(locations, {
+                  id: departure.destination_location_id,
+                });
 
-      // Log errors
-      (err) => {
-        this.console(err);
-      },
+                return Object.assign(departure, {
+                  origin: originLocation,
+                  destination: destinationLocation,
+                });
+              })
+            );
 
-      // Once complete
-      () => {
-        this.setState({ isLoading: false });
-      }
-    );
+            // Return all to the state
+            return {
+              departures,
+              locations,
+            };
+          });
+        },
+
+        // Log errors
+        (err) => {
+          this.console(err);
+        },
+
+        // Once completed
+        () => {
+          this.setState({ isLoading: false });
+          this.subscription = null;
+        }
+      );
   }
 
+  /**
+   * Cancel fetch subscription
+   */
   cancelFetch() {
     if (this.subscription) {
       this.subscription.dispose();
     }
   }
 
+  /**
+   * Handle language update
+   */
   handleLang(lang) {
     this.setState({
       lang,
@@ -114,12 +137,18 @@ export class Challenge extends Component {
     moment.locale(lang);
   }
 
+  /**
+   * Handle currency update
+   */
   handleCurrency(currency) {
     this.setState({
       currency,
     });
   }
 
+  /**
+   * Handle sort parameter update
+   */
   handleSort(sort) {
     this.setState({
       sort,
@@ -176,7 +205,3 @@ export class Challenge extends Component {
     );
   }
 }
-
-Challenge.propTypes = {
-  t: React.PropTypes.any,
-};
