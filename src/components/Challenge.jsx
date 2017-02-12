@@ -131,6 +131,7 @@ export class Challenge extends Component {
       <div>
         <div className="o-header">
           <div className="o-wrapper u-padding">
+            {this.state.isLoading ? <div className="loading" /> : ''}
             <h1 className="o-title">
               New York
               <i className="fa fa-arrow-right" />

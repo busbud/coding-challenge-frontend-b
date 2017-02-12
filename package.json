@@ -20,6 +20,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "rx": "^4.1.0",
+    "spinners": "^1.2.2",
     "whatwg-fetch": "^2.0.2"
   },
   "devDependencies": {
