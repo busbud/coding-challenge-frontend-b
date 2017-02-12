@@ -128,25 +128,5 @@ export function fetchDepartures({
         .of(response)
         .merge(pollObservable);
     })
-
-    // Parse response to return departures with details
-    // .map((response) => {
-    //   const departures = response.departures;
-
-    //   return departures.map((departure) => {
-    //     const originLocation = _.find(response.locations, {
-    //       id: departure.origin_location_id,
-    //     });
-
-    //     const destinationLocation = _.find(response.locations, {
-    //       id: departure.destination_location_id,
-    //     });
-
-    //     return Object.assign(departure, {
-    //       origin: originLocation,
-    //       destination: destinationLocation,
-    //     });
-    //   });
-    // })
   ;
 }

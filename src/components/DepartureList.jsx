@@ -3,8 +3,10 @@ import { Departure } from './Departure';
 
 export function DepartureList({ departures, sort }) {
   // Split sort string (key and direction are separated with a '/')
+  // (e.g. 'departure_time/ASC')
   const sortSplit = sort.split('/');
   // Get nested keys as an array
+  // (e.g. 'prices.total' => ['prices', 'total'])
   const sortKey = sortSplit[0].split('.');
   // Get direction, or defaut to 'ASC'
   const sortDirection = sortSplit[1] || 'ASC';
