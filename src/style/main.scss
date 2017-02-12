@@ -41,6 +41,10 @@ html, body {
   padding: 0;
 }
 
+img {
+  max-width: 100%;
+}
+
 /* ==============================
    WRAPPER
    ============================== */
@@ -84,6 +88,10 @@ html, body {
   overflow:auto;
 }
 
+  .o-logo {
+    text-align: center;
+  }
+
   .o-title {
     margin: 0;
 
@@ -116,6 +124,11 @@ html, body {
   background-color: #ffffff;
   border-radius: 3px;
   border: 1px solid $text-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f8f8f8;
+  }
 }
 
   .c-departure__arrow {
@@ -136,6 +149,18 @@ html, body {
     font-weight: bold;
     text-align: center;
   }
+
+/* ==============================
+  TEXT
+  ============================== */
+
+.u-text-right {
+  text-align: right;
+}
+
+.u-text-center {
+  text-align: center;
+}
 
 /* ==============================
    SPACING

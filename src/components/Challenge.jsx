@@ -132,6 +132,11 @@ export class Challenge extends Component {
         <div className="o-header">
           <div className="o-wrapper u-padding">
             {this.state.isLoading ? <div className="loading" /> : ''}
+
+            <div className="o-logo margin-bottom">
+              <img src="https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png" alt="Osheaga" />
+            </div>
+
             <h1 className="o-title">
               New York
               <i className="fa fa-arrow-right" />
@@ -143,7 +148,7 @@ export class Challenge extends Component {
           </div>
         </div>
 
-        <div className="o-wrapper o-margin-top o-margin-bottom">
+        <div className="o-wrapper o-margin-top o-margin-bottom u-text-right">
           <select value={this.state.lang} onChange={e => this.handleLang(e.target.value)}>
             {langs.map(lang => (
               <option value={lang.code}>
