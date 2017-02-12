@@ -1,12 +1,12 @@
 import React from 'react';
 import { Departure } from './Departure';
 
-export function DepartureList(props) {
-  const sortSplit = props.sort.split('/');
+export function DepartureList({ departures, sort }) {
+  const sortSplit = sort.split('/');
   const sortKey = sortSplit[0].split('.');
   const sortDirection = sortSplit[1] || 'ASC';
 
-  const departures = props.departures.sort((a, b) => {
+  const sortedDepartures = departures.sort((a, b) => {
     const direction = sortDirection === 'ASC' ? 1 : -1;
 
     let aValue = a;
@@ -26,7 +26,7 @@ export function DepartureList(props) {
 
   return (
     <div className="u-margin-top">
-      {departures.map(departure => (
+      {sortedDepartures.map(departure => (
         <Departure departure={departure} />
       ))}
     </div>

@@ -1,8 +1,5 @@
 import i18n from 'i18next';
 
-import en from '../locales/en.json';
-import fr from '../locales/fr.json';
-
 i18n
   .init({
     lng: 'en',
