@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import _ from 'lodash';
+
 import { DepartureList } from './DepartureList';
 import { fetchDepartures } from '../lib/busbud';
 
@@ -10,6 +12,7 @@ export class Challenge extends Component {
     this.subscription = null;
 
     this.state = {
+      locations: [],
       departures: [],
       isLoading: false,
     };
@@ -20,14 +23,15 @@ export class Challenge extends Component {
   }
 
   componentDidUnmount() {
-    // Cancel subscription on unmount
-    if (this.subscription) {
-      this.subscription.dispose();
-    }
+    this.cancelFetch();
   }
 
   fetchDepartures() {
-    this.setState({ isLoading: true });
+    this.setState({
+      locations: [],
+      departures: [],
+      isLoading: true,
+    });
 
     this.subscription = fetchDepartures({
       origin: 'dr5reg', // New-York
@@ -38,9 +42,30 @@ export class Challenge extends Component {
       currency: 'eur',
     }).subscribe(
       // Concat departures
-      (departures) => {
-        this.setState({
-          departures: this.state.departures.concat(departures),
+      (response) => {
+        this.setState((prevState) => {
+          const locations = prevState.locations.concat(response.locations);
+          const departures = prevState.departures.concat(
+            response.departures.map((departure) => {
+              const originLocation = _.find(locations, {
+                id: departure.origin_location_id,
+              });
+
+              const destinationLocation = _.find(locations, {
+                id: departure.destination_location_id,
+              });
+
+              return Object.assign(departure, {
+                origin: originLocation,
+                destination: destinationLocation,
+              });
+            })
+          );
+
+          return {
+            departures,
+            locations,
+          };
         });
       },
 
@@ -54,6 +79,12 @@ export class Challenge extends Component {
         this.setState({ isLoading: false });
       }
     );
+  }
+
+  cancelFetch() {
+    if (this.subscription) {
+      this.subscription.dispose();
+    }
   }
 
   render() {
