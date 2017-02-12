@@ -1,9 +1,13 @@
 import React from 'react';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 export function Departure(props) {
-  const departureTime = moment(props.departure.departure_time);
-  const destinationTime = moment(props.departure.destination_time);
+  const departureTime = moment(props.departure.departure_time)
+    .tz(props.departure.departure_timezone);
+  const arrivalTime = moment(props.departure.arrival_time)
+    .tz(props.departure.arrival_timezone);
+
+  const dateDiff = parseInt(arrivalTime.format('MD'), 10) - parseInt(departureTime.format('MD'), 10);
 
   return (
     <div className="c-departure u-padding u-margin-bottom">
@@ -13,8 +17,9 @@ export function Departure(props) {
             <div className="o-layout__item u-1-4">
               {departureTime.format('H:mm')}
 
-              <div>
+              <div className="c-departure__arrow">
                 <i className="fa fa-arrow-down" />
+                <span className="c-departure__offset">{dateDiff > 0 ? `+${dateDiff}` : ''}</span>
               </div>
             </div>
             <div className="o-layout__item u-3-4">
@@ -24,7 +29,7 @@ export function Departure(props) {
 
           <div className="o-layout">
             <div className="o-layout__item u-1-4">
-              {destinationTime.format('H:mm')}
+              {arrivalTime.format('H:mm')}
             </div>
             <div className="o-layout__item u-3-4">
               {props.departure.destination.name}

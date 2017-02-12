@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import _ from 'lodash';
 
 import { DepartureList } from './DepartureList';

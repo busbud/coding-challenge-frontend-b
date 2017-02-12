@@ -106,6 +106,19 @@ html, body {
   border: 1px solid $text-color;
 }
 
+  .c-departure__arrow {
+    color: #d8dde1;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
+    .c-departure__offset {
+      font-size: 14px;
+      font-weight: bold;
+      color: #6f7c82;
+      margin-left: 5px;
+    }
+
   .c-departure__price {
     font-size: 20px;
     font-weight: bold;

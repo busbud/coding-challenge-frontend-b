@@ -30,6 +30,9 @@ gulp.task('build:js', function(cb) {
           test: /\.jsx?$/,
           ignore: 'node_modules/',
           loader: 'babel-loader',
+        }, {
+          test: /\.json$/,
+          loader: 'json-loader',
         }],
       },
       resolve: {
