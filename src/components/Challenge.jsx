@@ -6,19 +6,19 @@ import { DepartureList } from './DepartureList';
 import { fetchDepartures } from '../lib/busbud';
 
 const langs = [{
-  code: 'fr',
-  name: 'Français',
-}, {
   code: 'en',
   name: 'English',
+}, {
+  code: 'fr',
+  name: 'Français',
 }];
 
 const currencies = [{
-  code: 'eur',
-  name: '€',
-}, {
-  code: 'cad',
+  code: 'CAD',
   name: '$',
+}, {
+  code: 'EUR',
+  name: '€',
 }];
 
 export class Challenge extends Component {
@@ -28,8 +28,8 @@ export class Challenge extends Component {
     this.subscription = null;
 
     this.state = {
-      lang: 'en',
-      currency: 'cad',
+      lang: langs[0].code,
+      currency: currencies[0].code,
       locations: [],
       departures: [],
       isLoading: false,
