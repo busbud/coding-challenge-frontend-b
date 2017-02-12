@@ -4,13 +4,14 @@
    SETTINGS
    ============================== */
 
-$wrapper-width: 600px;
-$default-spacing: 12px;
-$width-fractions: 1 2 3 4 !default;
+$wrapper-width: 900px;
+$default-spacing: 20px;
+$width-fractions: 1 2 3 4;
+$spacing-directions: top right bottom left;
 
-$header-color: #31363d;
+$header-color: #7fc7e6;
 $body-color: #e7edf1;
-$text-color: #6f7c82;
+$text-color: #00476a;
 
 /* ==============================
    RESET
@@ -41,8 +42,27 @@ html, body {
   padding: 0;
 }
 
+ul, ol {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
 img {
   max-width: 100%;
+}
+
+select {
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 /* ==============================
@@ -114,6 +134,25 @@ img {
 }
 
 /* ==============================
+  FORM
+  ============================== */
+
+.o-checkbox {
+  padding-left: 20px;
+
+  input[type=radio],
+  input[type=checkbox] {
+    position: absolute;
+    margin-left: -20px;
+    margin-top: 1px;
+  }
+}
+
+.o-label {
+  font-size: 14px;
+}
+
+/* ==============================
   DEPARTURE
   ============================== */
 
@@ -164,12 +203,18 @@ img {
    SPACING
    ============================== */
 
-.u-margin-top {
-  margin-top: $default-spacing;
+@each $direction in $spacing-directions {
+  .u-margin-#{$direction} {
+    margin-#{$direction}: $default-spacing;
+  }
+
+  .u-padding-#{$direction} {
+    padding-#{$direction}: $default-spacing;
+  }
 }
 
-.u-margin-bottom {
-  margin-bottom: $default-spacing;
+.u-margin {
+  margin: $default-spacing;
 }
 
 .u-padding {

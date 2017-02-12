@@ -3,23 +3,10 @@ import moment from 'moment-timezone';
 import _ from 'lodash';
 
 import { DepartureList } from './DepartureList';
+import { Loading } from './Loading';
+import { Filters } from './Filters';
+
 import { fetchDepartures } from '../lib/busbud';
-
-const langs = [{
-  code: 'en',
-  name: 'English',
-}, {
-  code: 'fr',
-  name: 'Français',
-}];
-
-const currencies = [{
-  code: 'CAD',
-  name: '$',
-}, {
-  code: 'EUR',
-  name: '€',
-}];
 
 export class Challenge extends Component {
   constructor(props) {
@@ -28,8 +15,9 @@ export class Challenge extends Component {
     this.subscription = null;
 
     this.state = {
-      lang: langs[0].code,
-      currency: currencies[0].code,
+      lang: 'fr',
+      currency: 'CAD',
+      order: 'departure_time/ASC',
       locations: [],
       departures: [],
       isLoading: false,
@@ -126,15 +114,25 @@ export class Challenge extends Component {
     });
   }
 
+  handleOrder(order) {
+    this.setState({
+      order,
+    });
+  }
+
   render() {
     return (
       <div>
         <div className="o-header">
           <div className="o-wrapper u-padding">
             <div className="o-logo margin-bottom">
-              <img src="https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png" alt="Osheaga" />
+              <img src="/images/logo.png" alt="Osheaga" />
             </div>
+          </div>
+        </div>
 
+        <div className="o-wrapper u-padding-top u-padding-bottom">
+          <div className="u-margin-bottom">
             <h1 className="o-title">
               New York
               <i className="fa fa-arrow-right" />
@@ -144,32 +142,29 @@ export class Challenge extends Component {
               {moment('2017-07-29').format('ll')}
             </div>
           </div>
-        </div>
 
-        <div className="o-wrapper o-margin-top o-margin-bottom u-text-right">
-          <select value={this.state.lang} onChange={e => this.handleLang(e.target.value)}>
-            {langs.map(lang => (
-              <option value={lang.code}>
-                {lang.name}
-              </option>
-            ))}
-          </select>
+          <div className="o-layout">
+            <div className="o-layout__item u-1-4 u-m-1-1">
+              <Filters
+                order={this.state.order}
+                lang={this.state.lang}
+                currency={this.state.currency}
+                onChangeOrder={order => this.handleOrder(order)}
+                onChangeLang={lang => this.handleLang(lang)}
+                onChangeCurrency={currency => this.handleCurrency(currency)}
+              />
+            </div>
+            <div className="o-layout__item u-3-4 u-m-1-1">
+              <div className="u-text-center">
+                <Loading show={this.state.isLoading} />
+              </div>
 
-          <select value={this.state.currency} onChange={e => this.handleCurrency(e.target.value)}>
-            {currencies.map(currency => (
-              <option value={currency.code}>
-                {currency.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="u-text-center">
-          {this.state.isLoading ? <span className="loading" /> : ''}
-        </div>
-
-        <div className="o-wrapper">
-          <DepartureList departures={this.state.departures} />
+              <DepartureList
+                departures={this.state.departures}
+                order={this.state.order}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );
