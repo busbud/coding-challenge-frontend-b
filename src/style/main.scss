@@ -1,0 +1,264 @@
+@import "../../node_modules/spinners/stylesheets/spinners";
+
+/* ==============================
+   SETTINGS
+   ============================== */
+
+$wrapper-width: 900px;
+$default-spacing: 20px;
+$width-fractions: 1 2 3 4;
+$spacing-directions: top right bottom left;
+
+$header-color: #7fc7e6;
+$body-color: #e7edf1;
+$text-color: #00476a;
+
+/* ==============================
+   RESET
+   ============================== */
+
+html {
+  box-sizing: border-box;
+  font-family: Helvetica, sans-serif;
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+
+  color: $text-color;
+  background-color: $body-color;
+}
+
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: inherit;
+    color: inherit;
+  }
+}
+
+html, body {
+  margin:  0;
+  padding: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+select {
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ==============================
+   WRAPPER
+   ============================== */
+
+.o-wrapper {
+  display: block;
+  padding-right: $default-spacing;
+  padding-left:  $default-spacing;
+  margin-right: auto;
+  margin-left:  auto;
+  max-width: $wrapper-width;
+}
+
+/* ==============================
+   LAYOUT
+   ============================== */
+
+.o-layout {
+  display: block;
+  margin:  0;
+  padding: 0;
+  list-style: none;
+  margin-left: -$default-spacing;
+}
+
+  .o-layout__item {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    padding-left: $default-spacing;
+  }
+
+/* ==============================
+  HEADER
+  ============================== */
+
+.o-header {
+  background-color: $header-color;
+  color: #ffffff;
+  overflow:auto;
+}
+
+  .o-logo {
+    text-align: center;
+  }
+
+  .o-title {
+    margin: 0;
+
+    .fa {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .o-subtitle {
+    font-weight: bold;
+  }
+
+/* ==============================
+  SPINNER
+  ============================== */
+
+.loading {
+  @include spinner(28px, 3px solid $text-color);
+}
+
+/* ==============================
+  FORM
+  ============================== */
+
+.o-checkbox {
+  padding-left: 20px;
+
+  input[type=radio],
+  input[type=checkbox] {
+    position: absolute;
+    margin-left: -20px;
+    margin-top: 1px;
+  }
+}
+
+.o-label {
+  font-size: 14px;
+}
+
+/* ==============================
+  DEPARTURE
+  ============================== */
+
+.c-departure {
+  display: block;
+  background-color: #ffffff;
+  border-radius: 3px;
+  border: 1px solid $text-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f8f8f8;
+  }
+}
+
+  .c-departure__arrow {
+    color: #d8dde1;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
+    .c-departure__offset {
+      font-size: 14px;
+      font-weight: bold;
+      color: #6f7c82;
+      margin-left: 5px;
+    }
+
+  .c-departure__price {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+/* ==============================
+  TEXT
+  ============================== */
+
+.u-text-right {
+  text-align: right;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+/* ==============================
+   SPACING
+   ============================== */
+
+@each $direction in $spacing-directions {
+  .u-margin-#{$direction} {
+    margin-#{$direction}: $default-spacing;
+  }
+
+  .u-padding-#{$direction} {
+    padding-#{$direction}: $default-spacing;
+  }
+}
+
+.u-margin {
+  margin: $default-spacing;
+}
+
+.u-padding {
+  padding: $default-spacing;
+}
+
+/* ==============================
+   WIDTHS
+   ============================== */
+
+@each $denominator in $width-fractions {
+  @for $numerator from 1 through $denominator {
+    .u-#{$numerator}-#{$denominator} {
+      width: ($numerator / $denominator) * 100% !important;
+    }
+  }
+}
+
+/* ==============================
+   MEDIA QUERIES
+   ============================== */
+
+@media screen and ( max-width: 600px ) {
+  /* ==============================
+     WIDTHS
+     ============================== */
+
+  @each $denominator in $width-fractions {
+    @for $numerator from 1 through $denominator {
+      .u-m-#{$numerator}-#{$denominator} {
+        width: ($numerator / $denominator) * 100% !important;
+      }
+    }
+  }
+
+
+  /* ==============================
+     DEPARTURE
+     ============================== */
+
+  .c-departure__price {
+    text-align: right;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    padding: 6px;
+  }
+}
