@@ -1,0 +1,14 @@
+@import './variables';
+:global {
+  @import '~reset-css/reset';
+}
+@import './skeleton_custom';
+
+:global {
+  * {
+    box-sizing: border-box;
+  }
+  img {
+    max-width: 100%;
+  }
+}

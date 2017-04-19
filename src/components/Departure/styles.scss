@@ -1,0 +1,22 @@
+@import '../../shared-styles/variables';
+
+.departure {
+  margin-bottom: $padding;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $light-background;
+  padding: $padding;
+  border-radius: $border-radius;
+
+  @media (min-width: 420px) {
+    flex-direction: row;
+  }
+}
+
+.operatorDetails {
+  img {
+    padding: $padding;
+  }
+}

@@ -1,0 +1,12 @@
+@import '../../shared-styles/variables';
+
+.banner {
+  margin-bottom: 1.5rem;
+}
+
+.content {
+  width: $content-width;
+  max-width: 100%;
+  margin: $padding auto;
+  padding: $padding;
+}

@@ -1,0 +1,52 @@
+{
+  "dependencies": {
+    "array-find": "^1.0.0",
+    "classnames": "^2.2.5",
+    "compression": "^1.6.2",
+    "dotenv-safe": "^3.0.0",
+    "enzyme": "^2.4.1",
+    "es6-promise": "^4.0.5",
+    "express": "^4.14.0",
+    "fetch-ponyfill": "^3.0.2",
+    "kyt": "^0.3.0",
+    "moment": "^2.16.0",
+    "object-assign": "^4.1.0",
+    "qs": "^6.3.0",
+    "react": "^15.3.0",
+    "react-addons-test-utils": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-router": "^4.0.0-alpha.5"
+  },
+  "scripts": {
+    "dev": "kyt dev",
+    "build": "kyt build",
+    "start": "kyt start",
+    "test": "kyt test",
+    "test-watch": "kyt test -- --watch",
+    "test-coverage": "kyt test -- --coverage",
+    "lint": "kyt lint",
+    "lint-style": "kyt lint-style",
+    "proto": "kyt proto",
+    "kyt:help": "kyt --help"
+  },
+  "name": "coding-challenge-frontend-b",
+  "description": "Initialized with [kyt](https://github.com/NYTimes/kyt), a great (early-stage) tool that manages your dev configuration, and optionally, your initial project setup, for you.",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samushighwind/coding-challenge-frontend-b.git"
+  },
+  "keywords": [
+    "OSHEAGA"
+  ],
+  "author": "Ben Wiley",
+  "bugs": {
+    "url": "https://github.com/samushighwind/coding-challenge-frontend-b/issues"
+  },
+  "homepage": "https://github.com/samushighwind/coding-challenge-frontend-b#readme",
+  "devDependencies": {
+    "reset-css": "^2.2.0",
+    "skeleton-scss": "^2.0.4"
+  },
+  "engines" : { "node" : ">6.0.0" }
+}
