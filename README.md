@@ -1,3 +1,27 @@
+Hosted on Heroku: https://busbud-frontend-challenge.herokuapp.com/
+
+## Commands
+
+Install dependencies:
+```
+npm install
+```
+
+Start server (Express):
+```
+npm start
+```
+
+Run development environment (BrowserSync):
+```
+gulp
+```
+
+Build production files:
+```
+gulp prod
+```
+
 # coding-challenge-frontend-b
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 

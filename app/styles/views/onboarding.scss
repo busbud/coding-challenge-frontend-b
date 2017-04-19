@@ -1,0 +1,405 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url('assets/osheaga-hero.jpg') no-repeat center top fixed;
+  background-size: cover;
+  font-family: $body-stack;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+// Header
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.header-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+header img,
+.plus {
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+}
+
+.busbud-logo {
+  height: 35px;
+}
+
+.osheaga-logo {
+  height: 23px;
+  margin-top: 12px;
+}
+
+.plus {
+  padding: 0 8px;
+}
+
+.selectLocale {
+  height: 35px;
+  padding: 5px 35px 5px 15px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 20px;
+  margin: 20px 0 auto;
+  background: none;
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12);
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+
+  &-wrapper {
+    position: absolute;
+    top: 0;
+    right: 25px;
+
+    &::after {
+      content: '▾';
+      position: absolute;
+      top: 26px;
+      right: 15px;
+      color: #fff;
+      pointer-events: none;
+    }
+  }
+
+  & option {
+    color: #000;
+  }
+}
+
+// Call to action
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta {
+  &-text {
+    padding: 0 10px;
+    margin: 85px 0 50px;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 300;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  &-button {
+    padding: 12px 27px;
+    border: 1px solid #cf840a;
+    border-radius: 3px;
+    background: linear-gradient(#f39c12, #f5910a 85%, #e08e0b);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    outline: none;
+    transition: box-shadow 150ms ease;
+
+    &:active {
+      background: linear-gradient(#e08e0b, #f5910a 85%, #f39c12);
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus {
+      box-shadow: 0 0 5px #cf840a;
+    }
+  }
+}
+
+// Search modal
+.searchModal {
+  display: flex;
+  opacity: 0;
+  width: 600px;
+  height: 80%;
+  border-radius: 4px;
+  margin: 0 10px;
+  flex-direction: column;
+  background: #fff;
+  transition: 200ms ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+
+  &-wrapper {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  &-header {
+    position: relative;
+    width: 100%;
+    min-height: 42px;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  &-title {
+    margin: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  &-exit {
+    position: absolute;
+    top: 11px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: 2px solid #ccc;
+    border-radius: 100%;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+
+    &:active {
+      box-shadow: 0 0 2px #ccc;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 7px;
+      display: block;
+      width: 2px;
+      height: 10px;
+      border-radius: 2px;
+      background: #ccc;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+
+  }
+
+  &-results {
+    overflow-y: scroll;
+  }
+
+  &.active {
+    animation: fade 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+// Search results
+.searchResult {
+  display: flex;
+  padding: 10px 15px;
+  border-bottom: 1px solid #e5e5e5;
+  flex-direction: row;
+  justify-content: space-around;
+
+  & > * {
+    margin: 0 10px;
+  }
+
+  &-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-row {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+  }
+
+  &-operatorLogo {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  &-time {
+    margin: 0 0 8px 20px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  &-departures {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &-location {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  &-city {
+    margin: 0;
+    color: #ccc;
+    font-weight: 700;
+    font-size: 8px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+  }
+
+  &-icons {
+    width: 12px;
+    margin-right: 8px;
+  }
+
+  &-cost {
+    display: flex;
+    align-items: center;
+  }
+
+  &-price-group {
+    position: relative;
+  }
+
+  &-price {
+    font-size: 20px;
+  }
+
+  &-currency {
+    font-size: 10px;
+    vertical-align: super;
+  }
+}
+
+// Overlay
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.loading {
+  opacity: 0;
+  z-index: 2;
+  color: #fff;
+
+  &-indicator {
+    width: 25px;
+    height: 25px;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    border-radius: 100%;
+    animation: circle infinite 750ms linear;
+  }
+}
+
+.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+// Animations
+@keyframes fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes circle {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+/*
+    Media Queries
+*/
+
+@media (max-width: 500px) {
+  .searchModal {
+    height: calc(100% - 70px);
+    margin: 10px;
+
+    &-wrapper {
+      align-items: flex-end;
+    }
+
+    &-exit {
+      top: -35px;
+      transform: scale(1.4);
+      transform-origin: bottom right;
+    }
+  }
+
+  .searchResult {
+    &-operatorLogo {
+      width: 70px;
+      height: 120px;
+    }
+
+    &-time {
+      font-size: 13px;
+    }
+
+    &-price {
+      font-size: 15px;
+    }
+
+    &-currency {
+      font-size: 9px;
+    }
+
+    & > * {
+      margin: 2px;
+    }
+  }
+}

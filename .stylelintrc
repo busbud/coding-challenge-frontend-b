@@ -1,0 +1,50 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "declaration-block-properties-order": [ {
+      properties: [
+        "position",
+        "z-index",
+        "top",
+        "right",
+        "bottom",
+        "left",
+      ],
+    },
+    {
+      properties: [
+        "display",
+        "overflow",
+        "box-sizing",
+        "width",
+        "height",
+        "padding",
+        "border",
+        "margin",
+        "flex",
+      ],
+    },
+    {
+      properties: [
+        "background",
+        "color",
+      ],
+    },
+    {
+      properties: [
+        "font",
+        "line-height",
+        "text",
+      ],
+    },
+    {
+      properties: [
+        "cursor",
+        "pointer-events",
+        "transform",
+        "transition",
+        "animation",
+      ],
+    } ],
+  }
+}
