@@ -1,3 +1,54 @@
+# Coding frontend challenge attempt
+
+![Osheaga with Busbud !](https://bz-bb-frontend-challenge.herokuapp.com/assets/images/apple-touch-icon.png)
+
+Microsite that allows a traveler from NYC to find one-way departure schedules for the Osheaga festival's opening weekend.
+
+The microsite is hosted here:   [https://bz-bb-frontend-challenge.herokuapp.com](https://bz-bb-frontend-challenge.herokuapp.com)
+
+## Prerequisites
+
+- `NodeJS >= 4.4.*`
+- `npm >= 2.15.*`
+- `concurently`
+- `webpack`
+- `mocha`
+
+## Informations
+
+The microsite is build with React/Redux.  
+The Node backend provides minified and compressed data using Express and builds from webpack.  
+Sass files are included, compiled, prefixed and minified (if needed — in production) by webpack as well.  
+I used Susy to manage a responsive grid, and Font Awesome to display nice icons, but didn't use any other styling/css framework.
+
+The app state is persistant, stored using LocalForage.  
+The departure list updates itself when it's out-dated.  
+Tests are written with Mocha.
+
+## Server
+
+Install dependencies using:  
+`npm install`
+
+Launch the server using:  
+`npm start`
+
+Start development mode (both webpack watching and node server.js):  
+`npm run dev`
+
+Launch tests:  
+`npm test`  
+or watch for test changes:  
+`npm run test:watch`
+
+If you wish to build bundle files (launch webpack in both development & production mode), files will be in `/dist` folder after running this:
+ ```
+ npm run build
+ ```
+
+
+ ---------------
+
 # coding-challenge-frontend-b
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 

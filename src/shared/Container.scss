@@ -1,0 +1,9 @@
+.container {
+    @include span(12);
+    
+    /** Large Desktop **/
+    @media (min-width: $large-width) {
+        @include span(8);
+        @include push(2);
+    }
+}

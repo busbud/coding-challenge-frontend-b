@@ -1,0 +1,24 @@
+@import "../../vars";
+@import "../../susy";
+
+.loader {
+
+    @include span(10);
+    @include push(1);
+
+    &__animation {
+        width: 40px;
+        height: 40px;
+        margin: 100px auto;
+        background-color: white;
+
+        border-radius: 100%;  
+        animation: sk-scaleout 1.0s infinite ease-in-out;
+    }
+}
+
+@keyframes sk-scaleout {
+  0%   {  transform: scale(0);  } 
+  100% {  transform: scale(1.0);
+          opacity: 0; }
+}

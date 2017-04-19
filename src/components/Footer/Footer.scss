@@ -1,0 +1,28 @@
+@import "../../vars";
+@import "../../susy";
+
+.footer {
+    @include span(12);
+    background-color: $gray;
+
+    padding: $section-padding;
+
+    &-link {
+        float:right;
+        margin-right: 4px;
+
+        &__logo {
+            height: 36px;    
+        }    
+    }
+    
+
+    &__message {
+        font-size: 14px;
+        line-height: 44px;
+        color: $white;
+        float: right;
+        margin-right: 12px;
+        vertical-align: bottom;
+    }
+}

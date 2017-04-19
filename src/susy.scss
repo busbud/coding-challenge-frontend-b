@@ -1,0 +1,12 @@
+/**
+ * Susy grid configuration 
+ **/
+
+@import "~susy/sass/susy";
+
+/* Changing Susy default global settings */
+$susy: (
+  columns: 12,
+  container: 1120px,
+  global-box-sizing: border-box 
+);
