@@ -1,0 +1,26 @@
+nav {
+  background: $white;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, .4);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  padding: 0 40px;
+
+  @media all and (max-width: 767px) {
+    padding: 0 10px;
+  }
+
+  ul {
+    li {
+      padding: 10px;
+      list-style: none;
+      display: inline-block;
+
+      a {
+        color: $green;
+        text-decoration: none;
+      }
+    }
+  }
+}

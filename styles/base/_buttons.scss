@@ -1,0 +1,25 @@
+$primary__button   : $green;
+$secondary__button : $blue;
+button {
+  width: 100%;
+  color: $white;
+  border: none;
+
+  &.primary {
+    background: $primary__button;
+
+    &:hover {
+      color: $white;
+      background: lighten($primary__button, 20%);
+    }
+  }
+
+  &.secondary {
+    background: $secondary__button;
+
+    &:hover {
+      color: $white;
+      background: lighten($secondary__button, 20%);
+    }
+  }
+}
