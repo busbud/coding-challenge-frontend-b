@@ -1,0 +1,11 @@
+@value colors: "./colors.css";
+@value color-black, color-light-black from colors;
+
+.card {
+  border: 1px solid color-black;
+  border-radius: 3px;
+  padding: 10px 10px;
+  margin: 15px 0;
+  background: white;
+  box-shadow: color-light-black 0px 1px 6px, color-light-black 0px 1px 4px;
+}

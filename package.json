@@ -1,0 +1,58 @@
+{
+  "name": "coding-challenge-frontend-b",
+  "version": "0.0.1",
+  "description": "malcolm laing's solution",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build": "webpack",
+    "start": "node server/server.js",
+    "dev": "webpack-dev-server --port 8082 --inline --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/montezume/coding-challenge-frontend-b.git"
+  },
+  "keywords": [
+    "reactjs",
+    "webpack",
+    "webpack-dev-server",
+    "nodejs"
+  ],
+  "author": "malcolm laing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/montezume/coding-challenge-frontend-b/issues"
+  },
+  "homepage": "https://github.com/montezume/coding-challenge-frontend-b#readme",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "css-loader": "^0.26.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "postcss-loader": "^1.1.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.3.0",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "axios": "^0.15.2",
+    "babel-polyfill": "^6.16.0",
+    "body-parser": "^1.15.2",
+    "classnames": "^2.2.5",
+    "express": "^4.14.0",
+    "flexboxgrid": "^6.3.1",
+    "moment": "^2.16.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-flexbox-grid": "^0.10.2",
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
+  }
+}
