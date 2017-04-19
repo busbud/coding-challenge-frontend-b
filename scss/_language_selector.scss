@@ -1,0 +1,16 @@
+.lang-bar {
+  display: inline-block;
+  background-color: white;
+  height: 100%;
+  float:left;
+
+  &_menu {
+    text-align: center;
+
+    a {
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.87);
+    }
+  }
+}
+

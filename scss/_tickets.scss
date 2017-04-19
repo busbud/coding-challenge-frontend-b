@@ -1,0 +1,86 @@
+.ticket {
+
+  &_list {
+    padding: 0 5px;
+    margin: 0;
+
+    @include breakpoint(medium) {
+      padding: 0 0 0 5px;
+    }
+  }
+
+  &_item {
+    list-style: none;
+    margin:0 0 5px 0;
+    background-color: white;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+
+    &_arrow {
+      padding:0;
+      color: gray;
+    }
+
+    &_cityname {
+      color:gray;
+    }
+
+    &_time {
+      font-size: larger;
+    }
+
+    &_detail {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: stretch;
+    }
+    
+    &_operator {
+      flex: 1 0 auto;
+      align-self: center;
+
+      text-align: center;
+
+      &_logo {
+        width: 100%;
+        max-width: 100px;
+      }
+    }
+
+    &_price {
+      flex: 1 0 auto;
+      align-self: center;
+      text-align: center;
+      font-size: 1.3em;
+      color:  LightSkyBlue;
+      padding: 5px;
+      background-color: #f1f1f1;
+      box-shadow: 1px 1px 5px lightskyblue;
+    }
+
+    &_currency {
+      font-size: 0.7em;
+    }
+
+    &_class {
+      flex: 4 1 100%;
+      color:white;
+      font-size: 0.9em;
+      background-color: LightSkyBlue ;
+      padding: 5px 0;
+
+      div {
+        padding: 0 0.5em;
+      }
+    }
+
+    &_fetching{
+      text-align: center;
+      background-color:  #0d0d0d;
+    }
+
+    &_refresh{
+      color: white;
+      background-color:  #0d0d0d;
+    }
+  }
+}
