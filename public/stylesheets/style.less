@@ -1,0 +1,171 @@
+@background-col: #fff;
+@medium-color: #fbfbfb;
+@dark-color: #F5F5F5;
+@darker-color: #f2f2f2;
+@border-color: #ddd;
+@nav-height: 50px;
+@result-height: 180px;
+
+body {
+	font-size: 14px;
+	font-family:  'Open Sans', "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.content {
+	min-height: 100vh;
+	background-color: @background-col;
+}
+
+a {
+	color: #00B7FF;
+}
+
+nav {
+	height: @nav-height;
+	background-color: @dark-color;
+	.bordered
+}
+
+nav img {
+	height: 100%;
+	width: auto;
+}
+
+.header{
+    margin-bottom: 20px;
+    border-bottom: 1px @border-color solid;
+    background-color: @darker-color;
+}
+
+.title {
+	margin-top: calc(~"5vh + 50px");
+	margin-bottom: 5vh;
+	font-weight: lighter;
+	letter-spacing: 5px;
+}
+
+#container {
+	width: 100%;
+}
+
+.container__big {
+	padding: 15px;
+	border: 1px @border-color solid;
+	border-radius: 3px;
+    background-color: @darker-color;
+}
+
+.bordered {
+	border: 1px #aaa solid;
+	border-radius: 3px;
+	box-shadow: 1px 1px 1px 1px darkgray;
+}
+
+.media {
+	min-height: @result-height;
+	background-color: @medium-color;
+	.bordered
+}
+
+.media-left {
+	width: 30%;
+	min-height: @result-height;
+	border-right: 1px @border-color solid;
+	div {
+		text-align: center;
+		vertical-align: middle;
+		min-height: @result-height/3;
+	}
+	p,i{
+		height: @result-height/3;
+		display: block;
+		vertical-align: middle;
+		text-align: center;
+		margin: 5px !important;
+		padding-top: 10px;
+	}
+}
+
+.media-right {
+	width: 25%;
+	border-left: 1px @border-color solid;
+}
+
+.media-object {
+	max-width: 80%;
+}
+
+.search-bar {
+	padding: 20px;
+	background-color: @medium-color;
+	.bordered
+}
+
+.search__item {
+	width: 100%;
+	height: 60px;
+}
+
+.search__field{
+	width: 90% !important;
+}
+
+#search__button{
+	button {
+		border-radius: 0;
+		margin-top: 23px;
+		box-shadow: 1px 1px 1px 1px darkgray;
+		background-color: #066491;
+		border-color: #066491;
+		&:hover {
+			background-color: #DB4392;
+			border-color: #DB4392;
+		}
+	}
+}
+
+.filter__group {
+	margin-top: 26px;
+	label {
+		margin-top: 7px;
+		margin-bottom: 0px;
+	}
+}
+
+.filter__button {
+	p {
+		margin-bottom: 0px;
+	}
+}
+
+.info__group{
+	height: @result-height/3;
+}
+
+.info__item{
+	display: inline;
+	height: 100%;
+	padding: 5px;
+}
+
+#resultsList {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding: 15px;
+	background-color: @background-col;
+	border: 1px #aaa solid;
+	border-radius: 3px;
+    .bordered
+}
+
+.info__icons {
+	display: inline;
+}
+
+#price {
+	font-weight: 700;
+}
+
+#hours {
+	font-weight: 300;
+}

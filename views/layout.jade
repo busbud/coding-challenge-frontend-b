@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title= 'Osheaga departure'
+
+    link(href="https://fonts.googleapis.com/css?family=Open+Sans", rel="stylesheet", type='text/css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    // Bootstrap
+    link(href="/bower_components/bootstrap/dist/css/bootstrap.min.css", rel='stylesheet')
+
+
+  body
+    include navbar
+    block content
+    block reactscript
+
+    //jQuery
+    script(src="/bower_components/jquery/dist/jquery.min.js", type="text/javascript")
+    
+    // Bootstrap
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js', type="text/javascript")
