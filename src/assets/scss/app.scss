@@ -1,0 +1,87 @@
+@charset 'utf-8';
+
+@import 'settings';
+@import 'foundation';
+//@import 'motion-ui';
+
+@include foundation-global-styles;
+//@include foundation-grid;
+@include foundation-flex-grid;
+@include foundation-typography;
+//@include foundation-button;
+//@include foundation-forms;
+//@include foundation-range-input;
+//@include foundation-accordion;
+//@include foundation-accordion-menu;
+//@include foundation-badge;
+//@include foundation-breadcrumbs;
+//@include foundation-button-group;
+//@include foundation-callout;
+//@include foundation-card;
+//@include foundation-close-button;
+//@include foundation-menu;
+//@include foundation-menu-icon;
+//@include foundation-drilldown-menu;
+//@include foundation-dropdown;
+//@include foundation-dropdown-menu;
+//@include foundation-responsive-embed;
+//@include foundation-label;
+//@include foundation-media-object;
+//@include foundation-off-canvas;
+//@include foundation-orbit;
+//@include foundation-pagination;
+//@include foundation-progress-bar;
+//@include foundation-progress-element;
+//@include foundation-meter-element;
+//@include foundation-slider;
+//@include foundation-sticky;
+//@include foundation-reveal;
+//@include foundation-switch;
+//@include foundation-table;
+//@include foundation-tabs;
+//@include foundation-thumbnail;
+//@include foundation-title-bar;
+//@include foundation-tooltip;
+//@include foundation-top-bar;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+@include foundation-flex-classes;
+
+//@include motion-ui-transitions;
+//@include motion-ui-animations;
+
+#body {
+  background-color: #75DE6A;
+}
+
+.hero {
+  background-repeat: no-repeat;
+  background-image:url('../../assets/img/background.svg');
+  background-position: center center;
+  background-size: cover;
+  max-width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  &:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.title {
+  font-size: 3rem;
+  font-family: 'Ranga', cursive;
+}
+
+.listing {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 1rem 1rem 1rem 2rem;
+  font-size: .7rem;
+  background-color: #D3F2D1;
+
+}
