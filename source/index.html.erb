@@ -1,0 +1,94 @@
+---
+title: Cheap bus tickets
+---
+
+  <div class="container v-align">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="text-center">
+          <div class="header-title">
+            <h1>Osheaga 2017 bus tickets from New&nbsp;York to Montreal</h1>
+            <h2>Leaving August 1 2017</h2>
+            <br>
+          </div>
+
+          <a href="#js" class="btn-tickets btn btn-default">
+            Show cheapest tickets
+          </a>
+
+          <span class="loading-icon glyphicon glyphicon-refresh glyphicon-refresh-custom glyphicon-refresh-animate hidden" aria-hidden="true"></span>
+        </div>
+
+        <div class="well well-custom text-center hidden">
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="text" class="form-control" name="origin" placeholder="Departure" value="dr5reg">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="destination" placeholder="Arrival" value="f25dvk">
+            </div>
+            <div class="form-group">
+              <input type="date" class="form-control" name="outbound_date" placeholder="Date" value="2017-08-01">
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" name="adult" placeholder="Number of passengers" min="1" max="10" value="1">
+            </div>
+            <button type="submit" class="btn btn-default search">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center">
+          <p class="noResults hidden">Sorry, no results were found for that date</p>
+        </div>
+
+        <ul class="list-unstyled results">
+          <li class="well lead template">
+            <div class="row">
+              <div class="col-md-3 col-xs-5">
+                <ul class="list-unstyled">
+                  <li class="departure-station h3 mt-10"></li>
+                  <li class="departure-city"></li>
+                  <li class="departure-time h5"></li>
+                </ul>
+              </div>
+
+              <div class="col-md-1 col-xs-2">
+                <br>
+                <br>
+                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+              </div>
+
+              <div class="col-md-3 col-xs-5">
+                <ul class="list-unstyled">
+                  <li class="arrival-station h3 mt-10"></li>
+                  <li class="arrival-city"></li>
+                  <li class="arrival-time h5"></li>
+                </ul>
+              </div>
+
+              <div class="col-xs-12 visible-xs visible-sm">
+                <hr>
+              </div>
+
+              <div class="col-md-3 col-xs-6">
+                <br>
+                <br>
+                <span class="price"></span>
+              </div>
+
+              <div class="col-md-2 col-xs-6">
+                <br>
+                <a href="#js" class="btn btn-buy btn-custom text-uppercase block" target="_blank">Buy</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
