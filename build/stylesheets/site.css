@@ -1,0 +1,52 @@
+/* variables */
+.main-image {
+  background: url("../images/rio.jpg") no-repeat center center fixed;
+  background-size: cover; }
+
+.nav-custom {
+  background-color: #127ccb;
+  min-height: 70px;
+  border: none;
+  border-radius: inherit; }
+
+.logo {
+  margin: 15px;
+  height: 36px; }
+
+.well-custom {
+  margin-top: 200px;
+  padding: 40px;
+  background-color: rgba(31, 36, 43, 0.9);
+  border: none;
+  box-shadow: 5px 5px 5px #151414; }
+
+.form-control {
+  margin: 0 10px;
+  padding: 20px; }
+
+.search {
+  padding: 10px; }
+
+.block {
+  display: block; }
+
+.template {
+  display: none; }
+
+.noResults {
+  color: #ffffff;
+  font-size: 25px; }
+
+.glyphicon-refresh-custom {
+  font-size: 3.2em;
+  margin: 0 auto;
+  color: #ffffff; }
+
+.glyphicon-refresh-animate {
+  animation: spin 1.5s infinite linear; }
+
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg); }
+  to {
+    transform: scale(1) rotate(360deg); } }

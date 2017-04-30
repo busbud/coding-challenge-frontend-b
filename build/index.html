@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cheap bus tickets</title>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="/stylesheets/vendors/bootstrap.css" rel="stylesheet" /><link href="/stylesheets/site.css" rel="stylesheet" />
+  </head>
+
+  <body class="main-image">
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="navbar nav-custom navbar-inverse">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <img alt="Brand" src="images/logo.png" class="logo">
+              </div>
+            </div><!-- /.container-fluid -->
+          </nav>
+        </div>
+      </div>
+
+      <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center">
+          <a href="#js" class="btn-tickets btn btn-default">I want my tickets!</a>
+        </div>
+
+        <div class="well well-custom text-center hidden">
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="text" class="form-control" name="origin" placeholder="Departure" value="dr5reg">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="destination" placeholder="Arrival" value="f25dvk">
+            </div>
+            <div class="form-group">
+              <input type="date" class="form-control" name="outbound_date" placeholder="Date" value="2017-05-29">
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" name="adult" placeholder="Number of passengers" min="1" max="10" value="1">
+            </div>
+            <button type="submit" class="btn btn-default search">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center">
+          <span class="loading-icon glyphicon glyphicon-refresh glyphicon-refresh-custom glyphicon-refresh-animate hidden" aria-hidden="true"></span>
+          <p class="noResults hidden">Sorry, no results were found for that date</p>
+        </div>
+
+        <ul class="list-unstyled results">
+          <li class="well lead template">
+            <div class="row">
+              <div class="col-md-3 col-xs-5">
+                <ul class="list-unstyled">
+                  <li class="departure-city"></li>
+                  <li class="departure-station"></li>
+                  <li class="departure-time"></li>
+                </ul>
+              </div>
+
+              <div class="col-md-1 col-xs-2">
+                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+              </div>
+
+              <div class="col-md-3 col-xs-5">
+                <ul class="list-unstyled">
+                  <li class="arrival-city"></li>
+                  <li class="arrival-station"></li>
+                  <li class="arrival-time"></li>
+                </ul>
+              </div>
+
+              <div class="col-xs-12 visible-xs visible-sm">
+                <hr>
+              </div>
+
+              <div class="col-md-3 col-xs-6">
+                  <span class="price"></span>
+              </div>
+
+              <div class="col-md-2 col-xs-6">
+                <a href="#js" class="btn btn-buy btn-warning text-uppercase block" target="_blank">Buy</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+    <script src="/javascripts/vendors/jquery.js"></script><script src="/javascripts/vendors/bootstrap.js"></script><script src="/javascripts/site.js"></script>
+  </body>
+</html>

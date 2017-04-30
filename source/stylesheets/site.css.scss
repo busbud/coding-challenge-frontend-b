@@ -1,0 +1,179 @@
+/* variables */
+$blue: #127ccb;
+$white: #ffffff;
+$black: rgba(31,36,43,.9);
+$yellow: #fbee40;
+$pink: #ed4a95;
+$purple: #4f285a;
+
+// Helper class
+.mt-10 {
+  margin-top: 10px;
+}
+
+.block {
+  display: block;
+}
+
+// Layout
+.main-image {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+   url("../images/osheaga.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.nav-custom {
+  background-color: $yellow;
+  min-height: 90px;
+  border: none;
+  border-radius: inherit;
+}
+
+.logo {
+  margin: 15px;
+  height: 80px;
+  color: $white;
+}
+
+// Header
+.header-title {
+  color: $white;
+  text-shadow: 0 2px 2px rgba(105,7,39,.3);
+  font-weight: bold;
+}
+
+.header-title h1 {
+  font-size: 50px;
+}
+
+.header-title h2 {
+  font-size: 30px;
+}
+
+
+// Departure form
+/* .well-custom {
+  margin-top: 200px;
+  padding: 40px;
+  background-color: rgba(31,36,43,.9);
+  border: none;
+  box-shadow: 5px 5px 5px #151414;
+} */
+
+
+// Main section
+.v-align {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btn-tickets {
+  padding: 25px 80px;
+  margin: 20px 30px;
+  background-color: $pink;
+  color: $yellow;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 18px;
+  font-weight: 900;
+  border-radius: 60px;
+  border: 2px solid $pink;
+  white-space: normal;
+}
+
+.btn-tickets:hover,
+.btn-tickets:focus {
+  background-color: $purple;
+  color: $pink;
+  border: 2px solid $pink;
+}
+
+// Results section
+.template {
+  display: none;
+}
+
+.departure-station, .arrival-station {
+  font-weight: 400;
+}
+
+.btn-custom {
+  padding: 20px;
+  background-color: $purple;
+  color: $yellow;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.btn-custom:hover,
+.btn-custom:focus {
+  color: $pink;
+
+}
+
+.price {
+  font-weight: bold;
+}
+
+.noResults {
+  color: $white;
+  font-size: 25px;
+}
+
+
+
+// Footer
+.footer-section {
+  text-align: right;
+  color: $white;
+}
+
+
+
+// Spinner
+.glyphicon-refresh-custom {
+  font-size: 3.2em;
+  margin: 0 auto;
+  color: $white;
+}
+
+.glyphicon-refresh-animate {
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+// Responsive
+
+@media only screen and (max-width: 400px) {
+  .logo {
+    margin: auto;
+  }
+
+  .header-title h1 {
+    font-size: 30px;
+    line-height: 35px;
+    }
+
+  .header-title h2 {
+    font-size: 15px;
+  }
+
+  .btn-tickets {
+    margin: 0;
+    padding: 15px 20px;
+  }
+
+  .departure-station, .arrival-station {
+    font-size: 20px;
+  }
+
+}
