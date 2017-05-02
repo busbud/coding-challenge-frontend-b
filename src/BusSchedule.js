@@ -3,7 +3,12 @@ var React = require('react');
 var BusSchedule = React.createClass({
 	render: function(){
 		return (
-			<h1>Hello world!</h1>
+			<tr>
+				<td>{this.props.departureTime}</td>
+				<td>{this.props.arrivalTime}</td>
+				<td>{this.props.locationName}</td>
+				<td>{this.props.price}</td>
+			</tr>
 		);
 	}
 });
