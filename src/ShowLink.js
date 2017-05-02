@@ -1,16 +1,23 @@
 var React = require('react');
 
-var BusSchedule = React.createClass({
+var ShowLink = React.createClass({
 	render: function(){
 		if(this.props.show === true){
-			return (
-				<a href = "https://www.busbud.com/" target = "_blank"> Head over to BusBud to book tickets!</a>
-			);
+			if(this.props.displayInFrench === false){
+				return (
+					<a href = "https://www.busbud.com/" target = "_blank"> Head over to BusBud to book tickets!</a>
+				);
+			}else{
+				return(
+					<a href = "https://www.busbud.com/" target = "_blank"> 
+					Aller à busbud pour réserver des billets!</a>
+				);
+			}
 		}else{
-			return(<a></a>)
+			return(null);
 		}
 		
 	}
 });
 
-module.exports = BusSchedule;
+module.exports = ShowLink;
