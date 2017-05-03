@@ -15,9 +15,8 @@ var App = React.createClass({
     }
   },
   displayInFrench: function(){
-    var _this = this;
-    _this.setState({
-       displayInFrench: !_this.state.displayInFrench //flip the boolean displayInFrench to toggle between Fr and En
+    this.setState({
+       displayInFrench: !this.state.displayInFrench //flip the boolean displayInFrench to toggle between Fr and En
     });
   },
   loadData: function(){
@@ -68,8 +67,7 @@ var App = React.createClass({
  getData('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-07-29/?adult = 1&lang=en&currency=USD');   //Call getData to get the data
 },
   render: function(){
-    var _this = this;
-      if(_this.state.displayInFrench === false){
+      if(this.state.displayInFrench === false){ //render this JSX if user wants it in English
         return (
           <div>
           <Jumbotron>
@@ -78,22 +76,21 @@ var App = React.createClass({
             July 29, 2017 to Montreal for the Osheaga festival! Click the button
             Load Times to see schedule that best fits your time and needs!</p>
             <p><Button bsStyle = "success" onClick = {this.loadData}>Load Times</Button></p>
-            <a href = "#" onClick = {_this.displayInFrench}>Fr</a>
+            <a href = "#" onClick = {this.displayInFrench}>Fr</a>
             <br />
-            <ShowLink show = {_this.state.showLink} displayInFrench = {_this.state.displayInFrench}/>
+            <ShowLink show = {this.state.showLink} displayInFrench = {this.state.displayInFrench}/>
           </Jumbotron>
           <Grid>
             <Row className = "show-grid">
               <Col xs={12} md = {9}>
                 <Table striped bordered condensed hover>
-                <TableHeading show = {_this.state.showHeading} displayInFrench = {_this.state.displayInFrench}/>    {/*Render just the heading of the table*/}
+                <TableHeading show = {this.state.showHeading} displayInFrench = {this.state.displayInFrench}/>    {/*Render just the heading of the table*/}
                 <tbody>
-                  {_this.state.data.map(function(row, i){
+                  {this.state.data.map(function(row, i){
                     return <BusSchedule departureTime = {row.departureTime} arrivalTime = {row.arrivalTime}
                     locationName = {row.locationName} price = {row.price} key = {i}/>
                    })}
                 </tbody>
-
                 </Table>
             </Col>
             </Row>
@@ -101,32 +98,32 @@ var App = React.createClass({
           </div>
         );
     }else{
-      return (
+      return (    //render this JSX if user wants it in French
           <div>
           <Jumbotron>
-            <h1>Bonjour!</h1>
+            <h1>Bonjour Personne de New York!</h1>
             <p>
             Il s'agit d'un simple site Web qui vous permet de rechercher des voyages en bus sur
             29 juillet 2017 à Montréal pour le festival Osheaga! Cliquez sur le bouton
             Aller pour voir l'horaire qui correspond le mieux à votre temps et à vos besoins!</p>
             <p><Button bsStyle = "success" onClick = {this.loadData}>Aller</Button></p>
-            <a href = "#" onClick = {_this.displayInFrench}>En</a>
+            <a href = "#" onClick = {this.displayInFrench}>En</a>
             <br />
-            <ShowLink show = {_this.state.showLink} displayInFrench = {_this.state.displayInFrench}/>
+            <ShowLink show = {this.state.showLink} displayInFrench = {this.state.displayInFrench}/>
           </Jumbotron>
           <Grid>
             <Row className = "show-grid">
               <Col xs={12} md = {9}>
                 <Table striped bordered condensed hover>
-                  <TableHeading show = {_this.state.showHeading} displayInFrench = {_this.state.displayInFrench}/>    {/*Render just the heading of the table*/}
+                  <TableHeading show = {this.state.showHeading} displayInFrench = {this.state.displayInFrench}/>    {/*Render just the heading of the table*/}
                   {<tbody>
-                    {_this.state.data.map(function(row, i){
+                    {this.state.data.map(function(row, i){
                       return <BusSchedule departureTime = {row.departureTime} arrivalTime = {row.arrivalTime}
                       locationName = {row.locationName} price = {row.price} key = {i}/>
                      })}
                   </tbody>}
                 </Table>
-            </Col>
+              </Col>
             </Row>
           </Grid>
           </div>

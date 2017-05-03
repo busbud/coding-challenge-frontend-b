@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react');	//BusSchedule component to return all rows for schedule
 
 var BusSchedule = React.createClass({
 	render: function(){

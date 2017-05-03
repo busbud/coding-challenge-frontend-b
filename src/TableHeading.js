@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react');		//JSX for returning French or English table headers
 
 var TableHeading = React.createClass({
 	render: function(){
