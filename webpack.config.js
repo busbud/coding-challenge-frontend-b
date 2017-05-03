@@ -13,9 +13,11 @@ var isProduction = (
   process.env.npm_lifecyle_event === 'production' )
 
 var PATHS = {
-  app: [path.resolve(__dirname, 'app'), "webpack-hot-middleware/client"],
+  app: [path.resolve(__dirname, 'app')],
   build: path.resolve(__dirname, 'build')
 }
+
+isProduction || PATHS.app.push("webpack-hot-middleware/client")
 
 var productionPlugin = new webpack.DefinePlugin({
   'process.env': {
@@ -23,7 +25,7 @@ var productionPlugin = new webpack.DefinePlugin({
   }
 })
 
-module.exports = {
+const base = {
   entry: PATHS.app,
   output: {
     path: PATHS.build,
@@ -35,7 +37,23 @@ module.exports = {
       { test: /\.js$/, exclude: /\node_modules/, use: 'babel-loader' }
     ]
   },
-  plugins: [HtmlWebpackPluginConfig, productionPlugin, new webpack.HotModuleReplacementPlugin()]
 }
+
+const devConfig = {
+  plugins: [
+    HtmlWebpackPluginConfig,
+    productionPlugin,
+    new webpack.HotModuleReplacementPlugin()
+  ]
+}
+
+const prodConfig= {
+  plugins: [
+    HtmlWebpackPluginConfig,
+    productionPlugin
+  ]
+}
+
+module.exports = Object.assign({}, base, isProduction ? prodConfig : devConfig)
 
 
