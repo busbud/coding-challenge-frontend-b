@@ -38,7 +38,7 @@ var App = React.createClass({
       success: function(results){
        console.log(results.complete);
        if(results.complete === false){  //If results.complete is false, call getData again with the polling URL
-        getData('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-07-29/poll?adult=1&lang=en&currency=USD&index=0'); //Call the function again but with a new URL
+        getData('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-07-29/poll?adult=1&lang=en&currency=USD&index=0'); //Call the function again but with a new URL and keep calling until results.complete is false
        }
        else{
         var locations = {};
