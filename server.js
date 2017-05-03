@@ -15,12 +15,6 @@ if (process.env.NODE_ENV !== "production") {
         config                = require('./webpack.config.js'),
         webpackCompiler       = webpack(config);
 
-  // config.entry.unshift("webpack-hot-middleware/client");
-
-  // config.plugins.unshift(
-  //   new webpack.HotModuleReplacementPlugin()
-  // );
-
   app.use(webpackMiddleware(webpackCompiler, {
     publicPath: config.output.publicPath,
     stats: {
