@@ -1,1 +1,1 @@
-web: node server.js
+web: wepback -p; node server.js
