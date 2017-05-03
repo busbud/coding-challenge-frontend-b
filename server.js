@@ -7,15 +7,22 @@ app.use(morgan('tiny'))
 
 // if dev use wepback middleware
 if (process.env.NODE_ENV !== "production") {
+  console.log('serving development')
 
   const webpackMiddleware     = require('webpack-dev-middleware'),
         webpackHotMiddleware  = require('webpack-hot-middleware'),
         webpack               = require('webpack'),
-        webpackConfig         = require('./webpack.config.js'),
-        webpackCompiler       = webpack(webpackConfig);
+        config                = require('./webpack.config.js'),
+        webpackCompiler       = webpack(config);
+
+  // config.entry.unshift("webpack-hot-middleware/client");
+
+  // config.plugins.unshift(
+  //   new webpack.HotModuleReplacementPlugin()
+  // );
 
   app.use(webpackMiddleware(webpackCompiler, {
-    publicPath: webpackConfig.output.publicPath,
+    publicPath: config.output.publicPath,
     stats: {
       colors: true,
       chunks: false,
@@ -28,6 +35,7 @@ if (process.env.NODE_ENV !== "production") {
   }));
 
 } else {
+  console.log('serving production')
   // use static content from dist
   app.use(express.static('build'))
 
