@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== "production") {
   const webpackMiddleware     = require('webpack-dev-middleware'),
         webpackHotMiddleware  = require('webpack-hot-middleware'),
         webpack               = require('webpack'),
-        webpackConfig         = require('./webpack.config.babel.js'),
+        webpackConfig         = require('./webpack.config.js'),
         webpackCompiler       = webpack(webpackConfig);
 
   app.use(webpackMiddleware(webpackCompiler, {
@@ -38,4 +38,4 @@ if (process.env.NODE_ENV !== "production") {
 
 const port = process.env.PORT || 3000
 
-app.listen(port, () => console.log(`listening on port: ${port}...`)
+app.listen(port, () => console.log(`listening on port: ${port}...`))
