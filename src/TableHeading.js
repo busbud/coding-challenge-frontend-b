@@ -28,9 +28,8 @@ var TableHeading = React.createClass({
 			}
 		
 		}else{
-			return (<thead></thead>);
+			return (null);
 		}
-		
 	}
 });
 

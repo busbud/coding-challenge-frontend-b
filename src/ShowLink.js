@@ -10,7 +10,7 @@ var ShowLink = React.createClass({
 			}else{
 				return(
 					<a href = "https://www.busbud.com/" target = "_blank"> 
-					Aller à busbud pour réserver des billets!</a>
+					Aller à BusBud pour réserver des billets!</a>
 				);
 			}
 		}else{

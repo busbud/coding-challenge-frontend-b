@@ -2,63 +2,71 @@ var React = require('react');
 var BusSchedule = require('./BusSchedule');
 var TableHeading = require('./TableHeading');
 var ShowLink = require('./ShowLink');
-var axios = require('axios');
 import {Jumbotron, Button, Table, Grid, Row, Col} from 'react-bootstrap'; //bootstrap for responsive design
-
-/*ToDo Look into caching
-        Look into polling
-        https://davidwalsh.name/fetch for caching
-*/
+import $ from 'jquery'; //using $ from jQuery for AJAX calls
 
 var App = React.createClass({
   getInitialState: function(){
     return{
-      data: [],
-      showHeading: false,
-      showLink: false ,
-      displayInFrench: false
+      data: [],                 //State variables
+      showHeading: false,       //Controls heading of table
+      showLink: false ,          //Controls heading to BusBud link
+      displayInFrench: false     //display in French or not?
     }
   },
   displayInFrench: function(){
     var _this = this;
     _this.setState({
-       displayInFrench: !_this.state.displayInFrench
+       displayInFrench: !_this.state.displayInFrench //flip the boolean displayInFrench to toggle between Fr and En
     });
   },
   loadData: function(){
-    var _this = this;
-    axios.request({
-      url: 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-07-29?adult=1&lang=en&currency=USD', // 
-      method: 'get',                                                                                     // 
-      headers: {                                                                                         //
+    var _this = this; //assigning _this so it can be referenced within functions and hold the same context
+    var information; //collect individual characteristics such as departureTime, arrivalTime, price, etc. into this object
+    var data = []; //final array to push onto the state of data
+
+    function getData(url){
+      $.ajax({
+      url: url,
+      type: 'get',
+      dataType: 'json',
+      cache: true,
+      headers: {                                                                                         //Required headers for API call
         'Content-Type': 'application/json',                                                               //
         'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',        //
         'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
+        },
+      success: function(results){
+       console.log(results.complete);
+       if(results.complete === false){  //If results.complete is false, call getData again with the polling URL
+        getData('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-07-29/poll?adult=1&lang=en&currency=USD&index=0'); //Call the function again but with a new URL
+       }
+       else{
+        var locations = {};
+        for(var i = 0; i < results.locations.length; i++){
+            locations[results.locations[i].id] = results.locations[i].name;   //Make an object storing the location's id with their name as name value pairs
         }
-    }).then(function(results){
-      var locations = {};
-      for(var i = 0; i < results.data.locations.length; i++){
-          locations[results.data.locations[i].id] = results.data.locations[i].name;   //Make an object storing the location's id with their name as name value pairs
+        for(i = 0; i < results.departures.length; i++){
+          information = {};  //Set equal to empty object so it doesn't affect the data array
+          information.departureTime = new Date(results.departures[i].departure_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});  //Convert the times to human readable times
+          information.arrivalTime = new Date(results.departures[i].arrival_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+          information.price = (results.departures[i].prices.total/100).toFixed(2); //Divide the price by 100 and make it fixed to 2 decimal places
+          information.locationName = locations[results.departures[i].origin_location_id]; //Determine the location name from the locations object
+          //console.log(information);
+          data.push(information);
+        }
+        //console.log(data);
+        _this.setState({
+          data: data,
+          showHeading: true,
+          showLink: true
+        });
       }
-      var information; //collect individual characteristics such as departureTime, arrivalTime, price, etc. into this object
-      var data = []; //final array to push onto the state of data
-      for(i = 0; i < results.data.departures.length; i++){
-        information = {};  //Set equal to empty object so it doesn't affect the data array
-        information.departureTime = new Date(results.data.departures[i].departure_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});  //Convert the times to human readable times
-        information.arrivalTime = new Date(results.data.departures[i].arrival_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-        information.price = (results.data.departures[i].prices.total/100).toFixed(2); //Divide the price by 100 and make it fixed to 2 decimal places
-        information.locationName = locations[results.data.departures[i].origin_location_id]; //Determine the location name from the locations object
-        console.log(information);
-        data.push(information);
-      }
-      console.log(data);
-      _this.setState({
-        data: data,
-        showHeading: true,
-        showLink: true
-      });
-    });
-  },
+    }
+  });
+}
+ getData('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-07-29/?adult = 1&lang=en&currency=USD');   //Call getData to get the data
+},
   render: function(){
     var _this = this;
       if(_this.state.displayInFrench === false){
@@ -110,13 +118,13 @@ var App = React.createClass({
             <Row className = "show-grid">
               <Col xs={12} md = {9}>
                 <Table striped bordered condensed hover>
-                <TableHeading show = {_this.state.showHeading} displayInFrench = {_this.state.displayInFrench}/>    {/*Render just the heading of the table*/}
-                {<tbody>
-                  {_this.state.data.map(function(row, i){
-                    return <BusSchedule departureTime = {row.departureTime} arrivalTime = {row.arrivalTime}
-                    locationName = {row.locationName} price = {row.price} key = {i}/>
-                   })}
-                </tbody>}
+                  <TableHeading show = {_this.state.showHeading} displayInFrench = {_this.state.displayInFrench}/>    {/*Render just the heading of the table*/}
+                  {<tbody>
+                    {_this.state.data.map(function(row, i){
+                      return <BusSchedule departureTime = {row.departureTime} arrivalTime = {row.arrivalTime}
+                      locationName = {row.locationName} price = {row.price} key = {i}/>
+                     })}
+                  </tbody>}
                 </Table>
             </Col>
             </Row>
