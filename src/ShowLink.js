@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react');				//JSX for return French or English link
 
 var ShowLink = React.createClass({
 	render: function(){
