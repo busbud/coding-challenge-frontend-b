@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {# HEADER #}
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  {# TITLE #}
+  <title>Busbud</title>
+
+</head>
+
+<body>
+{# WHOLE PAGE WRAP #}
+<div class=container>
+
+  {# BIG IMAGE #}
+  <div class='osheaga'>
+    <img src='logo.png' width="1000" height="500" class="img-responsive center-block">
+  </div>
+
+  {# BUSBUD TITLE + DESTINATION #}
+  <div class="row">
+
+    {# BUSBUD LOGO #}
+    <div class="col-xs-1">
+      <img src='wow.jpg' width="75" height="90" class="pull-left">
+    </div>
+
+    {# DESTINATION #}
+    <div class="col-xs-9">
+      <div class="page-header">
+        <h1> Bud <span class="glyphicon glyphicon-road" aria-hidden="true"></span><small>  from  </small> New York <small> <span class="glyphicon glyphicon-menu-right" aria-hidden="true"> </small> Montreal  </h1>
+        </div>
+      </div>
+
+      {# CHOOSE LANGUAGE FR/EN #}
+      <div class="col-xs-2">
+        <div class="btn-group-vertical" role="group" aria-label="Language">
+          <button type="button" class="btn btn-default">Fr</button>
+          <button type="button" class="btn btn-default">En</button>
+        </div>
+      </div>
+    </div>
+
+
+    {# ORGANIZE DATA FROM API #}
+
+    {% set divide = 100 %}
+
+
+    {% for departures in data.departures %}
+
+    {# PANEL UNIT (1) #}
+    <div class="container-fluid">
+
+      {# PANEL IN ORANGE / COLOR #}
+      <div class="panel panel-warning">
+        <div class="well">
+          <h3>
+
+            {# FIRST LINE OF PANEL (1) #}
+            <div class="panel-heading">
+              <div class="row">
+
+                {# DEPARTURE #}
+                <div class="col-xs-5">Porth Authority Bus Terminal</div>
+
+                {# DEPARTURE TIME #}
+                <div class="col-xs-5">{{departures.departure_time|slice(11,5)}}</div>
+
+                {# PRICE #}
+                <div class="col-xs-1">{{ departures.prices.total / divide}},00$</div>
+              </div>
+            </div>
+
+              {# SECOND LINE OF PANEL (1) #}
+              <div class="panel-body">
+                <div class="row">
+
+                  {# DESTINATION #}
+                  <div class="col-xs-5">Gare d'Autocars de Montréal</div>
+
+                  {# ARRIVAL TIME #}
+                  <div class="col-xs-5">{{departures.arrival_time|slice(11,5)}}</div>
+
+                  {# EMPTY SPACE #}
+                  <div class="col-xs-1"></div>
+                </div>
+              </div>
+
+          </h3>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+  </html>
