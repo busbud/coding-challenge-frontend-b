@@ -1,0 +1,22 @@
+{
+	"en": {
+		"time": "Time",
+		"location": "Location",
+		"price": "Price"
+	},
+	"fr": {
+		"time": "Heure",
+		"location": "Emplacement",
+		"price": "Prix"
+	},
+	"ja": {
+		"time": "時間",
+		"location": "場所",
+		"price": "価格"
+	},
+	"ko": {
+		"time": "시간",
+		"location": "장소",
+		"price": "가격"
+	}
+}
