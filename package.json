@@ -1,0 +1,39 @@
+{
+  "name": "osheaga",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.15.2",
+    "moment": "^2.18.1",
+    "morgan": "^1.8.1",
+    "react": "^15.5.4",
+    "react-bootstrap": "^0.31.0",
+    "react-dom": "^15.5.4",
+    "react-intl": "^2.2.3",
+    "react-router-dom": "^4.1.1"
+  },
+  "devDependencies": {
+    "babel-plugin-react-intl": "^2.3.1",
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-mocha": "^4.9.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^3.3.0",
+    "mz": "^2.6.0",
+    "nyc": "^10.3.0",
+    "react-scripts": "0.9.5",
+    "supertest": "^3.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "npm run lint && nyc mocha",
+    "eject": "react-scripts eject",
+    "lint": "eslint ./"
+  }
+}
