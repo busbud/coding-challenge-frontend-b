@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  
+
   {# TITLE #}
   <title>Busbud</title>
 
@@ -79,7 +79,7 @@
 
 {% endfor %}
 
-
+{# ALL DEPARTURE/ARRIVAL ID THAT MATCH WITH CLIENT'S NEEDS ARE FOUND #}
 
 
 {# ORGANIZE DATA FROM API #}
@@ -102,7 +102,9 @@
             {# DEPARTURE #}
             {% set leaving_length = leaving_id|length %}
             {% for k in 0..(leaving_length) %}
+            {# IF A DEPARTURE ID IS MATCHING WITH THE ID FROM THE COSTUMER QUERY, PLEASE DISPLAY THE DEPARTURE #}
             {% if leaving_id[k] == departures.origin_location_id %}
+            {# DISPLAYING THE NAME OF THE LOCATION SET BY COSTUMER #}
             <div class="col-xs-5"> {{ leaving }}</div>
             {% endif %}
             {% endfor %}
@@ -112,6 +114,7 @@
 
             {# PRICE #}
             {% set price = departures.prices.total / divide %}
+            {# NUMBER FORMAT(qty of decimal numbers,'type of decimal separator') #}
             <div class="col-xs-1">{{ price|number_format(2, ',') ~ "$" }} </div>
           </div>
         </div>
@@ -123,7 +126,9 @@
             {# DESTINATION #}
             {% set arriving_length = arriving_id|length %}
             {% for k in 0..(arriving_length) %}
+            {# IF A DEPARTURE ID IS MATCHING WITH THE ID FROM THE COSTUMER QUERY, PLEASE DISPLAY THE DEPARTURE #}
             {% if arriving_id[k] == departures.destination_location_id %}
+            {# DISPLAYING THE NAME OF THE LOCATION SET BY COSTUMER #}
             <div class="col-xs-5">{{arriving}}</div>
           {% endif %}
           {% endfor
