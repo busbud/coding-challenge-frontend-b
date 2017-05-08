@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/reveza/coding-challenge-frontend-b#readme",
   "dependencies": {
+    "async": "^2.4.0",
     "express": "4.15.2",
     "lodash": "^4.17.4",
     "twig": "^1.10.4"

@@ -1,57 +1,79 @@
-/*** DECLARE MODULES TO USE IN THIS APP ***/
-var express = require('express')
-var lodash = require('lodash')
+
+// SETTING MODULES //
+var express = require('express');
 var Twig = require('twig'), twig = Twig.twig;
 var request = require('request');
-var app = express()
+var async = require('async');
+var whilst = require('async/whilst');
+var app = express();
 
+// SETTING HEADER //
+var options = {
+              url: 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-07-29',
+              headers: {
+                        'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A',
+                        'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/'
+                       }
+              };
 
-/*** ACCESS TO STATIC FILES LIKE PICTURES ***/
+// SETTING VARIABLE DATA //
+var data;
+
+// CREATING A STATIC FILE DIRECTORY FOR PICTURES //
 app.use(express.static('public'))
 
-/*** CALLING API WITH THE SERVER ***/
+// CALLING API ON SERVER SIDE //
 app.get('/', function (req, res) {
 
-  /*** ACCESS API ***/
-  request({
-    url: 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-07-29',
-    headers: {
-      'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A',
-      'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/'
-    }
-  }, function (err, result) {
-    if (err) {
-      console.log('erreur!', err.stack);
-    }
-    else {
-      /*** PUT IN TABLES ALL DATA FROM API - JSONIFY ***/
-      var data = JSON.parse(result.body);
+                                    // ASYNCHRONOUS: LOOP UNTIL DATA.COMPLETE = TRUE //
+                                    async.whilst(
 
-      /*** DISPLAY API RESULTS ***/
-      console.log(data);
+                                                  // PARAMETER 1 : CONDITION THAT CHECKS WHETHER TO ENTER LOOP OR NOT //
+                                                  function() {
 
-if (data.complete)
-res.render('index.twig', {
-  data : data,
-})
-else {
-request({
-  url: 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2017-07-29/poll/?index',
-  headers: {
-    'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A',
-    'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/'
-  }
+                                                               // VERIFY IF DATA IS EMPTY //
+                                                               if (!data) {
+                                                                           return true;
+                                                                         };
+                                                               // DATA IS NOT EMPTY & IF DATA.COMPLETE = FALSE => CONTINUE LOOPING //
+                                                               console.log(data.complete)
+                                                               return (!data.complete);
+                                                             },
 
-    res.render('index.twig', {
-      data : data,
-    })
-  })
-}
+                                                  // PARAMETER 2 : LOOP EXECUTION //
+                                                  function(cb) {
 
-  };
-  }
-)}
+                                                                // MAKE REQUEST(HEADERES,FUNCTION(ERR,RESPONSE)) //
+                                                                request(options,function(err, response){
 
-);
+                                                                                // IF REQUEST WORKS, CALLBACK DATA //
+                                                                                if(!err && response.statusCode == 200){
+
+                                                                                // REFRESH DATA CONTENT //
+                                                                                data = JSON.parse(response.body);
+
+                                                                                // EXECUTE THE CALLBACK FUNCTION IN PARAMETER 3 //
+                                                                                cb(null,response, data);
+                                                                                }
+
+                                                                                // IF REQUEST FAILS //
+                                                                                else{
+                                                                                  console.log('err')
+                                                                                  cb(err || response.statusCode);
+                                                                                }
+                                                                              })
+
+                                                              },
+
+                                                  // PARAMETER 3: DEFINE CALLBACK FUNCTION //
+                                                  function (err, n,data) {
+                                                    res.render('index.twig', {
+                                                      data : data
+                                                    });
+                                                  }
+                                                )
+
+
+                             });
 
 app.listen(3000)
