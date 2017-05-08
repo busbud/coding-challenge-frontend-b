@@ -110,7 +110,7 @@
                 {# IF A DEPARTURE ID IS MATCHING WITH THE ID FROM THE CUSTOMER QUERY, PLEASE DISPLAY THE DEPARTURE #}
                 {% if leaving_id[k] == departures.origin_location_id %}
 
-                {# DISPLAYING THE NAME OF THE LOCATION SET BY COSTUMER #}
+                {# DISPLAYING THE NAME OF THE LOCATION SET BY CUSTOMER #}
                 <div class="col-xs-5"> {{ leaving }} </div>
 
                 {% endif %}
@@ -137,10 +137,10 @@
 
                 {% for k in 0..(arriving_length) %}
 
-                {# IF A DEPARTURE ID IS MATCHING WITH THE ID FROM THE COSTUMER QUERY, PLEASE DISPLAY THE DEPARTURE #}
+                {# IF A DEPARTURE ID IS MATCHING WITH THE ID FROM THE CUSTOMER QUERY, PLEASE DISPLAY THE DEPARTURE #}
                 {% if arriving_id[k] == departures.destination_location_id %}
 
-                {# DISPLAYING THE NAME OF THE LOCATION SET BY COSTUMER #}
+                {# DISPLAYING THE NAME OF THE LOCATION SET BY CUSTOMER #}
                 <div class="col-xs-5">{{arriving}}</div>
 
                 {% endif %}
