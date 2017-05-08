@@ -1,5 +1,6 @@
 import {
-  SEARCH_SUBMIT,
+  ADD_SEARCH_PARAMS,
+  FETCHING_BUS_SCHEDULE,
   SEARCH_SUCCESS,
   SEARCH_FAILURE
 } from '../actions/types'
@@ -12,21 +13,25 @@ const defualtSearchState = {
   destinationCity: { name: "Montreal", geoCode: "" }
 }
 
-export const search = (state = defualtSearchState, action) => {
+const search = (state = defualtSearchState, action) => {
   switch (action.type) {
-    case SEARCH_SUBMIT:
+    case ADD_SEARCH_PARAMS :
       return {
         ...state,
-        isFetching: true,
         leaving: action.leaving,
         returning: action.returning,
         departure: action.departure,
         destination: action.destination
       }
+    case FETCHING_BUS_SCHEDULE :
+      return {
+        ...state,
+        isFetching: true,
+      }
     case SEARCH_SUCCESS :
       return {
         ...state,
-        isFetching: false,
+        isFetching: false
       }
     case SEARCH_FAILURE :
       return {
@@ -39,15 +44,6 @@ export const search = (state = defualtSearchState, action) => {
   }
 }
 
-const results = (state = {}, action) => {
-  switch (action.type) {
-    case SEARCH_SUCCESS :
-      return {
-        ...state,
-        showResults: true,
-        searchResults: []
-      }
-  }
-}
+export default search
 
 

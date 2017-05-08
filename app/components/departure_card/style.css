@@ -1,0 +1,75 @@
+.card {
+  display: flex;
+  flex-flow: row wrap;
+  border: 20px solid #fbee40;
+  background-color: #ffffff;
+  color: #4f285a;
+  box-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+.card {
+  font-family: Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+}
+
+.itinerary {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px 20px 10px;
+  border-bottom: 1px solid #eaeced;
+  border-right: 1px solid #eaeced;
+}
+
+.itineraryDetail {
+  flex: 0 100px;
+}
+
+.itineraryDetail h4 {
+  font-size: 22px;
+  font-weight: 100;
+  font-family: "Changa One",impact,sans-serif;
+}
+
+.logo {
+  margin-top: auto;
+}
+
+.carrier {
+  border-right: 1px solid #eaeced;
+  padding: 20px 20px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  margin-top: auto;
+}
+
+.callToAction {
+  flex: 0 0 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.price {
+  margin-top: auto
+}
+
+.cta {
+  width: 100%;
+  padding: 12px;
+  margin-top: auto;
+  border: 0px solid #dde457;
+  background-color: #ed4a95;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,.24);
+  box-shadow: 0 1px 2px rgba(0,0,0,.6);
+  outline: none;
+  cursor: pointer;
+}

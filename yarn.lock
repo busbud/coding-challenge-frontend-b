@@ -175,6 +175,12 @@ aws4@^1.2.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
+axios@^0.16.1:
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.16.1.tgz#c0b6d26600842384b8f509e57111f0d2df8223ca"
+  dependencies:
+    follow-redirects "^1.2.3"
+
 babel-code-frame@^6.11.0, babel-code-frame@^6.22.0:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.22.0.tgz#027620bee567a88c32561574e7fd0801d33118e4"
@@ -716,6 +722,14 @@ babel-plugin-transform-strict-mode@^6.24.1:
   dependencies:
     babel-runtime "^6.22.0"
     babel-types "^6.24.1"
+
+babel-polyfill@^6.23.0:
+  version "6.23.0"
+  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.23.0.tgz#8364ca62df8eafb830499f699177466c3b03499d"
+  dependencies:
+    babel-runtime "^6.22.0"
+    core-js "^2.4.0"
+    regenerator-runtime "^0.10.0"
 
 babel-preset-es2015@^6.24.1:
   version "6.24.1"
@@ -1416,7 +1430,7 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@2.6.1, debug@^2.1.1:
+debug@2.6.1, debug@^2.1.1, debug@^2.4.5:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
   dependencies:
@@ -1719,6 +1733,12 @@ fbjs@^0.8.9:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
+file-loader@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-0.11.1.tgz#6b328ee1234a729e4e47d36375dd6d35c0e1db84"
+  dependencies:
+    loader-utils "^1.0.2"
+
 filename-regex@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
@@ -1763,6 +1783,12 @@ find-up@^1.0.0:
 flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
+
+follow-redirects@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.2.3.tgz#01abaeca85e3609837d9fcda3167a7e42fdaca21"
+  dependencies:
+    debug "^2.4.5"
 
 for-in@^1.0.1:
   version "1.0.2"
@@ -3327,6 +3353,10 @@ reduce-function-call@^1.0.1:
   resolved "https://registry.yarnpkg.com/reduce-function-call/-/reduce-function-call-1.0.2.tgz#5a200bf92e0e37751752fe45b0ab330fd4b6be99"
   dependencies:
     balanced-match "^0.4.2"
+
+redux-thunk@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.2.0.tgz#e615a16e16b47a19a515766133d1e3e99b7852e5"
 
 redux@^3.6.0:
   version "3.6.0"

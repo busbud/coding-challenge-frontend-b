@@ -6,18 +6,21 @@ import {
   Switch
 } from 'react-router-dom'
 
-import { Home, BusScheduleResults } from './components'
+import { SearchContainer } from './containers'
+import { Home, BusScheduleResults, Header, Footer } from './components'
 
 const App = ({store}) => (
   <Provider store={store}>
     <Router>
-      <Switch>
-        <Route path="/" component={Home}/>
-        <Route path="/bus-schedule-results/:departure/:destination" component={BusScheduleResults} />
-      </Switch>
+      <div>
+        <Header/>
+        <SearchContainer />
+        <Route path="/" exact component={Home}/>
+        <Route path="/bus-schedule-results/:departure/:destination/:date" component={BusScheduleResults} />
+        <Footer/>
+      </div>
     </Router>
   </Provider>
 )
-// en-ca/bus-schedules-results/f25dvk/dr5reg?outbound_date=2017-05-05&return_date=2017-05-09&adults=1
 
 export default App

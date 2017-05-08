@@ -13,7 +13,7 @@ var isProduction = (
   process.env.npm_lifecyle_event === 'production' )
 
 var PATHS = {
-  app: [path.resolve(__dirname, 'app')],
+  app: ["babel-polyfill", path.resolve(__dirname, 'app')],
   build: path.resolve(__dirname, 'build')
 }
 
@@ -35,16 +35,18 @@ const base = {
   module: {
     rules: [
       { test: /\.js$/, exclude: /\node_modules/, use: 'babel-loader' },
-      { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' }
+      { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: ['file-loader?name=[name].[ext]&outputPath=img/'],
+        exclude: [/fonts/]
+      }
     ]
   },
 }
 
 const devConfig = {
-  target: 'node',
-  devServer: {
-    historyApiFallback: true,
-  },
+  devtool: 'cheap-module-inline-source-map',
   plugins: [
     HtmlWebpackPluginConfig,
     productionPlugin,

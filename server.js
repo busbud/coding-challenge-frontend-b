@@ -14,29 +14,28 @@ if (process.env.NODE_ENV !== "production") {
         webpackHotMiddleware  = require('webpack-hot-middleware'),
         webpack               = require('webpack'),
         config                = require('./webpack.config.js'),
+        apiFallBack           = require('connect-history-api-fallback'),
         webpackCompiler       = webpack(config);
-
 
   const devMiddleWare = webpackMiddleware(webpackCompiler, {
     publicPath: config.output.publicPath,
-    historyApiFallback: true,
+    hot: true,
     stats: {
-      noInfo: true,
       colors: true,
       chunks: false,
       'errors-only': true
     }
   })
 
+  app.use(apiFallBack({
+    verbose: true
+  }));
+
   app.use(devMiddleWare)
 
   app.use(webpackHotMiddleware(webpackCompiler, {
     log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
   }));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'app/index.html'));
-  })
 
 } else {
   console.log('serving production')

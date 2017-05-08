@@ -1,0 +1,9 @@
+.resultList {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.resultList li {
+  list-style: none;
+  margin-top: 24px;
+}

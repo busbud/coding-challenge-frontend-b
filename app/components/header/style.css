@@ -1,0 +1,35 @@
+.hero {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-flow: row wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero h2 {
+  flex: 1 1 900px;
+  text-align: center;
+  font-weight: 200;
+  font-size: 28px;
+  letter-spacing: 1.2px;
+  font-family: "Changa One",impact,sans-serif;
+  color: #fbee40;
+  margin-bottom: 0px;
+  text-shadow: 0 1px 2px rgba(0,0,0,.24);
+}
+
+.hero p {
+  font-size: 18px;
+  font-weight: 100;
+  color: #fbee40;
+  letter-spacing: 1.2px;
+  font-family: "Changa One",impact,sans-serif;
+  text-shadow: 0 1px 2px rgba(0,0,0,.24);
+}
+
+.logoWrapper {
+  flex: 1 1 900px;
+  display: flex;
+  justify-content: center;
+}

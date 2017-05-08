@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Search } from '../../components'
 import { Redirect } from 'react-router-dom'
+import moment from 'moment'
 
 class SearchContainer extends Component {
 
@@ -8,7 +9,9 @@ class SearchContainer extends Component {
     super(props);
     this.state = {
       redirectToResults: false,
-      query: {}
+      leaving: moment("2017-07-29"), // hard code this
+      departute: 'dr5reg', // hard code this
+      arrival: 'f25dvk', // hard code this
     }
 
     this._handleSearch = this._handleSearch.bind(this)
@@ -20,15 +23,14 @@ class SearchContainer extends Component {
   }
 
   render () {
-
-    if (this.state.redirectToResults) {
-      return (
-        <Redirect to={`/bus-schedule-results/new-york/montreal`} />
-      )
-    }
+    const {leaving, departute, arrival} = this.state
 
     return (
-      <Search handleSubmit={ this._handleSearch } />
+      <div>
+        <Search handleSubmit={ this._handleSearch } leaving={this.state.leaving} />
+        { this.state.redirectToResults &&
+          <Redirect to={`/bus-schedule-results/${departute}/${arrival}/${leaving._i}`} /> }
+      </div>
     )
   }
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { ResultListContainer } from '../../containers'
 
-class BusScheduleResults extends Comment {
-  render () {
-    return <div> This was your life </div>
-  }
+const BusScheduleResults = ({match}) => {
+  return <ResultListContainer params={match.params} />
 }
+
+export default BusScheduleResults
