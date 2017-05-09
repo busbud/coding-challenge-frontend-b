@@ -19,8 +19,7 @@ var options = {
 // SET PORT FOR HEROKU APP //
 app.set('port', (process.env.PORT || 5000));
 
-// SETTING VARIABLE DATA //
-var data;
+
 
 // CREATING A STATIC FILE DIRECTORY FOR PICTURES //
 app.use(express.static('public'))
@@ -28,6 +27,8 @@ app.use(express.static('public'))
 // CALLING API ON SERVER SIDE //
 app.get('/', function (req, res) {
 
+                                  // SETTING VARIABLE DATA //
+                                  var data;
 
                                     // ASYNCHRONOUS: LOOP UNTIL DATA.COMPLETE = TRUE //
                                     async.whilst(
