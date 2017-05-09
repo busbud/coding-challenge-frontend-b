@@ -16,10 +16,6 @@ var options = {
                        }
               };
 
-// SETTING VARIABLE DATA //
-var data;
-var (data.complete)=false;
-
 // SET PORT FOR HEROKU APP //
 app.set('port', (process.env.PORT || 5000));
 
@@ -30,6 +26,10 @@ app.use(express.static('public'))
 
 // CALLING API ON SERVER SIDE //
 app.get('/', function (req, res) {
+
+                                  // SETTING VARIABLE DATA //
+                                  var data;
+                                  var data.complete=false;
 
                                     // ASYNCHRONOUS: LOOP UNTIL DATA.COMPLETE = TRUE //
                                     async.whilst(
