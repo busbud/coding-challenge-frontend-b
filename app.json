@@ -1,0 +1,6 @@
+{
+  "name": "Coding challenge Busbud",
+  "description": "Heroku App",
+  "repository": "git+https://github.com/reveza/coding-challenge-frontend-b.git",
+  "keywords": ["node", "express", "heroku"],
+}

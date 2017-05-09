@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {# HEADER #}
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  {# TITLE #}
+  <title>Busbud</title>
+
+</head>
+
+<body>
+  {# WHOLE PAGE WRAP #}
+  <div class=container>
+
+    {# BIG IMAGE #}
+    <div class='osheaga'>
+      <img src='logo.png' width="1000" height="500" class="img-responsive center-block">
+    </div>
+
+    {# BUSBUD TITLE + DESTINATION #}
+    <div class="row">
+
+      {# BUSBUD LOGO #}
+      <div class="col-xs-1">
+        <img src="wow.JPG" class="img-responsive">
+      </div>
+
+      {# DESTINATION #}
+      <div class="col-xs-9">
+        <div class="page-header">
+          <h1> Bud <span class="glyphicon glyphicon-road" aria-hidden="true"></span><small>  from  </small> New York <small> <span class="glyphicon glyphicon-menu-right" aria-hidden="true"> </small> Montreal  </h1>
+          </div>
+        </div>
+
+        {# CHOOSE LANGUAGE FR/EN #}
+        <div class="col-xs-2">
+          <div class="btn-group-vertical" role="group" aria-label="Language">
+            <button type="button" class="btn btn-default">Fr</button>
+            <button type="button" class="btn btn-default">En</button>
+          </div>
+        </div>
+
+      </div>
+
+
+      {% set divide = 100 %}
+
+      {# CREATE LEAVING AND ARRIVING STRINGS IN FUNCTION OF USERS' QUERY #}
+
+      {% set leaving = "Port Authority Bus Terminal" %}
+      {% set arriving = "Gare d'autocars de Montréal" %}
+
+      {# COLLECT THE ID'S OF LEAVING & ARRVING #}
+
+      {# INITIALIZE VARIABLES #}
+      {% set leaving_id = [] %}
+      {% set arriving_id = [] %}
+
+      {# FOR ALL LOCATIONS, FIND WHICH ONES ARE MATCHING WITH ORIGINAL USER QUERY #}
+      {% for locations in data.locations %}
+
+      {# IF THERE IS A MATCH BETWEEN LEAVING NAME FROM USER SEARCH AND THE DATA, FIND THE LOCATION ID AND STORE IT INTO A VARIABLE #}
+      {% if leaving == locations.name %}
+      {% set location = locations.id %}
+      {# STORING ALL MATCHING ID'S#}
+      {% set leaving_id = leaving_id|merge( [locations.id] ) %}
+      {% endif %}
+
+      {# IF THERE IS A MATCH BETWEEN ARRIVING NAME FROM USER SEARCH AND THE DATA, FIND THE LOCATION ID AND STORE IT INTO A VARIABLE #}
+      {% if arriving == locations.name %}
+      {% set location = locations.id %}
+      {# STORING ALL MATCHING ID'S#}
+      {% set arriving_id = leaving_id|merge( [locations.id] ) %}
+      {% endif %}
+
+    {% endfor %}
+
+
+    {# ALL DEPARTURE/ARRIVAL ID THAT MATCH WITH CLIENT'S NEEDS ARE NOW FOUND #}
+
+
+    {# ORGANIZE DATA FROM API #}
+
+    {% for departures in data.departures %}
+
+
+    {# PANEL UNIT (1) #}
+    <div class="container-fluid">
+
+      {# PANEL IN ORANGE / COLOR #}
+      <div class="panel panel-warning">
+        <div class="well">
+          <h3>
+
+            {# FIRST LINE OF PANEL (1) #}
+            <div class="panel-heading">
+              <div class="row">
+
+                {# DEPARTURE #}
+                {% set leaving_length = leaving_id|length %}
+
+                {% for k in 0..(leaving_length) %}
+
+                {# IF A DEPARTURE ID IS MATCHING WITH THE ID FROM THE CUSTOMER QUERY, PLEASE DISPLAY THE DEPARTURE #}
+                {% if leaving_id[k] == departures.origin_location_id %}
+
+                {# DISPLAYING THE NAME OF THE LOCATION SET BY CUSTOMER #}
+                <div class="col-xs-5"> {{ leaving }} </div>
+
+                {% endif %}
+
+                {% endfor %}
+
+                {# DEPARTURE TIME #}
+                <div class="col-xs-5">{{departures.departure_time|slice(11,5)}}</div>
+
+                {# PRICE #}
+                {% set price = departures.prices.total / divide %}
+                {# NUMBER FORMAT(qty of decimal numbers,'type of decimal separator') #}
+                <div class="col-xs-2">{{ price|number_format(2, ',') ~ "$" }} </div>
+
+              </div>
+            </div>
+
+            {# SECOND LINE OF PANEL (1) #}
+            <div class="panel-body">
+              <div class="row">
+
+                {# DESTINATION #}
+                {% set arriving_length = arriving_id|length %}
+
+                {% for k in 0..(arriving_length) %}
+
+                {# IF A DEPARTURE ID IS MATCHING WITH THE ID FROM THE CUSTOMER QUERY, PLEASE DISPLAY THE DEPARTURE #}
+                {% if arriving_id[k] == departures.destination_location_id %}
+
+                {# DISPLAYING THE NAME OF THE LOCATION SET BY CUSTOMER #}
+                <div class="col-xs-5">{{arriving}}</div>
+
+                {% endif %}
+
+                {% endfor %}
+
+                {# ARRIVAL TIME #}
+                <div class="col-xs-5">{{departures.arrival_time|slice(11,5)}}</div>
+
+                {# EMPTY SPACE #}
+                <div class="col-xs-2"></div>
+
+              </div>
+            </div>
+
+          </h3>
+
+
+
+        </div>
+      </div>
+    </div>
+
+  {% endfor %}
+
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
