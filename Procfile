@@ -1,1 +1,1 @@
-web: node server.js
+web: weback -p && node server.js
