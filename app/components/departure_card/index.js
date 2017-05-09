@@ -29,7 +29,7 @@ const Departure = ({departure, formatTime, formatMoney}) => {
         <div className={styles.price}>
           <h3> {`Price: ${formatMoney(departure.price)}`} </h3>
         </div>
-        <button className={styles.cta}> {`Select`} </button>
+        <a href={departure.link} className={styles.cta}> {`Select`} </a>
       </div>
 
     </div>

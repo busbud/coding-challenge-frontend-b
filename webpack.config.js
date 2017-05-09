@@ -1,6 +1,8 @@
 var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var cssModuleLoader = require('./webpack/css-module-loader');
 
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
@@ -25,6 +27,8 @@ var productionPlugin = new webpack.DefinePlugin({
   }
 })
 
+console.log(isProduction)
+
 const base = {
   entry: PATHS.app,
   output: {
@@ -35,7 +39,7 @@ const base = {
   module: {
     rules: [
       { test: /\.js$/, exclude: /\node_modules/, use: 'babel-loader' },
-      { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' },
+      { test: /\.css$/, use: cssModuleLoader(isProduction) },
       {
         test: /\.(png|jpg|gif|svg)$/,
         use: ['file-loader?name=[name].[ext]&outputPath=img/'],
@@ -56,6 +60,7 @@ const devConfig = {
 
 const prodConfig= {
   plugins: [
+    new ExtractTextPlugin('css/application.css'),
     HtmlWebpackPluginConfig,
     productionPlugin
   ]

@@ -1,14 +1,12 @@
 .footer {
   height: 75px;
   width: 100%;
-  position: relative;
-  bottom: 0;
+  margin-top: auto;
   color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-right: 24px;
-  margin-top: 24px;
   background-color: #180f2e;
   font-family: Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
 }

@@ -62,6 +62,8 @@
 .cta {
   width: 100%;
   padding: 12px;
+  text-decoration: none;
+  text-align: center;
   margin-top: auto;
   border: 0px solid #dde457;
   background-color: #ed4a95;

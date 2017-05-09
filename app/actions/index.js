@@ -28,6 +28,7 @@ const searchSuccess = (results = {}, lastUpdated) => {
     price: dep.prices.total,
     departureTime: dep.departure_time,
     arrivalTime: dep.arrival_time,
+    link: dep.links.deeplink,
     destination: refinedLocations.filter((location) => location.id === dep.destination_location_id)[0],
     origin: refinedLocations.filter((location) => location.id === dep.origin_location_id)[0],
     operator: refindedOperators.filter((operator) => operator.source_id === dep.source_id)[0]
@@ -78,18 +79,20 @@ export const search = ({departure, destination, date}, totalRecal=false) => {
     })
     .then((res) => {
       const { data } = res;
+      console.log(data)
       if ( data.departures.length > 0 ) {
+        // use last updated to refresh
         dispatch(searchSuccess(data, Date.now()))
       } else {
         // redirect page here because the server is probably asleep
-        if( totalRecal ){
+        if( totalRecal ){ // total recal is usd to break out of the loop
           dispatch(searchFailure(new Error('Search returned 0 results')))
         }else{
           // recursively search again if the server is sleeping after one second
           setTimeout(() => {
             // alert just so we know
             console.log('zzz... was sleeping sleeping... trying again')
-            dispatch(search({departure, destination, date}), true)
+            dispatch(search({departure, destination, date}))
           }, 1000)
         }
       }

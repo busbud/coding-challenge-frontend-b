@@ -11,13 +11,11 @@ class ResultListContainer extends Component {
 
   render () {
     const { isFetching, error, departures, lastUpdated } = this.props
-    return (
-      <ResultList
-        isFetching={isFetching}
-        lastUpdated={lastUpdated}
-        departures={departures}
-        error={error} />
-    )
+    return <ResultList
+            isFetching={isFetching}
+            lastUpdated={lastUpdated}
+            departures={departures}
+            error={error} />
   }
 }
 

@@ -10,7 +10,7 @@ class SearchContainer extends Component {
     this.state = {
       redirectToResults: false,
       leaving: moment("2017-07-29"), // hard code this
-      departute: 'dr5reg', // hard code this
+      departure: 'dr5reg', // hard code this
       arrival: 'f25dvk', // hard code this
     }
 
@@ -20,16 +20,18 @@ class SearchContainer extends Component {
   _handleSearch (e) {
     e.preventDefault()
     this.setState({ redirectToResults: true })
+    setTimeout(() => this.setState({redirectToResults: false}) ,1000)
   }
 
   render () {
-    const {leaving, departute, arrival} = this.state
+    const {leaving, departure, arrival} = this.state
 
     return (
-      <div>
+      <div style={{width: '100%'}}>
         <Search handleSubmit={ this._handleSearch } leaving={this.state.leaving} />
         { this.state.redirectToResults &&
-          <Redirect to={`/bus-schedule-results/${departute}/${arrival}/${leaving._i}`} /> }
+          <Redirect to={`/bus-schedule-results/${departure}/${arrival}/${leaving._i}`} />
+        }
       </div>
     )
   }
