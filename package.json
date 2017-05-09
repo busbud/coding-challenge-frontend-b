@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "node server.js",
     "prod": "NODE_ENV=production webpack -p",
-    "start": "yarn prod && NODE_ENV=production node server.js"
+    "start": "yarn prod && NODE_ENV=production node server.js",
+    "heroku": "yarn webpack -p && node server.js"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
