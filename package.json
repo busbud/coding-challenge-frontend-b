@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Youhouuu",
   "main": "app.js",
-    "engines": {
+  "engines": {
     "node": "6.10.2"
   },
   "scripts": {
@@ -22,9 +22,9 @@
   "homepage": "https://github.com/reveza/coding-challenge-frontend-b#readme",
   "dependencies": {
     "async": "^2.4.0",
-    "request": "^2.81.0",
     "express": "4.15.2",
     "lodash": "^4.17.4",
+    "request": "^2.81.0",
     "twig": "^1.10.4"
   }
 }
