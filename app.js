@@ -83,6 +83,7 @@ app.get('/', function (req, res) {
                              });
 
 data=null;
+data.complete=false;
 
 // APP LISTENING FOR HEROKU APP //
 
