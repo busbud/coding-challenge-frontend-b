@@ -82,6 +82,8 @@ app.get('/', function (req, res) {
 
                              });
 
+data=null;
+
 // APP LISTENING FOR HEROKU APP //
 
 app.listen(app.get('port'), function() {
