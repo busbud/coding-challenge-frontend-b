@@ -19,6 +19,12 @@ var options = {
 // SETTING VARIABLE DATA //
 var data;
 
+
+
+app.set('port', (process.env.PORT || 5000));
+
+
+
 // CREATING A STATIC FILE DIRECTORY FOR PICTURES //
 app.use(express.static('public'))
 
@@ -67,7 +73,7 @@ app.get('/', function (req, res) {
 
                                                   // PARAMETER 3: DEFINE CALLBACK FUNCTION //
                                                   function (err, n,data) {
-                                                    res.render('index.twig', {
+                                                    res.render('views/index.twig', {
                                                       data : data
                                                     });
                                                   }
@@ -76,4 +82,8 @@ app.get('/', function (req, res) {
 
                              });
 
-app.listen(3000)
+
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
