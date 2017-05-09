@@ -6,6 +6,7 @@
   "repository": "git@github.com:Jorybraun/coding-challenge-frontend-b.git",
   "author": "Jorybraun <braunjory@gmail.com>",
   "license": "MIT",
+  "engines" : { "node" : "7.90" },
   "scripts": {
     "dev": "node server.js",
     "prod": "NODE_ENV=production webpack -p",
