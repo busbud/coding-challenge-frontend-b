@@ -20,13 +20,13 @@ var options = {
 var data;
 
 
-
+// SET PORT FOR HEROKU APP //
 app.set('port', (process.env.PORT || 5000));
 
 
 
 // CREATING A STATIC FILE DIRECTORY FOR PICTURES //
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 // CALLING API ON SERVER SIDE //
 app.get('/', function (req, res) {
@@ -82,7 +82,7 @@ app.get('/', function (req, res) {
 
                              });
 
-
+// APP LISTENING FOR HEROKU APP //
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
