@@ -18,7 +18,7 @@ var options = {
 
 // SETTING VARIABLE DATA //
 var data;
-
+var (data.complete)=false;
 
 // SET PORT FOR HEROKU APP //
 app.set('port', (process.env.PORT || 5000));
@@ -81,9 +81,6 @@ app.get('/', function (req, res) {
 
 
                              });
-
-data=null;
-data.complete=false;
 
 // APP LISTENING FOR HEROKU APP //
 
