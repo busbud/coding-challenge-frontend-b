@@ -1,0 +1,10 @@
+.loading {
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  font-family: "Changa One",impact,sans-serif;
+  width: 100%;
+  text-align: center;
+  margin-top: 48px;
+}

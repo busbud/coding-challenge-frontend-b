@@ -1,0 +1,26 @@
+.search {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search input[type="submit"] {
+  background-color: #ed4a95;
+  text-shadow: 0 1px 2px rgba(0,0,0,.24);
+  font-weight: 700;
+  padding: 15px;
+  color: white;
+  border: 0px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.search input {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.6);
+  border: 0.5px;
+}

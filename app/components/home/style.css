@@ -1,0 +1,46 @@
+.main {
+  background-color: white;
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 48px;
+  border: 20px solid #fbee40;
+  display:flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.main h1 {
+  color: rgb(79, 40, 90);
+  text-align: center;
+  font-size: 64px;
+}
+
+.main h3,
+.main h1 {
+  text-align: center;
+  font-weight: 100;
+  font-family: "Changa One",impact,sans-serif;
+}
+
+.main h3 {
+  font-size: 42px;
+  color: #ed4a95;
+  flex: 1 100%;
+}
+
+.main button {
+  margin: 0 auto;
+  padding: 20px;
+  border: 0px;
+  font-size: 32px;
+  font-family: "Changa One",impact,sans-serif;
+  background-color: #ed4a95;
+  color: #fbee40;
+  transition: color 0.3s ease-in, background-color 0.3s ease-in;
+  border-radius: 40px;
+}
+
+.main button:hover {
+  background-color: #fbee40;
+  color: #ed4a95;
+}
