@@ -37,11 +37,8 @@ app.get('/', function (req, res) {
                                                   // PARAMETER 1 : CONDITION THAT CHECKS WHETHER TO ENTER LOOP OR NOT //
                                                   function() {
 
-                                                               // VERIFY IF DATA IS EMPTY //
-                                                               if (!data) {
-                                                                           return true;
-                                                                         };
-                                                               // DATA IS NOT EMPTY & IF DATA.COMPLETE = FALSE => CONTINUE LOOPING //
+                                                              
+                                                               // IF DATA.COMPLETE = FALSE => CONTINUE LOOPING //
                                                                console.log(data.complete)
                                                                return (!data.complete);
                                                              },
