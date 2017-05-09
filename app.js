@@ -29,7 +29,6 @@ app.get('/', function (req, res) {
 
                                   // SETTING VARIABLE DATA //
                                   var data;
-                                  var data.complete=false;
 
                                     // ASYNCHRONOUS: LOOP UNTIL DATA.COMPLETE = TRUE //
                                     async.whilst(
