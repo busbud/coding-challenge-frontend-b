@@ -1,1 +1,1 @@
-web: weback -p && node server.js
+web: yarn start
