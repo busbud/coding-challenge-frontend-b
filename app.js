@@ -73,7 +73,7 @@ app.get('/', function (req, res) {
 
                                                   // PARAMETER 3: DEFINE CALLBACK FUNCTION //
                                                   function (err, n,data) {
-                                                    res.render('views/index.twig', {
+                                                    res.render('index.twig', {
                                                       data : data
                                                     });
                                                   }
