@@ -26,6 +26,7 @@ app.set('port', (process.env.PORT || 5000));
 
 
 // CREATING A STATIC FILE DIRECTORY FOR PICTURES //
+
 app.use(express.static('public'));
 
 // CALLING API ON SERVER SIDE //
@@ -37,8 +38,11 @@ app.get('/', function (req, res) {
                                                   // PARAMETER 1 : CONDITION THAT CHECKS WHETHER TO ENTER LOOP OR NOT //
                                                   function() {
 
-                                                              
-                                                               // IF DATA.COMPLETE = FALSE => CONTINUE LOOPING //
+                                                               // VERIFY IF DATA IS EMPTY //
+                                                               if (!data) {
+                                                                           return true;
+                                                                         };
+                                                               // DATA IS NOT EMPTY & IF DATA.COMPLETE = FALSE => CONTINUE LOOPING //
                                                                console.log(data.complete)
                                                                return (!data.complete);
                                                              },
@@ -76,11 +80,10 @@ app.get('/', function (req, res) {
                                                   }
                                                 )
 
-
                              });
 
 // APP LISTENING FOR HEROKU APP //
 
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+  console.log('Node app is running on port', (data.complete)='false', app.get('port'));
 });
