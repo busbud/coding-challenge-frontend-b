@@ -1,14 +1,39 @@
 .ticket {
   border: 1px solid;
   width: 60vw;
-  height: 100px;
+  height: 150px;
+  margin: 20px;
 }
 
 .ticket-section {
   height: 100%;
+  padding: 0px;
+}
+
+.operator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.operator-logo {
+  width: 100%;
+  padding: 0px 8px;
 }
 
 .ticket-locations {
   border-left: 1px dashed;
   border-right: 1px dashed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.location-name {
+  font-size: 18px;
+  margin: 0px;
+}
+
+.city-name {
+  margin: 0px;
 }

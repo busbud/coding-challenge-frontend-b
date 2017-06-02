@@ -13,24 +13,28 @@ class App extends Component {
   }
 
   render() {
+    const departures = this.props.departures;
+
     return (
-      <div className="App container">
+      <div className="App container-fluid">
         <div className="App-header">
-          <h2>Road to Osheaga</h2>
+          <a href="https://www.osheaga.com/en">
+            <img
+              src="https://www.osheaga.com/images/osheaga/en/logo.png?v=d2aee02373618ce9d7231e1bb5fe51f0"
+              alt="Osheaga"
+            ></img>
+          </a>
+        </div>
+        <div className="title">
+          <h1>Road to Osheaga</h1>
           <p>powered by Busbud</p>
         </div>
         <div className="ticket-container">
-          {this.props.departures.length === 0 &&
-            <button onClick={this.handleClick}>Go</button>
-          }
-          {this.props.departures.length > 0 && this.props.departures.map((s, i) =>
+          {!departures && <button onClick={this.handleClick}>Go</button>}
+          {departures && departures.length > 0 && departures.map((s, i) =>
             <Ticket
               key={i}
-              depTime={s.departure_time}
-              arrTime={s.arrival_time}
-              from={this.props.cities[0].name}
-              to={this.props.cities[1].name}
-              price={s.prices.total}
+              departure={s}
             ></Ticket>
           )}
           {this.props.searchFailed && <p>Search failed. Please try again</p>}

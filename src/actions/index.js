@@ -11,17 +11,14 @@ const requestSchedule = () => {
 
 export const RECEIVE_SCHEDULE = 'RECEIVE_SCHEDULE';
 const receiveSchedule = json => {
-  const cities = json.cities;
-  const departures = json.departures;
   return {
     type: RECEIVE_SCHEDULE,
-    cities,
-    departures
+    schedule: json
   };
 };
 
 export const FAILED_SEARCH = 'FAILED_SEARCH';
-const failedSearch = err => {
+const failedSearch = (err = {}) => {
   return {
     type: FAILED_SEARCH,
     err
@@ -37,6 +34,12 @@ export const fetchSchedule = () => dispatch => {
     }
   })
     .then(res => res.json())
-    .then(json => dispatch(receiveSchedule(json)))
+    .then(json => {
+      if (json.complete) {
+        dispatch(receiveSchedule(json));
+      } else {
+        dispatch(failedSearch());
+      }
+    })
     .catch(err => dispatch(failedSearch(err)));
 };

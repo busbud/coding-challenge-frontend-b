@@ -9,13 +9,22 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  background-image: url(https://www.osheaga.com/uploads/osheaga/banners/banner-05.jpg?v=25b221a44f811e738aa3b9d84a563975);
+  height: 420px;
   padding: 20px;
   color: white;
 }
 
+.App-header > a > img {
+  margin-top: 50px;
+}
+
 .App-intro {
   font-size: large;
+}
+
+.title h1 {
+  margin-bottom: 0px;
 }
 
 .ticket-container {
