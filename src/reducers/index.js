@@ -1,12 +1,15 @@
 import {
   REQUEST_SCHEDULE,
-  RECEIVE_SCHEDULE
+  RECEIVE_SCHEDULE,
+  FAILED_SEARCH
 } from '../actions';
 import { combineReducers } from 'redux';
 
 const initialState = {
   isFetching: false,
-  schedule: {}
+  cities: [],
+  departures: [],
+  searchFailed: false
 };
 
 const search = (state = initialState, action) => {
@@ -14,13 +17,20 @@ const search = (state = initialState, action) => {
   case REQUEST_SCHEDULE:
     return {
       ...state,
-      isFetching: true
+      isFetching: true,
+      searchFailed: false
     };
   case RECEIVE_SCHEDULE:
     return {
       ...state,
       isFetching: false,
-      schedule: action.json
+      cities: action.cities,
+      departures: action.departures
+    };
+  case FAILED_SEARCH:
+    return {
+      ...state,
+      searchFailed: true
     };
   default:
     return state;

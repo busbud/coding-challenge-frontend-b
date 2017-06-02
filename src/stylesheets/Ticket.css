@@ -1,0 +1,14 @@
+.ticket {
+  border: 1px solid;
+  width: 60vw;
+  height: 100px;
+}
+
+.ticket-section {
+  height: 100%;
+}
+
+.ticket-locations {
+  border-left: 1px dashed;
+  border-right: 1px dashed;
+}

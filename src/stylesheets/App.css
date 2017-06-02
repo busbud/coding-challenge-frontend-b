@@ -18,6 +18,12 @@
   font-size: large;
 }
 
+.ticket-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

@@ -4,7 +4,9 @@ import App from '../components/App';
 
 const mapStateToProps = state => ({
   isFetching: state.search.isFetching,
-  schedule: state.search.schedule
+  cities: state.search.cities,
+  departures: state.search.departures,
+  searchFailed: state.search.searchFailed
 });
 
 const mapDispatchToProps = dispatch => {
