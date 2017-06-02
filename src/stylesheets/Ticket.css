@@ -1,6 +1,7 @@
 .ticket {
-  border: 1px solid;
-  width: 60vw;
+  border: 2px solid rgb(237, 74, 149);
+  border-radius: 14px;
+  width: 55vw;
   height: 150px;
   margin: 20px;
 }
@@ -8,11 +9,11 @@
 .ticket-section {
   height: 100%;
   padding: 0px;
-}
-
-.operator {
   display: flex;
   flex-direction: column;
+}
+
+.ticket-operator, .ticket-price {
   justify-content: center;
 }
 
@@ -22,18 +23,29 @@
 }
 
 .ticket-locations {
-  border-left: 1px dashed;
-  border-right: 1px dashed;
-  display: flex;
-  flex-direction: column;
+  border-left: 1px dashed rgb(237, 74, 149);
+  border-right: 1px dashed rgb(237, 74, 149);
   justify-content: space-around;
+}
+
+.origin {
+  margin-top: 10px;
+}
+
+.destination {
+  margin-bottom: 10px;
 }
 
 .location-name {
   font-size: 18px;
   margin: 0px;
+  color: rgb(79, 49, 90);
 }
 
 .city-name {
   margin: 0px;
+}
+
+.ticket-price p {
+  font-size: 18px;
 }

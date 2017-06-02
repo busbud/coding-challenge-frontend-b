@@ -25,6 +25,8 @@
 
 .title h1 {
   margin-bottom: 0px;
+  color: rgb(79, 49, 90);
+  font-size: 48px;
 }
 
 .ticket-container {

@@ -17,21 +17,21 @@ class Ticket extends Component {
 
     return (
       <div className="row ticket">
-        <div className="col-lg-2 ticket-section operator">
+        <div className="col-lg-2 ticket-section ticket-operator">
           <img className="operator-logo" src={operatorLogoUrl} alt="Operator"></img>
         </div>
         <div className="col-lg-8 ticket-section ticket-locations">
           <div className="origin">
-            <p className="location-name">{departure.origLocation.name}</p>
-            <p className="city-name">{depTime} - {departure.origCity.name}</p>
+            <h1 className="location-name">{departure.origLocation.name}</h1>
+            <p className="city-name">{depTime} | {departure.origCity.name}</p>
           </div>
           <i className="glyphicon glyphicon-arrow-down"></i>
           <div className="destination">
-            <p className="location-name">{departure.destLocation.name}</p>
-            <p className="city-name">{arrTime} - {departure.destCity.name}</p>
+            <h1 className="location-name">{departure.destLocation.name}</h1>
+            <p className="city-name">{arrTime} | {departure.destCity.name}</p>
           </div>
         </div>
-        <div className="col-lg-2 ticket-section">
+        <div className="col-lg-2 ticket-section ticket-price">
           <p>${dollar}.{cent} USD</p>
         </div>
       </div>
