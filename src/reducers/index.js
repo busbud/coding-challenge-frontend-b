@@ -28,6 +28,7 @@ const search = (state = initialState, action) => {
   case FAILED_SEARCH:
     return {
       ...state,
+      isFetching: false,
       searchFailed: true
     };
   default:

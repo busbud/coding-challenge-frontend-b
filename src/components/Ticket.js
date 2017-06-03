@@ -8,8 +8,8 @@ class Ticket extends Component {
 
     const operatorLogoUrl = departure.operator.logo_url;
 
-    const depTime = moment(departure.departure_time).format('h:mm A');
-    const arrTime = moment(departure.arrival_time).format('h:mm A');
+    const depTime = moment(departure.departure_time).format('MMM D h:mm A');
+    const arrTime = moment(departure.arrival_time).format('MMM D h:mm A');
 
     const priceStr = departure.prices.total.toString();
     const dollar = priceStr.substring(0,priceStr.length - 2);

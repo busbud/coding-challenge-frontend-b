@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   render() {
-    const departures = this.props.departures;
+    const { isFetching, departures } = this.props;
 
     return (
       <div className="App container-fluid">
@@ -29,13 +29,14 @@ class App extends Component {
           <h1>Road to Osheaga</h1>
           <div>
             <p className="powered-by">powered by:</p>
-            <a href="https://www.busbud.com/en-ca/" target="_blank" ref="noopener noreferrer">
+            <a href="https://www.busbud.com/en-ca/" target="_blank" rel="noopener noreferrer">
               <img src="/busbud_logo_norm_RGB_HR.png" alt="Busbud"></img>
             </a>
           </div>
         </div>
         <div className="ticket-container">
-          {!departures && <button onClick={this.handleClick}>Go</button>}
+          {!departures && !isFetching && <button onClick={this.handleClick}>Go</button>}
+          {isFetching && <div className="loader">Loading...</div>}
           {departures && departures.length > 0 && departures.map((s, i) =>
             <Ticket
               key={i}
