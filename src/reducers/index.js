@@ -7,7 +7,7 @@ import { combineReducers } from 'redux';
 
 const initialState = {
   isFetching: false,
-  schedule: {},
+  departures: [],
   searchFailed: false
 };
 
@@ -23,7 +23,7 @@ const search = (state = initialState, action) => {
     return {
       ...state,
       isFetching: false,
-      schedule: action.schedule
+      departures: action.departures
     };
   case FAILED_SEARCH:
     return {

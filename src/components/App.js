@@ -35,9 +35,9 @@ class App extends Component {
           </div>
         </div>
         <div className="ticket-container">
-          {!departures && !isFetching && <button onClick={this.handleClick}>Go</button>}
+          {departures.length === 0 && !isFetching && <button onClick={this.handleClick}>Go</button>}
           {isFetching && <div className="loader">Loading...</div>}
-          {departures && departures.length > 0 && departures.map((s, i) =>
+          {departures.length > 0 && departures.map((s, i) =>
             <Ticket
               key={i}
               departure={s}

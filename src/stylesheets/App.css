@@ -1,10 +1,12 @@
 .App {
   text-align: center;
+  padding: 0px;
 }
 
 .App-header {
   background-color: #222;
   background-image: url(https://www.osheaga.com/uploads/osheaga/banners/banner-05.jpg?v=25b221a44f811e738aa3b9d84a563975);
+  background-size: cover;
   height: 420px;
   padding: 20px;
   color: white;
@@ -46,10 +48,11 @@
   -webkit-animation: load7 1.8s infinite ease-in-out;
   animation: load7 1.8s infinite ease-in-out;
 }
+
 .loader {
   color: rgb(79, 49, 90);
   font-size: 10px;
-  margin: 80px auto;
+  margin: 40px auto;
   position: relative;
   text-indent: -9999em;
   -webkit-transform: translateZ(0);
@@ -58,20 +61,24 @@
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
+
 .loader:before,
 .loader:after {
   content: '';
   position: absolute;
   top: 0;
 }
+
 .loader:before {
   left: -3.5em;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
+
 .loader:after {
   left: 3.5em;
 }
+
 @-webkit-keyframes load7 {
   0%,
   80%,

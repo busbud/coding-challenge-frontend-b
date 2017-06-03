@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import _ from 'lodash';
 
 const apiUrl = 'https://napi.busbud.com';
 
@@ -10,10 +11,10 @@ const requestSchedule = () => {
 };
 
 export const RECEIVE_SCHEDULE = 'RECEIVE_SCHEDULE';
-const receiveSchedule = json => {
+const receiveSchedule = departures => {
   return {
     type: RECEIVE_SCHEDULE,
-    schedule: json
+    departures
   };
 };
 
@@ -36,7 +37,25 @@ export const fetchSchedule = () => dispatch => {
     .then(res => res.json())
     .then(json => {
       if (json.complete) {
-        dispatch(receiveSchedule(json));
+        const departures = json.departures;
+        _.forEach(departures, departure => {
+          departure.operator = _.find(json.operators, operator =>
+            operator.id === departure.operator_id
+          );
+          departure.origLocation = _.find(json.locations, location =>
+            location.id === departure.origin_location_id
+          );
+          departure.origCity = _.find(json.cities, city =>
+            city.id === departure.origLocation.city_id
+          );
+          departure.destLocation = _.find(json.locations, location =>
+            location.id === departure.destination_location_id
+          );
+          departure.destCity = _.find(json.cities, city =>
+            city.id === departure.destLocation.city_id
+          );
+        });
+        dispatch(receiveSchedule(departures));
       } else {
         dispatch(failedSearch());
       }
