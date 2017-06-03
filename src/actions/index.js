@@ -57,7 +57,7 @@ export const fetchSchedule = () => dispatch => {
         });
         dispatch(receiveSchedule(departures));
       } else {
-        dispatch(failedSearch());
+        dispatch(fetchSchedule());
       }
     })
     .catch(err => dispatch(failedSearch(err)));
