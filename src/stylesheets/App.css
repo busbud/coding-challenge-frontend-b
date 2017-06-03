@@ -29,6 +29,15 @@
   font-size: 48px;
 }
 
+.title .powered-by {
+  display: inline;
+}
+
+.title img {
+  width: 82px;
+  margin-bottom: 4px;
+}
+
 .ticket-container {
   display: flex;
   flex-direction: column;

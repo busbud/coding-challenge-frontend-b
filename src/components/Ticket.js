@@ -33,6 +33,9 @@ class Ticket extends Component {
         </div>
         <div className="col-lg-2 ticket-section ticket-price">
           <p>${dollar}.{cent} USD</p>
+          <a href={departure.links.deeplink} target="_blank" rel="noopener noreferrer">
+            <button>Book Now</button>
+          </a>
         </div>
       </div>
     );

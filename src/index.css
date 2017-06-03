@@ -11,3 +11,19 @@ h1, h2, h3, h4, h5, h6 {
 p {
   font-family: "Montserrat", sans-serif;
 }
+
+button {
+  border: 2px solid rgb(237, 74, 149);
+  background-color: rgb(237, 74, 149);
+  border-radius: 15px;
+  width: 120px;
+  height: 30px;
+  color: rgb(251, 238, 64);
+  font-family: "Changa One", impact, sans-serif;
+  transition: 0.3s ease-in-out;
+}
+
+button:hover {
+  background: rgb(79, 49, 90);
+  color: rgb(237, 74, 149)
+}

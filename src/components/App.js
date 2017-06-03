@@ -27,7 +27,12 @@ class App extends Component {
         </div>
         <div className="title">
           <h1>Road to Osheaga</h1>
-          <p>powered by Busbud</p>
+          <div>
+            <p className="powered-by">powered by:</p>
+            <a href="https://www.busbud.com/en-ca/" target="_blank" ref="noopener noreferrer">
+              <img src="/busbud_logo_norm_RGB_HR.png" alt="Busbud"></img>
+            </a>
+          </div>
         </div>
         <div className="ticket-container">
           {!departures && <button onClick={this.handleClick}>Go</button>}
