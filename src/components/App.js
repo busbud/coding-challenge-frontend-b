@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Ticket from './Ticket';
 import '../stylesheets/App.css';
-require('smoothscroll-polyfill').polyfill();
+import { polyfill as smoothScrollPolyfill} from 'smoothscroll-polyfill';
 
 class App extends Component {
   constructor() {
     super();
+    smoothScrollPolyfill();
     this.handleClick = this.handleClick.bind(this);
     this.backToTop = this.backToTop.bind(this);
   }
