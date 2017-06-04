@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import Ticket from './Ticket';
 import '../stylesheets/App.css';
+require('smoothscroll-polyfill').polyfill();
 
 class App extends Component {
   constructor() {
     super();
     this.handleClick = this.handleClick.bind(this);
+    this.backToTop = this.backToTop.bind(this);
+  }
+
+  componentDidUpdate() {
+    this.refs.title.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   handleClick() {
     this.props.onClick();
+  }
+
+  backToTop() {
+    this.refs.title.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   render() {
@@ -25,7 +35,7 @@ class App extends Component {
             ></img>
           </a>
         </div>
-        <div className="title">
+        <div ref="title" className="title">
           <h1>Road to Osheaga</h1>
           <div>
             <p className="powered-by">powered by:</p>
@@ -45,6 +55,7 @@ class App extends Component {
           )}
           {this.props.searchFailed && <p>Search failed. Please try again</p>}
         </div>
+        <button className="back-to-top" onClick={this.backToTop}>Back to Top</button>
       </div>
     );
   }
