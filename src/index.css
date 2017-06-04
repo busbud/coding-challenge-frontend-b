@@ -1,3 +1,5 @@
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +8,10 @@ body {
 
 h1, h2, h3, h4, h5, h6, a {
   font-family: "Changa One", impact, sans-serif;
+}
+
+:lang(ko) {
+  font-family: 'Jeju Gothic', sans-serif;
 }
 
 p {

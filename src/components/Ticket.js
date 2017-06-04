@@ -4,7 +4,7 @@ import moment from 'moment';
 
 class Ticket extends Component {
   render() {
-    const departure = this.props.departure;
+    const { departure, bookNowCopy } = this.props;
 
     const operatorLogoUrl = departure.operator.logo_url;
 
@@ -34,7 +34,7 @@ class Ticket extends Component {
         <div className="col-lg-2 col-md-4 col-sm-4 col-xs-4 ticket-section ticket-price">
           <p>${dollar}.{cent} USD</p>
           <a href={departure.links.deeplink} target="_blank" rel="noopener noreferrer">
-            <button>Book Now</button>
+            <button>{bookNowCopy}</button>
           </a>
         </div>
       </div>

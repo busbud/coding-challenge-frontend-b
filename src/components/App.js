@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Ticket from './Ticket';
 import '../stylesheets/App.css';
 import { polyfill as smoothScrollPolyfill} from 'smoothscroll-polyfill';
+import copy from '../copy';
 
 class App extends Component {
   constructor() {
@@ -24,7 +25,7 @@ class App extends Component {
   }
 
   render() {
-    const { isFetching, departures } = this.props;
+    const { currLanguage, isFetching, departures } = this.props;
 
     return (
       <div className="App container-fluid">
@@ -37,21 +38,24 @@ class App extends Component {
           </a>
         </div>
         <div ref="title" className="title">
-          <h1>Road to Osheaga</h1>
+          <h1 lang={currLanguage}>{copy[currLanguage]['title']}</h1>
           <div>
-            <p className="powered-by">powered by:</p>
+            <p lang={currLanguage} className="powered-by">{copy[currLanguage]['powered_by']}</p>
             <a href="https://www.busbud.com/en-ca/" target="_blank" rel="noopener noreferrer">
               <img src="/busbud_logo_norm_RGB_HR.png" alt="Busbud"></img>
             </a>
           </div>
         </div>
         <div className="ticket-container">
-          {departures.length === 0 && !isFetching && <button onClick={this.handleClick}>Go</button>}
+          {departures.length === 0 && !isFetching &&
+            <button onClick={this.handleClick}>{copy[currLanguage]['go']}</button>
+          }
           {isFetching && <div className="loader">Loading...</div>}
           {departures.length > 0 && departures.map((s, i) =>
             <Ticket
               key={i}
               departure={s}
+              bookNowCopy={copy[currLanguage]['book_now']}
             ></Ticket>
           )}
           {this.props.searchFailed && <p>Search failed. Please try again</p>}
@@ -59,7 +63,7 @@ class App extends Component {
         {departures.length > 0 &&
           <a className="back-to-top" onClick={this.backToTop}>
             <i className="glyphicon glyphicon-arrow-up"></i>
-            Back to Top
+            <p lang={currLanguage}>{copy[currLanguage]['back_to_top']}</p>
           </a>
         }
       </div>

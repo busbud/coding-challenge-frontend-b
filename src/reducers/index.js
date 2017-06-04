@@ -6,6 +6,7 @@ import {
 import { combineReducers } from 'redux';
 
 const initialState = {
+  currLanguage: 'en',
   isFetching: false,
   departures: [],
   searchFailed: false

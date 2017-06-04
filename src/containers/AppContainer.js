@@ -3,6 +3,7 @@ import { fetchSchedule } from '../actions';
 import App from '../components/App';
 
 const mapStateToProps = state => ({
+  currLanguage: state.search.currLanguage,
   isFetching: state.search.isFetching,
   departures: state.search.departures,
   searchFailed: state.search.searchFailed
