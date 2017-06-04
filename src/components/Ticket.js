@@ -20,7 +20,7 @@ class Ticket extends Component {
         <div className="col-lg-2 ticket-section ticket-operator">
           <img className="operator-logo" src={operatorLogoUrl} alt="Operator"></img>
         </div>
-        <div className="col-lg-8 ticket-section ticket-locations">
+        <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8 ticket-section ticket-locations">
           <div className="origin">
             <h1 className="location-name">{departure.origLocation.name}</h1>
             <p className="city-name">{depTime} | {departure.origCity.name}</p>
@@ -31,7 +31,7 @@ class Ticket extends Component {
             <p className="city-name">{arrTime} | {departure.destCity.name}</p>
           </div>
         </div>
-        <div className="col-lg-2 ticket-section ticket-price">
+        <div className="col-lg-2 col-md-4 col-sm-4 col-xs-4 ticket-section ticket-price">
           <p>${dollar}.{cent} USD</p>
           <a href={departure.links.deeplink} target="_blank" rel="noopener noreferrer">
             <button>Book Now</button>

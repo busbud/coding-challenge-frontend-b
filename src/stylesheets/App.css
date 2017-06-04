@@ -116,3 +116,9 @@
   text-decoration: none;
   color: rgb(237, 74, 149);
 }
+
+@media (max-width: 660px) {
+  .back-to-top {
+    display: none;
+  }
+}

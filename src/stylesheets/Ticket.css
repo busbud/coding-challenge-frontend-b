@@ -49,3 +49,25 @@
 .ticket-price p {
   font-size: 18px;
 }
+
+.ticket-price button {
+  width: 80%;
+}
+
+@media (max-width: 1200px) {
+  .ticket-operator {
+    display: none;
+  }
+}
+
+@media (max-width: 660px) {
+  .ticket {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 431px) {
+  .ticket-price button {
+    font-size: 10px;
+  }
+}
