@@ -55,7 +55,12 @@ class App extends Component {
           )}
           {this.props.searchFailed && <p>Search failed. Please try again</p>}
         </div>
-        <button className="back-to-top" onClick={this.backToTop}>Back to Top</button>
+        {departures.length > 0 &&
+          <a className="back-to-top" onClick={this.backToTop}>
+            <i className="glyphicon glyphicon-arrow-up"></i>
+            Back to Top
+          </a>
+        }
       </div>
     );
   }

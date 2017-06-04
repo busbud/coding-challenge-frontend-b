@@ -101,7 +101,18 @@
 }
 
 .back-to-top {
+  cursor: pointer;
   position: fixed;
   right: 30px;
   bottom: 30px;
+  color: rgb(79, 49, 90)
+}
+
+.back-to-top i {
+  margin: 0px 6px;
+}
+
+.back-to-top:hover {
+  text-decoration: none;
+  color: rgb(237, 74, 149);
 }
