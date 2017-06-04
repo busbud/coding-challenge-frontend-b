@@ -16,6 +16,12 @@
   margin-top: 50px;
 }
 
+.title .lang-select img {
+  width: 40px;
+  margin: 10px 10px 0px;
+  cursor: pointer;
+}
+
 .title h1 {
   margin-bottom: 0px;
   color: rgb(79, 49, 90);

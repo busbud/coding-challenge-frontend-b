@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchSchedule } from '../actions';
+import { fetchSchedule, changeLanguage } from '../actions';
 import App from '../components/App';
 
 const mapStateToProps = state => ({
@@ -13,6 +13,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onClick: () => {
       dispatch(fetchSchedule());
+    },
+    changeLanguage: lang => {
+      dispatch(changeLanguage(lang));
     }
   };
 };

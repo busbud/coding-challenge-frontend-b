@@ -1,7 +1,8 @@
 import {
   REQUEST_SCHEDULE,
   RECEIVE_SCHEDULE,
-  FAILED_SEARCH
+  FAILED_SEARCH,
+  CHANGE_LANGUAGE
 } from '../actions';
 import { combineReducers } from 'redux';
 
@@ -31,6 +32,11 @@ const search = (state = initialState, action) => {
       ...state,
       isFetching: false,
       searchFailed: true
+    };
+  case CHANGE_LANGUAGE:
+    return {
+      ...state,
+      currLanguage: action.lang
     };
   default:
     return state;

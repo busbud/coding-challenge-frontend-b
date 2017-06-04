@@ -10,6 +10,7 @@ class App extends Component {
     smoothScrollPolyfill();
     this.handleClick = this.handleClick.bind(this);
     this.backToTop = this.backToTop.bind(this);
+    this.changeLanguage = this.changeLanguage.bind(this);
   }
 
   componentDidUpdate() {
@@ -22,6 +23,10 @@ class App extends Component {
 
   backToTop() {
     this.refs.title.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  changeLanguage(lang) {
+    this.props.changeLanguage(lang);
   }
 
   render() {
@@ -38,6 +43,18 @@ class App extends Component {
           </a>
         </div>
         <div ref="title" className="title">
+          <div className="lang-select">
+            <img
+              src="/1280px-Flag_of_the_United_Kingdom.svg.png"
+              onClick={() => this.changeLanguage('en')}
+              alt="English">
+            </img>
+            <img
+              src="/Flag_of_South_Korea.svg"
+              onClick={() =>this.changeLanguage('ko')}
+              alt="Korean">
+            </img>
+          </div>
           <h1 lang={currLanguage}>{copy[currLanguage]['title']}</h1>
           <div>
             <p lang={currLanguage} className="powered-by">{copy[currLanguage]['powered_by']}</p>
