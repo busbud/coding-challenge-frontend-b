@@ -1,17 +1,23 @@
 var React = require('react');
+var {Link} = require('react-router-dom');
+var PropTypes = require('prop-types');
 
 class Search extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
 			departure: 'New York, New York, United States',
+			origin: 'dr5reg',
 			arrival: 'Montreal, Quebec, Canada',
-			date: '2017-07-29',
+			destination: 'f25dvk',
+			outbound_date: '2017-07-29',
 			adult: 1
 		};
 	}
 	render() {
-		var {departure, arrival, date, adult} = this.state;
+		var {departure, origin, arrival, destination, outbound_date, adult} = this.state;
+		var match = this.props.match;
+
 		return (
 			<section className='search'>
 				<div className='search-container'>
@@ -25,17 +31,26 @@ class Search extends React.Component {
 					</div>
 					<div className='search-item'>
 						<i className="search-item-icon fa fa-calendar-o" aria-hidden="true"></i>
-						{date}
+						{outbound_date}
 					</div>
 					<div className='search-item'>
 						<i className="search-item-icon fa fa-user" aria-hidden="true"></i>
 						{adult}
 					</div>
 				</div>
-				<button className='btn'>Search for busses</button>
+				<Link className='btn'
+					to={{
+						pathname: match.url + 'results',
+						search: '?origin=' + origin + '&destination=' + destination + '&outbound_date=' + outbound_date + '&adult=' + adult
+					}}>
+				Search for busses</Link>
 			</section>
 		);
 	}
 }
+
+Search.propTypes = {
+	match: PropTypes.object.isRequired
+};
 
 module.exports = Search;

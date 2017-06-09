@@ -73,6 +73,7 @@ body {
 	line-height     : 1.5;
 	margin          : 10px;
 	padding         : 6px 12px;
+	text-decoration : none;
 	white-space     : nowrap;
 }
 
