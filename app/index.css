@@ -77,6 +77,13 @@ body {
 	white-space     : nowrap;
 }
 
+.loading {
+	color      :  #FFF;
+	font-size  : 35px;
+	text-align : center;
+	white-space: nowrap
+}
+
 /* Media Queries */
 
 /* Extra small devices (less than 768px) */
@@ -91,5 +98,9 @@ body {
 
 	.search-container {
 		flex-direction: column;
+	}
+
+	.loading {
+		font-size: 22px;
 	}
 }
