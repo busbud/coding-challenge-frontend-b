@@ -1,14 +1,6 @@
 var React = require('react');
 var PropTypes = require('prop-types');
 
-var styles = {
-	content: {
-		textAlign: 'center',
-		fontSize: '35px',
-		color: '#FFF'
-	}
-};
-
 class Loading extends React.Component {
 	constructor (props) {
 		super(props);

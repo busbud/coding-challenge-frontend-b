@@ -1,20 +1,7 @@
-html, body {
-	height: 100%;
-	width : 100%;
-}
-
 body {
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
-	margin     : 0;
-}
-
-.container, #app {
-	height: 100%;
-	width : 100%;
-}
-
-.container {
 	background-color: #1883CA;
+	font-family     : -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+	margin          : 0;
 }
 
 .title {
@@ -77,11 +64,96 @@ body {
 	white-space     : nowrap;
 }
 
+.results-container {
+	display: flex;
+	justify-content: center;
+}
+
+.departure-list {
+	align-items   : center;
+	display       : flex;
+	flex-direction: column;
+	padding       : 0;
+}
+
+.departure-item {
+	background-color  : #FFF;
+	border            : 1px solid #CCC;
+	border-radius     : 4px;
+	-webkit-box-shadow: inset 0 1px 1px #CCC;
+	box-shadow        : inset 0 1px 1px #CCC;
+	display           : flex;
+	flex-wrap         : nowrap;
+	list-style-type   : none;
+	margin-bottom     : 10px;
+	width             : 80%;
+}
+
+.route {
+	align-items : center;
+	border-right: 1px solid #CCC;
+	display     : flex;
+	flex-wrap   : wrap;
+	padding     : 10px;
+}
+
+.route-time {
+	flex       : 0 1 80px;
+	font-weight: 500;
+}
+
+.route-name {
+	flex: 1 0;
+}
+
+.route-name p {
+	margin: 0;
+}
+
+.route-city {
+	color: #6F7C82;
+}
+
+.route-separator {
+	color        : #CCC;
+	flex         : 0 1 100%;
+	margin-bottom: 5px;
+}
+
+.departure-operator {
+	align-items   : center;
+	border-right  : 1px solid #CCC;
+	display       : flex;
+	flex          : 0 1 40%;
+	flex-direction: column;
+	padding       : 10px;
+}
+
+.departure-price {
+	align-items    : center;
+	display        : flex;
+	flex           : 0 1 20%;
+	flex-direction : column;
+	justify-content: space-between;
+	padding        : 10px;
+}
+
+.departure-price-total {
+	font-weight: 600;
+}
+
 .loading {
 	color      :  #FFF;
 	font-size  : 35px;
 	text-align : center;
 	white-space: nowrap
+}
+
+.error {
+	color      : #FFF;
+	font-size  : 25px;
+	text-align : center;
+	white-space: nowrap;
 }
 
 /* Media Queries */
@@ -100,7 +172,39 @@ body {
 		flex-direction: column;
 	}
 
+	.departure-item {
+		flex-direction: column;
+	}
+
+	.route {
+		border-bottom: 1px solid #CCC;
+	}
+
+	.route-name {
+		text-align: center;
+	}
+
+	.route-separator {
+		margin-left: 80px;
+		text-align : center;
+	}
+
+	.departure-operator {
+		border-bottom  : 1px solid #CCC;
+		flex           : 0 1 30px;
+		justify-content: center;
+	}
+
+	.departure-price {
+		flex          : 0 1 30px;
+		flex-direction: row;
+	}
+
 	.loading {
 		font-size: 22px;
+	}
+
+	.error {
+		font-size: 12px;
 	}
 }

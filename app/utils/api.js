@@ -66,6 +66,7 @@ function getDepartures (params, poll, index) {
 		})
 		.catch(function (error) {
 			console.log('ERROR: ' + error);
+			return error;
 		});
 }
 
