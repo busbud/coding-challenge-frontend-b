@@ -4,6 +4,14 @@ body {
 	margin          : 0;
 }
 
+ul {
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
 .title {
 	align-items    : center;
 	display        : flex;
@@ -13,6 +21,21 @@ body {
 
 .title img {
 	max-width: 80%;
+}
+
+.languages {
+	display: flex;
+	margin : 0 auto;
+}
+
+.languages li {
+	padding: 4px;
+}
+
+.languages li img {
+	cursor: pointer;
+	height: 40px;
+	width : 60px;
 }
 
 .search {
@@ -65,7 +88,8 @@ body {
 }
 
 .results-container {
-	display: flex;
+	display        : flex;
+	flex-direction : column;
 	justify-content: center;
 }
 
@@ -73,7 +97,6 @@ body {
 	align-items   : center;
 	display       : flex;
 	flex-direction: column;
-	padding       : 0;
 }
 
 .departure-item {
@@ -84,7 +107,6 @@ body {
 	box-shadow        : inset 0 1px 1px #CCC;
 	display           : flex;
 	flex-wrap         : nowrap;
-	list-style-type   : none;
 	margin-bottom     : 10px;
 	width             : 80%;
 }

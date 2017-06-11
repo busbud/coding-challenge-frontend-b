@@ -4,6 +4,8 @@ var PropTypes = require('prop-types');
 var api = require('../utils/api');
 var Loading = require('./Loading');
 var DepartureList = require('./DepartureList');
+var SelectLanguage = require('./SelectLanguage');
+var Locale = require('../utils/locale.json');
 
 class Results extends React.Component {
 	constructor (props) {
@@ -15,16 +17,26 @@ class Results extends React.Component {
 			locations: null,
 			operators: null,
 			loading: true,
-			error: false
+			error: false,
+			selectedLanguage: 'en' 
 		};
 
+		this.params = queryString.parse(this.props.location.search);
+
+		this.updateLanguage = this.updateLanguage.bind(this);
 		this.requestDepartures = this.requestDepartures.bind(this);
 	}
 
-	componentDidMount () {
-		var params = queryString.parse(this.props.location.search);
+	componentWillMount () {
+		this.setState(function () {
+			return {
+				selectedLanguage: this.params.lang
+			};
+		});
+	}
 
-		this.requestDepartures(params);
+	componentDidMount () {
+		this.requestDepartures(this.params);
 	}
 
 	requestDepartures (params, poll = false, index = null) {
@@ -99,24 +111,40 @@ class Results extends React.Component {
 			}.bind(this));
 	}
 
+	updateLanguage (lang) {
+		this.setState(function () {
+			return {
+				selectedLanguage: lang
+			};
+		});
+	}
+
 	render() {
 		var {loading, 
 			cities,  
 			departures, 
 			locations, 
 			operators,
-			error} = this.state;
+			error,
+			selectedLanguage} = this.state;
+		var locale = Locale[selectedLanguage];
 
 		return (
 			<section className='results-container'>
+				<SelectLanguage
+					selectedLanguage={selectedLanguage} 
+					onSelect={this.updateLanguage} />
+
 				{loading &&
-					<Loading />}
+					<Loading
+						text={locale.loadingMessage} 
+						selectedLanguage={selectedLanguage} />}
 
 				{error &&
-					<p className='error'>There seems to be an error. Try refreshing the page.</p>}
+					<p className='error'>{locale.errorMessage}</p>}
 
 				{departures == null && !loading && !error &&
-					<p className='error'>Oops something went wrong. Try refreshing the page.</p>}
+					<p className='error'>{locale.errorSomethingWrong}</p>}
 
 				{departures != null && !loading && !error &&
 					<DepartureList
@@ -124,6 +152,7 @@ class Results extends React.Component {
 						departures={departures}
 						locations={locations}
 						operators={operators}
+						selectedLanguage={selectedLanguage}
 					/>
 				}
 			</section>

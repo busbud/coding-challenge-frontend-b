@@ -5,7 +5,7 @@ function Header () {
 	return (
 		<header className='title'>
 			<img 
-				src='https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png'
+				src={require('../images/osheaga_logo.png')}
 				alt='Osheaga Logo'
 			/>
 		</header>

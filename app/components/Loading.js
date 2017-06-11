@@ -49,7 +49,6 @@ Loading.propTypes = {
 };
 
 Loading.defaultProps = {
-	text: 'Searching for best bus trips',
 	speed: 300
 };
 

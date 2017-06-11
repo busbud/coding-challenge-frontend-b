@@ -1,19 +1,26 @@
 var React = require('react');
 var PropTypes = require('prop-types');
 var moment = require('moment');
+var Locale = require('../utils/locale.json');
 
 function DepartureItem (props) {
 	var {departure,
 		origin_location,
 		destination_location,
 		operator, 
-		cities} = props;
+		cities,
+		selectedLanguage} = props;
 
-	var timeFormat = 'h:mm A';
+	var timeFormat = selectedLanguage === 'en' ? 'h:mm A' : 'HH:mm';
 
 	var priceStr = departure.prices.total.toString();
 	var integer = priceStr.substring(0, priceStr.length - 2);
 	var fraction = priceStr.substring(priceStr.length - 2);
+	var price = selectedLanguage === 'en'
+		? 'USD$ ' + integer + '.' + fraction
+		: integer + '.' + fraction + ' $USD';
+
+	var locale = Locale[selectedLanguage];
 
 	function getImageSrc (url, height, width) {
 		if (url) {
@@ -50,15 +57,15 @@ function DepartureItem (props) {
 				? <div className='departure-operator'>
 						<img className='operator-logo'
 							src={getImageSrc(operator.logo_url, 140, 80)}
-							alt={operator.display_name + 'logo'}
+							alt={operator.display_name + ' logo'}
 						/>
 					</div>
 				: null
 			}
 			<div className='departure-price'>
-				<p className='departure-price-total'>${integer}.{fraction} USD</p>
+				<p className='departure-price-total'>{price}</p>
 				<a href={departure.links.deeplink} target='_blank' rel='noopener noreferrer'>
-					<button className='btn'>Select</button>
+					<button className='btn'>{locale.selectButton}</button>
 				</a>
 			</div>
 		</li>
@@ -70,7 +77,8 @@ DepartureItem.propTypes = {
 	origin_location: PropTypes.object.isRequired,
 	destination_location: PropTypes.object.isRequired,
 	operator: PropTypes.object.isRequired,
-	cities: PropTypes.object.isRequired
+	cities: PropTypes.object.isRequired,
+	selectedLanguage: PropTypes.string.isRequired
 };
 
 class DepartureList extends React.Component {
@@ -78,7 +86,8 @@ class DepartureList extends React.Component {
 		var {departures, 
 			locations,
 			operators,
-			cities} = this.props;
+			cities,
+			selectedLanguage} = this.props;
 
 		return (
 			<ul className='departure-list'>
@@ -91,6 +100,7 @@ class DepartureList extends React.Component {
 							destination_location={locations[departure.destination_location_id]}
 							operator={operators[departure.operator_id]}
 							cities={cities}
+							selectedLanguage={selectedLanguage}
 						/>
 					);
 				}.bind(this))}
@@ -103,7 +113,8 @@ DepartureList.propTypes = {
 	departures: PropTypes.array.isRequired,
 	locations: PropTypes.object.isRequired,
 	operators: PropTypes.object.isRequired,
-	cities: PropTypes.object.isRequired
+	cities: PropTypes.object.isRequired,
+	selectedLanguage: PropTypes.string.isRequired
 };
 
 module.exports = DepartureList;

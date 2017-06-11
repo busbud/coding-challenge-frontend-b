@@ -1,0 +1,16 @@
+{
+	"en": {
+		"searchButton": "Search for busses",
+		"selectButton": "Select",
+		"loadingMessage": "Searching for best bus trips",
+		"errorSomethingWrong": "Oops something went wrong. Try refreshing the page.",
+		"errorMessage": "There seems to be an error. Try refreshing the page."
+	},
+	"fr": {
+		"searchButton": "Recherche des bus",
+		"selectButton": "Sélectionner",
+		"loadingMessage": "En recherche des meilleurs voyages en bus",
+		"errorSomethingWrong": "Oops, il y avait un problème. Essayez d'actualiser la page.",
+		"errorMessage": "Une erreur est survenue. Essayez d'actualiser la page."
+	}
+}

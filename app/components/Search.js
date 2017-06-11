@@ -1,6 +1,8 @@
 var React = require('react');
 var {Link} = require('react-router-dom');
 var PropTypes = require('prop-types');
+var SelectLanguage = require('./SelectLanguage');
+var Locale = require('../utils/locale.json');
 
 class Search extends React.Component {
 	constructor (props) {
@@ -11,15 +13,34 @@ class Search extends React.Component {
 			arrival: 'Montreal, Quebec, Canada',
 			destination: 'f25dvk',
 			outbound_date: '2017-07-29',
-			adult: 1
+			adult: 1,
+			selectedLanguage: 'en'
 		};
+
+		this.updateLanguage = this.updateLanguage.bind(this);
 	}
+
+	componentDidMount () {
+		this.updateLanguage(this.state.selectedLanguage);
+	}
+
+	updateLanguage (lang) {
+		this.setState(function () {
+			return {
+				selectedLanguage: lang
+			};
+		});
+	}
+
 	render() {
-		var {departure, origin, arrival, destination, outbound_date, adult} = this.state;
+		var {departure, origin, arrival, destination, outbound_date, adult, selectedLanguage} = this.state;
 		var match = this.props.match;
 
 		return (
 			<section className='search'>
+				<SelectLanguage 
+					selectedLanguage={selectedLanguage} 
+					onSelect={this.updateLanguage} />
 				<div className='search-container'>
 					<div className='search-item'>
 						<i className="search-item-icon fa fa-location-arrow" aria-hidden="true"></i>
@@ -41,9 +62,9 @@ class Search extends React.Component {
 				<Link className='btn'
 					to={{
 						pathname: match.url + 'results',
-						search: '?origin=' + origin + '&destination=' + destination + '&outbound_date=' + outbound_date + '&adult=' + adult
+						search: '?origin=' + origin + '&destination=' + destination + '&outbound_date=' + outbound_date + '&adult=' + adult + '&lang=' + selectedLanguage
 					}}>
-				Search for busses</Link>
+				{Locale[selectedLanguage].searchButton}</Link>
 			</section>
 		);
 	}

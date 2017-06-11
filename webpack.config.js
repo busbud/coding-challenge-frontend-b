@@ -12,7 +12,32 @@ module.exports = {
 	module: {
 		rules: [
 			{test: /\.(js)$/, use: 'babel-loader'},
-			{test: /\.css$/, use: ['style-loader', 'css-loader']}
+			{test: /\.css$/, use: ['style-loader', 'css-loader']},
+			{test: /\.json$/, use: 'json-loader'},
+			{test: /\.(jpe?g|png|gif|svg)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+						query: {
+							name:'images/[name].[ext]'
+						}
+					},
+					{
+						loader: 'image-webpack-loader',
+						query: {
+							mozjpeg: {
+								progressive: true,
+							},
+							gifsicle: {
+								interlaced: true,
+							},
+							optipng: {
+								optimizationLevel: 7,
+							}
+						}
+					}
+				]
+			}
 		]
 	},
 	// Allows us to request urls from browser
