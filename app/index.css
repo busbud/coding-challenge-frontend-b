@@ -224,6 +224,7 @@ li {
 
 	.loading {
 		font-size: 22px;
+		white-space: normal;
 	}
 
 	.error {
