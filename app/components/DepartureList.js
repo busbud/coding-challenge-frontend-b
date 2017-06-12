@@ -11,17 +11,39 @@ function DepartureItem (props) {
 		cities,
 		selectedLanguage} = props;
 
+	/**
+	 * Get correct time format for moment.js depending on language
+	 * @type {String}
+	 */
 	var timeFormat = selectedLanguage === 'en' ? 'h:mm A' : 'HH:mm';
 
+	/**
+	 * Extracting price and splitting integer and fraction
+	 * @type {String}
+	 */
 	var priceStr = departure.prices.total.toString();
 	var integer = priceStr.substring(0, priceStr.length - 2);
 	var fraction = priceStr.substring(priceStr.length - 2);
+
+	/**
+	 * Format price depending on language
+	 * @type {String}
+	 */
 	var price = selectedLanguage === 'en'
 		? 'USD$ ' + integer + '.' + fraction
 		: integer + '.' + fraction + ' $USD';
 
 	var locale = Locale[selectedLanguage];
 
+	/**
+	 * Function that will return the URL for operator logo with specified
+	 * heigh and width
+	 * 
+	 * @param  {String}
+	 * @param  {Integer}
+	 * @param  {Integer}
+	 * @return {String}
+	 */
 	function getImageSrc (url, height, width) {
 		if (url) {
 			//replace marker tags in the URL

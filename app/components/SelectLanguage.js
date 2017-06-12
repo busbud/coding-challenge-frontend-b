@@ -9,8 +9,6 @@ function SelectLanguage (props) {
 			{languages.map(function (lang) {
 				return (
 					<li
-						style={lang === props.selectedLanguage ?
-							{color: '#D0021B'} : null}
 						/** Using .bind onClick event so we can pass a 
 						* specific language. First arg is null beacause
 						* we have already bound *this* to it

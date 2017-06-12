@@ -27,6 +27,10 @@ class Results extends React.Component {
 		this.requestDepartures = this.requestDepartures.bind(this);
 	}
 
+	/** 
+	 * Set selectedLanguage state before render() runs
+	 * so we're using the correct language 
+	 */
 	componentWillMount () {
 		this.setState(function () {
 			return {
@@ -45,14 +49,13 @@ class Results extends React.Component {
 				var index = data.departures.length;
 
 				if (data.cities) {
-					// Create cities object and reference by departure and arrival
-					// departure is always at index 0 and arrival at 1
+					/** Create cities object and reference by departure and arrival
+					* departure is always at index 0 and arrival at 1
+					*/
 					var cities = {
 						departure: data.cities[0],
 						arrival: data.cities[1]
 					};
-
-					console.log(cities);
 
 					this.setState(function () {
 						return {
@@ -61,11 +64,7 @@ class Results extends React.Component {
 					});
 				}
 
-				// data.complete = false;
-				console.log(data);
-
 				if (!data.complete) {
-					console.log('Going to poll');
 					// Run poll after 3 seconds
 					return setTimeout(function (){
 						this.requestDepartures(params, true, index);
@@ -75,8 +74,9 @@ class Results extends React.Component {
 					var locations = {}; 
 					var operators = {};
 
-					// If after polling we get no results then keep 
-					// departures state to null
+					/** If after polling we get no results then keep 
+					* departures state to null
+					*/
 					if(data.departures.length === 0) {
 						data.departures = null;
 					}

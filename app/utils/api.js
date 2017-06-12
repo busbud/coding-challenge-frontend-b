@@ -6,10 +6,13 @@ var headers = {headers: {
 	'X-Busbud-token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
 }};
 
-/* Function to receive query string parameters from URL
- Returns object for api parameters 
- split into path and query parameters
-*/
+/**
+ * Function to receive query string parameters from URL
+ * Returns object for api parameters 
+ * split into path and query parameters
+ * @param  {Object}
+ * @return {Object}
+ */
 function getQueryStringData(params) {
 	return {
 		path: {
@@ -23,12 +26,22 @@ function getQueryStringData(params) {
 	};
 }
 
-// Function that returns path parameters
+/**
+ * Function that returns path parameters
+ * 
+ * @param  {Object}
+ * @return {String}
+ */
 function prepPathParameters (pathData) {
 	return Object.values(pathData).join('/');
 }
 
-// Function that returns correct format of query string paramters
+/**
+ * Function that returns correct format of query string paramters
+ * 
+ * @param  {Object}
+ * @return {String}
+ */
 function prepQueryParameters (queryData) {
 	return Object.keys(queryData)
 		.map(function (key) {
@@ -36,7 +49,13 @@ function prepQueryParameters (queryData) {
 		}).join('&');
 }
 
-// Function that return complete url needed to complete request
+/**
+ * Function that return complete url needed to complete request
+ * 
+ * @param  {Object}
+ * @param  {Boolean}
+ * @return {String}
+ */
 function prepURL (data, poll = false) {
 	var pathParams = prepPathParameters(data.path);
 	var queryParams = prepQueryParameters(data.query);
@@ -48,16 +67,23 @@ function prepURL (data, poll = false) {
 	return baseURL + pathParams + '?' + queryParams;
 }
 
+/**
+ * Function that completed a GET request to busbud API
+ * and returns results or errors
+ * 
+ * @param  {Object}
+ * @param  {Boolean}
+ * @param  {Integer}
+ * @return {Object}
+ */
 function getDepartures (params, poll, index) {
 	var urlParams = getQueryStringData(params);
 	var url;
 
 	if (poll) {
 		url = prepURL(urlParams, poll) + '&index=' + index;
-		console.log(url);
 	} else {
 		url = prepURL(urlParams);
-		console.log(url);
 	}
 
 	return axios.get(url, headers)
@@ -65,12 +91,10 @@ function getDepartures (params, poll, index) {
 			return response.data;
 		})
 		.catch(function (error) {
-			console.log('ERROR: ' + error);
 			return error;
 		});
 }
 
 module.exports = {
 	getDepartures: getDepartures
-	//pollDepartures: pollDepartures
 };

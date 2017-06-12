@@ -12,6 +12,16 @@ class Loading extends React.Component {
 
 	componentDidMount() {
 		var stopper = this.props.text + '...';
+		
+		/**
+		 * This function will create the loading animation for the text
+		 * (i.e. add dots every few seconds), once we get to 3 dots then 
+		 * restart
+		 * 
+		 * @param  {Function}
+		 * @param  {Integer}
+		 * @return {String}
+		 */
 		this.interval = window.setInterval(function () {
 			if (this.state.text === stopper) {
 				this.setState(function () {
