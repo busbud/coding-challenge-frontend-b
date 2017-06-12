@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "create": "webpack",
-    "start": "webpack-dev-server --open"
+    "dev": "webpack-dev-server --open",
+    "postinstall": "NODE_ENV='production' webpack -p",
+    "start": "node server.js"
   },
   "babel": {
     "presets": [
@@ -17,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.2",
+    "express": "^4.15.3",
     "moment": "^2.18.1",
     "query-string": "^4.3.4",
     "react": "^15.5.4",
