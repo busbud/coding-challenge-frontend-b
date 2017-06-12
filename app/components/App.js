@@ -16,7 +16,12 @@ class App extends React.Component {
 						<Route exact path='/' component={Search} />
 						<Route path='/results' component={Results} />
 						<Route render={function () {
-							return <p>Not Found</p>;
+							return (
+								<h1
+									style={{textAlign: 'center', color: '#FFF'}}>
+									404! Not Found (Broken Link...)
+								</h1>
+							);
 						}} />
 					</Switch>
 				</div>
