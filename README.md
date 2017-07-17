@@ -22,6 +22,7 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 
 * You can setup your microsite any way you like; we're partial to NodeJS, ExpressJS and React
 * CSS can be written using SASS, LESS or similar higher-level language
+* All API requests need a special `X-Busbud-Token` HTTP Header, which you should have received with your challenge
 * All API requests need a special `Accept` HTTP Header, as described below
 
 ## Supporting API
