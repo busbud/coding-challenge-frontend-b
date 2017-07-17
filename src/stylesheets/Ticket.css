@@ -1,0 +1,73 @@
+.ticket {
+  border: 2px solid rgb(237, 74, 149);
+  width: 55vw;
+  height: 150px;
+  margin: 20px;
+}
+
+.ticket-section {
+  height: 100%;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-operator, .ticket-price {
+  justify-content: center;
+}
+
+.operator-logo {
+  width: 100%;
+  padding: 0px 8px;
+}
+
+.ticket-locations {
+  border-left: 1px dashed rgb(237, 74, 149);
+  border-right: 1px dashed rgb(237, 74, 149);
+  justify-content: space-around;
+}
+
+.origin {
+  margin-top: 10px;
+}
+
+.destination {
+  margin-bottom: 10px;
+}
+
+.location-name {
+  font-size: 18px;
+  margin: 0px;
+  color: rgb(79, 49, 90);
+}
+
+.city-name {
+  margin: 0px;
+  color: rgb(75, 75, 75);
+}
+
+.ticket-price p {
+  font-size: 18px;
+}
+
+.ticket-price button {
+  width: 80%;
+}
+
+@media (max-width: 1200px) {
+  .ticket-operator {
+    display: none;
+  }
+}
+
+@media (max-width: 660px) {
+  .ticket {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 431px) {
+  .ticket-price button {
+    font-size: 10px;
+  }
+}
