@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment'
 import { Departure } from '../departure/Departure';
-import { translate } from 'react-i18next';
 
 export class DeparturesList extends Component {
 	constructor(props) {
