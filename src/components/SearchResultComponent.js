@@ -13,7 +13,7 @@ class SearchResultComponent extends React.Component {
 	render() {
 		return (
 			<Table>
-				<TableHeader displaySelectAll={false}>
+				<TableHeader displaySelectAll={false} adjustForCheckbox={false}>
 					<TableRow>
 						<TableHeaderColumn>Departure time</TableHeaderColumn>
 						<TableHeaderColumn>Arrival time</TableHeaderColumn>

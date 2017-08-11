@@ -24,7 +24,7 @@ class SearchBarComponent extends React.Component {
 					value={this.props.departure}
 					disabled={true}
 					style={this.state.style}
-				/>
+				/><br/>
 				<TextField
 					id="destination"
 					label="Destination"
@@ -50,7 +50,7 @@ class SearchBarComponent extends React.Component {
 					<MenuItem value={2} primaryText="2" />
 					<MenuItem value={3} primaryText="3" />
 					<MenuItem value={4} primaryText="4" />
-				</SelectField>
+				</SelectField><br/>
 				<RaisedButton label="Go!" style={this.state.style}/>
 			</div>
 		)
