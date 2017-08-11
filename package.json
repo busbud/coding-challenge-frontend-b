@@ -1,35 +1,37 @@
 {
-  "name": "coding-challenge-frontend-b",
-  "version": "1.0.0",
-  "description": "![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)",
-  "main": "index.js",
-  "scripts": {
-    "compile": "webpack",
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mabeauchamp/coding-challenge-frontend-b.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mabeauchamp/coding-challenge-frontend-b/issues"
-  },
-  "homepage": "https://github.com/mabeauchamp/coding-challenge-frontend-b#readme",
-  "engines": {
-    "node": "6.10.2"
-  },
-  "dependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
-    "babel-preset-latest": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "webpack": "^3.5.3",
-    "webpack-dev-middleware": "^1.12.0",
-    "ejs": "2.5.6",
-    "express": "4.15.2"
-  }
+	"name": "coding-challenge-frontend-b",
+	"version": "1.0.0",
+	"description": "![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)",
+	"main": "index.js",
+	"scripts": {
+		"build": "webpack",
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mabeauchamp/coding-challenge-frontend-b.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/mabeauchamp/coding-challenge-frontend-b/issues"
+	},
+	"homepage": "https://github.com/mabeauchamp/coding-challenge-frontend-b#readme",
+	"engines": {
+		"node": "6.10.2"
+	},
+	"dependencies": {
+		"babel-core": "^6.25.0",
+		"babel-loader": "^7.1.1",
+		"babel-preset-latest": "^6.24.1",
+		"babel-preset-react": "^6.24.1",
+		"ejs": "2.5.6",
+		"express": "4.15.2",
+		"react": "^15.6.1",
+		"react-dom": "^15.6.1",
+		"react-tap-event-plugin": "^2.0.1",
+		"webpack": "^3.5.3",
+		"webpack-dev-middleware": "^1.12.0"
+	}
 }
