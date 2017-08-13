@@ -11,7 +11,7 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 
 ## Non-functional requirements
 
-- The code should be hosted on github, and the repo should be shared with Busbud and submitted as a pull request
+- Challenge is submitted as pull request against this repo ([fork it](https://help.github.com/articles/fork-a-repo/) and [create a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 - The microsite should be deployed to [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
 ### Bonus
