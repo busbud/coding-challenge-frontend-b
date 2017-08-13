@@ -1,0 +1,26 @@
+{
+  "Common":{
+    "Arrival":"Destination",
+    "Departure":"Départ"
+  },
+  "Header":{
+    "By":"Via"
+  },
+  "SearchForm":{
+    "All fields are required":"Tous les champs sont requis.",
+    "Cancel":"Annuler",
+    "Choose a date":"Choisir une date",
+    "Start to type and select":"Saisir et séléctionner"
+  },
+  "ResultList":{
+    "Arrival time and location":"Horaire et emplacement de l'arrivée",
+    "Departure time and location":"Horaire et emplacement du départ",
+    "on":"le",
+    "Operator":"Compagnie",
+    "Operator Company":"Compagnie",
+    "Price":"Prix",
+    "Sorry there is no result":"Désolé, il n'y a aucun resultat.",
+    "To":"À",
+    "Travels From":"Trajet(s) de"
+  }
+}

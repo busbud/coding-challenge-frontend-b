@@ -1,0 +1,86 @@
+.App {
+  text-align: center; }
+  .App .App-header {
+    background-color: #333;
+    height: 50px;
+    color: white;
+    text-align: left; }
+    .App .App-header .logo-osheaga, .App .App-header .logo-busbud {
+      height: 35px;
+      margin-top: 7px;
+      margin-left: 15px;
+      vertical-align: bottom;
+      margin-right: 10px; }
+      .App .App-header .logo-osheaga.logo-small, .App .App-header .logo-busbud.logo-small {
+        height: auto;
+        width: 75px;
+        margin-top: 14px; }
+    .App .App-header .language-buttons {
+      position: absolute;
+      top: 9px;
+      right: 15px; }
+      .App .App-header .language-buttons span {
+        color: white;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 24px; }
+  .App .loader-overlay {
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.15); }
+  .App .search-container .search-form {
+    margin-top: 20px; }
+    .App .search-container .search-form .date-picker {
+      padding-top: 24px; }
+    .App .search-container .search-form .raised-button {
+      padding-top: 29px; }
+      .App .search-container .search-form .raised-button .search-button {
+        width: 60%;
+        height: 36px; }
+  .App .search-container .warning {
+    margin-top: 5px;
+    font-weight: bold; }
+  .App .results-container {
+    margin-top: 30px; }
+    .App .results-container .no-result {
+      background-color: #eee;
+      padding: 4px;
+      width: 90%;
+      margin: auto;
+      color: #00bcd4;
+      font-size: 18px; }
+      .App .results-container .no-result .meh-container {
+        font-size: 50px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 25px; }
+    .App .results-container .detail-travel-bar .detail-travel-text .regular-text {
+      font-size: 18px;
+      font-weight: bold;
+      padding-right: 20px; }
+    .App .results-container .detail-travel-bar .detail-travel-text .big-text {
+      color: #00bcd4;
+      font-weight: bold;
+      font-size: 30px;
+      padding-right: 20px; }
+    .App .results-container .detail-travel-bar .detail-travel-pictures {
+      margin-top: 20px; }
+      .App .results-container .detail-travel-bar .detail-travel-pictures .left-part {
+        text-align: right;
+        padding-right: 55px; }
+      .App .results-container .detail-travel-bar .detail-travel-pictures .right-part {
+        text-align: left;
+        padding-left: 55px; }
+    .App .results-container .table-results {
+      margin-top: 20px; }
+      .App .results-container .table-results .table-title {
+        font-weight: bold;
+        text-transform: uppercase; }
+
+.debug {
+  border: solid 1px red; }

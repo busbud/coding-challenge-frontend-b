@@ -1,0 +1,26 @@
+{
+  "Common":{
+    "Arrival":"Arrival",
+    "Departure":"Departure"
+  },
+  "Header":{
+    "By":"By"
+  },
+  "SearchForm":{
+    "All fields are required":"All fields are required.",
+    "Cancel":"Cancel",
+    "Choose a date":"Choose a date",
+    "Start to type and select":"Start to type and select"
+  },
+  "ResultList":{
+    "Arrival time and location":"Arrival time and location",
+    "Departure time and location":"Departure time and location",
+    "on":"on",
+    "Operator":"Operator",
+    "Operator Company":"Operator Company",
+    "Price":"Price",
+    "Sorry there is no result":"Sorry there is no result.",
+    "To":"To",
+    "Travels From":"Travel(s) From"
+  }
+}
