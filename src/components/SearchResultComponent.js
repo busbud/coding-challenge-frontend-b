@@ -21,12 +21,14 @@ class SearchResultComponent extends React.Component {
 					</TableRow>
 				</TableHeader>
 				<TableBody showRowHover={false} displayRowCheckbox={false}>
+					{this.props.data.map((departure, index) => (
 					<TableRow>
-						<TableRowColumn></TableRowColumn>
-						<TableRowColumn></TableRowColumn>
-						<TableRowColumn></TableRowColumn>
-						<TableRowColumn></TableRowColumn>
+						<TableRowColumn>{departure.departure_time}</TableRowColumn>
+						<TableRowColumn>{departure.arrival_time}</TableRowColumn>
+						<TableRowColumn>{departure.location_name}</TableRowColumn>
+						<TableRowColumn>{departure.prices.total}{departure.prices.currency}</TableRowColumn>
 					</TableRow>
+					))}
 				</TableBody>
 			</Table>
 		)
