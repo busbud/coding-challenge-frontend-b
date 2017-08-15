@@ -19,9 +19,9 @@ class SearchBarComponent extends React.Component {
 		return (
 			<div>
 				<TextField
-					id="departure"
-					label="Departure"
-					value={this.props.departure}
+					id="origin"
+					label="Origin"
+					value={this.props.origin}
 					disabled={true}
 					style={this.state.style}
 				/><br/>
@@ -51,7 +51,8 @@ class SearchBarComponent extends React.Component {
 					<MenuItem value={3} primaryText="3" />
 					<MenuItem value={4} primaryText="4" />
 				</SelectField><br/>
-				<RaisedButton label="Go!" style={this.state.style}/>
+				<RaisedButton label="Go!" style={this.state.style} onClick={(event) => this.props.searchHandler(event)}/>
+
 			</div>
 		)
 	}

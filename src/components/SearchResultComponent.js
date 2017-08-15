@@ -9,7 +9,6 @@ import {
 } from 'material-ui/Table';
 
 class SearchResultComponent extends React.Component {
-
 	render() {
 		return (
 			<Table>
