@@ -1,5 +1,4 @@
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SearchBarComponent from './SearchBarComponent';
 import axios from 'axios';
 
