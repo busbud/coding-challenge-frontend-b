@@ -1,7 +1,6 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SearchBarComponent from './SearchBarComponent';
-import SearchResultComponent from './SearchResultComponent';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -89,11 +88,6 @@ class App extends React.Component {
 							searchHandler={this.searchHandler}
 						/>
 					</div>
-					<SearchResultComponent
-						loading={this.loading}
-						data={this.departures}
-						/>
-				</div>
 			</MuiThemeProvider>
 		)
 	}
