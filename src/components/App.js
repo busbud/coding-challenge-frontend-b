@@ -14,10 +14,11 @@ class App extends React.Component {
 			destination: "Montreal",
 			date: new Date(2018,9,2),
 			adults: 1,
-			loading: false,
-			departures: [],
 			expiration: Date.now()
 		}
+
+		this.loading = false;
+		this.departures = [];
 	}
 
 	searchHandler(event) {
@@ -25,38 +26,53 @@ class App extends React.Component {
 		
 		//if(this.expiration <= Date.now()){
 			var poll = setInterval(()=>{
-				if(this.state.loading || !this.state.departures.length){
+				if(this.loading || (this.departures && !this.departures.length)){
 					this.getData();
 				}else{
 					clearInterval(poll);
 				}
-			},500)
+			},2000)
 		//}
 	}
 
 	getData() {
 		axios({
-				url: 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2018-02-07',
-				method: 'get',
-				data: {
-					adult: 1
-				},
-				headers: {
-					'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-					'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
+			url: 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2018-02-07',
+			method: 'get',
+			data: {
+				adult: 1
+			},
+			headers: {
+				'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
+				'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
+			}
+		})
+		.then(function (response) {
+			if(response.status == 200 && response.data.is_valid_route === true){
+				if(response.data.complete === true){
+					this.setState({loading:false, expiration : new Date(Date.now() + (response.data.ttl*1000))});
+					this.filterData(response.data);
 				}
+			}
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
+	}
+
+	filterData(data){
+		var results = [];
+		for(departure of data.departures){
+			results.push({
+				departureTime: departure.departure_time,
+				arrivalTime: arrival.arrival_timezone,
+				originLocation: results.locations.find((location) => location.id === departure.origin_location_id),
+				destinationLocation: results.locations.find((location) => location.id === departure.desination_location_id),
+				price: results.prices.total+' '+results.prices.currency
 			})
-			.then(function (response) {
-				if(response.status == 200 && response.data.is_valid_route === true){
-					if(response.data.complete === true){
-						this.setState({loading:false, expiration : new Date(Date.now() + (response.data.ttl*1000))});
-						// get departures and map locations to them + simply prices ?
-					}
-				}
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		}
+
+		this.departures= results;
 	}
 
 	render() {
@@ -74,8 +90,8 @@ class App extends React.Component {
 						/>
 					</div>
 					<SearchResultComponent
-						loading={this.state.loading}
-						data={[{departure_time:'a',arrival_time:'b',location_name:'e',prices:{total:'c',currency:'d'}}]}
+						loading={this.loading}
+						data={this.departures}
 						/>
 				</div>
 			</MuiThemeProvider>
