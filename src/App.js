@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SearchBarComponent from './SearchBarComponent';
 import SearchResultsComponent from './SearchResultsComponent';
+import 'uikit';
+import './css/uikit.min.css';
 import './App.css';
 import axios from 'axios';
 import busbudLogo from './busbud_logo.svg'
@@ -91,7 +93,7 @@ class App extends Component {
 			<div className="App">
 				<div className="App-header">
 					<div className="splash" style={headerStyles}/>
-					<div className="Form-container">
+					<div className="Form-container uk-width-1-1">
 						<img src={busbudLogo} className="Busbud-logo" alt="Busbud"/>
 							
 						<SearchBarComponent 

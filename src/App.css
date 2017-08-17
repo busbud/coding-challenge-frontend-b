@@ -50,3 +50,10 @@
 .justify{
 	justify-content:space-between;
 }
+#searchSubmit{
+	background: #F39100;
+	border-radius: 4px;
+	border:none;
+	color:#FFF;
+	padding:10px 15px;
+}
