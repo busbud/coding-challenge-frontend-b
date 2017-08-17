@@ -3,6 +3,8 @@ import SearchBarComponent from './SearchBarComponent';
 import SearchResultsComponent from './SearchResultsComponent';
 import './App.css';
 import axios from 'axios';
+import busbudLogo from './busbud_logo.svg'
+import headerImage from './HEADER.png'
 
 class App extends Component {
 
@@ -81,21 +83,29 @@ class App extends Component {
 	}
 
 	render() {
+		var headerStyles = {
+			backgroundImage:'url('+headerImage+')'
+		};
+
 		return (
 			<div className="App">
 				<div className="App-header">
-					<img src="https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png"/>
-					<SearchBarComponent 
-						origin={this.state.origin}
-						destination={this.state.destination}
-						date={this.state.date}
-						adults={this.state.adults}
-						searchHandler={this.searchHandler.bind(this)}
+					<div className="splash" style={headerStyles}/>
+					<div className="Form-container">
+						<img src={busbudLogo} className="Busbud-logo" alt="Busbud"/>
+							
+						<SearchBarComponent 
+							origin={this.state.origin}
+							destination={this.state.destination}
+							date={this.state.date}
+							adults={this.state.adults}
+							searchHandler={this.searchHandler.bind(this)}
 						/>
-					<SearchResultsComponent 
-						departures={this.state.departures}
-					/>
+					</div>
 				</div>
+				<SearchResultsComponent 
+					departures={this.state.departures}
+				/>
 			</div>
 		);
 	}

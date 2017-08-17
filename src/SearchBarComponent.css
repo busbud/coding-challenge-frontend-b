@@ -1,0 +1,22 @@
+.Form-Row input{
+	flex-grow: 2;
+	width:45%;
+	background: #FFFFFF;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #4A4A4A;
+	letter-spacing: 0;
+	border:none;
+	padding:10px 15px;
+}
+
+button{
+	width:100%;
+	background: #F39100;
+	border-radius: 4px;
+	font-size: 18px;
+	color: #FFFFFF;
+	letter-spacing: 0;
+	display:block;
+	border:none;
+}
