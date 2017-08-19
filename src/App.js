@@ -70,10 +70,12 @@ class App extends Component {
 	filterData(data){
 		var results = [];
 		for(var departure of data.departures){
+			var departureDate = new Date(departure.departure_time);
+			var arrivalDate = new Date(departure.arrival_time);
 			results.push({
 				id: departure.id,
-				departureTime: departure.departure_time,
-				arrivalTime: new Date(departure.arrival_time).toLocaleFormat('%A, %B %e, %Y'),
+				departureTime: ('0'+departureDate.getHours()).substr(-2)+':'+('0'+departureDate.getMinutes()).substr(-2),
+				arrivalTime: ('0'+arrivalDate.getHours()).substr(-2)+':'+('0'+arrivalDate.getMinutes()).substr(-2),
 				originLocation: data.locations.find((location) => location.id === departure.origin_location_id).name,
 				destinationLocation: data.locations.find((location) => location.id === departure.destination_location_id).name,
 				operatorImage: data.operators.find((operator) => operator.id === departure.operator_id).logo_url,

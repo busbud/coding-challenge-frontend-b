@@ -53,7 +53,7 @@ class SearchBarComponent extends React.Component {
 				</div>
 				<div className="uk-grid">
 					<div className="uk-width-1-1 uk-row-first">
-						<a id="searchSubmit"onClick={(event) => this.props.searchHandler(event)} className="uk-width-1-1 uk-button uk-row-first"> <a className={'uk-icon-' + (this.props.loading ? 'spinner uk-icon-spin' : 'bus')}></a> Search for buses</a>
+						<a id="searchSubmit"onClick={(event) => this.props.searchHandler(event)} className="uk-width-1-1 uk-button uk-row-first"> <i className={'uk-icon-' + (this.props.loading ? 'spinner uk-icon-spin' : 'bus')}></i> Search for buses</a>
 					</div>
 				</div>
 			</div>
