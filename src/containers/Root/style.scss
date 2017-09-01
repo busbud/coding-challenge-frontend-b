@@ -1,0 +1,47 @@
+$header-height: 200px;
+
+.root {
+	background: url('/images/fest.jpg') no-repeat fixed;
+	background-size: cover;
+	position: relative;
+
+	.main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		overflow: auto;
+		z-index: 2;
+		position: relative;
+	}
+
+	.app-header {
+		position: relative;
+		max-height: 400px;
+
+		.app-logo {
+			padding: $big;
+			width: 150px;
+
+			@media only screen and (max-width: $screen-xs-max) {
+				padding: $smaller;
+			}
+		}
+
+		&.header {
+			color: white;
+			border: 0;
+		}
+	}
+
+	.page-cover {
+		background: $primary;
+		background: linear-gradient($primary, $secondary);
+		position: absolute;
+		z-index: 0;
+		top: 0;
+		height: 100%;
+		opacity: 0.7;
+		width: 100%
+	}
+}

@@ -1,0 +1,30 @@
+$action: #165fcc;
+$primary: #114f91;
+$secondary: #6f35b4;
+$minor: #6b7072;
+$major: #1f242b;
+$bg: #f6f6f6;
+
+$small: 10px;
+$smaller: 5px;
+$normal: 15px;
+$big: 20px;
+$bigger: 30px;
+
+$line-height-base: 1.428571429;
+
+$screen-xs-min: 480px;
+
+// Small screen / tablet
+$screen-sm-min: 768px;
+
+// Medium screen / desktop
+$screen-md-min: 992px;
+
+// Large screen / wide desktop
+$screen-lg-min: 1200px;
+
+// Non-overlap
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-sm-max: ($screen-md-min - 1);
+$screen-md-max: ($screen-lg-min - 1);

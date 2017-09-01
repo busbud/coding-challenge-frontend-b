@@ -1,0 +1,315 @@
+{
+  "locations": [
+    {
+      "id": 1938,
+      "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+      "name": "Gare d'autocars de Montréal",
+      "address": [
+        "1717 Rue Berri",
+        "Montréal, QC H2L 4E9",
+        "Canada"
+      ],
+      "type": "bus_station",
+      "lat": 45.516235,
+      "lon": -73.562668,
+      "geohash": "f25dyjcr3"
+    },
+    {
+      "id": 1942,
+      "city_id": "375dd587-9001-acbd-84a4-683deda84183",
+      "name": "Port Authority Bus Terminal",
+      "address": [
+        "619-623 8th Ave",
+        "New York, NY 10018",
+        "USA"
+      ],
+      "type": "bus_station",
+      "lat": 40.756252,
+      "lon": -73.990684,
+      "geohash": "dr5ru73wk"
+    }
+  ],
+  "operators": [
+    {
+      "id": "0e753dbf-a9de-4339-8a00-bbb6f4813d18",
+      "source_id": 175,
+      "profile_id": 213,
+      "name": "Adirondack Trailways",
+      "url": "https://trailwaysny.com",
+      "logo_url": "https://busbud.imgix.net/operator-logos/adirondack-trailways.png?h={height}&w={width}&auto=format&fit=fill&bg=0FFF",
+      "display_name": "Adirondack Trailways",
+      "review_state": "good",
+      "sellable": true,
+      "fuzzy_prices": false,
+      "sell_tickets_cutoff": {
+        "hours": 3
+      },
+      "amenities": {
+        "classes": {
+          "Economy": {
+            "display_name": "-",
+            "wifi": true,
+            "toilet": true,
+            "ac": true,
+            "refreshment": false,
+            "food": false,
+            "hot_meal": false,
+            "power_outlets": true,
+            "tv": true,
+            "bus_attendant": false,
+            "leg_room": false,
+            "small_seat": false,
+            "average_seat": true,
+            "xl_seat": false,
+            "full_recline_seat": false
+          },
+          "Normal": {
+            "display_name": "-",
+            "wifi": true,
+            "toilet": true,
+            "ac": true,
+            "refreshment": false,
+            "food": false,
+            "hot_meal": false,
+            "power_outlets": true,
+            "tv": true,
+            "bus_attendant": false,
+            "leg_room": false,
+            "small_seat": false,
+            "average_seat": true,
+            "xl_seat": false,
+            "full_recline_seat": false
+          }
+        }
+      },
+      "source": "ny_trailways",
+      "referral_deal": false,
+      "display_url": "trailwaysny.com",
+      "fraud_check": null,
+      "terms": {
+        "type_of_id": "photo_and_full_name",
+        "ticket_requirements": {
+          "print": "printed_tkt",
+          "claim": "printed_tkt"
+        },
+        "nb_carry_on": 1,
+        "kg_by_carry_on": null,
+        "nb_checked_bags": 2,
+        "kg_by_bag": 23,
+        "checked_in_size_cm": null,
+        "nb_extra_checked_in": null,
+        "extra_checked_in_fees": {
+          "type": "per_extra_checked_in",
+          "amount": 1500
+        },
+        "oversized_luggage": {
+          "allowed": true,
+          "allowed_types": [
+            "bicycle",
+            "sport_equipment"
+          ],
+          "fees": {
+            "type": "flat_fee",
+            "amount": 2000
+          },
+          "early_arrival_required": true,
+          "cover_required": true
+        },
+        "animals": {
+          "fees": {
+            "type": "unknown",
+            "amount": null,
+            "percent": null
+          },
+          "main_compartment_allowed": false,
+          "hold_compartment_allowed": false,
+          "main_max_weight_kg": null,
+          "main_small_cage_required": null,
+          "hold_max_weight_kg": null,
+          "vaccination_required": true,
+          "special_animals_allowed": true,
+          "early_arrival_required": true,
+          "specific_hours": null
+        },
+        "refund_policies": [],
+        "exchange_policies": [
+          {
+            "type": "station",
+            "flat_fee": 2000,
+            "flat_fee_currency": "USD",
+            "percent_fee": null,
+            "cutoff_reference": "departure-date",
+            "cutoff_from": null,
+            "cutoff_to": 24,
+            "external_link": null
+          }
+        ],
+        "refund": false,
+        "exchange": true,
+        "boarding_requirement": "printed_tkt",
+        "piece_of_id": true,
+        "bag_allowed": true,
+        "extra_bag_policy": true,
+        "extra_bag_cost": 1500,
+        "extra_bag_kg_cost": null,
+        "addons": {},
+        "refund_cutoff": null,
+        "exchange_cutoff": 24
+      }
+    }
+  ],
+  "departures": [
+    {
+      "amenities": {
+        "display_name": "-",
+        "wifi": true,
+        "toilet": true,
+        "ac": true,
+        "refreshment": false,
+        "food": false,
+        "hot_meal": false,
+        "power_outlets": true,
+        "tv": true,
+        "bus_attendant": false,
+        "leg_room": false,
+        "small_seat": false,
+        "average_seat": true,
+        "xl_seat": false,
+        "full_recline_seat": false
+      },
+      "arrival_timezone": "America/Montreal",
+      "available_seats": 33,
+      "bus": null,
+      "busbud_departure_id": "80c57150",
+      "class": "Economy",
+      "class_name": "-",
+      "deeplink": null,
+      "departure_timezone": "America/New_York",
+      "departure_type": null,
+      "destination_location_id": 1938,
+      "duration": 535,
+      "has_search_details": true,
+      "has_transfers": false,
+      "has_addons": null,
+      "id": "MjcwNDM0NDA6ODBjNTcxNTA",
+      "links": {
+        "deeplink": "https://www.busbud.com/en/deeplink/dr5reg/f25dvk/MjcwNDM0NDA6ODBjNTcxNTA?outbound_date=2017-09-10&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+      },
+      "num_transfers": 0,
+      "operator_id": "0e753dbf-a9de-4339-8a00-bbb6f4813d18",
+      "origin_location_id": 1942,
+      "schedule_id": null,
+      "sellable": true,
+      "source_id": 175,
+      "ticket_types": [
+        "print"
+      ],
+      "departure_time": "2017-09-10T11:00:00",
+      "arrival_time": "2017-09-10T19:55:00",
+      "fetched_at": "2017-09-01T15:11:16.268Z",
+      "prices": {
+        "currency": "CAD",
+        "total": 7013,
+        "categories": {},
+        "discount": 0,
+        "roundtrip_min": null,
+        "roundtrip_total": null,
+        "discounted": null,
+        "breakdown": {
+          "base": 7013,
+          "fees": 0,
+          "taxes": 0,
+          "discount": 0
+        }
+      },
+      "trip_stops": null,
+      "addons": null,
+      "details": {},
+      "terms": {
+        "type_of_id": "photo_and_full_name",
+        "ticket_requirements": {
+          "print": "printed_tkt",
+          "claim": "printed_tkt"
+        },
+        "nb_carry_on": 1,
+        "kg_by_carry_on": null,
+        "nb_checked_bags": 2,
+        "kg_by_bag": 23,
+        "checked_in_size_cm": null,
+        "extra_checked_in_fees": {
+          "type": "per_extra_checked_in",
+          "amount": 1500
+        },
+        "nb_extra_checked_in": null,
+        "oversized_luggage": {
+          "allowed": true,
+          "allowed_types": [
+            "bicycle",
+            "sport_equipment"
+          ],
+          "fees": {
+            "type": "flat_fee",
+            "amount": 2000
+          },
+          "early_arrival_required": true,
+          "cover_required": true
+        },
+        "animals": {
+          "fees": {
+            "type": "unknown",
+            "amount": null,
+            "percent": null
+          },
+          "main_compartment_allowed": false,
+          "hold_compartment_allowed": false,
+          "main_max_weight_kg": null,
+          "main_small_cage_required": null,
+          "hold_max_weight_kg": null,
+          "vaccination_required": true,
+          "special_animals_allowed": true,
+          "early_arrival_required": true,
+          "specific_hours": null
+        },
+        "refund_policies": [
+          {
+            "type": "no-refund",
+            "flat_fee": null,
+            "flat_fee_currency": null,
+            "percent_fee": null,
+            "cutoff_reference": "departure-date",
+            "cutoff_from": null,
+            "cutoff_to": null,
+            "external_link": null
+          }
+        ],
+        "refund": false,
+        "refund_cutoff": null,
+        "exchange_policies": [
+          {
+            "type": "station",
+            "flat_fee": 2000,
+            "flat_fee_currency": "USD",
+            "percent_fee": null,
+            "cutoff_reference": "departure-date",
+            "cutoff_from": null,
+            "cutoff_to": 24,
+            "external_link": null
+          }
+        ],
+        "exchange": true,
+        "exchange_cutoff": 24,
+        "currency": "USD",
+        "addons": {},
+        "piece_of_id": true,
+        "boarding_requirement": "printed_tkt",
+        "extra_bag_policy": true,
+        "extra_bag_cost": 1500,
+        "extra_bag_kg_cost": null,
+        "bag_allowed": true
+      }
+    }
+  ],
+  "complete": true,
+  "ttl": 558,
+  "is_valid_route": true
+}

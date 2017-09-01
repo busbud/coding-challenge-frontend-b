@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component should render 1`] = `
+<nav
+  className="navigation"
+>
+  <h1>
+    
+  </h1>
+  <h2>
+    
+  </h2>
+  <summary>
+    
+    : 
+    <input
+      onChange={undefined}
+      type="date"
+      value={undefined}
+    />
+  </summary>
+</nav>
+`;

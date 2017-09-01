@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component should render button 1`] = `
+<button
+  className="button"
+  onClick={undefined}
+/>
+`;
+
+exports[`Component should render link 1`] = `
+<a
+  className="link"
+  onClick={undefined}
+/>
+`;

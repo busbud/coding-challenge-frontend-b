@@ -1,0 +1,29 @@
+{
+  "good": "good",
+  "noTicketsError": "Sorry, no tickets found for this date :c",
+  "hours": "hours",
+  "minutes": "minutes",
+
+  "// app header //": "",
+  "linkLanguageChange": "English",
+  "linkCurrencyChange": "Change Currency",
+
+  "// app navigation //": "",
+  "navigationHeader1": "It will be hot this summer in Montreal with the Osheaga festival!",
+  "navigationHeader2": "Book Bus Tickets from New York to Montreal using Busbud",
+  "navigationSummary": "Tickets for 1 adult from New York to Montreal for the date",
+
+  "// ticket header //": "",
+  "ticketDeparture": "Departure",
+  "ticketArrival": "Arrival",
+  "ticketTripTime": "Total trip time",
+
+  "// ticket details //": "",
+  "ticketReviews": "Reviews",
+  "ticketDetailNonStop": "Non-stop",
+  "ticketDetailStops": "stops",
+  "ticketTravelWillTake": "travel will take",
+
+  "// ticket deal //": "",
+  "ticketViewDeal": "View deal"
+}
