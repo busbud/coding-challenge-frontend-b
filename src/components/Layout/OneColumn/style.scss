@@ -1,0 +1,10 @@
+.column {
+	flex-grow: 1;
+	padding-left: $small;
+	padding-right: $small;
+
+	@media only screen and (max-width: $screen-xs-min - 1) {
+		padding-left: $smaller;
+		padding-right: $smaller;
+	}
+}

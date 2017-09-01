@@ -1,0 +1,29 @@
+{
+  "good": "добре",
+  "noTicketsError": "Вибачте, немає вільних квитків на вказану дату :(",
+  "hours": "годин",
+  "minutes": "хвилин",
+
+  "// app header //": "",
+  "linkLanguageChange": "Українська",
+  "linkCurrencyChange": "Змінити валюту",
+
+  "// app navigation //": "",
+  "navigationHeader1": "Це буде найкрутіше літо в Монреалі на фестивалі Osheaga!",
+  "navigationHeader2": "Забронюй квиток на автобусний рейс з Нью Йорку у Монреаль з Busbud'ом",
+  "navigationSummary": "Квитки для 1 дорослого з Нью Йорку у Монреаль для дати",
+
+  "// ticket header //": "",
+  "ticketDeparture": "Відправляється",
+  "ticketArrival": "Прибуває",
+  "ticketTripTime": "Загальний час подорожі",
+
+  "// ticket details //": "",
+  "ticketReviews": "Відгуки",
+  "ticketDetailNonStop": "Прямий рейс",
+  "ticketDetailStops": "зупинки",
+  "ticketTravelWillTake": "займає",
+
+  "// ticket deal //": "",
+  "ticketViewDeal": "Забронювати"
+}

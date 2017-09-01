@@ -1,0 +1,17 @@
+.app-settings {
+	text-align: right;
+	padding: $bigger;
+
+	.link {
+		color: white;
+	}
+
+	span {
+		margin-left: $small;
+	}
+
+	@media only screen and (max-width: $screen-xs-max) {
+		text-align: center;
+		padding: $smaller;
+	}
+}

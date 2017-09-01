@@ -1,0 +1,26 @@
+$header-height: 200px;
+$spinner-size: $bigger;
+
+@keyframes rotating {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.spinner {
+	animation: rotating 2s linear infinite;
+	width: $spinner-size;
+	height: calc(100vh - #{$header-height + $spinner-size});
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.fidget {
+		height: $spinner-size;
+		fill: white;
+	}
+}

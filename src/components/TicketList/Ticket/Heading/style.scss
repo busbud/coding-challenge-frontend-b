@@ -1,0 +1,22 @@
+.heading {
+	padding-left: $normal;
+	padding-right: $normal;
+
+	.column {
+		text-align: center;
+
+		&:nth-child(1) {
+			text-align: left;
+		}
+
+		&:nth-last-child(1) {
+			text-align: right;
+		}
+
+		&:nth-child(1), &:nth-last-child(1) {
+			@media only screen and (max-width: $screen-xs-max) {
+				text-align: center;
+			}
+		}
+	}
+}

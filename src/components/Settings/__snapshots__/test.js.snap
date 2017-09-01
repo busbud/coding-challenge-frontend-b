@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component should render 1`] = `
+<section
+  className="app-settings"
+>
+  <span>
+    
+    : 
+    <a
+      className="link disabled"
+      disabled={true}
+      onClick={[Function]}
+    />
+  </span>
+  <span>
+    Change Language: 
+    <a
+      className="link"
+      onClick={undefined}
+    >
+      
+    </a>
+  </span>
+</section>
+`;

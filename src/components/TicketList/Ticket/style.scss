@@ -1,0 +1,16 @@
+.ticket {
+	background: rgba(255, 255, 255, 0.9);
+	margin-bottom: $normal;
+	border-radius: 3px;
+
+	.column {
+		padding: $small;
+	}
+
+	.ticket-number {
+		position: absolute;
+		color: $minor;
+		padding: $small;
+		margin-left: -$normal;
+	}
+}

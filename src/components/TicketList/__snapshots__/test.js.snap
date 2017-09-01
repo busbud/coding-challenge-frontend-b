@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component should render 1`] = `
+<section
+  className="ticket-list"
+>
+  <article
+    className="ticket"
+  >
+    <header
+      className="heading header"
+    >
+      <div
+        className="columns"
+      >
+        <div
+          className="column"
+        >
+          <section>
+            
+            : 
+            <strong>
+              10:00 AM
+            </strong>
+          </section>
+        </div>
+        <div
+          className="column"
+        >
+          <section>
+            
+            : 
+            <strong>
+              1:35 AM
+               
+              (+1)
+            </strong>
+          </section>
+        </div>
+        <div
+          className="column"
+        >
+          <section>
+            
+            : 
+            <strong>
+              
+              		15  35 
+              	
+            </strong>
+          </section>
+        </div>
+      </div>
+    </header>
+    <div
+      className="columns"
+    >
+      <div
+        className="column"
+      >
+        <section
+          className="partner"
+        >
+          <a
+            className="link"
+            onClick={undefined}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <header
+              className="logo"
+            >
+              <img
+                alt={undefined}
+                src={undefined}
+              />
+            </header>
+            <p />
+          </a>
+        </section>
+      </div>
+      <div
+        className="column"
+      >
+        <section
+          className="details"
+        >
+          <p>
+            <a
+              className="link"
+              onClick={[Function]}
+            >
+              NY
+            </a>
+             → 
+            <a
+              className="link"
+              onClick={[Function]}
+            >
+              MR
+            </a>
+          </p>
+          <p>
+            <strong>
+              
+            </strong>
+             
+            
+             
+            <strong>
+              15
+               
+              
+               
+              35
+               
+              
+            </strong>
+          </p>
+          <p>
+            
+            : 
+            
+          </p>
+        </section>
+      </div>
+      <div
+        className="column"
+      >
+        <section
+          className="buy"
+        >
+          <p>
+            $95.43
+          </p>
+          <button
+            className="button"
+            onClick={[Function]}
+          >
+            
+          </button>
+        </section>
+      </div>
+    </div>
+  </article>
+</section>
+`;
