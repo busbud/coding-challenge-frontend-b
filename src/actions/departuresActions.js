@@ -1,13 +1,11 @@
 import * as types from './actionsTypes'
 
-export function loadDeparturesSuccess(departures){
-  console.log('loadDeparturesSuccess')
-  return { type: types.LOAD_DEPARTURES_SUCCESS, departures }
+export function populateDeparturesSuccess(departures){
+  return { type: types.POPULATE_DEPARTURES_SUCCESS, departures }
 }
 
-export function loadDepartures(departures){
-  console.log('loadDepartures')
+export function populateDepartures(departures){
   return function(dispatch){
-    dispatch(loadDeparturesSuccess(departures))
+    dispatch(populateDeparturesSuccess(departures))
   }
 }
