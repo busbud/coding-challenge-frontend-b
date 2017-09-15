@@ -4,13 +4,12 @@ import { Provider } from "react-redux";
 
 import * as departuresActions from './actions/departuresActions'
 
-import * as Search from './api/search'
+import initialState from './reducers/initialState';
 
 import configureStore from './store'
 const store = configureStore()
-Search.default.initialize().then(function(result){
-  store.dispatch(departuresActions.populateDepartures(result))  
-})
+
+store.dispatch(departuresActions.populateDepartures(initialState.departures))
 
 import App from "./components/App.js";
 

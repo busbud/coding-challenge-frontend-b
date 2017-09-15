@@ -6,7 +6,7 @@
   "main": "app.js",
   "scripts": {
     "server": "./node_modules/.bin/webpack-dev-server --content-base --inline --hot",
-    "build" : "webpack -p"
+    "build": "webpack -p"
   },
   "dependencies": {
     "axios": "^0.15.2",
@@ -28,6 +28,7 @@
     "redux-logger": "^2.7.4",
     "redux-promise-middleware": "^4.1.0",
     "redux-thunk": "^2.1.0",
+    "underscore": "^1.8.3",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.16.2"
   },
