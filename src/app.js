@@ -2,7 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
-import store from "./store";
+import * as departuresActions from './actions/departuresActions'
+
+import initialState from './reducers/initialState';
+
+import configureStore from './store'
+const store = configureStore()
+store.dispatch(departuresActions.loadDepartures(initialState.departures))
 
 import App from "./components/App.js";
 
