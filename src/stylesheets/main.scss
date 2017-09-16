@@ -1,0 +1,35 @@
+@import 'variables';
+
+body {
+  font-family: 'Roboto';
+}
+
+.flux {
+  width: $fluxWidth;
+  margin: 0 auto;
+
+  @media(max-width: $fluxWidth){
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
+}

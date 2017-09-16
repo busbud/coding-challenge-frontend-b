@@ -1,0 +1,10 @@
+@import 'variables';
+
+.departure-item {
+  width: 48%;
+  margin: 0 1% 0 1%;
+
+  @media(max-width: $tabletWidth){
+    width: 98%;
+  }
+}

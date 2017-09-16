@@ -1,6 +1,8 @@
 import React from 'react'
 import _ from 'underscore'
 
+import DepartureItem from './DepartureItem'
+
 class DeparturesList extends React.Component {
   constructor(props){
     super(props)
@@ -9,9 +11,6 @@ class DeparturesList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log('nextProps')
-    console.log(nextProps)
-
     if(! (_.isEqual(this.state, nextProps))){
       this.setState({ departures: nextProps.departures })
     }
@@ -19,14 +18,14 @@ class DeparturesList extends React.Component {
 
   render(){
     const { departures } = this.state
-    console.log(departures)
 
     return(
-      <div>
+      <div className='departures-list'>
         {
-          _.map(departures, function(value){
+          _.map(departures, function(value, key){
             return(
-              <h1>{value.arrival_timezone}</h1>
+              <DepartureItem key={key}
+                             departure={value} />
             )
           })
         }
@@ -34,5 +33,11 @@ class DeparturesList extends React.Component {
     )
   }
 }
+
+// function mapStateToProps(stat){
+//   return {
+//     operatos
+//   }
+// }
 
 export default DeparturesList
