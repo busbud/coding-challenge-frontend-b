@@ -56,25 +56,23 @@ class App extends React.Component {
   }
 
   renderDeparturesHeader() {
-    const { cities } = this.state.departures
-
-    console.log(typeof(cities) != 'undefined')
+    const { cities } = this.props.departures
 
     if(typeof(cities) != 'undefined'){
-      return(<DeparturesHeader cities={cities} />)
+      return(<DeparturesHeader cities={cities} date=''/>)
     } else {
       return null
     }
   }
 
   render(){
-    const { departures, cities } = this.state.departures
+    const { departures, locations } = this.state.departures
 
     return(
       <div>
         { this.renderDeparturesHeader() }
         { this.renderLoader() }
-        <DeparturesList departures={departures} />
+        <DeparturesList departures={departures} locations={this.props.departures.locations} />
       </div>
     )
   }

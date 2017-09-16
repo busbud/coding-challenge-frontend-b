@@ -1,11 +1,12 @@
 @import 'variables';
 
 .departures-list {
+  padding-top: 50px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 
-  @media(max-width: $tabletWidth){
+  @media(max-width: $fluxWidth){
     flex-direction: column;
   }
 }

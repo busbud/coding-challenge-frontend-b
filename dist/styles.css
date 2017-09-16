@@ -12,7 +12,8 @@
   left: 0;
   background: #fff;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  z-index: 20; }
   .loader .loading {
     position: absolute;
     top: 50%;
@@ -41,15 +42,20 @@
         animation-delay: .27s; }
 
 body {
+  margin: 0;
   font-family: 'Roboto'; }
+
+p {
+  margin: 0; }
 
 .flux {
   width: 1024px;
-  margin: 0 auto; }
+  position: relative;
+  margin: 0 auto;
+  z-index: 2; }
   @media (max-width: 1024px) {
     .flux {
-      width: 100%;
-      padding: 10px; } }
+      width: 98%; } }
 
 .relative {
   position: relative; }
@@ -66,17 +72,132 @@ body {
 .bold {
   font-weight: 700; }
 
+.f-10 {
+  font-size: 10px; }
+
+.f-24 {
+  font-size: 24px; }
+
+.pdl-15 {
+  padding-left: 15px; }
+
+.pdl-25 {
+  padding-left: 25px; }
+
+.pdl-40 {
+  padding-left: 40px; }
+  @media (max-width: 480px) {
+    .pdl-40 {
+      padding-left: 10px; } }
+
+.pdr-18 {
+  padding-right: 18px; }
+
+.pdr-25 {
+  padding-right: 25px; }
+
+.right {
+  text-align: right; }
+
+.cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
 .departures-list {
+  padding-top: 50px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .departures-list {
       flex-direction: column; } }
 
 .departure-item {
+  box-sizing: border-box;
   width: 48%;
-  margin: 0 1% 0 1%; }
-  @media (max-width: 768px) {
+  margin: 10px 1% 10px 1%;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 15px;
+  transition: border 0.5s; }
+  .departure-item:hover {
+    cursor: pointer;
+    border: solid 1px rgba(0, 0, 0, 0.3);
+    transition: border 0.5s; }
+  @media (max-width: 1024px) {
     .departure-item {
       width: 98%; } }
+  .departure-item .departures-item__infos {
+    display: flex;
+    flex-wrap: wrap; }
+    @media (max-width: 480px) {
+      .departure-item .departures-item__infos {
+        flex-direction: column; } }
+    .departure-item .departures-item__infos .departures-item__price {
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      opacity: 0.8; }
+      @media (max-width: 480px) {
+        .departure-item .departures-item__infos .departures-item__price {
+          padding: 40px;
+          justify-content: flex-start; } }
+  .departure-item .departures-item__arrow {
+    position: relative;
+    height: 26px;
+    width: 26px;
+    background-image: url("https://image.ibb.co/jLzgZQ/arrow_black.png");
+    opacity: 0.8; }
+    .departure-item .departures-item__arrow:after {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 1px;
+      left: 26px;
+      top: calc(50% - 1px);
+      background: #000; }
+
+.departures-header {
+  position: relative;
+  color: white;
+  padding-top: 50px;
+  padding-bottom: 50px; }
+  .departures-header .gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    z-index: 1;
+    background: #000000; }
+  .departures-header .departures-header__c {
+    display: flex;
+    flex-direction: row; }
+    .departures-header .departures-header__c .departures-header__half {
+      width: 50%; }
+      .departures-header .departures-header__c .departures-header__half:nth-child(2) {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end; }
+        @media (max-width: 480px) {
+          .departures-header .departures-header__c .departures-header__half:nth-child(2) {
+            justify-content: flex-end; } }
+  .departures-header .departures-header__arrow {
+    position: relative;
+    height: 36px;
+    width: 36px;
+    background-image: url("https://image.ibb.co/dT5kB5/arrow.png"); }
+    .departures-header .departures-header__arrow:after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 1px;
+      left: 36px;
+      top: calc(50% - 1px);
+      background: #fff; }
+    @media (max-width: 480px) {
+      .departures-header .departures-header__arrow {
+        display: none; } }
