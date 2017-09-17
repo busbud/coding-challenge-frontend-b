@@ -5,7 +5,8 @@
   "license": "MIT",
   "main": "app.js",
   "scripts": {
-    "start": "node index.js",
+    "postinstall": "npm install express",
+    "start": "node server.js",
     "server": "./node_modules/.bin/webpack-dev-server --content-base --inline --hot",
     "build": "webpack -p"
   },
