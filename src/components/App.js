@@ -6,6 +6,7 @@ import * as departuresActions from '../actions/departuresActions'
 import * as Search from '../api/search'
 
 import Loader from './Loader'
+import Translation from './Translation'
 import DeparturesList from './departures/DeparturesList'
 import DeparturesHeader from './departures/DeparturesHeader'
 
@@ -70,6 +71,7 @@ class App extends React.Component {
 
     return(
       <div>
+        <Translation />
         { this.renderDeparturesHeader() }
         { this.renderLoader() }
         <DeparturesList departures={departures} locations={this.props.departures.locations} />

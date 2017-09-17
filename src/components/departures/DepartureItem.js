@@ -1,6 +1,8 @@
 import React from 'react'
 import moment from 'moment'
 import _ from 'underscore'
+import { connect } from 'react-redux'
+import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import getSymbolFromCurrency from 'currency-symbol-map'
 
 class DepartureItem extends React.Component {
@@ -9,6 +11,8 @@ class DepartureItem extends React.Component {
 
     this.state = props
     this.price = this.price.bind(this)
+    this.formatTime = this.formatTime.bind(this)
+    this.additionnalDays = this.additionnalDays.bind(this)
   }
 
   componentWillReceiveProps(nextProps){
@@ -25,6 +29,35 @@ class DepartureItem extends React.Component {
     return this.state.departure.prices.total / 100
   }
 
+  formatTime(time){
+    if(this.props.currentLanguage == 'fr'){
+      return moment(time).format('HH:mm')
+    } else {
+      return moment(time).format('hh:mm A')
+    }
+  }
+
+  additionnalDays(){
+    let { departure_time, arrival_time } = this.state.departure
+    departure_time = moment(departure_time)
+    arrival_time = moment(arrival_time)
+
+    const daysOffset = moment([
+                         arrival_time.years(),
+                         arrival_time.months(),
+                         arrival_time.days()]
+                       ).diff(moment([
+                          departure_time.years(),
+                          departure_time.months(),
+                          departure_time.days()]), 'days')
+
+    if(daysOffset > 0){
+      return(<p className='pdl-15 f-10 medium'>{ ' +' + daysOffset + this.props.translate('days') }</p>)
+    } else {
+      return ''
+    }
+  }
+
   render(){
     const { departure, arrivalLocation, departureLocation } = this.state
     const { departure_time, arrival_time } = departure
@@ -35,9 +68,9 @@ class DepartureItem extends React.Component {
         <div className='departures-item__infos'>
           <div>
             <div className='departures-item__departure pdl-25'>
-              <span className='f-10'>Départ</span>
+              <span className='f-10'>{this.props.translate('departure')}</span>
               <p className='pdl-15'>
-                <span className='medium'>{moment(departure_time).format('HH:mm')} </span>
+                <span className='medium'>{this.formatTime(departure_time)} </span>
                 <span>-</span>
                 <span> {departureLocation.name}</span>
               </p>
@@ -46,9 +79,10 @@ class DepartureItem extends React.Component {
               <div className='departures-item__arrow cover'></div>
             </div>
             <div className='departures-item__arrival pdl-25'>
-              <span className='f-10'>Arrivée</span>
+              <span className='f-10'>{this.props.translate('arrival')}</span>
+              { this.additionnalDays() }
               <p className='pdl-15'>
-                <span className='medium'>{moment(arrival_time).format('HH:mm')} </span>
+                <span className='medium'>{this.formatTime(arrival_time)} </span>
                 <span>-</span>
                 <span> {arrivalLocation.name}</span>
               </p>
@@ -68,4 +102,13 @@ class DepartureItem extends React.Component {
   }
 }
 
-export default DepartureItem
+function mapStateToProps(state) {
+  return {
+    translate: getTranslate(state.locale),
+    currentLanguage: getActiveLanguage(state.locale).code
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(DepartureItem)

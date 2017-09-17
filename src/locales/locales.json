@@ -1,0 +1,14 @@
+{
+  "departure": [
+    "Départ",
+    "Departure"
+  ],
+  "arrival": [
+    "Arrivée",
+    "Arrival"
+  ],
+  "days": [
+    "jour(s)",
+    "day(s)"
+  ]
+}

@@ -29,6 +29,7 @@
     "node-sass": "^4.5.3",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-localize-redux": "^2.10.0",
     "react-redux": "^5.0.6",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.4",
