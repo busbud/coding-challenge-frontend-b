@@ -48,6 +48,10 @@ body {
 p {
   margin: 0; }
 
+a {
+  text-decoration: none;
+  color: #2de6c8; }
+
 .flux {
   width: 1024px;
   position: relative;
@@ -124,10 +128,6 @@ p {
   border-radius: 4px;
   padding: 15px;
   transition: border 0.5s; }
-  .departure-item:hover {
-    cursor: pointer;
-    border: solid 1px rgba(0, 0, 0, 0.3);
-    transition: border 0.5s; }
   @media (max-width: 1024px) {
     .departure-item {
       width: 98%; } }

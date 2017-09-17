@@ -9,6 +9,11 @@ p {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: $green;
+}
+
 .flux {
   width: $fluxWidth;
   position: relative;

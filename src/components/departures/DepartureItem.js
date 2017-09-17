@@ -63,28 +63,36 @@ class DepartureItem extends React.Component {
     const { departure_time, arrival_time } = departure
     const currency = departure.prices.currency
 
+    console.log(departureLocation)
+
     return(
       <div className='departure-item'>
         <div className='departures-item__infos'>
           <div>
             <div className='departures-item__departure pdl-25'>
-              <span className='f-10'>{this.props.translate('departure')}</span>
+              <span className='f-10'>{this.props.translate('departure')} - </span>
+              <span className='f-10 medium'>
+                <a href={'http://www.google.com/maps/place/'+ departureLocation.lat + ', ' + departureLocation.lon + '/@' + departureLocation.lat + ', ' + departureLocation.lon + ',17z'} target='_blank'>plan</a>
+              </span>
               <p className='pdl-15'>
                 <span className='medium'>{this.formatTime(departure_time)} </span>
                 <span>-</span>
-                <span> {departureLocation.name}</span>
+                <span> {departureLocation.name} - </span>
               </p>
             </div>
             <div className='departures-item__separator'>
               <div className='departures-item__arrow cover'></div>
             </div>
             <div className='departures-item__arrival pdl-25'>
-              <span className='f-10'>{this.props.translate('arrival')}</span>
+              <span className='f-10'>{this.props.translate('arrival')} - </span>
+              <span className='f-10 medium'>
+                <a href={'http://www.google.com/maps/place/'+ arrivalLocation.lat + ', ' + arrivalLocation.lon + '/@' + arrivalLocation.lat + ', ' + arrivalLocation.lon + ',17z'} target='_blank'>plan</a>
+              </span>
               { this.additionnalDays() }
               <p className='pdl-15'>
                 <span className='medium'>{this.formatTime(arrival_time)} </span>
                 <span>-</span>
-                <span> {arrivalLocation.name}</span>
+                <span> {arrivalLocation.name} - </span>
               </p>
             </div>
           </div>

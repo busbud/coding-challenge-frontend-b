@@ -44776,6 +44776,8 @@ var DepartureItem = function (_React$Component) {
 
       var currency = departure.prices.currency;
 
+      console.log(departureLocation);
+
       return _react2.default.createElement(
         'div',
         { className: 'departure-item' },
@@ -44791,7 +44793,17 @@ var DepartureItem = function (_React$Component) {
               _react2.default.createElement(
                 'span',
                 { className: 'f-10' },
-                this.props.translate('departure')
+                this.props.translate('departure'),
+                ' - '
+              ),
+              _react2.default.createElement(
+                'span',
+                { className: 'f-10 medium' },
+                _react2.default.createElement(
+                  'a',
+                  { href: 'http://www.google.com/maps/place/' + departureLocation.lat + ', ' + departureLocation.lon + '/@' + departureLocation.lat + ', ' + departureLocation.lon + ',17z', target: '_blank' },
+                  'plan'
+                )
               ),
               _react2.default.createElement(
                 'p',
@@ -44811,7 +44823,8 @@ var DepartureItem = function (_React$Component) {
                   'span',
                   null,
                   ' ',
-                  departureLocation.name
+                  departureLocation.name,
+                  ' - '
                 )
               )
             ),
@@ -44826,7 +44839,17 @@ var DepartureItem = function (_React$Component) {
               _react2.default.createElement(
                 'span',
                 { className: 'f-10' },
-                this.props.translate('arrival')
+                this.props.translate('arrival'),
+                ' - '
+              ),
+              _react2.default.createElement(
+                'span',
+                { className: 'f-10 medium' },
+                _react2.default.createElement(
+                  'a',
+                  { href: 'http://www.google.com/maps/place/' + arrivalLocation.lat + ', ' + arrivalLocation.lon + '/@' + arrivalLocation.lat + ', ' + arrivalLocation.lon + ',17z', target: '_blank' },
+                  'plan'
+                )
               ),
               this.additionnalDays(),
               _react2.default.createElement(
@@ -44847,7 +44870,8 @@ var DepartureItem = function (_React$Component) {
                   'span',
                   null,
                   ' ',
-                  arrivalLocation.name
+                  arrivalLocation.name,
+                  ' - '
                 )
               )
             )
