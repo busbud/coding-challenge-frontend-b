@@ -75,7 +75,7 @@ class DepartureItem extends React.Component {
               <p className='pdl-15 pdt-10'>
                 <span className='medium'>{this.formatTime(departure_time)} </span>
                 <span>-</span>
-                <span> {departureLocation.name} - </span>
+                <span> {departureLocation.name}</span>
               </p>
             </div>
             <div className='departures-item__separator'>
@@ -90,7 +90,7 @@ class DepartureItem extends React.Component {
               <p className='pdl-15 pdt-10'>
                 <span className='medium'>{this.formatTime(arrival_time)} </span>
                 <span>-</span>
-                <span> {arrivalLocation.name} - </span>
+                <span> {arrivalLocation.name}</span>
               </p>
             </div>
           </div>

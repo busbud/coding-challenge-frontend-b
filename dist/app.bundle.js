@@ -44837,8 +44837,7 @@ var DepartureItem = function (_React$Component) {
                   'span',
                   null,
                   ' ',
-                  departureLocation.name,
-                  ' - '
+                  departureLocation.name
                 )
               )
             ),
@@ -44884,8 +44883,7 @@ var DepartureItem = function (_React$Component) {
                   'span',
                   null,
                   ' ',
-                  arrivalLocation.name,
-                  ' - '
+                  arrivalLocation.name
                 )
               )
             )

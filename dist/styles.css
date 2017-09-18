@@ -50,7 +50,7 @@ p {
 
 a {
   text-decoration: none;
-  color: #2de6c8; }
+  color: #2d80e6; }
 
 .flux {
   width: 1024px;
@@ -115,7 +115,7 @@ a {
   background-repeat: no-repeat; }
 
 .departures-list {
-  padding-top: 50px;
+  padding-top: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; }
@@ -139,7 +139,7 @@ a {
     flex-wrap: wrap; }
     @media (max-width: 480px) {
       .departure-item .departures-item__infos {
-        flex-direction: column; } }
+        flex-direction: column-reverse; } }
     .departure-item .departures-item__infos .departures-item__price {
       flex-grow: 1;
       display: flex;
@@ -148,8 +148,7 @@ a {
       opacity: 0.8; }
       @media (max-width: 480px) {
         .departure-item .departures-item__infos .departures-item__price {
-          padding: 40px;
-          justify-content: flex-start; } }
+          padding: 0px; } }
   .departure-item .departures-item__arrow {
     position: relative;
     height: 26px;

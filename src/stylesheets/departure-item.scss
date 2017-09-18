@@ -19,7 +19,7 @@
     flex-wrap: wrap;
 
     @media(max-width: $phoneWidth){
-      flex-direction: column;
+      flex-direction: column-reverse;
     }
 
     .departures-item__price {
@@ -30,8 +30,7 @@
       opacity: 0.8;
 
       @media(max-width: $phoneWidth){
-        padding: 40px;
-        justify-content: flex-start;
+        padding: 0px;
       }
     }
   }
