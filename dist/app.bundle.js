@@ -43452,7 +43452,7 @@ var App = function (_React$Component) {
       var departures = {};
 
       var pollDepartures = setInterval(function () {
-        Search.default.getDepartures('poll').then(function (pollResult) {
+        Search.default.getDepartures('/poll').then(function (pollResult) {
           if (pollResult.complete) {
             var newDepartures = Object.assign({}, self.state.departures, { departures: pollResult.departures }, { locations: pollResult.locations }, { operators: pollResult.operators }, { complete: pollResult.complete });
 
@@ -43555,7 +43555,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Search = {
   getDepartures: function getDepartures(poll) {
-    var endpoint = 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2018-08-02/' + poll;
+    var endpoint = 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2018-08-02' + poll + '?adult=1';
 
     return _config2.default.get(endpoint).then(function (response) {
       return response.data;
@@ -44660,15 +44660,17 @@ var Filters = function (_React$Component) {
     };
 
     _this.onClick = _this.onClick.bind(_this);
-    _this.randomize = _this.randomize.bind(_this);
+    _this.orderById = _this.orderById.bind(_this);
     _this.orderByDepartureTime = _this.orderByDepartureTime.bind(_this);
     return _this;
   }
 
   _createClass(Filters, [{
-    key: 'randomize',
-    value: function randomize() {
-      var orderedDepartures = _underscore2.default.shuffle(this.props.departures);
+    key: 'orderById',
+    value: function orderById() {
+      var orderedDepartures = _underscore2.default.sortBy(this.props.departures, function (departure) {
+        return departure.id;
+      });
 
       this.props.departuresActions.reorderDepartures(orderedDepartures);
     }
@@ -44687,7 +44689,7 @@ var Filters = function (_React$Component) {
 
 
       if (active) {
-        this.randomize();
+        this.orderById();
       } else {
         this.orderByDepartureTime();
       }

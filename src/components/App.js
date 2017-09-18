@@ -33,7 +33,7 @@ class App extends React.Component {
     let departures = {}
 
     const pollDepartures = setInterval(function(){
-      Search.default.getDepartures('poll').then(function(pollResult){
+      Search.default.getDepartures('/poll').then(function(pollResult){
         if(pollResult.complete){
           const newDepartures = Object.assign({}, self.state.departures,
             { departures: pollResult.departures },
