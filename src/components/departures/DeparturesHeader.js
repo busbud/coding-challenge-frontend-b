@@ -42,21 +42,21 @@ class DeparturesHeader extends React.Component {
         <div className='flux f-24 departures-header__c'>
           <div className='departures-header__half'>
             <div className='departures-header__departure pdl-40'>
-              <span className='f-10'>{this.props.translate('departure')}</span>
+              <span className='f-12'>{this.props.translate('departure')}</span>
               <p className='pdl-15'>{departure.name}</p>
             </div>
             <div className='departures-header__separator'>
               <div className='departures-header__arrow cover'></div>
             </div>
             <div className='departures-header__arrival pdl-40'>
-              <span className='f-10'>{this.props.translate('arrival')}</span>
+              <span className='f-12'>{this.props.translate('arrival')}</span>
               <p className='bold pdl-15'>{destination.name}</p>
             </div>
           </div>
 
           <div className='departures-header__half pdr-18'>
             <div className='right'>
-              <span className='f-10'>Date</span>
+              <span className='f-12'>Date</span>
               <p className='bold'>
                 {moment('2018-08-02').lang(this.props.currentLanguage).format('LL')}
               </p>

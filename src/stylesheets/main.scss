@@ -45,8 +45,8 @@ a {
   font-weight: 700;
 }
 
-.f-10 {
-  font-size: 10px;
+.f-12 {
+  font-size: 12px;
 }
 
 .f-24 {
@@ -67,6 +67,10 @@ a {
   @media(max-width: $phoneWidth){
     padding-left: 10px;
   }
+}
+
+.pdt-10 {
+  padding-top: 10px;
 }
 
 .pdr-18 {
