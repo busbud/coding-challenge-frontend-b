@@ -64,6 +64,9 @@ a {
 .relative {
   position: relative; }
 
+.inline {
+  display: inline; }
+
 .light {
   font-weight: 300; }
 
@@ -97,6 +100,9 @@ a {
 .pdt-10 {
   padding-top: 10px; }
 
+.pdt-30 {
+  padding-top: 30px; }
+
 .pdr-18 {
   padding-right: 18px; }
 
@@ -115,7 +121,6 @@ a {
   background-repeat: no-repeat; }
 
 .departures-list {
-  padding-top: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; }
@@ -217,3 +222,18 @@ a {
   overflow: hidden; }
   .translation span:hover {
     cursor: pointer; }
+
+.filter-item {
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: solid 1px #2d80e6;
+  border-radius: 45px;
+  background: #fff;
+  transition: all 0.3s;
+  color: #2d80e6; }
+  .filter-item:hover {
+    cursor: pointer; }
+  .filter-item.active {
+    background: #2d80e6;
+    color: #fff;
+    transition: all 0.5s; }

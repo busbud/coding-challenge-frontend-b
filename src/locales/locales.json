@@ -10,5 +10,9 @@
   "days": [
     "jour(s)",
     "day(s)"
+  ],
+  "filter_departure_time": [
+    "Heure de départ",
+    "Departure time"
   ]
 }

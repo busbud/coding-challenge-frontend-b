@@ -5,6 +5,9 @@ export default function departuresReducer(state = initialState.departures, actio
   switch (action.type) {
     case types.POPULATE_DEPARTURES_SUCCESS:
       return action.departures
+    case types.REORDER_DEPARTURES_SUCCESS:
+      const newDeparturesObject = Object.assign({}, state, { departures: action.departures })
+      return newDeparturesObject
     default:
       return state
   }

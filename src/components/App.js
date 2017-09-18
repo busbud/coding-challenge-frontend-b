@@ -1,12 +1,14 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import _ from 'underscore'
 
 import * as departuresActions from '../actions/departuresActions'
 import * as Search from '../api/search'
 
 import Loader from './Loader'
 import Translation from './Translation'
+import Filters from './Filters'
 import DeparturesList from './departures/DeparturesList'
 import DeparturesHeader from './departures/DeparturesHeader'
 
@@ -18,6 +20,12 @@ class App extends React.Component {
 
     this.renderLoader = this.renderLoader.bind(this)
     this.renderDeparturesHeader = this.renderDeparturesHeader.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(! (_.isEqual(this.state.departures, nextProps.departures))){
+      this.setState({ departures: nextProps.departures })
+    }
   }
 
   componentWillMount(){
@@ -71,9 +79,10 @@ class App extends React.Component {
 
     return(
       <div>
+        { this.renderLoader() }
         <Translation />
         { this.renderDeparturesHeader() }
-        { this.renderLoader() }
+        <Filters />
         <DeparturesList departures={departures} locations={this.props.departures.locations} />
       </div>
     )

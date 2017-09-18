@@ -18,9 +18,6 @@ class Translation extends React.Component {
   }
 
   setClass(language) {
-    console.log(language)
-    console.log(this.props.currentLanguage)
-
     if(language == this.props.currentLanguage){
       return 'bold'
     } else {

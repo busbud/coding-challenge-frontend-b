@@ -16,12 +16,8 @@ class DepartureItem extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(! (_.isEqual(nextProps.departureLocation, this.state.departureLocation))){
-      this.setState({ departureLocation: nextProps.departureLocation })
-    }
-
-    if(! (_.isEqual(nextProps.arrivalLocation, this.state.arrivalLocation))){
-      this.setState({ arrivalLocation: nextProps.arrivalLocation })
+    if(! (_.isEqual(nextProps, this.state))){
+      this.setState(nextProps)
     }
   }
 

@@ -38,7 +38,7 @@ class DeparturesList extends React.Component {
     const { departures, locations } = this.state
 
     return(
-      <div className='departures-list flux'>
+      <div className='departures-list flux pdt-30'>
         {
           _.map(departures, function(value, key){
             return(

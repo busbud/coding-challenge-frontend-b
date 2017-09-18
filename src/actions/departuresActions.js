@@ -9,3 +9,13 @@ export function populateDepartures(departures){
     dispatch(populateDeparturesSuccess(departures))
   }
 }
+
+export function reorderDeparturesSuccess(departures){
+  return { type: types.REORDER_DEPARTURES_SUCCESS, departures }
+}
+
+export function reorderDepartures(departures){
+  return function(dispatch){
+    dispatch(reorderDeparturesSuccess(departures))
+  }
+}
