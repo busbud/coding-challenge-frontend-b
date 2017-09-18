@@ -1,0 +1,104 @@
+@import 'variables';
+
+body {
+  margin: 0;
+  font-family: 'Roboto';
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $blue;
+}
+
+.flux {
+  width: $fluxWidth;
+  position: relative;
+  margin: 0 auto;
+  z-index: 2;
+
+  @media(max-width: $fluxWidth){
+    width: 98%;
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+.inline {
+  display: inline;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.f-12 {
+  font-size: 12px;
+}
+
+.f-24 {
+  font-size: 24px;
+}
+
+.pdl-15 {
+  padding-left: 15px;
+}
+
+.pdl-25 {
+  padding-left: 25px;
+}
+
+.pdl-40 {
+  padding-left: 40px;
+
+  @media(max-width: $phoneWidth){
+    padding-left: 10px;
+  }
+}
+
+.pdt-10 {
+  padding-top: 10px;
+}
+
+.pdt-30 {
+  padding-top: 30px;
+}
+
+.pdr-18 {
+  padding-right: 18px;
+}
+
+.pdr-25 {
+  padding-right: 25px;
+}
+
+.pdr-40 {
+  padding-right: 40px;
+}
+
+.right {
+  text-align: right;
+}
+
+.cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

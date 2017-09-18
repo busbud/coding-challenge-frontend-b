@@ -1,0 +1,55 @@
+@import 'variables';
+
+.departure-item {
+  box-sizing: border-box;
+  width: 48%;
+  margin: 10px 1% 10px 1%;
+  border: solid 1px rgba(0,0,0,.10);
+  border-radius: 4px;
+  padding: 15px;
+  transition: border 0.5s;
+
+  @media(max-width: $fluxWidth){
+    width: 98%;
+  }
+
+
+  .departures-item__infos {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media(max-width: $phoneWidth){
+      flex-direction: column-reverse;
+    }
+
+    .departures-item__price {
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      opacity: 0.8;
+
+      @media(max-width: $phoneWidth){
+        padding: 0px;
+      }
+    }
+  }
+
+  .departures-item__arrow {
+    position: relative;
+    height: 26px;
+    width: 26px;
+    background-image: url('https://image.ibb.co/jLzgZQ/arrow_black.png');
+    opacity: 0.8;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 1px;
+      left: 26px;
+      top: calc(50% - 1px);
+      background: #000;
+    }
+  }
+}
