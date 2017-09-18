@@ -19,7 +19,9 @@ class Filters extends React.Component {
   }
 
   randomize(){
-    const orderedDepartures = _.shuffle(this.props.departures)
+    const orderedDepartures = _.sortBy(this.props.departures, function(departure){
+                                return departure.id
+                              })
 
     this.props.departuresActions.reorderDepartures(orderedDepartures)
   }
