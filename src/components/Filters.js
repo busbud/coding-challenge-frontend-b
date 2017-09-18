@@ -14,11 +14,11 @@ class Filters extends React.Component {
     }
 
     this.onClick = this.onClick.bind(this)
-    this.randomize = this.randomize.bind(this)
+    this.orderById = this.orderById.bind(this)
     this.orderByDepartureTime = this.orderByDepartureTime.bind(this)
   }
 
-  randomize(){
+  orderById(){
     const orderedDepartures = _.sortBy(this.props.departures, function(departure){
                                 return departure.id
                               })
@@ -37,7 +37,7 @@ class Filters extends React.Component {
     const { active } = this.state
 
     if(active){
-      this.randomize()
+      this.orderById()
     } else {
       this.orderByDepartureTime()
     }
