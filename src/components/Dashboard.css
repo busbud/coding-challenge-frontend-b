@@ -1,23 +1,21 @@
-.Dashboard {
+.dashboard {
   text-align: center;
   background-color: #1a0f31;
 }
 
-.Dashboard-header {
+.dashboard-header {
   background-image: url('../img/header.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 40em;
-  color: white;
   width: 100%;
   margin-top: -25px;
 }
 
 /* adds purple gradient to the bottom of the header */
 
-.Dashboard-header::after { 
+.dashboard-header::after { 
   display: block;
-  position: relative;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #1a0f31 100%);
   margin-top: -170px;
   height: 50em;
@@ -29,9 +27,10 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  color: #FFF;
 }
 
-.Dashboard-title {
+.dashboard-title {
   font-size: 1.5em;
   z-index: 2;
 }
