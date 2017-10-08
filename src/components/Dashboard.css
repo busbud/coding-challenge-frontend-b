@@ -1,9 +1,9 @@
-.App {
+.Dashboard {
   text-align: center;
   background-color: #1a0f31;
 }
 
-.App-header {
+.Dashboard-header {
   background-image: url('img/header.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -15,7 +15,7 @@
 
 /* adds purple gradient to the bottom of the header */
 
-.App-header::after { 
+.Dashboard-header::after { 
   display: block;
   position: relative;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #1a0f31 100%);
@@ -31,7 +31,7 @@
   transform: translateY(-50%);
 }
 
-.App-title {
+.Dashboard-title {
   font-size: 1.5em;
   z-index: 2;
 }

@@ -6,8 +6,8 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 // components takes precedence over default styles.
 
 import './index.css';
-import App from './App';
+import Dashboard from './components/Dashboard';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Dashboard />, document.getElementById('root'));
 registerServiceWorker();
