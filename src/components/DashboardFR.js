@@ -51,4 +51,4 @@ class DashboardFR extends Component {
   }
 }
 
-export default Dashboard;
+export default DashboardFR;

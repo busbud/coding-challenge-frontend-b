@@ -5,10 +5,12 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 
-import './index.css';
+import './styles/base.scss';
 import 'typeface-montserrat';
 import Dashboard from './components/Dashboard';
+import Results from './components/Results';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<Dashboard />, document.getElementById('root'));
+
 registerServiceWorker();
