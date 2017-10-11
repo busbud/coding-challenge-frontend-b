@@ -33,7 +33,6 @@
       }
 
       .search-info {
-
         .search-info-titles {
           font-size: 115%;
           font-weight: 400;
@@ -45,7 +44,6 @@
           font-weight: 600;
         }
       }
-      
     }
 
     .top-bar {
@@ -82,7 +80,7 @@
 
 .header::after { 
   display: block;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #1a0f31 100%);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, $purple 100%);
   margin-top: -18em;
   height: 32em;
   width: 100%;
@@ -98,7 +96,7 @@
 
 .quarter {
   width: 25%;
-  background: $purple;
+  background-color: $purple;
   padding: 10px;
   margin-right: 15px;
   border-radius: 15px;
