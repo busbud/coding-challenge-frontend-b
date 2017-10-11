@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Dashboard.css';
+import '../styles/Dashboard.scss';
 import busBudLogo from '../img/busbud.png';
 import { Button } from 'react-bootstrap';
 

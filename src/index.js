@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 
-import './styles/base.scss';
+import './styles/base.css';
 import 'typeface-montserrat';
 import Dashboard from './components/Dashboard';
 import Results from './components/Results';
