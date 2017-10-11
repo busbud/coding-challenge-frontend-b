@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 // components takes precedence over default styles.
 
 import './index.css';
+import 'typeface-montserrat';
 import Dashboard from './components/Dashboard';
 import registerServiceWorker from './registerServiceWorker';
 
