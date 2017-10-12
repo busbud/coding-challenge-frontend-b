@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+
 import '../styles/base.scss';
 import busBudLogo from '../img/busbud.png';
-import { Button } from 'react-bootstrap';
+import { Results } from './Results';
 
 class Dashboard extends Component {
   render() {
