@@ -9,6 +9,7 @@ import './styles/base.css';
 import 'typeface-montserrat';
 import Dashboard from './components/Dashboard';
 import Results from './components/Results';
+import Header from './components/Header';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<Dashboard />, document.getElementById('root'));

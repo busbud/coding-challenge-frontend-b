@@ -1,0 +1,25 @@
+.results-container {
+  padding: 25px 50px; }
+  .results-container .result-header {
+    padding-bottom: 25px; }
+  .results-container .result-card {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    margin-top: 15px;
+    padding: 15px 40px;
+    border-radius: 15px;
+    width: 70%; }
+    .results-container .result-card .travel-info {
+      text-align: left;
+      position: relative;
+      width: 70%; }
+      .results-container .result-card .travel-info ul {
+        list-style-type: none;
+        padding-left: 0px;
+        width: 70%;
+        margin: 0px; }
+    .results-container .result-card .price-info {
+      text-align: right;
+      position: relative;
+      width: 30%; }
