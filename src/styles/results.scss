@@ -1,3 +1,5 @@
+@import '_variables.scss';
+
 .results-container {
   padding: 25px 50px;
 
@@ -10,27 +12,77 @@
     margin-right: auto;
     background-color: #fff;
     margin-top: 15px;
-    padding: 15px 40px;
+    padding: 25px 40px;
     border-radius: 15px;
-    width: 70%;
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+
+    .operator-img {
+      width: 15%;
+      padding-right: 15px;
+
+      .operator {
+        width: 100%;
+      }
+
+      .operator-name {
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
 
     .travel-info {
       text-align: left;
       position: relative;
       width: 70%;
+      padding-left: 25px;
 
-      ul {
-        list-style-type: none;
-        padding-left: 0px;
-        width: 70%;
-        margin: 0px;
+      .travel-title {
+        font-size: 100%;
+        margin-top: 0px;
+        margin-bottom: 2px;
+      }
+
+      .time {
+        font-weight: $bold;
+      }
+
+      .duration {
+        font-weight: 500;
+      }
+
+      .travel-time {
+        margin-bottom: 0px;
       }
     }
 
     .price-info {
       text-align: right;
       position: relative;
-      width: 30%;
+      width: 15%;
+
+      .price {
+        font-weight: $bold;
+        font-size: 150%;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);        
+      }
+    }
+
+    .departure, .arrival {
+      font-size: 125%;
+      margin-left: 25px;
     }
   }
+}
+
+.column {
+  flex-grow: 1;
+}
+
+hr {
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
