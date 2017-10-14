@@ -1,13 +1,14 @@
 .results-container {
   padding: 25px 50px; }
   .results-container .result-header {
-    padding-bottom: 25px; }
+    padding-bottom: 25px;
+    font-weight: 600; }
   .results-container .result-card {
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
     margin-top: 15px;
-    padding: 25px 40px;
+    padding: 15px 40px;
     border-radius: 15px;
     width: 50vw;
     display: flex;

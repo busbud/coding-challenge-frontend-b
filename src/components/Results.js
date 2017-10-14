@@ -5,6 +5,16 @@ import Placeholder from '../img/500x500.png';
 
 class Results extends Component {
 
+  constructor() {
+    super();
+
+    this.state = {
+      displayResults: false
+    };
+  }
+
+  componentW
+
   render() {
     // const results = this._getResults() || [];
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import '../styles/base.scss';
-import Header from './Header';
-import Results from './Results';
+import Header from './header';
+import Results from './results';
 
 class Dashboard extends Component {
   render() {
@@ -13,6 +13,12 @@ class Dashboard extends Component {
         <Results />
       </div>
     );
+  }
+
+  _toggleResults() {
+    this.setState({
+      
+    })
   }
 }
 
