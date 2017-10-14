@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import './styles/base.css';
 import 'typeface-montserrat';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/dashboard';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<Dashboard />, document.getElementById('root'));
