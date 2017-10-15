@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import SearchBtn from './search';
 
 import '../styles/base.scss';
 import busBudLogo from '../img/busbud.png';
 
 class Header extends Component {
   render() {
-    const searchBtn = (<Button bsSize="large" bsStyle="warning">Search</Button>);
+    const searchBtn = <SearchBtn />;
 
     return (
       <header className="header">
@@ -41,9 +41,7 @@ class Header extends Component {
             </span>
           </div>
 
-          <div className="search-btn">
-            {searchBtn}
-          </div>
+          {searchBtn}
         </div>
       </header>
     );

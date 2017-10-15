@@ -15,11 +15,11 @@ class Dashboard extends Component {
     );
   }
 
-  _toggleResults() {
-    this.setState({
-      
-    })
-  }
+  // _toggleResults() {
+  //   this.setState({
+  //     startSearch: !this.state.showResults
+  //   })
+  // }
 }
 
 export default Dashboard;
