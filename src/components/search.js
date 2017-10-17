@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import search from '../actions/index';
+import axios from 'axios';
 
 import '../styles/base.scss';
 
@@ -8,16 +8,39 @@ class SearchBtn extends Component {
 
   constructor(props) {
     super(props);
-    this.setState({displayResults: false});
+    this.state = {
+      displayResults: false,
+      departures: {}
+    };
+  }
+
+  search() {
+    return (dispatch) => {
+      return axios.get('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2018-08-02', 
+      {
+        'headers': {
+          'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
+          'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
+        }
+      }).then((response => {
+        this.setState({displayResults: true});
+        dispatch(this.setState({departures: response.data}));
+      })).catch((error) => {
+        console.log(error);
+        this.setState({displayResults: false});
+      });
+    }
   }
 
   render() {
     return (
       <div className="search-btn">
-        {<Button bsSize="large" bsStyle="warning" onClick={search()}>Search</Button>}
+        {<Button bsSize="large" bsStyle="warning" onClick={this.search()}>Search</Button>}
       </div>
     )
   }
+
+
 }
 
 export default SearchBtn;

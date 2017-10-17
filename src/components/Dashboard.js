@@ -5,6 +5,15 @@ import Header from './header';
 import Results from './results';
 
 class Dashboard extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayResults: false,
+      departures: {}
+    };
+  }
+
   render() {
  
     return (
@@ -14,12 +23,6 @@ class Dashboard extends Component {
       </div>
     );
   }
-
-  // _toggleResults() {
-  //   this.setState({
-  //     startSearch: !this.state.showResults
-  //   })
-  // }
 }
 
 export default Dashboard;

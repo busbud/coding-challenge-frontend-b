@@ -1,4 +1,0 @@
-let defaultState = {
-  displayResults: false
-}
-
