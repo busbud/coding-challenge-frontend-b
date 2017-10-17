@@ -23,9 +23,9 @@ class SearchBtn extends Component {
           'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
         }
       }).then((response => {
-        this.setState({displayResults: true});
-        dispatch(this.setState({departures: response.data}));
-      })).catch((error) => {
+        dispatch(this.setState({displayResults: true, departures: response.data}));
+      })).then(console.log(this.state.departures), console.log(this.state.displayResults))
+      .catch((error) => {
         console.log(error);
         this.setState({displayResults: false});
       });
