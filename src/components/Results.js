@@ -6,6 +6,15 @@ import Placeholder from '../img/500x500.png';
 
 class Results extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      displayResults: false,
+      departures: {}
+    }
+  }
+
   render() {
 
     return (

@@ -6,8 +6,8 @@ import Results from './results';
 
 class Dashboard extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       displayResults: false,
       departures: {}

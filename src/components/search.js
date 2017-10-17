@@ -6,8 +6,8 @@ import '../styles/base.scss';
 
 class SearchBtn extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       displayResults: false,
       departures: {}
@@ -23,12 +23,21 @@ class SearchBtn extends Component {
           'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
         }
       }).then((response => {
-        dispatch(this.setState({displayResults: true, departures: response.data}));
+        dispatch(this._displayResults(response.data));
       })).then(console.log(this.state.departures), console.log(this.state.displayResults))
       .catch((error) => {
         console.log(error);
         this.setState({displayResults: false});
       });
+    }
+  }
+
+  _displayResults(data) {
+    if (this.state.displayResults === false || this.state.departures.complete === true) {
+      this.setState({
+        displayResults: true,
+        departures: data
+      })
     }
   }
 

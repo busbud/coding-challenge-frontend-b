@@ -5,6 +5,16 @@ import '../styles/base.scss';
 import busBudLogo from '../img/busbud.png';
 
 class Header extends Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      displayResults: false,
+      departures: {}
+    }
+  }
+  
   render() {
     const searchBtn = <SearchBtn />;
 
