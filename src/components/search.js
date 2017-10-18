@@ -67,6 +67,9 @@ class SearchBtn extends Component {
         }
       console.log(this.state.displayResults);
       console.log(this.state.fetchComplete);
+      if (this.state.fetchComplete === false) {
+        return (setInterval(() => this._fetchResults(), 2000));
+      }
     }
 
   }
