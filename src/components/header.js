@@ -4,15 +4,6 @@ import '../styles/base.scss';
 import busBudLogo from '../img/busbud.png';
 
 class Header extends Component {
-
-  constructor() {
-    super();
-
-    this.state = {
-      displayResults: false,
-      departures: {}
-    }
-  }
   
   render() {
 
@@ -20,11 +11,6 @@ class Header extends Component {
       <header className="header">
         <div className="top-bar">
           <h2 className="powered-by white-text">Powered by <img src={busBudLogo}alt={"busBudLogo"} className="busbud-logo"/></h2>
-          <p className="language white-text">
-            <span><a href="./dashboardFR">français</a></span>
-            <span> / </span>
-            <span className="active-language"><a href="./dashboard">english</a></span>
-          </p>
         </div>
 
         <div className="header-content white-text">

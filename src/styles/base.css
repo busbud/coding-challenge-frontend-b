@@ -32,6 +32,8 @@
         font-weight: 600; }
     .dashboard .header .top-bar {
       padding-top: 1px; }
+      .dashboard .header .top-bar a {
+        color: #fff; }
       .dashboard .header .top-bar p.language {
         position: relative;
         text-align: right;

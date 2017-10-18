@@ -58,19 +58,13 @@ class SearchBtn extends Component {
         displayResults: true,
         showLoading: false
       });
-      this._displayResults(this.state.departures);
-      console.log(this.state.departures);
-      console.log(this.state.displayResults);
-      console.log(this.state.fetchComplete);
-      console.log(this._displayResults());
     } else if (data.complete === false) {
-      this.pollSearch();
-      if (this.state.showLoading === false || this.state.fetchComplete === false) {
-        this.setState({
-          fetchComplete: false,
-          showLoading: true
-        });
-      }
+        if (this.state.showLoading === false || this.state.fetchComplete === false) {
+          this.setState({
+            fetchComplete: false,
+            showLoading: true
+          });
+        }
       console.log(this.state.displayResults);
       console.log(this.state.fetchComplete);
     }
@@ -80,25 +74,6 @@ class SearchBtn extends Component {
   search() {
     if (this.state.displayResults === false && this.state.departures.length === 0) {
       return (this._fetchResults());
-    }
-  }
-
-  pollSearch() {
-    return (dispatch) => {
-      return axios.get('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2018-08-02/poll',
-    {
-      'headers': {
-        'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-        'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
-      }
-    }).setInterval(function () { 
-      this._fetchResults();
-    }.bind(this), 5000)
-    .then((response => {
-      dispatch(this._fetchResults(response.data));
-    })).catch((error) => {
-      console.log(error);
-    })
     }
   }
 
@@ -112,19 +87,9 @@ class SearchBtn extends Component {
         }
       }).then((response => {
         dispatch(this._getDepartures(response.data));
-      })).then(console.log(this.state.departures), console.log(this.state.displayResults))
-      .catch((error) => {
+      })).catch((error) => {
         console.log(error);
       });
-    }
-  }
-
-  _displayResults(departures) {
-    if (this.state.displayResults === true && this.state.fetchComplete === true) {
-      return (
-        <Results  departures = { this.state.departures } 
-                  displayResults = { this.state.displayResults } />
-      )
     }
   }
 
@@ -132,10 +97,10 @@ class SearchBtn extends Component {
     return (
       <div className="search-btn">
         {<Button bsSize="large" bsStyle="warning" onClick={this.search()}>Search</Button>}
-        <Loading  fetchComplete = { this.state.fetchComplete }
-                  showLoading = { this.state.showLoading } />
-        <Results  departures = { this.state.departures } 
-                  displayResults = { this.state.displayResults } />
+        <Loading  fetchComplete   = { this.state.fetchComplete }
+                  showLoading     = { this.state.showLoading } />
+        <Results  departures      = { this.state.departures } 
+                  displayResults  = { this.state.displayResults } />
       </div>
     )
   }
