@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SearchBtn from './search';
 
 import '../styles/base.scss';
 import busBudLogo from '../img/busbud.png';
@@ -16,16 +15,15 @@ class Header extends Component {
   }
   
   render() {
-    const searchBtn = <SearchBtn />;
 
     return (
       <header className="header">
         <div className="top-bar">
           <h2 className="powered-by white-text">Powered by <img src={busBudLogo}alt={"busBudLogo"} className="busbud-logo"/></h2>
           <p className="language white-text">
-            <span>français</span>
+            <span><a href="./dashboardFR">français</a></span>
             <span> / </span>
-            <span className="active-language">english</span>
+            <span className="active-language"><a href="./dashboard">english</a></span>
           </p>
         </div>
 
@@ -50,8 +48,6 @@ class Header extends Component {
               <p className="search-input">1 adult</p>
             </span>
           </div>
-
-          {searchBtn}
         </div>
       </header>
     );

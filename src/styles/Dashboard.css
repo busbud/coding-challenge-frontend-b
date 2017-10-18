@@ -46,6 +46,9 @@
         text-align: left;
         padding-left: 20px;
         margin-bottom: -20px; }
+  .dashboard .search-btn {
+    top: -10rem;
+    position: relative; }
   .dashboard .white-text {
     color: #FFF; }
 
@@ -54,7 +57,7 @@
   display: block;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #1a0f31 100%);
   margin-top: -18em;
-  height: 32em;
+  height: 35em;
   width: 100%;
   content: ''; }
 

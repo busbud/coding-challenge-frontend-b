@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
 
+import Loading from './loading';
 import Results from './results';
 
 import '../styles/base.scss';
@@ -15,33 +16,63 @@ class SearchBtn extends Component {
     this.state = {
       displayResults: false,
       fetchComplete: false,
-      departures: []
+      departures: [],
+      showLoading: false
     };
   }
 
   _getDepartures(data) {
-    if (this.state.displayResults === false && this.state.fetchComplete === true) {
-      let dataHolder = {};
+    if (this.state.displayResults === false && data.complete === true) {
+      let dataHolder = [{}];
       let completeHolder = data.complete;
 
       for (let departure of data.departures) {
-        dataHolder.operatorImg        = data.operators.find((operator) => operator.id === departure.operator_id).logo_url;
-        dataHolder.operator           = data.operators.find((operator)=> operator.id === departure.operator_id).name;
-        dataHolder.departureTime      = moment(data.departure_time).format('LT');
-        dataHolder.departureLocation  = data.locations.find((location) => location.id === departure.origin_location_id).name;
-        dataHolder.arrivalTime        = moment(data.arrival_time).format('LT');
-        dataHolder.arrivalLocation    = data.locations.find((location) => departure.destination_location_id).name;
-        dataHolder.price              = departure.prices.total/100;
-        dataHolder.currency           = departure.prices.currency;
+        if (departure.id != null) {
+          var end = moment(departure.departure_time);
+          var start = moment(departure.arrival_time);
+          var durationHours = start.diff(end, 'hours');
+          var durationMinutes = start.diff(end, 'minutes');
+          durationMinutes = durationMinutes - (durationHours*60);
+
+          dataHolder.push({
+            departureID        : departure.id,
+            operatorImg        : data.operators.find((operator) => operator.id === departure.operator_id).logo_url,
+            operator           : data.operators.find((operator)=> operator.id === departure.operator_id).name,
+            departureTime      : moment(departure.departure_time).format('LT'),
+            departureLocation  : data.locations.find((location) => location.id === departure.origin_location_id).name,
+            arrivalTime        : moment(departure.arrival_time).format('LT'),
+            arrivalLocation    : data.locations.find((location) => location.id === departure.destination_location_id).name,
+            travelHours        : durationHours,
+            travelMinutes      : durationMinutes,
+            price              : departure.prices.total/100,
+            currency           : departure.prices.currency
+          })
+        }
       }
+
+      let filteredData = dataHolder.filter(value => Object.keys(value).length !== 0);
+
       this.setState({
-        departures: dataHolder,
-        fetchComplete: completeHolder
+        departures: filteredData,
+        fetchComplete: completeHolder,
+        displayResults: true,
+        showLoading: false
       });
-      this._getDepartures(this.state.departures);
-    } else {
-      this.search();
-      console.log(this.search())
+      this._displayResults(this.state.departures);
+      console.log(this.state.departures);
+      console.log(this.state.displayResults);
+      console.log(this.state.fetchComplete);
+      console.log(this._displayResults());
+    } else if (data.complete === false) {
+      this.pollSearch();
+      if (this.state.showLoading === false || this.state.fetchComplete === false) {
+        this.setState({
+          fetchComplete: false,
+          showLoading: true
+        });
+      }
+      console.log(this.state.displayResults);
+      console.log(this.state.fetchComplete);
     }
 
   }
@@ -49,7 +80,25 @@ class SearchBtn extends Component {
   search() {
     if (this.state.displayResults === false && this.state.departures.length === 0) {
       return (this._fetchResults());
+    }
+  }
+
+  pollSearch() {
+    return (dispatch) => {
+      return axios.get('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2018-08-02/poll',
+    {
+      'headers': {
+        'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
+        'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
+      }
+    }).setInterval(function () { 
       this._fetchResults();
+    }.bind(this), 5000)
+    .then((response => {
+      dispatch(this._fetchResults(response.data));
+    })).catch((error) => {
+      console.log(error);
+    })
     }
   }
 
@@ -70,22 +119,23 @@ class SearchBtn extends Component {
     }
   }
 
-  _displayResults(data) {
-    if (this.state.displayResults === false || this.state.departures.complete === true) {
-      this.setState({
-        displayResults: true
-      })
+  _displayResults(departures) {
+    if (this.state.displayResults === true && this.state.fetchComplete === true) {
+      return (
+        <Results  departures = { this.state.departures } 
+                  displayResults = { this.state.displayResults } />
+      )
     }
-
-    return (
-        <Results departures= { this.state.departures } />
-    )
   }
 
   render() {
     return (
       <div className="search-btn">
         {<Button bsSize="large" bsStyle="warning" onClick={this.search()}>Search</Button>}
+        <Loading  fetchComplete = { this.state.fetchComplete }
+                  showLoading = { this.state.showLoading } />
+        <Results  departures = { this.state.departures } 
+                  displayResults = { this.state.displayResults } />
       </div>
     )
   }

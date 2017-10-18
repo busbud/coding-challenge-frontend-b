@@ -1,7 +1,7 @@
 @import '_variables.scss';
 
 .results-container {
-  padding: 25px 50px;
+  padding: 75px 50px;
 
   .result-header {
     padding-bottom: 25px;
@@ -18,10 +18,13 @@
     width: 50vw;
     display: flex;
     flex-direction: row;
+    color: #000;
 
     .operator-img {
       width: 15%;
       padding-right: 15px;
+      margin-top: auto;
+      margin-bottom: auto;
 
       .operator {
         width: 100%;

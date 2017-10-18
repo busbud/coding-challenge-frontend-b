@@ -1,5 +1,5 @@
 .results-container {
-  padding: 25px 50px; }
+  padding: 75px 50px; }
   .results-container .result-header {
     padding-bottom: 25px;
     font-weight: 600; }
@@ -12,10 +12,13 @@
     border-radius: 15px;
     width: 50vw;
     display: flex;
-    flex-direction: row; }
+    flex-direction: row;
+    color: #000; }
     .results-container .result-card .operator-img {
       width: 15%;
-      padding-right: 15px; }
+      padding-right: 15px;
+      margin-top: auto;
+      margin-bottom: auto; }
       .results-container .result-card .operator-img .operator {
         width: 100%; }
       .results-container .result-card .operator-img .operator-name {
