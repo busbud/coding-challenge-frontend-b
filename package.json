@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "axios-retry": "^3.0.1",
     "bootstrap": "^3.3.7",
     "moment": "^2.19.1",
     "node-sass-chokidar": "0.0.3",
@@ -16,6 +17,7 @@
     "react-scripts": "1.0.14",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "scroll-into-view": "^1.9.1",
     "typeface-montserrat": "0.0.37"
   },
   "scripts": {

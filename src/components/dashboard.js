@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import '../styles/base.scss';
 import Header from './header';
 import SearchBtn from './search';
+import Loading from './loading';
 
 class Dashboard extends Component {
 
@@ -12,6 +13,7 @@ class Dashboard extends Component {
       <div className="dashboard">
         <Header />
         <SearchBtn /> 
+        <Loading />
       </div>
     );
   }

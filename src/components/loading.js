@@ -8,7 +8,7 @@ class Loading extends Component {
     if (this.props.fetchComplete === false && this.props.showLoading === true) {
       return (
         <main className="results-container">
-          <h1 className="result-header white-text">Gathering info...</h1>
+          <h1 className="result-header white-text loading">Gathering info</h1>
         </main>
       );
     } else {

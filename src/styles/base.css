@@ -88,6 +88,23 @@ body {
   .results-container .result-header {
     padding-bottom: 25px;
     font-weight: 600; }
+    .results-container .result-header.loading:after {
+      overflow: hidden;
+      display: inline-block;
+      position: absolute;
+      vertical-align: bottom;
+      -webkit-animation: ellipsis steps(4, end) 1500ms infinite;
+      animation: ellipsis steps(4, end) 1500ms infinite;
+      content: "\2026";
+      width: 0px; }
+
+@keyframes ellipsis {
+  to {
+    width: 30px; } }
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 30px; } }
   .results-container .result-card {
     margin-left: auto;
     margin-right: auto;

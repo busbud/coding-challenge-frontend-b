@@ -77,29 +77,37 @@ class SearchBtn extends Component {
   search() {
     if (this.state.displayResults === false && this.state.departures.length === 0) {
       return (this._fetchResults());
+    } else {
+      this.setState({
+        displayResults: false,
+        fetchComplete: false,
+        departures: [],
+        showLoading: true
+      })
+      return (this._fetchResults());
     }
   }
 
   _fetchResults() {
-    return (dispatch) => {
-      return axios.get('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2018-08-02', 
+    return (
+      axios.get('https://napi.busbud.com/x-departures/dr5reg/f25dvk/2018-08-02', 
       {
         'headers': {
           'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
           'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
         }
-      }).then((response => {
-        dispatch(this._getDepartures(response.data));
-      })).catch((error) => {
+      }).then(response => {
+        this._getDepartures(response.data)
+      }).catch((error) => {
         console.log(error);
-      });
-    }
+      })
+    )
   }
 
   render() {
     return (
       <div className="search-btn">
-        {<Button bsSize="large" bsStyle="warning" onClick={this.search()}>Search</Button>}
+        {<Button bsSize="large" bsStyle="warning" onClick={() => { this.search() }}>Search</Button>}
         <Loading  fetchComplete   = { this.state.fetchComplete }
                   showLoading     = { this.state.showLoading } />
         <Results  departures      = { this.state.departures } 

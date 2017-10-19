@@ -4,10 +4,22 @@ import '../styles/base.scss';
 
 class Results extends Component {
 
+  componentDidUpdate() {
+    this._scrollToResults();
+  }
+
+  _scrollToResults() {
+    var scrollIntoView = require('scroll-into-view');
+    var node = document.getElementById('resultsMain');
+    scrollIntoView(node, {
+      time: 1500
+    });
+  }
+
   render() {
     if (this.props.displayResults === true) {
       return (
-        <main className="results-container">
+        <main className="results-container" id="resultsMain">
           <h1 className="result-header white-text">Here is what we found</h1>
   
           { this.props.departures.map((departure) => 
