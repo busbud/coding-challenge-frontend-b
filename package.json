@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
-    "axios-retry": "^3.0.1",
+    "babel-plugin-react-intl": "^2.3.1",
     "bootstrap": "^3.3.7",
     "moment": "^2.19.1",
     "node-sass-chokidar": "0.0.3",
@@ -12,11 +12,11 @@
     "react": "^16.0.0",
     "react-bootstrap": "^0.31.3",
     "react-dom": "^16.0.0",
+    "react-intl": "^2.4.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-scripts": "1.0.14",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
     "scroll-into-view": "^1.9.1",
     "typeface-montserrat": "0.0.37"
   },
