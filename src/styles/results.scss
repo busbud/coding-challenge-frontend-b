@@ -31,76 +31,102 @@
     }
   }
 
-  .result-card {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #fff;
-    margin-top: 15px;
-    padding: 15px 40px;
-    border-radius: 15px;
-    width: 50vw;
-    display: flex;
-    flex-direction: row;
-    color: #000;
+  .link-to-buy {
+    &:hover {
+      text-decoration: none;
+    }
 
-    .operator-img {
-      width: 15%;
-      padding-right: 15px;
-      margin-top: auto;
-      margin-bottom: auto;
+    .result-card {
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #fff;
+      margin-top: 15px;
+      padding: 15px 40px;
+      border-radius: 15px;
+      width: 60vw;
+      display: flex;
+      flex-direction: row;
+      color: #000;
 
-      .operator {
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
+        transition: opacity 1s cubic-bezier(.2, 1, .45, 1);
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .15);
+        content: '';
+        opacity: 0;
+        z-index: -1;
       }
 
-      .operator-name {
-        text-align: center;
-        margin-top: 5px;
+      &:hover{
+        transform: scale3d(1.010, 1.010, 1);
+        &::after {
+          opacity: 1;
+        }
       }
-    }
-
-    .travel-info {
-      text-align: left;
-      position: relative;
-      width: 70%;
-      padding-left: 25px;
-
-      .travel-title {
-        font-size: 100%;
-        margin-top: 0px;
-        margin-bottom: 2px;
+  
+      .operator-img {
+        width: 15%;
+        padding-right: 15px;
+        margin-top: auto;
+        margin-bottom: auto;
+  
+        .operator {
+          width: 100%;
+        }
+  
+        .operator-name {
+          text-align: center;
+          margin-top: 5px;
+        }
       }
-
-      .time {
-        font-weight: $bold;
-      }
-
-      .duration {
-        font-weight: 500;
-      }
-
-      .travel-time {
-        margin-bottom: 0px;
-      }
-    }
-
-    .price-info {
-      text-align: right;
-      position: relative;
-      width: 15%;
-
-      .price {
-        font-weight: $bold;
-        font-size: 150%;
+  
+      .travel-info {
+        text-align: left;
         position: relative;
-        top: 50%;
-        transform: translateY(-50%);        
+        width: 70%;
+        padding-left: 25px;
+  
+        .travel-title {
+          font-size: 100%;
+          margin-top: 0px;
+          margin-bottom: 2px;
+        }
+  
+        .time {
+          font-weight: $bold;
+        }
+  
+        .duration {
+          font-weight: 500;
+        }
+  
+        .travel-time {
+          margin-bottom: 0px;
+        }
       }
-    }
-
-    .departure, .arrival {
-      font-size: 125%;
-      margin-left: 25px;
+  
+      .price-info {
+        text-align: right;
+        position: relative;
+        width: 15%;
+  
+        .price {
+          font-weight: $bold;
+          font-size: 150%;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);        
+        }
+      }
+  
+      .departure, .arrival {
+        font-size: 125%;
+        margin-left: 25px;
+      }
     }
   }
 }

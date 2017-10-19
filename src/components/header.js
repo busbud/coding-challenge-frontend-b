@@ -11,6 +11,11 @@ class Header extends Component {
       <header className="header">
         <div className="top-bar">
           <h2 className="powered-by white-text">Powered by <img src={busBudLogo}alt={"busBudLogo"} className="busbud-logo"/></h2>
+          <p className="language white-text">
+            <span>français</span>
+            <span> / </span>
+            <span className="active-language">english</span>
+          </p>
         </div>
 
         <div className="header-content white-text">

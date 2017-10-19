@@ -35,7 +35,7 @@ class SearchBtn extends Component {
           durationMinutes = durationMinutes - (durationHours*60);
 
           dataHolder.push({
-            departureID        : departure.id,
+            key                : departure.id,
             operatorImg        : data.operators.find((operator) => operator.id === departure.operator_id).logo_url,
             operator           : data.operators.find((operator)=> operator.id === departure.operator_id).name,
             departureTime      : moment(departure.departure_time).format('LT'),
@@ -45,7 +45,8 @@ class SearchBtn extends Component {
             travelHours        : durationHours,
             travelMinutes      : durationMinutes,
             price              : departure.prices.total/100,
-            currency           : departure.prices.currency
+            currency           : departure.prices.currency,
+            url                : departure.links.deeplink,
           })
         }
       }
