@@ -1,0 +1,52 @@
+{
+  "name": "coding-challenge-frontend-b",
+  "version": "1.0.0",
+  "description": "@nicoespeon's implementation of Busbud front-end challenge",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "lint-staged",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicoespeon/coding-challenge-frontend-b.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicoespeon/coding-challenge-frontend-b/issues"
+  },
+  "homepage": "https://github.com/nicoespeon/coding-challenge-frontend-b#readme",
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.75.1"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.2",
+    "husky": "^0.14.3",
+    "jest-enzyme": "^4.0.1",
+    "lint-staged": "^4.3.0",
+    "prettier": "^1.7.4",
+    "raf": "^3.4.0",
+    "react-test-renderer": "^16.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  }
+}

@@ -4,6 +4,59 @@
 It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)! 
 Your challenge is to build a microsite that allows a traveler from NYC to find one-way departure schedules for the festival's opening weekend.
 
+## @nicoespeon's implementation
+
+Hi there 👋
+
+As we don't have a chance to code this one together, I'll explain decisions I made here, in this README. This can trigger interesting discussions later on!
+
+These are decisions I'd take alone in this journey. But I believe standards should definitely be taken as a team. Pair-programming and code reviews are perfect moments to build them.
+
+### Commits messages
+
+I follow the [AngularJS's commit message convention](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#-git-commit-guidelines).
+
+This is useful to quickly scan commit history. It can even be used to generate automatic changelogs − actually that's what the Angular team does.
+
+[Commitizen](https://github.com/commitizen/cz-cli) helps me doing that.
+
+### .gitignore
+
+I added some configuration generated with [gitignore.io](https://www.gitignore.io).
+
+That way, a complete, standard gitignore is produced.
+
+Standard configuration shares best practices − e.g. using IntelliJ, it will ignore user-specific files but still share project-specific ones, so we can share the same settings among the team.
+
+### Code formatting
+
+I installed [Prettier](https://github.com/prettier/prettier) to get rid of discussions about the style of the code during code review.
+
+I believe this should be automated. Prettier provides an opinionated starter with style conventions. These conventions could be change as our team standards evolve through discussions. Still, styling is not an issue because we automated that as a commit hook − thanks to [husky](https://www.npmjs.com/package/husky) and [lint-staged](https://www.npmjs.com/package/lint-staged), to keep it efficient and transparent for the developer.
+
+### Testing
+
+I'm using [Jest](http://facebook.github.io/jest/) along with [Enzyme](http://airbnb.io/enzyme/) to easily test my React components.
+
+### React
+
+As of the indications, I went for React, starting from the [create-react-app boilerplate](https://github.com/facebookincubator/create-react-app).
+
+This allows me to quickly quick-start an working environment to:
+- run the app in development mode using `npm start`
+- run tests using `npm test`
+- build the app for production deployment using `npm run build`
+
+### Semantic UI
+
+As for building an interface, I like to go with [Semantic UI](https://semantic-ui.com/).
+
+The design looks great by default, it's responsive and it has a lot of components that [Materialize](http://materializecss.com/) doesn't. As a matter of feeling, I prefer Semantic UI over Twitter Bootstrap.
+
+Plus, it has an official [React integration](https://react.semantic-ui.com/introduction) which comes handy for this project.
+
+For this challenge, I'll go with a mobile-first spirit to ensure a responsive design. I would enhance the design progressively to take advantages of larger screen, but at least it'd work everywhere until then.
+
 ## Functional Requirements
 - Has a simple onboarding screen that will trigger the departure search
 - Lists all the departures for a given origin city (**New York - geohash: dr5reg**) and a given destination city (**Montréal - geohash: f25dvk**) for a given day (**the 2nd of August 2018**) for **1** adult.
