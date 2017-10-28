@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
-import './App.css';
+import Header from './Header/Header';
+import SearchForm from './SearchForm/SearchForm';
 
 class App extends Component {
   render() {
     return (
-      <Grid padded>
-        <Grid.Column color="orange">
-          <h1 className="App-title">Départs pour Osheaga</h1>
-        </Grid.Column>
+      <Grid columns={1} padded stretched>
+        <Header title="Départs pour Osheaga" />
+        <SearchForm />
       </Grid>
     );
   }
