@@ -3,3 +3,8 @@
   font-variant: small-caps;
   font-weight: normal;
 }
+
+.Header-logo.ui.image {
+  width: 1em;
+  height: auto;
+}
