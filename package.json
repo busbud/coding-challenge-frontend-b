@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/nicoespeon/coding-challenge-frontend-b#readme",
   "dependencies": {
+    "date-fns": "^1.29.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.14",

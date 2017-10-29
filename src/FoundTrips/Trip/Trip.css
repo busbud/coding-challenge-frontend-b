@@ -1,0 +1,31 @@
+.Trip-time {
+  font-weight: bold;
+}
+
+.Trip-price {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.Trip-arrow-between-locations {
+  margin-top: -1rem !important;
+  margin-bottom: -2rem !important;
+}
+
+.Trip-arrow-between-locations > .column {
+  padding-top: 0.2rem !important;
+  padding-bottom: 0.2rem !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.unstackable.items > .item > .Trip-image,
+  .ui.unstackable.items > .item > .Trip-image > img {
+    width: 50px !important;
+    height: 50px;
+    align-self: center;
+  }
+
+  .Trip-price {
+    font-size: 1.5rem;
+  }
+}
