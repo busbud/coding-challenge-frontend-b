@@ -12,7 +12,7 @@ class SearchForm extends Component {
             <Icon name="thumbs outline up" /> Trouvez le meilleur trajet pour{' '}
             <strong>le festival Osheaga de Montréal</strong> avec Busbud !
           </Message>
-          <Form>
+          <Form onSubmit={() => this.props.onSubmit()}>
             <ReadOnlyInput label="Départ de" value="New York City" />
             <ReadOnlyInput label="Date de départ" value="2 août 2018" />
             <ReadOnlyInput label="Passagers" value="1 adulte" />
