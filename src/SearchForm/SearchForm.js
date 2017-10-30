@@ -9,7 +9,7 @@ class SearchForm extends Component {
       <Grid.Column>
         <Container text>
           <Message>
-            <Icon name="thumbs outline up" /> Trouvez le meilleur trajet pour{' '}
+            <Icon name="search" /> Trouvez le meilleur trajet pour{' '}
             <strong>le festival Osheaga de Montréal</strong> avec Busbud !
           </Message>
           <Form onSubmit={() => this.props.onSubmit()}>
