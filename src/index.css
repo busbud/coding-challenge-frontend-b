@@ -1,0 +1,22 @@
+.text-primary {
+  color: #2185d0;
+}
+
+.text-large {
+  font-size: 1.5rem;
+}
+
+/*
+ * Quick-fixes to adapt Semantic UI design on mobile.
+ * The downside of semantic UI = we have to fight with selector specificity.
+ */
+@media only screen and (max-width: 767px) {
+  .ui.container {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .ui.text.container {
+    max-width: 767px !important;
+  }
+}

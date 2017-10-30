@@ -1,0 +1,23 @@
+.FoundTrips-trip {
+  transition: color 0.5s ease-out;
+}
+
+.FoundTrips-trip:hover,
+.FoundTrips-trip:active,
+.FoundTrips-trip:focus {
+  background-color: #eee;
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.grid > .FoundTrips-column:not(.row),
+  .ui.grid > .row > .FoundTrips-column {
+    padding: 0;
+  }
+
+  .ui.FoundTrips-trips {
+    border: none;
+    border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+    box-shadow: none;
+    border-radius: 0;
+  }
+}

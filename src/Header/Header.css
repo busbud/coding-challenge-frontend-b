@@ -1,0 +1,18 @@
+.Header-link,
+.Header-link:hover,
+.Header-link:active,
+.Header-link:focus,
+.Header-link:visited {
+  color: #fff;
+}
+
+.Header-title {
+  text-align: center;
+  font-variant: small-caps;
+  font-weight: normal;
+}
+
+.Header-logo.ui.image {
+  width: 1em;
+  height: auto;
+}
