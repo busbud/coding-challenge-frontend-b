@@ -8,6 +8,7 @@ import Trip from './Trip/Trip';
 import parseTrips from './Trip/parseTrips';
 import ErrorMessage from './ErrorMessage/ErrorMessage';
 import NoTripMessage from './NoTripMessage/NoTripMessage';
+import AllTripsFoundMessage from './AllTripsFoundMessage/AllTripsFoundMessage';
 
 const mapStateToProps = ({ trips }) => {
   return {
@@ -30,19 +31,24 @@ export class FoundTrips extends Component {
     } else if (this.props.isPolling) {
       content = (
         <div>
+          <Loading />
           <Segment.Group className="FoundTrips-trips">
             {this.props.trips
               .sort(increasingDepartureTimeSorter)
               .map(renderTrip)}
           </Segment.Group>
-          <Loading />
         </div>
       );
     } else {
       content = (
-        <Segment.Group className="FoundTrips-trips">
-          {this.props.trips.sort(increasingDepartureTimeSorter).map(renderTrip)}
-        </Segment.Group>
+        <div>
+          <AllTripsFoundMessage />
+          <Segment.Group className="FoundTrips-trips">
+            {this.props.trips
+              .sort(increasingDepartureTimeSorter)
+              .map(renderTrip)}
+          </Segment.Group>
+        </div>
       );
     }
 
