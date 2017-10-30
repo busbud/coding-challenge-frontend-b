@@ -5,7 +5,8 @@ import TripLocation from './TripLocation/TripLocation';
 
 class Trip extends Component {
   render() {
-    const { operator, departure, arrival, price } = this.props.trip;
+    const { id, operator, departure, arrival, price } = this.props.trip;
+    const linkToBuyTicket = `https://www.busbud.com/en/deeplink/dr5reg/f25dvk/${id}?outbound_date=2018-08-02&adults=1`;
 
     const tripLocations = (
       <Grid.Column width={12}>
@@ -30,12 +31,11 @@ class Trip extends Component {
     );
 
     return (
-      <Item.Group unstackable>
+      <Item.Group as="a" href={linkToBuyTicket} link unstackable>
         <Item>
           <Item.Image
             className="Trip-image"
             size="tiny"
-            shape="circular"
             src={operator.logoUrl}
           />
           <Item.Content verticalAlign="middle">

@@ -3,6 +3,7 @@ export default apiResponse => {
 
   return apiResponse.departures.map(
     ({
+      id,
       prices,
       origin_location_id,
       departure_time,
@@ -10,6 +11,7 @@ export default apiResponse => {
       arrival_time,
       operator_id
     }) => ({
+      id,
       departure: {
         name: getLocationName(apiResponse.locations, origin_location_id),
         time: departure_time

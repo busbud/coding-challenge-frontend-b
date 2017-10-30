@@ -2,6 +2,14 @@
   font-weight: bold;
 }
 
+.Trip-image {
+  display: flex !important;
+}
+
+.Trip-image > img {
+  align-self: center;
+}
+
 .Trip-price {
   font-size: 2rem;
   font-weight: bold;

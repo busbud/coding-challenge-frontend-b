@@ -1,5 +1,5 @@
 import parseTrips from './parseTrips';
-import createApiResponse from './fixtures/createApiResponse';
+import createApiResponse from '../../fixtures/createApiResponse';
 
 it('returns trips from API response', () => {
   const apiResponse = createApiResponse();
@@ -8,6 +8,7 @@ it('returns trips from API response', () => {
 
   const expectedTrips = [
     {
+      id: '7c5dd26a',
       operator: {
         name: 'Greyhound',
         logoUrl:
@@ -24,6 +25,7 @@ it('returns trips from API response', () => {
       price: '52 $'
     },
     {
+      id: '7d6aa31b',
       operator: {
         name: 'Greyhound',
         logoUrl:
@@ -78,6 +80,7 @@ it('returns valid trips when not all locations are present in API response', () 
 
   const expectedTrips = [
     {
+      id: '7c5dd26a',
       operator: {
         name: 'Greyhound',
         logoUrl:
@@ -94,6 +97,7 @@ it('returns valid trips when not all locations are present in API response', () 
       price: '52 $'
     },
     {
+      id: '7d6aa31b',
       operator: {
         name: 'Greyhound',
         logoUrl:
@@ -121,6 +125,7 @@ it('returns valid trips when not all operators are present in API response', () 
 
   const expectedTrips = [
     {
+      id: '7c5dd26a',
       operator: {
         name: '',
         logoUrl: ''
@@ -136,6 +141,7 @@ it('returns valid trips when not all operators are present in API response', () 
       price: '52 $'
     },
     {
+      id: '7d6aa31b',
       operator: {
         name: '',
         logoUrl: ''

@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Grid, Segment } from 'semantic-ui-react';
+import { isBefore } from 'date-fns';
+import './FoundTrips.css';
 import Loading from './Loading/Loading';
 import Trip from './Trip/Trip';
-import './FoundTrips.css';
-import ErrorMessage from './ErrorMessage/ErrorMessage';
 import parseTrips from './Trip/parseTrips';
+import ErrorMessage from './ErrorMessage/ErrorMessage';
+import NoTripMessage from './NoTripMessage/NoTripMessage';
 
 const mapStateToProps = ({ trips }) => {
   return {
     isFetching: trips.isFetching,
+    isPolling: trips.isPolling,
     hasError: trips.hasError,
     trips: parseTrips(trips.apiResponse)
   };
@@ -20,17 +23,26 @@ export class FoundTrips extends Component {
     let content;
     if (this.props.hasError) {
       content = <ErrorMessage />;
-    } else if (this.props.isFetching) {
+    } else if (this.props.isFetching || this.isPollingWithoutTripToShow()) {
       content = <Loading />;
-    } else {
-      const trips = this.props.trips.map((trip, index) => (
-        <Segment padded key={index}>
-          <Trip key={index} trip={trip} />
-        </Segment>
-      ));
-
+    } else if (this.hasNoTripToShow()) {
+      content = <NoTripMessage />;
+    } else if (this.props.isPolling) {
       content = (
-        <Segment.Group className="FoundTrips-trips">{trips}</Segment.Group>
+        <div>
+          <Segment.Group className="FoundTrips-trips">
+            {this.props.trips
+              .sort(increasingDepartureTimeSorter)
+              .map(renderTrip)}
+          </Segment.Group>
+          <Loading />
+        </div>
+      );
+    } else {
+      content = (
+        <Segment.Group className="FoundTrips-trips">
+          {this.props.trips.sort(increasingDepartureTimeSorter).map(renderTrip)}
+        </Segment.Group>
       );
     }
 
@@ -40,6 +52,30 @@ export class FoundTrips extends Component {
       </Grid.Column>
     );
   }
+
+  isPollingWithoutTripToShow() {
+    return this.props.isPolling && this.props.trips.length === 0;
+  }
+
+  hasNoTripToShow() {
+    return (
+      !this.props.isFetching &&
+      !this.props.isPolling &&
+      this.props.trips.length === 0
+    );
+  }
 }
 
 export default connect(mapStateToProps)(FoundTrips);
+
+function renderTrip(trip, index) {
+  return (
+    <Segment className="FoundTrips-trip" padded key={index}>
+      <Trip key={index} trip={trip} />
+    </Segment>
+  );
+}
+
+function increasingDepartureTimeSorter(tripA, tripB) {
+  return isBefore(tripA.departure.time, tripB.departure.time) ? -1 : 1;
+}

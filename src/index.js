@@ -5,7 +5,7 @@ import { applyMiddleware, createStore } from 'redux';
 import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 import tripsToOsheaga from './reducers';
-import { epicMiddleware } from './reducers/epics/index';
+import { epicMiddleware } from './epics/index';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import MissingEnvironmentVariable from './MissingEnvironmentVariable/MissingEnvironmentVariable';
