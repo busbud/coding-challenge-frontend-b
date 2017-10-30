@@ -15,4 +15,8 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
+
+  .ui.text.container {
+    max-width: 767px !important;
+  }
 }
