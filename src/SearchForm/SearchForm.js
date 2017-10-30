@@ -13,6 +13,7 @@ class SearchForm extends Component {
             <strong>le festival Osheaga de Montréal</strong> avec Busbud !
           </Message>
           <Form onSubmit={() => this.props.onSubmit()}>
+            {/* These fields are read-only for the challenge, but could be active ones. */}
             <ReadOnlyInput label="Départ de" value="New York City" />
             <ReadOnlyInput label="Date de départ" value="2 août 2018" />
             <ReadOnlyInput label="Passagers" value="1 adulte" />

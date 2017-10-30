@@ -12,6 +12,8 @@ As we don't have a chance to code this one together, I'll explain decisions I ma
 
 These are decisions I'd take alone in this journey. But I believe standards should definitely be taken as a team. Pair-programming and code reviews are perfect moments to build them.
 
+🤠 **To get started**, you need to create a `.env.local` file − just duplicate the `.env` file which is versioned. Then, use a valid Busbud API Token to retrieve the data. I didn't want to push that secret to production!
+
 ### Commits messages
 
 I follow the [AngularJS's commit message convention](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#-git-commit-guidelines).
@@ -27,6 +29,8 @@ I added some configuration generated with [gitignore.io](https://www.gitignore.i
 That way, a complete, standard gitignore is produced.
 
 Standard configuration shares best practices − e.g. using IntelliJ, it will ignore user-specific files but still share project-specific ones, so we can share the same settings among the team.
+
+As for project-specific ignored files, I ignore `*.local` files so we can't create files locally that will override global configuration − e.g. `.env.local`. 
 
 ### Code formatting
 
@@ -46,6 +50,16 @@ This allows me to quickly quick-start an working environment to:
 - run the app in development mode using `npm start`
 - run tests using `npm test`
 - build the app for production deployment using `npm run build`
+
+### Redux-Observable
+
+To manage the application state, I went for [redux-observable](https://github.com/redux-observable/redux-observable).
+
+While it may not be necessary for such a little app, I made this choice because:
+- Observables are a great pattern to manage async stuff in a declarative way. Actually, I regularly [talk](https://medium.com/@nicoespeon/talk-fr-%C3%A0-la-d%C3%A9couverte-des-observables-d3a10ab4a056) and [write](https://hackernoon.com/using-observables-to-make-our-app-work-with-barcode-scanners-e8a673fba625) around about this data structure.
+- It would be easier to scale on the async logic introduced by the HTTP calls this app requires.
+- I do like Elm. And Redux is implementing [The Elm Architecture](https://futurice.com/blog/elm-in-the-real-world) in JavaScript, which I appreciate.
+- I wanted to have fun trying a React-Redux-RxJS stack and this challenge is a great moment to do that 🤘😎🤘
 
 ### Semantic UI
 

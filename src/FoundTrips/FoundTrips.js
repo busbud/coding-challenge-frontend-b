@@ -1,65 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Container, Grid, Segment } from 'semantic-ui-react';
 import Loading from './Loading/Loading';
 import Trip from './Trip/Trip';
 import './FoundTrips.css';
+import ErrorMessage from './ErrorMessage/ErrorMessage';
+import parseTrips from './Trip/parseTrips';
 
-class FoundTrips extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isSearching: true,
-      trips: []
-    };
+const mapStateToProps = ({ trips }) => {
+  return {
+    isFetching: trips.isFetching,
+    hasError: trips.hasError,
+    trips: parseTrips(trips.apiResponse)
+  };
+};
 
-    // TODO: refactor state from HTTP call
-    setTimeout(() => {
-      this.setState({
-        isSearching: false,
-        trips: [
-          {
-            operator: {
-              name: 'Greyhound',
-              logoUrl:
-                'https://busbud.imgix.net/operator-logos/greyhound.png?h=100&w=100&auto=format&fit=fill&bg=EEE'
-            },
-            departure: {
-              name: '4211 Broadway',
-              time: '2016-01-14T00:01:00'
-            },
-            arrival: {
-              name: 'Métro Bonaventure Bus Station',
-              time: '2016-01-14T07:55:00'
-            },
-            price: '52 $'
-          },
-          {
-            operator: {
-              name: 'Greyhound',
-              logoUrl:
-                'https://busbud.imgix.net/operator-logos/greyhound.png?h=100&w=100&auto=format&fit=fill&bg=EEE'
-            },
-            departure: {
-              name: '4211 Broadway',
-              time: '2016-01-14T02:01:00'
-            },
-            arrival: {
-              name: 'Gare d’autocars de Montréal',
-              time: '2016-01-14T09:55:00'
-            },
-            price: '55 $'
-          }
-        ]
-      });
-    }, 1000);
-  }
-
+export class FoundTrips extends Component {
   render() {
     let content;
-    if (this.state.isSearching) {
+    if (this.props.hasError) {
+      content = <ErrorMessage />;
+    } else if (this.props.isFetching) {
       content = <Loading />;
     } else {
-      const trips = this.state.trips.map((trip, index) => (
+      const trips = this.props.trips.map((trip, index) => (
         <Segment padded key={index}>
           <Trip key={index} trip={trip} />
         </Segment>
@@ -78,4 +42,4 @@ class FoundTrips extends Component {
   }
 }
 
-export default FoundTrips;
+export default connect(mapStateToProps)(FoundTrips);

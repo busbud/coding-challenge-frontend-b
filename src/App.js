@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Grid } from 'semantic-ui-react';
+import { fetchTrips } from './actions/index';
 import Header from './Header/Header';
-import FoundTrips from './FoundTrips/FoundTrips';
 import SearchForm from './SearchForm/SearchForm';
+import FoundTrips from './FoundTrips/FoundTrips';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasSubmittedSearchForm: false };
-  }
+const mapStateToProps = state => {
+  return {
+    shouldDisplayOnboarding: state.shouldDisplayOnboarding
+  };
+};
 
-  submitSearchForm() {
-    this.setState({ hasSubmittedSearchForm: true });
-  }
+const mapDispatchToProps = dispatch => {
+  return {
+    submitSearchForm: () => dispatch(fetchTrips())
+  };
+};
 
+export class App extends Component {
   render() {
     let content;
-    if (this.state.hasSubmittedSearchForm) {
-      content = <FoundTrips />;
+    if (this.props.shouldDisplayOnboarding) {
+      content = <SearchForm onSubmit={() => this.props.submitSearchForm()} />;
     } else {
-      content = <SearchForm onSubmit={() => this.submitSearchForm()} />;
+      content = <FoundTrips />;
     }
 
     return (
@@ -31,4 +36,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -9,7 +9,7 @@ class Loading extends Component {
           <Loader
             inverted
             size="large"
-            content="Nous recherchons les meilleurs trajets…"
+            content="Une minute, nous recherchons les meilleurs trajets pour Osheaga…"
           />
         </Dimmer>
 
