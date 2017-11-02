@@ -9,7 +9,7 @@ import {
 
 class Departures extends Component{
     componentDidMount(){
-        this.props.getDepartures('dr5reg','f25dvk','2018-08-02')
+        this.props.getDepartures('dr5reg','f25dvk','2017-12-12')
     }
     
     render(){
@@ -17,8 +17,8 @@ class Departures extends Component{
             <ListGroup>
                 {
                     this.props.departures.departures.map(
-                        departure => (
-                            <ListGroupItem>{departure.id}</ListGroupItem>
+                        (departure,key)=> (
+                            <ListGroupItem key={key}>{departure.departure_time}</ListGroupItem>
                         )
                     )
                 }
@@ -30,7 +30,9 @@ class Departures extends Component{
 
 export default connect(
     (state) => ({
-        departures : state.departures
+        departures : state.departures,
+        operators : state.operators,
+        cities : state.cities
     }),
     {
       getDepartures

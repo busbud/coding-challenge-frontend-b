@@ -35,7 +35,8 @@ export default (state = cityState, action) =>{
             return {
                 ...state,
                 origin : getOriginCity(action.payload),
-                destination : getDestinationCity(action.payload)
+                destination : getDestinationCity(action.payload),
+                locations : action.payload.locations
             }
         default:
             return state
