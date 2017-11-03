@@ -1,0 +1,601 @@
+
+/*
+ *      Heading Level 1
+ *      ---------------
+ */
+
+.heading-1 {
+
+    color: $primary-dark;
+    font-size: 2em;
+    font-family: $primary-font;
+    font-weight: 300;
+
+    @media screen and (min-width: $tiny-breakpoint) {
+
+        & {
+
+            font-size: 2.8em;
+            line-height: 1.175em;
+        }
+    }
+
+    @media screen and (min-width: $small-breakpoint) {
+
+        & {
+
+            font-size: 3.4em;
+            line-height: 1.2em;
+        }
+    }
+
+    &.light {
+
+        color: $primary-light;
+    }
+
+    strong {
+
+        font-weight: 700;
+    }
+}
+
+
+
+
+/*
+ *      Heading Level 2
+ *      ---------------
+ */
+
+.heading-2 {
+
+    color: $primary-dark;
+    font-size: 1.275em;
+    font-family: $primary-font;
+    font-weight: 300;
+    line-height: 1.475em;
+
+    @media screen and (min-width: $tiny-breakpoint) {
+
+        & {
+
+            font-size: 1.375em;
+        }
+    }
+
+    @media screen and (min-width: $small-breakpoint) {
+
+        & {
+
+            font-size: 1.575em;
+        }
+    }
+
+    &.light {
+
+        color: $primary-light;
+    }
+
+    &.primary-color {
+
+        color: $primary-color;
+    }
+
+    &.secondary-color {
+
+        color: $secondary-color;
+    }
+
+    strong {
+
+        font-weight: 700;
+    }
+}
+
+
+
+
+/*
+ *      Heading Level 3
+ *      ---------------
+ */
+
+.heading-3 {
+
+    color: $primary-dark;
+    font-size: 1em;
+    font-family: $primary-font;
+    font-weight: 400;
+
+    @media screen and (min-width: $tiny-breakpoint) {
+
+        & {
+
+            font-size: 1.125em;
+        }
+    }
+
+    @media screen and (min-width: $small-breakpoint) {
+
+        & {
+
+            font-size: 1.275em
+        }
+    }
+
+    &.light {
+
+        color: $primary-light;
+    }
+
+    &.primary-color {
+
+        color: $primary-color;
+    }
+
+    &.secondary-color {
+
+        color: $secondary-color;
+    }
+
+    &.bold {
+
+        font-weight: 500;
+    }
+
+    &.bigger {
+
+        font-size: 1.275em;
+
+        @media screen and (min-width: $small-breakpoint) {
+
+            & {
+
+                font-size: 1.8em
+            }
+        }
+    }
+
+    strong {
+
+        font-weight: 800;
+    }
+}
+
+
+
+/*
+ *      Heading Level 4
+ *      ---------------
+ */
+
+.heading-4 {
+
+    color: $primary-dark;
+    font-size: .875em;
+    font-family: $primary-font;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    @media screen and (min-width: $small-breakpoint) {
+
+        & {
+
+            font-size: .925em;
+        }
+    }
+
+    &.light {
+
+        color: $primary-light;
+    }
+
+    &.gray {
+
+        color: $secondary-dark;
+    }
+
+    &.primary-color {
+
+        color: $primary-color;
+    }
+
+    &.secondary-color {
+
+        color: $secondary-color;
+    }
+
+    &.third-color {
+
+        color: $negative-color;
+    }
+
+    &.bold {
+
+        font-weight: 600;
+    }
+}
+
+
+
+
+/*
+ *      Heading Level 5
+ *      ---------------
+ */
+
+.heading-5 {
+
+    color: $primary-dark;
+    font-size: .875em;
+    font-family: $primary-font;
+    font-weight: 500;
+
+    @media screen and (min-width: $small-breakpoint) {
+
+        & {
+
+            font-size: .925em;
+        }
+    }
+
+    &.light {
+
+        color: $primary-light;
+    }
+
+    &.grey {
+
+        color: $secondary-dark;
+    }
+
+    &.primary-color {
+
+        color: $primary-color;
+    }
+
+    &.secondary-color {
+
+        color: $secondary-color;
+    }
+
+    &.bold {
+
+        font-weight: 700;
+    }
+
+    strong {
+
+        font-weight: 700;
+    }
+}
+
+
+
+
+/*
+ *      Reading Text
+ *      ------------
+ */
+
+.reading-text {
+
+    color: $primary-dark;
+    font-size: .825em;
+    font-family: $primary-font;
+    font-weight: 300;
+    line-height: 1.6em;
+
+    @media screen and (min-width: $tiny-breakpoint) {
+
+        & {
+
+            font-size: .925em;
+        }
+    }
+
+    &.big {
+
+        font-size: .925em;
+
+        @media screen and (min-width: $tiny-breakpoint) {
+
+            & {
+
+                font-size: 1.125em;
+            }
+        }
+    }
+
+    &.bold {
+
+        font-weight: 700;
+    }
+
+    &.thin {
+
+        font-weight: 300;
+    }
+
+    &.upper {
+
+        text-transform: uppercase;
+    }
+
+    &.light {
+
+        color: $primary-light;
+    }
+
+    &.grey {
+
+        color: $secondary-dark;
+    }
+}
+
+
+
+
+/*
+ *      Link
+ *      ----
+ */
+
+.link {
+
+    color: $primary-dark;
+    font-size: .875em;
+    font-family: $primary-font;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color .2s ease-in-out;
+
+    &:hover {
+
+        color: $secondary-color;
+    }
+
+    &.light {
+
+        color: $primary-light;
+
+        &:hover {
+
+            color: $secondary-color;
+        }
+    }
+
+    &.primary-color {
+
+        color: $primary-color;
+
+        &:hover {
+
+            color: $secondary-color;
+        }   
+    }
+
+    &.secondary-color {
+
+        color: $secondary-color;
+
+        &:hover {
+
+            color: $primary-light;
+        }   
+    }
+
+    strong,
+    &.strong {
+
+        font-weight: 700;
+    }
+}
+
+
+
+
+/*
+ *      Link Icon
+ *      ---------
+ */
+
+.link-icon {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: $primary-dark;
+    font-size: .925em;
+    font-family: $primary-font;
+    font-weight: 400;
+    transition: color .2s ease-in-out;
+
+    .icon {
+
+        width: 12px;
+        height: 7px;
+        margin-top: 4px;
+        margin-left: 12px;
+        fill: $primary-dark;
+        transition: fill .250s ease-in-out;
+
+        svg {
+
+            fill: $primary-dark;
+        }
+    }
+
+    &.reverse {
+
+        .icon {
+            
+            margin-left: 0px;
+            margin-right: 6px;
+        }
+    }
+
+    &:hover {
+
+        color: $secondary-color;
+
+        .icon {
+
+            fill: $secondary-color;
+
+            svg {
+
+                fill: $secondary-color;
+            }
+        }
+    }
+
+    &.light {
+
+        color: $primary-light;
+
+        .icon {
+
+            fill: $primary-light;
+
+            svg {
+
+                fill: $primary-light;
+            }
+        }
+
+        &:hover {
+
+            color: $secondary-color;
+
+            .icon {
+
+                fill: $secondary-color;
+
+                svg {
+
+                    fill: $secondary-color;
+                }
+            }
+        }
+    }
+
+    &.gray {
+
+        color: $secondary-dark;
+
+        .icon {
+
+            fill: $secondary-dark;
+
+            svg {
+
+                fill: $secondary-dark;
+            }
+        }
+
+        &:hover {
+
+            color: $secondary-color;
+
+            .icon {
+
+                fill: $secondary-color;
+
+                svg {
+
+                    fill: $secondary-color;
+                }
+            }
+        }
+    }
+
+    &.primary-color {
+
+        color: $primary-color;
+
+        .icon {
+
+            fill: $primary-color;
+
+            svg {
+
+                fill: $primary-color;
+            }
+        }
+
+        &:hover {
+
+            color: $secondary-color;
+
+            .icon {
+
+                fill: $secondary-color;
+
+                svg {
+
+                    fill: $secondary-color;
+                }
+            }
+        }
+    }
+
+    &.secondary-color {
+
+        color: $secondary-color;
+
+        .icon {
+
+            fill: $secondary-color;
+
+            svg {
+
+                fill: $secondary-color;
+            }
+        }
+
+        &:hover {
+
+            color: $primary-color;
+
+            .icon {
+
+                fill: $primary-color;
+
+                svg {
+
+                    fill: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+/*
+ *      Error Message
+ *      -------------
+ */
+
+.error-message {
+
+    color: $negative-color;
+    font-size: .825em;
+    font-family: $primary-font;
+    font-weight: 400;
+    line-height: 1.6em;
+
+    @media screen and (min-width: $tiny-breakpoint) {
+
+        & {
+
+            font-size: .975em;
+        }
+    }   
+}
+
