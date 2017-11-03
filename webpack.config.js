@@ -7,7 +7,7 @@ module.exports = {
         
         path: path.resolve(__dirname, './public/dist'),
         publicPath: '/dist/',
-        filename: 'app.js'
+        filename: 'build.js'
     },
     module: {
         rules: [
@@ -20,17 +20,13 @@ module.exports = {
                         'scss': 'vue-style-loader!css-loader!sass-loader',
                         'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
                     }
+                    // other vue-loader options go here
                 }
             },
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['es2015']
-                    }
-                }
+                loader: 'babel-loader',
+                exclude: /node_modules/
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
@@ -68,5 +64,40 @@ module.exports = {
         hints: false
     },
     devtool: '#eval-source-map'
+}
+
+
+if (process.env.NODE_ENV === 'production') {
+
+    module.exports.plugins = (module.exports.plugins || []).concat([
+    
+        new webpack.DefinePlugin({
+            
+            'process.env': {
+
+                NODE_ENV: '"production"'
+            }
+        }),
+        
+        new webpack.optimize.UglifyJsPlugin({
+            
+            sourceMap: false,
+            compress: {
+
+                warnings: false
+            }
+        }),
+
+        new webpack.LoaderOptionsPlugin({
+            
+            minimize: true,
+            compress: {
+
+                warnings: false
+            }
+        }),
+
+        new webpack.optimize.OccurrenceOrderPlugin()
+    ])
 }
 
