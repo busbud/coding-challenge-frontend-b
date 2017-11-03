@@ -1,0 +1,88 @@
+
+/*
+ * 		Input
+ * 		------
+ */
+
+.input {
+
+	position: relative;
+	width: 100%;
+	border: 1px solid $secondary-light;
+	border-radius: 2px;
+	background-color: $primary-light;
+	box-sizing: border-box;
+
+	&__input-field {
+
+		position: relative;
+		width: 100%;
+		padding: 12px 15px;
+		border: 0;
+		background-color: transparent;
+		box-sizing: border-box;
+		color: $secondary-dark;
+	    font-size: .975em;
+	    font-family: $primary-font;
+	    font-weight: 400;
+	    z-index: 1;
+	}
+
+    &--error {
+
+    	border-color: $negative-color;
+    }
+}
+
+
+
+
+/*
+ * 		Select
+ * 		------
+ */
+
+.select {
+
+	position: relative;
+	width: 100%;
+	border: 1px solid $secondary-light;
+	border-radius: 2px;
+	background-color: $primary-light;
+	box-sizing: border-box;
+
+	&__input {
+
+		position: relative;
+		width: 100%;
+		padding: 12px 15px;
+		border: 0;
+		background-color: transparent;
+		box-sizing: border-box;
+		color: $secondary-dark;
+	    font-size: .975em;
+	    font-family: $primary-font;
+	    font-weight: 400;
+	    z-index: 1;
+	}
+
+    &__arrow {
+
+    	position: absolute;
+    	top: calc(50% - 4px);
+    	right: 20px;
+    	height: 8px;
+    	width: 13px;
+    	fill: $secondary-dark;
+
+    	svg {
+    		
+    		fill: $secondary-dark;
+    	}
+    }
+
+    &--error {
+
+    	border-color: $negative-color;
+    }
+}
