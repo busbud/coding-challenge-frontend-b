@@ -1,4 +1,4 @@
-import { LOAD_DEPARTURE_DATA } from '../actions'
+import { HANDLE_DEPARTURE_RESPONSE } from '../actions'
 
 const cityState = {
     origin:null,
@@ -31,7 +31,7 @@ const getCityByType = (type,payload) => {
 export default (state = cityState, action) =>{
    
     switch(action.type){
-        case LOAD_DEPARTURE_DATA:
+        case HANDLE_DEPARTURE_RESPONSE:
             return {
                 ...state,
                 origin : getOriginCity(action.payload),

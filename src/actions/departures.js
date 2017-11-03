@@ -1,12 +1,11 @@
-export const INIT_DEPARTURE_DATA = 'INIT_DEPARTURE_DATA'
-export const LOAD_DEPARTURE_DATA = 'LOAD_DEPARTURE_DATA'
-export const LOAD_DEPARTURE_COMPLETED = 'LOAD_DEPARTURE_COMPLETED'
+export const INIT_DEPARTURE_REQUEST = 'INIT_DEPARTURE_REQUEST'
+export const HANDLE_DEPARTURE_RESPONSE = 'HANDLE_DEPARTURE_RESPONSE'
+export const END_DEPARTURE_REQUESTS = 'END_DEPARTURE_REQUESTS'
 
-export const getDepartures = (originHash,destinationHash,outboundDate) => {
-    console.log('Init Departure')
+export const initDepartureRequest = (originHash,destinationHash,outboundDate) => {
     return (dispatch) => {
         dispatch({
-            type:INIT_DEPARTURE_DATA,
+            type:INIT_DEPARTURE_REQUEST,
             payload: {
                 originHash,
                 destinationHash,
@@ -16,18 +15,17 @@ export const getDepartures = (originHash,destinationHash,outboundDate) => {
     } 
 }
 
-export const updateDepartures = (response) => {
+export const handleDepartureResponses = (response) => {
     return (dispatch) => {
         
-        if(response.complete){
+        if(response.complete === true){
             dispatch({
-                type:LOAD_DEPARTURE_COMPLETED
+                type:END_DEPARTURE_REQUESTS
             })
-           
         }
 
         dispatch({
-            type:LOAD_DEPARTURE_DATA,
+            type:HANDLE_DEPARTURE_RESPONSE,
             payload: response
         })
     } 

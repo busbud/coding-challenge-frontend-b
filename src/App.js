@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Departures from './components/departures'
+import Results from './components/results/results'
+import SearchForm from './components/searchForm'
 import {
-  Grid,
-  Row,
-  Col
+  Grid
 } from 'react-bootstrap'
 import './App.css';
 
@@ -11,11 +10,8 @@ class App extends Component {
   render() {
     return (
       <Grid>
-        <Row className="show-grid">
-          <Col mdOffset={2} md={8}>
-            <Departures></Departures>
-          </Col>
-        </Row>
+        <SearchForm></SearchForm>
+        <Results></Results>
       </Grid>
     )
   }

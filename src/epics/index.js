@@ -1,8 +1,7 @@
 import {
-    INIT_DEPARTURE_DATA,
-    LOAD_DEPARTURE_DATA,
-    LOAD_DEPARTURE_COMPLETED,
-    updateDepartures
+    INIT_DEPARTURE_REQUEST,
+    END_DEPARTURE_REQUESTS,
+    handleDepartureResponses
 } from '../actions'
 
 import Busbud from '../services/busbud'
@@ -13,27 +12,30 @@ import 'rxjs/add/operator/takeUntil';
 
 export const departureEpic = ( action$ ) => {
     
+    const busbud = new Busbud()
 
-    return action$.ofType(INIT_DEPARTURE_DATA)
+    return action$.ofType(INIT_DEPARTURE_REQUEST)
     .mergeMap( action => {
     
         return Observable
         .interval(1000)
         .switchMap( (x) => {
            
-            const busbud = new Busbud()
-            
             const busBudPromise = busbud.getDepartures(action.payload.originHash,action.payload.destinationHash,action.payload.outboundDate)
 
             return Observable
             .fromPromise(busBudPromise)
             .map(response => {
-                return updateDepartures(response.data)
+                
+                console.log(response.data)
+                
+                return handleDepartureResponses(response.data)
+                   
             })
            
         })
     })
-    .takeUntil(action$.ofType(LOAD_DEPARTURE_COMPLETED))
+    .takeUntil(action$.ofType(END_DEPARTURE_REQUESTS))
 }
     
     

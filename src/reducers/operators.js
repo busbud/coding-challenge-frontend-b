@@ -1,4 +1,4 @@
-import { LOAD_DEPARTURE_DATA } from '../actions'
+import { HANDLE_DEPARTURE_RESPONSE } from '../actions'
 
 const operatorState = {
     operators:[]
@@ -6,7 +6,7 @@ const operatorState = {
 
 export default (state = operatorState, action) =>{
     switch(action.type){
-        case LOAD_DEPARTURE_DATA:
+        case HANDLE_DEPARTURE_RESPONSE:
             return {
                 ...state,
                 operators : action.payload.operators
