@@ -20,13 +20,17 @@ module.exports = {
                         'scss': 'vue-style-loader!css-loader!sass-loader',
                         'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
                     }
-                    // other vue-loader options go here
                 }
             },
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015']
+                    }
+                }
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
@@ -64,40 +68,5 @@ module.exports = {
         hints: false
     },
     devtool: '#eval-source-map'
-}
-
-
-if (process.env.NODE_ENV === 'production') {
-
-    module.exports.devtool = '#source-map'
-
-    module.exports.plugins = (module.exports.plugins || []).concat([
-    
-        new webpack.DefinePlugin({
-            
-            'process.env': {
-
-                NODE_ENV: '"production"'
-            }
-        }),
-        
-        new webpack.optimize.UglifyJsPlugin({
-            
-            sourceMap: false,
-            compress: {
-
-                warnings: false
-            }
-        }),
-
-        new webpack.LoaderOptionsPlugin({
-            
-            minimize: true,
-            compress: {
-
-                warnings: false
-            }
-        })
-    ])
 }
 
