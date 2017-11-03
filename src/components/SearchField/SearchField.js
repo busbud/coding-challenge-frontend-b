@@ -1,4 +1,5 @@
 
+import DateField from 'components/DateField/DateField.vue'
 import Notifications from 'components/Notifications/Notifications.vue'
 import Loading from 'components/Loading/Loading.vue'
 
@@ -8,6 +9,7 @@ export default {
 
     components: {
 
+        DateField,
         Notifications,
         Loading
     },
@@ -28,6 +30,15 @@ export default {
     },
 
     mounted () {
+
+        var self = this
+
+        // On change, update dateFrom
+
+        this.$on('dateFieldUpdated', function ( date ) {
+
+            self.searchQuery.dateFrom = date
+        })
 
         // Set loading
 

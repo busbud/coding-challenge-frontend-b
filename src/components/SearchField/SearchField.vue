@@ -4,11 +4,11 @@
 
 		notifications(ref="searchNotifications").search-field__notifications
 
-		form(@submit.prevent="search", name="searchFormValidation").search-field__form
+		form(@submit.prevent="search", name="searchFormValidation", autocomplete="off", novalidate).search-field__form
 
-			div(v-bind:class="{ 'select--error': errors.has('searchFormValidation.origin') && searchSubmitted }").search-field__form__select.select
+			div(v-bind:class="{ 'select--error': errors.has('origin') && searchSubmitted }").search-field__form__select.select
 				
-				select(name="origin", v-model="searchQuery.origin", v-validate.initial="'required'", placeholder="Origin").select__input
+				select(name="origin", v-model="searchQuery.origin", v-validate.initial="'required'", placeholder="Origin", required).select__input
 					option(value="", selected) Origin
 					option(value="dr5reg") New York
 				
@@ -16,9 +16,9 @@
 					use(xlink:href="/dist/assets/icons/icons.svg#chevron-down")
 
 
-			div(v-bind:class="{ 'select--error': errors.has('searchFormValidation.destination') && searchSubmitted }").search-field__form__select.select
+			div(v-bind:class="{ 'select--error': errors.has('destination') && searchSubmitted }").search-field__form__select.select
 				
-				select(name="destination", v-model="searchQuery.destination", v-validate.initial="'required'", placeholder="Destination").select__input
+				select(name="destination", v-model="searchQuery.destination", v-validate.initial="'required'", placeholder="Destination", required).select__input
 					option(value="", selected) Destination
 					option(value="f25dvk") Montreal
 					
@@ -26,9 +26,9 @@
 					use(xlink:href="/dist/assets/icons/icons.svg#chevron-down")
 
 
-			div(v-bind:class="{ 'select--error': errors.has('searchFormValidation.dateFrom') && searchSubmitted }").search-field__form__input.input
+			div(v-bind:class="{ 'input--error': errors.has('dateFrom') && searchSubmitted }").search-field__form__input.input
 				
-				input(name="dateFrom", v-model="searchQuery.dateFrom", v-validate.initial="'required'", placeholder="Departure Date").input__input-field
+				date-field(name="dateFrom", v-model="searchQuery.dateFrom", v-validate.initial="'required'", placeholder="Departure Date", required).input__input-field
 
 
 			button(type="submit").search-field__form__submit.button-primary Search

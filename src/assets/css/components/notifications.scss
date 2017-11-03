@@ -9,7 +9,7 @@
 	position: relative;
 	width: 100%;
 
-	.notifications-wrapper {
+	.notifications__wrapper {
 
 		display: flex;
 		flex-direction: column;
@@ -18,12 +18,7 @@
 		align-items: center;
 		justify-content: center;
 
-	    &.dark {
-
-	    	background-color: $primary-color;
-	    }
-
-	    .notification {
+	    .notifications__wrapper__notification {
 
 	    	display: flex;
 	    	width: 100%;
@@ -32,227 +27,16 @@
 			justify-content: center;
 		    background-color: $secondary-color;
 			color: $primary-light;
-		    font-size: 1em;
+		    font-size: .925em;
 		    font-family: $primary-font;
 		    font-weight: 400;
 		    text-align: center;
 
-		    .link {
-
-		    	padding-top: 20px;
-		    	padding-left: 10px;
-		    	font-size: 1.025em;
-		    	font-weight: 700;
-		    	text-decoration: underline;
-
-			    @media screen and (min-width: $small-breakpoint) {
-
-			        & {
-
-			            padding-top: 0;
-			        }
-			    }
-
-			    &.light {
-
-			    	&:hover {
-
-			    		color: $secondary-dark;
-			    	}
-			    }
-
-			    &.no-margin {
-
-			    	padding-left: 0;
-			    }
-		    }
-
-		    .button {
-
-		    	margin: 20px auto 0;
-
-			    @media screen and (min-width: $small-breakpoint) {
-
-			        & {
-
-			            margin: 0 0 0 20px;
-			        }
-			    }
-		    }
-
-		    .status {
-
-		    	position: relative;
-		    	padding-left: 24px;
-			    color: $primary-light;
-			    font-size: .975em;
-			    font-family: $primary-font;
-			    font-weight: 400;
-			    line-height: 1.6em;
-
-			    &:before {
-
-			    	content: '';
-			    	position: absolute;
-			    	top: 4px;
-			    	left: 0;
-			    	width: 16px;
-			    	height: 16px;
-			    	background-color: $secondary-light;
-			    	border-radius: 50%;
-			    }
-
-			    &.success {
-
-				    &:before {
-
-				    	background-color: $positive-color;
-				    }	
-			    }
-
-			    &.ended {
-
-				    &:before {
-
-				    	background-color: $negative-color;
-				    }	
-			    }
-		    }
-
-		    .icon {
-
-		    	margin-right: 12px;
-		    	fill: $primary-dark;
-
-		    	svg {
-
-		    		fill: $primary-dark;
-		    	}
-
-			    &.light {
-
-			    	fill: $primary-light;
-
-			    	svg {
-
-			    		fill: $primary-light;
-			    	}
-			    }
-		    }
-
-		    .uppercase {
-
-		    	text-transform: uppercase;
-		    	font-weight: 700;
-		    }
-
-		    &.info-light  {
+		    &--light  {
 
 		    	background-color: $secondary-light;
 				color: $primary-dark;
 		    }
-
-		    &.transparent-dark  {
-
-		    	position: relative;
-		    	background-color: rgba($primary-dark, .3);
-				color: $primary-light;
-		    }
-	    }
-	}
-
-	&.small {
-
-		.notification {
-
-		    padding: 12px 30px;	
-		}
-	}
-
-	&.multi {
-
-		.notification {
-
-		    margin-bottom: 20px;
-		}
-	}
-}
-
-
-
-
-/*
- * 		Cookie Notification
- * 		-------------------
- */
-
-.notifications-cookie {
-
-	position: relative;
-	width: 100%;
-	background-color: $primary-dark;
-
-	.notifications-wrapper {
-
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		margin: 0 auto;
-		align-items: center;
-		justify-content: center;
-
-	    .notification {
-
-			display: flex;
-			flex-direction: column;
-			width: 100%;
-			max-width: $max-site-width;
-			margin: 0 auto;
-		    padding: 10px 30px;
-			align-items: center;
-			justify-content: center;
-			color: $secondary-light;
-		    font-size: .875em;
-		    font-family: $primary-font;
-		    font-weight: 400;
-		    text-align: center;
-
-			@media screen and (min-width: $medium-breakpoint) {
-
-	            & {
-
-	            	flex-direction: row;
-	            }
-	        }
-	    }
-
-	    .link {
-
-	    	color: $primary-light;
-	    	font-size: 1em;
-	    	font-weight: 600;
-	    	text-decoration: underline;
-	    }
-
-	    .button {
-
-	    	margin: 20px 0 0 0;
-	    	padding: 4px 8px 5px;
-
-			@media screen and (min-width: $medium-breakpoint) {
-
-	            & {
-
-	            	margin: 0 0 0 25px;
-	            }
-	        }
-	    }
-
-	    .uppercase {
-
-	    	text-transform: uppercase;
-	    	font-weight: 700;
 	    }
 	}
 }
-

@@ -210,17 +210,17 @@ export default new Vuex.Store({
 							reject({
 								
 								error: true,
-								message:  response.data.message
+								message:  response.data.error.type 
 							});
 						}
 
 					})
 					.catch(function (error) {
-						
+
 						reject({
 							
 							error: true,
-							message:  error.message
+							message:  'Unable to search with the following parameters. Please make sure inputs are valid.'
 						})
 					})
 				}
@@ -282,7 +282,7 @@ export default new Vuex.Store({
 							reject({
 								
 								error: true,
-								message:  response.data.message
+								message:  response.data.error.type 
 							});
 						}
 
@@ -292,7 +292,7 @@ export default new Vuex.Store({
 						reject({
 							
 							error: true,
-							message:  error.message
+							message:  'Unable to search with the following parameters. Please make sure inputs are valid.'
 						})
 					})
 				}

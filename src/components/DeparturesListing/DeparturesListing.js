@@ -14,7 +14,8 @@ export default {
             operators: [],
             cities: [],
             originCity: null,
-            destinationCity: null
+            destinationCity: null,
+            fetched: false
         }
     },
 
@@ -42,6 +43,11 @@ export default {
             // Format and update local departures
 
             self.formatAndSetDepartures()
+
+
+            // Set fetched to true
+
+            self.fetched = true
         })
     },
 

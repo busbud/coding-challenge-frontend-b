@@ -2,9 +2,9 @@
 
 	div(v-show="messages.length").notifications
 
-		div.notifications-wrapper.small
+		div.notifications__wrapper.small
 
-			div(v-for="message in messages", :class="'notification ' + message.type") {{ message.text }}
+			div(v-for="message in messages", :class="'notifications__wrapper__notification notifications__wrapper__notification__status--' + message.type") {{ message.text }}
 
 </template>
 

@@ -50,8 +50,7 @@ module.exports = {
         },
         modules: [
   
-            'node_modules',
-            './vendors'
+            'node_modules'
         ]
     },
     devServer: {

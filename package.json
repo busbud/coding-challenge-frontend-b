@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "bluebird": "^3.5.0",
+    "flatpickr": "^4.0.6",
     "lodash": "^4.17.4",
     "vue": "^2.1.0",
     "vue-lodash": "^1.0.4",

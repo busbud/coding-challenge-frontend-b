@@ -6,10 +6,17 @@
 
 .search-field {
 
-	position: relative;
 	display: flex;
 	width: 100%;
 	flex-direction: column;
+
+	@media screen and (min-width: $small-breakpoint) {
+
+        & {
+
+        	position: relative;
+        }
+    }
 
 	.search-field__form {
 
