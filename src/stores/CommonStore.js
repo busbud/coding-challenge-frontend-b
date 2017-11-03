@@ -8,7 +8,10 @@ export default new Vuex.Store({
 
 	state: {
 
-		departures: null,
+		departures: [],
+		locations: [],
+		operators: [],
+		cities: [],
 		token: null
 	},
 
@@ -34,6 +37,21 @@ export default new Vuex.Store({
 
 			return state.departures
 		},
+
+		getLocations: state => {
+
+			return state.locations
+		},
+
+		getOperators: state => {
+
+			return state.operators
+		},
+
+		getCities: state => {
+
+			return state.cities
+		}
 	},
 
 	mutations: {
@@ -61,6 +79,42 @@ export default new Vuex.Store({
 			else {
 
 				state.departures = data.departures
+			}
+		},
+
+		SET_LOCATIONS: (state, data) => {
+
+			if( Settings.API_TOKEN === undefined ) {
+
+				alert('An error occur when setting locations.')
+			}
+			else {
+
+				state.locations = data.locations
+			}
+		},
+
+		SET_OPERATORS: (state, data) => {
+
+			if( Settings.API_TOKEN === undefined ) {
+
+				alert('An error occur when setting operators.')
+			}
+			else {
+
+				state.operators = data.operators
+			}
+		},
+
+		SET_CITIES: (state, data) => {
+
+			if( Settings.API_TOKEN === undefined ) {
+
+				alert('An error occur when setting cities.')
+			}
+			else {
+
+				state.cities = data.cities
 			}
 		}
 	},
@@ -97,7 +151,7 @@ export default new Vuex.Store({
 
 					axios({
 
-						method: 'get',
+						method: 'GET',
 						url: Settings.API_URL + '/x-departures/' + data.origin + '/' + data.destination + '/' + data.dateFrom,
 						data: data.params,
 						headers: {
@@ -107,18 +161,40 @@ export default new Vuex.Store({
 						}
 
 					}).then(function (response) {
-						
-						console.log( response )
 
 						if( response.status === 200 ) {
 
-							// If search already complete, then set departures in store
+							// Set search locations, operators and cities to store
 
 							context.commit({
 
-								type: 'SET_DEPARTURES',
-								departures: response.data.departures
+								type: 'SET_LOCATIONS',
+								locations: response.data.locations
 							})
+
+							context.commit({
+
+								type: 'SET_OPERATORS',
+								operators: response.data.operators
+							})
+
+							context.commit({
+
+								type: 'SET_CITIES',
+								cities: response.data.cities
+							})
+
+
+							// If search already complete, then set departures in store
+
+							if( response.data.complete ) {
+
+								context.commit({
+
+									type: 'SET_DEPARTURES',
+									departures: response.data.departures
+								})
+							}
 
 
 							// Return status
@@ -169,7 +245,7 @@ export default new Vuex.Store({
 
 					axios({
 
-						method: 'get',
+						method: 'GET',
 						url: Settings.API_URL + '/x-departures/' + data.origin + '/' + data.destination + '/' + data.dateFrom + '/poll',
 						data: data.params,
 						headers: {
@@ -182,16 +258,16 @@ export default new Vuex.Store({
 						
 						if( response.status === 200 ) {
 
-							console.log( response )
+							// If search already complete, then set departures in store
 
-							// Set departures in store
+							if( response.data.complete ) {
 
-							context.commit({
+								context.commit({
 
-								type: 'SET_DEPARTURES',
-								departures: response.data.departures
-							})
-
+									type: 'SET_DEPARTURES',
+									departures: response.data.departures
+								})
+							}
 
 							// Return status
 

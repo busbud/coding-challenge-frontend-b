@@ -29,12 +29,13 @@
         }
     }
 
-    &.light {
+    &--light {
 
         color: $primary-light;
     }
 
-    strong {
+    &--bold,
+    &__strong {
 
         font-weight: 700;
     }
@@ -51,7 +52,7 @@
 .heading-2 {
 
     color: $primary-dark;
-    font-size: 1.275em;
+    font-size: 1.025em;
     font-family: $primary-font;
     font-weight: 300;
     line-height: 1.475em;
@@ -60,7 +61,7 @@
 
         & {
 
-            font-size: 1.375em;
+            font-size: 1.175em;
         }
     }
 
@@ -68,28 +69,19 @@
 
         & {
 
-            font-size: 1.575em;
+            font-size: 1.275em;
         }
     }
 
-    &.light {
+    &--light {
 
         color: $primary-light;
     }
 
-    &.primary-color {
+    &--bold,
+    &__strong {
 
-        color: $primary-color;
-    }
-
-    &.secondary-color {
-
-        color: $secondary-color;
-    }
-
-    strong {
-
-        font-weight: 700;
+        font-weight: 500;
     }
 }
 
@@ -112,7 +104,7 @@
 
         & {
 
-            font-size: 1.125em;
+            font-size: 1.075em;
         }
     }
 
@@ -120,48 +112,16 @@
 
         & {
 
-            font-size: 1.275em
+            font-size: 1.175em
         }
     }
 
-    &.light {
-
-        color: $primary-light;
-    }
-
-    &.primary-color {
-
-        color: $primary-color;
-    }
-
-    &.secondary-color {
-
-        color: $secondary-color;
-    }
-
-    &.bold {
-
-        font-weight: 500;
-    }
-
-    &.bigger {
-
-        font-size: 1.275em;
-
-        @media screen and (min-width: $small-breakpoint) {
-
-            & {
-
-                font-size: 1.8em
-            }
-        }
-    }
-
-    strong {
+    &__strong {
 
         font-weight: 800;
     }
 }
+
 
 
 
@@ -175,7 +135,7 @@
     color: $primary-dark;
     font-size: .875em;
     font-family: $primary-font;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
 
     @media screen and (min-width: $small-breakpoint) {
@@ -184,90 +144,6 @@
 
             font-size: .925em;
         }
-    }
-
-    &.light {
-
-        color: $primary-light;
-    }
-
-    &.gray {
-
-        color: $secondary-dark;
-    }
-
-    &.primary-color {
-
-        color: $primary-color;
-    }
-
-    &.secondary-color {
-
-        color: $secondary-color;
-    }
-
-    &.third-color {
-
-        color: $negative-color;
-    }
-
-    &.bold {
-
-        font-weight: 600;
-    }
-}
-
-
-
-
-/*
- *      Heading Level 5
- *      ---------------
- */
-
-.heading-5 {
-
-    color: $primary-dark;
-    font-size: .875em;
-    font-family: $primary-font;
-    font-weight: 500;
-
-    @media screen and (min-width: $small-breakpoint) {
-
-        & {
-
-            font-size: .925em;
-        }
-    }
-
-    &.light {
-
-        color: $primary-light;
-    }
-
-    &.grey {
-
-        color: $secondary-dark;
-    }
-
-    &.primary-color {
-
-        color: $primary-color;
-    }
-
-    &.secondary-color {
-
-        color: $secondary-color;
-    }
-
-    &.bold {
-
-        font-weight: 700;
-    }
-
-    strong {
-
-        font-weight: 700;
     }
 }
 
@@ -295,7 +171,8 @@
         }
     }
 
-    &.big {
+
+    &--big {
 
         font-size: .925em;
 
@@ -308,29 +185,14 @@
         }
     }
 
-    &.bold {
-
-        font-weight: 700;
-    }
-
-    &.thin {
+    &--thin {
 
         font-weight: 300;
     }
 
-    &.upper {
-
-        text-transform: uppercase;
-    }
-
-    &.light {
+    &--light {
 
         color: $primary-light;
-    }
-
-    &.grey {
-
-        color: $secondary-dark;
     }
 }
 
@@ -357,219 +219,13 @@
         color: $secondary-color;
     }
 
-    &.light {
+    &--light {
 
         color: $primary-light;
 
         &:hover {
 
             color: $secondary-color;
-        }
-    }
-
-    &.primary-color {
-
-        color: $primary-color;
-
-        &:hover {
-
-            color: $secondary-color;
-        }   
-    }
-
-    &.secondary-color {
-
-        color: $secondary-color;
-
-        &:hover {
-
-            color: $primary-light;
-        }   
-    }
-
-    strong,
-    &.strong {
-
-        font-weight: 700;
-    }
-}
-
-
-
-
-/*
- *      Link Icon
- *      ---------
- */
-
-.link-icon {
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    color: $primary-dark;
-    font-size: .925em;
-    font-family: $primary-font;
-    font-weight: 400;
-    transition: color .2s ease-in-out;
-
-    .icon {
-
-        width: 12px;
-        height: 7px;
-        margin-top: 4px;
-        margin-left: 12px;
-        fill: $primary-dark;
-        transition: fill .250s ease-in-out;
-
-        svg {
-
-            fill: $primary-dark;
-        }
-    }
-
-    &.reverse {
-
-        .icon {
-            
-            margin-left: 0px;
-            margin-right: 6px;
-        }
-    }
-
-    &:hover {
-
-        color: $secondary-color;
-
-        .icon {
-
-            fill: $secondary-color;
-
-            svg {
-
-                fill: $secondary-color;
-            }
-        }
-    }
-
-    &.light {
-
-        color: $primary-light;
-
-        .icon {
-
-            fill: $primary-light;
-
-            svg {
-
-                fill: $primary-light;
-            }
-        }
-
-        &:hover {
-
-            color: $secondary-color;
-
-            .icon {
-
-                fill: $secondary-color;
-
-                svg {
-
-                    fill: $secondary-color;
-                }
-            }
-        }
-    }
-
-    &.gray {
-
-        color: $secondary-dark;
-
-        .icon {
-
-            fill: $secondary-dark;
-
-            svg {
-
-                fill: $secondary-dark;
-            }
-        }
-
-        &:hover {
-
-            color: $secondary-color;
-
-            .icon {
-
-                fill: $secondary-color;
-
-                svg {
-
-                    fill: $secondary-color;
-                }
-            }
-        }
-    }
-
-    &.primary-color {
-
-        color: $primary-color;
-
-        .icon {
-
-            fill: $primary-color;
-
-            svg {
-
-                fill: $primary-color;
-            }
-        }
-
-        &:hover {
-
-            color: $secondary-color;
-
-            .icon {
-
-                fill: $secondary-color;
-
-                svg {
-
-                    fill: $secondary-color;
-                }
-            }
-        }
-    }
-
-    &.secondary-color {
-
-        color: $secondary-color;
-
-        .icon {
-
-            fill: $secondary-color;
-
-            svg {
-
-                fill: $secondary-color;
-            }
-        }
-
-        &:hover {
-
-            color: $primary-color;
-
-            .icon {
-
-                fill: $primary-color;
-
-                svg {
-
-                    fill: $primary-color;
-                }
-            }
         }
     }
 }

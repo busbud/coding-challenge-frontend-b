@@ -14,20 +14,11 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		width: 100%;
-		max-width: $max-site-width;
 		margin: 0 auto;
 		padding: 48px 32px 12px;
 		align-items: flex-start;
 		justify-content: flex-start;
 		text-align: left;
-
-	    @media screen and (min-width: $small-breakpoint) {
-
-	        & {
-
-	        	padding: 48px 42px 12px;
-	        }
-	    }
 	}
 
 	.site-footer-bottom {
@@ -35,7 +26,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		width: 100%;
-		max-width: $max-site-width;
 		margin: 0 auto;
 		padding: 0 32px 42px;
 		align-items: center;

@@ -1,4 +1,6 @@
 
+import moment from 'moment'
+
 export default {
 
     name: 'DeparturesListing',
@@ -8,7 +10,11 @@ export default {
         return {
 
             departures: [],
-            location: null
+            locations: [],
+            operators: [],
+            cities: [],
+            originCity: null,
+            destinationCity: null
         }
     },
 
@@ -16,22 +22,66 @@ export default {
 
         var self = this
 
-        this.$root.$on('newDeparturesAvailableEvent', function (location) {
+        this.$root.$on('newDeparturesAvailableEvent', function () {
 
-            // Update local departures
+            // Get Locations, Operators and Cities from store
 
-            self.departures = self.$store.getters.getDepartures
-            self.location = location
+            self.locations = self.$store.getters.getLocations
+            self.operators = self.$store.getters.getOperators
+            self.cities = self.$store.getters.getCities
 
-            console.log( self.departures )
+            // Set origin and destination cities if available
+
+            if( self.cities.length === 2 ) {
+
+                self.originCity = self.cities[0] // Origin
+                self.destinationCity = self.cities[1] // Destination
+            }
+
+
+            // Format and update local departures
+
+            self.formatAndSetDepartures()
         })
+    },
+
+    methods: {
+
+        formatAndSetDepartures () {
+
+            let rawDepartures = this.$store.getters.getDepartures
+
+            // Set departure/arrival locations for each departure
+
+            for (var i = rawDepartures.length - 1; i >= 0; i--) {
+
+                for (var j = this.locations.length - 1; j >= 0; j--) {
+
+                    if( rawDepartures[i].origin_location_id === this.locations[j].id ) {
+
+                        rawDepartures[i].departureLocation = this.locations[j]
+                    }
+
+                    if( rawDepartures[i].destination_location_id === this.locations[j].id  ) {
+
+                        rawDepartures[i].destinationLocation = this.locations[j]
+                    }
+                }
+            }
+
+            // Set to local departures
+
+            this.departures = rawDepartures
+
+            console.log( this.departures )
+        }
     },
 
     filters: {
 
-        prettyDate (value) {
+        time (value) {
 
-            return moment(value).format('MMMM DD YYYY')
+            return moment(value).format('H:mm A')
         },
 
         titleCase: function (value) {
@@ -43,31 +93,11 @@ export default {
             }).join(' ');
         },
 
-        price: function (value) {
+        price: function (rawValue) {
             
-            var newValue = value;
+            let value = rawValue / 100
 
-            if (value >= 1000) {
-
-                var suffixes = ["", "k", "m", "b","t"];
-                var suffixNum = Math.floor( (""+value).length/3 );
-                var shortValue = '';
-
-                for (var precision = 2; precision >= 1; precision--) {
-
-                    shortValue = parseFloat( (suffixNum != 0 ? (value / Math.pow(1000,suffixNum) ) : value).toPrecision(precision));
-
-                    var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
-
-                    if (dotLessShortValue.length <= 2) { break; }
-                }
-
-                if (shortValue % 1 != 0)  shortValue = shortValue.toFixed(1);
-
-                newValue = shortValue+suffixes[suffixNum];
-            }
-
-            return '$' + newValue;
+            return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
     }
 }
