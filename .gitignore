@@ -6,6 +6,8 @@
 
 # Production
 /build
+/dist
+/public
 
 # Logs
 logs
