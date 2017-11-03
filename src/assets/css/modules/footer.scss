@@ -4,11 +4,11 @@
  * 		-----------
  */
 
-.footer-site {
+.site-footer {
 
 	background-color: $primary-light;
 
-	.site-footer-top {
+	.site-footer__top {
 
 		display: flex;
 		flex-direction: row;
@@ -21,7 +21,7 @@
 		text-align: left;
 	}
 
-	.site-footer-bottom {
+	.site-footer__bottom {
 
 		display: flex;
 		flex-wrap: wrap;
@@ -41,7 +41,7 @@
 	    }
 	}
 
-	.block-logo {
+	.site-footer__top__logo {
 
 		display: flex;
 		flex-direction: row;
@@ -58,7 +58,7 @@
             }
         }
 
-		.site-logo {
+		.site-footer__top__logo__icon {
 
 		    height: 24px;
 		    width: 84px;
@@ -82,7 +82,7 @@
 		}
 	}
 
-	.block-left {
+	.site-footer__top__block-left {
 
 		display: flex;
 		flex-direction: column;
@@ -101,7 +101,7 @@
         }
 	}
 
-	.block-center {
+	.site-footer__top__block-center {
 
 		display: flex;
 		flex-direction: column;
@@ -122,7 +122,7 @@
         }
 	}
 
-	.block-right {
+	.site-footer__top__block-right {
 
 		display: flex;
 		flex-direction: column;
@@ -149,7 +149,7 @@
         }
 	}
 
-	.footer-site-title {
+	.site-footer__top__title {
 
 		padding-bottom: 4px;
 		font-size: .875em;
@@ -162,7 +162,7 @@
 		font-size: .825em;
 	}
 
-	.copyright {
+	.site-footer__bottom__copyright {
 
 		padding-top: 24px;
 		color: $primary-dark;
