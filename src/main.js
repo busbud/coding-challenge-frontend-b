@@ -67,7 +67,11 @@ new Vue({
 	el: '#app',
 	
 	router,
-	
+
+	components: {},
+
+    methods: {},
+
 	render: h => h( require('./pages/App/App.vue') )
 })
 

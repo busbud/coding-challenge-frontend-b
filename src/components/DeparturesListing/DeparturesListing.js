@@ -78,8 +78,6 @@ export default {
             // Set to local departures
 
             this.departures = rawDepartures
-
-            console.log( this.departures )
         }
     },
 
