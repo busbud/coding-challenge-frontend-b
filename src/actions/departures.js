@@ -3,13 +3,14 @@ export const HANDLE_DEPARTURE_RESPONSE = 'HANDLE_DEPARTURE_RESPONSE'
 export const END_DEPARTURE_REQUESTS = 'END_DEPARTURE_REQUESTS'
 
 export const initDepartureRequest = (originHash,destinationHash,outboundDate) => {
-    return (dispatch) => {
+    return (dispatch,getState) => {
+        console.log("Init Departure request")
         dispatch({
             type:INIT_DEPARTURE_REQUEST,
             payload: {
-                originHash,
-                destinationHash,
-                outboundDate
+                originHash : getState().searchInputs.originHash,
+                destinationHash:getState().searchInputs.destinationHash,
+                outboundDate: getState().searchInputs.outboundDate
             }
         })
     } 

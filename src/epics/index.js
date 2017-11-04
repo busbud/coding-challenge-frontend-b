@@ -6,7 +6,6 @@ import {
 
 import Busbud from '../services/busbud'
 import { Observable } from 'rxjs';
-import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/takeUntil';
 
@@ -27,15 +26,14 @@ export const departureEpic = ( action$ ) => {
             .fromPromise(busBudPromise)
             .map(response => {
                 
-                console.log(response.data)
-                
                 return handleDepartureResponses(response.data)
                    
             })
            
         })
+        .takeUntil(action$.ofType(END_DEPARTURE_REQUESTS))
     })
-    .takeUntil(action$.ofType(END_DEPARTURE_REQUESTS))
+    
 }
     
     

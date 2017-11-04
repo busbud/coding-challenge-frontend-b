@@ -14,27 +14,28 @@ import Price from './price'
 
 class Results extends Component{
     componentDidMount(){
-        this.props.initDepartureRequest('dr5reg','f25dvk','2017-12-12')
+        this.props.initDepartureRequest()
     }
     
     render(){
         return(
-            <Row className="show-grid">
+            <Row className="results">
                 <Col mdOffset={1} md={10}>
                     {
                         this.props.departures.departures.map(
                             (departure,key)=> (
                                 <Panel key={key}>
                                     <Row>
-                                        <Col md={2}>
+                                        <Col xs={6} sm={2} md={2}>
                                             <Logo operators={this.props.operators.operators} operatorId={departure.operator_id}></Logo>
                                         </Col>
-                                        <Col mdOffset={1} md={6}>
-                                            <TimeTable departure={departure} locations={this.props.cities.locations}></TimeTable>
-                                        </Col>
-                                        <Col md={3}>
+                                        <Col  xs={6} sm={2} smPush={8} md={3} mdPush={6}>
                                             <Price price={departure.prices.total}></Price>
                                         </Col>
+                                        <Col  xs={12} sm={8} smPull={2} md={6} mdPull={3} mdOffset={1} >
+                                            <TimeTable departure={departure} locations={this.props.cities.locations}></TimeTable>
+                                        </Col>
+                                        
                                     </Row>
                                 </Panel>
                             )
