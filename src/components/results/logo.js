@@ -11,7 +11,7 @@ const getLogo = (props) => {
 }
 
 const Logo = (props) => (
-        <Image src={ getLogo(props)} responsive />
+        <Image className="operator-logo" src={ getLogo(props)} responsive />
     )
 
 

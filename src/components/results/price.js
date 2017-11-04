@@ -9,9 +9,9 @@ const formatPrice = (price) => {
 }
 
 const Price = (props) => (
-        <div>
+        <p className="price text-center">
             ${formatPrice(props.price)}<sup>USD</sup>
-        </div>
+        </p>
     )
 
 

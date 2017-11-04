@@ -44,7 +44,7 @@ const TimeTable = (props) => {
                 </tr>
                 <tr>
                     <td><Glyphicon glyph="time" />{'  '} {getTravelTime(props.departure.departure_time,props.departure.arrival_time)}</td>
-                    <td>Tags</td>
+                    <td></td>
                 </tr>
             </tbody>
         </Table>
