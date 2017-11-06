@@ -1,0 +1,42 @@
+
+/*
+ * 		Notification
+ * 		--------
+ */
+
+.notifications {
+
+	position: relative;
+	width: 100%;
+
+	.notifications__wrapper {
+
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		margin: 0 auto;
+		align-items: center;
+		justify-content: center;
+
+	    .notifications__wrapper__notification {
+
+	    	display: flex;
+	    	width: 100%;
+		    padding: 20px 40px;
+			align-items: center;
+			justify-content: center;
+		    background-color: $secondary-color;
+			color: $primary-light;
+		    font-size: .925em;
+		    font-family: $primary-font;
+		    font-weight: 400;
+		    text-align: center;
+
+		    &--light  {
+
+		    	background-color: $secondary-light;
+				color: $primary-dark;
+		    }
+	    }
+	}
+}

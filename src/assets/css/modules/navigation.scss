@@ -1,0 +1,189 @@
+/*
+ * 		Mobile Navigation
+ * 		-----------------
+ */
+
+
+.navigation-site {
+	
+	width: 100%;
+	box-sizing: border-box;
+
+	.navigation-site__wrapper {
+
+		position: relative;
+		display: flex;
+		width: 100%;
+		max-width: $huge-site-width;
+		margin: 0 auto;
+		align-items: center;
+		padding: 24px 32px;
+
+	    @media screen and (min-width: $small-breakpoint) {
+
+	        & {
+
+	        	padding: 24px 32px;
+	            z-index: 1;
+	        }
+	    }
+	}
+
+	.navigation-site__wrapper__block-left {
+
+		display: flex;
+		width: 45%;
+		align-items: center;
+		justify-content: flex-start;
+		color: $primary-light;
+
+	    @media screen and (min-width: $small-breakpoint) {
+
+	        & {
+
+	            width: 40%;
+	        }
+	    }
+
+	    .link {
+
+	    	display: none;
+
+		    @media screen and (min-width: $tiny-breakpoint) {
+
+		        & {
+
+		            display: inline-block;
+		        }
+		    }
+
+		    &.active {
+
+		    	color: $secondary-color;
+		    }
+	    }
+	}
+
+	.navigation-site__wrapper__block-right {
+
+		display: flex;
+		width: 55%;
+		align-items: center;
+		justify-content: flex-end;
+
+	    @media screen and (min-width: $small-breakpoint) {
+
+	        & {
+
+	            width: 60%;
+	        }
+	    }
+
+	    .navigation-site__wrapper__block-right__links-group {
+
+	    	position: relative;
+			display: flex;
+			align-items: center;
+
+		    .link {
+
+		    	display: none;
+				position: relative;
+				margin-left: 24px;
+				padding: 0;
+				z-index: 1;
+
+
+		    	&:first-child {
+
+		    		margin-left: 0;
+		    	}
+
+			    @media screen and (min-width: $tiny-breakpoint) {
+
+			        & {
+
+			            display: inline-block;
+			        }
+			    }
+
+				&:hover,
+				&.active {
+
+					position: relative;
+					color: $secondary-color;
+				}
+
+				&.active {
+
+					color: $secondary-color;
+				}
+
+				&.no-mobile {
+
+					@media screen and (max-width: $small-breakpoint) {
+
+			            & {
+
+			            	display: none;
+			            }
+			        }
+				}
+
+				&.no-tablet {
+
+					@media screen and (max-width: $medium-breakpoint) {
+
+			            & {
+
+			            	display: none;
+			            }
+			        }
+				}
+		    }
+		}
+
+	    .button-primary {
+
+	    	display: none;
+	    	margin-left: 32px;
+
+		    @media screen and (min-width: $small-breakpoint) {
+
+		        & {
+
+		            display: inline-block;
+		        }
+		    }
+	    }
+
+	    .menu-open {
+
+	    	margin: 0 0 0 32px;
+			padding: 0;
+			border: 0;
+			background-color: transparent;
+			cursor: pointer;
+
+			.icon {
+
+				width: 24px;
+				height: 24px;
+				fill: $primary-light;
+
+				svg {
+
+					fill: $primary-light;
+				}
+			}
+
+		    @media screen and (min-width: $small-breakpoint) {
+
+		        & {
+
+		            display: none;
+		        }
+		    }
+	    }
+	}
+}

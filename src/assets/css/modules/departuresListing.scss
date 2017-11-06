@@ -1,0 +1,27 @@
+
+/*
+ * 		Departures Listing
+ * 		------------------
+ */
+
+.departures-listing {
+
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: $mid-site-width;
+	margin: 0 auto;
+	padding: 24px 0;
+	align-items: center;
+	justify-content: center;
+
+	.departures-listing__heading {
+
+		display: flex;
+		width: 100%;
+		padding: 8px 24px 32px;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+}

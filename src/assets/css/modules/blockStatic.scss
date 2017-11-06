@@ -1,0 +1,19 @@
+
+/*
+ * 		Block Static
+ * 		------------
+ */
+
+.block-static {
+
+	display: flex;
+	min-height: 60vh;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	.block-static__button {
+
+		margin-top: 48px;
+	}
+}

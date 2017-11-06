@@ -1,0 +1,136 @@
+
+/*
+ * 		Departures Listing
+ * 		------------------
+ */
+
+.departure {
+
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 12px 0 32px;
+	align-items: flex-start;
+	justify-content: flex-start;
+
+	@media screen and (min-width: $tiny-breakpoint) {
+
+        & {
+
+        	padding: 12px 0 24px;
+        	flex-direction: row;
+        	align-items: center;
+        }
+    }
+
+	.departure__price-block {
+
+		display: flex;
+		width: 100%;
+		margin-top: 24px;
+		padding: 12px 32px;
+		flex-direction: column;	
+		align-items: center;
+		justify-content: center;
+		background-color: $secondary-light;
+
+		@media screen and (min-width: $tiny-breakpoint) {
+
+	        & {
+
+	        	width: 240px;
+	        	margin-top: 0;
+	        	background-color: transparent;
+	        }
+	    }
+
+	    .departure__price-block__price {
+
+	    	color: $primary-color;
+	    }
+	}
+
+	.departure__details-block {
+
+		display: flex;
+		width: 100%;
+		padding: 12px 32px 0;
+		flex-direction: column;	
+		align-items: center;
+		justify-content: center;
+
+		@media screen and (min-width: $tiny-breakpoint) {
+
+	        & {
+
+	        	width: calc(100% - 120px);
+	        	flex-direction: row;
+				align-items: center;
+				justify-content: flex-start;	
+	        	padding: 0 32px;
+	        }
+	    }
+
+		.departure__details-block__departure-location,
+		.departure__details-block__destination-location {
+
+			display: flex;
+			width: 100%;
+			flex-direction: column;	
+			align-items: center;
+			justify-content: center;
+
+			@media screen and (min-width: $tiny-breakpoint) {
+
+		        & {
+
+		        	width: 40%;
+					align-items: flex-start;
+					justify-content: center;
+		        }
+		    }
+		}
+
+		.departure__details-block__separator {
+
+			display: flex;
+			width: 100%;
+			align-items: center;
+			justify-content: center;
+	    	margin: 12px 6px;
+
+			@media screen and (min-width: $tiny-breakpoint) {
+
+		        & {
+
+		        	width: 20%;
+		        	margin: 0;
+		        }
+		    }
+
+			.departure__details-block__separator__icon {
+
+		    	height: 20px;
+		    	width: 12px;
+		    	fill: $secondary-color;
+		    	transform: rotate(90deg);
+
+				@media screen and (min-width: $tiny-breakpoint) {
+
+			        & {
+
+			        	width: 40%;
+						align-items: flex-start;
+						justify-content: center;
+						transform: rotate(0deg);
+			        }
+			    }
+
+		    	svg {
+		    		
+		    		fill: $secondary-color;
+		    	}
+			}
+		}
+	}
+}

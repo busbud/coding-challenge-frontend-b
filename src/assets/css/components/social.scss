@@ -1,0 +1,35 @@
+
+/*
+ * 		Social
+ * 		------
+ */
+
+.social {
+
+	display: flex;
+	flex-direction: row;
+	padding-top: 25px;
+
+	&__icon {
+
+		height: 20px;
+		width: 20px;
+		margin-right: 24px;
+		fill: $primary-dark;
+
+		svg {
+
+			fill: $primary-dark;
+		}
+
+		&:hover {
+
+			fill: $secondary-color;
+
+			svg {
+
+				fill: $secondary-color;
+			}	
+		}
+	}
+}
