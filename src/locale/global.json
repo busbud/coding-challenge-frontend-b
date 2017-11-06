@@ -1,0 +1,26 @@
+{
+    "from":[
+        "From",
+        "De"
+    ],
+    "to": [
+        "To",
+        "À"
+    ],
+    "departureDate": [
+        "Departure Date",
+        "Date de Départ"
+    ],
+    "search": [
+        "Search",
+        "Recherche"
+    ],
+    "selectLanguage":[
+        "Select Language",
+        "Choisir la langue"
+    ],
+    "loadMessage":[
+        "Search in progress",
+        "Recherche en cours"
+    ]
+}
