@@ -21,7 +21,6 @@ class SearchForm extends Component{
     }
 
     handleSubmit = (e) =>{
-        console.log('Form Submitted');
         e.preventDefault()
         this.props.initDepartureRequest()
     }
@@ -32,13 +31,13 @@ class SearchForm extends Component{
                 <Col xs={6} sm={3} md={3}  mdOffset={1}>
                     <h2 className="city-name">
                         <span>{this.props.translate('from')}:</span>
-                        New York
+                        {this.props.cities.origin && this.props.cities.origin.map( city => city.name)}
                     </h2>
                 </Col>
                 <Col  xs={6} sm={3} smPush={6} md={3} mdPush={4} >
                     <h2 className="city-name">
                         <span>{this.props.translate('to')}:</span>
-                        Montreal
+                        {this.props.cities.destination && this.props.cities.destination.map(city => city.name)}
                     </h2>
                 </Col>
                 <Col xs={12} sm={5} smPull={3} smOffset={1} md={4} mdOffset={0} mdPull={3} >
@@ -63,6 +62,7 @@ export default connect(
     (state) => ({
        searchInputs : state.searchInputs,
        translate: getTranslate(state.locale),
+       cities: state.cities
     }),
     {
         initDepartureRequest,
