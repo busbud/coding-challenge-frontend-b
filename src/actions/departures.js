@@ -7,11 +7,7 @@ export const initDepartureRequest = (originHash,destinationHash,outboundDate) =>
         console.log("Init Departure request")
         dispatch({
             type:INIT_DEPARTURE_REQUEST,
-            payload: {
-                originHash : getState().searchInputs.originHash,
-                destinationHash:getState().searchInputs.destinationHash,
-                outboundDate: getState().searchInputs.outboundDate
-            }
+            payload: getState().searchInputs
         })
     } 
 }

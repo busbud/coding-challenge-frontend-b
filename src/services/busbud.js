@@ -12,7 +12,23 @@ export default class Busbud {
         }
     }
 
-    getDepartures(originHash,destinationHash,outboundDate){
+    getDepartures(payload){
+
+        console.log(payload)
+
+        const { 
+            originHash,
+            destinationHash,
+            outboundDate
+        } = payload;
+
+        this.config.params = {
+            adults:payload.adults,
+            child: payload.child,
+            senior: payload.senior,
+            lang: payload.lang,
+            currency: payload.currency
+        }
         
         const endpoint = `/x-departures/${originHash}/${destinationHash}/${outboundDate}`
     

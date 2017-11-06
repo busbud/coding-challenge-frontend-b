@@ -20,7 +20,7 @@ export const departureEpic = ( action$ ) => {
         .interval(1000)
         .switchMap( (x) => {
            
-            const busBudPromise = busbud.getDepartures(action.payload.originHash,action.payload.destinationHash,action.payload.outboundDate)
+            const busBudPromise = busbud.getDepartures(action.payload)
 
             return Observable
             .fromPromise(busBudPromise)
