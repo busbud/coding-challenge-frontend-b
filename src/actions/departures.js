@@ -2,9 +2,8 @@ export const INIT_DEPARTURE_REQUEST = 'INIT_DEPARTURE_REQUEST'
 export const HANDLE_DEPARTURE_RESPONSE = 'HANDLE_DEPARTURE_RESPONSE'
 export const END_DEPARTURE_REQUESTS = 'END_DEPARTURE_REQUESTS'
 
-export const initDepartureRequest = (originHash,destinationHash,outboundDate) => {
+export const initDepartureRequest = () => {
     return (dispatch,getState) => {
-        console.log("Init Departure request")
         dispatch({
             type:INIT_DEPARTURE_REQUEST,
             payload: getState().searchInputs

@@ -18,5 +18,9 @@
     "selectLanguage":[
         "Select Language",
         "Choisir la langue"
+    ],
+    "loadMessage":[
+        "Search in progress",
+        "Recherche en cours"
     ]
 }

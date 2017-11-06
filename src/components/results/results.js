@@ -6,10 +6,11 @@ import {
     Row,
     Col
 } from 'react-bootstrap'
-
+import { getTranslate } from 'react-localize-redux';
 import Logo from './logo'
 import TimeTable from './timetable'
 import Price from './price'
+import Loading from './loading'
 
 
 class Results extends Component{
@@ -19,8 +20,10 @@ class Results extends Component{
     
     render(){
         return(
+
             <Row className="results">
                 <Col mdOffset={1} md={10}>
+                    <Loading message={this.props.translate('loadMessage')} isVisible={this.props.departures.isPolling}></Loading>
                     {
                         this.props.departures.departures.map(
                             (departure,key)=> (
@@ -35,7 +38,6 @@ class Results extends Component{
                                         <Col  xs={12} sm={8} smPull={2} md={6} mdPull={3} mdOffset={1} >
                                             <TimeTable departure={departure} locations={this.props.cities.locations}></TimeTable>
                                         </Col>
-                                        
                                     </Row>
                                 </Panel>
                             )
@@ -51,7 +53,8 @@ export default connect(
     (state) => ({
         departures : state.departures,
         operators : state.operators,
-        cities : state.cities
+        cities : state.cities,
+        translate: getTranslate(state.locale),
     }),
     {
         initDepartureRequest

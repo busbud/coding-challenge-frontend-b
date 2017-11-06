@@ -14,8 +14,6 @@ export default class Busbud {
 
     getDepartures(payload){
 
-        console.log(payload)
-
         const { 
             originHash,
             destinationHash,

@@ -1,4 +1,9 @@
-import { HANDLE_DEPARTURE_RESPONSE } from '../actions' 
+import { 
+    INIT_DEPARTURE_REQUEST,
+    HANDLE_DEPARTURE_RESPONSE,
+    END_DEPARTURE_REQUESTS,
+    UPDATE_SEARCH_LANGUAGE
+} from '../actions' 
 
 const departureState = {   
     departures:[],
@@ -15,11 +20,26 @@ const sortDepartures = (departures) => {
 
 export default (state =  departureState, action) => { 
     switch(action.type){
+        case INIT_DEPARTURE_REQUEST:
+            return {
+                ...state,
+                isPolling : true
+            }
         case HANDLE_DEPARTURE_RESPONSE:
             return {
                 ...state,
                 departures : sortDepartures(action.payload.departures)
 
+            }
+        case END_DEPARTURE_REQUESTS:
+            return {
+                ...state,
+                isPolling : false
+            }
+        case UPDATE_SEARCH_LANGUAGE:
+            return {
+                ...state,
+                departures: []
             }
         default:
             return state
