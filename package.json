@@ -2,7 +2,6 @@
   "name": "coding-challenge-frontend-b",
   "version": "1.0.0",
   "description": "![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
