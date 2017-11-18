@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/comlaterra/coding-challenge-frontend-b#readme",
   "scripts": {
+    "install-all": "npm run install-server && npm run install-client",
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
     "start-client": "cd client && npm start",
     "build-client": "cd client && npm build",
     "test-client": "cd client && npm test --env=jsdom",
