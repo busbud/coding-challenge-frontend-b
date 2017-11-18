@@ -4,6 +4,18 @@
 It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)! 
 Your challenge is to build a microsite that allows a traveler from NYC to find one-way departure schedules for the festival's opening weekend.
 
+## Architecture
+
+This project consists in two main parts, a small server or middleware and a client.
+
+### Server
+
+Responsible of proxying the requests from the client and keeping the security up to date.
+
+### Client
+
+Responsible of the visual part of the project
+
 ## Run
 
 >To run the server it is required to provide a Busbud API key in the server environment:
