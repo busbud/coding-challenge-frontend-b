@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 
 class ListItems extends Component {
 
@@ -9,17 +10,22 @@ class ListItems extends Component {
 
   render(){
     let self = this
-    const listItems = this.state.items.departures.map((departure)=>
-      <div className={"result"}>
+
+    const listItems = this.state.items.departures.map(function(departure) {
+
+      let arrivalTime = moment(departure.arrival_time).format('LT')
+      let departureTime = moment(departure.departure_time).format('LT')
+
+      return <div className={"result"}>
         <div className={'row top-row'}>
           <div className={"col-sm-2 logo-operator-wrapper"}>
-             <img className="logo-operator" src={self.state.items.operatorsIdx[departure.operator_id].logo_url} />
+            <img className="logo-operator" src={self.state.items.operatorsIdx[departure.operator_id].logo_url}/>
           </div>
           <div className={"col-sm-8"}>
             <div className={"row mid-row"}>
               <div className={"col-sm-6"}>
                 <div className="middle-text">
-                  {departure.departure_time}
+                  Depart at {departureTime}
                 </div>
               </div>
               <div className={"col-sm-6"}>
@@ -31,7 +37,7 @@ class ListItems extends Component {
             <div className={"row mid-row"}>
               <div className={"col-sm-6"}>
                 <div className="middle-text">
-                  {departure.arrival_time}
+                  Arrive at {arrivalTime}
                 </div>
               </div>
               <div className={"col-sm-6"}>
@@ -48,15 +54,8 @@ class ListItems extends Component {
             </button>
           </div>
         </div>
-        {/*<div className={'row'}>*/}
-          {/*<div className={"col-sm-9"}>*/}
-          {/*</div>*/}
-          {/*<div className={"col-sm-3"}>*/}
-            {/*<input type="submit" value="Select" className={"btn btn-warning"}/>*/}
-          {/*</div>*/}
-        {/*</div>*/}
       </div>
-    )
+    })
 
     return <div className={"results-list"}>
       {listItems}
