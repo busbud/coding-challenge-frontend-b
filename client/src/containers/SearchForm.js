@@ -59,7 +59,7 @@ class SearchForm extends Component {
           </div>
           <div className={"row"}>
             <div className={"col-xs-12 col-sm-12 search-btn-wrapper"} style={{ textAlign : 'right', paddingTop : "10px"}}>
-              <input type="submit" value="Search" className={"btn btn-warning"}/>
+              <input type="submit" value="Search" className={"btn btn-primary"}/>
             </div>
           </div>
         </div>
