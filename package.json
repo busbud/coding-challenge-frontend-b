@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/comlaterra/coding-challenge-frontend-b/issues"
   },
-  "homepage": "https://github.com/comlaterra/coding-challenge-frontend-b#readme"
+  "homepage": "https://github.com/comlaterra/coding-challenge-frontend-b#readme",
+  "scripts": {
+    "start-client": "cd client && npm start",
+    "build-client": "cd client && npm build",
+    "test-client": "cd client && npm test --env=jsdom",
+    "eject-client": "cd client && npm eject"
+  }
 }
