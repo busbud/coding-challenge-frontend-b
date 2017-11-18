@@ -28,9 +28,7 @@ if(!process.env.ENV === 'DEV') {
     req.headers['X-Busbud-Token'] = process.env.BUSBUD_TOKEN;
 
     let getResults = function(){
-      return request(url, function(error, response, body){
-        console.log(response);
-      });
+      return request(url);
     }
 
     req.pipe(getResults()).pipe(res)
