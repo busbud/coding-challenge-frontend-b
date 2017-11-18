@@ -1,7 +1,9 @@
-.App {
+.App, body {
   text-align: center;
-  background-color: #f5f4f5;
+  /* @TODO Remove Important */
+  background-color: #f5f4f5 !important;
   color: white;
+  height: 100%;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -36,7 +38,7 @@
             RESULTS
 ***********************************/
 .results-list{
-  font-size: .9em;
+  font-size: 14px;
   color: #222;
 }
 
@@ -46,4 +48,58 @@
   padding: 5px;
   background-color: white;
   border-radius: 5px;
+  height: 100px;
+}
+
+.result .top-row{
+  height: 100%;
+}
+
+.mid-row{
+  height:50%;
+}
+
+.middle-text{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+}
+
+/**
+  Logo Operator
+ */
+
+.logo-operator-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.logo-operator{
+  vertical-align: middle;
+  border-style: none;
+  max-width: 100px;
+  text-align: center;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+
+/**
+  Buy button
+ */
+
+.buy-button{
+  width:100%;
+  height: 100%;
+}
+.buy-button-from-price{
+  font-size: 20px;
+}
+.buy-button-from-text{
+  display: block;
+  font-size: 10px;
 }
