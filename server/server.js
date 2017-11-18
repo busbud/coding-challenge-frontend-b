@@ -20,7 +20,7 @@ app.use('/busbud', function(req, res){
 
 
 // Production Env
-app.use(express.static('build'))
+app.use(express.static('../client/build'))
 
 app.listen(8080, () => console.log('Example app listening on port 8080!'))
 
