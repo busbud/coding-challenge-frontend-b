@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #222;
+  background-color: #f5f4f5;
   color: white;
   position: absolute;
   top: 0;
@@ -28,14 +28,9 @@
   font-size: large;
 }
 
-/*.search-btn-wrapper{*/
-/*min-height: 150px;*/
-/*}*/
-
-/*@keyframes App-logo-spin {*/
-/*0%, 20%, 40%, 60%, 80%, 100% { transform: translateY(0px); }*/
-/*50% { transform: translateY(-5px); }*/
-/*}*/
+/***********************************
+            SEARCH FORM
+***********************************/
 
 /***********************************
             RESULTS

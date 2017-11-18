@@ -16,6 +16,7 @@ class SearchForm extends Component {
     const { value } = this.state;
 
     let departurePlaceholder = "New York"
+    let departureValue = "New York"
 
     let departureSuggestions = [
       {
@@ -29,6 +30,7 @@ class SearchForm extends Component {
     ];
 
     let arrivalPlaceholder = "Montréal"
+    let arrivalValue = "Montréal"
 
     let arrivalSuggestions = [
       {
@@ -45,16 +47,20 @@ class SearchForm extends Component {
     return <div className={"container"}>
       <form onSubmit={this.handleSubmit}>
         <div className="form-group" style={{textAlign : 'left'}}>
-          <label htmlFor="departureField" className={"col-xs-12 col-sm-6"}>
-            Departure
-            <Autocomplete placeholder={departurePlaceholder} suggestions={departureSuggestions} id="departureField" className="form-control"/>
-          </label>
-          <label htmlFor="destinationField" className={"col-xs-12 col-sm-6"}>
-            Arrival
-            <Autocomplete placeholder={arrivalPlaceholder} suggestions={arrivalSuggestions} id="arrivalField" className="form-control"/>
-          </label>
-          <div className={"col-xs-12 col-sm-12 search-btn-wrapper"} style={{ textAlign : 'right'}}>
-            <input type="submit" value="Search" className={"btn btn-warning"}/>
+          <div className={"row"}>
+            <div className={"col-xs-12 col-sm-6"}>
+              {/*<Autocomplete placeholder={departurePlaceholder} suggestions={departureSuggestions} id="departureField" className="form-control"/>*/}
+              <input placeholder={departurePlaceholder} id="departureField" className="form-control" value={departureValue}/>
+            </div>
+            <div className={"col-xs-12 col-sm-6"}>
+              {/*<Autocomplete placeholder={arrivalPlaceholder} suggestions={arrivalSuggestions} id="arrivalField" className="form-control"/>*/}
+              <input placeholder={arrivalPlaceholder} id="arrivalField" className="form-control" value={arrivalValue}/>
+            </div>
+          </div>
+          <div className={"row"}>
+            <div className={"col-xs-12 col-sm-12 search-btn-wrapper"} style={{ textAlign : 'right', paddingTop : "10px"}}>
+              <input type="submit" value="Search" className={"btn btn-warning"}/>
+            </div>
           </div>
         </div>
 
