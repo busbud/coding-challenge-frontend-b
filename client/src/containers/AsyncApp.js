@@ -11,6 +11,8 @@ import ListItems from './ListItems'
 
 import {fetchResults} from "../actions/index";
 
+import loading from '../styles/img/busBud.png';
+
 class AsyncApp extends Component {
 
   componentDidMount() {
@@ -29,7 +31,9 @@ class AsyncApp extends Component {
         :
         <div>
           {results.isFetching ?
-              <div>LOADING</div>
+            <div>
+              <img src={loading} className="App-loading" alt="loading" />
+            </div>
               :
               <div>NO DATA</div>
           }

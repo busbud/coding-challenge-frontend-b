@@ -29,10 +29,33 @@
 .App-intro {
   font-size: large;
 }
+/**************************
+         LOADING
+**************************/
 
-/***********************************
-            SEARCH FORM
-***********************************/
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.App-loading{
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    width: 60px;
+}
+/**************************
+         END LOADING
+**************************/
 
 /***********************************
             RESULTS
