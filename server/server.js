@@ -27,12 +27,8 @@ if(!process.env.ENV === 'DEV') {
     req.headers['Accept'] = 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/';
     req.headers['X-Busbud-Token'] = process.env.BUSBUD_TOKEN;
 
-    let getResults = function(){
-      return request(url);
-    }
-
-    req.pipe(getResults()).pipe(res)
-  });
+    req.pipe(request(url)).pipe(res)
+  })
 
 }
 
