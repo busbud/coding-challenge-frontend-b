@@ -29,3 +29,18 @@ Install all the dependencies
 ```
 npm run install-all
 ```
+
+## CLIENT 
+
+### TODO's
+
+> NTH = Nice to have
+
+...
+
+### GTK
+
+> Good to know's 
+
+* Bootstrap : *UNMET PEER DEPENDENCY*: See [github issues](https://github.com/twbs/bootstrap/issues/24078#issuecomment-331860225). Since we are not using the JS we are going to ignore the warnings.
+
