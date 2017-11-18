@@ -1,0 +1,19 @@
+{
+  "name": "coding-challenge-frontend-b",
+  "version": "1.0.0",
+  "description": "![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comlaterra/coding-challenge-frontend-b.git"
+  },
+  "author": "Edmon Marine Clota",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/comlaterra/coding-challenge-frontend-b/issues"
+  },
+  "homepage": "https://github.com/comlaterra/coding-challenge-frontend-b#readme"
+}
