@@ -170,7 +170,7 @@
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
     .buy-button-from-price{
-        font-size: 13px;
+        font-size: 12px;
     }
     .App-header{
         background-size: 50%;
