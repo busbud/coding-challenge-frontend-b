@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 const request = require('request');
 
+var port = process.env.PORT || 8080;
+
 /******************
  * MOCKED
  *****************/
@@ -33,6 +35,9 @@ if(!process.env.ENV === 'DEV') {
 }
 
 // Fetching the root will return the built in version of the client
-app.use(express.static('../client/build'))
+app.use('/', express.static(__dirname + '/../client/build'));
 
-app.listen(8080, () => console.log('Listening to the port 8080'))
+// Fetching anything else will return the client
+app.use(express.static(__dirname + '/../client/build'));
+
+app.listen(port, () => console.log('Listening to the port '+port))

@@ -17,7 +17,7 @@ export function fetchResults(results){
 	let request = function () {
     // dispatch(requestResults(results))
     // @TODO The url must come from a config file
-    return fetch(`http://localhost:8080/busbud`)
+    return fetch(`/busbud`)
 		.then(
 			response => response.json(),
 			error => console.log('An error occurred.', error)
