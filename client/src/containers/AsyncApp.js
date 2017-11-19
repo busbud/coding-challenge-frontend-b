@@ -35,7 +35,7 @@ class AsyncApp extends Component {
               <img src={loading} className="App-loading" alt="loading" />
             </div>
               :
-              <div>NO DATA</div>
+              <div>Service not available, please try later</div>
           }
         </div>
       }
