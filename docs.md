@@ -16,9 +16,15 @@ Responsible of proxying the requests from the client and keeping the security up
 
 Responsible of the visual part of the project
 
-## Run
+## Deployment
 
 >To run the server it is required to provide a Busbud API key in the server environment:
+
+### Heroku:
+
+Add the token to the `Settings->Config Variables`.
+
+### Local:
 
 ```
 BUSBUD_TOKEN="yourKey" npm run start-server
