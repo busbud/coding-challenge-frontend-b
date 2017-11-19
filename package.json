@@ -20,7 +20,7 @@
   "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "web": "npm run build-client && npm run start-server",
+    "start": "npm run build-client && npm run start-server",
     "install-all": "npm run install-server && npm run install-client",
     "install-server": "cd server && npm install",
     "start-server": "cd server && node server.js",
