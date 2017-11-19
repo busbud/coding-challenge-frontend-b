@@ -50,7 +50,7 @@ class ListItems extends Component {
           <div className={"col-sm-2"}>
             <button className={"btn btn-warning buy-button"}>
               <span className={"buy-button-from-text"}>Get it from</span>
-              <span className={"buy-button-from-price"}>{departure.prices.total}</span>
+              <span className={"buy-button-from-price"}>{departure.prices.total} CAD</span>
             </button>
           </div>
         </div>
