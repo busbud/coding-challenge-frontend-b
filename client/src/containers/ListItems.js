@@ -18,36 +18,36 @@ class ListItems extends Component {
 
       return <div className={"result"}>
         <div className={'row top-row'}>
-          <div className={"col-sm-2 logo-operator-wrapper"}>
+          <div className={"col-4 col-md-2 logo-operator-wrapper"}>
             <img className="logo-operator" src={self.state.items.operatorsIdx[departure.operator_id].logo_url}/>
           </div>
-          <div className={"col-sm-8"}>
+          <div className={"col-8 col-md-8"}>
             <div className={"row mid-row"}>
               <div className={"col-sm-6"}>
-                <div className="middle-text">
+                <div className="trip-content-text">
                   Depart at {departureTime}
                 </div>
               </div>
               <div className={"col-sm-6"}>
-                <div className="middle-text">
+                <div className="trip-content-text">
                   {self.state.items.locationsIdx[departure.origin_location_id].name}
                 </div>
               </div>
             </div>
             <div className={"row mid-row"}>
               <div className={"col-sm-6"}>
-                <div className="middle-text">
+                <div className="trip-content-text">
                   Arrive at {arrivalTime}
                 </div>
               </div>
               <div className={"col-sm-6"}>
-                <div className="middle-text">
+                <div className="trip-content-text">
                   {self.state.items.locationsIdx[departure.destination_location_id].name}
                 </div>
               </div>
             </div>
           </div>
-          <div className={"col-sm-2"}>
+          <div className={"col-12 col-md-2"}>
             <button className={"btn btn-warning buy-button"}>
               <span className={"buy-button-from-text"}>Get it from</span>
               <span className={"buy-button-from-price"}>{departure.prices.total} CAD</span>

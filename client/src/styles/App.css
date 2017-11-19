@@ -60,6 +60,11 @@
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     width: 60px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
 }
 /**************************
          END LOADING
@@ -103,12 +108,16 @@
   height:50%;
 }
 
-.middle-text{
+.trip-content-text{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
   text-align: center;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /**
@@ -142,8 +151,65 @@
 }
 .buy-button-from-price{
   font-size: 20px;
+  font-weight: bold;
 }
 .buy-button-from-text{
   display: block;
   font-size: 10px;
+}
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+    .title{
+        margin: 20px 0px;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+    .buy-button-from-price{
+        font-size: 13px;
+    }
+    .App-header{
+        background-size: 50%;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    .title {
+        font-size: 1.5em;
+    }
+
+    .result{
+        height: auto;
+    }
+
+    .logo-operator-wrapper{
+        height:100px;
+    }
+
+    .trip-content-text{
+        text-align: left;
+        padding-right: 30px;
+    }
+
+    .buy-button-from-price {
+        font-size: 20px;
+    }
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+    .App-header{
+        background-size: 90%;
+    }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+
 }
