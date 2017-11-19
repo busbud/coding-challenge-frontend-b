@@ -15,13 +15,19 @@
     "url": "https://github.com/comlaterra/coding-challenge-frontend-b/issues"
   },
   "homepage": "https://github.com/comlaterra/coding-challenge-frontend-b#readme",
+  "engines": {
+    "node": "6.3.1",
+    "yarn": "0.21.3"
+  },
+  "main": "server/server.js",
   "scripts": {
+    "start": "npm run build-client && npm run start-server",
     "install-all": "npm run install-server && npm run install-client",
     "install-server": "cd server && npm install",
-    "start-server": "cd server && nodemon server.js",
+    "start-server": "cd server && node server.js",
     "install-client": "cd client && npm install",
     "start-client": "cd client && npm start",
-    "build-client": "cd client && npm build",
+    "build-client": "cd client && yarn build",
     "test-client": "cd client && npm test --env=jsdom",
     "eject-client": "cd client && npm eject"
   }
