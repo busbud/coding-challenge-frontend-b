@@ -11,15 +11,23 @@
   left: 0;
 }
 
+.App{
+    padding: 30px 0px;
+}
+
 .App-logo {
   /*animation: App-logo-spin infinite 2.5s linear;*/
   height: 80px;
 }
 
 .App-header {
-  height: 150px;
-  padding: 20px;
-  color: white;
+    height: 150px;
+    padding: 20px;
+    color: white;
+    background-image: url(/static/media/title.81e1a223.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 .App-title {

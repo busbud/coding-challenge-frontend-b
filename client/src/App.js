@@ -12,7 +12,6 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-          <img src={logo} className="App-logo" alt="logo" />
         </header>
         <Root />
       </div>
