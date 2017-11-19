@@ -65,6 +65,19 @@
          END LOADING
 **************************/
 
+.title{
+    color: #222;
+    font-size:2em;
+    text-align: center;
+}
+
+.locations-arrow{
+    background-image: url(/static/media/uparrow.45f54755.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 /***********************************
             RESULTS
 ***********************************/
