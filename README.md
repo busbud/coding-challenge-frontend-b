@@ -61,7 +61,7 @@ Adding internationalisation is a very simple step that fell off the current impl
 Because this app is standalone and uses redux for the state management, it is possible to be used inside another websites or systems. 
 In this way it will be possible to enable Busbud partners to offer pre-configured trip results in their own systems.
 
-> This three enhancements together would enable to offer this product as a service.
+> This three enhancements together would make possible to offer this product as a service.
 
 ## Notes
 
@@ -74,12 +74,11 @@ The app is responsive thanks to the usage of the Bootstrap framework.
 
 ### TODO's & FIXME's
 
-Some Todo's and Fixme's can be found in the code around. Most of them are NTH or low priority issues of the current implementation.    
+Some Todo's and Fixme's can be found in the code around. Most of them are NTH or low priority issues of the current implementation.
 
 ### Demo
 
-you can find a running demo here
-
+You can find a running demo [here](https://immense-temple-81195.herokuapp.com/)
 
 ## Third party libraries
 
