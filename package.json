@@ -1,0 +1,34 @@
+{
+  "name": "coding-challenge-frontend-b",
+  "version": "1.0.0",
+  "description": "![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comlaterra/coding-challenge-frontend-b.git"
+  },
+  "author": "Edmon Marine Clota",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/comlaterra/coding-challenge-frontend-b/issues"
+  },
+  "homepage": "https://github.com/comlaterra/coding-challenge-frontend-b#readme",
+  "engines": {
+    "node": "6.3.1",
+    "npm": "3.10.8",
+    "yarn": "0.21.3"
+  },
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm run install-all && npm run build-client",
+    "start": "npm run start-server",
+    "install-all": "npm run install-server && npm run install-client",
+    "install-server": "cd server && npm install",
+    "start-server": "cd server && node server.js",
+    "install-client": "cd client && npm install",
+    "start-client": "cd client && npm start",
+    "build-client": "cd client && yarn build",
+    "test-client": "cd client && npm test --env=jsdom",
+    "eject-client": "cd client && npm eject"
+  }
+}

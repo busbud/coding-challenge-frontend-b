@@ -1,0 +1,215 @@
+.App, body {
+  text-align: center;
+  /* @TODO Remove Important */
+  background-color: #f5f4f5 !important;
+  color: white;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.App{
+    padding: 30px 0px;
+}
+
+.App-logo {
+  /*animation: App-logo-spin infinite 2.5s linear;*/
+  height: 80px;
+}
+
+.App-header {
+    height: 150px;
+    padding: 20px;
+    color: white;
+    background-image: url(/static/media/title.81e1a223.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+/**************************
+         LOADING
+**************************/
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.App-loading{
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    width: 60px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+}
+/**************************
+         END LOADING
+**************************/
+
+.title{
+    color: #222;
+    font-size:2em;
+    text-align: center;
+}
+
+.locations-arrow{
+    background-image: url(/static/media/uparrow.45f54755.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/***********************************
+            RESULTS
+***********************************/
+.results-list{
+  font-size: 14px;
+  color: #222;
+}
+
+.result{
+  border-color: #222;
+  margin: 5px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px;
+  height: 100px;
+}
+
+.result .top-row{
+  height: 100%;
+}
+
+.mid-row{
+  height:50%;
+}
+
+.trip-content-text{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/**
+  Logo Operator
+ */
+
+.logo-operator-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.logo-operator{
+  vertical-align: middle;
+  border-style: none;
+  max-width: 100px;
+  text-align: center;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+
+/**
+  Buy button
+ */
+
+.buy-button{
+  width:100%;
+  height: 100%;
+}
+.buy-button-from-price{
+  font-size: 20px;
+  font-weight: bold;
+}
+.buy-button-from-text{
+  display: block;
+  font-size: 10px;
+}
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+    .title{
+        margin: 20px 0px;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+    .buy-button-from-price{
+        font-size: 12px;
+    }
+    .App-header{
+        background-size: 50%;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    .title {
+        font-size: 1.5em;
+    }
+
+    .result{
+        height: auto;
+    }
+
+    .logo-operator-wrapper{
+        height:100px;
+    }
+
+    .trip-content-text{
+        text-align: left;
+        padding-right: 30px;
+    }
+
+    .buy-button-from-price {
+        font-size: 20px;
+    }
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+    .App-header{
+        background-size: 90%;
+    }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+
+}
