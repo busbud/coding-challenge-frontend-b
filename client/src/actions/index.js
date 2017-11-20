@@ -17,6 +17,7 @@ export function fetchResults(results){
 	let request = function () {
     // dispatch(requestResults(results))
     // @TODO The url must come from a config file
+		// @FIXME This doesn't work when developing the FE. Must call to the server instance.
     return fetch(`/busbud`)
 		.then(
 			response => response.json(),
@@ -26,7 +27,7 @@ export function fetchResults(results){
 			// Recursive if not complete
 			if(searchResults){
 				// Merging results
-        searchResults = {...searchResults, results}
+        searchResults = {...searchResults, ...results}
 			}else{
 				searchResults = results
 			}
