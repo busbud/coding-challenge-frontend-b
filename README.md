@@ -15,7 +15,7 @@
 
 ## Solution
 
-For this challenge I've created a react microsite served from an ExpressJS server.
+For this challenge I've created a react Microsite served from an ExpressJS server.
 
 ### Server
 
@@ -23,7 +23,7 @@ Responsible for:
 
 * Serving the client files
 * Routing between the web-app and the API
-* Enritcthing the API calls with the API token.
+* Enriching the API calls with the API token.
 
 > **Note**: The server expects to have accessible an ENV var called `BUSBUD_TOKEN` containing the access token to the BusBud API.  
 
@@ -32,7 +32,7 @@ Responsible for:
 Responsible for:
 
 * User interaction
-* Data fething
+* Data fetching
 * Data rendering
 * Show the information according to the device used to visit the page (Responsive styles) 
 
@@ -40,7 +40,7 @@ Responsible for:
 
 The solution is ready to be deployed to a Heroku server.
 
-IMPORTANT: Remember to add the ENV var to the `Settings->Config Variables` space in the heroku server.
+IMPORTANT: Remember to add the ENV var to the `Settings->Config Variables` space in the Heroku server.
 
 To know how to interact with the app please see [docs.md](docs.md)
 
@@ -58,7 +58,7 @@ Adding internationalisation is a very simple step that fell off the current impl
 
 #### Widget usage
 
-Because this app is standalone and uses redux for the state management, it is possible to be used inside another websites or systems. 
+Because this app is standalone and uses Redux for the state management, it is possible to be used inside another websites or systems. 
 In this way it will be possible to enable Busbud partners to offer pre-configured trip results in their own systems.
 
 > This three enhancements together would make possible to offer this product as a service.
