@@ -7,7 +7,9 @@ import DepartureAction from '../actions/DepartureAction';
 import DepartureStore from '../stores/DepartureStore';
 
 //Components
-import Departure from '../components/Departure';
+import DepartureSearch from '../components/DepartureSearch';
+
+import detectBrowserLanguage from 'detect-browser-language'
 
 const query = {
     origin:'dr5reg',
@@ -15,7 +17,7 @@ const query = {
     outbound_date: '2018-08-02'
 };
 
-class DepartureContainer extends Component {
+class DepartureSearchContainer extends Component {
 
   state = {
     loading: false,
@@ -58,7 +60,7 @@ class DepartureContainer extends Component {
 
   render() {
     return (
-      <Departure 
+      <DepartureSearch 
         loading={this.state.loading}
         departures={this.state.departures}
         onFetchDepartures={this.onFetchDepartures}
@@ -67,4 +69,4 @@ class DepartureContainer extends Component {
   }
 }
 
-export default DepartureContainer;
+export default DepartureSearchContainer;
