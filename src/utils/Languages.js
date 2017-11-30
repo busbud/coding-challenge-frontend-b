@@ -1,4 +1,4 @@
-import detectBrowserLanguage from 'detect-browser-language'
+import detectBrowserLanguage from 'browser-locale'
 
 const translations = {
   'en-US' : {
