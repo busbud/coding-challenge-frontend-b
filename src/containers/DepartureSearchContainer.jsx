@@ -9,8 +9,6 @@ import DepartureStore from '../stores/DepartureStore';
 //Components
 import DepartureSearch from '../components/DepartureSearch';
 
-import detectBrowserLanguage from 'detect-browser-language'
-
 const query = {
     origin:'dr5reg',
     destination: 'f25dvk',
