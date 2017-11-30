@@ -1,0 +1,47 @@
+#departures {
+  list-style: none;
+  padding: 0;
+
+  li {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 10px 100px 10px 10px;
+    border:1px solid #ccc;
+    box-shadow: 0 6px 15px rgba(36,37,38,0.08);
+    border-radius: 16px;
+
+    .time {
+      padding-bottom: .2em;
+      border-bottom:1px solid rgba(36,37,38,0.08);
+      font-size:1.2em;
+
+      .leave {
+        font-weight: bold;
+      }
+
+      .leave::after {
+        content:'→'
+      }
+    }
+
+    .location {
+      span {
+        display: block;
+        margin: .4em 0;
+      }
+    }
+
+    .price {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #f5576c;
+    }
+  }
+}

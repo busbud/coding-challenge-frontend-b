@@ -1,0 +1,21 @@
+#topbar {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 50px;
+  padding: 6px 12px;
+  background: #fff;
+  box-shadow: 0 6px 15px rgba(36,37,38,0.08);
+
+  .logo {
+    height:100%;
+  }
+
+  button {
+    float: right;
+    margin: 0.8em;
+    padding: 4px;
+  }
+}

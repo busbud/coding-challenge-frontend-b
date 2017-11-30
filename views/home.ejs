@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Osheaga festival</title>
+  <script src="/static/osheaga.js" defer></script>
+  <link rel="stylesheet" href="/static/osheaga.css">
+</head>
+<body>
+  <script>
+    window.config = {
+      api: {
+        key: '<%= key %>',
+        endpoint: 'https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date',
+      },
+      locale: '<%= locale %>',
+      translations: {
+        <%= locale %>: <%- JSON.stringify(translations) %>,
+      },
+      languages: <%- JSON.stringify(languages) %>,
+    }
+  </script>
+  <div id="root"></div>
+</body>
+</html>
