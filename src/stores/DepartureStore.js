@@ -60,7 +60,8 @@ AppDispatcher.register( function( payload ) {
               _index = _departures.length;
               DepartureStore.emitChange();
             }).catch(function(err){
-              _error = "Error";
+              //Printend errors in console, we could show it in the page also.
+              console.error(err)
               DepartureStore.emitChange();
             });
                         
@@ -73,7 +74,8 @@ AppDispatcher.register( function( payload ) {
                 _departures = _departures.concat(parser(resp.data));
                 DepartureStore.emitChange();
             }).catch(function(err){
-                _error = "Error during register";
+                //Printend errors in console, we could show it in the page also.
+                console.error(err)
                 DepartureStore.emitChange();
             });
                                 

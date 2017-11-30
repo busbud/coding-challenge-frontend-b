@@ -2,11 +2,6 @@ import axios from 'axios-jsonp-pro';
 
 const host = 'https://napi.busbud.com';
 
-function logResults(json){
-    console.log(json);
-  }
-  
-
 const api = {
 
     basicHeader : function() {
