@@ -1,0 +1,33 @@
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  padding-bottom: 3rem;
+  min-height: 100%;
+  box-sizing: border-box;
+  font-family: $font;
+  font-size: 16px;
+  color: $font-color-std;
+}
+
+@media screen and (max-width: 540px) {
+  body {
+    font-size: 11px;
+  }
+}
+
+#main {
+  padding: 70px 20px 0 20px;
+  max-width: 1200px;
+  margin:0 auto;
+
+  h1 {
+    font-size: 1.4em;
+    margin:1em 0;
+  }
+}
+
+
+
