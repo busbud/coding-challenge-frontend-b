@@ -15,7 +15,8 @@
   }
   color: $color-text-primary;
   display: block;
-  transition: all $animation-duration $animation-type;
+  text-decoration: none;
+  @include transition();
 }
 
 .button {
@@ -42,7 +43,7 @@
   height: 32px;
   top: -50%;
   left: 50%;
-  transition: top $animation-duration $animation-type;
+  @include transition(top);
 }
 
 .react-spinner_bar {

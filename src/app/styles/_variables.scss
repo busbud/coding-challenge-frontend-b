@@ -21,3 +21,7 @@ $font-weight-semibold: 500;
 /* ANIMATION */
 $animation-duration: .3s;
 $animation-type: ease;
+
+@mixin transition($property: all, $duration: $animation-duration, $type: $animation-type) {
+  transition: $property $duration $animation-type;
+}
