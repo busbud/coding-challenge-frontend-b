@@ -1,9 +1,9 @@
 import * as React from 'react';
 import './App.css';
-
+import {Schedule} from './component/schedule';
 const logo = require('./logo.svg');
 
-class App extends React.Component {
+class App extends React.Component<any,any> {
   render() {
     return (
       <div className="App">
@@ -14,6 +14,7 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <Schedule />
       </div>
     );
   }
