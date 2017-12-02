@@ -3,27 +3,30 @@ import axios from 'axios';
 import moment from 'moment';
 
 import {cities} from '../data/cities';
+import Departure from './departure';
 
 export default class Search extends Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      request: {
+      searchRequest: {
         props: {
           from: cities['New York'],
           to: cities['Montreal'],
           date: '2018-08-02'
         },
         data: {
-          adults: 1
+          adult: 1
         }
-      }
+      },
+      tickets: {}
     };
   }
 
   handleRequestApi() {
-    const {props} = this.state.request;
+    const {props, data} = this.state.searchRequest;
+    // departure time, the arrival time, the location name and the price (use prices.total of the departure
 
     return async () => {
       try {
@@ -33,10 +36,13 @@ export default class Search extends Component {
           headers: {
             Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
             'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
-          }
+          },
+          data
         });
 
-        console.log(response.data);
+        this.setState({
+          searchResponse: response.data
+        });
       } catch (error) {
         console.log(error);
       }
@@ -44,13 +50,14 @@ export default class Search extends Component {
   }
 
   render() {
-    const {data} = this.state.request;
-    const date = moment(this.state.request.props.date).format('Do MMMM YYYY');
+    const {props, data} = this.state.searchRequest;
+    const {departures} = this.state.tickets;
+    const date = moment(props.date).format('Do MMMM YYYY');
 
     return (
       <div className="nymo-search">
         <p>
-          As this is pre-alpha version we provide tickets <b>only</b> on the <b>{date}</b> for <b>{data.adults}</b> adult.
+          As this is pre-alpha version we provide tickets <b>only</b> on the <b>{date}</b> for <b>{data.adult}</b> adult.
           Nevertheless we promise to add more dates and functionality in the future! :)
         </p>
         <div className="nymo-search-form">
@@ -61,7 +68,17 @@ export default class Search extends Component {
             Search
           </button>
         </div>
-        Results!
+        { departures && departures.length &&
+          <ul className="results">
+            { departures.map(departure => (
+              <Departure
+                key={departure.id}
+                data={departure}
+                />
+              ))
+            }
+          </ul>
+        }
       </div>
     );
   }
