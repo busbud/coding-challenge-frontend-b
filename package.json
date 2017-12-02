@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "moment": "^2.19.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2"
@@ -75,6 +76,10 @@
       "xo-react/space",
       "xo-space/esnext"
     ],
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "rules": {
+      "dot-notation": "off",
+      "quote-props": "off"
+    }
   }
 }

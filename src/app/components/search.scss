@@ -10,20 +10,5 @@
 
 .nymo-search-form {
   display: flex;
-  align-items: flex-start;
-
-  > * {
-    &:not(:first-child) {
-      margin-left: 20px;
-    }
-  }
-
-  &__from,
-  &__to {
-    flex: 1 1;
-  }
-
-  input {
-    width: 100%;
-  }
+  justify-content: center;
 }
