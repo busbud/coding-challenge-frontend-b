@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  border: none;
+  outline: none;
+}
+
+html {
+  font-size: 10px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background: url('/img/pattern.svg') center no-repeat;
+  background-size: cover;
+  font: {
+    family: 'Roboto', sans-serif;
+    size: 1.6rem;
+    weight: $font-weight-light;
+  }
+  color: $color-text-primary;
+}
+
+b {
+  font-weight: $font-weight-semibold;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 992px;
+  margin: 0 auto;
+}

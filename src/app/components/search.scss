@@ -1,0 +1,29 @@
+.nymo-search {
+  background: $color-transparent-back;
+  margin: 20px 0;
+  padding: 20px;
+
+  p {
+    margin-bottom: 20px;
+  }
+}
+
+.nymo-search-form {
+  display: flex;
+  align-items: flex-start;
+
+  > * {
+    &:not(:first-child) {
+      margin-left: 20px;
+    }
+  }
+
+  &__from,
+  &__to {
+    flex: 1 1;
+  }
+
+  input {
+    width: 100%;
+  }
+}

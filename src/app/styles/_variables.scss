@@ -1,0 +1,23 @@
+/* COLORS */
+$white: #fff;
+$mine-shaft: #333;
+$eastern-blue: #2786ba;
+
+$color-positive: $white;
+$color-text-primary: $mine-shaft;
+$color-form-separator: $eastern-blue;
+
+$color-transparent-back: transparentize($color-positive, .85);
+
+/* SIZES */
+$header-height: 40px;
+
+/* FONT */
+$font-family-roboto: 'Roboto', sans-serif;
+
+$font-weight-light: 300;
+$font-weight-semibold: 500;
+
+/* ANIMATION */
+$animation-duration: .3s;
+$animation-type: ease;

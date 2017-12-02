@@ -1,0 +1,37 @@
+.nymo-intro {
+  margin: 20px 0;
+  padding: 20px;
+  background: $color-transparent-back;
+}
+
+.input,
+.button {
+  height: 40px;
+  background: transparentize($color-positive, .5);
+  font: {
+    family: 'Roboto', sans-serif;
+    weight: $font-weight-light;
+    size: 1.6rem;
+  }
+  color: $color-text-primary;
+  display: block;
+  transition: background $animation-duration $animation-type;
+}
+
+.button {
+  padding: 0 20px;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-positive;
+  }
+}
+
+.input {
+  padding: 0 10px;
+
+  &:hover,
+  &:focus {
+    background: $color-positive;
+  }
+}

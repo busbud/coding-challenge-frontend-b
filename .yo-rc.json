@@ -1,0 +1,18 @@
+{
+  "generator-fountain-react": {
+    "version": "1.0.0",
+    "props": {
+      "skipInstall": true,
+      "framework": "react",
+      "modules": "webpack",
+      "js": "babel",
+      "ci": "",
+      "css": "scss",
+      "resolved": "/Users/swiip/Workspace/FountainJS/fountain/generator-fountain-react/generators/app/index.js",
+      "namespace": "fountain-react:app",
+      "_": [],
+      "sample": "hello",
+      "router": "router"
+    }
+  }
+}
