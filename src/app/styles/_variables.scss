@@ -1,11 +1,11 @@
 /* COLORS */
 $white: #fff;
+$black: #000;
 $mine-shaft: #333;
-$eastern-blue: #2786ba;
 
 $color-positive: $white;
+$color-negative: $black;
 $color-text-primary: $mine-shaft;
-$color-form-separator: $eastern-blue;
 
 $color-transparent-back: transparentize($color-positive, .85);
 

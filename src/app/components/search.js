@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import Spinner from 'react-spinner';
+import classNames from 'classnames';
 
 import {cities} from '../data/cities';
 import Departure from './departure';
@@ -10,6 +12,7 @@ export default class Search extends Component {
     super(props, context);
 
     this.state = {
+      loading: false,
       searchRequest: {
         props: {
           from: cities['New York'],
@@ -17,18 +20,26 @@ export default class Search extends Component {
           date: '2018-08-02'
         },
         data: {
-          adult: 1
+          adult: 1,
+          currency: 'EUR'
         }
       },
-      tickets: {}
+      data: {}
     };
   }
 
   handleRequestApi() {
     const {props, data} = this.state.searchRequest;
-    // departure time, the arrival time, the location name and the price (use prices.total of the departure
 
     return async () => {
+      if (this.state.loading) {
+        return;
+      }
+
+      this.setState({
+        loading: true
+      });
+
       try {
         const response = await axios({
           method: 'get',
@@ -41,39 +52,49 @@ export default class Search extends Component {
         });
 
         this.setState({
-          searchResponse: response.data
+          loading: false,
+          data: response.data
         });
       } catch (error) {
         console.log(error);
+
+        this.setState({
+          loading: false
+        });
       }
     };
   }
 
   render() {
-    const {props, data} = this.state.searchRequest;
-    const {departures} = this.state.tickets;
-    const date = moment(props.date).format('Do MMMM YYYY');
+    const {data} = this.state;
+    const {props: searchProps, data: searchData} = this.state.searchRequest;
+    const date = moment(searchProps.date).format('Do MMMM YYYY');
 
     return (
       <div className="nymo-search">
         <p>
-          As this is pre-alpha version we provide tickets <b>only</b> on the <b>{date}</b> for <b>{data.adult}</b> adult.
+          As this is pre-alpha version we provide tickets <b>only</b> on the <b>{date}</b> for <b>{searchData.adult}</b> adult.
           Nevertheless we promise to add more dates and functionality in the future! :)
         </p>
         <div className="nymo-search-form">
           <button
-            className="nymo-search-form__submit button"
+            className={classNames('nymo-search-form__submit button', {
+              'nymo-search-form__submit--loading': this.state.loading
+            })}
             onClick={this.handleRequestApi()}
             >
+            <Spinner/>
             Search
           </button>
         </div>
-        { departures && departures.length &&
+        { data.departures && data.departures.length &&
           <ul className="results">
-            { departures.map(departure => (
+            { data.departures.map(departure => (
               <Departure
                 key={departure.id}
-                data={departure}
+                data={data}
+                departure={departure}
+                currency={this.state.searchRequest.data.currency}
                 />
               ))
             }

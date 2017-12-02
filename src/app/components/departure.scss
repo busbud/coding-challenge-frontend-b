@@ -1,0 +1,27 @@
+.departure {
+  display: flex;
+  padding: 10px;
+  background: transparentize($color-positive, .85);
+
+  &:nth-child(even) {
+    background: transparentize($color-positive, .8);
+  }
+
+  &__from,
+  &__to {
+    flex: 1 1 50%;
+
+    span {
+      display: block;
+      padding: 0 10px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    flex: 0 0;
+    white-space: nowrap;
+  }
+}
