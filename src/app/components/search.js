@@ -13,17 +13,6 @@ export default class Search extends Component {
 
     this.state = {
       loading: false,
-      searchRequest: {
-        props: {
-          from: cities['New York'],
-          to: cities['Montreal'],
-          date: '2018-08-02'
-        },
-        data: {
-          adult: 1,
-          currency: 'EUR'
-        }
-      },
       data: {}
     };
 
@@ -31,25 +20,37 @@ export default class Search extends Component {
       Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
       'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
     };
+    this.requestData = {
+      props: {
+        from: cities['New York'],
+        to: cities['Montreal'],
+        date: '2018-08-02'
+      },
+      data: {
+        adult: 1,
+        currency: 'EUR'
+      }
+    };
+
+    this.handleRequestApi = this.handleRequestApi.bind(this);
   }
 
   handleRequestApi() {
-    const {props, data} = this.state.searchRequest;
-    const url = `https://napi.busbud.com/x-departures/${props.from}/${props.to}/${props.date}`;
+    this.setState({
+      loading: true
+    });
+
+    this.sendRequest()();
+  }
+
+  sendRequest() {
+    const {props, data} = this.requestData;
 
     return async () => {
-      if (this.state.loading) {
-        return;
-      }
-
-      this.setState({
-        loading: true
-      });
-
       try {
         const response = await axios({
           method: 'get',
-          url,
+          url: `https://napi.busbud.com/x-departures/${props.from}/${props.to}/${props.date}`,
           headers: this.headers,
           data
         });
@@ -70,7 +71,7 @@ export default class Search extends Component {
 
   render() {
     const {data} = this.state;
-    const {props: searchProps, data: searchData} = this.state.searchRequest;
+    const {props: searchProps, data: searchData} = this.requestData;
     const date = moment(searchProps.date).format('Do MMMM YYYY');
 
     return (
@@ -84,7 +85,7 @@ export default class Search extends Component {
             className={classNames('nymo-search-form__submit button', {
               'nymo-search-form__submit--loading': this.state.loading
             })}
-            onClick={this.handleRequestApi()}
+            onClick={this.handleRequestApi}
             >
             <Spinner/>
             Search
@@ -97,7 +98,7 @@ export default class Search extends Component {
                 key={departure.id}
                 data={data}
                 departure={departure}
-                currency={this.state.searchRequest.data.currency}
+                currency={searchData.currency}
                 />
               ))
             }
