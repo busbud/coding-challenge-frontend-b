@@ -31,6 +31,7 @@ export default class Search extends Component {
         currency: 'EUR'
       }
     };
+    this.requestDelay = 3500;
 
     this.handleRequestApi = this.handleRequestApi.bind(this);
   }
@@ -65,6 +66,7 @@ export default class Search extends Component {
             data: responseData
           });
         } else {
+          await this.timeout(this.requestDelay);
           this.sendRequest(true)(responseData.departures.length);
         }
       } catch (error) {
@@ -75,6 +77,10 @@ export default class Search extends Component {
         throw error;
       }
     };
+  }
+
+  timeout(ms) {
+    return new Promise(res => setTimeout(res, ms));
   }
 
   render() {
