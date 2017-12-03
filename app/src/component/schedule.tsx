@@ -98,7 +98,7 @@ export class Schedule extends React.Component<any, any> {
   loading(){
     if(!this.state.complete){
       return (
-        <div key="loading">
+        <div key="loading" className='loader'>
             <i className="fa fa-spinner fa-spin" />
         </div>
       ); 
@@ -136,7 +136,7 @@ export class Schedule extends React.Component<any, any> {
       );
     });
   }
-  
+
   /**
    * Render the list of departures received from server
    */
