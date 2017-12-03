@@ -26,10 +26,16 @@ export default class Search extends Component {
       },
       data: {}
     };
+
+    this.headers = {
+      Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
+      'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
+    };
   }
 
   handleRequestApi() {
     const {props, data} = this.state.searchRequest;
+    const url = `https://napi.busbud.com/x-departures/${props.from}/${props.to}/${props.date}`;
 
     return async () => {
       if (this.state.loading) {
@@ -43,11 +49,8 @@ export default class Search extends Component {
       try {
         const response = await axios({
           method: 'get',
-          url: `https://napi.busbud.com/x-departures/${props.from}/${props.to}/${props.date}`,
-          headers: {
-            Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-            'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
-          },
+          url,
+          headers: this.headers,
           data
         });
 
@@ -56,11 +59,11 @@ export default class Search extends Component {
           data: response.data
         });
       } catch (error) {
-        console.log(error);
-
         this.setState({
           loading: false
         });
+
+        throw error;
       }
     };
   }
