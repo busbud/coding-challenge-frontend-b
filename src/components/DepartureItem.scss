@@ -1,0 +1,77 @@
+@import "font-awesome/scss/mixins";
+@import "bulma/sass/utilities/mixins";
+
+.DepartureItem {
+  display: flex;
+  padding: 1em 2em;
+  align-items: center;
+  justify-content: space-between;
+
+  @include mobile {
+    font-size: 0.8em;
+    flex-direction: column;
+    text-align: center;
+    .fa-chevron-right {
+      @include fa-icon-rotate(90deg, 1);
+    }
+  }
+
+  .flex-column {
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      margin: 0 1em;
+      &:first-of-type {
+        margin-left: 0;
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    @include mobile {
+      flex-direction: row;
+      align-items: baseline;
+    }
+  }
+
+  .sep {
+    flex: 1 1 10%;
+  }
+
+  .lighten-color {
+    color: #606060
+  }
+
+  .price {
+    text-align: center;
+    align-self: center;
+    white-space: nowrap;
+  }
+
+
+  .dep-label {
+    justify-self: end;
+    font-weight: bold;
+  }
+
+  .location-name {
+    font-size: 0.8em;
+    font-weight: lighter;
+    @include mobile {
+      font-weight: normal;
+      margin-left: 1em;
+    }
+  }
+
+  .price-value {
+    font-weight: bold;
+    font-size: 1.25em;
+  }
+
+  .price-info {
+    font-weight: lighter;
+    font-size: 0.7em;
+  }
+}
