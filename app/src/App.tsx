@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import {Schedule} from './component/schedule';
-const logo = require('./logo.svg');
+const logo = require('./assets/img/osheaga.png');
 
 class App extends React.Component<any,any> {
   render() {
@@ -9,11 +9,11 @@ class App extends React.Component<any,any> {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h1>Welcome to Busbud Frontend Challenge</h1>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <h2>
+            Departures to Montréal from NewYork City on the 2nd of August 2018
+        </h2>
         <Schedule />
       </div>
     );
