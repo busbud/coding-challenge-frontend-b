@@ -1,0 +1,98 @@
+@import '../../node_modules/font-awesome/css/font-awesome.min.css';
+
+
+$medium-screen: 768px;
+$large-screen: 1080px;
+
+.departures-wrapper {
+    margin: auto;
+    
+    @media screen and (max-width: $medium-screen) {
+        width: 90%;  
+        .departure{           
+            flex-direction: column;
+            overflow: auto;
+            .operator-logo{
+                padding: 0px;
+                img{
+                    max-height: 100px;
+                }
+            }
+
+            .departure-info-wrapper{
+                .departure-info{
+                    justify-content: center;
+                }
+            }
+        }     
+    }
+    @media screen and (min-width: $medium-screen) {
+        width: 752px;
+        .departure{           
+            height: 120px;
+
+            .operator-logo{
+                padding: 0px;
+            }
+
+            .departure-info-wrapper{
+                .departure-info{
+                    justify-content: flex-start;
+                }
+            }            
+        }
+        
+    }
+    @media screen and (min-width: $large-screen) {
+        width:1074px;
+    }
+
+    .departure{     
+        display:flex;
+        align-items: center;   
+        margin: 15px 0px;
+        padding: 15px;        
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.24);
+
+        .operator-logo{           
+            img{
+                max-width: 100%;
+            }
+        }
+        
+
+        .departure-info-wrapper{
+            display:flex;
+            flex-direction: column;
+            .departure-info{
+                display: flex;
+                align-items: center;                
+                padding: 10px;
+                .departure-time{
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+
+                span:nth-child(2){
+                    margin-left: 10px
+                } 
+            }            
+        }
+
+        .departure-price-wrapper{
+            padding: 10px;
+            .departure-price{
+                font-size: 25px;
+                font-weight: bold
+            }
+        }
+        
+    }
+
+    .loader{
+        font-size: 50px;
+        color: #f19020;
+    }   
+}
