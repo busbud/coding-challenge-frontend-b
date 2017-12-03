@@ -43,22 +43,30 @@ export default class Search extends Component {
     this.sendRequest()();
   }
 
-  sendRequest() {
+  sendRequest(pollRequest) {
     const {props, data} = this.requestData;
 
-    return async () => {
+    return async departuresIndex => {
       try {
         const response = await axios({
           method: 'get',
-          url: `https://napi.busbud.com/x-departures/${props.from}/${props.to}/${props.date}`,
+          url: `https://napi.busbud.com/x-departures/${props.from}/${props.to}/${props.date}${pollRequest ? '/poll' : ''}`,
           headers: this.headers,
-          data
+          data: {
+            ...data,
+            index: departuresIndex
+          }
         });
+        const responseData = response.data;
 
-        this.setState({
-          loading: false,
-          data: response.data
-        });
+        if (responseData.complete) {
+          this.setState({
+            loading: false,
+            data: responseData
+          });
+        } else {
+          this.sendRequest(true)(responseData.departures.length);
+        }
       } catch (error) {
         this.setState({
           loading: false
