@@ -110,9 +110,8 @@ export class Schedule extends React.Component<any, any> {
   /**
    * Render the departures list
    */
-  departuresList(){
-    return this.state.departures.map(departure =>{
-      console.log(departure);
+  departuresList() {
+    return this.state.departures.map(departure => {      
       return (
         <div key='{departure.id}' className='departure'>
           <div className='col-md-3 col-sm-3 col-xs-12 operator-logo'>
@@ -140,8 +139,7 @@ export class Schedule extends React.Component<any, any> {
   /**
    * Render the list of departures received from server
    */
-  render() {     
-    console.log('im rendering');   
+  render() {          
     return (
       <div key='departuresList' className="departures-wrapper">
         {this.departuresList()}
