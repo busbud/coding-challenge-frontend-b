@@ -1,0 +1,75 @@
+.nymo-intro {
+  margin: 20px 0;
+  padding: 20px;
+  background: $color-transparent-back;
+}
+
+.input,
+.button {
+  height: 40px;
+  background: transparentize($color-positive, .5);
+  font: {
+    family: 'Roboto', sans-serif;
+    weight: $font-weight-light;
+    size: 1.6rem;
+  }
+  color: $color-text-primary;
+  display: block;
+  text-decoration: none;
+  @include transition();
+}
+
+.button {
+  padding: 0 20px;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-positive;
+  }
+}
+
+.input {
+  padding: 0 10px;
+
+  &:hover,
+  &:focus {
+    background: $color-positive;
+  }
+}
+
+.react-spinner {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: -50%;
+  left: 50%;
+  @include transition(top);
+}
+
+.react-spinner_bar {
+  -webkit-animation: react-spinner_spin 1.2s linear infinite;
+  -moz-animation: react-spinner_spin 1.2s linear infinite;
+  animation: react-spinner_spin 1.2s linear infinite;
+  border-radius: 5px;
+  background-color: $color-text-primary;
+  position: absolute;
+  width: 20%;
+  height: 7.8%;
+  top: -3.9%;
+  left: -10%;
+}
+
+@keyframes react-spinner_spin {
+  0% { opacity: 1; }
+  100% { opacity: 0.15; }
+}
+
+@-moz-keyframes react-spinner_spin {
+  0% { opacity: 1; }
+  100% { opacity: 0.15; }
+}
+
+@-webkit-keyframes react-spinner_spin {
+  0% { opacity: 1; }
+  100% { opacity: 0.15; }
+}

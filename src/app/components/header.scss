@@ -1,0 +1,14 @@
+.nymo-header {
+  height: $header-height;
+  background: $color-transparent-back;
+
+  &__logo {
+    font-size: 2rem;
+    line-height: $header-height;
+    margin: 0 20px;
+  }
+
+  .wrapper {
+    height: $header-height;
+  }
+}
