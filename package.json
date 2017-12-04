@@ -14,7 +14,8 @@
   },
   "scripts": {
     "build": "node ./node_modules/grunt-cli/bin/grunt build",
-    "start": "node ./node_modules/http-server/bin/http-server ./src"
+    "start": "node ./node_modules/http-server/bin/http-server ./src",
+    "test": "node ./node_modules/karma/bin/karma start tests/karma.conf.js --single-run"
   },
   "dependencies": {},
   "devDependencies": {
@@ -23,6 +24,10 @@
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-sass": "^2.0.0",
-    "http-server": "^0.10.0"
+    "http-server": "^0.10.0",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-jasmine": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.4"
   }
 }

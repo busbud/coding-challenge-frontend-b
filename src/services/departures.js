@@ -53,6 +53,9 @@ angular.module("busbud.svc.departures", [])
         };
 
         var sortByDate = function(trip) {
+            if(!trip.departures) {
+                return trip;
+            }
             trip.departures.sort(function(dep1, dep2) {
                 if (dep1.departure_time > dep2.departure_time) {
                     return 1;
@@ -65,6 +68,9 @@ angular.module("busbud.svc.departures", [])
         };
 
         var setOperatorsById = function(trip) {
+            if(!trip.operators) {
+                return trip;
+            }
             var operators = {};
             for (var i = 0; i < trip.operators.length; i++) {
                 operators[trip.operators[i].id] = trip.operators[i];
@@ -74,6 +80,9 @@ angular.module("busbud.svc.departures", [])
         };
 
         var setLocationsById = function(trip) {
+            if(!trip.locations) {
+                return trip;
+            }
             var locations = {};
             for (var i = 0; i < trip.locations.length; i++) {
                 locations[trip.locations[i].id] = trip.locations[i];
@@ -83,6 +92,9 @@ angular.module("busbud.svc.departures", [])
         };
 
         var formatDates = function(trip) {
+            if(!trip.departures) {
+                return trip;
+            }
             var departure;
             for (var i = 0; i < trip.departures.length; i++) {
                 departure = trip.departures[i];
