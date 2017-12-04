@@ -1,0 +1,9 @@
+<span class="row center-xs trip-info" ng-if="$ctrl.trip" ng-bind="::$ctrl.tripDescriptionTranslation">
+</span>
+<departure-widget
+        ng-repeat="departure in ::$ctrl.trip.departures"
+        departure="::departure"
+        operator="::$ctrl.trip.operators_by_id[departure.operator_id]"
+        origin-loc="::$ctrl.trip.locations_by_id[departure.origin_location_id]"
+        destination-loc="::$ctrl.trip.locations_by_id[departure.destination_location_id]">
+</departure-widget>

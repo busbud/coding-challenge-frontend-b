@@ -1,0 +1,14 @@
+<div class="row banner">
+    <div class="row top-xs">
+        <div class="col-xs-4 col-md-6">
+            <img class="osheaga-logo" src="../assets/img/osheaga.png"/>
+        </div>
+    </div>
+</div>
+<div class="row center-xs search-area" ng-if="!$ctrl.hideButton">
+    <a ng-click="$ctrl.searchTrip();$ctrl.hideButton=true" role="button">
+        <span translate="findTrip"></span>
+    </a>
+</div>
+<div class="loading-trip" ng-if="$ctrl.hideButton && !$ctrl.trip"></div>
+<departures-catalog trip="$ctrl.trip"></departures-catalog>

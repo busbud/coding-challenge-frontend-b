@@ -1,0 +1,28 @@
+{
+  "name": "busbud-osheaga",
+  "version": "0.0.1",
+  "description": "Busbud challenge from Journees Quebec",
+  "authors": [
+    "J.Richardeau"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jRichardeau/coding-challenge-frontend-b.git"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "scripts": {
+    "build": "node ./node_modules/grunt-cli/bin/grunt build",
+    "start": "node ./node_modules/http-server/bin/http-server ./src"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "flexboxgrid": "^6.3.1",
+    "font-awesome": "^4.7.0",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-sass": "^2.0.0",
+    "http-server": "^0.10.0"
+  }
+}
