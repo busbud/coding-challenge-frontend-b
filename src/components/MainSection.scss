@@ -1,0 +1,17 @@
+@import "bulma/sass/utilities/mixins";
+
+.MainSection {
+  margin-top: 1.75em;
+
+  .description {
+    color: #666;
+    text-align: center;
+    font-size: 1.1em;
+  }
+
+  @include touch {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+}

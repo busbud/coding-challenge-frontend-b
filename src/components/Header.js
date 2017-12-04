@@ -35,7 +35,9 @@ const Header = props => {
 
             <div className="navbar-item">
               <div className="control">
-                <button className="button is-primary is-small">Search</button>
+                <button
+                  onClick={() => props.onSearchClick("dr5reg","f25dvk", "2018-07-12")}
+                  className="button is-primary is-small">Search</button>
               </div>
             </div>
 

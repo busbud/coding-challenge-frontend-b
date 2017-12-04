@@ -13,17 +13,45 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      search: {
+        origin: "dr5reg",
+        destination: "f25dvk",
+        date: "2018-08-01"
+      },
       isComplete: false,
       departures: []
     }
   }
 
   componentDidMount() {
-    this.fetchDepartures();
+    this.startDeparturesFetch();
+  }
+
+  handleSearchClick(origin, destination, date) {
+    this.setState({
+      search: {
+        origin: origin,
+        destination: destination,
+        date: date
+      }
+    });
+    this.startDeparturesFetch();
+  }
+
+  async startDeparturesFetch() {
+    const searchParams = this.state.search;
+    const initialData = await fetcher.initialFetch(searchParams.origin, searchParams.destination, searchParams.date);
+    this.setState({
+      departures: parser.parse(initialData),
+      isComplete: initialData.complete
+    });
+
+    initialData.complete || this.pollDepartures(10, searchParams.origin, searchParams.destination, searchParams.date);
   }
 
   async pollDepartures(iterations) {
-    const newData = await fetcher.poll("dr5reg", "f25dvk", "2018-07-09", this.state.departures.length);
+    const searchParams = this.state.search;
+    const newData = await fetcher.poll(searchParams.origin, searchParams.destination, searchParams.date, this.state.departures.length);
     this.setState(prevState => {
       return {
         departures: prevState.departures.concat(parser.parse(newData)),
@@ -38,21 +66,11 @@ class App extends Component {
     }
   }
 
-  async fetchDepartures() {
-    const initialData = await fetcher.initialFetch("dr5reg", "f25dvk", "2018-07-09");
-    this.setState({
-      departures: parser.parse(initialData),
-      isComplete: initialData.complete
-    });
-
-    if (!this.state.isComplete) this.pollDepartures(10);
-  }
-
   render() {
     return (
       <div className="App">
-        <Header/>
-        <MainSection departures={this.state.departures.sort((a,b) => { return a.departureTime > b.departureTime ? 1 : -1})} />
+        <Header onSearchClick={this.handleSearchClick.bind(this)}/>
+        <MainSection currentSearch={this.state.search} departures={this.state.departures} />
         <Footer/>
       </div>
     );
