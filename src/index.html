@@ -11,12 +11,15 @@
     <meta http-equiv="pragma" content="no-cache" />
     <link rel="shortcut icon" href="favicon.ico">
 
+    <!-- build:js vendor.js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/moment/locale/fr-ca.js"></script>
     <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <!-- endbuild -->
 
+    <!-- build:js app.js -->
     <script src="app.js"></script>
     <script src="services/departures.js"></script>
     <script src="components/departure-info.js"></script>
@@ -24,11 +27,14 @@
     <script src="components/departure-widget.js"></script>
     <script src="components/departures-catalog.js"></script>
     <script src="components/osheaga-trip.js"></script>
+    <!-- endbuild -->
 
+    <!-- build:css css/main.css -->
     <link type="text/css" rel="stylesheet" href="css/busbud.css"/>
+    <!-- endbuild -->
 </head>
 <body ng-app="busbud-osheaga">
 
-    <osheaga-trip></osheaga-trip>
+    <ng-view></ng-view>
 </body>
 </html>

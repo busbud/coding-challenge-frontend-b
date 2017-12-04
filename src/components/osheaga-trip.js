@@ -18,14 +18,7 @@
     }
 
     angular.module("busbud.components")
-        .controller('osheagaTripCrl', osheagaTripCrl)
-        .component('osheagaTrip', {
-            templateUrl: "components/osheaga-trip.html",
-            controller: osheagaTripCrl,
-            controllerAs: "$ctrl",
-            bindToController: true,
-            bindings: {}
-        });
+        .controller('osheagaTripCrl', osheagaTripCrl);
 })
 ();
 

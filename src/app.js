@@ -11,21 +11,28 @@ app.config(function($routeProvider, $translateProvider) {
         'tripDescription': 'Ride from #from# to #to#'
     });
 
-
     $routeProvider
         .when("/en", {
+            templateUrl: "components/osheaga-trip.html",
+            controller: "osheagaTripCrl",
+            controllerAs: "$ctrl",
+            bindToController: true,
             resolve: {
                 language: function(){
                     moment.locale("en");
-                    $translateProvider.preferredLanguage('en')
+                    $translateProvider.preferredLanguage('en');
                 }
             }
         })
         .when("/fr", {
+            templateUrl: "components/osheaga-trip.html",
+            controller: "osheagaTripCrl",
+            controllerAs: "$ctrl",
+            bindToController: true,
             resolve: {
                 language: function(){
                     moment.locale("fr-ca");
-                    $translateProvider.preferredLanguage('fr')
+                    $translateProvider.preferredLanguage('fr');
                 }
             }
         })

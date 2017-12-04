@@ -4,14 +4,18 @@
         var tripDescription = null;
         _this.tripDescriptionTranslation = null;
         this.$onInit = function() {
-            $translate('tripDescription').then(function(translation) {
-                tripDescription = translation;
-            });
+            $translate('tripDescription')
+                .then(function(translation) {
+                    tripDescription = translation;
+                })
+                .catch(function() {
+                    tripDescription = "";
+                });
         };
 
         this.$onChanges = function(changes) {
             if (changes && changes.trip && changes.trip.currentValue) {
-                _this.tripDescriptionTranslation =  tripDescription
+                _this.tripDescriptionTranslation = tripDescription
                     .replace("#from#", changes.trip.currentValue.cities[0].name)
                     .replace("#to#", changes.trip.currentValue.cities[1].name);
             }
