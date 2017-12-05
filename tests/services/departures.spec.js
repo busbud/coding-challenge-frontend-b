@@ -31,7 +31,7 @@ describe("departure service", function() {
     });
 
     it("call busbud api", function(done) {
-        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?lang=en")
+        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?adult=1&lang=en")
             .respond({complete: true});
         departures.getFormattedTrip(trip)
             .then(function() {
@@ -45,7 +45,7 @@ describe("departure service", function() {
 
     it("call busbud api with moment language", function(done) {
         moment.locale("fr-ca");
-        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?lang=fr")
+        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?adult=1&lang=fr")
             .respond({complete: true});
         departures.getFormattedTrip(trip)
             .then(function() {
@@ -58,7 +58,7 @@ describe("departure service", function() {
     });
 
     it("call with index if not complete and concat departures", function(done) {
-        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?lang=en")
+        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?adult=1&lang=en")
             .respond({complete: false, departures: [departure1]});
         departures.getFormattedTrip(trip)
             .then(function(res) {
@@ -70,14 +70,14 @@ describe("departure service", function() {
 
         $rootScope.$apply();
         $httpBackend.flush();
-        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?lang=en&index=1")
+        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?adult=1&lang=en&index=1")
             .respond({complete: true, departures: [departure2]});
         $timeout.flush();
         $httpBackend.flush();
     });
 
     it("format and sort data", function(done) {
-        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?lang=en")
+        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?adult=1&lang=en")
             .respond({
                 complete: true,
                 departures: [departure1, departure2],
