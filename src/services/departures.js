@@ -22,10 +22,13 @@ angular.module("busbud.svc.departures", [])
 
         var pollDepartures = function(query, trip) {
             return $q(function(resolve, reject) {
-                var url = apiUrl + "/" + [query.from, query.to, query.when].join("/") + "?adult=1&lang=" + moment.locale().split("-")[0];
+                var urlPath = [query.from, query.to, query.when];
+                var queryString = "?adult=1&lang=" + moment.locale().split("-")[0];
                 if (query.index) {
-                    url += "&index=" + query.index;
+                    urlPath.push("poll");
+                    queryString += "&index=" + query.index;
                 }
+                var url = apiUrl + "/" + urlPath.join("/") + queryString;
                 $http.get(url,
                     {
                         headers: requestHeaders,

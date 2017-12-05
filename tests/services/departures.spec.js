@@ -57,7 +57,7 @@ describe("departure service", function() {
         $httpBackend.flush();
     });
 
-    it("call with index if not complete and concat departures", function(done) {
+    it("call /poll with index if not complete and concat departures", function(done) {
         $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?adult=1&lang=en")
             .respond({complete: false, departures: [departure1]});
         departures.getFormattedTrip(trip)
@@ -70,7 +70,7 @@ describe("departure service", function() {
 
         $rootScope.$apply();
         $httpBackend.flush();
-        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now?adult=1&lang=en&index=1")
+        $httpBackend.expectGET("https://napi.busbud.com/x-departures/12345/6578/now/poll?adult=1&lang=en&index=1")
             .respond({complete: true, departures: [departure2]});
         $timeout.flush();
         $httpBackend.flush();
