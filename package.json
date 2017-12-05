@@ -14,7 +14,7 @@
     "node": ">= 6.0.0"
   },
   "scripts": {
-    "postinstall": "node ./node_modules/bower install",
+    "postinstall": "node ./node_modules/bower/bin/bower install",
     "build": "node ./node_modules/grunt-cli/bin/grunt build",
     "start": "node ./node_modules/http-server/bin/http-server ./src",
     "test": "node ./node_modules/karma/bin/karma start tests/karma.conf.js --single-run"
