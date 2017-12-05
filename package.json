@@ -1,0 +1,43 @@
+{
+  "name": "busbud-osheaga",
+  "version": "0.0.1",
+  "description": "Busbud challenge from Journees Quebec",
+  "authors": [
+    "J.Richardeau"
+  ],
+  "main": "dist/index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jRichardeau/coding-challenge-frontend-b.git"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "scripts": {
+    "postinstall": "node node_modules/bower/bin/bower install",
+    "build": "node node_modules/grunt-cli/bin/grunt build",
+    "server": "node node_modules/http-server/bin/http-server ./src",
+    "test": "node node_modules/karma/bin/karma start tests/karma.conf.js --single-run"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.8.2",
+    "flexboxgrid": "^6.3.1",
+    "grunt": "^1.0.1",
+    "grunt-angular-templates": "^1.1.0",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-uglify": "^3.2.1",
+    "grunt-ng-annotate": "^3.0.0",
+    "grunt-sass": "^2.0.0",
+    "grunt-usemin": "^3.1.1",
+    "http-server": "^0.10.0",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-jasmine": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.4"
+  }
+}

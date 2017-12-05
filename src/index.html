@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>BusBud | Osheaga festival travel!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- build:js vendor.js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/moment/locale/fr-ca.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js app.js -->
+    <script src="app.js"></script>
+    <script src="services/departures.js"></script>
+    <script src="components/departure-info.js"></script>
+    <script src="components/operator.js"></script>
+    <script src="components/departure-widget.js"></script>
+    <script src="components/departures-catalog.js"></script>
+    <script src="components/osheaga-trip.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:css css/main.css -->
+    <link type="text/css" rel="stylesheet" href="css/busbud.css"/>
+    <!-- endbuild -->
+</head>
+<body ng-app="busbud-osheaga">
+
+    <ng-view></ng-view>
+</body>
+</html>

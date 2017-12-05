@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  color: rgba(32, 48, 60, 1);
+}
+
+@import '../node_modules/flexboxgrid/dist/flexboxgrid';
+
+@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.loading-trip {
+  background-image: url("https://logo.clearbit.com/busbud.com");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 128px;
+  animation: fadeinout 1.5s infinite forwards;
+  margin-top: 20px;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.banner {
+  background-image: url("../assets/img/osheaga-banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 200px;
+
+  .osheaga-logo {
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+}
+
+.search-area {
+  margin-bottom: 20px;
+  margin-top: 50px;
+  a {
+    border: solid rgba(43, 104, 156, 1) 0;
+    border-radius: 45px;
+    padding: 15px;
+    transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    span {
+      font-size: 18px;
+      transition: color 0.4s ease 0s;
+      display: inline-block;
+      position: relative;
+      white-space: nowrap;
+    }
+  }
+}
+
+departures-catalog {
+  .trip-info {
+    margin-top:20px;
+    margin-bottom:20px;
+  }
+}
+
+.departure-widget {
+  margin-bottom: 20px;
+  height: 100px;
+  border: solid 1px rgb(219, 219, 219);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .16);
+  justify-content: center;
+
+  operator {
+    padding: 5px;
+  }
+
+  .map-pin {
+    height: 20px;
+  }
+
+  .travel-arrow {
+    width: 100%;
+  }
+
+  departure-info {
+    h3 {
+      display: inline;
+    }
+  }
+
+  .trip-duration {
+    background-image: url("../assets/img/clock.png");
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+  }
+}
+
+operator {
+  .operator-logo {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .hide-xs {
+    display: none;
+  }
+}

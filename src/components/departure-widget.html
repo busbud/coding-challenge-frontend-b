@@ -1,0 +1,28 @@
+<div class="row center-xs">
+    <div class="col-xs-10 col-md-8 box departure-widget">
+        <div class="row middle-xs full-height">
+            <operator class="col-xs-3 col-md-2" operator="$ctrl.operator"></operator>
+            <div class="col-xs-7 col-md-8 full-height">
+                <div class="row middle-xs center-xs full-height">
+                    <div class="col-xs-6 col-sm-5">
+                        <departure-info time="::$ctrl.departure.formatted_dates.departure_time"
+                                        location="::$ctrl.originLoc">
+                        </departure-info>
+                    </div>
+                    <div class="col-sm-2 trip-duration hide-xs">
+                        <span ng-bind="::$ctrl.departure.formatted_dates.duration"></span>
+                    </div>
+                    <div class="col-xs-6 col-sm-5">
+                        <departure-info time="::$ctrl.departure.formatted_dates.arrival_time"
+                                        location="::$ctrl.destinationLoc">
+                        </departure-info>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <span ng-bind="::$ctrl.departure.prices.total/100"></span>
+                <span ng-bind="::$ctrl.departure.prices.currency"></span>
+            </div>
+        </div>
+    </div>
+</div>

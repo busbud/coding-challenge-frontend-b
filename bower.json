@@ -1,0 +1,26 @@
+{
+  "name": "busbud-osheaga",
+  "version": "0.0.1",
+  "description": "Busbud challenge from Journees Quebec",
+  "authors": [
+    "J.Richardeau"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.6.6",
+    "moment": "^2.19.3",
+    "angular-route": "1.6.6",
+    "angular-translate": "^2.16.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.6.6"
+  }
+}
