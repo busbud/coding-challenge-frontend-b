@@ -20,7 +20,6 @@ const Header = props => {
             <span></span>
             <span></span>
           </button>
-
         </div>
 
         <div className="navbar-menu">
@@ -30,15 +29,11 @@ const Header = props => {
           <div className="navbar-end">
 
             <div className="navbar-item">
-              <SearchForm/>
-            </div>
-
-            <div className="navbar-item">
-              <div className="control">
-                <button
-                  onClick={() => props.onSearchClick("dr5reg","f25dvk", "2018-07-12")}
-                  className="button is-primary is-small">Search</button>
-              </div>
+              <SearchForm
+                search={props.search}
+                onDateChange={props.onDateChange}
+                onSearchClick={props.onSearchClick}
+              />
             </div>
 
           </div>

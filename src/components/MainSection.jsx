@@ -1,18 +1,21 @@
 import React from "react";
 import DepartureList from "./DepartureList";
 import "./MainSection.css"
+import utils from "../utils/utils";
 
 const MainSection = props => {
 
-  const currentSearch = props.currentSearch;
+  const originCity = utils.geohashToName(props.currentSearch.origin);
+  const destinationCity = utils.geohashToName(props.currentSearch.destination);
+  const date = props.currentSearch.date.toLocaleDateString("fr");
   return (
     <div className="MainSection section container is-widescreen is-paddingless">
       <div className="description is-hidden-mobile">
-        {`Departures from ${currentSearch.origin} to ${currentSearch.destination} on ${currentSearch.date}`}
+        {`Departures from ${originCity} to ${destinationCity} on ${date}`}
       </div>
       <div className="description is-hidden-tablet">
-        <p>{`${currentSearch.origin} to ${currentSearch.destination}`}</p>
-        <p>{`${currentSearch.date}`}</p>
+        <p>{`${originCity} to ${destinationCity}`}</p>
+        <p>{`${date}`}</p>
       </div>
       <div>
         <DepartureList departures={props.departures}/>

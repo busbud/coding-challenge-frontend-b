@@ -15,86 +15,22 @@ function doFetch(url) {
   }).then(resp => resp.data);
 }
 
+function buildBaseUrl(origin, destination, date) {
+  return `${apiHost}/x-departures/${origin}/${destination}/${date.toISOString().substr(0,10)}`
+}
+
 const fetcher = {
 
   initialFetch: function(origin, destination, date) {
-    const url = `${apiHost}/x-departures/${origin}/${destination}/${date}`;
+    const url = `${buildBaseUrl(origin, destination, date)}`;
     return doFetch(url);
   },
 
   poll: function(origin, destination, date, index) {
-    const url = `${apiHost}/x-departures/${origin}/${destination}/${date}/poll?index=${index}`;
+    const url = `${buildBaseUrl(origin, destination, date)}/poll?index=${index}`;
     return doFetch(url);
-  },
-
-  mockFetch: function() {
-    return [
-      {
-        origin: "George Washington Bridge Bus Station",
-        destination: "Gare d'autocars de Montréal",
-        departureTime: "13:30",
-        arrivalTime: "15:30",
-        price: 15.23,
-        currency: "€"
-      }, {
-        origin: "George Washington Bridge Bus Station",
-        destination: "Gare d'autocars de Montréal",
-        departureTime: "16:30",
-        arrivalTime: "18:30",
-        price: 17.23,
-        currency: "€"
-      }, {
-        origin: "George Washington Bridge Bus Station",
-        destination: "Gare d'autocars de Montréal",
-        departureTime: "16:30",
-        arrivalTime: "18:30",
-        price: 17.23,
-        currency: "€"
-      }, {
-        origin: "George Washington Bridge Bus Station",
-        destination: "Gare d'autocars de Montréal",
-        departureTime: "16:30",
-        arrivalTime: "18:30",
-        price: 17.23,
-        currency: "€"
-      }, {
-        origin: "George Washington Bridge Bus Station",
-        destination: "Gare d'autocars de Montréal",
-        departureTime: "16:30",
-        arrivalTime: "18:30",
-        price: 17.23,
-        currency: "€"
-      }, {
-        origin: "George Washington Bridge Bus Station",
-        destination: "Gare d'autocars de Mont réal",
-        departureTime: "16:30",
-        arrivalTime: "18:30",
-        price: 17.23,
-        currency: "€"
-      }, {
-        origin: "George Washington Bridge Bus Station",
-        destination: "Gare d'autocars de Montréal",
-        departureTime: "16:30",
-        arrivalTime: "18:30",
-        price: 17.23,
-        currency: "€"
-      }, {
-        origin: "George Washington Bridge Bus Station",
-        destination: "Gare d'autocars de Montréal",
-        departureTime: "16:30",
-        arrivalTime: "18:30",
-        price: 17.23,
-        currency: "€"
-      }, {
-        origin: "George Washington Bridge Bus Station",
-        destination: "Gare d'autocars de Montréal",
-        departureTime: "16:30",
-        arrivalTime: "18:30",
-        price: 17.23,
-        currency: "€"
-      }
-    ]
   }
+
 };
 
 export default fetcher;

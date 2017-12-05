@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import MainSection from "../components/MainSection"
 
+import utils from '../utils/utils'
+
 
 class App extends Component {
 
@@ -16,10 +18,11 @@ class App extends Component {
       search: {
         origin: "dr5reg",
         destination: "f25dvk",
-        date: "2018-08-01"
+        date: new Date(Date.UTC(2018, 7, 1))
       },
       isComplete: false,
-      departures: []
+      departures: [],
+      error: null
     }
   }
 
@@ -27,50 +30,81 @@ class App extends Component {
     this.startDeparturesFetch();
   }
 
+  handleError(message, error) {
+    console.error(message, error);
+    this.setState({error: message});
+  };
+
   handleSearchClick(origin, destination, date) {
     this.setState({
       search: {
         origin: origin,
         destination: destination,
         date: date
-      }
+      },
+      departures: [],
+      isComplete: false
     });
     this.startDeparturesFetch();
   }
 
-  async startDeparturesFetch() {
-    const searchParams = this.state.search;
-    const initialData = await fetcher.initialFetch(searchParams.origin, searchParams.destination, searchParams.date);
-    this.setState({
-      departures: parser.parse(initialData),
-      isComplete: initialData.complete
+  handleDateChange(date) {
+    this.setState(prevState => {
+      return {search: Object.assign({}, prevState.search, {date: date[0]})};;
     });
-
-    initialData.complete || this.pollDepartures(10, searchParams.origin, searchParams.destination, searchParams.date);
   }
 
-  async pollDepartures(iterations) {
+  startDeparturesFetch() {
     const searchParams = this.state.search;
-    const newData = await fetcher.poll(searchParams.origin, searchParams.destination, searchParams.date, this.state.departures.length);
-    this.setState(prevState => {
-      return {
-        departures: prevState.departures.concat(parser.parse(newData)),
-        isComplete: newData.complete
+
+    fetcher.initialFetch(
+      searchParams.origin, searchParams.destination, searchParams.date
+    ).then(initialData => {
+
+      console.info("initial fetch has completed.", initialData);
+      this.setState({
+        departures: parser.parse(initialData),
+        isComplete: initialData.complete
+      });
+
+      return initialData.complete || this.pollDepartures(10);
+    }).catch(err => {
+      console.error("Error during departures fetch", err);
+    });
+  }
+
+  pollDepartures(iterations) {
+    const searchParams = this.state.search;
+
+    return fetcher.poll(
+      searchParams.origin, searchParams.destination, searchParams.date, this.state.departures.length
+    ).then(newData => {
+
+      console.info(`poll #${iterations} has completed.`, newData);
+      this.setState(prevState => {
+        return {
+          departures: prevState.departures.concat(parser.parse(newData)),
+          isComplete: newData.complete
+        }
+      });
+
+      if (--iterations > 0 && !newData.complete) {
+        utils.delay(1000).then(() => this.pollDepartures(iterations))
       }
     });
-
-    if (--iterations > 0 && !newData.complete) {
-      setTimeout(() => {
-        this.pollDepartures(iterations)
-      }, 1000);
-    }
   }
 
   render() {
     return (
       <div className="App">
-        <Header onSearchClick={this.handleSearchClick.bind(this)}/>
-        <MainSection currentSearch={this.state.search} departures={this.state.departures} />
+        <Header
+          search={this.state.search}
+          onDateChange={this.handleDateChange.bind(this)}
+          onSearchClick={this.handleSearchClick.bind(this)}/>
+        <MainSection
+          currentSearch={this.state.search}
+          departures={this.state.departures}
+          error={this.state.error}/>
         <Footer/>
       </div>
     );
