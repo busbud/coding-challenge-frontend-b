@@ -7,7 +7,7 @@ const Header = props => {
 
   return (
     <div className="Header navbar is-fixed-top is-transparent has-shadow">
-      <div className="container is-widescreen">
+      <div className="container">
 
         <div className="navbar-brand">
 
@@ -16,9 +16,9 @@ const Header = props => {
           </div>
 
           <button className="button navbar-burger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span/>
+            <span/>
+            <span/>
           </button>
         </div>
 
@@ -31,7 +31,6 @@ const Header = props => {
             <div className="navbar-item">
               <SearchForm
                 search={props.search}
-                onDateChange={props.onDateChange}
                 onSearchClick={props.onSearchClick}
               />
             </div>

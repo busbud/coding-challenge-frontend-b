@@ -4,12 +4,13 @@ import Flatpickr from 'react-flatpickr'
 import './SearchForm.css'
 import utils from "../utils/utils";
 
-const SearchForm = function(props) {
+class SearchForm extends React.Component {
 
-  const origin = utils.geohashToName(props.search.origin);
-  const destination = utils.geohashToName(props.search.destination);
+  date = this.props.search.date;
+  origin = utils.geohashToName(this.props.search.origin);
+  destination = utils.geohashToName(this.props.search.destination);
 
-  function cityInput(city, onChange) {
+  cityInput(city, onChange) {
     return (
       <div className="field-body is-small">
         <div className="field">
@@ -27,39 +28,45 @@ const SearchForm = function(props) {
     );
   }
 
-  const datePicker = (
+  datePicker = (
     <div className="control datepicker">
       <Flatpickr
-        className="input is-small" value={props.search.date}
-        onChange={props.onDateChange}
+        className="input is-small" value={this.date}
+        onChange={(newDate) => {
+          this.date = newDate[0]
+        }}
       />
     </div>
   );
 
-  const submitButton = (
+  submitButton = (
     <div className="control">
       <button
-        onClick={() => props.onSearchClick(props.search.origin, props.search.destination, props.search.date)}
+        onClick={() => {
+          this.props.onSearchClick(this.props.search.origin, this.props.search.destination, this.date)
+        }}
         className="button is-primary is-small">Search</button>
     </div>
   );
 
-  return (
-    <div className="SearchForm field is-horizontal">
-      <div className="field-label is-small">
-        <label className="label">From</label>
-      </div>
-      {cityInput(origin, props.onOriginChange)}
-      <div className="field-label is-small">
-        <label className="label">To</label>
-      </div>
-      {cityInput(destination, props.onDestinationChange)}
+  render() {
+    return (
+      <div className="SearchForm field is-horizontal">
+        <div className="field-label is-small">
+          <label className="label">From</label>
+        </div>
+        {this.cityInput(this.origin, this.props.onOriginChange)}
+        <div className="field-label is-small">
+          <label className="label">To</label>
+        </div>
+        {this.cityInput(this.destination, this.props.onDestinationChange)}
 
-      {datePicker}
+        {this.datePicker}
 
-      {submitButton}
-    </div>
-  );
+        {this.submitButton}
+      </div>
+    );
+  }
 };
 
 export default SearchForm;

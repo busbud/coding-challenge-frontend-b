@@ -8,16 +8,14 @@ function parseDeparture(rawDeparture, locations, operators) {
   // Get locations
   let originLocation = null;
   let destLocation = null;
-  locations.forEach(loc => {
+  locations.some(loc => {
     if (!originLocation && loc.id === rawDeparture.origin_location_id) {
       originLocation = loc;
     }
     else if (!destLocation && loc.id === rawDeparture.destination_location_id) {
       destLocation = loc;
     }
-    if (originLocation && destLocation) {
-      return;
-    }
+    return originLocation && destLocation;
   });
 
   return {
@@ -35,10 +33,6 @@ function parseDeparture(rawDeparture, locations, operators) {
 }
 
 // Returns a list of departures
-const parser = {
-  parse: function(data) {
-    return data.departures.map(dep => parseDeparture(dep, data.locations, data.operators))
-  }
+export default function parseDepartures(data) {
+  return data.departures.map(dep => parseDeparture(dep, data.locations, data.operators))
 };
-
-export default parser;

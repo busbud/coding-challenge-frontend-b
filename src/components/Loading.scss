@@ -1,0 +1,25 @@
+.Loading {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0 40px;
+
+  .icon {
+    animation: spinAround 500ms infinite linear;
+    border: 4px solid #606060;
+    border-radius: 50%;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    height: 3em;
+    width: 3em;
+  }
+}
+
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

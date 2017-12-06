@@ -8,6 +8,7 @@
     "cross-env": "^5.1.1",
     "dotenv": "^4.0.0",
     "flatpickr": "^4.1.4",
+    "moment": "^2.19.3",
     "node-sass-chokidar": "0.0.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

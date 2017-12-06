@@ -4,6 +4,8 @@
     color: #666;
     text-align: center;
     font-size: 1.1em; }
+  .MainSection .notification {
+    margin: 1.75em 0; }
   @media screen and (max-width: 1023px) {
     .MainSection {
       margin-left: 1em;

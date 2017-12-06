@@ -1,5 +1,6 @@
 html {
   background-color: #f8f8f8;
+  overflow-y: auto;
 }
 
 body {
@@ -13,5 +14,5 @@ body {
 }
 
 .container {
-  max-width: 1148px;
+  max-width: 960px;
 }

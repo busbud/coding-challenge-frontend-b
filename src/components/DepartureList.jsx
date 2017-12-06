@@ -17,10 +17,19 @@ const DepartureList = props => {
       />
     );
   });
-  return (
-    <div className="DepartureList">
-        {items}
+
+  const emptyList = (
+    <div className='notification'>
+      <p>No departures found</p>
     </div>
+  );
+
+  return (
+    items.length === 0 ? emptyList : (
+      <div className="DepartureList">
+        {items}
+      </div>
+    )
   );
 };
 

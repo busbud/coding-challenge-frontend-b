@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import fetcher from '../api/fetcher';
+import { initialFetch, poll } from '../api/service';
 import parser from "../api/parser";
 
 import Footer from "../components/Footer";
@@ -18,9 +18,9 @@ class App extends Component {
       search: {
         origin: "dr5reg",
         destination: "f25dvk",
-        date: new Date(Date.UTC(2018, 7, 1))
+        date: new Date(Date.UTC(2018, 10, 19))
       },
-      isComplete: false,
+      isLoading: false,
       departures: [],
       error: null
     }
@@ -30,9 +30,13 @@ class App extends Component {
     this.startDeparturesFetch();
   }
 
-  handleError(message, error) {
-    console.error(message, error);
-    this.setState({error: message});
+  handleApiError(err) {
+    const msg = `Error during api call: \n${err.message}`;
+    console.error(msg, err);
+    this.setState({
+      error: msg,
+      isLoading: false,
+    });
   };
 
   handleSearchClick(origin, destination, date) {
@@ -43,68 +47,64 @@ class App extends Component {
         date: date
       },
       departures: [],
-      isComplete: false
-    });
-    this.startDeparturesFetch();
-  }
-
-  handleDateChange(date) {
-    this.setState(prevState => {
-      return {search: Object.assign({}, prevState.search, {date: date[0]})};;
-    });
+      error: null,
+    }, () => this.startDeparturesFetch());
   }
 
   startDeparturesFetch() {
     const searchParams = this.state.search;
+    this.setState({ isLoading: true });
 
-    fetcher.initialFetch(
+    initialFetch(
       searchParams.origin, searchParams.destination, searchParams.date
     ).then(initialData => {
 
       console.info("initial fetch has completed.", initialData);
       this.setState({
         departures: parser.parse(initialData),
-        isComplete: initialData.complete
       });
 
-      return initialData.complete || this.pollDepartures(10);
-    }).catch(err => {
-      console.error("Error during departures fetch", err);
-    });
+      if(!initialData.complete) {
+        return this.pollDepartures(10);
+      }
+      this.setState({ isLoading: false });
+
+    }).catch(this.handleApiError.bind(this));
   }
 
   pollDepartures(iterations) {
     const searchParams = this.state.search;
 
-    return fetcher.poll(
+    return poll(
       searchParams.origin, searchParams.destination, searchParams.date, this.state.departures.length
     ).then(newData => {
 
       console.info(`poll #${iterations} has completed.`, newData);
       this.setState(prevState => {
         return {
-          departures: prevState.departures.concat(parser.parse(newData)),
-          isComplete: newData.complete
-        }
+          departures: prevState.departures.concat(parser.parse(newData)) ,
+        };
       });
 
       if (--iterations > 0 && !newData.complete) {
-        utils.delay(1000).then(() => this.pollDepartures(iterations))
+        return utils.delay(1000).then(() => this.pollDepartures(iterations));
       }
+      this.setState({ isLoading: false });
     });
   }
 
   render() {
+
     return (
       <div className="App">
         <Header
           search={this.state.search}
-          onDateChange={this.handleDateChange.bind(this)}
           onSearchClick={this.handleSearchClick.bind(this)}/>
         <MainSection
           currentSearch={this.state.search}
           departures={this.state.departures}
-          error={this.state.error}/>
+          error={this.state.error}
+          isLoading={this.state.isLoading}/>
         <Footer/>
       </div>
     );

@@ -9,6 +9,10 @@
     font-size: 1.1em;
   }
 
+  .notification {
+    margin: 1.75em 0;
+  }
+
   @include touch {
     margin-left: 1em;
     margin-right: 1em;
