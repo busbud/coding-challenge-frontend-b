@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
+import parseDepartures from '../api/parser';
 import { initialFetch, poll } from '../api/service';
-import { parseDepartures } from '../api/parser';
 import { delay } from '../utils/utils';
+import { translate } from 'react-i18next';
 
 class App extends Component {
 
@@ -14,12 +15,14 @@ class App extends Component {
       searchParams: {
         origin: 'dr5reg',
         destination: 'f25dvk',
-        date: new Date(Date.UTC(2018, 10, 19))
+        date: new Date(Date.UTC(2018, 8, 1))
       },
+      language: props.i18n.language,
       isLoading: false,
+      isMenuActive: false,
       departures: [],
       error: null
-    }
+    };
   }
 
   componentDidMount() {
@@ -27,13 +30,23 @@ class App extends Component {
   }
 
   handleApiError(err) {
-    const msg = `Error during api call: \n${err.message}`;
+    const { t } = this.props;
+    const msg = t('msg.error_api');
     console.error(msg, err);
     this.setState({
       error: msg,
       isLoading: false,
     });
   };
+
+  handleLanguageChange(lang_id) {
+    this.setState({ language: lang_id });
+    this.props.i18n.changeLanguage(lang_id);
+  }
+
+  handleMenuClick() {
+    this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }));
+  }
 
   handleSearchClick(origin, destination, date) {
     this.setState({
@@ -42,6 +55,7 @@ class App extends Component {
         destination: destination,
         date: date,
       },
+      isMenuActive: false,
       departures: [],
       error: null,
     }, () => this.startDeparturesFetch());
@@ -58,7 +72,7 @@ class App extends Component {
       });
 
       if (!initialData.complete) {
-        return this.pollDepartures(10);
+        return this.pollDepartures(5);
       }
       this.setState({ isLoading: false });
 
@@ -66,23 +80,23 @@ class App extends Component {
   }
 
   pollDepartures(iterations) {
-    let iterator = iterations;
+    let countdown = iterations;
 
     return poll({
       ...this.state.searchParams,
       index: this.state.departures.length,
     }).then(newData => {
 
-      console.info(`poll #${iterator} has completed.`, newData);
+      console.info(`poll #${countdown} has completed.`, newData);
       this.setState(prevState => {
         return {
           departures: prevState.departures.concat(parseDepartures(newData)) ,
         };
       });
 
-      iterator -= 1;
-      if (iterator > 0 && !newData.complete) {
-        return delay(1500).then(() => this.pollDepartures(iterator));
+      countdown -= 1;
+      if (countdown > 0 && !newData.complete) {
+        return delay(2000).then(() => this.pollDepartures(countdown));
       }
       this.setState({ isLoading: false });
     });
@@ -92,7 +106,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header
+          currentLang={this.state.language}
+          isMenuActive={this.state.isMenuActive}
           searchParams={this.state.searchParams}
+          onLanguageClick={this.handleLanguageChange.bind(this)}
+          onMenuClick={this.handleMenuClick.bind(this)}
           onSearchClick={this.handleSearchClick.bind(this)}
         />
         <MainSection
@@ -107,4 +125,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default translate()(App);

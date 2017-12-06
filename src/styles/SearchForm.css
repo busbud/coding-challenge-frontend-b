@@ -1,0 +1,23 @@
+@media screen and (min-width: 1024px) {
+  .SearchForm .field {
+    max-width: 120px; } }
+
+.SearchForm .field-label {
+  margin: 0 1em 0 1em; }
+  @media screen and (max-width: 768px) {
+    .SearchForm .field-label {
+      margin: 1em 1em 0 0; }
+      .SearchForm .field-label:first-of-type {
+        margin-top: 0; } }
+
+@media screen and (max-width: 768px) {
+  .SearchForm .datepicker {
+    margin: 1.5em 0; } }
+
+@media screen and (min-width: 769px), print {
+  .SearchForm .datepicker {
+    padding: 0 1.75em; } }
+
+@media screen and (min-width: 1024px) {
+  .SearchForm .datepicker {
+    max-width: 180px; } }

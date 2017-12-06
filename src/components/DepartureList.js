@@ -1,8 +1,13 @@
 import React from 'react';
 import DepartureItem from './DepartureItem';
-import './DepartureList.css';
+import '../styles/DepartureList.css';
+
+import { translate } from 'react-i18next';
+import i18n from '../i18n';
 
 const DepartureList = props => {
+
+  const { t } = props;
 
   const sortedDepartures = props.departures.sort((dep1, dep2) => (
     dep1.departureDate > dep2.departureDate ? 1 : 0
@@ -22,7 +27,7 @@ const DepartureList = props => {
 
   const emptyList = (
     <div className="notification">
-      <p>No departures found</p>
+      <p>{ t('msg.info_no_departures')}</p>
     </div>
   );
 
@@ -35,4 +40,5 @@ const DepartureList = props => {
   );
 };
 
-export default DepartureList;
+translate.setI18n(i18n);
+export default translate()(DepartureList);

@@ -1,6 +1,9 @@
 import React from 'react';
 import moment from 'moment';
-import './DepartureItem.css';
+import '../styles/DepartureItem.css';
+
+import { translate } from 'react-i18next';
+import i18n from '../i18n';
 
 const DepartureItem = ({
   origin,
@@ -8,7 +11,8 @@ const DepartureItem = ({
   destination,
   arrivalDate,
   price,
-  currency
+  currency,
+  t
 }) => {
 
   const depMoment = moment(departureDate);
@@ -38,10 +42,11 @@ const DepartureItem = ({
 
       <div className="flex-column price">
         <div className="price-value lighten-color">{`$${price} ${currency}`}</div>
-        <div className="price-info is-hidden-mobile">one-way | per person</div>
+        <div className="price-info is-hidden-mobile">{ `${t('labels.one_way')} | ${t('labels.per_person')}` }</div>
       </div>
     </div>
   );
 };
 
-export default DepartureItem;
+translate.setI18n(i18n);
+export default translate()(DepartureItem);

@@ -12,7 +12,7 @@ function get(url) {
   return axios(url, {
     method: 'GET',
     mode: 'development' === process.env.NODE_ENV ? 'no-cors' : '',
-    headers: headers,
+    headers,
   }).then(resp => resp.data);
 }
 

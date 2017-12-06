@@ -2,13 +2,17 @@ import React from 'react';
 import { geohashToName } from '../utils/utils';
 import DepartureList from './DepartureList';
 import Loading from './Loading';
-import './MainSection.css';
+import '../styles/MainSection.css';
+
+import { translate } from 'react-i18next';
+import i18n from '../i18n';
 
 const MainSection = ({
     currentSearch,
     departures,
     error,
     isLoading,
+    t,
   }) => {
 
   const originCity = geohashToName(currentSearch.origin);
@@ -18,7 +22,13 @@ const MainSection = ({
   return (
     <div className="MainSection section container is-paddingless">
       <div className="description is-hidden-mobile">
-        {`Departures from ${originCity} to ${destinationCity} on ${date}`}
+        {
+          t('p.departures', {
+            origin: originCity,
+            destination: destinationCity,
+            date: date,
+          })
+        }
       </div>
       <div className="description is-hidden-tablet">
         <p>{`${originCity} to ${destinationCity}`}</p>
@@ -38,4 +48,5 @@ const MainSection = ({
   );
 };
 
-export default MainSection;
+translate.setI18n(i18n);
+export default translate()(MainSection);

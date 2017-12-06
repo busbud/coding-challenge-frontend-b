@@ -26,10 +26,10 @@ function parseDeparture(rawDeparture, locations, operators) {
     operatorLogoUrl: operator.logo_url,
     origin: originLocation.name,
     destination: destLocation.name,
-  }
+  };
 }
 
 // Returns a list of departures
-export function parseDepartures(data) {
+export default function parseDepartures(data) {
   return data.departures.map(dep => parseDeparture(dep, data.locations, data.operators));
 }

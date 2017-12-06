@@ -1,32 +1,43 @@
 const VALID_CITIES = [
   {
     geohash: 'dr5reg',
-    cityName: 'New York'
+    cityName: 'New York',
   }, {
     geohash: 'f25dvk',
-    cityName: 'Montreal'
-  }
+    cityName: 'Montreal',
+  },
 ];
 
-export const parseTime = (rawDate) => {
-  const date = new Date(Date.parse(rawDate));
-  const hours = date.getHours().toString().padStart(2, '0');
-  const minutes = date.getMinutes().toString().padStart(2, '0');
-  return `${hours}:${minutes}`;
-};
+const LANGUAGES = [
+  {
+    lang_id: 'en',
+    name: 'English',
+  }, {
+    lang_id: 'fr',
+    name: 'Français',
+  }, {
+    lang_id: 'pt',
+    name: "Português"
+  },
+];
 
-export const delay = t => (
-  new Promise((resolve) => {
+export function delay(t) {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
     }, t);
-  })
-);
+  });
+}
 
-export const geohashToName = geohash => (
-  VALID_CITIES.find(city => city.geohash === geohash).cityName
-);
+export function geohashToName(geohash) {
+  return VALID_CITIES.find(city => city.geohash === geohash).cityName
+}
 
-export const cityNameToGeohash = cityName => (
-  VALID_CITIES.find(city => city.cityName === cityName).geohash
-);
+export function langIdToName(id) {
+  return LANGUAGES.find(lang => lang.lang_id === id).name
+}
+
+export function getAvailableLanguages() {
+  return LANGUAGES
+}
+
