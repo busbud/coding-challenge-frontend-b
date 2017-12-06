@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
-
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import MainSection from '../components/MainSection';
 import { initialFetch, poll } from '../api/service';
-import parser from "../api/parser";
-
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import MainSection from "../components/MainSection"
-
-import utils from '../utils/utils'
-
+import { parseDepartures } from '../api/parser';
+import { delay } from '../utils/utils';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      search: {
-        origin: "dr5reg",
-        destination: "f25dvk",
+      searchParams: {
+        origin: 'dr5reg',
+        destination: 'f25dvk',
         date: new Date(Date.UTC(2018, 10, 19))
       },
       isLoading: false,
@@ -41,10 +37,10 @@ class App extends Component {
 
   handleSearchClick(origin, destination, date) {
     this.setState({
-      search: {
+      searchParams: {
         origin: origin,
         destination: destination,
-        date: date
+        date: date,
       },
       departures: [],
       error: null,
@@ -52,19 +48,16 @@ class App extends Component {
   }
 
   startDeparturesFetch() {
-    const searchParams = this.state.search;
     this.setState({ isLoading: true });
 
-    initialFetch(
-      searchParams.origin, searchParams.destination, searchParams.date
-    ).then(initialData => {
+    initialFetch(this.state.searchParams).then((initialData) => {
 
-      console.info("initial fetch has completed.", initialData);
+      console.info('initial fetch has completed.', initialData);
       this.setState({
-        departures: parser.parse(initialData),
+        departures: parseDepartures(initialData),
       });
 
-      if(!initialData.complete) {
+      if (!initialData.complete) {
         return this.pollDepartures(10);
       }
       this.setState({ isLoading: false });
@@ -73,38 +66,41 @@ class App extends Component {
   }
 
   pollDepartures(iterations) {
-    const searchParams = this.state.search;
+    let iterator = iterations;
 
-    return poll(
-      searchParams.origin, searchParams.destination, searchParams.date, this.state.departures.length
-    ).then(newData => {
+    return poll({
+      ...this.state.searchParams,
+      index: this.state.departures.length,
+    }).then(newData => {
 
-      console.info(`poll #${iterations} has completed.`, newData);
+      console.info(`poll #${iterator} has completed.`, newData);
       this.setState(prevState => {
         return {
-          departures: prevState.departures.concat(parser.parse(newData)) ,
+          departures: prevState.departures.concat(parseDepartures(newData)) ,
         };
       });
 
-      if (--iterations > 0 && !newData.complete) {
-        return utils.delay(1000).then(() => this.pollDepartures(iterations));
+      iterator -= 1;
+      if (iterator > 0 && !newData.complete) {
+        return delay(1500).then(() => this.pollDepartures(iterator));
       }
       this.setState({ isLoading: false });
     });
   }
 
   render() {
-
     return (
       <div className="App">
         <Header
-          search={this.state.search}
-          onSearchClick={this.handleSearchClick.bind(this)}/>
+          searchParams={this.state.searchParams}
+          onSearchClick={this.handleSearchClick.bind(this)}
+        />
         <MainSection
-          currentSearch={this.state.search}
+          currentSearch={this.state.searchParams}
           departures={this.state.departures}
           error={this.state.error}
-          isLoading={this.state.isLoading}/>
+          isLoading={this.state.isLoading}
+        />
         <Footer/>
       </div>
     );

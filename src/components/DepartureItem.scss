@@ -1,5 +1,5 @@
-@import "font-awesome/scss/mixins";
-@import "bulma/sass/utilities/mixins";
+@import 'font-awesome/scss/mixins';
+@import 'bulma/sass/utilities/mixins';
 
 .DepartureItem {
   display: flex;
@@ -8,7 +8,8 @@
   justify-content: space-between;
 
   @include mobile {
-    font-size: 0.8em;
+    font-size: 0.85em;
+    padding: 1em 1em;
     flex-direction: column;
     text-align: center;
     .fa-chevron-right {
@@ -33,7 +34,15 @@
     @include mobile {
       flex-direction: row;
       align-items: baseline;
+      margin-bottom: 0.5em;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
     }
+  }
+
+  .time {
+    font-size: 0.9;
   }
 
   .sep {

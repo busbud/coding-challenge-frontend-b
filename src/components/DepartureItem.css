@@ -5,7 +5,8 @@
   justify-content: space-between; }
   @media screen and (max-width: 768px) {
     .DepartureItem {
-      font-size: 0.8em;
+      font-size: 0.85em;
+      padding: 1em 1em;
       flex-direction: column;
       text-align: center; }
       .DepartureItem .fa-chevron-right {
@@ -27,7 +28,12 @@
     @media screen and (max-width: 768px) {
       .DepartureItem .flex-column {
         flex-direction: row;
-        align-items: baseline; } }
+        align-items: baseline;
+        margin-bottom: 0.5em; }
+        .DepartureItem .flex-column:last-of-type {
+          margin-bottom: 0; } }
+  .DepartureItem .time {
+    font-size: 0.9; }
   .DepartureItem .sep {
     flex: 1 1 10%; }
   .DepartureItem .lighten-color {
