@@ -8,7 +8,11 @@ Main libraries and frameworks I used (directly):
 - [Bulma](https://bulma.io/): An open-source responsible CSS framework based on Flexbox;
 - [axios](https://github.com/axios/axios): For the API requests;
 - [react-i18next](https://react.i18next.com/): For internationalization;
-- And some others (moment.js, flatpickr, eslint, eslint-airbnb, etc).  
+- And some others (moment.js, flatpickr, eslint, eslint-airbnb, etc).
+
+### Known Issues
+- The "mobile" version does not present well in desktop versions of Safari
+- Small CSS problem in the menu content when in "tablet" version (width between mobile and desktop)
 
 ### Development
 A simple `npm install` can be used to prepare the project for development, and `npm start` to run.
