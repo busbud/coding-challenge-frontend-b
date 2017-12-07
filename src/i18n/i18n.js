@@ -11,7 +11,7 @@ i18n
             info_no_departures: 'No departures found.',
           },
           labels: {
-            lang: "Language",
+            lang: 'Language',
             search: 'Search',
             from: 'From',
             to: 'To',
@@ -19,10 +19,13 @@ i18n
             per_person: 'per person',
           },
           p: {
-            departures: 'Departures from {{origin}} to {{destination}} on {{- date}}',
-            footer: 'Made with <1></1> by <3>Daniel de Paula</3>'
-          }
-        }
+            departures: {
+              desktop: 'Departures from {{origin}} to {{destination}} on {{- date}} ',
+              mobile: 'From {{origin}} to {{destination}}',
+            },
+            footer: 'Made with <1></1> by <3>Daniel de Paula</3>',
+          },
+        },
       },
       fr: {
         translations: {
@@ -31,7 +34,7 @@ i18n
             info_no_departures: 'Aucun départ trouvé.',
           },
           labels: {
-            lang: "Langage",
+            lang: 'Langage',
             search: 'Rechercher',
             from: 'De',
             to: 'À',
@@ -39,10 +42,13 @@ i18n
             per_person: 'par personne',
           },
           p: {
-            departures: 'Départs de {{origin}} à {{destination}} le {{- date}}',
-            footer: 'Fait avec <1>love</1> par <3>Daniel de Paula</3>'
-          }
-        }
+            departures: {
+              desktop: 'Départs de {{origin}} à {{destination}} le {{date}}',
+              mobile: 'De {{origin}} à {{destination}}',
+            },
+            footer: 'Fait avec <1></1> par <3>Daniel de Paula</3>',
+          },
+        },
       },
       pt: {
         translations: {
@@ -51,7 +57,7 @@ i18n
             info_no_departures: 'Nenhum serviço foi encontrado.',
           },
           labels: {
-            lang: "Idioma",
+            lang: 'Idioma',
             search: 'Buscar',
             from: 'De',
             to: 'Para',
@@ -59,10 +65,13 @@ i18n
             per_person: 'por pessoa',
           },
           p: {
-            departures: 'Serviços saindo de {{origin}} para {{destination}} em {{- date}}',
-            footer: 'Feito com <1>love</1> por <3>Daniel de Paula</3>'
-          }
-        }
+            departures: {
+              desktop: 'Serviços saindo de {{origin}} para {{destination}} no dia {{date}}',
+              mobile: 'De {{origin}} para {{destination}}',
+            },
+            footer: 'Feito com <1></1> por <3>Daniel de Paula</3>',
+          },
+        },
       },
     },
     fallbackLng: 'en',
@@ -71,8 +80,8 @@ i18n
     defaultNS: 'translations',
 
     react: {
-      wait: true
-    }
+      wait: true,
+    },
   });
 
 export default i18n;

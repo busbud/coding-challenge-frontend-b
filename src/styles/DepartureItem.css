@@ -18,6 +18,8 @@
     flex: 1 1 30%;
     display: flex;
     flex-direction: column; }
+    .DepartureItem .flex-column .fa {
+      text-align: center; }
     @media screen and (min-width: 769px), print {
       .DepartureItem .flex-column {
         margin: 0 1em; }
@@ -33,7 +35,7 @@
         .DepartureItem .flex-column:last-of-type {
           margin-bottom: 0; } }
   .DepartureItem .time {
-    font-size: 0.9; }
+    font-size: 0.9em; }
   .DepartureItem .sep {
     flex: 1 1 10%; }
   .DepartureItem .lighten-color {

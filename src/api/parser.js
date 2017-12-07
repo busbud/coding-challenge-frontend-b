@@ -1,5 +1,4 @@
 function parseDeparture(rawDeparture, locations, operators) {
-
   // Get operator
   const operator = operators.find(op => op.id === rawDeparture.operator_id);
 

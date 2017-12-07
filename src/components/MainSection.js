@@ -1,44 +1,59 @@
 import React from 'react';
-import { geohashToName } from '../utils/utils';
+import moment from 'moment';
+import { translate } from 'react-i18next';
+import i18n from '../i18n/i18n';
 import DepartureList from './DepartureList';
 import Loading from './Loading';
+import { geohashToName } from '../utils/utils';
 import '../styles/MainSection.css';
 
-import { translate } from 'react-i18next';
-import i18n from '../i18n';
-
 const MainSection = ({
-    currentSearch,
-    departures,
-    error,
-    isLoading,
-    t,
-  }) => {
-
+  currentLang,
+  currentSearch,
+  departures,
+  error,
+  isLoading,
+  t,
+}) => {
   const originCity = geohashToName(currentSearch.origin);
   const destinationCity = geohashToName(currentSearch.destination);
-  const date = currentSearch.date.toLocaleDateString('fr');
-
+  const { date } = currentSearch;
   return (
     <div className="MainSection section container is-paddingless">
+      {/* Desktop Description */}
       <div className="description is-hidden-mobile">
-        {
-          t('p.departures', {
-            origin: originCity,
-            destination: destinationCity,
-            date: date,
-          })
-        }
+        <p>
+          {
+            t('p.departures.desktop', {
+              origin: originCity,
+              destination: destinationCity,
+              date: moment(date).locale(currentLang).format('LL'),
+            })
+          }
+        </p>
       </div>
+
+      {/* Mobile Description */}
       <div className="description is-hidden-tablet">
-        <p>{`${originCity} to ${destinationCity}`}</p>
-        <p>{`${date}`}</p>
+        <p>
+          {
+            t('p.departures.mobile', {
+              origin: originCity,
+              destination: destinationCity,
+            })
+          }
+        </p>
+        <p>{moment(date).locale(currentLang).format('LL')}</p>
       </div>
+
+      {/* Loading Icon */}
       { isLoading ? <Loading /> : (
         <div>
-          <DepartureList departures={ departures }/>
+          <DepartureList departures={departures} />
         </div>
       )}
+
+      {/* Error Message */}
       { error && (
         <div className="notification is-danger">
           <p>{ error }</p>

@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
+
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 import parseDepartures from '../api/parser';
 import { initialFetch, poll } from '../api/service';
 import { delay } from '../utils/utils';
-import { translate } from 'react-i18next';
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       searchParams: {
         origin: 'dr5reg',
         destination: 'f25dvk',
-        date: new Date(Date.UTC(2018, 8, 1))
+        date: new Date(Date.UTC(2018, 7, 2)),
       },
       language: props.i18n.language,
       isLoading: false,
       isMenuActive: false,
       departures: [],
-      error: null
+      error: null,
     };
   }
 
@@ -29,7 +29,7 @@ class App extends Component {
     this.startDeparturesFetch();
   }
 
-  handleApiError(err) {
+  handleApiError = (err) => {
     const { t } = this.props;
     const msg = t('msg.error_api');
     console.error(msg, err);
@@ -39,34 +39,33 @@ class App extends Component {
     });
   };
 
-  handleLanguageChange(lang_id) {
-    this.setState({ language: lang_id });
-    this.props.i18n.changeLanguage(lang_id);
-  }
-
-  handleMenuClick() {
-    this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }));
-  }
-
-  handleSearchClick(origin, destination, date) {
+  handleLanguageChange = (langId) => {
+    this.props.i18n.changeLanguage(langId);
     this.setState({
-      searchParams: {
-        origin: origin,
-        destination: destination,
-        date: date,
-      },
+      language: langId,
+      isMenuActive: false,
+    });
+  };
+
+  handleMenuClick = () => (
+    this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }))
+  );
+
+  handleSearchClick = (origin, destination, date) => {
+    this.setState({
+      searchParams: { origin, destination, date },
       isMenuActive: false,
       departures: [],
       error: null,
     }, () => this.startDeparturesFetch());
-  }
+  };
 
   startDeparturesFetch() {
     this.setState({ isLoading: true });
 
     initialFetch(this.state.searchParams).then((initialData) => {
-
       console.info('initial fetch has completed.', initialData);
+
       this.setState({
         departures: parseDepartures(initialData),
       });
@@ -74,9 +73,9 @@ class App extends Component {
       if (!initialData.complete) {
         return this.pollDepartures(5);
       }
-      this.setState({ isLoading: false });
 
-    }).catch(this.handleApiError.bind(this));
+      return this.setState({ isLoading: false });
+    }).catch(this.handleApiError);
   }
 
   pollDepartures(iterations) {
@@ -85,20 +84,17 @@ class App extends Component {
     return poll({
       ...this.state.searchParams,
       index: this.state.departures.length,
-    }).then(newData => {
-
+    }).then((newData) => {
       console.info(`poll #${countdown} has completed.`, newData);
-      this.setState(prevState => {
-        return {
-          departures: prevState.departures.concat(parseDepartures(newData)) ,
-        };
+      this.setState({
+        departures: this.state.departures.concat(parseDepartures(newData)),
       });
 
       countdown -= 1;
       if (countdown > 0 && !newData.complete) {
         return delay(2000).then(() => this.pollDepartures(countdown));
       }
-      this.setState({ isLoading: false });
+      return this.setState({ isLoading: false });
     });
   }
 
@@ -109,17 +105,18 @@ class App extends Component {
           currentLang={this.state.language}
           isMenuActive={this.state.isMenuActive}
           searchParams={this.state.searchParams}
-          onLanguageClick={this.handleLanguageChange.bind(this)}
-          onMenuClick={this.handleMenuClick.bind(this)}
-          onSearchClick={this.handleSearchClick.bind(this)}
+          onLanguageClick={this.handleLanguageChange}
+          onMenuClick={this.handleMenuClick}
+          onSearchClick={this.handleSearchClick}
         />
         <MainSection
+          currentLang={this.state.language}
           currentSearch={this.state.searchParams}
           departures={this.state.departures}
           error={this.state.error}
           isLoading={this.state.isLoading}
         />
-        <Footer/>
+        <Footer />
       </div>
     );
   }

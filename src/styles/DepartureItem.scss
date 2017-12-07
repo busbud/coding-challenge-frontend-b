@@ -21,6 +21,11 @@
     flex: 1 1 30%;
     display: flex;
     flex-direction: column;
+
+    .fa {
+      text-align: center;
+    }
+
     @include tablet {
       margin: 0 1em;
       &:first-of-type {
@@ -42,7 +47,7 @@
   }
 
   .time {
-    font-size: 0.9;
+    font-size: 0.9em;
   }
 
   .sep {

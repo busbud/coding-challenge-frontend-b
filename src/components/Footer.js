@@ -1,8 +1,8 @@
 import React from 'react';
-import '../styles/Footer.css';
-
 import { translate, Trans } from 'react-i18next';
-import i18n from '../i18n';
+import i18n from '../i18n/i18n';
+
+import '../styles/Footer.css';
 
 const Footer = () => (
   <footer className="Footer">
@@ -15,4 +15,4 @@ const Footer = () => (
 );
 
 translate.setI18n(i18n);
-export default translate()(Footer)  ;
+export default translate()(Footer);

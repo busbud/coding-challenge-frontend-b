@@ -1,3 +1,14 @@
 {
-  "extends": "airbnb"
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "no-console": "off",
+    "react/jsx-filename-extension": "off",
+    "jsx-a11y/label-has-for": "off",
+    "react/prop-types": "skipUndeclared",
+    "object-curly-newline": ["error", {
+      "minProperties": 5,
+      "consistent": true
+    }]
+  }
 }
