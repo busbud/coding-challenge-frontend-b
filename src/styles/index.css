@@ -1,0 +1,14 @@
+html {
+  background-color: #f8f8f8;
+  overflow-y: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif; }
+
+.button {
+  font-family: 'Lato', sans-serif; }
+
+.container {
+  max-width: 960px; }

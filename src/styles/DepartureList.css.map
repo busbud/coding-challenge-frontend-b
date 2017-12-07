@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,cAAe;EACb,OAAO,EAAE,QAAQ",
+"sources": ["DepartureList.scss"],
+"names": [],
+"file": "DepartureList.css"
+}

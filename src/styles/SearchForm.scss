@@ -1,0 +1,32 @@
+@import 'bulma/sass/utilities/mixins';
+
+.SearchForm {
+
+  .field {
+    @include desktop {
+      max-width: 120px;
+    }
+  }
+
+  .field-label {
+    margin: 0 1em 0 1em;
+    @include mobile {
+      margin: 1em 1em 0 0;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+  }
+  .datepicker {
+    @include mobile {
+      margin: 1.5em 0;
+    }
+    @include tablet {
+      padding: 0 1.75em
+    }
+    @include desktop {
+      max-width: 180px;
+    }
+  }
+}

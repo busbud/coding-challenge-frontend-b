@@ -1,0 +1,37 @@
+{
+  "name": "busbud-challenge",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bulma": "^0.6.1",
+    "cross-env": "^5.1.1",
+    "dotenv": "^4.0.0",
+    "flatpickr": "^4.1.4",
+    "i18next": "^10.2.1",
+    "i18next-browser-languagedetector": "^2.1.0",
+    "moment": "^2.19.3",
+    "node-sass-chokidar": "0.0.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-flatpickr": "^3.6.3",
+    "react-i18next": "^7.1.1",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "cross-env react-scripts start",
+    "build": "react-scripts build",
+    "test": "cross-env react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "eslint": "^4.12.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1"
+  }
+}
