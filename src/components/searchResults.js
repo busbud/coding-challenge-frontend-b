@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Col, Row } from 'reactstrap';
 
 import { getDepartures, clearDepartures } from '../modules/departures';
 import Departure from './departure';
@@ -22,6 +23,7 @@ class SearchResults extends React.Component {
     if (!this.state.date || !moment(this.state.date).isAfter(new Date())) {
       return;
     }
+
     let fetchAction = getDepartures('dr5reg', 'f25dvk', this.state.date, {
       lang : this.state.lang,
       currency : 'CAD'
@@ -87,15 +89,17 @@ class SearchResults extends React.Component {
     });
 
     return (
-      <div className="searchResults">
-        {this.props.departures.complete ? '' : 'Loading...'}
+      <Col className="searchResults" xs={{size:12}} lg={{size:8,offset:2}}>
+        {this.props.departures.complete ? '' : (
+          <div className="text-center mb-3">Loading...</div>
+        )}
         {results.map(([index, departure]) => {
           departure.origin_location = this.getLocation(departure.origin_location_id);
           departure.destination_location = this.getLocation(departure.destination_location_id);
           departure.operator = this.getOperator(departure.operator_id);
           return <Departure key={index} {...departure} />;
         })}
-      </div>
+      </Col>
     );
   }
 };

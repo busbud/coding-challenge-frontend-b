@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { Form, Input, Row, Col } from 'reactstrap';
+import { Trans, translate } from 'react-i18next';
 
 import { setDeparturesQuery } from '../modules/departures';
 
@@ -38,18 +39,23 @@ class SearchForm extends React.Component {
 
   render () {
     let dateString = moment(this.state.date).format('dddd, MMM Do');
+    const { t } = this.props;
     return (
-      <Row>
-        <Col>
-          <p className="search-form-date-name">{this.state.date ? dateString : ''}</p>
-          <p className="search-form-route-name">New York to Montreal</p>
-        </Col>
-        <Form inline className="search-form px-3 py-3 mb-3">
-          <Input type="text" value="New York" name="from" readOnly title="Leaving from" />
-          <Input type="text" value="Montreal" name="to" readOnly title="Going to" />
-          <Input type="date" name="date" value={this.state.date} onChange={this.onChanged} title="Departure date" />
+      <div>
+        <Row className="details-row">
+          <Col xs={{size:12}}>
+            <p className="search-form-date-name mb-1 mt-2">{this.state.date ? dateString : ''}</p>
+            <p className="search-form-route-name">{t('fromTo')}</p>
+          </Col>
+        </Row>
+        <Form inline className="row search-form py-3 mb-3">
+          <Col xs={{size:12}}>
+            <Input type="text" value="New York" name="from" readOnly title="Leaving from" />
+            <Input type="text" value="Montreal" name="to" readOnly title="Going to" />
+            <Input id="datepicker" type="date" name="date" value={this.state.date} onChange={this.onChanged} title="Departure date" />
+          </Col>
         </Form>
-      </Row>
+      </div>
     );
   }
 }
@@ -58,4 +64,4 @@ const mapStateToProps = state =>({
   departures : state.departures
 });
 
-export default connect(mapStateToProps)(SearchForm);
+export default connect(mapStateToProps)(translate('translations')(SearchForm));

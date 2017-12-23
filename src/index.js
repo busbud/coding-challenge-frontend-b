@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
+import './i18n';
 import store, { history } from './store';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
