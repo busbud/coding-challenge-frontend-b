@@ -81,13 +81,15 @@ class SearchResults extends React.Component {
 
   render () {
     let results = this.props.departures.results;
-
-    console.log(results);
+    results = Object.entries(results);
+    results.sort(([,a], [,b]) => {
+      return  (new Date(a.departure_time)).getTime() -  (new Date(b.departure_time)).getTime();
+    });
 
     return (
       <div className="searchResults">
         {this.props.departures.complete ? '' : 'Loading...'}
-        {Object.entries(results).map(([index, departure]) => {
+        {results.map(([index, departure]) => {
           departure.origin_location = this.getLocation(departure.origin_location_id);
           departure.destination_location = this.getLocation(departure.destination_location_id);
           departure.operator = this.getOperator(departure.operator_id);

@@ -1,21 +1,22 @@
 import React from 'react';
-
-import './App.css';
+import { Container, Col } from 'reactstrap';
 
 import LangSelect from './components/langSelect';
 import SearchResults from './components/searchResults';
 import SearchForm from './components/searchForm';
+import DayNav from './components/dayNav';
 
 class App extends React.Component {
   render () {
     return (
-      <div className="App">
+      <Container fluid className="app">
         <SearchForm {...this.props} />
         <SearchResults {...this.props} />
-        <footer className="App-footer">
+        <DayNav {...this.props} />
+        <footer className="app-footer">
           <LangSelect {...this.props} />
         </footer>
-      </div>
+      </Container>
     );
   }
 }

@@ -1,4 +1,38 @@
-.App {
+body {
+  background-color: #fafaf5;
+  color: #4f285a;
+}
+
+.search-form {
+  background-color: #4f285a;
+}
+
+.search-form-date-name,
+.search-form-route-name {
+  display:block;
+}
+
+.search-form-date-name {
+  font-size:1.4rem;
+  font-weight:bold;
+}
+
+.search-form-route-name {
+  font-size:1.2rem;
+}
+
+.departure-card .times .departure-time::after {
+  content: ' > ';
+}
+
+.departure-card
+
+.next-day-indicator {
+  font-weight:bold;
+  position: relative;
+  top:-0.5em;
+}
+/*.App {
   text-align: center;
 }
 
@@ -25,4 +59,4 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+}*/

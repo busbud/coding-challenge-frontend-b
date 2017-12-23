@@ -4,15 +4,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
-import store, { history } from './store';
 
-import './index.css';
+import store, { history } from './store';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-// store.subscribe(() => {
-//   console.log(store.getState());
-// });
+import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
 
 ReactDOM.render(
   <Provider store={store}>
