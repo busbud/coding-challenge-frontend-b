@@ -15,5 +15,23 @@
     "build": "react-scripts build",
     "test": "xo && react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "xo": {
+    "plugin": "react",
+    "extend": "react-app",
+    "envs": [
+      "browser",
+      "jest",
+      "worker"
+    ],
+    "rules": {
+      "import/no-unassigned-import": "off",
+      "unicorn/filename-case": [
+        "error",
+        {
+          "case": "camelCase"
+        }
+      ]
+    }
   }
 }
