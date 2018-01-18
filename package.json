@@ -7,12 +7,13 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
-    "react-scripts": "1.1.0"
+    "react-scripts": "1.1.0",
+    "xo": "^0.18.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "xo && react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
 }
