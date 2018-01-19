@@ -7,14 +7,24 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "babel-jest": "^22.1.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "jest-cli": "^22.1.3",
     "react-scripts": "1.1.0",
     "xo": "^0.18.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "xo && react-scripts test --env=jsdom",
+    "test": "xo && jest",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^.+\\.(css|svg)$": "<rootDir>/jestStub.js"
+    }
   },
   "xo": {
     "plugin": "react",
