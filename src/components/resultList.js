@@ -1,25 +1,30 @@
 import React from 'react'
 
+import {formatPrice, formatTime, getDayDiff} from '../utils/formatters'
+
 const ResultList = ({departures}) => (
 	<ul>
 		{/* eslint-disable camelcase */departures.map(({
-			arrival_time,
 			busbud_departure_id,
+			arrival_time,
 			departure_time,
 			destination_location,
 			origin_location,
 			prices
-		}) => (
-			<li key={busbud_departure_id}>
-				{busbud_departure_id}
-				<div>departureTime: {departure_time}</div>
-				<div>arrivalTime: {arrival_time}</div>
-				<div>originLocation: {origin_location.name}</div>
-				<div>destinationLocation: {destination_location.name}</div>
-				the location name
-				<div>price: {prices.total}</div>
+		}) => {
+			const dayDiff = getDayDiff(departure_time, arrival_time)
+			return (
+				<li key={busbud_departure_id}>
+					{busbud_departure_id}
+					<div>departureTime: {formatTime(departure_time)}</div>
+					<div>arrivalTime: {formatTime(arrival_time)} {dayDiff > 0 && <span>+{dayDiff}</span>}</div>
+					<div>originLocation: {origin_location.name}</div>
+					<div>destinationLocation: {destination_location.name}</div>
+					the location name
+					<div>price: {formatPrice(prices.total)}</div>
 				</li>
-		))/* eslint-enable camelcase */}
+			)
+		})/* eslint-enable camelcase */}
 	</ul>
 )
 

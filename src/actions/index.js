@@ -1,5 +1,5 @@
 import keyBy from 'lodash/keyBy'
-import geocodes from '../geocodes'
+import geocodes from '../utils/geocodes'
 
 export const REQUEST_DEPARTURES = 'REQUEST_DEPARTURES'
 export const UPDATE_INPUT = 'UPDATE_INPUT'

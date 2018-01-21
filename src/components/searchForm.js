@@ -12,7 +12,7 @@ const SearchForm = ({from, to, date, onChange}) => (
 		</label>
 		<label>
 			When
-			<input type="text" value={date} name="dateInput" onChange={e => onChange('date', e.target.value)}/>
+			<input type="date" value={new Date(date).toLocaleDateString('en-CA')} name="dateInput" onChange={e => onChange('date', e.target.value)}/>
 		</label>
 	</form>
 )
