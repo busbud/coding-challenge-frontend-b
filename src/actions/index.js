@@ -1,5 +1,4 @@
 import geocodes from '../geocodes'
-import secretBusbudToken from '../busbudToken'
 
 export const REQUEST_DEPARTURES = 'REQUEST_DEPARTURES'
 export const UPDATE_INPUT = 'UPDATE_INPUT'
@@ -35,12 +34,11 @@ export const updateSearch = (field, value) => ({
 	// TODO: also handle errors
 export const fetchDepartures = (from, to, date) => dispatch => {
 	dispatch(requestDepartures())
-
 	return fetch(`https://napi.busbud.com/x-departures/${geocodes[from]}/${geocodes[to]}/${date.toLocaleDateString('en-CA')}`, {
 		method: 'GET',
 		headers: new Headers({
 			Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-			'X-Busbud-Token': secretBusbudToken
+			'X-Busbud-Token': process.env.REACT_APP_BUSBUD_TOKEN
 		})
 	})
 		.then(response => response.json())
