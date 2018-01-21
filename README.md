@@ -10,6 +10,6 @@ It will be hot this summer in Montreal with the [Osheaga festival](http://www.os
 
 ## Redux
 
-Redux was not needed in such a simple project (see [_You Might Not Need Redux_](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367).
+Redux was not needed in such a simple project (see [_You Might Not Need Redux_](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)).
 However, its implementation is interesting and might be necessary for the eventual next steps of this application.
 In order to use best practices, its implementation is similar than the one you can find in Redux documentation [Async](https://github.com/reactjs/redux/tree/master/examples/async) example.
