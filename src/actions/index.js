@@ -47,7 +47,6 @@ export const updateSearch = (field, value) => ({
  * @param date {Date}
  * @returns {function(*)}
  */
-	// TODO: also handle errors
 export const fetchDepartures = (from, to, date) => dispatch => {
 	dispatch(requestDepartures())
 	return fetch(`https://napi.busbud.com/x-departures/${geocodes[from]}/${geocodes[to]}/${date.toLocaleDateString('en-CA')}`, {
