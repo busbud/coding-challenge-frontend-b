@@ -5,6 +5,6 @@ describe('dayDiff', () => {
 		expect(getDayDiff('2018-01-19T15:00:00', '2018-01-19T23:00:00')).toBe(0)
 	})
 	it('should work with sunday', () => {
-		expect(getDayDiff('2018-01-21T15:00:00', '2018-01-22T15:00:00')).toBe(1)
+		expect(getDayDiff('2018-01-20T15:00:00', '2018-01-22T15:00:00')).toBe(2)
 	})
 })
