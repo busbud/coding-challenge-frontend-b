@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SearchForm = ({from, to, date, onChange}) => (
+const SearchForm = ({from, to, date, onChange, onSubmit}) => (
 	<form>
 		<label>
 			From
@@ -12,8 +12,9 @@ const SearchForm = ({from, to, date, onChange}) => (
 		</label>
 		<label>
 			When
-			<input type="date" value={new Date(date).toLocaleDateString('en-CA')} name="dateInput" onChange={e => onChange('date', e.target.value)}/>
+			<input type="date" value={new Date(date).toLocaleDateString('en-CA')} name="dateInput" onChange={e => onChange('date', new Date(e.target.value))}/>
 		</label>
+		<input type="submit" onClick={onSubmit} value="search"/>
 	</form>
 )
 

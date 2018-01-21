@@ -15,11 +15,6 @@ class App extends Component {
 		date: PropTypes.instanceOf(Date)
 	}
 
-	componentDidMount() {
-		const {dispatch, from, to, date} = this.props
-		dispatch(fetchDepartures(from, to, date))
-	}
-
 	componentWillReceiveProps(nextProps) {
 		const {dispatch, from, to, date} = nextProps
 		if (from !== this.props.from && to !== this.props.to && date !== this.props.date) {
@@ -31,6 +26,12 @@ class App extends Component {
 		this.props.dispatch(updateSearch(field, value))
 	}
 
+	handleSearchClick(e) {
+		e.preventDefault()
+		const {dispatch, from, to, date} = this.props
+		dispatch(fetchDepartures(from, to, date))
+	}
+
 	render() {
 		const {from, to, date, departures, isFetching} = this.props
 		const isEmpty = departures.length === 0
@@ -40,7 +41,8 @@ class App extends Component {
 					from={from}
 					to={to}
 					date={date}
-					onChange={this.handleChange}
+					onChange={(field, value) => this.handleChange(field, value)}
+					onSubmit={e => this.handleSearchClick(e)}
 				/>
 				{isFetching &&
 					'loading...'
