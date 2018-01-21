@@ -1,10 +1,10 @@
 import {
-	REQUEST_DEPARTURES, RECEIVE_DEPARTURES, UPDATE_INPUT
+	REQUEST_DEPARTURES, RECEIVE_DEPARTURES, RECEIVE_ERROR, UPDATE_SEARCH
 } from '../actions'
 
 const reducer = (state = {departures: [], from: 'New York', to: 'Montreal', date: new Date(2018, 7, 2)}, action) => {
 	switch (action.type) {
-		case UPDATE_INPUT:
+		case UPDATE_SEARCH:
 			return {
 				...state,
 				[action.field]: action.value
@@ -12,7 +12,15 @@ const reducer = (state = {departures: [], from: 'New York', to: 'Montreal', date
 		case REQUEST_DEPARTURES:
 			return {
 				...state,
-				isFetching: true
+				isFetching: true,
+				isError: false
+			}
+		case RECEIVE_ERROR:
+			return {
+				...state,
+				isFetching: false,
+				isError: true,
+				error: action.reason
 			}
 		case RECEIVE_DEPARTURES:
 			return {

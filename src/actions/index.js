@@ -1,18 +1,22 @@
 import keyBy from 'lodash/keyBy'
 import geocodes from '../utils/geocodes'
+import timeout from '../utils/timeout'
 
 export const REQUEST_DEPARTURES = 'REQUEST_DEPARTURES'
-export const UPDATE_INPUT = 'UPDATE_INPUT'
-export const POLL_DEPARTURES = 'POLL_DEPARTURES'
-export const FETCH_DEPARTURES = 'FETCH_DEPARTURES'
+export const RECEIVE_ERROR = 'RECEIVE_ERROR'
 export const RECEIVE_DEPARTURES = 'RECEIVE_DEPARTURES'
+export const UPDATE_SEARCH = 'UPDATE_SEARCH'
 
-// TODO: will arguments be needed ?
-export const requestDepartures = (from, to, date) => ({
-	type: REQUEST_DEPARTURES
+/**
+ * @param polling {boolean} not used yet
+ * @returns {{type: string, polling: boolean}}
+ */
+export const requestDepartures = polling => ({
+	type: REQUEST_DEPARTURES,
+	polling
 })
 
-export const receiveDepartures = json => {
+const receiveDepartures = json => {
 	const operators = keyBy(json.operators, 'id')
 	const locations = keyBy(json.locations, 'id')
 
@@ -33,9 +37,14 @@ export const receiveDepartures = json => {
 	}
 }
 
+const receiveError = reason => ({
+	type: RECEIVE_ERROR,
+	reason
+})
+
 // TODO: maybe split into update{from, to, date}
 export const updateSearch = (field, value) => ({
-	type: UPDATE_INPUT,
+	type: UPDATE_SEARCH,
 	field,
 	value
 })
@@ -45,17 +54,34 @@ export const updateSearch = (field, value) => ({
  * @param from {string}
  * @param to   {string}
  * @param date {Date}
+ * @param poll {boolean} used to recurse until request is done
  * @returns {function(*)}
  */
-export const fetchDepartures = (from, to, date) => dispatch => {
+export const fetchDepartures = (from, to, date, poll = false) => async dispatch => {
 	dispatch(requestDepartures())
-	return fetch(`https://napi.busbud.com/x-departures/${geocodes[from]}/${geocodes[to]}/${date.toLocaleDateString('en-CA')}`, {
+	let url = `https://napi.busbud.com/x-departures/${geocodes[from]}/${geocodes[to]}/${date.toLocaleDateString('en-CA')}`
+	if (poll) {
+		url += '/poll'
+	}
+	const fetchParams = {
 		method: 'GET',
 		headers: new Headers({
 			Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
 			'X-Busbud-Token': process.env.REACT_APP_BUSBUD_TOKEN
 		})
-	})
-		.then(response => response.json())
-		.then(json => dispatch(receiveDepartures(json)))
+	}
+
+	const response = await fetch(url, fetchParams)
+	const json = await response.json()
+
+	if (!response.ok) {
+		return dispatch(receiveError(json.error.details))
+	}
+
+	if (json.complete === false) {
+		await timeout(2000)
+		return dispatch(fetchDepartures(from, to, date, true))
+	}
+
+	return dispatch(receiveDepartures(json))
 }

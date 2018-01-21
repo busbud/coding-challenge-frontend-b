@@ -12,6 +12,9 @@ class App extends Component {
 		departures: PropTypes.array.isRequired,
 		from: PropTypes.string.isRequired,
 		to: PropTypes.string.isRequired,
+		isFetching: PropTypes.bool,
+		isError: PropTypes.bool,
+		error: PropTypes.string,
 		date: PropTypes.instanceOf(Date)
 	}
 
@@ -33,7 +36,7 @@ class App extends Component {
 	}
 
 	render() {
-		const {from, to, date, departures, isFetching} = this.props
+		const {from, to, date, departures, isFetching, isError, error} = this.props
 		const isEmpty = departures.length === 0
 		return (
 			<div>
@@ -44,27 +47,25 @@ class App extends Component {
 					onChange={(field, value) => this.handleChange(field, value)}
 					onSubmit={e => this.handleSearchClick(e)}
 				/>
-				{isFetching &&
-					'loading...'
-				}
-				{/* TODO: replace static false */}
-				{!isEmpty &&
-					<ResultList departures={departures}/>
-				}
+				{isFetching && 'loading...'}
+				{isError && error}
+				{!(isError || isEmpty) && <ResultList departures={departures}/>}
 			</div>
 		)
 	}
 }
 
 const mapStateToProps = state => {
-	const {departures, from, to, date, isFetching} = state
+	const {departures, from, to, date, isFetching, isError, error} = state
 
 	return {
 		departures,
 		from,
 		to,
 		date,
-		isFetching
+		isFetching,
+		isError,
+		error
 	}
 }
 
