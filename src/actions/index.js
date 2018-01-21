@@ -16,7 +16,7 @@ export const requestDepartures = polling => ({
 	polling
 })
 
-const receiveDepartures = json => {
+const receiveDepartures = (json, isPartial = false) => {
 	const operators = keyBy(json.operators, 'id')
 	const locations = keyBy(json.locations, 'id')
 
@@ -27,13 +27,13 @@ const receiveDepartures = json => {
 		// eslint-disable-next-line camelcase
 		origin_location: locations[departure.origin_location_id],
 		operator: operators[departure.operator_id]
-
 	}))
 
 	return {
 		type: RECEIVE_DEPARTURES,
 		departures,
-		receivedAt: Date.now()
+		receivedAt: Date.now(),
+		isPartial
 	}
 }
 
@@ -79,6 +79,7 @@ export const fetchDepartures = (from, to, date, poll = false) => async dispatch 
 	}
 
 	if (json.complete === false) {
+		dispatch(receiveDepartures(json, true))
 		await timeout(2000)
 		return dispatch(fetchDepartures(from, to, date, true))
 	}

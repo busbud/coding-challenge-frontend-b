@@ -25,7 +25,7 @@ const reducer = (state = {departures: [], from: 'New York', to: 'Montreal', date
 		case RECEIVE_DEPARTURES:
 			return {
 				...state,
-				isFetching: false,
+				isFetching: action.isPartial,
 				lastUpdate: action.receivedAt,
 				departures: action.departures
 			}
