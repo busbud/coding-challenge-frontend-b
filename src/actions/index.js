@@ -1,3 +1,4 @@
+import keyBy from 'lodash/keyBy'
 import geocodes from '../geocodes'
 
 export const REQUEST_DEPARTURES = 'REQUEST_DEPARTURES'
@@ -11,11 +12,26 @@ export const requestDepartures = (from, to, date) => ({
 	type: REQUEST_DEPARTURES
 })
 
-export const receiveDepartures = json => ({
-	type: RECEIVE_DEPARTURES,
-	departures: json.departures,
-	receivedAt: Date.now()
-})
+export const receiveDepartures = json => {
+	const operators = keyBy(json.operators, 'id')
+	const locations = keyBy(json.locations, 'id')
+
+	const departures = json.departures.map(departure => ({
+		...departure,
+		// eslint-disable-next-line camelcase
+		destination_location: locations[departure.destination_location_id],
+		// eslint-disable-next-line camelcase
+		origin_location: locations[departure.origin_location_id],
+		operator: operators[departure.operator_id]
+
+	}))
+
+	return {
+		type: RECEIVE_DEPARTURES,
+		departures,
+		receivedAt: Date.now()
+	}
+}
 
 // TODO: maybe split into update{from, to, date}
 export const updateSearch = (field, value) => ({
