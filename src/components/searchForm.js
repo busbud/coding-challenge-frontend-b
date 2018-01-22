@@ -1,4 +1,5 @@
 import React from 'react'
+import {formatDate} from '../utils/formatters'
 
 const SearchForm = ({from, to, date, onChange, onSubmit}) => (
 	<form>
@@ -12,7 +13,7 @@ const SearchForm = ({from, to, date, onChange, onSubmit}) => (
 		</label>
 		<label>
 			When
-			<input type="date" value={new Date(date).toLocaleDateString('en-CA')} name="dateInput" onChange={e => onChange('date', new Date(e.target.value))}/>
+			<input type="date" value={formatDate(date)} name="dateInput" onChange={e => onChange('date', new Date(e.target.value))}/>
 		</label>
 		<input type="submit" onClick={onSubmit} value="search"/>
 	</form>

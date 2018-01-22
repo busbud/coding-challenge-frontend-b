@@ -1,5 +1,6 @@
+import formatDate from './date'
 import formatPrice from './price'
 import formatTime from './time'
 import getDayDiff from './dayDiff'
 
-export {formatPrice, formatTime, getDayDiff}
+export {formatDate, formatPrice, formatTime, getDayDiff}
