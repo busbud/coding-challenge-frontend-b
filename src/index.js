@@ -4,6 +4,7 @@ import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import {createLogger} from 'redux-logger'
+import 'abortcontroller-polyfill'
 import reducer from './reducers'
 import './index.css'
 // eslint-disable-next-line import/no-named-as-default

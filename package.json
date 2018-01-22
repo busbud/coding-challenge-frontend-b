@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "abortcontroller-polyfill": "^1.0.9",
     "lodash": "latest",
     "prop-types": "latest",
     "react": "^16.2.0",
