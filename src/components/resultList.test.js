@@ -1,25 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import Enzyme, {mount} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 import ResultList from './resultList'
 
+Enzyme.configure({adapter: new Adapter()})
+
 describe('ResultList component', () => {
-	let div
-
-	beforeEach(() => {
-		div = document.createElement('div')
-	})
-
-	afterEach(() => {
-		ReactDOM.unmountComponentAtNode(div)
-	})
-
 	it('renders an empty list', () => {
-		ReactDOM.render(<ResultList departures={[]}/>, div)
-		expect(div.innerHTML).toBe('<ul></ul>')
+		const wrapper = mount(<ResultList departures={[]}/>)
+		expect(wrapper.html()).toBe('<ul></ul>')
 	})
 
 	it('renders a non-empty list', () => {
-		ReactDOM.render(<ResultList departures={[
+		const wrapper = mount(<ResultList departures={[
 			{/* eslint-disable camelcase */
 				busbud_departure_id: 1,
 				arrival_time: '2018-01-20T16:00:00',
@@ -36,8 +29,9 @@ describe('ResultList component', () => {
 				origin_location: {name: 'C'},
 				prices: {total: 3000}
 			}/* eslint-enable camelcase */
-		]}/>, div)
-		expect(div.innerHTML).toBe(
+		]}/>)
+
+		expect(wrapper.html()).toBe(
 			'<ul>' +
 				'<li>' +
 					'<div>departure: A at 15:00</div>' +

@@ -1,32 +1,31 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import Enzyme, {mount} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 import SearchForm from './searchForm'
 
+Enzyme.configure({adapter: new Adapter()})
+
 describe('SearchForm component', () => {
-	let div
+	let onChangeMock
+	let onSubmitMock
+	let wrapper
 
 	beforeEach(() => {
-		div = document.createElement('div')
-	})
-
-	afterEach(() => {
-		ReactDOM.unmountComponentAtNode(div)
-	})
-
-	it('renders correctly', () => {
-		// TODO: mock these with jest.fn() add test if calls work
-		const onChangeMock = () => {}
-		const onSubmitMock = () => {}
-
-		ReactDOM.render(<SearchForm
+		onChangeMock = jest.fn()
+		onSubmitMock = jest.fn()
+		wrapper = mount(<SearchForm
 			from="DepartureCity"
 			to="ArrivalCity"
 			date={new Date(2018, 7, 2)}
 			onChange={onChangeMock}
 			onSubmit={onSubmitMock}
-		/>, div)
+		/>)
+	})
 
-		expect(div.innerHTML).toBe(
+	it('renders the correct html', () => {
+		console.log(wrapper)
+
+		expect(wrapper.html()).toBe(
 			'<form>' +
 				'<label>From<input type="text" value="DepartureCity" name="fromInput"></label>' +
 				'<label>To<input type="text" value="ArrivalCity" name="toInput"></label>' +
@@ -34,5 +33,21 @@ describe('SearchForm component', () => {
 				'<input type="submit" value="search">' +
 			'</form>'
 		)
+	})
+
+	it('submit correctly', () => {
+		wrapper.find('input[type="submit"]').simulate('click')
+		expect(onSubmitMock).toBeCalled()
+	})
+
+	it('handle change', () => {
+		wrapper.find('input[name="fromInput"]').simulate('change', {target: {value: 'Malibu'}})
+		expect(onChangeMock).lastCalledWith('from', 'Malibu')
+
+		wrapper.find('input[name="toInput"]').simulate('change', {target: {value: 'Paris'}})
+		expect(onChangeMock).lastCalledWith('to', 'Paris')
+
+		wrapper.find('input[type="date"]').simulate('change', {target: {value: '2018-09-20'}})
+		expect(onChangeMock).lastCalledWith('date', new Date('2018-09-20'))
 	})
 })
