@@ -16,7 +16,6 @@ export const abortRequest = controller => {
 	}
 }
 
-
 /**
  * @param controller {AbortController} allows to abort fetch request
  * @returns {Object}
@@ -74,14 +73,18 @@ export const updateSearch = (field, value) => ({
  *                            be between 2000 and 5000, except for tests
  */
 export const fetchDepartures = async (from, to, date, dispatch, poll = false, waitTime = 2000) => {
-	const controller = new AbortController();
+	const controller = new window.AbortController()
 	dispatch(requestDepartures(controller))
+	await fetchDeparturesInternal(from, to, date, dispatch, poll, controller.signal, waitTime)
+}
+
+const fetchDeparturesInternal = async (from, to, date, dispatch, poll, signal, waitTime) => {
 	let url = `https://napi.busbud.com/x-departures/${geocodes[from]}/${geocodes[to]}/${formatDate(date)}`
 	if (poll) {
 		url += '/poll'
 	}
 	const fetchParams = {
-		signal: controller.signal,
+		signal,
 		method: 'GET',
 		headers: new Headers({
 			Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
@@ -89,15 +92,23 @@ export const fetchDepartures = async (from, to, date, dispatch, poll = false, wa
 		})
 	}
 
-	const response = await fetch(url, fetchParams)
-	const json = await response.json()
-	if (!response.ok) {
-		dispatch(receiveError(json.error.details))
-	} else if (json.complete === false) {
-		dispatch(receiveDepartures(json))
-		await timeout(waitTime)
-		await fetchDepartures(from, to, date, dispatch, true)
-	} else {
-		dispatch(receiveDepartures(json))
+	try {
+		const response = await fetch(url, fetchParams)
+		const json = await response.json()
+
+		if (!response.ok) {
+			dispatch(receiveError(json.error.details))
+		} else if (json.complete === false) {
+			dispatch(receiveDepartures(json))
+			await timeout(waitTime)
+			await fetchDeparturesInternal(from, to, date, dispatch, true, signal)
+		} else {
+			dispatch(receiveDepartures(json))
+		}
+	} catch (err) {
+		if (err.name === 'AbortError') {
+			return
+		}
+		throw err
 	}
 }

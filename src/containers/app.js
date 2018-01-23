@@ -15,6 +15,7 @@ export class App extends Component {
 		isFetching: PropTypes.bool,
 		isError: PropTypes.bool,
 		error: PropTypes.string,
+		abortController: PropTypes.instanceOf(window.AbortController),
 		date: PropTypes.instanceOf(Date)
 	}
 
@@ -31,9 +32,9 @@ export class App extends Component {
 
 	handleSearchClick(e) {
 		e.preventDefault()
-		const {dispatch, from, to, date, isFetching, controller} = this.props
+		const {dispatch, from, to, date, isFetching, abortController} = this.props
 		if (isFetching)  {
-			dispatch(abortRequest(controller))
+			dispatch(abortRequest(abortController))
 		}
 		fetchDepartures(from, to, date, dispatch)
 	}
@@ -59,7 +60,7 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => {
-	const {departures, from, to, date, isFetching, isError, error} = state
+	const {departures, from, to, date, isFetching, isError, error, abortController} = state
 
 	return {
 		departures,
@@ -68,7 +69,8 @@ const mapStateToProps = state => {
 		date,
 		isFetching,
 		isError,
-		error
+		error,
+		abortController
 	}
 }
 

@@ -28,7 +28,8 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				isFetching: true,
-				isError: false
+				isError: false,
+				abortController: action.controller
 			}
 		case RECEIVE_ERROR:
 			return {

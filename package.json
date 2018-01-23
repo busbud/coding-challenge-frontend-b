@@ -59,7 +59,7 @@
       "import/no-unassigned-import": "off",
       "max-params": [
         "error",
-        6
+        7
       ],
       "unicorn/filename-case": [
         "error",
