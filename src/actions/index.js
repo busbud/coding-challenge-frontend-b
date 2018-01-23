@@ -54,7 +54,7 @@ export const updateSearch = (field, value) => ({
 
 /**
  * This does not create an action, but it dispatch actions. Handling the dispatch function may not be the best way of
- * doing it. TODO: find a better way!
+ * doing it. TODO: find a better way! maybe by separating the recursion from the main function
  *
  * @param from     {string}
  * @param to       {string}

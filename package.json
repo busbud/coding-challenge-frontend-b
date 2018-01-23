@@ -53,7 +53,10 @@
     ],
     "rules": {
       "import/no-unassigned-import": "off",
-      "max-params": ["error", 6],
+      "max-params": [
+        "error",
+        6
+      ],
       "unicorn/filename-case": [
         "error",
         {

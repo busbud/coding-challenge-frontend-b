@@ -2,7 +2,14 @@ import {
 	REQUEST_DEPARTURES, RECEIVE_DEPARTURES, RECEIVE_ERROR, UPDATE_SEARCH
 } from '../actions'
 
-const reducer = (state = {departures: [], from: 'New York', to: 'Montreal', date: new Date(2018, 7, 2)}, action) => {
+const initialState = {
+	departures: [],
+	from: 'New York',
+	to: 'Montreal',
+	date: new Date(2018, 7, 2)
+}
+
+const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_SEARCH:
 			return {
@@ -35,4 +42,3 @@ const reducer = (state = {departures: [], from: 'New York', to: 'Montreal', date
 }
 
 export default reducer
-
