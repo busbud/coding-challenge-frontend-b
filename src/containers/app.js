@@ -33,7 +33,7 @@ export class App extends Component {
 	handleSearchClick(e) {
 		e.preventDefault()
 		const {dispatch, from, to, date, isFetching, abortController} = this.props
-		if (isFetching)  {
+		if (isFetching) {
 			dispatch(abortRequest(abortController))
 		}
 		fetchDepartures(from, to, date, dispatch)

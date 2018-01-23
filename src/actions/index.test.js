@@ -7,11 +7,11 @@ describe('Actions', () => {
 		const expectedAction = {
 			type: actions.ABORT_REQUEST
 		}
-		expect(actions.abortRequest(new AbortController())).toEqual(expectedAction)
+		expect(actions.abortRequest(new window.AbortController())).toEqual(expectedAction)
 	})
 
 	it('should create an action to request departures', () => {
-		const controller = new AbortController()
+		const controller = new window.AbortController()
 		const expectedAction = {
 			type: actions.REQUEST_DEPARTURES,
 			controller
@@ -69,7 +69,7 @@ describe('Actions', () => {
 		const to = 'New York'
 		const date = new Date()
 		const fetchParams = {
-			signal: new AbortController().signal,
+			signal: new window.AbortController().signal,
 			method: 'GET',
 			headers: new Headers({
 				Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',

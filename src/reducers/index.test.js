@@ -33,14 +33,14 @@ describe('reducer', () => {
 	})
 
 	it('should handle REQUEST_DEPARTURES', () => {
-		const controller = new AbortController()
+		const controller = new window.AbortController()
 		expect(reducer({isError: true}, {
 			type: REQUEST_DEPARTURES,
 			controller
 		})).toEqual({
 			isFetching: true,
 			isError: false,
-			controller
+			abortController: controller
 		})
 	})
 
