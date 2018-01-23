@@ -5,7 +5,7 @@ import {fetchDepartures, updateSearch} from '../actions'
 import SearchForm from '../components/searchForm'
 import ResultList from '../components/resultList'
 
-class App extends Component {
+export class App extends Component {
 	// Linter seems to have issue with `static` writing
 	static propTypes = { // eslint-disable-line no-undef
 		dispatch: PropTypes.func.isRequired,

@@ -6,6 +6,7 @@ import thunk from 'redux-thunk'
 import {createLogger} from 'redux-logger'
 import reducer from './reducers'
 import './index.css'
+// eslint-disable-next-line import/no-named-as-default
 import App from './containers/app'
 import registerServiceWorker from './registerServiceWorker'
 
