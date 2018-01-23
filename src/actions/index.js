@@ -3,18 +3,27 @@ import geocodes from '../utils/geocodes'
 import timeout from '../utils/timeout'
 import {formatDate} from '../utils/formatters'
 
+export const ABORT_REQUEST = 'ABORT_REQUEST'
 export const REQUEST_DEPARTURES = 'REQUEST_DEPARTURES'
 export const RECEIVE_ERROR = 'RECEIVE_ERROR'
 export const RECEIVE_DEPARTURES = 'RECEIVE_DEPARTURES'
 export const UPDATE_SEARCH = 'UPDATE_SEARCH'
 
+export const abortRequest = controller => {
+	controller.abort()
+	return {
+		type: ABORT_REQUEST
+	}
+}
+
+
 /**
- * @param isPolling {boolean} not used yet
- * @returns {{type: string, isPolling: boolean}}
+ * @param controller {AbortController} allows to abort fetch request
+ * @returns {Object}
  */
-export const requestDepartures = isPolling => ({
+export const requestDepartures = controller => ({
 	type: REQUEST_DEPARTURES,
-	isPolling
+	controller
 })
 
 // Exported for tests only
@@ -65,12 +74,14 @@ export const updateSearch = (field, value) => ({
  *                            be between 2000 and 5000, except for tests
  */
 export const fetchDepartures = async (from, to, date, dispatch, poll = false, waitTime = 2000) => {
-	dispatch(requestDepartures())
+	const controller = new AbortController();
+	dispatch(requestDepartures(controller))
 	let url = `https://napi.busbud.com/x-departures/${geocodes[from]}/${geocodes[to]}/${formatDate(date)}`
 	if (poll) {
 		url += '/poll'
 	}
 	const fetchParams = {
+		signal: controller.signal,
 		method: 'GET',
 		headers: new Headers({
 			Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',

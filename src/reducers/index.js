@@ -1,5 +1,5 @@
 import {
-	REQUEST_DEPARTURES, RECEIVE_DEPARTURES, RECEIVE_ERROR, UPDATE_SEARCH
+	REQUEST_DEPARTURES, RECEIVE_DEPARTURES, RECEIVE_ERROR, UPDATE_SEARCH, ABORT_REQUEST
 } from '../actions'
 
 const initialState = {
@@ -11,6 +11,14 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
+		case ABORT_REQUEST:
+			return {
+				...state,
+				controller: null,
+				isFetching: false,
+				isError: false,
+				departures: []
+			}
 		case UPDATE_SEARCH:
 			return {
 				...state,

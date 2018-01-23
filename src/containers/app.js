@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {fetchDepartures, updateSearch} from '../actions'
+import {abortRequest, fetchDepartures, updateSearch} from '../actions'
 import SearchForm from '../components/searchForm'
 import ResultList from '../components/resultList'
 
@@ -31,7 +31,10 @@ export class App extends Component {
 
 	handleSearchClick(e) {
 		e.preventDefault()
-		const {dispatch, from, to, date} = this.props
+		const {dispatch, from, to, date, isFetching, controller} = this.props
+		if (isFetching)  {
+			dispatch(abortRequest(controller))
+		}
 		fetchDepartures(from, to, date, dispatch)
 	}
 

@@ -3,12 +3,20 @@ import * as actions from './index'
 import 'whatwg-fetch'
 
 describe('Actions', () => {
+	it('should create an action to abort a request', () => {
+		const expectedAction = {
+			type: actions.ABORT_REQUEST
+		}
+		expect(actions.abortRequest(new AbortController())).toEqual(expectedAction)
+	})
+
 	it('should create an action to request departures', () => {
+		const controller = new AbortController()
 		const expectedAction = {
 			type: actions.REQUEST_DEPARTURES,
-			isPolling: false
+			controller
 		}
-		expect(actions.requestDepartures(false)).toEqual(expectedAction)
+		expect(actions.requestDepartures(controller)).toEqual(expectedAction)
 	})
 
 	it('should create an action to receive errors from requests', () => {
@@ -60,6 +68,14 @@ describe('Actions', () => {
 		const from = 'Montreal'
 		const to = 'New York'
 		const date = new Date()
+		const fetchParams = {
+			signal: new AbortController().signal,
+			method: 'GET',
+			headers: new Headers({
+				Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
+				'X-Busbud-Token': process.env.REACT_APP_BUSBUD_TOKEN
+			})
+		}
 		const response = (complete = true) => Promise.resolve(
 			new Response(JSON.stringify({complete, departures: []}), {status: 200})
 		)
@@ -74,13 +90,7 @@ describe('Actions', () => {
 
 			expect(fetch).lastCalledWith(
 				'https://napi.busbud.com/x-departures/f25dvk/dr5reg/2018-01-23',
-				{
-					method: 'GET',
-					headers: new Headers({
-						Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-						'X-Busbud-Token': process.env.REACT_APP_BUSBUD_TOKEN
-					})
-				}
+				fetchParams
 			)
 		})
 
@@ -94,13 +104,7 @@ describe('Actions', () => {
 			expect(fetch.mock.calls.length).toBe(2)
 			expect(fetch).lastCalledWith(
 				'https://napi.busbud.com/x-departures/f25dvk/dr5reg/2018-01-23/poll',
-				{
-					method: 'GET',
-					headers: new Headers({
-						Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-						'X-Busbud-Token': process.env.REACT_APP_BUSBUD_TOKEN
-					})
-				}
+				fetchParams
 			)
 		})
 

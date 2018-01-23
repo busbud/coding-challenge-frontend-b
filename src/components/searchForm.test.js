@@ -23,8 +23,6 @@ describe('SearchForm component', () => {
 	})
 
 	it('renders the correct html', () => {
-		console.log(wrapper)
-
 		expect(wrapper.html()).toBe(
 			'<form>' +
 				'<label>From<input type="text" value="DepartureCity" name="fromInput"></label>' +
