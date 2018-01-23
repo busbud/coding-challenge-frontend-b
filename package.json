@@ -39,6 +39,7 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.js",
+      "!src/index.js",
       "!src/registerServiceWorker.js"
     ],
     "moduleNameMapper": {
