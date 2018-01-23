@@ -21,7 +21,7 @@ class App extends Component {
 	componentWillReceiveProps(nextProps) {
 		const {dispatch, from, to, date} = nextProps
 		if (from !== this.props.from && to !== this.props.to && date !== this.props.date) {
-			dispatch(fetchDepartures(from, to, date))
+			fetchDepartures(from, to, date, dispatch)
 		}
 	}
 
@@ -32,7 +32,7 @@ class App extends Component {
 	handleSearchClick(e) {
 		e.preventDefault()
 		const {dispatch, from, to, date} = this.props
-		dispatch(fetchDepartures(from, to, date))
+		fetchDepartures(from, to, date, dispatch)
 	}
 
 	render() {
