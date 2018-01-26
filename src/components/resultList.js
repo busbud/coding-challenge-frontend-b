@@ -20,7 +20,7 @@ const ResultList = ({departures}) => (
 						arrival: {destination_location.name} at {formatTime(arrival_time)}
 						{dayDiff > 0 && <span>{`(+${dayDiff})`}</span>}
 					</div>
-					<div>price: CAD {formatPrice(prices.total)}</div>
+					<div>price: {prices.currency} {formatPrice(prices.total)}</div>
 				</li>
 			)
 		})/* eslint-enable camelcase */}
