@@ -15,6 +15,12 @@ const SearchForm = ({from, to, date, onChange, onSubmit}) => (
 			When
 			<input type="date" value={formatDate(date)} name="dateInput" onChange={e => onChange('date', new Date(e.target.value))}/>
 		</label>
+		<label>
+			Currency
+			<select name="currencyInput" onChange={e => onChange('currency', e.target.value)}>
+				{['CAD', 'USD', 'EUR'].map(code => (<option value={code} key={code}>{code}</option>))}
+			</select>
+		</label>
 		<input type="submit" onClick={onSubmit} value="search"/>
 	</form>
 )

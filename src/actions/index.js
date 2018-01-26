@@ -67,21 +67,25 @@ export const updateSearch = (field, value) => ({
  * @param from     {string}
  * @param to       {string}
  * @param date     {Date}
+ * @param currency {string}   an ISO 4217 currency code
  * @param dispatch {function} allow this to dispatch some actions
  * @param poll     {boolean}  used to recurse until request is done
  * @param waitTime {number}   time to wait between polls. It should
  *                            be between 2000 and 5000, except for tests
  */
-export const fetchDepartures = async (from, to, date, dispatch, poll = false, waitTime = 2000) => {
+export const fetchDepartures = async (from, to, date, currency, dispatch, poll = false, waitTime = 2000) => {
 	const controller = new window.AbortController()
 	dispatch(requestDepartures(controller))
-	await fetchDeparturesInternal(from, to, date, dispatch, poll, controller.signal, waitTime)
+	await fetchDeparturesInternal(from, to, date, currency, dispatch, poll, controller.signal, waitTime)
 }
 
-const fetchDeparturesInternal = async (from, to, date, dispatch, poll, signal, waitTime) => {
-	let url = `https://napi.busbud.com/x-departures/${geocodes[from]}/${geocodes[to]}/${formatDate(date)}`
+const fetchDeparturesInternal = async (from, to, date, currency, dispatch, poll, signal, waitTime) => {
+	const url = new URL(`https://napi.busbud.com/x-departures/${geocodes[from]}/${geocodes[to]}/${formatDate(date)}`)
+	url.searchParams.append('adult', 1) // Not mandatory since this is the default behavior
+	url.searchParams.append('currency', currency)
+
 	if (poll) {
-		url += '/poll'
+		url.pathname += '/poll'
 	}
 	const fetchParams = {
 		signal,
@@ -101,7 +105,7 @@ const fetchDeparturesInternal = async (from, to, date, dispatch, poll, signal, w
 		} else if (json.complete === false) {
 			dispatch(receiveDepartures(json))
 			await timeout(waitTime)
-			await fetchDeparturesInternal(from, to, date, dispatch, true, signal)
+			await fetchDeparturesInternal(from, to, date, currency, dispatch, true, signal)
 		} else {
 			dispatch(receiveDepartures(json))
 		}

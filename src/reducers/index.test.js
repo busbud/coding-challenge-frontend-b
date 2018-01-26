@@ -7,7 +7,8 @@ describe('reducer', () => {
 			departures: [],
 			from: 'New York',
 			to: 'Montreal',
-			date: new Date(2018, 7, 2)
+			date: new Date(2018, 7, 2),
+			currency: 'CAD'
 		})
 	})
 

@@ -6,6 +6,7 @@ const initialState = {
 	departures: [],
 	from: 'New York',
 	to: 'Montreal',
+	currency: 'CAD',
 	date: new Date(2018, 7, 2)
 }
 

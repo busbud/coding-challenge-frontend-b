@@ -19,7 +19,7 @@ describe('ResultList component', () => {
 				departure_time: '2018-01-20T15:00:00',
 				destination_location: {name: 'B'},
 				origin_location: {name: 'A'},
-				prices: {total: 2060}
+				prices: {currency: 'CAD', total: 2060}
 			},
 			{
 				busbud_departure_id: 2,
@@ -27,7 +27,7 @@ describe('ResultList component', () => {
 				departure_time: '2018-01-20T15:00:00',
 				destination_location: {name: 'D'},
 				origin_location: {name: 'C'},
-				prices: {total: 3000}
+				prices: {currency: 'CAD', total: 3000}
 			}/* eslint-enable camelcase */
 		]}/>)
 

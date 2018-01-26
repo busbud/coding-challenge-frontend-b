@@ -20,9 +20,9 @@ export class App extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		const {dispatch, from, to, date} = nextProps
-		if (from !== this.props.from && to !== this.props.to && date !== this.props.date) {
-			fetchDepartures(from, to, date, dispatch)
+		const {dispatch, from, to, date, currency} = nextProps
+		if (from !== this.props.from && to !== this.props.to && date !== this.props.date && currency !== this.props.currency) {
+			fetchDepartures(from, to, date, currency, dispatch)
 		}
 	}
 
@@ -32,11 +32,11 @@ export class App extends Component {
 
 	handleSearchClick(e) {
 		e.preventDefault()
-		const {dispatch, from, to, date, isFetching, abortController} = this.props
+		const {dispatch, from, to, date, currency, isFetching, abortController} = this.props
 		if (isFetching) {
 			dispatch(abortRequest(abortController))
 		}
-		fetchDepartures(from, to, date, dispatch)
+		fetchDepartures(from, to, date, currency, dispatch)
 	}
 
 	render() {
@@ -60,13 +60,14 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => {
-	const {departures, from, to, date, isFetching, isError, error, abortController} = state
+	const {departures, from, to, date, currency, isFetching, isError, error, abortController} = state
 
 	return {
 		departures,
 		from,
 		to,
 		date,
+		currency,
 		isFetching,
 		isError,
 		error,

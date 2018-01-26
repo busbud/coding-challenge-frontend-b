@@ -67,7 +67,10 @@ describe('Actions', () => {
 	describe('FetchDepartures', () => {
 		const from = 'Montreal'
 		const to = 'New York'
-		const date = new Date()
+		const date = new Date(2018, 8, 23)
+		const currency = 'CAD'
+		const requestUrl = 'https://napi.busbud.com/x-departures/f25dvk/dr5reg/2018-09-23?adult=1&currency=CAD'
+		const pollUrl = 'https://napi.busbud.com/x-departures/f25dvk/dr5reg/2018-09-23/poll?adult=1&currency=CAD'
 		const fetchParams = {
 			signal: new window.AbortController().signal,
 			method: 'GET',
@@ -86,12 +89,10 @@ describe('Actions', () => {
 		it('should fetch departures', async () => {
 			window.fetch = jest.fn().mockReturnValue(response())
 
-			await actions.fetchDepartures(from, to, date, () => {})
+			await actions.fetchDepartures(from, to, date, currency, () => {})
 
-			expect(fetch).lastCalledWith(
-				'https://napi.busbud.com/x-departures/f25dvk/dr5reg/2018-01-23',
-				fetchParams
-			)
+			expect(fetch.mock.calls[0][0].toString()).toBe(requestUrl)
+			expect(fetch.mock.calls[0][1]).toEqual(fetchParams)
 		})
 
 		it('should poll until response is complete', async () => {
@@ -99,20 +100,19 @@ describe('Actions', () => {
 				.mockReturnValueOnce(response(false))
 				.mockReturnValue(response())
 
-			await actions.fetchDepartures(from, to, date, () => {}, false, 0)
+			await actions.fetchDepartures(from, to, date, currency, () => {}, false, 0)
 
 			expect(fetch.mock.calls.length).toBe(2)
-			expect(fetch).lastCalledWith(
-				'https://napi.busbud.com/x-departures/f25dvk/dr5reg/2018-01-23/poll',
-				fetchParams
-			)
+			expect(fetch.mock.calls[0][0].toString()).toBe(requestUrl)
+			expect(fetch.mock.calls[1][0].toString()).toBe(pollUrl)
+			expect(fetch.mock.calls[1][1]).toEqual(fetchParams)
 		})
 
 		it('should handle errors', async () => {
 			window.fetch = jest.fn().mockReturnValue(erroredResponse)
 			const dispatchMock = jest.fn()
 
-			await actions.fetchDepartures(from, to, date, dispatchMock)
+			await actions.fetchDepartures(from, to, date, currency, dispatchMock)
 
 			expect(fetch.mock.calls.length).toBe(1)
 			expect(dispatchMock).toBeCalledWith(actions.receiveError('such error'))
