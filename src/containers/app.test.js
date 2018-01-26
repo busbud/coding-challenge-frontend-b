@@ -14,6 +14,7 @@ describe('App container', () => {
 			dispatch={jest.fn()}
 			from="here"
 			to="there"
+			currency="CAD"
 		/>)
 	})
 })

@@ -5,11 +5,11 @@ const SearchForm = ({from, to, date, onChange, onSubmit}) => (
 	<form>
 		<label>
 			From
-			<input type="text" value={from} name="fromInput" onChange={e => onChange('from', e.target.value)}/>
+			<input type="text" value={from} name="fromInput" onChange={e => onChange('from', e.target.value)} disabled/>
 		</label>
 		<label>
 			To
-			<input type="text" value={to} name="toInput" onChange={e => onChange('to', e.target.value)}/>
+			<input type="text" value={to} name="toInput" onChange={e => onChange('to', e.target.value)} disabled/>
 		</label>
 		<label>
 			When

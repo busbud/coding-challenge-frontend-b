@@ -25,14 +25,15 @@ describe('SearchForm component', () => {
 	it('renders the correct html', () => {
 		expect(wrapper.html()).toBe(
 			'<form>' +
-				'<label>From<input type="text" value="DepartureCity" name="fromInput"></label>' +
-				'<label>To<input type="text" value="ArrivalCity" name="toInput"></label>' +
+				'<label>From<input type="text" value="DepartureCity" name="fromInput" disabled=""></label>' +
+				'<label>To<input type="text" value="ArrivalCity" name="toInput" disabled=""></label>' +
 				'<label>When<input type="date" value="2018-08-02" name="dateInput"></label>' +
 				'<label>Currency<select name="currencyInput">' +
 					'<option value="CAD">CAD</option>' +
 					'<option value="USD">USD</option>' +
 					'<option value="EUR">EUR</option>' +
-				'</select></label><input type="submit" value="search">' +
+				'</select></label>' +
+				'<input type="submit" value="search">' +
 			'</form>'
 		)
 	})
@@ -51,5 +52,8 @@ describe('SearchForm component', () => {
 
 		wrapper.find('input[type="date"]').simulate('change', {target: {value: '2018-09-20'}})
 		expect(onChangeMock).lastCalledWith('date', new Date('2018-09-20'))
+
+		wrapper.find('select[name="currencyInput"]').simulate('change', {target: {value: 'USD'}})
+		expect(onChangeMock).lastCalledWith('currency', 'USD')
 	})
 })
