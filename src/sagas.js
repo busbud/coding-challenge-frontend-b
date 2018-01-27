@@ -20,25 +20,19 @@ export function* fetchDepartures({from, to, date, currency}) {
 	}
 
 	let isComplete = yield* singleRequest(url, fetchParams)
-	if (isComplete === null) {
-		return
-	}
 
 	url.pathname += '/poll'
 
 	while (!isComplete) {
 		yield call(delay, 2000)
 		isComplete = yield* singleRequest(url, fetchParams)
-		if (isComplete === null) {
-			return
-		}
 	}
 }
 
 /**
  * @param url {URL}
  * @param fetchParams {Object}
- * @returns {Boolean|null} returns undefined if there is an error
+ * @returns {Boolean} returns true (complete) if there is an error
  */
 function* singleRequest(url, fetchParams) {
 	const response = yield call(fetch, url, fetchParams)
@@ -46,7 +40,7 @@ function* singleRequest(url, fetchParams) {
 
 	if (!response.ok) {
 		yield put(receiveError(json.error.details))
-		return null
+		return true
 	}
 
 	yield put(receiveDepartures(json))
