@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {abortRequest, fetchDepartures, updateSearch} from '../actions'
+import {requestDepartures, updateSearch} from '../actions'
 import SearchForm from '../components/searchForm'
 import ResultList from '../components/resultList'
 
@@ -12,17 +12,17 @@ export class App extends Component {
 		departures: PropTypes.array.isRequired,
 		from: PropTypes.string.isRequired,
 		to: PropTypes.string.isRequired,
+		currency: PropTypes.string.isRequired,
 		isFetching: PropTypes.bool,
 		isError: PropTypes.bool,
 		error: PropTypes.string,
-		abortController: PropTypes.instanceOf(window.AbortController),
 		date: PropTypes.instanceOf(Date)
 	}
 
 	componentWillReceiveProps(nextProps) {
 		const {dispatch, from, to, date, currency} = nextProps
 		if (from !== this.props.from && to !== this.props.to && date !== this.props.date && currency !== this.props.currency) {
-			fetchDepartures(from, to, date, currency, dispatch)
+			dispatch(requestDepartures(from, to, date, currency))
 		}
 	}
 
@@ -32,11 +32,8 @@ export class App extends Component {
 
 	handleSearchClick(e) {
 		e.preventDefault()
-		const {dispatch, from, to, date, currency, isFetching, abortController} = this.props
-		if (isFetching) {
-			dispatch(abortRequest(abortController))
-		}
-		fetchDepartures(from, to, date, currency, dispatch)
+		const {dispatch, from, to, date, currency} = this.props
+		dispatch(requestDepartures(from, to, date, currency))
 	}
 
 	render() {
@@ -52,7 +49,7 @@ export class App extends Component {
 					onSubmit={e => this.handleSearchClick(e)}
 				/>
 				{isFetching && 'loading...'}
-				{isError && error}
+				{isError && `error: ${error}`}
 				{!(isError || isEmpty) && <ResultList departures={departures}/>}
 			</div>
 		)
@@ -60,7 +57,7 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => {
-	const {departures, from, to, date, currency, isFetching, isError, error, abortController} = state
+	const {departures, from, to, date, currency, isFetching, isError, error} = state
 
 	return {
 		departures,
@@ -70,8 +67,7 @@ const mapStateToProps = state => {
 		currency,
 		isFetching,
 		isError,
-		error,
-		abortController
+		error
 	}
 }
 

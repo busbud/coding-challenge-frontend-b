@@ -1,5 +1,5 @@
-import {ABORT_REQUEST, RECEIVE_DEPARTURES, RECEIVE_ERROR, REQUEST_DEPARTURES, UPDATE_SEARCH} from '../actions'
-import reducer from './index'
+import {RECEIVE_DEPARTURES, RECEIVE_ERROR, REQUEST_DEPARTURES, UPDATE_SEARCH} from './types'
+import reducer from './reducers'
 
 describe('reducer', () => {
 	it('should return the initial state', () => {
@@ -9,17 +9,6 @@ describe('reducer', () => {
 			to: 'Montreal',
 			date: new Date(2018, 7, 2),
 			currency: 'CAD'
-		})
-	})
-
-	it('should handle ABORT_REQUEST', () => {
-		expect(reducer({departures: [{}, {}]}, {
-			type: ABORT_REQUEST
-		})).toEqual({
-			controller: null,
-			isFetching: false,
-			isError: false,
-			departures: []
 		})
 	})
 
@@ -34,14 +23,11 @@ describe('reducer', () => {
 	})
 
 	it('should handle REQUEST_DEPARTURES', () => {
-		const controller = new window.AbortController()
 		expect(reducer({isError: true}, {
-			type: REQUEST_DEPARTURES,
-			controller
+			type: REQUEST_DEPARTURES
 		})).toEqual({
 			isFetching: true,
-			isError: false,
-			abortController: controller
+			isError: false
 		})
 	})
 

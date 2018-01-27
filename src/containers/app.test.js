@@ -9,7 +9,7 @@ jest.mock('../components/searchForm', () => 'div')
 
 describe('App container', () => {
 	it('renders without crashing', () => {
-		const wrapper = mount(<App
+		mount(<App
 			departures={[]}
 			dispatch={jest.fn()}
 			from="here"
