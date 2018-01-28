@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {applyMiddleware, compose, createStore} from 'redux'
 import {Provider} from 'react-redux'
-import thunk from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
 import {createLogger} from 'redux-logger'
 import reducer from './reducers'
@@ -15,7 +14,7 @@ import registerServiceWorker from './registerServiceWorker'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const sagaMiddleware = createSagaMiddleware()
-const middleware = [thunk, sagaMiddleware]
+const middleware = [sagaMiddleware]
 if (process.env.NODE_ENV !== 'production') {
 	middleware.push(createLogger())
 }

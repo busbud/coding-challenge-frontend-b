@@ -1,4 +1,4 @@
-import keyBy from 'lodash/keyBy'
+import keyBy from 'lodash.keyby'
 import {RECEIVE_DEPARTURES, RECEIVE_ERROR, REQUEST_DEPARTURES, UPDATE_SEARCH} from './types'
 
 export const requestDepartures = (from, to, date, currency) => ({

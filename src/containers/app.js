@@ -45,8 +45,8 @@ export class App extends Component {
 					from={from}
 					to={to}
 					date={date}
-					onChange={(field, value) => this.handleChange(field, value)}
-					onSubmit={e => this.handleSearchClick(e)}
+					onChange={this.handleChange.bind(this)}
+					onSubmit={this.handleSearchClick.bind(this)}
 				/>
 				{isFetching && 'loading...'}
 				{isError && `error: ${error}`}
