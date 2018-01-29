@@ -1,0 +1,83 @@
+{
+  "name": "coding-challenge-frontend-b",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "lodash.keyby": "latest",
+    "prop-types": "latest",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BuonOmo/coding-challenge-frontend-b"
+  },
+  "devDependencies": {
+    "babel-jest": "^22.1.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "coveralls": "^3.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest-cli": "^22.1.3",
+    "react-scripts": "1.1.0",
+    "whatwg-fetch": "^2.0.3",
+    "xo": "^0.18.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "xo && jest",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "eject": "react-scripts eject"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js",
+      "!src/registerServiceWorker.js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|svg)$": "<rootDir>/jestStub.js"
+    }
+  },
+  "xo": {
+    "plugin": "react",
+    "extend": "react-app",
+    "envs": [
+      "browser",
+      "jest",
+      "worker"
+    ],
+    "rules": {
+      "import/no-unassigned-import": "off",
+      "max-params": "off",
+      "unicorn/filename-case": [
+        "error",
+        {
+          "case": "camelCase"
+        }
+      ],
+      "generator-star-spacing": [
+        "error",
+        {
+          "before": false,
+          "after": true
+        }
+      ],
+      "yield-star-spacing": [
+        "error",
+        {
+          "before": false,
+          "after": true
+        }
+      ]
+    },
+    "semicolon": false
+  }
+}
