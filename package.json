@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
     "gulp-change": "^1.0.0",
     "gulp-clean-css": "^3.9.2",
     "gulp-sass": "^3.1.0",
