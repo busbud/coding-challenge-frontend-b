@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Results from './Results.js';
+import ResultsTable from './ResultsTable.js';
 
 class Form extends Component {
     constructor(props) {
@@ -10,7 +10,9 @@ class Form extends Component {
             to: '',
             date: '2018-08-02',
             adults: 1,
-            results: {}
+            results: {},
+            isComplete: false,
+            isFetching: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +24,9 @@ class Form extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        return fetch('https://napi.busbud.com/x-departures/' + this.state.from + '/' + this.state.to + '/' + this.state.date, {
+        e.persist();
+        this.setState({ isFetching: true });
+        return fetch('https://napi.busbud.com/x-departures/' + this.state.from + '/' + this.state.to + '/' + this.state.date + '?adult=' + this.state.adults, {
             method: 'GET',
             headers: new Headers({
                 Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
@@ -31,7 +35,17 @@ class Form extends Component {
         })
         .then(response => response.json())
         .then(json => {
-            this.setState({ results: json });
+            if (!json.complete) {
+                return setTimeout(() => {
+                    this.handleSubmit(e);
+                }, 5000);
+            } else {
+                this.setState({
+                    results: json,
+                    isComplete: json.complete,
+                    isFetching: true
+                });
+            }
         });
     }
 
@@ -69,7 +83,14 @@ class Form extends Component {
                     </label>
                     <input type="submit" disabled={!isEnabled} value="Search" />
                 </form>
-                <Results />
+                <ResultsTable
+                    resultsList={ this.state.results }
+                    cities={ this.state.results.cities }
+                    departures={ this.state.results.departures }
+                    locations={ this.state.results.locations }
+                    operators={ this.state.results.operators }
+                    fetching={ this.state.isFetching }
+                />
             </div>
         );
     }
