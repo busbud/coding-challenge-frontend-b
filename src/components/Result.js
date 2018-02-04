@@ -39,18 +39,31 @@ class Result extends Component {
                 const departureTime = new Date(departure.departure_time);
                 const arrivalTime = new Date(departure.arrival_time);
                 
-                return (<tr key={ departure.id }>
-                    <td className="origin">{ this.getLocation(departure.origin_location_id) }</td>
-                    <td className="dest">{ this.getLocation(departure.destination_location_id) }</td>
-                    <td className="dep_date">{ departureTime.getFullYear() }-{ (departureTime.getMonth() + 1) }-{ departureTime.getDate() }</td>
-                    <td className="dep_time">{ (departureTime.getHours() < 10 ? '0' : '') + departureTime.getHours() }:{ (departureTime.getMinutes() < 10 ? '0' : '') + departureTime.getMinutes() }</td>
-                    <td className="arr_date">{ arrivalTime.getFullYear() }-{ (arrivalTime.getMonth() + 1) }-{ arrivalTime.getDate() }</td>
-                    <td className="arr_time">{ (arrivalTime.getHours() < 10 ? '0' : '') + arrivalTime.getHours() }:{ (arrivalTime.getMinutes() < 10 ? '0' : '') + arrivalTime.getMinutes() }</td>
-                    <td className="class">{ departure.class }</td>
-                    <td className="avail_seats">{ departure.available_seats }</td>
-                    <td className="operator">{ this.getOperator(departure.operator_id) }</td>
-                    <td className="price">${ (departure.prices.total / 100).toFixed(2) }</td>
-                </tr>);
+                return (
+                    <div key={ departure.id } className="results__entry">
+                        <div className="entry__locations">
+                            <div className="entry__departure">
+                                <p>{ departureTime.getFullYear() }-{ (departureTime.getMonth() + 1) }-{ departureTime.getDate() }</p>
+                                <p>{ (departureTime.getHours() < 10 ? '0' : '') + departureTime.getHours() }:{ (departureTime.getMinutes() < 10 ? '0' : '') + departureTime.getMinutes() }</p>
+                                <p>{ this.getLocation(departure.origin_location_id) }</p>
+                            </div>
+                            <div className="entry__arrival">
+                                <p>{ arrivalTime.getFullYear() }-{ (arrivalTime.getMonth() + 1) }-{ arrivalTime.getDate() }</p>
+                                <p>{ (arrivalTime.getHours() < 10 ? '0' : '') + arrivalTime.getHours() }:{ (arrivalTime.getMinutes() < 10 ? '0' : '') + arrivalTime.getMinutes() }</p>
+                                <p>{ this.getLocation(departure.destination_location_id) }</p>
+                            </div>
+                        </div>
+                        <div className="entry__details">
+                            <div className="entry__operator">
+                                <p>{ this.getOperator(departure.operator_id) }</p>
+                            </div>
+                            <div className="entry__price">
+                                <p className="seats">Seats Available: { departure.available_seats }</p>
+                                <p className="ticket_price">${ (departure.prices.total / 100).toFixed(2) }</p>
+                            </div>
+                        </div>
+                    </div>
+                );
             })
         );
     }

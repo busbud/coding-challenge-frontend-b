@@ -7,43 +7,23 @@ class ResultsTable extends Component {
         let departuresList = this.props.departures || [];
         let operatorsList = this.props.operators || [];
         let locations = this.props.locations;
-        let isFetching = this.props.isFetching;
+        let isFetching = this.props.fetching;
 
         const isEmpty = departuresList.length === 0;
 
         return (
-            <div>
+            <div className="results">
                 {isFetching &&
-                    <p>Fetching data...</p>
+                    <p className="results--fetching">Fetching data...</p>
                 }
 
                 {!isEmpty &&
-                    <table>
-                        
-                            <thead>
-                                <tr>
-                                    <th>Origin</th>
-                                    <th>Destination</th>
-                                    <th>Departure Date</th>
-                                    <th>Departure Time</th>
-                                    <th>Arrival Date</th>
-                                    <th>Arrival Time</th>
-                                    <th>Class</th>
-                                    <th>Seats Available</th>
-                                    <th>Operator</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                        
-                            <tbody>
-                                <Result
-                                    cities={ citiesList }
-                                    departures={ departuresList }
-                                    locations={ locations }
-                                    operators={ operatorsList }
-                                />
-                            </tbody>
-                    </table>
+                    <Result
+                        cities={ citiesList }
+                        departures={ departuresList }
+                        locations={ locations }
+                        operators={ operatorsList }
+                    />
                 }
             </div>
         );

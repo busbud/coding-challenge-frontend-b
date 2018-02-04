@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles/App.css';
+import './styles/styles.css';
 import Header from './components/Header.js';
 import Form from './components/Form.js';
 
@@ -8,9 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <div className="work-area">
-          <Form />
-        </div>
+        <Form />
       </div>
     );
   }

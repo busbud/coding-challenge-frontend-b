@@ -36,6 +36,9 @@ class Form extends Component {
         .then(response => response.json())
         .then(json => {
             if (!json.complete) {
+                this.setState({
+                    isFetching: true
+                });
                 return setTimeout(() => {
                     this.handleSubmit(e);
                 }, 5000);
@@ -43,7 +46,7 @@ class Form extends Component {
                 this.setState({
                     results: json,
                     isComplete: json.complete,
-                    isFetching: true
+                    isFetching: false
                 });
             }
         });
@@ -57,30 +60,39 @@ class Form extends Component {
         const isEnabled = from.length > 0 && to.length > 0 && date.length > 0 && adults > 0;
 
         return (
-            <div>
-                <form className="search_form" onSubmit={ this.handleSubmit }>
-                    <label>
-                        From
-                        <select name="from" value={ this.state.value } onChange={ this.handleChange }>
+            <div className="search_form">
+                <h2 className="search_form__header">Search for Bus Tickets</h2>
+                <form className="form" onSubmit={ this.handleSubmit }>
+                    <div className="form__field">
+                        <label htmlFor="input--from">
+                            From
+                        </label>
+                        <select id="input--from" name="from" value={ this.state.value } onChange={ this.handleChange }>
                             <option value="">Select an option</option>
                             <option value={ nycGeo }>New York City</option>
                         </select>
-                    </label>
-                    <label>
-                        To
-                        <select name="to" value={ this.state.value } onChange={ this.handleChange }>
+                    </div>
+                    <div className="form__field">
+                        <label htmlFor="input--to">
+                            To
+                        </label>
+                        <select id="input--to" name="to" value={ this.state.value } onChange={ this.handleChange }>
                             <option value="">Select an option</option>
                             <option value={ mtlGeo }>Montreal</option>
                         </select>
-                    </label>
-                    <label>
-                        Date
-                        <input type="text" name="date" value={ this.state.date } onChange={ this.handleChange } />
-                    </label>
-                    <label>
-                        # of adults
-                        <input type="number" name="adults" min="1" value={ this.state.adults } onChange={ this.handleChange } />
-                    </label>
+                    </div>
+                    <div className="form__field">
+                        <label htmlFor="input--date">
+                            Date
+                        </label>
+                        <input id="input--date" type="text" name="date" value={ this.state.date } onChange={ this.handleChange } />
+                    </div>
+                    <div className="form__field">
+                        <label htmlFor="input--adult">
+                            # of adults
+                        </label>
+                        <input id="input--adult" type="number" name="adults" min="1" value={ this.state.adults } onChange={ this.handleChange } />
+                    </div>
                     <input type="submit" disabled={!isEnabled} value="Search" />
                 </form>
                 <ResultsTable

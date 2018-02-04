@@ -1,0 +1,50 @@
+@mixin display-flex() {
+    display: flex;
+}
+
+@mixin flex($args...) {
+    flex: $args;
+}
+
+@mixin flex-column() {
+    flex-direction: column;
+}
+
+@mixin flex-wrap($flex) {
+    flex-wrap: $flex;
+}
+
+@mixin flex-row() {
+    flex-direction: row;
+}
+
+@mixin flex-flow($args...) {
+    flex-flow: $args;
+}
+
+@mixin justify-content($justify) {
+    justify-content: $justify;
+}
+
+@mixin align-items($align) {
+    align-items: $align;
+}
+
+@mixin align-self($align) {
+    align-self: $align;
+}
+
+// Uses the min-width approach
+@mixin media-query($width) {
+    @media (min-width: $width) {
+        @content;
+    }
+}
+
+@mixin button() {
+    color: $color-white;
+    font-weight: bold;
+    background-color: $color-button;
+    border: none;
+    padding: 10px;
+}
