@@ -1,0 +1,35 @@
+{
+  "name": "busbud-challenge",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-change": "^1.0.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-sass": "^3.1.0",
+    "pump": "^3.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kc-wan/coding-challenge-frontend-b.git"
+  },
+  "author": "KC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kc-wan/coding-challenge-frontend-b/issues"
+  },
+  "homepage": "https://kc-busbud-challenge.herokuapp.com/"
+}

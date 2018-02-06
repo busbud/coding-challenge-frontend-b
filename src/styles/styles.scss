@@ -1,0 +1,192 @@
+@import 'reset.scss';
+@import 'colors.scss';
+@import 'mixins.scss';
+
+// Mobile first approach for these styles
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, label, table {
+    font-family: 'Helvetica', 'Neue', arial, sans-serif;
+}
+
+.hide-desktop {
+    display: block;
+
+    @include media-query(768px) {
+        display: none;
+    }
+}
+
+.hide-mobile {
+    display: none;
+
+    @include media-query(768px) {
+        display: block;
+    }
+}
+
+.header {
+    background-color: $color-brand;
+
+    &__wrapper {
+        @include display-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        width: 100%;
+        max-width: 1250px;
+        margin: auto;
+        padding: 15px;
+    }
+
+    &__logo {
+        @include display-flex;
+        @include align-items(center);
+
+        img {
+            margin-right: 15px;
+        }
+
+        h1 {
+            font-size: 12px;
+            font-weight: bold;
+            color: $color-white;
+
+            @include media-query(768px) {
+                font-size: 14px;
+            }
+        }
+    }
+
+    &__author {
+        font-family: 'Helvetica', 'Neue', arial, sans-serif;
+        font-size: 8px;
+        font-weight: bold;
+        color: $color-white;
+    }
+}
+
+.search_form {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+    padding: 15px;
+
+    &__header {
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+
+.form {
+    @include display-flex;
+    @include flex-column;
+    @include flex-wrap(wrap);
+    margin-top: 15px;
+
+    @include media-query(768px) {
+        @include flex-row;
+        @include justify-content(space-between);
+        @include align-items(flex-end);
+    }
+
+    &__field {
+        @include display-flex;
+        @include flex-column;
+        margin-bottom: 15px;
+
+        @include media-query(768px) {
+            margin-bottom: 0;
+        }
+    }
+
+    label {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid $color-light-grey;
+        height: 30px;
+    }
+
+    input[type="submit"] {
+        @include button;
+        border-radius: 3px;
+
+        @include media-query(768px) {
+            height: 30px;
+            padding: 0 15px;
+        }
+    }
+}
+
+.results {
+    margin-top: 25px;
+
+    &--fetching {
+        text-align: center;
+    }
+
+    &__entry {
+        @include display-flex;
+        @include flex-wrap(wrap);
+        padding: 10px;
+        margin-bottom: 25px;
+        border: 1px solid $color-light-grey;
+        border-radius: 5px;
+
+        @include media-query(768px) {
+            padding: 50px;
+        }
+    }
+}
+
+.entry {
+    &__locations,
+    &__details {
+        @include flex(1 0 0%);
+    }
+
+    &__departure,
+    &__arrival,
+    &__operator,
+    &__price {
+        @include display-flex;
+        @include justify-content(space-around);
+        padding: 15px;
+    }
+
+    &__departure {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    &__price {
+        p {
+            align-items: center;
+        }
+
+        .seats {
+            font-weight: bold;
+            line-height: 18px;
+        }
+
+        .ticket_price {
+            color: $color-brand;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+}
