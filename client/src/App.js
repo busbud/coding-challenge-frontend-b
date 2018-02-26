@@ -10,6 +10,10 @@
 	constructor(props) {
 		super(props);
 		this.state = {
+			languages :[
+				{title : 'English', value: 'CA'},
+				{title : 'French', value: 'FR'},
+			], 
 			data: {
 				departures : [],
 				locations : [],
@@ -20,7 +24,7 @@
 			search : {
 				origin : 'dr5reg',
 				destination : 'f25dvk',
-				outbound_date: moment('2018-08-10').format("YYYY-MM-DD"),
+				outbound_date: moment('2018-08-02').format("YYYY-MM-DD"),
 				adult : 1,
 				child : 0,
 				senior : 0,
@@ -66,7 +70,16 @@
 		return (this.state.data.completed===false || this.state.data.departures.length===0)
 
 	}
-
+	changeLang(event){
+		var that = this
+		let search = Object.assign({}, this.state.search); 
+		let data = Object.assign({}, this.state.data); 
+		search.lang = event.target.value;
+		data.completed = false;
+		this.setState({search : search, data : data}, function(){
+			that.poll()
+		})
+	}
 	render() {
 		const departures = this.state.data.departures;
 		const operators = this.state.data.operators;
@@ -75,7 +88,16 @@
 		return (
 			<div className="App">
 			<header className="App-header">
-				<p>Lists all the departures for a given origin city (New York - geohash: dr5reg) and a given destination city (Montréal - geohash: f25dvk) for a given day (the 2nd of August 2018) for 1 adult.</p>
+				<div className="row">
+					<div className="col-sm-10"></div>
+					<div className="col-sm-2 form-inline">
+						<LangSwitch languages={this.state.languages} language={this.state.search.lang} changeLang={this.changeLang.bind(this)} />
+					</div>
+				</div> 			
+				<div className="row">
+					<div className="col-sm-12">Lists all the departures for a given origin city (New York - geohash: dr5reg) and a given destination city (Montréal - geohash: f25dvk) for a given day (the 2nd of August 2018) for 1 adult.
+					</div>
+				</div>	
 			</header>
 			
 			{/** Completed : False Spinner */}
@@ -137,5 +159,20 @@
 		}
 	}
 
+	class LangSwitch extends Component{
+		render (){
+			return(
+			<div>
+				<select className="form-control" onChange={this.props.changeLang} value={this.props.language}>
+					{this.props.languages.map((lang, i) => {
+						return (
+							<option key={i} value={lang.value}>{lang.title}</option>
+						)
+					})}
+				</select>
+			</div>
+			)
+		}
+	}
 
 	export default App;
