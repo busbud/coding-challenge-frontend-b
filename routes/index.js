@@ -6,7 +6,7 @@ var request = require('request');
 var config  = require('../config.js') 
 
 /* GET */
-router.get('/api/:origin/:destination/:outbound_date/:adult/:child/:senior/:lang/:currency/:index?', function(req, res, next) {
+router.get('/api/:origin/:destination/:outbound_date/:adult/:child/:senior/:lang/:currency/:index/:poll?', function(req, res, next) {
  
   var form = {
     adult : req.params.adult,

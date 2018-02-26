@@ -35,11 +35,11 @@
 		};
 	}
 	componentDidMount() {
-		this.poll()
+		this.poll(false)
 	}
-	poll () {
-		var queryString = Object.values(this.state.search).join('/').replace(/^\//, '');
-		var API = base_url+'/'+queryString
+	poll (polling) {
+		var queryString = Object.values(this.state.search).join('/');
+		var API = base_url+'/'+queryString + (polling ? '/poll' : '')
 		var that = this
 			fetch(API)
 			.then(
@@ -54,7 +54,7 @@
 
 						// If we are missing data, we check again 
 						if(data.complete===false){
-							setTimeout(function() {that.poll()}, 4000);
+							setTimeout(function() {that.poll(true)}, 4000);
 						}
 					
 					})
