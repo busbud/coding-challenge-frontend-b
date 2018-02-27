@@ -21,7 +21,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "request": "^2.83.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "concurrently": "^3.5.1"
   },
   "devDependencies": {
     "concurrently": "^3.5.1"
