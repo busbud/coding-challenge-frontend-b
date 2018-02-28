@@ -9,13 +9,7 @@ var index = require('./routes/index');
 
 var app = express();
 
-
 app.use(express.static(path.join(__dirname, 'client/build')));
-
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
-
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -23,6 +17,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/', index);
+
+//app.use(express.static(path.join(__dirname, 'client/build')));
+
+// app.get('/', function (req, res) {
+//   console.log('/');
+//   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
