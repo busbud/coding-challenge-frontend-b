@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"PORT=3001 node ./bin/www\"  \"cd client && PORT=3000 npm start\""
+    "start" : "node ./bin/www",
+    "heroku-postbuild" : "npm install && npm install --prefix client && npm --silent run-script build --prefix client"
   },
   "dependencies": {
     "babel": "^6.23.0",
