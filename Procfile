@@ -1,5 +1,2 @@
-web: cd client
-web: npm install
-web: npm run-script build
-web: cd ../
+web: sh -c 'cd client && npm install && npm run-script build'
 web: node ./bin/www
