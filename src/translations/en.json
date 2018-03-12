@@ -1,0 +1,11 @@
+{
+  "components.logo.alt": "Busbud",
+  "components.trip.action.booking": "Book now",
+  "components.trip.hours": "{amount}H",
+  "components.trip.minutes": "{amount}m",
+  "containers.app.error.content": "Our apologies an unknown error has occurred.",
+  "containers.jumbotron.title": "Find and compare cheap bus",
+  "containers.searchform.destination.label": "Arrival city",
+  "containers.searchform.origin.label": "Departure city",
+  "containers.searchform.outbound.date.label": "Date of departure"
+}

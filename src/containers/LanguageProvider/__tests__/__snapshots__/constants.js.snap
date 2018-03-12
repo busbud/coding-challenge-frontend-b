@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers | LanguageProvider | constants should match snapshot 1`] = `
+Object {
+  "CHANGE_LOCALE": "@@/LanguageProvider/CHANGE_LOCALE",
+}
+`;

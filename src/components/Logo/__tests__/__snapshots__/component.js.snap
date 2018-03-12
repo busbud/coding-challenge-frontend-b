@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component | Logo | component render should match snapshot 1`] = `
+<img
+  alt="Busbud"
+  className="fakeRootClass"
+  src="logo.svg"
+/>
+`;

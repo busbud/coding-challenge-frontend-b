@@ -1,0 +1,50 @@
+{
+  "name": "ccf-swann-knani",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "npm": ">=5.6.0",
+    "yarn": ">=1.3.2",
+    "node": ">=9.7.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "date-fns": "^2.0.0-alpha.7",
+    "intl": "^1.2.5",
+    "material-ui": "^1.0.0-beta.36",
+    "material-ui-icons": "^1.0.0-beta.36",
+    "material-ui-pickers": "^1.0.0-rc.2",
+    "prop-types": "^15.6.1",
+    "ramda": "^0.25.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-intl": "^2.4.0",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.1",
+    "recompose": "^0.26.0",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
+    "reselect": "^3.0.1",
+    "sanctuary": "^0.14.1",
+    "source-map-explorer": "^1.5.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "extract-intl": "extract-messages -l=en,fr -o src/translations -d en --flat true 'src/**/messages.js'",
+    "analyze": "source-map-explorer build/static/js/main.*"
+  },
+  "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "extract-react-intl-messages": "^0.8.2",
+    "jest-enzyme": "^5.0.1",
+    "prettier": "^1.11.1",
+    "react-test-renderer": "^16.2.0"
+  }
+}

@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component | SearchForm | component render should match snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <WithStyles(GridWrapper)
+    container={true}
+    justify="center"
+  >
+    <WithStyles(GridWrapper)
+      item={true}
+      md={true}
+      xs={12}
+    >
+      <TextField
+        InputProps={
+          Object {
+            "readOnly": true,
+            "startAdornment": <WithStyles(InputAdornment)
+              position="start"
+          >
+              <pure(FlightTakeoff) />
+          </WithStyles(InputAdornment)>,
+          }
+        }
+        className="fakeTextfieldClass"
+        defaultValue="New York"
+        id="origin"
+        label={
+          <FormattedMessage
+            defaultMessage="Departure city"
+            id="containers.searchform.origin.label"
+            values={Object {}}
+          />
+        }
+        required={false}
+        select={false}
+      />
+    </WithStyles(GridWrapper)>
+    <WithStyles(GridWrapper)
+      item={true}
+      md={true}
+      xs={12}
+    >
+      <TextField
+        InputProps={
+          Object {
+            "readOnly": true,
+            "startAdornment": <WithStyles(InputAdornment)
+              position="start"
+          >
+              <pure(FlightLand) />
+          </WithStyles(InputAdornment)>,
+          }
+        }
+        className="fakeTextfieldClass"
+        defaultValue="Montreal"
+        id="destination"
+        label={
+          <FormattedMessage
+            defaultMessage="Arrival city"
+            id="containers.searchform.destination.label"
+            values={Object {}}
+          />
+        }
+        required={false}
+        select={false}
+      />
+    </WithStyles(GridWrapper)>
+    <WithStyles(GridWrapper)
+      item={true}
+      md={true}
+      xs={12}
+    >
+      <withUtilsDatePickerWrapper
+        InputProps={
+          Object {
+            "startAdornment": <WithStyles(InputAdornment)
+              position="start"
+          >
+              <pure(DateRange) />
+          </WithStyles(InputAdornment)>,
+          }
+        }
+        className="fakeTextfieldClass"
+        disablePast={true}
+        id="outbound_date"
+        label={
+          <FormattedMessage
+            defaultMessage="Date of departure"
+            id="containers.searchform.outbound.date.label"
+            values={Object {}}
+          />
+        }
+        onChange={[Function]}
+        value={2018-08-02T00:00:00.000Z}
+      />
+    </WithStyles(GridWrapper)>
+    <div
+      className="fakeButtonWrapperClass"
+    >
+      <WithStyles(Button)
+        aria-label="search"
+        className="fakeButtonClass"
+        color="primary"
+        type="submit"
+        variant="fab"
+      >
+        <pure(Search) />
+      </WithStyles(Button)>
+      <WithStyles(CircularProgress)
+        className="fakeCircularProgressClass"
+        size={72}
+      />
+    </div>
+  </WithStyles(GridWrapper)>
+</form>
+`;
