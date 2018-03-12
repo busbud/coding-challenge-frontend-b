@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component | Logo | styles should match snapshot 1`] = `
+Object {
+  "root": Object {
+    "height": "100%",
+  },
+}
+`;

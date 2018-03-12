@@ -1,0 +1,11 @@
+{
+  "components.logo.alt": "Busbud",
+  "components.trip.action.booking": "Reserver",
+  "components.trip.hours": "{amount}H",
+  "components.trip.minutes": "{amount}m",
+  "containers.app.error.content": "Veuillez nous excuser, un problème est survenu.",
+  "containers.jumbotron.title": "Cherchez et trouvez votre trajet pas cher",
+  "containers.searchform.destination.label": "Ville d'arrivée",
+  "containers.searchform.origin.label": "Ville de départ",
+  "containers.searchform.outbound.date.label": "Date de départ"
+}

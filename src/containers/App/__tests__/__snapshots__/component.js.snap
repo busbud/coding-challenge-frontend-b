@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers | App | component render should match snapshot 1`] = `
+<div
+  className="fakeRootClass"
+>
+  <WithStyles(Reboot) />
+  <WithStyles(GridWrapper)
+    container={true}
+    justify="center"
+  >
+    <WithStyles(GridWrapper)
+      item={true}
+      xs={12}
+    >
+      <WithStyles(Component) />
+      <Component />
+      <WithStyles(Snackbar)
+        message={
+          <FormattedMessage
+            defaultMessage="Our apologies an unknown error has occurred."
+            id="containers.app.error.content"
+            values={Object {}}
+          />
+        }
+        open={false}
+      />
+    </WithStyles(GridWrapper)>
+  </WithStyles(GridWrapper)>
+</div>
+`;

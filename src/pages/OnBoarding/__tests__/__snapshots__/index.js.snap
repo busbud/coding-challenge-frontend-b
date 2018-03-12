@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages | OnBoarding | index render should match snapshot 1`] = `
+<WithStyles(GridWrapper)
+  container={true}
+  justify="center"
+>
+  <WithStyles(GridWrapper)
+    item={true}
+    md={8}
+    xs={11}
+  >
+    <WithStyles(Collapse)
+      in={true}
+    >
+      <WithStyles(Component) />
+    </WithStyles(Collapse)>
+    <WithStyles(Connect(Component)) />
+    <WithStyles(Connect(Component)) />
+  </WithStyles(GridWrapper)>
+</WithStyles(GridWrapper)>
+`;

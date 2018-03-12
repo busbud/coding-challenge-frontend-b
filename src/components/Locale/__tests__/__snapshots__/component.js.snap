@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component | Locale | component render should match snapshot 1`] = `
+<WithStyles(MenuItem)
+  key="en"
+  onClick={[Function]}
+>
+  en
+</WithStyles(MenuItem)>
+`;

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component | Jumbotron | component render should match snapshot 1`] = `
+<WithStyles(GridWrapper)
+  className="fakeRootClass"
+  container={true}
+  justify="flex-start"
+>
+  <WithStyles(GridWrapper)
+    item={true}
+    md={4}
+    xs={12}
+  >
+    <WithStyles(Typography)
+      color="primary"
+      gutterBottom={true}
+      variant="display3"
+    >
+      <FormattedMessage
+        defaultMessage="Find and compare cheap bus"
+        id="containers.jumbotron.title"
+        values={Object {}}
+      />
+    </WithStyles(Typography)>
+  </WithStyles(GridWrapper)>
+</WithStyles(GridWrapper)>
+`;

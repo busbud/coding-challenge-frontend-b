@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers | SearchResults | styles should match snapshot 1`] = `
+Object {
+  "root": Object {
+    "marginBottom": "3rem",
+    "marginTop": "6rem",
+  },
+}
+`;

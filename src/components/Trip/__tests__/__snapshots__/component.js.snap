@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component | Jumbotron | component render should match snapshot 1`] = `
+<WithStyles(GridWrapper)
+  item={true}
+  md={6}
+  xs={12}
+>
+  <Card
+    raised={false}
+  >
+    <WithStyles(CardContent)>
+      <WithStyles(GridWrapper)
+        alignItems="center"
+        container={true}
+        justify="center"
+      >
+        <WithStyles(GridWrapper)
+          className="Component-departure-274"
+          item={true}
+          md={5}
+          xs={6}
+        >
+          <WithStyles(Typography)
+            gutterBottom={true}
+          >
+            <FormattedDate
+              day="2-digit"
+              month="long"
+              value={2018-08-07T00:01:00.000Z}
+            />
+          </WithStyles(Typography)>
+          <WithStyles(Typography)
+            variant="display1"
+          >
+            <FormattedTime
+              value={2018-08-07T00:01:00.000Z}
+            />
+          </WithStyles(Typography)>
+        </WithStyles(GridWrapper)>
+        <Hidden
+          implementation="js"
+          lgDown={false}
+          lgUp={false}
+          mdDown={true}
+          mdUp={false}
+          smDown={false}
+          smUp={false}
+          xlDown={false}
+          xlUp={false}
+          xsDown={false}
+          xsUp={false}
+        >
+          <WithStyles(GridWrapper)
+            className="Component-duration-275"
+            item={true}
+            xs={2}
+          >
+            <pure(DirectionsBus)
+              color="action"
+            />
+            <WithStyles(Typography)
+              className="Component-duration-275"
+            >
+              <FormattedMessage
+                className="duration__hours"
+                defaultMessage="{amount}H "
+                id="components.trip.hours"
+                values={
+                  Object {
+                    "amount": 8,
+                  }
+                }
+              />
+              <FormattedMessage
+                className="duration__minutes"
+                defaultMessage="{amount}m"
+                id="components.trip.minutes"
+                values={
+                  Object {
+                    "amount": 19,
+                  }
+                }
+              />
+            </WithStyles(Typography)>
+          </WithStyles(GridWrapper)>
+        </Hidden>
+        <WithStyles(GridWrapper)
+          className="Component-arrival-276"
+          item={true}
+          md={5}
+          xs={6}
+        >
+          <WithStyles(Typography)
+            gutterBottom={true}
+          >
+            <FormattedDate
+              day="2-digit"
+              month="long"
+              value={2018-08-07T08:20:00.000Z}
+            />
+          </WithStyles(Typography)>
+          <WithStyles(Typography)
+            variant="display1"
+          >
+            <FormattedTime
+              value={2018-08-07T08:20:00.000Z}
+            />
+          </WithStyles(Typography)>
+        </WithStyles(GridWrapper)>
+      </WithStyles(GridWrapper)>
+    </WithStyles(CardContent)>
+    <WithStyles(Collapse)
+      in={false}
+      timeout="auto"
+      unmountOnExit={true}
+    >
+      <WithStyles(CardContent)>
+        <WithStyles(GridWrapper)
+          alignItems="center"
+          container={true}
+          justify="space-between"
+        >
+          <WithStyles(GridWrapper)
+            className="Component-departure-274"
+            item={true}
+            xs={5}
+          >
+            <WithStyles(Typography)
+              variant="title"
+            >
+              Port Authority Bus Terminal
+            </WithStyles(Typography)>
+            <WithStyles(Typography)>
+              619-623 8th Ave, New York, NY 10018, USA
+            </WithStyles(Typography)>
+          </WithStyles(GridWrapper)>
+          <WithStyles(GridWrapper)
+            className="Component-arrival-276"
+            item={true}
+            xs={5}
+          >
+            <WithStyles(Typography)
+              variant="title"
+            >
+              Gare d'autocars de Montréal
+            </WithStyles(Typography)>
+            <WithStyles(Typography)>
+              1717 Rue Berri, Montréal, QC H2L 4E9, Canada
+            </WithStyles(Typography)>
+          </WithStyles(GridWrapper)>
+        </WithStyles(GridWrapper)>
+      </WithStyles(CardContent)>
+    </WithStyles(Collapse)>
+    <WithStyles(CardActions)
+      className="Component-actions-277"
+      disableActionSpacing={true}
+    >
+      <WithStyles(Typography)
+        variant="button"
+      >
+        <FormattedNumber
+          currency="USD"
+          style="currency"
+          value={72}
+        />
+      </WithStyles(Typography)>
+      <WithStyles(Button)
+        color="primary"
+        href="https://www.busbud.com/en/deeplink/dr5reg/f25dvk/N2Y5ODU1MTpjMWM4Yzg0Mg?outbound_date=2018-08-07&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+        target="_blank"
+      >
+        <FormattedMessage
+          defaultMessage="Book now"
+          id="components.trip.action.booking"
+          values={Object {}}
+        />
+      </WithStyles(Button)>
+      <WithStyles(IconButton)
+        aria-expanded={false}
+        aria-label="Show more"
+        className="Component-expand-278 "
+        onClick={[Function]}
+      >
+        <pure(ExpandMore) />
+      </WithStyles(IconButton)>
+    </WithStyles(CardActions)>
+  </Card>
+</WithStyles(GridWrapper)>
+`;

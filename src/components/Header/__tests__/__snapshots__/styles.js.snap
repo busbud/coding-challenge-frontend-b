@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component | Header | styles should match snapshot 1`] = `
+Object {
+  "item": Object {
+    "display": "flex",
+    "height": "100%",
+    "justifyContent": "space-between",
+  },
+  "root": Object {
+    "flexGrow": 1,
+    "height": "4.4rem",
+  },
+  "toolbar": Object {
+    "height": "100%",
+    "padding": 0,
+    "paddingBottom": "8px",
+    "paddingTop": "8px",
+  },
+}
+`;

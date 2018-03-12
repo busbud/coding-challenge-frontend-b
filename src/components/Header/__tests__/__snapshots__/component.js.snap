@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component | Header | component render should match snapshot 1`] = `
+<WithStyles(AppBar)
+  className="fakeRootClass"
+  color="secondary"
+  position="sticky"
+>
+  <WithStyles(Toolbar)
+    className="fakeToolbarClass"
+  >
+    <WithStyles(GridWrapper)
+      className="fakeRootClass"
+      container={true}
+      justify="center"
+    >
+      <WithStyles(GridWrapper)
+        className="fakeItemClass"
+        item={true}
+        md={8}
+        xs={11}
+      >
+        <InjectIntl(WithStyles(Component)) />
+        <withStateHandlers(Connect(Component)) />
+      </WithStyles(GridWrapper)>
+    </WithStyles(GridWrapper)>
+  </WithStyles(Toolbar)>
+</WithStyles(AppBar)>
+`;

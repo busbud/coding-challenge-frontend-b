@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component | Trip | styles should match snapshot 1`] = `
+Object {
+  "actions": Object {
+    "display": "flex",
+  },
+  "arrival": Object {
+    "textAlign": "right",
+  },
+  "departure": Object {
+    "textAlign": "left",
+  },
+  "duration": Object {
+    "textAlign": "center",
+  },
+  "expand": Object {
+    "marginLeft": "auto",
+    "transform": "rotate(0deg)",
+    "transition": "transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+  },
+  "expandOpen": Object {
+    "transform": "rotate(180deg)",
+  },
+}
+`;

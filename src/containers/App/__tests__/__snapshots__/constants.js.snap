@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers | App | constants should match snapshot 1`] = `
+Object {
+  "DEFAULT_LOCALE": "en",
+  "FETCH_DEPARTURES": "@@/App/FETCH_DEPARTURES",
+  "FETCH_DEPARTURES_COMPLETE": "@@/App/FETCH_DEPARTURES_COMPLETE",
+  "FETCH_DEPARTURES_ERROR": "@@/App/FETCH_DEPARTURES_ERROR",
+  "FETCH_DEPARTURES_SUCCESS": "@@/App/FETCH_DEPARTURES_SUCCESS",
+  "LOCALES": Array [
+    "en",
+    "fr",
+  ],
+  "UPDATE_QUERY": "@@/App/UPDATE_QUERY",
+}
+`;

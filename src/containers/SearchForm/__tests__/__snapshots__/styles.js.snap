@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component | SearchForm | styles should match snapshot 1`] = `
+Object {
+  "button": Object {
+    "position": "relative",
+    "zIndex": 1,
+  },
+  "button_wrapper": Object {
+    "position": "relative",
+  },
+  "circularProgress": Object {
+    "color": "#f44336",
+    "left": -8,
+    "position": "absolute",
+    "top": -8,
+  },
+  "textField": Object {
+    "width": "100%",
+  },
+}
+`;
