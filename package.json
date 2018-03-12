@@ -32,7 +32,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "TZ=utc react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "extract-intl": "extract-messages -l=en,fr -o src/translations -d en --flat true 'src/**/messages.js'",
     "analyze": "source-map-explorer build/static/js/main.*"

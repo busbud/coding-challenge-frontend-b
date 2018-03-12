@@ -109,6 +109,13 @@ describe('component | Jumbotron | component', () => {
       // then
       expect(wrapper).toBeDefined();
     });
+    it('should match snapshot', () => {
+      // given
+      const wrapper = shallow(<Trip {...props} />);
+
+      // then
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
   describe('CardContent', () => {

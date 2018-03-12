@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, object, bool, string } from 'prop-types';
+import { func, object, bool, instanceOf } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
@@ -17,7 +17,7 @@ const propTypes = {
   classes: object.isRequired,
   onSubmit: func.isRequired,
   onChange: func.isRequired,
-  outbound_date: string.isRequired,
+  outbound_date: instanceOf(Date).isRequired,
   isFetching: bool.isRequired,
 };
 
@@ -62,7 +62,7 @@ const Component = ({ classes, outbound_date, onChange, onSubmit, isFetching }) =
           id="outbound_date"
           className={classes.textField}
           label={<FormattedMessage {...messages.outbound_date_label} />}
-          value={new Date(outbound_date)}
+          value={outbound_date}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

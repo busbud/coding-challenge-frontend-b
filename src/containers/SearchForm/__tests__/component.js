@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import { DatePicker } from 'material-ui-pickers';
 import SearchForm from '../component';
 import messages from '../messages';
+import { toDate } from 'date-fns';
 
 const props = {
   classes: {
@@ -15,7 +16,7 @@ const props = {
   },
   onSubmit: jest.fn(),
   onChange: jest.fn(),
-  outbound_date: '2018-08-02',
+  outbound_date: toDate('2018-08-02'),
   isFetching: true,
 };
 
@@ -123,7 +124,7 @@ describe('component | SearchForm | component', () => {
         const { value } = wrapper.find(DatePicker).props();
 
         // then
-        const expectedValue = new Date(props.outbound_date);
+        const expectedValue = props.outbound_date;
         expect(value).toEqual(expectedValue);
       });
       it('should have correct onChange props', () => {

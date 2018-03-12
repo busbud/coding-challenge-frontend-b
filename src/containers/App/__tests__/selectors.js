@@ -4,6 +4,7 @@ import {
   makeSelectFetchingState,
   makeSelectError,
   makeSelectQuery,
+  makeSelectOutboundDate,
   makeSelectXDepartures,
   makeSelectCities,
   makeSelectDepartures,
@@ -206,6 +207,20 @@ describe('containers | App | selectors', () => {
       // then
       const expected = [];
       expect(result).toMatchObject(expected);
+    });
+  });
+
+  describe('makeSelectOutboundDate', () => {
+    it('should return a default date if not found', () => {
+      // given
+      const selector = makeSelectOutboundDate();
+
+      // when
+      const partialState = omit(['global', 'query', 'path', 'outbound_date'], state);
+      const result = selector(partialState);
+
+      // then
+      expect(result instanceof Date).toBe(true);
     });
   });
 

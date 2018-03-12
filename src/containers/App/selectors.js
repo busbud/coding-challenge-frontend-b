@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { map, compose, flip, prop, curry, propOr, assoc, converge, identity, pathOr } from 'ramda';
+import { toDate } from 'date-fns';
 import { findById, safeArray } from '../../utils/helpers';
 
 const flippedFindById = flip(findById);
@@ -17,7 +18,7 @@ export const makeSelectError = () => createSelector(selectGlobal, prop('hasError
 export const makeSelectQuery = () => createSelector(selectGlobal, prop('query'));
 
 export const makeSelectOutboundDate = () =>
-  createSelector(makeSelectQuery(), pathOr('1970-01-01', ['path', 'outbound_date']));
+  createSelector(makeSelectQuery(), compose(toDate, pathOr('1970-01-01', ['path', 'outbound_date'])));
 
 export const makeSelectXDepartures = () => createSelector(selectGlobal, propOr({}, 'xDepartures'));
 
