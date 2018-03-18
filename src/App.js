@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import OnboardingScreen from './components/onboarding-screen/OnboardingScreen';
 import ResultsScreen from './components/results-screen/ResultsScreen';
-import { getParsedDepartures } from './api-service/apiService';
+import { getParsedDeparturesObservable } from './api-service/apiService';
 
 class App extends Component {
   constructor(props) {
@@ -15,18 +15,9 @@ class App extends Component {
     this.handleOnboardingSubmit = this.handleOnboardingSubmit.bind(this);
   }
 
-  handleOnboardingSubmit(
-    originCity,
-    destinationCity,
-    date,
-    numberOfPassengers
-  ) {
-    getParsedDepartures(
-      originCity,
-      destinationCity,
-      date,
-      numberOfPassengers
-    ).then(departures => {
+  handleOnboardingSubmit(originCity, destinationCity, date, numberOfPassengers) {
+    let parsedDepartures = getParsedDeparturesObservable(originCity, destinationCity, date, numberOfPassengers);
+    parsedDepartures.subscribe(departures => {
       this.setState({
         departures
       });

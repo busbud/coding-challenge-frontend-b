@@ -7,8 +7,6 @@ class ResultsScreen extends Component {
   render() {
     const { departures } = this.props;
 
-    console.log(departures);
-
     return (
       <div>
         <h1>Results</h1>
