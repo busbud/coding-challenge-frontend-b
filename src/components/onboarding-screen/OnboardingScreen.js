@@ -14,11 +14,13 @@ class OnboardingScreen extends Component {
       date,
       numberOfPassengers
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit();
+    this.props.onSubmit(this.state.originCity, this.state.destinationCity, this.state.date, this.state.numberOfPassengers);
   }
 
   handleInputChange(event) {
