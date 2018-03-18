@@ -11,6 +11,8 @@ class App extends Component {
     this.state = {
       departures: []
     };
+
+    this.handleOnboardingSubmit = this.handleOnboardingSubmit.bind(this);
   }
 
   handleOnboardingSubmit(
@@ -41,7 +43,7 @@ class App extends Component {
           numberOfPassengers={1}
           onSubmit={this.handleOnboardingSubmit}
         />
-        <ResultsScreen />
+        <ResultsScreen departures={this.state.departures} />
       </div>
     );
   }
