@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './DepartureResult.css';
 
 class DepartureResult extends Component {
@@ -14,6 +15,15 @@ class DepartureResult extends Component {
       </div>
     );
   }
+}
+
+DepartureResult.propTypes = {
+  departureTime: PropTypes.string, 
+  arrivalTime: PropTypes.string, 
+  departureLocation: PropTypes.string, 
+  arrivalLocation: PropTypes.string, 
+  price: PropTypes.number, 
+  operatorName: PropTypes.string
 }
 
 export default DepartureResult;
