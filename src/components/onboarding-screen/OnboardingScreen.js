@@ -35,7 +35,7 @@ class OnboardingScreen extends Component {
   
   render() {
     return (
-      <div className="container">
+      <div className="onboarding-container">
         <h1>Osheaga</h1>
         <form>
           <fieldset>
