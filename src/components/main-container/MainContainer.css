@@ -1,0 +1,13 @@
+.main-container {
+  max-width: 500px;
+  margin: 10px auto;
+  border: 1px white solid;
+  border-radius: 1px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+}
+
+.loader {
+  text-align:center;
+}

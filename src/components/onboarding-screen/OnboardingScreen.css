@@ -1,0 +1,55 @@
+.container {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+h4 {
+  text-align: center;
+}
+
+fieldset {
+  margin: 25px 0 !important;
+}
+
+.form-label {
+  color: #21C8E2;
+}
+
+.mdl-textfield__input {
+  font-size: 20px !important;
+}
+
+.submit-button {
+  width: 100%;
+  margin: 20px 0;
+  background-color: #F23784;
+  border: 1px #ffffff solid;
+  border-radius: 5px;
+  font-size: 25px;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+}
+
+.osheaga-image {
+  width: 100%;
+}
+
+.language-switch-container {
+  text-align: right;
+}
+
+.language-switch {
+  margin-top: 25px;
+  color: #262727;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.language-switch:hover {
+  cursor:pointer;
+}
