@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ResultsScreen.css';
 import DepartureResult from '../departure-result/DepartureResult';
+import Strings from './../../strings.js';
 
 class ResultsScreen extends Component {
   render() {
@@ -9,7 +10,7 @@ class ResultsScreen extends Component {
 
     return (
       <div>
-        <h4>Available trips:</h4>
+        <h4>{Strings.availableTrips}</h4>
         {departures.map((departure,index) => {
           return <DepartureResult 
             key={`departure${index}`}

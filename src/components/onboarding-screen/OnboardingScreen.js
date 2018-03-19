@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './OnboardingScreen.css';
 import PropTypes from 'prop-types';
+import Strings from './../../strings.js';
 
 class OnboardingScreen extends Component {
   constructor(props) {
@@ -37,12 +38,12 @@ class OnboardingScreen extends Component {
     return (
       <div>
         
-        <h4>Travel Itinerary</h4>
+        <h4>{Strings.travelItinerary}</h4>
         <form>
           <fieldset>
             <label>
               <span className="form-label">
-                <strong>Leaving from:</strong>
+                <strong>{Strings.leavingFrom}</strong>
               </span>
               <br />
               <input 
@@ -58,7 +59,7 @@ class OnboardingScreen extends Component {
           <fieldset>
             <label>
               <span className="form-label">
-                <strong>Going to: </strong>
+                <strong>{Strings.goingTo}</strong>
               </span>
               <br />
               <input 
@@ -74,7 +75,7 @@ class OnboardingScreen extends Component {
           <fieldset>
             <label>
               <span className="form-label">
-                <strong>Date: </strong>
+                <strong>{Strings.date}</strong>
               </span>
               <br />
               <input 
@@ -90,7 +91,7 @@ class OnboardingScreen extends Component {
           <fieldset>
             <label>
               <span className="form-label">
-                <strong>Number of passengers: </strong>
+                <strong>{Strings.numberOfPassengers}</strong>
               </span>
               <br />
               <input 
@@ -103,10 +104,10 @@ class OnboardingScreen extends Component {
             </label>
           </fieldset>
 
-          <input className="submit-button" type="submit" value="Search" onClick={this.handleSubmit}/>
+          <input className="submit-button" type="submit" value={Strings.search} onClick={this.handleSubmit}/>
         </form>
         <div className="language-switch-container">
-          <a className="language-switch">French</a>
+          <a className="language-switch" onClick={this.props.onSwitchLanguage}>{Strings.switchLanguage}</a>
         </div>
       </div>
     );
@@ -118,7 +119,8 @@ OnboardingScreen.propTypes = {
   destinationCity: PropTypes.string,
   date: PropTypes.string,
   numberOfPassengers: PropTypes.number,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onSwitchLanguage: PropTypes.func
 }
 
 export default OnboardingScreen;

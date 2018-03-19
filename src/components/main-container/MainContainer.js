@@ -4,20 +4,33 @@ import OnboardingScreen from './../onboarding-screen/OnboardingScreen';
 import ResultsScreen from './../results-screen/ResultsScreen';
 import { getParsedDeparturesObservable } from './../../api-service/apiService';
 import { ClipLoader } from 'react-spinners';
-import OsheagaImage from './../../assets/osheaga.png'
+import OsheagaImage from './../../assets/osheaga.png';
+import Strings from './../../strings.js';
 
 class MainContainer extends Component {
   constructor(props) {
     super(props);
 
+    Strings.setLanguage('en');
+
     this.state = {
       departures: [],
+      language: 'en',
       displayOnboardingScreen: true,
       displayLoader: false,
       displayResultsScreen: false
     };
-
+    
     this.handleOnboardingSubmit = this.handleOnboardingSubmit.bind(this);
+    this.switchLanguage = this.switchLanguage.bind(this);
+  }
+
+  switchLanguage() {
+    const newLanguage = this.state.language === 'en' ? 'fr' : 'en';
+    Strings.setLanguage(newLanguage);
+    this.setState({
+      language: newLanguage
+    });
   }
 
   handleOnboardingSubmit(originCity, destinationCity, date, numberOfPassengers) {
@@ -54,6 +67,7 @@ class MainContainer extends Component {
             date="2018-08-02"
             numberOfPassengers={1}
             onSubmit={this.handleOnboardingSubmit}
+            onSwitchLanguage={this.switchLanguage}
           />
         </div>
         <div className="results-screen-container" style={{display: this.state.displayResultsScreen ? 'block' : 'none'}}>
