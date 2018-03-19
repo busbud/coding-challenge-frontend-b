@@ -9,7 +9,7 @@ class ResultsScreen extends Component {
 
     return (
       <div>
-        <h1>Results</h1>
+        <h4>Available trips:</h4>
         {departures.map((departure,index) => {
           return <DepartureResult 
             key={`departure${index}`}

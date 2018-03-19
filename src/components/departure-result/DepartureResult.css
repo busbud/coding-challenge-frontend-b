@@ -1,0 +1,14 @@
+.departure-result {
+  padding: 10px;
+  border: 1px #F7F5F3 solid;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.24);
+  margin-top: 10px;
+}
+
+.price {
+  text-align: center;
+  margin: 25px auto;
+  font-weight: bold;
+  font-size: 40px;
+  color: #F23784;
+}

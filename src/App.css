@@ -1,12 +1,19 @@
-.app-container {
-  max-width: 500px;
-  margin: 10px auto;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F6F5F4;
 }
 
 h1 {
   text-align: center;
 }
 
-.loader {
-  text-align:center;
+h4 {
+  text-align: center;
+  color: #0A648A;
+}
+
+p {
+  margin: 0 !important;
 }

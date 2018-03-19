@@ -9,9 +9,13 @@ class DepartureResult extends Component {
     return (
       <div className="departure-result">
         <h4>{operatorName}</h4>
-        <p>Departure: <strong>{departureTime}</strong> ({departureLocation})</p>
-        <p>Arrival: <strong>{arrivalTime}</strong> ({arrivalLocation})</p>
-        <p>{`${Math.floor(price/100)}$`}</p>
+        <div className="price">
+          {`${Math.floor(price/100)}$`}
+        </div>
+        <div className="departure-and-arrival">
+          <p>Departure: <strong>{departureTime}</strong> ({departureLocation})</p>
+          <p>Arrival: <strong>{arrivalTime}</strong> ({arrivalLocation})</p>
+        </div>
       </div>
     );
   }

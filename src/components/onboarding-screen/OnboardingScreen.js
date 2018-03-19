@@ -36,14 +36,18 @@ class OnboardingScreen extends Component {
   render() {
     return (
       <div>
-        <h1>Osheaga</h1>
+        
+        <h4>Travel Itinerary</h4>
         <form>
           <fieldset>
             <label>
-              Leaving from: 
+              <span className="form-label">
+                <strong>Leaving from:</strong>
+              </span>
               <br />
               <input 
                 name="originCity" 
+                className="mdl-textfield__input"
                 type="text" 
                 value={this.state.originCity} 
                 onChange={this.handleInputChange}
@@ -53,10 +57,13 @@ class OnboardingScreen extends Component {
           
           <fieldset>
             <label>
-              Going to: 
+              <span className="form-label">
+                <strong>Going to: </strong>
+              </span>
               <br />
               <input 
                 name="destinationCity" 
+                className="mdl-textfield__input"
                 type="text" 
                 value={this.state.destinationCity} 
                 onChange={this.handleInputChange}
@@ -66,10 +73,13 @@ class OnboardingScreen extends Component {
           
           <fieldset>
             <label>
-              Date:
+              <span className="form-label">
+                <strong>Date: </strong>
+              </span>
               <br />
               <input 
                 name="date" 
+                className="mdl-textfield__input"
                 type="date" 
                 value={this.state.date} 
                 onChange={this.handleInputChange}
@@ -79,10 +89,13 @@ class OnboardingScreen extends Component {
           
           <fieldset>
             <label>
-              Number of passengers: 
+              <span className="form-label">
+                <strong>Number of passengers: </strong>
+              </span>
               <br />
               <input 
-                name="" 
+                name="number" 
+                className="mdl-textfield__input"
                 type="number" 
                 value={this.state.numberOfPassengers} 
                 onChange={this.handleInputChange}
@@ -90,8 +103,11 @@ class OnboardingScreen extends Component {
             </label>
           </fieldset>
 
-          <input type="submit" value="Search" onClick={this.handleSubmit}/>
+          <input className="submit-button" type="submit" value="Search" onClick={this.handleSubmit}/>
         </form>
+        <div className="language-switch-container">
+          <a className="language-switch">French</a>
+        </div>
       </div>
     );
   }
