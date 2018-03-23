@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { Card } from 'antd';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  state = {
-    response: ''
-  };
+  constructor(props) {
+    super(props);
+    this.state = { response: '' };
+  }
 
   componentDidMount() {
     this.fetchData()
@@ -29,7 +31,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">{this.state.response}</p>
+        <Card
+          title="Departure"
+          extra={<a href="#">Book now</a>}
+          style={{ width: 300 }}
+        >
+          <p>{this.state.response}</p>
+        </Card>
       </div>
     );
   }
