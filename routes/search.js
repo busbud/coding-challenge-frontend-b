@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var busbud = require("../lib/busbud");
 
-router.get("/", function(req, res, next) {
+router.post("/", function(req, res, next) {
   let sourceCityGeoHash = 'dr5reg';
   let destCityGeoHash = 'f25dvk';
   let travelDate = '2018-08-02';
