@@ -13,6 +13,7 @@ var session = require("express-session");
 
 // Define routes
 var indexRouter = require("./routes/index");
+var searchRouter = require("./routes/search");
 
 // Setup express application
 var app = express();
@@ -59,7 +60,6 @@ app.use(
 );
 
 // Non CSRF Protected routes here
-app.use("/", indexRouter);
 
 // Setup CSRF
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -67,6 +67,8 @@ app.use(cookieParser());
 app.use(csurf({ cookie: true }));
 
 // CSRF Protected routes here
+app.use("/", indexRouter);
+app.use("/search", searchRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
