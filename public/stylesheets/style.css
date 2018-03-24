@@ -1,8 +1,30 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-a {
-  color: #00B7FF; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700; }
+
+header.masthead {
+  position: relative;
+  padding-top: 8rem;
+  padding-bottom: 8rem; }
+  header.masthead .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.3; }
+  header.masthead h1 {
+    font-size: 2rem; }
+  @media (min-width: 768px) {
+    header.masthead h1 {
+      font-size: 3rem; } }
 
 /*# sourceMappingURL=style.css.map */
