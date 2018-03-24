@@ -4,5 +4,11 @@
   "LANGUAGE": "Language",
   "ENGLISH": "English",
   "FRENCH": "French",
-  "SEARCH": "Search"
+  "SEARCH": "Search",
+
+  "DEPARTURELOCATION": "Depart From",
+  "DEPARTURETIME": "Depart At",
+  "ARRIVALLOCATION": "Arrive To",
+  "ARRIVALTIME": "Arrive At",
+  "PRICE": "Price"
 }

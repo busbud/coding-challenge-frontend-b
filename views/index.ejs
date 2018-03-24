@@ -10,19 +10,9 @@
       <%- include('logo'); %>
 
       <div class="row text-center">
-        <div class="col-12 mx-auto">
+        <div-- class="col-12 mx-auto">
           <form action="/search" method="get">
             <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-
-            <div class="form-group">
-              <div class="input-group mb-3 date">
-                <input type="text" class="form-control">
-                <div class="input-group-append">
-                  <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
-                </div>
-              </div>
-            </div>
-
             <div class="form-group">
               <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fas fa-lg fa-search"></i> <%=translation.SEARCH%></button>
             </div>

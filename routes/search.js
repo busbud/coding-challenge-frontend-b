@@ -11,7 +11,8 @@ router.get("/", function(req, res, next) {
   };
 
   busbud.search(sourceCityGeoHash, destCityGeoHash, travelDate, options).then(function(search_data) {
-    res.render("index", { data: JSON.stringify(search_data, null, 2), csrfToken: req.csrfToken() });
+    let parsedData = busbud.parseDepartures(search_data);
+    res.render("index", { data: parsedData, csrfToken: req.csrfToken() });
   });
 });
 
