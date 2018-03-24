@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var helmet = require('helmet')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -8,6 +9,9 @@ var sassMiddleware = require('node-sass-middleware');
 var indexRouter = require('./routes/index');
 
 var app = express();
+
+// Secure application a bit
+app.use(helmet())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
