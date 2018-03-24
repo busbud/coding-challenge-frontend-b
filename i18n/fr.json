@@ -6,6 +6,11 @@
   "FRENCH": "Français",
   "SEARCH": "Recherche",
 
+  "ORIGINGEOHASH": "Origine Geohash",
+  "DESTINATIONGEOHASH": "Destination Geohash",
+  "DEPARTUREDATE": "Date de départ",
+  "WHENTOLEAVE": "Quand comptez-vous partir?",
+
   "DEPARTURELOCATION": "Départ de",
   "DEPARTURETIME": "Départ à",
   "ARRIVALLOCATION": "Arriver à",

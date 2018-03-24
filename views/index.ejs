@@ -13,6 +13,23 @@
         <div-- class="col-12 mx-auto">
           <form action="/search" method="post">
             <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="originLocationGeoHash"><%= translation.ORIGINGEOHASH %></label>
+                <input type="text" class="form-control" id="originLocationGeoHash" placeholder="<%= translation.ORIGINGEOHASH %>">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="destinationLocationGeoHash"><%= translation.DESTINATIONGEOHASH %></label>
+                <input type="text" class="form-control" id="destinationLocationGeoHash" placeholder="<%= translation.DESTINATIONGEOHASH %>">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="departureDate"><%= translation.DEPARTUREDATE %></label>
+              <input type="date" class="form-control" id="departureDate" placeholder="<%= translation.WHENTOLEAVE %>">
+            </div>
+
             <div class="form-group">
               <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fas fa-lg fa-search"></i> <%=translation.SEARCH%></button>
             </div>
