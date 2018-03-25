@@ -4,13 +4,15 @@
   "LANGUAGE": "Language",
   "ENGLISH": "English",
   "FRENCH": "French",
-  "SEARCH": "Search",
-
   "ORIGINGEOHASH": "Origin Geohash",
   "DESTINATIONGEOHASH": "Destination Geohash",
   "DEPARTUREDATE": "Departure Date",
   "WHENTOLEAVE": "When do you plan on leaving?",
-
+  "ADULTS": "Adults",
+  "CHILDREN": "Children",
+  "SENIORS": "Seniors",
+  "SEARCH": "Search",
+  "SEARCHING": "Searching...",
   "DEPARTURELOCATION": "Depart From",
   "DEPARTURETIME": "Depart At",
   "ARRIVALLOCATION": "Arrive To",

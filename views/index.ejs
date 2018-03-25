@@ -10,7 +10,7 @@
       <%- include('logo'); %>
 
       <div class="row text-center">
-        <div-- class="col-12 mx-auto">
+        <div class="col-12 mx-auto">
           <form action="/search" method="post">
             <input type="hidden" name="_csrf" value="<%=csrfToken%>">
 
@@ -31,7 +31,7 @@
                 <input type="text" class="form-control datepicker" name="departureDate" placeholder="<%= translation.WHENTOLEAVE %>" />
               </div>
               <div class="form-group col-md-3">
-                <label for="adult">Adults</label>
+                <label for="adult"><%= translation.ADULTS %></label>
                 <select name="adult" class="form-control">
                   <% for(let index = 0; index < 5; index++) { %>
                     <option value="<%= index %>" <%= (index == 1 ? "selected" : "") %> ><%= index %></option>
@@ -39,7 +39,7 @@
                 </select>
               </div>
               <div class="form-group col-md-3">
-                <label for="child">Children</label>
+                <label for="child"><%= translation.CHILDREN %></label>
                 <select name="child" class="form-control">
                   <% for(let index = 0; index < 5; index++) { %>
                     <option value="<%= index %>"><%= index %></option>
@@ -47,7 +47,7 @@
                 </select>
               </div>
               <div class="form-group col-md-3">
-                <label for="senior">Seniors</label>
+                <label for="senior"><%= translation.SENIORS %></label>
                 <select name="senior" class="form-control">
                   <% for(let index = 0; index < 5; index++) { %>
                     <option value="<%= index %>"><%= index %></option>
@@ -57,7 +57,9 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fas fa-lg fa-search"></i> <%=translation.SEARCH%></button>
+              <button type="submit" class="btn btn-block btn-lg btn-primary">
+                  <i class="fas fa-lg fa-search"></i> <%=translation.SEARCH%>
+              </button>
             </div>
           </form>
         </div>
