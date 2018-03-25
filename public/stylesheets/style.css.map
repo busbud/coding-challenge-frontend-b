@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"style.sass",
+		"variables.sass",
+		"mixins.sass",
+		"global.sass"
+	],
+	"names": [],
+	"mappings": "AGAA,AAAA,IAAI,CAAC;EDCH,WAAW,EAAE,sDAAsD;ECCnE,WAAW,EAAE,IAAI,GAAG;;AAEtB,AAAA,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE,CAAC;EDRD,WAAW,EAAE,sDAAsD;ECUnE,WAAW,EAAE,GAAG,GAAG"
+}

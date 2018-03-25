@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('head'); %>
+  </head>
+
+  <body>
+    <%- include('navigation'); %>
+    <div class="container">
+      <%- include('logo'); %>
+
+      <h1><%= message %></h1>
+      <h2><%= error.status %></h2>
+      <pre><%= error.stack %></pre>
+    </div>
+    <%- include('scripts'); %>
+  </body>
+</html>

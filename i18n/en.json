@@ -1,0 +1,21 @@
+{
+  "TITLE": "Coding Challenge Frontend B",
+  "HOME": "Home",
+  "LANGUAGE": "Language",
+  "ENGLISH": "English",
+  "FRENCH": "French",
+  "ORIGINGEOHASH": "Origin Geohash",
+  "DESTINATIONGEOHASH": "Destination Geohash",
+  "DEPARTUREDATE": "Departure Date",
+  "WHENTOLEAVE": "When do you plan on leaving?",
+  "ADULTS": "Adults",
+  "CHILDREN": "Children",
+  "SENIORS": "Seniors",
+  "SEARCH": "Search",
+  "SEARCHING": "Searching...",
+  "DEPARTURELOCATION": "Depart From",
+  "DEPARTURETIME": "Depart At",
+  "ARRIVALLOCATION": "Arrive To",
+  "ARRIVALTIME": "Arrive At",
+  "PRICE": "Price"
+}

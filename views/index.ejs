@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('head'); %>
+  </head>
+
+  <body>
+    <%- include('navigation'); %>
+    <div class="container">
+      <%- include('logo'); %>
+
+      <div class="row text-center">
+        <div class="col-12 mx-auto">
+          <form action="/search" method="post">
+            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="departureDate"><%= translation.ORIGINGEOHASH %></label>
+                <input type="text" class="form-control" name="originLocationGeoHash" value="dr5reg" />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="departureDate"><%= translation.DESTINATIONGEOHASH %></label>
+                <input type="text" class="form-control" name="destinationLocationGeoHash" value="f25dvk" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label for="departureDate"><%= translation.WHENTOLEAVE %></label>
+                <input type="text" class="form-control datepicker" name="departureDate" placeholder="<%= translation.WHENTOLEAVE %>" />
+              </div>
+              <div class="form-group col-md-3">
+                <label for="adult"><%= translation.ADULTS %></label>
+                <select name="adult" class="form-control">
+                  <% for(let index = 0; index < 5; index++) { %>
+                    <option value="<%= index %>" <%= (index == 1 ? "selected" : "") %> ><%= index %></option>
+                  <% } %>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="child"><%= translation.CHILDREN %></label>
+                <select name="child" class="form-control">
+                  <% for(let index = 0; index < 5; index++) { %>
+                    <option value="<%= index %>"><%= index %></option>
+                  <% } %>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="senior"><%= translation.SENIORS %></label>
+                <select name="senior" class="form-control">
+                  <% for(let index = 0; index < 5; index++) { %>
+                    <option value="<%= index %>"><%= index %></option>
+                  <% } %>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-block btn-lg btn-primary">
+                  <i class="fas fa-lg fa-search"></i> <%=translation.SEARCH%>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <% if (locals.data !== undefined) { %>
+        <%- include('results', data); %>
+      <% } %>
+    </div>
+    <%- include('scripts'); %>
+    <script type="text/javascript">
+      $(function () {
+        $('.datepicker').datepicker({
+          format: 'yyyy-mm-dd',
+          value: '<%= moment().format('YYYY-MM-DD') %>',
+          minDate: '<%= moment().format('YYYY-MM-DD') %>',
+          uiLibrary: 'bootstrap4'
+        });
+      });
+    </script>
+  </body>
+</html>
