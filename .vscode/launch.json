@@ -7,7 +7,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Debug",
       "program": "${workspaceFolder}/bin/www"
     }
   ]

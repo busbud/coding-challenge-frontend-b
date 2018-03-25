@@ -16,37 +16,39 @@
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <input type="text" class="form-control" id="originLocationGeoHash" placeholder="<%= translation.ORIGINGEOHASH %>">
+                <label for="departureDate"><%= translation.ORIGINGEOHASH %></label>
+                <input type="text" class="form-control" name="originLocationGeoHash" value="dr5reg" />
               </div>
               <div class="form-group col-md-6">
-                <input type="text" class="form-control" id="destinationLocationGeoHash" placeholder="<%= translation.DESTINATIONGEOHASH %>">
+                <label for="departureDate"><%= translation.DESTINATIONGEOHASH %></label>
+                <input type="text" class="form-control" name="destinationLocationGeoHash" value="f25dvk" />
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-3">
                 <label for="departureDate"><%= translation.WHENTOLEAVE %></label>
-                <input type="text" class="form-control datepicker" id="departureDate" placeholder="<%= translation.WHENTOLEAVE %>">
+                <input type="text" class="form-control datepicker" name="departureDate" placeholder="<%= translation.WHENTOLEAVE %>" />
               </div>
               <div class="form-group col-md-3">
-                <label for="numAdults">Adults</label>
-                <select id="numAdults" class="form-control">
+                <label for="adult">Adults</label>
+                <select name="adult" class="form-control">
                   <% for(let index = 0; index < 5; index++) { %>
-                    <option value="<%= index %>"<%= index == 1 ? " selected" : "" %>><%= index %></option>
+                    <option value="<%= index %>" <%= (index == 1 ? "selected" : "") %> ><%= index %></option>
                   <% } %>
                 </select>
               </div>
               <div class="form-group col-md-3">
-                <label for="numChildren">Children</label>
-                <select id="numChildren" class="form-control">
+                <label for="child">Children</label>
+                <select name="child" class="form-control">
                   <% for(let index = 0; index < 5; index++) { %>
                     <option value="<%= index %>"><%= index %></option>
                   <% } %>
                 </select>
               </div>
               <div class="form-group col-md-3">
-                <label for="numSeniors">Seniors</label>
-                <select id="numSeniors" class="form-control">
+                <label for="senior">Seniors</label>
+                <select name="senior" class="form-control">
                   <% for(let index = 0; index < 5; index++) { %>
                     <option value="<%= index %>"><%= index %></option>
                   <% } %>
