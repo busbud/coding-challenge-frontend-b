@@ -23,8 +23,35 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <input type="text" class="form-control datepicker" id="departureDate" placeholder="<%= translation.WHENTOLEAVE %>">
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label for="departureDate"><%= translation.WHENTOLEAVE %></label>
+                <input type="text" class="form-control datepicker" id="departureDate" placeholder="<%= translation.WHENTOLEAVE %>">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="numAdults">Adults</label>
+                <select id="numAdults" class="form-control">
+                  <% for(let index = 0; index < 5; index++) { %>
+                    <option value="<%= index %>"<%= index == 1 ? " selected" : "" %>><%= index %></option>
+                  <% } %>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="numChildren">Children</label>
+                <select id="numChildren" class="form-control">
+                  <% for(let index = 0; index < 5; index++) { %>
+                    <option value="<%= index %>"><%= index %></option>
+                  <% } %>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="numSeniors">Seniors</label>
+                <select id="numSeniors" class="form-control">
+                  <% for(let index = 0; index < 5; index++) { %>
+                    <option value="<%= index %>"><%= index %></option>
+                  <% } %>
+                </select>
+              </div>
             </div>
 
             <div class="form-group">
@@ -41,8 +68,11 @@
     <%- include('scripts'); %>
     <script type="text/javascript">
       $(function () {
-        $('.datepicker').datetimepicker({
-          minDate: '2018-08-02'
+        $('.datepicker').datepicker({
+          format: 'yyyy-mm-dd',
+          value: '<%= moment().format('YYYY-MM-DD') %>',
+          minDate: '<%= moment().format('YYYY-MM-DD') %>',
+          uiLibrary: 'bootstrap4'
         });
       });
     </script>

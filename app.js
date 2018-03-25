@@ -18,6 +18,9 @@ var searchRouter = require("./routes/search");
 // Setup express application
 var app = express();
 
+// Add libraries
+app.locals.moment = require("moment");
+
 // Secure application a bit
 app.use(helmet());
 
