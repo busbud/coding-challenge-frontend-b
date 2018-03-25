@@ -16,18 +16,15 @@
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="originLocationGeoHash"><%= translation.ORIGINGEOHASH %></label>
                 <input type="text" class="form-control" id="originLocationGeoHash" placeholder="<%= translation.ORIGINGEOHASH %>">
               </div>
               <div class="form-group col-md-6">
-                <label for="destinationLocationGeoHash"><%= translation.DESTINATIONGEOHASH %></label>
                 <input type="text" class="form-control" id="destinationLocationGeoHash" placeholder="<%= translation.DESTINATIONGEOHASH %>">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="departureDate"><%= translation.DEPARTUREDATE %></label>
-              <input type="date" class="form-control" id="departureDate" placeholder="<%= translation.WHENTOLEAVE %>">
+              <input type="text" class="form-control datepicker" id="departureDate" placeholder="<%= translation.WHENTOLEAVE %>">
             </div>
 
             <div class="form-group">
@@ -42,5 +39,12 @@
       <% } %>
     </div>
     <%- include('scripts'); %>
+    <script type="text/javascript">
+      $(function () {
+        $('.datepicker').datetimepicker({
+          minDate: '2018-08-02'
+        });
+      });
+    </script>
   </body>
 </html>
