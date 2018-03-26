@@ -150,7 +150,7 @@ class App extends Component {
                     </Col>
                     <Col span={1} />
 
-                    <Col span={4}>
+                    <Col xs={24} sm={4} md={4} lg={4} xl={4}>
                       <h3 style={{ color: 'white' }}>
                         {this.state.complete ? '' : <Icon type="loading" />}{' '}
                         {this.state.departuresIndex}
@@ -167,7 +167,7 @@ class App extends Component {
                 </Col>
               </Row>
               <Row type="flex" justify="center">
-                <Col span={12}>
+                <Col xs={24} sm={22} md={20} lg={18} xl={16}>
                   {this.state.departures.map(departure => {
                     let destination = this.state.locations.find(
                       item => item.id === departure.destination_location_id
