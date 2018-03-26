@@ -148,7 +148,16 @@ class App extends Component {
                         style={{ width: '110%' }}
                       />
                     </Col>
-                    <Col span={1} />
+                    <Col span={1}>
+                      {this.state.complete ? (
+                        ''
+                      ) : (
+                        <Icon
+                          type="loading"
+                          style={{ fontSize: 46, color: '#127CCB' }}
+                        />
+                      )}
+                    </Col>
 
                     <Col xs={24} sm={4} md={4} lg={4} xl={4}>
                       <h3 style={{ color: 'white' }}>
