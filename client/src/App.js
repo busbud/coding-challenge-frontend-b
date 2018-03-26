@@ -16,6 +16,7 @@ class App extends Component {
     this.state = {
       locations: [],
       departures: [],
+      operators: [],
       loading: true,
       complete: false,
       // query params
@@ -33,6 +34,7 @@ class App extends Component {
           {
             locations: res.locations,
             departures: res.departures,
+            operators: res.operators,
             complete: res.complete
           },
           () => {
@@ -78,6 +80,7 @@ class App extends Component {
           {
             locations: [...this.state.locations, ...res.data.locations],
             departures: [...this.state.departures, ...res.data.departures],
+            operators: [...this.state.operators, ...res.data.operators],
             complete: res.data.complete
           },
           () => {
@@ -144,10 +147,13 @@ class App extends Component {
                   let origin = this.state.locations.find(
                     item => item.id === departure.origin_location_id
                   );
+                    let operator = this.state.operators.find(
+                      item => item.id === departure.operator_id
+                    );
                   return (
                     <Card
                       key={departure.id}
-                      title="Departure"
+                        title={operator.name}
                       extra={
                         <Button type="primary" href={departure.links.deeplink}>
                           Book now

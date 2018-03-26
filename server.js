@@ -38,6 +38,7 @@ app.get('/api/departures', (req, res) => {
       res.send({
         locations: response.data.locations,
         departures: response.data.departures,
+        operators: response.data.operators,
         complete: response.data.complete
       });
     })
@@ -61,6 +62,7 @@ app.get('/api/departures/poll', (req, res) => {
       res.send({
         locations: response.data.locations,
         departures: response.data.departures,
+        operators: response.data.operators,
         complete: response.data.complete
       });
     })
