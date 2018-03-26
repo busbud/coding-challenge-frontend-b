@@ -3,10 +3,22 @@ import { Layout, Card, Row, Col, Button, Icon } from 'antd';
 import moment from 'moment';
 import axios from 'axios';
 
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+import en from 'react-intl/locale-data/en';
+import fr from 'react-intl/locale-data/fr';
+
 import busbudLogo from './busbud-logo-for-white-background.png';
 import osheagaLogo from './osheaga_logo.png';
-
 import './App.css';
+import messages from './messages';
+
+addLocaleData([...en, ...fr]);
+
+let locale =
+  (navigator.languages && navigator.languages[0]) ||
+  navigator.language ||
+  navigator.userLanguage ||
+  'en-CA';
 
 const { Header, Content, Footer } = Layout;
 
@@ -14,6 +26,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      locale: locale, //'en-CA',
       locations: [],
       departures: [],
       operators: [],
@@ -94,105 +107,125 @@ class App extends Component {
       });
   };
 
-  render() {
-    console.log(this.state.departures);
-    return (
-      <div className="App">
-        <Layout>
-          <Header>
-            <div style={{ height: 200 }} />
-          </Header>
-          <Content>
-            <Row type="flex">
-              <Col
-                span={24}
-                style={{
-                  backgroundColor: '#e7717f'
-                  // height: 30
-                }}
-              >
-                <Row type="flex" align="middle" justify="space-between">
-                  <Col span={6} offset={2}>
-                    <img
-                      src={osheagaLogo}
-                      alt="Osheaga festival logo"
-                      style={{ width: '90%' }}
-                    />
-                  </Col>
-                  <Col span={6}>
-                    <img
-                      src={busbudLogo}
-                      alt="Busbud logo"
-                      style={{ width: '110%' }}
-                    />
-                  </Col>
-                  <Col span={1} />
+  changeLocale = e => {
+    this.setState({ locale: e.target.id });
+  };
 
-                  <Col span={4}>
-                    <h3 style={{ color: 'white' }}>
-                      {this.state.complete ? '' : <Icon type="loading" />}{' '}
-                      {this.state.departuresIndex}
-                      en | fr
-                    </h3>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-            <Row type="flex" justify="center">
-              <Col span={12}>
-                {this.state.departures.map(departure => {
-                  let destination = this.state.locations.find(
-                    item => item.id === departure.destination_location_id
-                  );
-                  let origin = this.state.locations.find(
-                    item => item.id === departure.origin_location_id
-                  );
+  render() {
+    return (
+      <IntlProvider
+        locale={this.state.locale}
+        key={this.state.locale}
+        defaultLocale="en-CA"
+        messages={messages[this.state.locale]}
+      >
+        <div className="App">
+          <Layout>
+            <Header>
+              <div style={{ height: 200 }} />
+            </Header>
+            <Content>
+              <Row type="flex">
+                <Col
+                  span={24}
+                  style={{
+                    backgroundColor: '#e7717f'
+                    // height: 30
+                  }}
+                >
+                  <Row type="flex" align="middle" justify="space-between">
+                    <Col span={6} offset={2}>
+                      <img
+                        src={osheagaLogo}
+                        alt="Osheaga festival logo"
+                        style={{ width: '90%' }}
+                      />
+                    </Col>
+                    <Col span={6}>
+                      <img
+                        src={busbudLogo}
+                        alt="Busbud logo"
+                        style={{ width: '110%' }}
+                      />
+                    </Col>
+                    <Col span={1} />
+
+                    <Col span={4}>
+                      <h3 style={{ color: 'white' }}>
+                        {this.state.complete ? '' : <Icon type="loading" />}{' '}
+                        {this.state.departuresIndex}
+                        <a id="en-CA" onClick={this.changeLocale}>
+                          en
+                        </a>{' '}
+                        |{' '}
+                        <a id="fr-CA" onClick={this.changeLocale}>
+                          fr
+                        </a>
+                      </h3>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+              <Row type="flex" justify="center">
+                <Col span={12}>
+                  {this.state.departures.map(departure => {
+                    let destination = this.state.locations.find(
+                      item => item.id === departure.destination_location_id
+                    );
+                    let origin = this.state.locations.find(
+                      item => item.id === departure.origin_location_id
+                    );
                     let operator = this.state.operators.find(
                       item => item.id === departure.operator_id
                     );
-                  return (
-                    <Card
-                      key={departure.id}
+                    return (
+                      <Card
+                        key={departure.id}
                         title={operator.name}
-                      extra={
-                        <Button type="primary" href={departure.links.deeplink}>
-                          Book now
-                        </Button>
-                      }
-                      style={{ margin: 20 }}
-                    >
-                      <p>
-                        Departure from {origin.name}:{' '}
-                        {moment(departure.departure_time).format('LT')}
-                      </p>
-                      <p>
-                        Arrival at {destination.name}:{' '}
-                        {moment(departure.arrival_time).format('LT')}
-                      </p>
-                      <p>
-                        Journey time: {Math.floor(departure.duration / 60)}h{' '}
-                        {departure.duration % 60}m
-                      </p>
-                      <p>
-                        Price:{' '}
-                        {(departure.prices.total / 100).toLocaleString(
-                          'en-US',
-                          {
-                            style: 'currency',
-                            currency: 'USD'
-                          }
-                        )}{' '}
-                        {departure.prices.currency}
-                      </p>
-                    </Card>
-                  );
-                })}
-              </Col>
-            </Row>
-          </Content>
-          <Footer style={{ color: 'white' }}>Made in Montreal</Footer>
-        </Layout>
-      </div>
+                        extra={
+                          <Button
+                            type="primary"
+                            href={departure.links.deeplink}
+                          >
+                            <FormattedMessage id="bookNow" />
+                          </Button>
+                        }
+                        style={{ margin: 20 }}
+                      >
+                        <p>
+                          <FormattedMessage id="departureFrom" /> {origin.name}:{' '}
+                          {moment(departure.departure_time).format('LT')}
+                        </p>
+                        <p>
+                          <FormattedMessage id="arriveAt" /> {destination.name}:{' '}
+                          {moment(departure.arrival_time).format('LT')}
+                        </p>
+                        <p>
+                          <FormattedMessage id="journeyTime" />:{' '}
+                          {Math.floor(departure.duration / 60)}h{' '}
+                          {departure.duration % 60}m
+                        </p>
+                        <p>
+                          <FormattedMessage id="price" />:{' '}
+                          {(departure.prices.total / 100).toLocaleString(
+                            'en-US',
+                            {
+                              style: 'currency',
+                              currency: 'USD'
+                            }
+                          )}{' '}
+                          {departure.prices.currency}
+                        </p>
+                      </Card>
+                    );
+                  })}
+                </Col>
+              </Row>
+            </Content>
+            <Footer className="Footer-text">Made in Montreal</Footer>
+          </Layout>
+        </div>
+      </IntlProvider>
     );
   }
 }

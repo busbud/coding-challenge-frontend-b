@@ -9,6 +9,7 @@ module.exports = function override(config, env) {
   config = rewireLess.withLoaderOptions({
     modifyVars: {
       //'@heading-color': 'white',
+      'link-color': 'white',
       '@primary-color': '#f19020',
       '@layout-header-height': '20',
       '@layout-sider-background': 'grey',
