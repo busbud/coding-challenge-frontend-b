@@ -31,7 +31,6 @@ app.get('/api/departures', (req, res) => {
       headers
     )
     .then(response => {
-      console.log(response.data.complete);
       if (!response.data.complete) {
         departuresIndex = response.data.departures.length;
       }
@@ -54,10 +53,8 @@ app.get('/api/departures/poll', (req, res) => {
       headers
     )
     .then(response => {
-      console.log(response.data.complete);
       if (!response.data.complete) {
         departuresIndex += response.data.departures.length;
-        console.log(departuresIndex);
       }
       res.send({
         locations: response.data.locations,

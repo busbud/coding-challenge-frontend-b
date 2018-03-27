@@ -26,7 +26,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      locale: locale, //'en-CA',
+      locale: locale,
       locations: [],
       departures: [],
       operators: [],
@@ -35,14 +35,13 @@ class App extends Component {
       // query params
       origin: 'dr5reg',
       destination: 'f25dvk',
-      date: '2018-08-24' // *** change this
+      date: '2018-08-02'
     };
   }
 
   componentWillMount() {
     this.initializeSearch()
       .then(res => {
-        console.log('Complete?', res.complete);
         this.setState(
           {
             locations: res.locations,
@@ -78,7 +77,6 @@ class App extends Component {
   };
 
   pollSearch = async () => {
-    console.log('running poll search');
     axios
       .get('/api/departures/poll', {
         params: {
@@ -88,7 +86,6 @@ class App extends Component {
         }
       })
       .then(res => {
-        console.log('poll res', res);
         this.setState(
           {
             locations: [...this.state.locations, ...res.data.locations],
@@ -204,34 +201,34 @@ class App extends Component {
                       >
                         <Row type="flex" align="middle" justify="space-between">
                           <Col xs={24} sm={12} md={12} lg={12} xl={12}>
-                        <p>
+                            <p>
                               <FormattedMessage id="departureFrom" />{' '}
                               {origin.name}:{' '}
-                          {moment(departure.departure_time).format('LT')}
-                        </p>
-                        <p>
+                              {moment(departure.departure_time).format('LT')}
+                            </p>
+                            <p>
                               <FormattedMessage id="arriveAt" />{' '}
                               {destination.name}:{' '}
-                          {moment(departure.arrival_time).format('LT')}
-                        </p>
+                              {moment(departure.arrival_time).format('LT')}
+                            </p>
                           </Col>
                           <Col xs={24} sm={12} md={12} lg={12} xl={12}>
-                        <p>
-                          <FormattedMessage id="journeyTime" />:{' '}
-                          {Math.floor(departure.duration / 60)}h{' '}
-                          {departure.duration % 60}m
-                        </p>
-                        <p>
-                          <FormattedMessage id="price" />:{' '}
-                          {(departure.prices.total / 100).toLocaleString(
-                            'en-US',
-                            {
-                              style: 'currency',
-                              currency: 'USD'
-                            }
-                          )}{' '}
-                          {departure.prices.currency}
-                        </p>
+                            <p>
+                              <FormattedMessage id="journeyTime" />:{' '}
+                              {Math.floor(departure.duration / 60)}h{' '}
+                              {departure.duration % 60}m
+                            </p>
+                            <p>
+                              <FormattedMessage id="price" />:{' '}
+                              {(departure.prices.total / 100).toLocaleString(
+                                'en-US',
+                                {
+                                  style: 'currency',
+                                  currency: 'USD'
+                                }
+                              )}{' '}
+                              {departure.prices.currency}
+                            </p>
                           </Col>
                         </Row>
                       </Card>
