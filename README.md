@@ -8,7 +8,7 @@ It will be hot this summer in Montreal with the [Osheaga festival](http://www.os
 
 * Visiting the microsite will immediately trigger a departure search. The React front-end calls a simple Express server which calls the Busbud API. The call could have been made from the React app but the Express server could allow for more advanced features such as cacheing or other server-side manipulation of data.
 * As this is to be a single-purpose site for a given origin, destination and date, there seems like no point making the user navigate through form elements, so let's get loading and not hang about!
-* Relevent details are shown from each departure and, well... the point is to book tickets, right? So there's a working booking button which passes the user over to Busbud.
+* Relevant details are shown from each departure and well... the point is to book tickets, right? So there's a working booking button which passes the user over to Busbud.
 
 ## Non-functional requirements
 
@@ -17,7 +17,7 @@ It will be hot this summer in Montreal with the [Osheaga festival](http://www.os
 ### Bonus
 
 * Localization is implemented using `react-intl` and supports French and English.
-* A responsive layout is implemented using 'ant-design`'s Grid flex system.
+* A responsive layout is implemented using `ant-design`'s Grid flex system.
 
 ### Remarks
 
@@ -27,8 +27,11 @@ It will be hot this summer in Montreal with the [Osheaga festival](http://www.os
 
 # Local installation
 
-* To install locally first clone this repo. `git clone https://github.com/challengineer/coding-challenge-frontend-b.git`
+* To install locally first clone this repo.
+
+  `git clone https://github.com/challengineer/coding-challenge-frontend-b.git`
   `cd coding-challenge-frontend-b`
+
 * Create a `.env` file containing:
 
 ```
@@ -38,4 +41,5 @@ X_BUSBUD_TOKEN=***YOUR KEY HERE***
 ```
 
 * Then run:
+
   `npm i && cd client && yarn && cd .. && npm start`
