@@ -30,6 +30,7 @@ It will be hot this summer in Montreal with the [Osheaga festival](http://www.os
 * To install locally first clone this repo.
 
   `git clone https://github.com/challengineer/coding-challenge-frontend-b.git`
+
   `cd coding-challenge-frontend-b`
 
 * Create a `.env` file containing:
