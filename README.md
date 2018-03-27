@@ -21,6 +21,8 @@ It will be hot this summer in Montreal with the [Osheaga festival](http://www.os
 
 ### Remarks
 
+* To give the site a festival vibe I used a royalty free image for the header background.
+* Color choices and gradient were inspired by both the Osheaga and Busbud websites.
 * Though I'm using LESS to override some `ant-design` styles, I had some issues getting LESS fully up and running. Please excuse my inline styling!
 * My philosophy with importing modules and frameworks (e.g. Moment.js vs writing a one-off function), is to leverage them if they can speed up development and review later if performance is an issue or some custom solution is needed.
 * Next steps: for further development I would implement testing with Jest, logging with Bunyan, state-management with Redux and type checking with TypeScript or `prop-types`.
