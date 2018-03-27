@@ -122,7 +122,17 @@ class App extends Component {
         <div className="App">
           <Layout>
             <Header>
-              <div style={{ height: 200 }} />
+              <Row type="flex" align="bottom" justify="start">
+                <Col xs={24} sm={12} md={8} lg={6} xl={4}>
+                  <img
+                    src={busbudLogo}
+                    alt="Busbud logo"
+                    style={{
+                      width: '110%'
+                    }}
+                  />
+                </Col>
+              </Row>
             </Header>
             <Content>
               <Row type="flex">
@@ -130,25 +140,18 @@ class App extends Component {
                   span={24}
                   style={{
                     backgroundColor: '#e7717f'
-                    // height: 30
                   }}
                 >
                   <Row type="flex" align="middle" justify="space-between">
-                    <Col span={6} offset={2}>
+                    <Col xs={24} sm={12} md={8} lg={4} xl={4}>
                       <img
                         src={osheagaLogo}
                         alt="Osheaga festival logo"
-                        style={{ width: '90%' }}
+                        style={{ width: '70%', margin: 25 }}
                       />
                     </Col>
-                    <Col span={6}>
-                      <img
-                        src={busbudLogo}
-                        alt="Busbud logo"
-                        style={{ width: '110%' }}
-                      />
-                    </Col>
-                    <Col span={1}>
+
+                    <Col xs={24} sm={4} md={1} lg={1} xl={1}>
                       {this.state.complete ? (
                         ''
                       ) : (
@@ -160,9 +163,7 @@ class App extends Component {
                     </Col>
 
                     <Col xs={24} sm={4} md={4} lg={4} xl={4}>
-                      <h3 style={{ color: 'white' }}>
-                        {this.state.complete ? '' : <Icon type="loading" />}{' '}
-                        {this.state.departuresIndex}
+                      <h2 style={{ color: 'white' }}>
                         <a id="en-CA" onClick={this.changeLocale}>
                           en
                         </a>{' '}
@@ -170,7 +171,7 @@ class App extends Component {
                         <a id="fr-CA" onClick={this.changeLocale}>
                           fr
                         </a>
-                      </h3>
+                      </h2>
                     </Col>
                   </Row>
                 </Col>
@@ -201,14 +202,20 @@ class App extends Component {
                         }
                         style={{ margin: 20 }}
                       >
+                        <Row type="flex" align="middle" justify="space-between">
+                          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
                         <p>
-                          <FormattedMessage id="departureFrom" /> {origin.name}:{' '}
+                              <FormattedMessage id="departureFrom" />{' '}
+                              {origin.name}:{' '}
                           {moment(departure.departure_time).format('LT')}
                         </p>
                         <p>
-                          <FormattedMessage id="arriveAt" /> {destination.name}:{' '}
+                              <FormattedMessage id="arriveAt" />{' '}
+                              {destination.name}:{' '}
                           {moment(departure.arrival_time).format('LT')}
                         </p>
+                          </Col>
+                          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
                         <p>
                           <FormattedMessage id="journeyTime" />:{' '}
                           {Math.floor(departure.duration / 60)}h{' '}
@@ -225,13 +232,15 @@ class App extends Component {
                           )}{' '}
                           {departure.prices.currency}
                         </p>
+                          </Col>
+                        </Row>
                       </Card>
                     );
                   })}
                 </Col>
               </Row>
             </Content>
-            <Footer className="Footer-text">Made in Montreal</Footer>
+            <Footer className="FooterText">Made in Montreal</Footer>
           </Layout>
         </div>
       </IntlProvider>
