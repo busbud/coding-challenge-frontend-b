@@ -23807,19 +23807,42 @@ module.exports = function(originalModule) {
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var components_1 = __webpack_require__(/*! ./components/components */ "./src/app/components/components.tsx");
+var App = function (props) { return (React.createElement(components_1.Root, null,
+    React.createElement(components_1.Header, null,
+        React.createElement(components_1.HeaderH1, null, "Its Time to book for"),
+        React.createElement(components_1.Image, { src: 'osheaga.png' })),
+    React.createElement(components_1.Header, null,
+        React.createElement(components_1.Button, null, "Lets Go!")))); };
+exports.default = App;
+
+
+/***/ }),
+
+/***/ "./src/app/components/components.tsx":
+/*!*******************************************!*\
+  !*** ./src/app/components/components.tsx ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.es.js");
-var Root = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    background: purple;\n    min-height: 100vh;\n    display: flex;\n"], ["\n    background: purple;\n    min-height: 100vh;\n    display: flex;\n"])));
-var Image = styled_components_1.default.img(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n\n"], ["\n\n"])));
-var App = function (props) { return (React.createElement(Root, null,
-    React.createElement("img", { src: 'osheaga.png' }))); };
-exports.default = App;
-var templateObject_1, templateObject_2;
+styled_components_1.injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: sans-serif;\n    }\n"], ["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: sans-serif;\n    }\n"])));
+exports.Root = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    height: 100vh;\n    background: linear-gradient(rgb(14, 138, 197), rgb(7, 155, 188), rgb(117, 205, 245));\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n"], ["\n    height: 100vh;\n    background: linear-gradient(rgb(14, 138, 197), rgb(7, 155, 188), rgb(117, 205, 245));\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n"])));
+exports.Header = styled_components_1.default.header(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 150px;\n"], ["\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 150px;\n"])));
+exports.HeaderH1 = styled_components_1.default.h1(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    padding-right: 15px;\n    color: #fff;\n    font-family: sans-serif;\n"], ["\n    padding-right: 15px;\n    color: #fff;\n    font-family: sans-serif;\n"])));
+exports.Image = styled_components_1.default.img(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    max-width: 100%;\n    height: 80px;\n"], ["\n    max-width: 100%;\n    height: 80px;\n"])));
+exports.Button = styled_components_1.default.button(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n"], ["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n"])));
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;
 
 
 /***/ }),

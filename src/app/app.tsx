@@ -1,19 +1,16 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import { Root, Header, HeaderH1, Button, Image } from './components/components';
 
-const Root = styled.div`
-    background: purple;
-    min-height: 100vh;
-    display: flex;
-`;
-
-const Image = styled.img`
-
-`;
 
 const App = (props: any) => (
     <Root>
-        <img src={'osheaga.png'} />
+        <Header>
+            <HeaderH1>Its Time to book for</HeaderH1>
+            <Image src={'osheaga.png'} />
+        </Header>
+        <Header>
+            <Button>Lets Go!</Button>
+        </Header>
     </Root>
 );
 

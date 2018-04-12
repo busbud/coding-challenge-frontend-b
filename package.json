@@ -27,6 +27,8 @@
     "awesome-typescript-loader": "^5.0.0",
     "express": "^4.16.3",
     "file-loader": "^1.1.11",
+    "mobx": "^4.1.1",
+    "mobx-react": "^5.0.0",
     "nodemon": "^1.17.3",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
