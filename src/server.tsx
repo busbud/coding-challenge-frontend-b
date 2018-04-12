@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { renderToNodeStream } from 'react-dom/server';
 import * as Express from 'express';
+import { Provider } from 'mobx-react';
 import { ServerStyleSheet } from 'styled-components'
+import SearchStore from './app/store/search';
 
 import Html from './Html';
 import App from './app/app';
@@ -15,15 +17,13 @@ const initialData = {
 };
 
 
-
-
-
-
 app.get('/', (req, res) => {
     const sheet = new ServerStyleSheet()
     const jsx = sheet.collectStyles( 
         <Html initialData={JSON.stringify(initialData)}>
-            <App {...initialData} name="World" />
+          <Provider store={SearchStore}>
+            <App />
+          </Provider>
         </Html>
     );
     const stream = sheet.interleaveWithNodeStream(renderToNodeStream(jsx));

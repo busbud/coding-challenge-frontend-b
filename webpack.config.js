@@ -11,9 +11,16 @@ module.exports = {
   devtool: "source-map",
 
   resolve: {
+
       // Add '.ts' and '.tsx' as resolvable extensions.
-      extensions: [".ts", ".tsx", ".js", ".json"]
+      extensions: [".ts", ".tsx", ".js", ".json"],
+      // figure out why this is breaking
+    //   alias: {
+    //     'styled-components': "node_modules/styled-components/dist/styled-components.js"
+    //   },
   },
+
+
 
   module: {
       rules: [

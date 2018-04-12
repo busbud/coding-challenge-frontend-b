@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node ./src/server.tsx",
-    "start:watch": "nodemon -e ts,tsx -w ./src -x 'ts-node ./src/server.tsx'",
-    "watch:serve": "",
+    "start:dev": "nodemon -e ts,tsx -w ./src -x 'ts-node ./src/server.tsx'",
+    "watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

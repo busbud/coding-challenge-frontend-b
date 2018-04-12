@@ -13,7 +13,4 @@ const Html = (props: any) => (
     </html>
 );
 
-
-
-
 export default Html;
