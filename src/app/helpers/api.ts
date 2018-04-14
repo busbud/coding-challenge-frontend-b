@@ -1,8 +1,19 @@
-import { Cities } from "./cities";
-import { Operators } from "./operators";
-import { Departures } from "./departures";
-import { Locations } from "./locations";
+import { Cities } from "./types/cities";
+import { Operators } from "./types/operators";
+import { Departures } from "./types/departures";
+import { Locations } from "./types/locations";
 
+
+export interface SearchResults {
+  cities: Cities[],
+  complete: boolean,
+  departures: Departures[],
+  operators: Operators[],
+  locations: Locations[]
+  destination_city_id: String,
+  is_valid_route: boolean,
+  origin_city_id: String,
+}
 
 
 export interface SearchResponse {
@@ -40,8 +51,8 @@ export const adaptResponse = (results: SearchResponse) => {
     ...results,
     departures: results.departures.map(departure => ({
       ...departure,
-      arrival_time: new Date(departure.arrival_time).getHours(),
-      departure_time: new Date(departure.departure_time).getHours(),
+      arrival_time: new Date(departure.arrival_time as any).getHours(),
+      departure_time: new Date(departure.departure_time as any).getHours(),
       totalPrice: (departure.prices.total / 100),
       duration: departure.duration / 60 ,
     }))

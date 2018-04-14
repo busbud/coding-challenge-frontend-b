@@ -1,11 +1,12 @@
-import styled, { injectGlobal } from 'styled-components';
+import styled, { injectGlobal, StyledFunction } from 'styled-components';
 
 injectGlobal`
     body {
         margin: 0;
         padding: 0;
         font-family: sans-serif;
-        background: linear-gradient(rgb(14, 138, 197), rgb(7, 155, 188), rgb(117, 205, 245));
+        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); 
+        // background: linear-gradient(rgb(14, 138, 197), rgb(7, 155, 188), rgb(117, 205, 245));
     }
 `
 
@@ -22,7 +23,7 @@ export const Container = styled.div`
 
 export const DepartureListItem = styled.li`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background: white;
     padding: 20px;
     width: 100%;
@@ -36,7 +37,10 @@ export const Ul = styled.ul`
     flex-wrap: wrap;
 `;
 
-export const CitiesListItem = styled.li`
+
+interface CitiesListItemProps { backgroundImg: string; }
+const typedCitiesListItem: StyledFunction<CitiesListItemProps & React.HTMLProps<HTMLLIElement>> = styled.li;
+export const CitiesListItem = typedCitiesListItem`
     flex: 1;
     min-height: 200px;
     background: url(${props => props.backgroundImg});
@@ -61,6 +65,7 @@ export const Footer = styled.footer`
 export const Header = styled.header`
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 150px;
 `;

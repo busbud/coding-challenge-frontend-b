@@ -3,8 +3,8 @@ import { observer, inject } from 'mobx-react';
 import { SearchStore } from './store/search';
 import { SearchResponse } from './helpers/api';
 import { Root, Header, HeaderH1, Button, Image, Footer, DepartureListItem, CitiesListItem, Ul, Container } from './components/components';
-import { Locations } from './helpers/locations';
-import { Operators } from './helpers/operators';
+import { Locations } from './helpers/types/locations';
+import { Operators } from './helpers/types/operators';
 
 interface Props {
     store: SearchStore;
@@ -60,7 +60,7 @@ class App extends React.Component<Props> {
                             {results.departures.map(departure => 
                                 <DepartureListItem key={departure.id}>
                                     <div>
-                                        <img src={getOperatorById(results.operators, departure.operator_id)[0].logo_url} />
+                                        <Image src={getOperatorById(results.operators, departure.operator_id)[0].logo_url} />
                                     </div>
                                     <div>
                                         <span>
@@ -85,13 +85,6 @@ class App extends React.Component<Props> {
                                 </DepartureListItem>
                             )}
                         </Ul>
-                        <Ul>
-                            {results.operators.map(operator => 
-                                <li key={operator.id}>
-                                    {operator.display_name}
-                                </li>
-                            )}
-                        </Ul>
                     </Container>
                 )}
                 <Footer />
@@ -101,4 +94,4 @@ class App extends React.Component<Props> {
 }
 
 
-export default App;
+export default App as React.ComponentClass<{}>;

@@ -20,28 +20,21 @@ export class SearchStore {
         this.requestStatus = 'RESOLVED';
       }
       return this.results = adaptResponse(results);
-    } finally {}
+    } finally {
+      when(
+        () => !searchStore.isComplete,
+        () => { 
+          if (!this.isComplete) {
+            setTimeout(() => searchStore.search(), 2000);
+          }
+        },
+        { name: 'polling search' }
+      );
+    }
   }
 }
 
 const searchStore: SearchStore = new SearchStore();
-
-when(
-  () => (
-    searchStore.isComplete !== undefined 
-    && !searchStore.isComplete 
-    && searchStore.requestStatus !== 'RESOLVED'
-  ),
-  () => { 
-    console.log('searchStore.isComplete !== undefined:', searchStore.isComplete !== undefined);
-    console.log('  && !searchStore.isComplete: ', !searchStore.isComplete); 
-    console.log('&& resolved', searchStore.requestStatus !== 'RESOLVED')
-    setTimeout(() => searchStore.search(), 3000)
-  },
-  { 
-    name: 'polling search'
-  }
-);
 
 
 

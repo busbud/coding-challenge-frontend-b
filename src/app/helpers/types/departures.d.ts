@@ -171,13 +171,14 @@
       sellable: boolean;
       source_id: number;
       ticket_types: string[];
-      departure_time: Date;
-      arrival_time: Date;
+      departure_time: Date | number;
+      arrival_time: Date | number;
       fetched_at: Date;
       prices: Prices;
       trip_stops?: any;
       addons?: any;
       details: Details;
       terms: Terms;
+      totalPrice: number;
   }
 

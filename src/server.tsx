@@ -5,7 +5,7 @@ import { Provider } from 'mobx-react';
 import { ServerStyleSheet } from 'styled-components'
 import SearchStore from './app/store/search';
 
-import Html from './Html';
+import Html from './html';
 import App from './app/app';
 
 const app = Express();

@@ -205,7 +205,7 @@ var App = /** @class */ (function (_super) {
                 React.createElement(components_1.Ul, null, results.departures.map(function (departure) {
                     return React.createElement(components_1.DepartureListItem, { key: departure.id },
                         React.createElement("div", null,
-                            React.createElement("img", { src: getOperatorById(results.operators, departure.operator_id)[0].logo_url })),
+                            React.createElement(components_1.Image, { src: getOperatorById(results.operators, departure.operator_id)[0].logo_url })),
                         React.createElement("div", null,
                             React.createElement("span", null,
                                 React.createElement("b", null,
@@ -222,9 +222,6 @@ var App = /** @class */ (function (_super) {
                             React.createElement("span", null,
                                 "Price: $",
                                 departure.totalPrice)));
-                })),
-                React.createElement(components_1.Ul, null, results.operators.map(function (operator) {
-                    return React.createElement("li", { key: operator.id }, operator.display_name);
                 })))),
             React.createElement(components_1.Footer, null)));
     };
@@ -254,14 +251,15 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
-styled_components_1.injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: sans-serif;\n        background: linear-gradient(rgb(14, 138, 197), rgb(7, 155, 188), rgb(117, 205, 245));\n    }\n"], ["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: sans-serif;\n        background: linear-gradient(rgb(14, 138, 197), rgb(7, 155, 188), rgb(117, 205, 245));\n    }\n"])));
+styled_components_1.injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: sans-serif;\n        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); \n        // background: linear-gradient(rgb(14, 138, 197), rgb(7, 155, 188), rgb(117, 205, 245));\n    }\n"], ["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: sans-serif;\n        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); \n        // background: linear-gradient(rgb(14, 138, 197), rgb(7, 155, 188), rgb(117, 205, 245));\n    }\n"])));
 exports.Root = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    min-height: 100vh;\n    display: flex;\n    justify-content: flex-end;\n    flex-direction: column;\n"], ["\n    min-height: 100vh;\n    display: flex;\n    justify-content: flex-end;\n    flex-direction: column;\n"])));
 exports.Container = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    padding: 20px;\n"], ["\n    padding: 20px;\n"])));
-exports.DepartureListItem = styled_components_1.default.li(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    justify-content: space-around;\n    background: white;\n    padding: 20px;\n    width: 100%;\n    margin: 10px 0;\n"], ["\n    display: flex;\n    justify-content: space-around;\n    background: white;\n    padding: 20px;\n    width: 100%;\n    margin: 10px 0;\n"])));
+exports.DepartureListItem = styled_components_1.default.li(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    justify-content: space-between;\n    background: white;\n    padding: 20px;\n    width: 100%;\n    margin: 10px 0;\n"], ["\n    display: flex;\n    justify-content: space-between;\n    background: white;\n    padding: 20px;\n    width: 100%;\n    margin: 10px 0;\n"])));
 exports.Ul = styled_components_1.default.ul(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    padding: 0;\n    list-style: none;\n    display: flex;\n    flex-wrap: wrap;\n"], ["\n    padding: 0;\n    list-style: none;\n    display: flex;\n    flex-wrap: wrap;\n"])));
-exports.CitiesListItem = styled_components_1.default.li(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    flex: 1;\n    min-height: 200px;\n    background: url(", ");\n    background-size: cover;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    > h3 {\n        text-align: center;\n    }\n"], ["\n    flex: 1;\n    min-height: 200px;\n    background: url(", ");\n    background-size: cover;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    > h3 {\n        text-align: center;\n    }\n"])), function (props) { return props.backgroundImg; });
+var typedCitiesListItem = styled_components_1.default.li;
+exports.CitiesListItem = typedCitiesListItem(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    flex: 1;\n    min-height: 200px;\n    background: url(", ");\n    background-size: cover;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    > h3 {\n        text-align: center;\n    }\n"], ["\n    flex: 1;\n    min-height: 200px;\n    background: url(", ");\n    background-size: cover;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    > h3 {\n        text-align: center;\n    }\n"])), function (props) { return props.backgroundImg; });
 exports.Footer = styled_components_1.default.footer(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    min-height: 35vw;\n    background-image: url(oshegaFooter.png);\n    background-repeat: no-repeat;\n    background-size: 100% auto;\n"], ["\n    min-height: 35vw;\n    background-image: url(oshegaFooter.png);\n    background-repeat: no-repeat;\n    background-size: 100% auto;\n"])));
-exports.Header = styled_components_1.default.header(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 150px;\n"], ["\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 150px;\n"])));
+exports.Header = styled_components_1.default.header(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    height: 150px;\n"], ["\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    height: 150px;\n"])));
 exports.HeaderH1 = styled_components_1.default.h1(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n    padding-right: 15px;\n    color: #fff;\n    font-family: sans-serif;\n"], ["\n    padding-right: 15px;\n    color: #fff;\n    font-family: sans-serif;\n"])));
 exports.Image = styled_components_1.default.img(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n    max-width: 100%;\n    height: 80px;\n"], ["\n    max-width: 100%;\n    height: 80px;\n"])));
 exports.Button = styled_components_1.default.button(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n"], ["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n"])));
@@ -367,6 +365,7 @@ var SearchStore = /** @class */ (function () {
         this.isComplete = undefined;
         this.results = undefined;
         this.search = function () { return __awaiter(_this, void 0, void 0, function () {
+            var _this = this;
             var results;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -383,7 +382,13 @@ var SearchStore = /** @class */ (function () {
                             this.requestStatus = 'RESOLVED';
                         }
                         return [2 /*return*/, this.results = api_1.adaptResponse(results)];
-                    case 2: return [7 /*endfinally*/];
+                    case 2:
+                        mobx_1.when(function () { return !searchStore.isComplete; }, function () {
+                            if (!_this.isComplete) {
+                                setTimeout(function () { return searchStore.search(); }, 2000);
+                            }
+                        }, { name: 'polling search' });
+                        return [7 /*endfinally*/];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -405,16 +410,6 @@ var SearchStore = /** @class */ (function () {
 }());
 exports.SearchStore = SearchStore;
 var searchStore = new SearchStore();
-mobx_1.when(function () { return (searchStore.isComplete !== undefined
-    && !searchStore.isComplete
-    && searchStore.requestStatus !== 'RESOLVED'); }, function () {
-    console.log('searchStore.isComplete !== undefined:', searchStore.isComplete !== undefined);
-    console.log('  && !searchStore.isComplete: ', !searchStore.isComplete);
-    console.log('&& resolved', searchStore.requestStatus !== 'RESOLVED');
-    setTimeout(function () { return searchStore.search(); }, 3000);
-}, {
-    name: 'polling search'
-});
 exports.default = searchStore;
 
 
@@ -435,7 +430,6 @@ var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/in
 var mobx_react_1 = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
 var app_1 = __webpack_require__(/*! ./app/app */ "./src/app/app.tsx");
 var search_1 = __webpack_require__(/*! ./app/store/search */ "./src/app/store/search.ts");
-var initialData = JSON.parse(document.getElementById('initial-data').getAttribute('data-json'));
 ReactDOM.hydrate(React.createElement(mobx_react_1.Provider, { store: search_1.default },
     React.createElement(app_1.default, null)), document.getElementById('app'));
 
