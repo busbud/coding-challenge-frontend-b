@@ -165,23 +165,19 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var mobx_react_1 = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
 var components_1 = __webpack_require__(/*! ./components/components */ "./src/app/components/components.tsx");
 var formatBackgroundImage = function (imageUrl, width, height) {
-    var url = imageUrl.replace(/{width}/, width);
-    url.replace(/{width}/, width);
-    url.replace(/{height}/, height);
-    console.log(url);
-    return url;
+    return imageUrl.replace(/{width}/, width).replace(/{height}/, height);
 };
 var getLocationById = function (locations, departureId) {
     return locations.filter(function (_a) {
         var id = _a.id;
         return id === departureId;
-    });
+    })[0];
 };
 var getOperatorById = function (oporators, operatorId) {
     return oporators.filter(function (_a) {
         var id = _a.id;
         return id === operatorId;
-    });
+    })[0];
 };
 var App = /** @class */ (function (_super) {
     __extends(App, _super);
@@ -198,27 +194,26 @@ var App = /** @class */ (function (_super) {
                 React.createElement(components_1.Button, { onClick: function () { return search(); } }, "Lets Go!")),
             results && (React.createElement(components_1.Container, null,
                 React.createElement(components_1.Ul, null, results.cities.map(function (city) {
-                    return React.createElement(components_1.CitiesListItem, { key: city.id, backgroundImg: formatBackgroundImage(city.image_url, "400", "400") },
+                    return React.createElement(components_1.CitiesListItem, { key: city.id, backgroundImg: formatBackgroundImage(city.image_url, "400", "270") },
                         React.createElement("h3", null, city.full_name));
                 })),
                 React.createElement("h3", null, "isLoaded: " + isComplete),
                 React.createElement(components_1.Ul, null, results.departures.map(function (departure) {
                     return React.createElement(components_1.DepartureListItem, { key: departure.id },
-                        React.createElement("div", null,
-                            React.createElement(components_1.Image, { src: getOperatorById(results.operators, departure.operator_id)[0].logo_url })),
-                        React.createElement("div", null,
+                        React.createElement(components_1.OperatorLogo, { backgroundImg: formatBackgroundImage(getOperatorById(results.operators, departure.operator_id).logo_url, "200", "100") }),
+                        React.createElement(components_1.DepartureTimes, null,
                             React.createElement("span", null,
                                 React.createElement("b", null,
                                     departure.departure_time,
                                     ": "),
-                                getLocationById(results.locations, departure.origin_location_id)[0].name),
+                                getLocationById(results.locations, departure.origin_location_id).name),
                             React.createElement("h2", null, departure.duration),
                             React.createElement("span", null,
                                 React.createElement("b", null,
                                     departure.arrival_time,
                                     ": "),
-                                getLocationById(results.locations, departure.destination_location_id)[0].name)),
-                        React.createElement("div", null,
+                                getLocationById(results.locations, departure.destination_location_id).name)),
+                        React.createElement(components_1.DeparturePrices, null,
                             React.createElement("span", null,
                                 "Price: $",
                                 departure.totalPrice)));
@@ -251,19 +246,23 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
-styled_components_1.injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: sans-serif;\n        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); \n        // background: linear-gradient(rgb(14, 138, 197), rgb(7, 155, 188), rgb(117, 205, 245));\n    }\n"], ["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: sans-serif;\n        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); \n        // background: linear-gradient(rgb(14, 138, 197), rgb(7, 155, 188), rgb(117, 205, 245));\n    }\n"])));
+styled_components_1.injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: sans-serif;\n        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); \n    }\n"], ["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: sans-serif;\n        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); \n    }\n"])));
 exports.Root = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    min-height: 100vh;\n    display: flex;\n    justify-content: flex-end;\n    flex-direction: column;\n"], ["\n    min-height: 100vh;\n    display: flex;\n    justify-content: flex-end;\n    flex-direction: column;\n"])));
 exports.Container = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    padding: 20px;\n"], ["\n    padding: 20px;\n"])));
-exports.DepartureListItem = styled_components_1.default.li(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    justify-content: space-between;\n    background: white;\n    padding: 20px;\n    width: 100%;\n    margin: 10px 0;\n"], ["\n    display: flex;\n    justify-content: space-between;\n    background: white;\n    padding: 20px;\n    width: 100%;\n    margin: 10px 0;\n"])));
+exports.DepartureListItem = styled_components_1.default.li(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    justify-content: space-between;\n    background: white;\n    padding: 20px;\n    width: 100%;\n    margin: 10px 0;\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);\n    transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);\n    \n      \n    &:hover {\n        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);\n    }\n"], ["\n    display: flex;\n    justify-content: space-between;\n    background: white;\n    padding: 20px;\n    width: 100%;\n    margin: 10px 0;\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);\n    transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);\n    \n      \n    &:hover {\n        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);\n    }\n"])));
 exports.Ul = styled_components_1.default.ul(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    padding: 0;\n    list-style: none;\n    display: flex;\n    flex-wrap: wrap;\n"], ["\n    padding: 0;\n    list-style: none;\n    display: flex;\n    flex-wrap: wrap;\n"])));
+var typedOperatorLogo = styled_components_1.default.div;
+exports.OperatorLogo = typedOperatorLogo(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    background: url(", ");\n    background-repeat: no-repeat;\n    background-size: contain;\n    flex-grow: 1;\n    min-width: 160px;\n"], ["\n    background: url(", ");\n    background-repeat: no-repeat;\n    background-size: contain;\n    flex-grow: 1;\n    min-width: 160px;\n"])), function (props) { return props.backgroundImg; });
+exports.DepartureTimes = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    display: flex;\n    flex-grow: 2;\n    width: 70%;\n"], ["\n    display: flex;\n    flex-grow: 2;\n    width: 70%;\n"])));
+exports.DeparturePrices = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n    display: flex;\n    flex-grow: 0.5;\n"], ["\n    display: flex;\n    flex-grow: 0.5;\n"])));
 var typedCitiesListItem = styled_components_1.default.li;
-exports.CitiesListItem = typedCitiesListItem(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    flex: 1;\n    min-height: 200px;\n    background: url(", ");\n    background-size: cover;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    > h3 {\n        text-align: center;\n    }\n"], ["\n    flex: 1;\n    min-height: 200px;\n    background: url(", ");\n    background-size: cover;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    > h3 {\n        text-align: center;\n    }\n"])), function (props) { return props.backgroundImg; });
-exports.Footer = styled_components_1.default.footer(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    min-height: 35vw;\n    background-image: url(oshegaFooter.png);\n    background-repeat: no-repeat;\n    background-size: 100% auto;\n"], ["\n    min-height: 35vw;\n    background-image: url(oshegaFooter.png);\n    background-repeat: no-repeat;\n    background-size: 100% auto;\n"])));
-exports.Header = styled_components_1.default.header(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    height: 150px;\n"], ["\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    height: 150px;\n"])));
-exports.HeaderH1 = styled_components_1.default.h1(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n    padding-right: 15px;\n    color: #fff;\n    font-family: sans-serif;\n"], ["\n    padding-right: 15px;\n    color: #fff;\n    font-family: sans-serif;\n"])));
-exports.Image = styled_components_1.default.img(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n    max-width: 100%;\n    height: 80px;\n"], ["\n    max-width: 100%;\n    height: 80px;\n"])));
-exports.Button = styled_components_1.default.button(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n"], ["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n"])));
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11;
+exports.CitiesListItem = typedCitiesListItem(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n    flex: 1;\n    min-height: 200px;\n    background: url(", ");\n    background-size: cover;\n    background-position-y: 70%;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    > h3 {\n        text-align: center;\n    }\n"], ["\n    flex: 1;\n    min-height: 200px;\n    background: url(", ");\n    background-size: cover;\n    background-position-y: 70%;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    > h3 {\n        text-align: center;\n    }\n"])), function (props) { return props.backgroundImg; });
+exports.Footer = styled_components_1.default.footer(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n    min-height: 35vw;\n    background-image: url(oshegaFooter.png);\n    background-repeat: no-repeat;\n    background-size: 100% auto;\n"], ["\n    min-height: 35vw;\n    background-image: url(oshegaFooter.png);\n    background-repeat: no-repeat;\n    background-size: 100% auto;\n"])));
+exports.Header = styled_components_1.default.header(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    height: 150px;\n"], ["\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    height: 150px;\n"])));
+exports.HeaderH1 = styled_components_1.default.h1(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n    padding-right: 15px;\n    color: #fff;\n    font-family: sans-serif;\n"], ["\n    padding-right: 15px;\n    color: #fff;\n    font-family: sans-serif;\n"])));
+exports.Image = styled_components_1.default.img(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n    max-width: 100%;\n    height: 80px;\n"], ["\n    max-width: 100%;\n    height: 80px;\n"])));
+exports.Button = styled_components_1.default.button(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n"], ["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n"])));
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11, templateObject_12, templateObject_13, templateObject_14;
 
 
 /***/ }),
@@ -299,7 +298,13 @@ var headers = {
 };
 exports.fetchSearch = function () { return fetch(buildQuery(), { headers: headers }).then(function (res) { return res.json(); }); };
 exports.adaptResponse = function (results) {
-    return (__assign({}, results, { departures: results.departures.map(function (departure) { return (__assign({}, departure, { arrival_time: new Date(departure.arrival_time).getHours(), departure_time: new Date(departure.departure_time).getHours(), totalPrice: (departure.prices.total / 100), duration: departure.duration / 60 })); }) }));
+    return (__assign({}, results, { departures: results.departures.map(function (departure) {
+            var arrivalTime = new Date(departure.arrival_time);
+            var departureTime = new Date(departure.departure_time);
+            var hours = departure.duration / 60;
+            var minites = Math.round((hours - Math.floor(hours)) * 60);
+            return __assign({}, departure, { arrival_time: arrivalTime.getHours() + ":" + arrivalTime.getMinutes(), departure_time: departureTime.getHours() + ":" + departureTime.getMinutes(), totalPrice: (departure.prices.total / 100), duration: Math.round(hours) + "h " + minites + "min" });
+        }) }));
 };
 
 

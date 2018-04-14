@@ -1,3 +1,4 @@
+import { LocalTime } from 'js-joda';
 import { Cities } from "./types/cities";
 import { Operators } from "./types/operators";
 import { Departures } from "./types/departures";
@@ -49,12 +50,20 @@ export const fetchSearch = (): Promise<SearchResponse> => fetch(
 export const adaptResponse = (results: SearchResponse) => {
   return ({
     ...results,
-    departures: results.departures.map(departure => ({
+    departures: results.departures.map(departure => {
+      const arrivalTime = new Date(departure.arrival_time as any);
+      const departureTime = new Date(departure.departure_time as any);
+
+      const hours = departure.duration / 60;
+      const minites = Math.round((hours - Math.floor(hours)) * 60);
+
+      return {
       ...departure,
-      arrival_time: new Date(departure.arrival_time as any).getHours(),
-      departure_time: new Date(departure.departure_time as any).getHours(),
+      arrival_time: `${arrivalTime.getHours()}:${arrivalTime.getMinutes()}`,
+      departure_time: `${departureTime.getHours()}:${departureTime.getMinutes()}`,
       totalPrice: (departure.prices.total / 100),
-      duration: departure.duration / 60 ,
-    }))
+      duration: `${Math.round(hours)}h ${minites}min`,
+    };
+    })
   })
 }

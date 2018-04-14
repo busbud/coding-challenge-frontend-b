@@ -171,8 +171,8 @@
       sellable: boolean;
       source_id: number;
       ticket_types: string[];
-      departure_time: Date | number;
-      arrival_time: Date | number;
+      departure_time: Date;
+      arrival_time: Date;
       fetched_at: Date;
       prices: Prices;
       trip_stops?: any;
