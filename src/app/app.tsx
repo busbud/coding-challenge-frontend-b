@@ -1,58 +1,38 @@
 import * as React from 'react';
-import { observer } from 'mobx-react';
-// import { Root, Header, HeaderH1, Button, Image } from './components/components';
-import styled, { injectGlobal } from 'styled-components/dist/styled-components.js';
-
-
-injectGlobal`
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-    }
-`
-
-export const Root = styled.div`
-    height: 100vh;
-    background: linear-gradient(rgb(14, 138, 197), rgb(7, 155, 188), rgb(117, 205, 245));
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-`;
-
-export const Header = styled.header`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
-`;
-
-export const HeaderH1 = styled.h1`
-    padding-right: 15px;
-    color: #fff;
-    font-family: sans-serif;
-`;
-
-export const Image = styled.img`
-    max-width: 100%;
-    height: 80px;
-`;
-
-export const Button = styled.button`
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    color: #0898bd;
-`;
+import { observer, inject } from 'mobx-react';
+import { SearchStore } from './store/search';
+import { SearchResponse } from './helpers/api';
+import { Root, Header, HeaderH1, Button, Image, Footer, DepartureListItem, CitiesListItem, Ul, Container } from './components/components';
+import { Locations } from './helpers/locations';
+import { Operators } from './helpers/operators';
 
 interface Props {
-    store?: any;
+    store: SearchStore;
 }
 
-@observer(['store'])
+const formatBackgroundImage = (imageUrl: string, width: string, height: string): string => {
+    let url = imageUrl.replace(/{width}/, width);
+    url.replace(/{width}/, width)
+    url.replace(/{height}/, height)
+    console.log(url);
+    return url;
+} 
+
+const getLocationById = (locations: Locations[], departureId: number) => {
+    return locations.filter(({ id }) => id === departureId);
+}
+
+const getOperatorById = (oporators: Operators[], operatorId: string) => {
+    return oporators.filter(({ id }) => id === operatorId);
+}
+
+@inject('store')
+@observer
 class App extends React.Component<Props> {
     render() {
-        const { search } = this.props.store;
+        const { search, results, isComplete } = this.props.store;
+
+
         return (
             <Root>
                 <Header>
@@ -62,6 +42,59 @@ class App extends React.Component<Props> {
                 <Header>
                     <Button onClick={() => search()}>Lets Go!</Button>
                 </Header>
+
+                {results && (
+                    <Container>
+                        <Ul>
+                            {results.cities.map(city => 
+                                <CitiesListItem 
+                                    key={city.id}
+                                    backgroundImg={formatBackgroundImage(city.image_url, "400", "400")}
+                                >
+                                    <h3>{city.full_name}</h3>
+                                </CitiesListItem>
+                            )}
+                        </Ul>
+                        <h3>{`isLoaded: ${isComplete}`}</h3>
+                        <Ul>
+                            {results.departures.map(departure => 
+                                <DepartureListItem key={departure.id}>
+                                    <div>
+                                        <img src={getOperatorById(results.operators, departure.operator_id)[0].logo_url} />
+                                    </div>
+                                    <div>
+                                        <span>
+                                            <b>{departure.departure_time}: </b>
+                                            {getLocationById(
+                                                results.locations,
+                                                departure.origin_location_id
+                                            )[0].name}
+                                        </span>
+                                        <h2>{departure.duration}</h2>
+                                        <span>
+                                            <b>{departure.arrival_time}: </b> 
+                                            {getLocationById(
+                                                results.locations,
+                                                departure.destination_location_id
+                                            )[0].name}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>Price: ${departure.totalPrice}</span>
+                                    </div>
+                                </DepartureListItem>
+                            )}
+                        </Ul>
+                        <Ul>
+                            {results.operators.map(operator => 
+                                <li key={operator.id}>
+                                    {operator.display_name}
+                                </li>
+                            )}
+                        </Ul>
+                    </Container>
+                )}
+                <Footer />
             </Root>
         );
     }

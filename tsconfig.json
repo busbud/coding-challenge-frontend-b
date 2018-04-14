@@ -4,6 +4,8 @@
         "lib": ["es5", "es6", "dom"],  
         "sourceMap": true,
         "noImplicitAny": true,
+        "strictNullChecks": true,
+        "forceConsistentCasingInFileNames": true,
         "module": "commonjs",
         "experimentalDecorators": true,
         "target": "es5",

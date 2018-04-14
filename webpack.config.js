@@ -1,3 +1,4 @@
+
 module.exports = {
   mode: "development",
   entry: "./src/browser.tsx",
@@ -5,7 +6,6 @@ module.exports = {
       filename: "bundle.js",
       path: __dirname + "/dist"
   },
-  target: 'node', 
 
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
@@ -20,8 +20,12 @@ module.exports = {
     //   },
   },
 
-
-
+  
+  optimization: {
+    splitChunks: {
+      chunks: "initial",
+    },
+  },
   module: {
       rules: [
           // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.

@@ -1,43 +1,48 @@
-import { action, computed, observable, reaction } from 'mobx';
-import { fetchSearch } from '../helpers/api';
+import { action, computed, observable, reaction, when } from 'mobx';
+import { fetchSearch, SearchResponse, adaptResponse } from '../helpers/api';
 
-export interface ApiResponse {
-  city_id: string;
-  city_url: string;
-  full_name: string;
-  geohash: string;
-  lat: number;
-  lon: number;
-}
 
-export interface SearchStoreType {
-  status: 'PENDING' | 'COMPLETE' | 'INPROGRESS',
-  results: any;
-}
-
-class SearchStore<SearchStoreType> {
-  @observable status: 'PENDING';
-  @observable results: undefined;
-
+export class SearchStore {
+  @observable requestStatus = 'INPROGRESS' as 'INPROGRESS' | 'RESOLVED'
+  @observable isComplete = undefined as undefined | boolean;
+  @observable results = undefined as undefined | SearchResponse;
 
   @action
   search = async () => {
-    console.log('hello')
     try {
       const results = await fetchSearch();
-      console.log(results)
-      return results;
-    } catch {
-
-    } finally {
+      this.isComplete = results.complete
+      console.log(results.complete)
+      console.log(results);
       
-    }
+      if (results.complete) {
+        this.isComplete = true;
+        this.requestStatus = 'RESOLVED';
+      }
+      return this.results = adaptResponse(results);
+    } finally {}
   }
-  
-  // Todo ToJSON method for ssr?
 }
 
-const searchStore = new SearchStore();
+const searchStore: SearchStore = new SearchStore();
+
+when(
+  () => (
+    searchStore.isComplete !== undefined 
+    && !searchStore.isComplete 
+    && searchStore.requestStatus !== 'RESOLVED'
+  ),
+  () => { 
+    console.log('searchStore.isComplete !== undefined:', searchStore.isComplete !== undefined);
+    console.log('  && !searchStore.isComplete: ', !searchStore.isComplete); 
+    console.log('&& resolved', searchStore.requestStatus !== 'RESOLVED')
+    setTimeout(() => searchStore.search(), 3000)
+  },
+  { 
+    name: 'polling search'
+  }
+);
+
 
 
 export default searchStore;

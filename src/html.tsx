@@ -8,7 +8,8 @@ const Html = (props: any) => (
         <body>
             <div id="app">{props.children}</div>
             <script id="initial-data" type="text/plain" data-json={props.initialData}></script>
-            <script src="bundle.js"></script>
+            <script defer src="vendors~main.bundle.js" />
+            <script defer src="bundle.js" />
         </body>
     </html>
 );
