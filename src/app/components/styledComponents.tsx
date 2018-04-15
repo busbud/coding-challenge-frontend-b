@@ -93,7 +93,7 @@ export const DeparturePrices = styled.div`
 `;
 
 export const Footer = styled.footer`
-    min-height: 35vw;
+    min-height: 24vw;
     background-image: url(oshegaFooter.png);
     background-repeat: no-repeat;
     background-size: 100% auto;
