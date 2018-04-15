@@ -1,10 +1,14 @@
 import styled, { injectGlobal, StyledFunction } from 'styled-components';
 
+const formatBackgroundImage = (imageUrl: string, width: string, height: string): string => 
+    imageUrl.replace(/{width}/, width).replace(/{height}/, height);
+
+
 injectGlobal`
     body {
         margin: 0;
         padding: 0;
-        font-family: sans-serif;
+        font-family: 'IBM Plex Sans', sans-serif;
         background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); 
     }
 `
@@ -18,13 +22,17 @@ export const Root = styled.div`
 
 export const Container = styled.div`
     padding: 20px;
+    max-width: 1080px;
+    margin: auto;
+    position: relative;
 `;
 
 export const DepartureListItem = styled.li`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background: white;
-    padding: 20px;
+    padding: 0 30px;
     width: 100%;
     margin: 10px 0;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -46,42 +54,42 @@ export const Ul = styled.ul`
 interface OperatorLogoProps { backgroundImg: string; }
 const typedOperatorLogo: StyledFunction<OperatorLogoProps & React.HTMLProps<HTMLDivElement  >> = styled.div;
 export const OperatorLogo = typedOperatorLogo`
-    background: url(${props => props.backgroundImg});
+    background: url(${props => formatBackgroundImage(props.backgroundImg, "120", "120")});
     background-repeat: no-repeat;
     background-size: contain;
-    flex-grow: 1;
-    min-width: 160px;
+    width: 120px;
+    height: 120px;
 `;
 
 export const DepartureTimes = styled.div`
     display: flex;
-    flex-grow: 2;
     width: 70%;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+
+    > div {
+        padding-right: 15px;
+    }
+
+    p {
+        width: 30%;
+        font-size: 14px;
+    }
+
+    b {
+        font-size: 16px;
+    }
+
+    h4 {
+        font-size: 16px;
+        margin: 10px;
+    }
 `;
 
 
 export const DeparturePrices = styled.div`
     display: flex;
-    flex-grow: 0.5;
-`;
-
-
-interface CitiesListItemProps { backgroundImg: string; }
-const typedCitiesListItem: StyledFunction<CitiesListItemProps & React.HTMLProps<HTMLLIElement>> = styled.li;
-export const CitiesListItem = typedCitiesListItem`
-    flex: 1;
-    min-height: 200px;
-    background: url(${props => props.backgroundImg});
-    background-size: cover;
-    background-position-y: 70%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    > h3 {
-        text-align: center;
-    }
 `;
 
 export const Footer = styled.footer`
@@ -92,6 +100,7 @@ export const Footer = styled.footer`
 `;
 
 export const Header = styled.header`
+    padding-top: 10vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -102,7 +111,6 @@ export const Header = styled.header`
 export const HeaderH1 = styled.h1`
     padding-right: 15px;
     color: #fff;
-    font-family: sans-serif;
 `;
 
 export const Image = styled.img`
@@ -115,4 +123,6 @@ export const Button = styled.button`
     padding: 10px 20px;
     border: none;
     color: #0898bd;
+    cursor: pointer;
+    border: 1px solid;
 `;

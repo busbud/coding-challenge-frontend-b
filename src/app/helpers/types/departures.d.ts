@@ -145,7 +145,7 @@
       bag_allowed: boolean;
   }
 
-  export interface Departures {
+  export interface DeparturesResponse {
       amenities: Amenities;
       arrival_timezone: string;
       available_seats: number;
@@ -181,4 +181,41 @@
       terms: Terms;
       totalPrice: number;
   }
+
+  export interface Departures {
+    amenities: Amenities;
+    arrival_timezone: string;
+    available_seats: number;
+    bus?: any;
+    busbud_departure_id: string;
+    class: string;
+    class_name: string;
+    fare_name?: any;
+    deeplink?: any;
+    departure_timezone: string;
+    departure_type?: any;
+    destination_location_id: number;
+    duration: string;
+    has_search_details: boolean;
+    has_transfers: boolean;
+    has_addons?: any;
+    id: string;
+    links: Links;
+    num_transfers?: any;
+    operator_id: string;
+    origin_location_id: number;
+    schedule_id?: any;
+    sellable: boolean;
+    source_id: number;
+    ticket_types: string[];
+    departure_time: string;
+    arrival_time: string;
+    fetched_at: Date;
+    prices: Prices;
+    trip_stops?: any;
+    addons?: any;
+    details: Details;
+    terms: Terms;
+    totalPrice: number;
+}
 

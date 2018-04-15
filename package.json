@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/Multimo/coding-challenge-frontend-b#readme",
   "dependencies": {
+    "@types/date-fns": "^2.6.0",
+    "date-fns": "^1.29.0",
     "express": "^4.16.3",
     "js-joda": "^1.8.2",
     "mobx": "^4.1.1",

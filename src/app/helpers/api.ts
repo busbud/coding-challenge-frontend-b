@@ -1,7 +1,7 @@
-import { LocalTime } from 'js-joda';
+import * as format from 'date-fns/format'
 import { Cities } from "./types/cities";
 import { Operators } from "./types/operators";
-import { Departures } from "./types/departures";
+import { Departures, DeparturesResponse } from "./types/departures";
 import { Locations } from "./types/locations";
 
 
@@ -17,10 +17,10 @@ export interface SearchResults {
 }
 
 
-export interface SearchResponse {
+interface SearchResponse {
   cities: Cities[],
   complete: boolean,
-  departures: Departures[],
+  departures: DeparturesResponse[],
   operators: Operators[],
   locations: Locations[]
   destination_city_id: String,
@@ -47,23 +47,20 @@ export const fetchSearch = (): Promise<SearchResponse> => fetch(
 ).then(res => res.json()) 
 
 
-export const adaptResponse = (results: SearchResponse) => {
+export const adaptResponse = (results: SearchResponse): SearchResults => {
   return ({
     ...results,
     departures: results.departures.map(departure => {
-      const arrivalTime = new Date(departure.arrival_time as any);
-      const departureTime = new Date(departure.departure_time as any);
-
       const hours = departure.duration / 60;
-      const minites = Math.round((hours - Math.floor(hours)) * 60);
+      const minutes = Math.round((hours - Math.floor(hours)) * 60);
 
       return {
-      ...departure,
-      arrival_time: `${arrivalTime.getHours()}:${arrivalTime.getMinutes()}`,
-      departure_time: `${departureTime.getHours()}:${departureTime.getMinutes()}`,
-      totalPrice: (departure.prices.total / 100),
-      duration: `${Math.round(hours)}h ${minites}min`,
-    };
+        ...departure,
+        arrival_time: format(departure.arrival_time, 'h:mm a'),
+        departure_time: format(departure.departure_time, 'h:mm a'),
+        totalPrice: (departure.prices.total / 100),
+        duration: `${Math.round(hours)}h ${minutes}min`,
+      };
     })
   })
 }

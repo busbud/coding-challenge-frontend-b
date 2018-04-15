@@ -1,87 +1,46 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 import { SearchStore } from './store/search';
-import { SearchResponse } from './helpers/api';
-import { Root, Header, HeaderH1, Button, Image, Footer, DepartureListItem, CitiesListItem, Ul, Container, OperatorLogo, DepartureTimes, DeparturePrices } from './components/components';
-import { Locations } from './helpers/types/locations';
-import { Operators } from './helpers/types/operators';
+import { LoaderSvg } from './components/Loader/Loader';
+import { 
+    Root, 
+    Header, 
+    HeaderH1, 
+    Button, 
+    Image, 
+    Footer, 
+
+    Ul, 
+    Container, 
+} from './components/styledComponents';
+import DepartureItem from './components/DepartureItem/DepartureItem';
 
 interface Props {
     store: SearchStore;
 }
-
-const formatBackgroundImage = (imageUrl: string, width: string, height: string): string => 
-    imageUrl.replace(/{width}/, width).replace(/{height}/, height);
-
-const getLocationById = (locations: Locations[], departureId: number): Locations => 
-    locations.filter(({ id }) => id === departureId)[0];
-
-const getOperatorById = (oporators: Operators[], operatorId: string): Operators => 
-    oporators.filter(({ id }) => id === operatorId)[0];
 
 @inject('store')
 @observer
 class App extends React.Component<Props> {
     render() {
         const { search, results, isComplete } = this.props.store;
-
-
         return (
             <Root>
                 <Header>
                     <HeaderH1>Its Time to book for</HeaderH1>
                     <Image src={'osheaga.png'} />
                 </Header>
-                <Header>
+                <Container>
                     <Button onClick={() => search()}>Lets Go!</Button>
-                </Header>
-
+                </Container>
+                <Container>
+                    {isComplete === false && (<LoaderSvg />)}
+                </Container>
                 {results && (
                     <Container>
                         <Ul>
-                            {results.cities.map(city => 
-                                <CitiesListItem 
-                                    key={city.id}
-                                    backgroundImg={formatBackgroundImage(city.image_url, "400", "270")}
-                                >
-                                    <h3>{city.full_name}</h3>
-                                </CitiesListItem>
-                            )}
-                        </Ul>
-                        <h3>{`isLoaded: ${isComplete}`}</h3>
-                        <Ul>
                             {results.departures.map(departure => 
-                                <DepartureListItem key={departure.id}>
-                                    <OperatorLogo 
-                                        backgroundImg={
-                                            formatBackgroundImage(
-                                                getOperatorById(results.operators, departure.operator_id).logo_url, 
-                                                "200", 
-                                                "100"
-                                            )
-                                        }
-                                    />
-                                    <DepartureTimes>
-                                        <span>
-                                            <b>{departure.departure_time}: </b>
-                                            {getLocationById(
-                                                results.locations,
-                                                departure.origin_location_id
-                                            ).name}
-                                        </span>
-                                        <h2>{departure.duration}</h2>
-                                        <span>
-                                            <b>{departure.arrival_time}: </b> 
-                                            {getLocationById(
-                                                results.locations,
-                                                departure.destination_location_id
-                                            ).name}
-                                        </span>
-                                    </DepartureTimes>
-                                    <DeparturePrices>
-                                        <span>Price: ${departure.totalPrice}</span>
-                                    </DeparturePrices>
-                                </DepartureListItem>
+                              <DepartureItem key={departure.id} departure={departure}  />
                             )}
                         </Ul>
                     </Container>
