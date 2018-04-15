@@ -17,7 +17,7 @@ const initialData = {
 };
 
 
-app.get('/', (req, res) => {
+app.get('*', (_req, res) => {
     const sheet = new ServerStyleSheet()
     const jsx = sheet.collectStyles( 
         <Html initialData={JSON.stringify(initialData)}>

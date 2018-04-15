@@ -6,14 +6,13 @@ import {
     Root, 
     Header, 
     HeaderH1, 
-    Button, 
     Image, 
-    Footer, 
-
+    Footer,
     Ul, 
     Container, 
 } from './components/styledComponents';
 import DepartureItem from './components/DepartureItem/DepartureItem';
+import SearchForm from './components/SearchForm/SearchForm';
 
 interface Props {
     store: SearchStore;
@@ -23,7 +22,7 @@ interface Props {
 @observer
 class App extends React.Component<Props> {
     render() {
-        const { search, results, isComplete } = this.props.store;
+        const { search, results, isComplete, error } = this.props.store;
         return (
             <Root>
                 <Header>
@@ -31,17 +30,18 @@ class App extends React.Component<Props> {
                     <Image src={'osheaga.png'} />
                 </Header>
                 <Container>
-                    <Button onClick={() => search()}>Lets Go!</Button>
+                    <SearchForm onSubmit={() => search()} />
                 </Container>
                 <Container>
                     {isComplete === false && (<LoaderSvg />)}
                 </Container>
+                {error && <h1>{JSON.stringify(error)}</h1>}
                 {results && (
                     <Container>
                         <Ul>
-                            {results.departures.map(departure => 
-                              <DepartureItem key={departure.id} departure={departure}  />
-                            )}
+                            {results.departures.map(departure => (
+                                <DepartureItem key={departure.id} departure={departure}  />
+                            ))}
                         </Ul>
                     </Container>
                 )}

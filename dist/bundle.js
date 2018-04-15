@@ -166,24 +166,24 @@ var mobx_react_1 = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-re
 var Loader_1 = __webpack_require__(/*! ./components/Loader/Loader */ "./src/app/components/Loader/Loader.tsx");
 var styledComponents_1 = __webpack_require__(/*! ./components/styledComponents */ "./src/app/components/styledComponents.tsx");
 var DepartureItem_1 = __webpack_require__(/*! ./components/DepartureItem/DepartureItem */ "./src/app/components/DepartureItem/DepartureItem.tsx");
+var SearchForm_1 = __webpack_require__(/*! ./components/SearchForm/SearchForm */ "./src/app/components/SearchForm/SearchForm.tsx");
 var App = /** @class */ (function (_super) {
     __extends(App, _super);
     function App() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     App.prototype.render = function () {
-        var _a = this.props.store, search = _a.search, results = _a.results, isComplete = _a.isComplete;
+        var _a = this.props.store, search = _a.search, results = _a.results, isComplete = _a.isComplete, error = _a.error;
         return (React.createElement(styledComponents_1.Root, null,
             React.createElement(styledComponents_1.Header, null,
                 React.createElement(styledComponents_1.HeaderH1, null, "Its Time to book for"),
                 React.createElement(styledComponents_1.Image, { src: 'osheaga.png' })),
             React.createElement(styledComponents_1.Container, null,
-                React.createElement(styledComponents_1.Button, { onClick: function () { return search(); } }, "Lets Go!")),
+                React.createElement(SearchForm_1.default, { onSubmit: function () { return search(); } })),
             React.createElement(styledComponents_1.Container, null, isComplete === false && (React.createElement(Loader_1.LoaderSvg, null))),
+            error && React.createElement("h1", null, JSON.stringify(error)),
             results && (React.createElement(styledComponents_1.Container, null,
-                React.createElement(styledComponents_1.Ul, null, results.departures.map(function (departure) {
-                    return React.createElement(DepartureItem_1.default, { key: departure.id, departure: departure });
-                })))),
+                React.createElement(styledComponents_1.Ul, null, results.departures.map(function (departure) { return (React.createElement(DepartureItem_1.default, { key: departure.id, departure: departure })); })))),
             React.createElement(styledComponents_1.Footer, null)));
     };
     App = __decorate([
@@ -276,7 +276,7 @@ var DepartureItem = /** @class */ (function (_super) {
     DepartureItem.prototype.render = function () {
         var _a = this.props, store = _a.store, departure = _a.departure;
         var results = store.results;
-        return results && (React.createElement(styledComponents_1.DepartureListItem, { key: departure.id },
+        return results && (React.createElement(styledComponents_1.DepartureListItem, null,
             React.createElement(styledComponents_1.OperatorLogo, { backgroundImg: getOperatorById(results.operators, departure.operator_id).logo_url }),
             React.createElement(styledComponents_1.DepartureTimes, null,
                 React.createElement("p", null,
@@ -339,6 +339,86 @@ var templateObject_1;
 
 /***/ }),
 
+/***/ "./src/app/components/SearchForm/SearchForm.tsx":
+/*!******************************************************!*\
+  !*** ./src/app/components/SearchForm/SearchForm.tsx ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var mobx_react_1 = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
+var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+var Form = styled_components_1.default.form(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin-top: 50px;\n  display: flex;\n\n  > * {\n    margin: 0 5px;\n    padding: 10px;\n    background: none;\n    color: white;\n    border: 1px solid;\n  }\n"], ["\n  margin-top: 50px;\n  display: flex;\n\n  > * {\n    margin: 0 5px;\n    padding: 10px;\n    background: none;\n    color: white;\n    border: 1px solid;\n  }\n"])));
+var SearchForm = /** @class */ (function (_super) {
+    __extends(SearchForm, _super);
+    function SearchForm() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = {
+            date: "2018-08-02",
+            passangerNumber: 1,
+        };
+        _this.updatePassangerNumber = function (value) {
+            _this.setState({
+                passangerNumber: value,
+            });
+        };
+        _this.updateDate = function (value) {
+            _this.setState({
+                date: value,
+            });
+        };
+        _this.handleSubmit = function (event) {
+            event.preventDefault();
+            _this.props.store.search(_this.state.date, _this.state.passangerNumber);
+        };
+        return _this;
+    }
+    SearchForm.prototype.render = function () {
+        var _this = this;
+        var _a = this.state, date = _a.date, passangerNumber = _a.passangerNumber;
+        return (React.createElement(Form, { onSubmit: this.handleSubmit },
+            React.createElement("input", { type: "text", value: 'New York', onChange: function () { } }),
+            React.createElement("input", { type: "text", value: 'Montreal', onChange: function () { } }),
+            React.createElement("input", { type: 'date', value: date, onChange: function (e) { return _this.updateDate(e.target.value); } }),
+            React.createElement("input", { type: 'number', value: passangerNumber, onChange: function (e) { return _this.updatePassangerNumber(e.target.value); } }),
+            React.createElement("button", { role: "submit" }, " Search")));
+    };
+    SearchForm = __decorate([
+        mobx_react_1.inject('store'),
+        mobx_react_1.observer
+    ], SearchForm);
+    return SearchForm;
+}(React.Component));
+exports.default = SearchForm;
+var templateObject_1;
+
+
+/***/ }),
+
 /***/ "./src/app/components/styledComponents.tsx":
 /*!*************************************************!*\
   !*** ./src/app/components/styledComponents.tsx ***!
@@ -396,17 +476,17 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var format = __webpack_require__(/*! date-fns/format */ "./node_modules/date-fns/format/index.js");
 var endpoint = 'https://napi.busbud.com/x-departures';
-var buildQuery = function (origin, destination, outboundDate) {
+var buildQuery = function (outboundDate, passangerNumber, origin, destination) {
+    if (outboundDate === void 0) { outboundDate = "2018-08-02"; }
     if (origin === void 0) { origin = "dr5reg"; }
     if (destination === void 0) { destination = "f25dvk"; }
-    if (outboundDate === void 0) { outboundDate = "2018-08-02"; }
-    return endpoint + "/" + origin + "/" + destination + "/" + outboundDate;
+    return endpoint + "/" + origin + "/" + destination + "/" + outboundDate + (passangerNumber ? "?adult=" + passangerNumber : '');
 };
 var headers = {
     Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
     'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
 };
-exports.fetchSearch = function () { return fetch(buildQuery(), { headers: headers }).then(function (res) { return res.json(); }); };
+exports.fetchSearch = function (outboundDate, passangerNumber) { return fetch(buildQuery(outboundDate, passangerNumber), { headers: headers }).then(function (res) { return res.json(); }); };
 exports.adaptResponse = function (results) {
     return (__assign({}, results, { departures: results.departures.map(function (departure) {
             var hours = departure.duration / 60;
@@ -476,13 +556,14 @@ var SearchStore = /** @class */ (function () {
         var _this = this;
         this.isComplete = undefined;
         this.results = undefined;
-        this.search = function () { return __awaiter(_this, void 0, void 0, function () {
-            var results;
+        this.error = undefined;
+        this.search = function (outboundDate, passangerNumber) { return __awaiter(_this, void 0, void 0, function () {
+            var results, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, , 2, 3]);
-                        return [4 /*yield*/, api_1.fetchSearch()];
+                        _a.trys.push([0, 2, 3, 4]);
+                        return [4 /*yield*/, api_1.fetchSearch(outboundDate, passangerNumber)];
                     case 1:
                         results = _a.sent();
                         this.isComplete = results.complete;
@@ -491,13 +572,18 @@ var SearchStore = /** @class */ (function () {
                         }
                         return [2 /*return*/, this.results = api_1.adaptResponse(results)];
                     case 2:
+                        error_1 = _a.sent();
+                        this.isComplete = true;
+                        this.error = error_1;
+                        return [3 /*break*/, 4];
+                    case 3:
                         mobx_1.when(function () { return !searchStore.isComplete; }, function () {
                             if (!searchStore.isComplete) {
-                                setTimeout(function () { return searchStore.search(); }, 1000);
+                                setTimeout(function () { return searchStore.search(outboundDate, passangerNumber); }, 1000);
                             }
                         });
                         return [7 /*endfinally*/];
-                    case 3: return [2 /*return*/];
+                    case 4: return [2 /*return*/];
                 }
             });
         }); };
@@ -508,6 +594,9 @@ var SearchStore = /** @class */ (function () {
     __decorate([
         mobx_1.observable
     ], SearchStore.prototype, "results", void 0);
+    __decorate([
+        mobx_1.observable
+    ], SearchStore.prototype, "error", void 0);
     __decorate([
         mobx_1.action
     ], SearchStore.prototype, "search", void 0);

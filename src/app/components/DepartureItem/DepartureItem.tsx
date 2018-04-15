@@ -8,8 +8,8 @@ import { DepartureListItem, OperatorLogo, DepartureTimes, DeparturePrices, Butto
 import { Bus } from '../BusSvg';
 
 interface Props {
-    departure: Departures;
-  }
+  departure: Departures;
+}
   
 interface MobxProps extends Props {
     store: SearchStore;
@@ -27,8 +27,9 @@ class DepartureItem extends React.Component<MobxProps> {
     render() {
         const { store, departure } = this.props;
         const { results } = store;
+        
         return results && (
-            <DepartureListItem key={departure.id}>
+          <DepartureListItem>
             <OperatorLogo 
                 backgroundImg={
                     getOperatorById(results.operators, departure.operator_id).logo_url
