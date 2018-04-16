@@ -1,32 +1,46 @@
+import { inject, observer } from 'mobx-react';
 import * as React from 'react';
-import { observer, inject } from 'mobx-react';
-import { SearchStore } from './store/search';
-import { LoaderSvg } from './components/Loader/Loader';
-import { 
-    Root, 
-    Header, 
-    HeaderH1, 
-    Image, 
-    Footer,
-    Ul, 
-    Container, 
-} from './components/StyledComponents';
+import { I18n } from 'react-i18next';
 import DepartureItem from './components/DepartureItem/DepartureItem';
+import { LoaderSvg } from './components/Loader/Loader';
 import SearchForm from './components/SearchForm/SearchForm';
+import {
+    Container,
+    Footer,
+    Header,
+    HeaderH1,
+    Image,
+    LanguageSwitcher,
+    Root,
+    Ul
+} from './components/StyledComponents';
+import { SearchStore } from './store/search';
 
 interface Props {
-    store: SearchStore;
+  store: SearchStore;
 }
 
 @inject('store')
 @observer
 class App extends React.Component<Props> {
-    render() {
-        const { results, isComplete, error } = this.props.store;
-        return (
+  render() {
+    const { results, isComplete, error } = this.props.store;
+
+    return (
+        <I18n ns="">
+            {(t, { i18n }) => (
             <Root>
+                <LanguageSwitcher
+                    onClick={() => {
+                      i18n.changeLanguage(
+                        i18n.language === 'en' ? 'fr' : 'en'
+                    );
+                    }}
+                >
+                    {i18n.language === 'en' ? 'fr' : 'en'}
+                </LanguageSwitcher>
                 <Header>
-                    <HeaderH1>Its Time to book for</HeaderH1>
+                    <HeaderH1>{t('title')}</HeaderH1>
                     <Image src={'osheaga.png'} />
                 </Header>
                 <Container>
@@ -40,16 +54,17 @@ class App extends React.Component<Props> {
                     <Container>
                         <Ul>
                             {results.departures.map(departure => (
-                                <DepartureItem key={departure.id} departure={departure}  />
+                                <DepartureItem key={departure.id} departure={departure} />
                             ))}
                         </Ul>
                     </Container>
                 )}
                 <Footer />
             </Root>
-        );
-    }
+            )}
+        </I18n>
+    );
+  }
 }
-
 
 export default App as React.ComponentClass<{}>;

@@ -1,45 +1,48 @@
+import { inject, observer } from 'mobx-react';
 import * as React from 'react';
-import { observer, inject } from 'mobx-react';
-import { SearchStore } from '../../store/search';
+import { I18n } from 'react-i18next';
 import { Departures } from '../../helpers/types/departures';
 import { Locations } from '../../helpers/types/locations';
 import { Operators } from '../../helpers/types/operators';
+import { SearchStore } from '../../store/search';
 import { Bus } from '../BusSvg';
-import { 
-    DepartureListItem, 
-    OperatorLogo, 
-    DepartureTimes, 
-    DeparturePrices, 
-    PlusDays, 
-    Times, 
-    Location, 
-    Duration
+import {
+    DepartureListItem,
+    DeparturePrices,
+    DepartureTimes,
+    Duration,
+    Location,
+    OperatorLogo,
+    PlusDays,
+    Times
 } from './StyledComponents';
 
 interface Props {
   departure: Departures;
 }
-  
+
 interface MobxProps extends Props {
-    store: SearchStore;
+  store: SearchStore;
 }
 
-const getLocationById = (locations: Locations[], departureId: number): Locations => 
+const getLocationById = (locations: Locations[], departureId: number): Locations =>
     locations.filter(({ id }) => id === departureId)[0];
 
-const getOperatorById = (oporators: Operators[], operatorId: string): Operators => 
+const getOperatorById = (oporators: Operators[], operatorId: string): Operators =>
     oporators.filter(({ id }) => id === operatorId)[0];
 
 @inject('store')
 @observer
 class DepartureItem extends React.Component<MobxProps> {
-    render() {
-        const { store, departure } = this.props;
-        const { results } = store;
-        
-        return results && (
-          <DepartureListItem>
-            <OperatorLogo 
+  render() {
+    const { store, departure } = this.props;
+    const { results } = store;
+
+    return results && (
+        <I18n ns="">
+        {(t) => (
+        <DepartureListItem>
+            <OperatorLogo
                 backgroundImg={
                     getOperatorById(results.operators, departure.operator_id).logo_url
                 }
@@ -58,12 +61,12 @@ class DepartureItem extends React.Component<MobxProps> {
                 <Duration>
                     <h4>{departure.duration}</h4>
                     <Bus />
-                    <h4>{departure.has_transfers || 'Non Stop'}</h4>
+                    <h4>{departure.has_transfers || t('nonStop')}</h4>
                 </Duration>
                 <Times>
                     <b>
                         {departure.arrival_time}
-                        {!(departure.daysDifference > 0) 
+                        {!(departure.daysDifference > 0)
                             ? null
                             : <PlusDays>+{departure.daysDifference}</PlusDays>
                         }
@@ -81,9 +84,10 @@ class DepartureItem extends React.Component<MobxProps> {
                 ${departure.totalPrice}
             </DeparturePrices>
         </DepartureListItem>
-        )
-    }
+        )}
+        </I18n>
+    );
+  }
 }
-
 
 export default DepartureItem as React.ComponentClass<Props>;

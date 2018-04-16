@@ -1,41 +1,38 @@
-import { format, differenceInCalendarDays } from 'date-fns';
-import { Cities } from "./types/cities";
-import { Operators } from "./types/operators";
-import { Departures, DeparturesResponse } from "./types/departures";
-import { Locations } from "./types/locations";
-
+import { differenceInCalendarDays, format } from 'date-fns';
+import { Cities } from './types/cities';
+import { Departures, DeparturesResponse } from './types/departures';
+import { Locations } from './types/locations';
+import { Operators } from './types/operators';
 
 export interface SearchResults {
-  cities: Cities[],
-  complete: boolean,
-  departures: Departures[],
-  operators: Operators[],
-  locations: Locations[]
-  destination_city_id: String,
-  is_valid_route: boolean,
-  origin_city_id: String,
+  cities: Cities[];
+  complete: boolean;
+  departures: Departures[];
+  operators: Operators[];
+  locations: Locations[];
+  destination_city_id: String;
+  is_valid_route: boolean;
+  origin_city_id: String;
 }
 
-
 interface SearchResponse {
-  cities: Cities[],
-  complete: boolean,
-  departures: DeparturesResponse[],
-  operators: Operators[],
-  locations: Locations[]
-  destination_city_id: String,
-  is_valid_route: boolean,
-  origin_city_id: String,
+  cities: Cities[];
+  complete: boolean;
+  departures: DeparturesResponse[];
+  operators: Operators[];
+  locations: Locations[];
+  destination_city_id: String;
+  is_valid_route: boolean;
+  origin_city_id: String;
 }
 
 const endpoint = 'https://napi.busbud.com/x-departures';
 const buildQuery = (
-  outboundDate: string, 
+  outboundDate: string,
   passangerNumber: number | undefined,
-  origin = "dr5reg" as string,
-  destination = "f25dvk" as string, 
-) => `${endpoint}/${origin}/${destination}/${outboundDate}${passangerNumber ? `?adult=${passangerNumber}`: ''}`;
-
+  origin = 'dr5reg' as string,
+  destination = 'f25dvk' as string
+) => `${endpoint}/${origin}/${destination}/${outboundDate}${passangerNumber ? `?adult=${passangerNumber}` : ''}`;
 
 const headers = {
   Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
@@ -44,9 +41,8 @@ const headers = {
 
 export const fetchSearch = (outboundDate: string, passangerNumber?: number): Promise<SearchResponse> => fetch(
   buildQuery(outboundDate, passangerNumber),
-  { headers },
-).then(res => res.json()) 
-
+  { headers }
+).then(res => res.json());
 
 export const adaptResponse = (results: SearchResponse): SearchResults => {
   return ({
@@ -62,8 +58,8 @@ export const adaptResponse = (results: SearchResponse): SearchResults => {
         arrival_time: format(departure.arrival_time, 'h:mm a'),
         departure_time: format(departure.departure_time, 'h:mm a'),
         totalPrice: (departure.prices.total / 100),
-        duration: `${Math.round(hours)}h ${minutes}min`,
+        duration: `${Math.round(hours)}h ${minutes}min`
       };
     })
-  })
-}
+  });
+};

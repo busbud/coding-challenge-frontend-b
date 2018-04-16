@@ -5,9 +5,18 @@ injectGlobal`
         margin: 0;
         padding: 0;
         font-family: 'IBM Plex Sans', sans-serif;
-        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); 
+        background:linear-gradient(
+            180deg,
+            #2880bc 0,
+            #2880bc 22%,
+            #7abdc3 33%,
+            #9bbea5 44%,
+            #d3ad6c 55%,
+            #e7717f 72%,
+            #e7717f
+        );
     }
-`
+`;
 
 export const Root = styled.div`
     min-height: 100vh;
@@ -29,7 +38,6 @@ export const Ul = styled.ul`
     display: flex;
     flex-wrap: wrap;
 `;
-
 
 export const Footer = styled.footer`
     min-height: 24vw;
@@ -57,4 +65,13 @@ export const Image = styled.img`
     height: 80px;
 `;
 
-
+export const LanguageSwitcher = styled.button`
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: none;
+  font-size: 16px;
+  color: white;
+  border: none;
+  cursor: pointer;
+`;

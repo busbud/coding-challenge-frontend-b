@@ -161,12 +161,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var mobx_react_1 = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
-var Loader_1 = __webpack_require__(/*! ./components/Loader/Loader */ "./src/app/components/Loader/Loader.tsx");
-var StyledComponents_1 = __webpack_require__(/*! ./components/StyledComponents */ "./src/app/components/StyledComponents.tsx");
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_i18next_1 = __webpack_require__(/*! react-i18next */ "./node_modules/react-i18next/dist/es/index.js");
 var DepartureItem_1 = __webpack_require__(/*! ./components/DepartureItem/DepartureItem */ "./src/app/components/DepartureItem/DepartureItem.tsx");
+var Loader_1 = __webpack_require__(/*! ./components/Loader/Loader */ "./src/app/components/Loader/Loader.tsx");
 var SearchForm_1 = __webpack_require__(/*! ./components/SearchForm/SearchForm */ "./src/app/components/SearchForm/SearchForm.tsx");
+var StyledComponents_1 = __webpack_require__(/*! ./components/StyledComponents */ "./src/app/components/StyledComponents.tsx");
 var App = /** @class */ (function (_super) {
     __extends(App, _super);
     function App() {
@@ -174,17 +175,23 @@ var App = /** @class */ (function (_super) {
     }
     App.prototype.render = function () {
         var _a = this.props.store, results = _a.results, isComplete = _a.isComplete, error = _a.error;
-        return (React.createElement(StyledComponents_1.Root, null,
-            React.createElement(StyledComponents_1.Header, null,
-                React.createElement(StyledComponents_1.HeaderH1, null, "Its Time to book for"),
-                React.createElement(StyledComponents_1.Image, { src: 'osheaga.png' })),
-            React.createElement(StyledComponents_1.Container, null,
-                React.createElement(SearchForm_1.default, null)),
-            React.createElement(StyledComponents_1.Container, null, isComplete === false && (React.createElement(Loader_1.LoaderSvg, null))),
-            error && React.createElement("h1", null, JSON.stringify(error)),
-            results && (React.createElement(StyledComponents_1.Container, null,
-                React.createElement(StyledComponents_1.Ul, null, results.departures.map(function (departure) { return (React.createElement(DepartureItem_1.default, { key: departure.id, departure: departure })); })))),
-            React.createElement(StyledComponents_1.Footer, null)));
+        return (React.createElement(react_i18next_1.I18n, { ns: "" }, function (t, _a) {
+            var i18n = _a.i18n;
+            return (React.createElement(StyledComponents_1.Root, null,
+                React.createElement(StyledComponents_1.LanguageSwitcher, { onClick: function () {
+                        i18n.changeLanguage(i18n.language === 'en' ? 'fr' : 'en');
+                    } }, i18n.language === 'en' ? 'fr' : 'en'),
+                React.createElement(StyledComponents_1.Header, null,
+                    React.createElement(StyledComponents_1.HeaderH1, null, t('title')),
+                    React.createElement(StyledComponents_1.Image, { src: 'osheaga.png' })),
+                React.createElement(StyledComponents_1.Container, null,
+                    React.createElement(SearchForm_1.default, null)),
+                React.createElement(StyledComponents_1.Container, null, isComplete === false && (React.createElement(Loader_1.LoaderSvg, null))),
+                error && React.createElement("h1", null, JSON.stringify(error)),
+                results && (React.createElement(StyledComponents_1.Container, null,
+                    React.createElement(StyledComponents_1.Ul, null, results.departures.map(function (departure) { return (React.createElement(DepartureItem_1.default, { key: departure.id, departure: departure })); })))),
+                React.createElement(StyledComponents_1.Footer, null)));
+        }));
     };
     App = __decorate([
         mobx_react_1.inject('store'),
@@ -252,8 +259,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var mobx_react_1 = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_i18next_1 = __webpack_require__(/*! react-i18next */ "./node_modules/react-i18next/dist/es/index.js");
 var BusSvg_1 = __webpack_require__(/*! ../BusSvg */ "./src/app/components/BusSvg.tsx");
 var StyledComponents_1 = __webpack_require__(/*! ./StyledComponents */ "./src/app/components/DepartureItem/StyledComponents.tsx");
 var getLocationById = function (locations, departureId) {
@@ -276,7 +284,7 @@ var DepartureItem = /** @class */ (function (_super) {
     DepartureItem.prototype.render = function () {
         var _a = this.props, store = _a.store, departure = _a.departure;
         var results = store.results;
-        return results && (React.createElement(StyledComponents_1.DepartureListItem, null,
+        return results && (React.createElement(react_i18next_1.I18n, { ns: "" }, function (t) { return (React.createElement(StyledComponents_1.DepartureListItem, null,
             React.createElement(StyledComponents_1.OperatorLogo, { backgroundImg: getOperatorById(results.operators, departure.operator_id).logo_url }),
             React.createElement(StyledComponents_1.DepartureTimes, null,
                 React.createElement(StyledComponents_1.Times, null,
@@ -286,7 +294,7 @@ var DepartureItem = /** @class */ (function (_super) {
                 React.createElement(StyledComponents_1.Duration, null,
                     React.createElement("h4", null, departure.duration),
                     React.createElement(BusSvg_1.Bus, null),
-                    React.createElement("h4", null, departure.has_transfers || 'Non Stop')),
+                    React.createElement("h4", null, departure.has_transfers || t('nonStop'))),
                 React.createElement(StyledComponents_1.Times, null,
                     React.createElement("b", null,
                         departure.arrival_time,
@@ -299,7 +307,7 @@ var DepartureItem = /** @class */ (function (_super) {
                     React.createElement(StyledComponents_1.Location, null, getLocationById(results.locations, departure.destination_location_id).name))),
             React.createElement(StyledComponents_1.DeparturePrices, null,
                 "$",
-                departure.totalPrice)));
+                departure.totalPrice))); }));
     };
     DepartureItem = __decorate([
         mobx_react_1.inject('store'),
@@ -330,12 +338,12 @@ var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_m
 var formatBackgroundImage = function (imageUrl, width, height) {
     return imageUrl.replace(/{width}/, width).replace(/{height}/, height);
 };
-exports.DepartureListItem = styled_components_1.default.li(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background: white;\n    padding: 10px 30px;\n    width: 100%;\n    margin: 10px 0;\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);\n    transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);\n\n    &:hover {\n        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);\n    }\n\n    @media (max-width: 620px) {\n    }  \n"], ["\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background: white;\n    padding: 10px 30px;\n    width: 100%;\n    margin: 10px 0;\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);\n    transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);\n\n    &:hover {\n        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);\n    }\n\n    @media (max-width: 620px) {\n    }  \n"])));
+exports.DepartureListItem = styled_components_1.default.li(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background: white;\n    padding: 10px 30px;\n    width: 100%;\n    margin: 10px 0;\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);\n    transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);\n\n    &:hover {\n        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);\n    }\n"], ["\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background: white;\n    padding: 10px 30px;\n    width: 100%;\n    margin: 10px 0;\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);\n    transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);\n\n    &:hover {\n        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);\n    }\n"])));
 var typedOperatorLogo = styled_components_1.default.div;
-exports.OperatorLogo = typedOperatorLogo(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    background: url(", ");\n    background-repeat: no-repeat;\n    background-size: contain;\n    width: 100px;\n    height: 100px;\n    padding-right: 20px;\n\n    @media (max-width: 620px) {\n        width: 80px;\n        height: 80px;\n    }\n\n    @media (max-width: 420px) {\n      display: none;\n  }\n"], ["\n    background: url(", ");\n    background-repeat: no-repeat;\n    background-size: contain;\n    width: 100px;\n    height: 100px;\n    padding-right: 20px;\n\n    @media (max-width: 620px) {\n        width: 80px;\n        height: 80px;\n    }\n\n    @media (max-width: 420px) {\n      display: none;\n  }\n"])), function (props) { return formatBackgroundImage(props.backgroundImg, "100", "100"); });
+exports.OperatorLogo = typedOperatorLogo(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    background: url(", ");\n    background-repeat: no-repeat;\n    background-size: contain;\n    width: 100px;\n    height: 100px;\n    padding-right: 20px;\n\n    @media (max-width: 620px) {\n        width: 80px;\n        height: 80px;\n    }\n\n    @media (max-width: 420px) {\n      display: none;\n  }\n"], ["\n    background: url(", ");\n    background-repeat: no-repeat;\n    background-size: contain;\n    width: 100px;\n    height: 100px;\n    padding-right: 20px;\n\n    @media (max-width: 620px) {\n        width: 80px;\n        height: 80px;\n    }\n\n    @media (max-width: 420px) {\n      display: none;\n  }\n"])), function (props) { return formatBackgroundImage(props.backgroundImg, '100', '100'); });
 exports.DepartureTimes = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    display: flex;\n    width: 70%;\n    justify-content: space-between;\n    align-items: center;\n    text-align: left;\n\n    @media (max-width: 620px) {\n        width: 60%;\n    }\n"], ["\n    display: flex;\n    width: 70%;\n    justify-content: space-between;\n    align-items: center;\n    text-align: left;\n\n    @media (max-width: 620px) {\n        width: 60%;\n    }\n"])));
-exports.PlusDays = styled_components_1.default.small(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    position: relative;\n    top: -10px; \n"], ["\n    position: relative;\n    top: -10px; \n"])));
-exports.DeparturePrices = styled_components_1.default.button(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n    cursor: pointer;\n    border: 1px solid;\n"], ["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n    cursor: pointer;\n    border: 1px solid;\n"])));
+exports.PlusDays = styled_components_1.default.small(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    position: relative;\n    top: -10px;\n"], ["\n    position: relative;\n    top: -10px;\n"])));
+exports.DeparturePrices = styled_components_1.default.button(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n    background: white;\n    cursor: pointer;\n    border: 1px solid;\n"], ["\n    font-size: 16px;\n    padding: 10px 20px;\n    border: none;\n    color: #0898bd;\n    background: white;\n    cursor: pointer;\n    border: 1px solid;\n"])));
 exports.Times = styled_components_1.default.p(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    width: 30%;\n    font-size: 14px;\n\n    b {\n      font-size: 16px;\n    }\n\n    @media (max-width: 620px) {\n      width: auto;\n    }\n"], ["\n    width: 30%;\n    font-size: 14px;\n\n    b {\n      font-size: 16px;\n    }\n\n    @media (max-width: 620px) {\n      width: auto;\n    }\n"])));
 exports.Location = styled_components_1.default.span(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  @media (max-width: 620px) {\n      display: none;\n  }\n"], ["\n  @media (max-width: 620px) {\n      display: none;\n  }\n"])));
 exports.Duration = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding-right: 15px;\n\n  h4 {\n    font-size: 16px;\n    margin: 10px;\n  }\n\n  @media (max-width: 620px) {\n    padding: 0;\n    width: 70px;\n\n    h4 {\n        display: none;\n    }\n  }\n"], ["\n  padding-right: 15px;\n\n  h4 {\n    font-size: 16px;\n    margin: 10px;\n  }\n\n  @media (max-width: 620px) {\n    padding: 0;\n    width: 70px;\n\n    h4 {\n        display: none;\n    }\n  }\n"])));
@@ -363,9 +371,9 @@ var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_m
 var LoaderSvgContainer = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: 60px;\n"], ["\n  width: 60px;\n"])));
 exports.LoaderSvg = function () { return (React.createElement(LoaderSvgContainer, null,
     React.createElement("svg", { version: "1.1", id: "L7", xmlns: "http://www.w3.org/2000/svg", x: "0px", y: "0px", viewBox: "0 0 100 100" },
-        React.createElement("path", { fill: "#fff", d: "M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3\n        c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z" },
+        React.createElement("path", { fill: "#fff", d: "\n        M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,\n        39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,\n        8.4-45.4-2-53.8-23.3\n        c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z" },
             React.createElement("animateTransform", { attributeName: "transform", attributeType: "XML", type: "rotate", dur: "2s", from: "0 50 50", to: "360 50 50", repeatCount: "indefinite" })),
-        React.createElement("path", { fill: "#fff", d: "M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7\n        c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z" },
+        React.createElement("path", { fill: "#fff", d: "M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,\n        5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,\n        10.6-19,4.1-27.7\n        c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z" },
             React.createElement("animateTransform", { attributeName: "transform", attributeType: "XML", type: "rotate", dur: "1s", from: "0 50 50", to: "-360 50 50", repeatCount: "indefinite" })),
         React.createElement("path", { fill: "#fff", d: "M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5\n        L82,35.7z" },
             React.createElement("animateTransform", { attributeName: "transform", attributeType: "XML", type: "rotate", dur: "2s", from: "0 50 50", to: "360 50 50", repeatCount: "indefinite" }))))); };
@@ -404,9 +412,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var date_fns_1 = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/index.js");
 var mobx_react_1 = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_i18next_1 = __webpack_require__(/*! react-i18next */ "./node_modules/react-i18next/dist/es/index.js");
 var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
 var Form = styled_components_1.default.form(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin-top: 50px;\n  display: flex;\n  flex-wrap: wrap;\n\n  > button {\n    margin: 0 5px;\n    padding: 10px;\n    background: none;\n    color: white;\n    font-size: 16px;\n    border: 1px solid;\n  }\n\n  @media (max-width: 920px) {\n    justify-content: center;\n\n\n    > button {\n      width: 91.5%;\n      margin-top: 15px;\n    }\n  }\n"], ["\n  margin-top: 50px;\n  display: flex;\n  flex-wrap: wrap;\n\n  > button {\n    margin: 0 5px;\n    padding: 10px;\n    background: none;\n    color: white;\n    font-size: 16px;\n    border: 1px solid;\n  }\n\n  @media (max-width: 920px) {\n    justify-content: center;\n\n\n    > button {\n      width: 91.5%;\n      margin-top: 15px;\n    }\n  }\n"])));
 var Input = styled_components_1.default.input(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  margin: 0 5px;\n  padding: 10px;\n  background: none;\n  color: white;\n  font-size: 16px;\n  border: 1px solid;\n\n\n  @media (max-width: 920px) {\n    width: 45%;\n    margin: 5px;\n  }\n"], ["\n  margin: 0 5px;\n  padding: 10px;\n  background: none;\n  color: white;\n  font-size: 16px;\n  border: 1px solid;\n\n\n  @media (max-width: 920px) {\n    width: 45%;\n    margin: 5px;\n  }\n"])));
@@ -422,13 +431,14 @@ var SearchForm = /** @class */ (function (_super) {
         return _this;
     }
     SearchForm.prototype.render = function () {
+        var _this = this;
         var _a = this.props.store, setOutboundDate = _a.setOutboundDate, setPassangerNumber = _a.setPassangerNumber, searchParams = _a.searchParams;
-        return (React.createElement(Form, { onSubmit: this.handleSubmit },
+        return (React.createElement(react_i18next_1.I18n, { ns: "" }, function (t) { return (React.createElement(Form, { onSubmit: _this.handleSubmit },
             React.createElement(Input, { type: "text", id: "origin", value: 'New York', onChange: function () { } }),
-            React.createElement(Input, { type: "text", value: 'Montreal', onChange: function () { } }),
-            React.createElement(Input, { type: 'date', min: date_fns_1.format(new Date(), 'YYYY-MM-DD'), max: date_fns_1.format(date_fns_1.addYears(new Date(), 1), 'YYYY-MM-DD'), value: searchParams.outboundDate, onChange: function (e) { return setOutboundDate(e.target.value); } }),
-            React.createElement(Input, { type: 'number', value: searchParams.passangerNumber, onChange: function (e) { return setPassangerNumber(Number(e.target.value)); } }),
-            React.createElement("button", { role: "submit" }, " Search")));
+            React.createElement(Input, { type: "text", value: t('montreal'), onChange: function () { } }),
+            React.createElement(Input, { type: "date", min: date_fns_1.format(new Date(), 'YYYY-MM-DD'), max: date_fns_1.format(date_fns_1.addYears(new Date(), 1), 'YYYY-MM-DD'), value: searchParams.outboundDate, onChange: function (e) { return setOutboundDate(e.target.value); } }),
+            React.createElement(Input, { type: "number", value: searchParams.passangerNumber, onChange: function (e) { return setPassangerNumber(Number(e.target.value)); } }),
+            React.createElement("button", { role: "submit" }, t('search')))); }));
     };
     SearchForm = __decorate([
         mobx_react_1.inject('store'),
@@ -457,7 +467,7 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
-styled_components_1.injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: 'IBM Plex Sans', sans-serif;\n        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); \n    }\n"], ["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: 'IBM Plex Sans', sans-serif;\n        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); \n    }\n"])));
+styled_components_1.injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: 'IBM Plex Sans', sans-serif;\n        background:linear-gradient(\n            180deg,\n            #2880bc 0,\n            #2880bc 22%,\n            #7abdc3 33%,\n            #9bbea5 44%,\n            #d3ad6c 55%,\n            #e7717f 72%,\n            #e7717f\n        );\n    }\n"], ["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: 'IBM Plex Sans', sans-serif;\n        background:linear-gradient(\n            180deg,\n            #2880bc 0,\n            #2880bc 22%,\n            #7abdc3 33%,\n            #9bbea5 44%,\n            #d3ad6c 55%,\n            #e7717f 72%,\n            #e7717f\n        );\n    }\n"])));
 exports.Root = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    min-height: 100vh;\n    display: flex;\n    justify-content: flex-end;\n    flex-direction: column;\n"], ["\n    min-height: 100vh;\n    display: flex;\n    justify-content: flex-end;\n    flex-direction: column;\n"])));
 exports.Container = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    padding: 20px;\n    max-width: 1080px;\n    margin: auto;\n    position: relative;\n"], ["\n    padding: 20px;\n    max-width: 1080px;\n    margin: auto;\n    position: relative;\n"])));
 exports.Ul = styled_components_1.default.ul(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    padding: 0;\n    list-style: none;\n    display: flex;\n    flex-wrap: wrap;\n"], ["\n    padding: 0;\n    list-style: none;\n    display: flex;\n    flex-wrap: wrap;\n"])));
@@ -465,7 +475,8 @@ exports.Footer = styled_components_1.default.footer(templateObject_5 || (templat
 exports.Header = styled_components_1.default.header(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    padding-top: 10vh;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    height: 150px;\n"], ["\n    padding-top: 10vh;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    height: 150px;\n"])));
 exports.HeaderH1 = styled_components_1.default.h1(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    padding-right: 15px;\n    color: #fff;\n"], ["\n    padding-right: 15px;\n    color: #fff;\n"])));
 exports.Image = styled_components_1.default.img(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n    max-width: 100%;\n    height: 80px;\n"], ["\n    max-width: 100%;\n    height: 80px;\n"])));
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8;
+exports.LanguageSwitcher = styled_components_1.default.button(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  position: absolute;\n  top: 25px;\n  right: 25px;\n  background: none;\n  font-size: 16px;\n  color: white;\n  border: none;\n  cursor: pointer;\n"], ["\n  position: absolute;\n  top: 25px;\n  right: 25px;\n  background: none;\n  font-size: 16px;\n  color: white;\n  border: none;\n  cursor: pointer;\n"])));
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9;
 
 
 /***/ }),
@@ -491,8 +502,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var date_fns_1 = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/index.js");
 var endpoint = 'https://napi.busbud.com/x-departures';
 var buildQuery = function (outboundDate, passangerNumber, origin, destination) {
-    if (origin === void 0) { origin = "dr5reg"; }
-    if (destination === void 0) { destination = "f25dvk"; }
+    if (origin === void 0) { origin = 'dr5reg'; }
+    if (destination === void 0) { destination = 'f25dvk'; }
     return endpoint + "/" + origin + "/" + destination + "/" + outboundDate + (passangerNumber ? "?adult=" + passangerNumber : '');
 };
 var headers = {
@@ -573,7 +584,7 @@ var SearchStore = /** @class */ (function () {
         this.error = undefined;
         this.searchParams = {
             passangerNumber: 1,
-            outboundDate: "2018-08-02",
+            outboundDate: '2018-08-02'
         };
         this.clearResults = function () {
             _this.isComplete = undefined;
@@ -659,13 +670,62 @@ exports.default = searchStore;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var mobx_react_1 = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-var mobx_react_1 = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
 var app_1 = __webpack_require__(/*! ./app/app */ "./src/app/app.tsx");
 var search_1 = __webpack_require__(/*! ./app/store/search */ "./src/app/store/search.ts");
+__webpack_require__(/*! ./i18n */ "./src/i18n.ts");
 ReactDOM.hydrate(React.createElement(mobx_react_1.Provider, { store: search_1.default },
     React.createElement(app_1.default, null)), document.getElementById('app'));
+
+
+/***/ }),
+
+/***/ "./src/i18n.ts":
+/*!*********************!*\
+  !*** ./src/i18n.ts ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var i18n = __webpack_require__(/*! i18next */ "./node_modules/i18next/dist/es/index.js");
+var LanguageDetector = __webpack_require__(/*! i18next-browser-languagedetector */ "./node_modules/i18next-browser-languagedetector/index.js");
+var Backend = __webpack_require__(/*! i18next-xhr-backend */ "./node_modules/i18next-xhr-backend/index.js");
+var react_i18next_1 = __webpack_require__(/*! react-i18next */ "./node_modules/react-i18next/dist/es/index.js");
+i18n
+    .use(Backend)
+    .use(LanguageDetector)
+    .use(react_i18next_1.reactI18nextModule)
+    .init({
+    fallbackLng: 'en',
+    debug: true,
+    interpolation: { escapeValue: false },
+    react: { wait: true },
+    lng: 'en',
+    resources: {
+        en: {
+            translation: {
+                title: 'Its Time to book for',
+                search: 'Search',
+                nonStop: 'Non Stop',
+                montreal: 'Montreal'
+            }
+        },
+        fr: {
+            translation: {
+                title: 'C\'est le temps de réserver pour',
+                nonStop: 'Sans Arrêt',
+                search: 'Rechercher',
+                montreal: 'Montréal'
+            }
+        }
+    }
+});
+exports.default = i18n;
 
 
 /***/ })

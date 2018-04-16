@@ -1,11 +1,12 @@
+import { addYears, format } from 'date-fns';
+import { inject, observer } from 'mobx-react';
 import * as React from 'react';
-import { format, addYears } from 'date-fns';
-import { observer, inject } from 'mobx-react';
+import { I18n } from 'react-i18next';
 import styled from 'styled-components';
 import { SearchStore } from '../../store/search';
-  
+
 interface Props {
-    store: SearchStore;
+  store: SearchStore;
 }
 
 const Form = styled.form`
@@ -48,7 +49,6 @@ const Input = styled.input`
   }
 `;
 
-
 @inject('store')
 @observer
 class SearchForm extends React.Component<Props> {
@@ -56,33 +56,36 @@ class SearchForm extends React.Component<Props> {
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     this.props.store.clearResults();
-    this.props.store.search()
+    this.props.store.search();
   }
 
   render() {
     const { setOutboundDate, setPassangerNumber, searchParams } = this.props.store;
-    
+
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <Input type="text" id="origin" value={'New York'} onChange={() => {}}/>
-        <Input type="text" value={'Montreal'}  onChange={() => {}}/>
-        <Input 
-          type='date' 
-          min={format(new Date(), 'YYYY-MM-DD')}
-          max={format(addYears(new Date(), 1), 'YYYY-MM-DD')}
-          value={searchParams.outboundDate} 
-          onChange={(e) => setOutboundDate(e.target.value)} 
-        />
-        <Input 
-          type='number' 
-          value={searchParams.passangerNumber} 
-          onChange={(e) => setPassangerNumber(Number(e.target.value))} 
-        />
-        <button role="submit"> Search</button>
-      </Form>
+      <I18n ns="">
+        {(t) => (
+          <Form onSubmit={this.handleSubmit}>
+            <Input type="text" id="origin" value={'New York'} onChange={() => {}} />
+            <Input type="text" value={t('montreal')} onChange={() => {}} />
+            <Input
+              type="date"
+              min={format(new Date(), 'YYYY-MM-DD')}
+              max={format(addYears(new Date(), 1), 'YYYY-MM-DD')}
+              value={searchParams.outboundDate}
+              onChange={(e) => setOutboundDate(e.target.value)}
+            />
+            <Input
+              type="number"
+              value={searchParams.passangerNumber}
+              onChange={(e) => setPassangerNumber(Number(e.target.value))}
+            />
+            <button role="submit">{t('search')}</button>
+          </Form>
+        )}
+     </I18n>
     );
   }
 }
-
 
 export default SearchForm as React.ComponentClass<{}>;

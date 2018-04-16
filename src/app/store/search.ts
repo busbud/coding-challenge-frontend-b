@@ -1,6 +1,5 @@
 import { action, observable } from 'mobx';
-import { fetchSearch, SearchResults, adaptResponse } from '../helpers/api';
-
+import { adaptResponse, fetchSearch, SearchResults } from '../helpers/api';
 
 export class SearchStore {
   @observable isComplete = undefined as undefined | boolean;
@@ -8,8 +7,8 @@ export class SearchStore {
   @observable error = undefined as undefined | string;
   @observable searchParams = {
     passangerNumber: 1,
-    outboundDate: "2018-08-02",
-  }
+    outboundDate: '2018-08-02'
+  };
 
   @action
   clearResults = () => {
@@ -29,21 +28,21 @@ export class SearchStore {
   }
 
   @action
-  search = async () => {
+  search = async() => {
     try {
       const results = await fetchSearch(
-        this.searchParams.outboundDate, 
+        this.searchParams.outboundDate,
         this.searchParams.passangerNumber
       );
-      this.isComplete = results.complete
-      
+      this.isComplete = results.complete;
+
       if (results.complete) {
         this.isComplete = true;
       }
 
       return this.results = adaptResponse(results);
 
-    } catch(error) {
+    } catch (error) {
 
       this.isComplete = true;
       this.error = error;
@@ -57,7 +56,5 @@ export class SearchStore {
 }
 
 const searchStore: SearchStore = new SearchStore();
-
-
 
 export default searchStore;

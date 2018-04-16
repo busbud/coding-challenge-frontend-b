@@ -1,8 +1,7 @@
-import styled, { StyledFunction } from "styled-components";
+import styled, { StyledFunction } from 'styled-components';
 
-const formatBackgroundImage = (imageUrl: string, width: string, height: string): string => 
+const formatBackgroundImage = (imageUrl: string, width: string, height: string): string =>
     imageUrl.replace(/{width}/, width).replace(/{height}/, height);
-
 
 export const DepartureListItem = styled.li`
     display: flex;
@@ -18,15 +17,12 @@ export const DepartureListItem = styled.li`
     &:hover {
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
-
-    @media (max-width: 620px) {
-    }  
 `;
 
 interface OperatorLogoProps { backgroundImg: string; }
-const typedOperatorLogo: StyledFunction<OperatorLogoProps & React.HTMLProps<HTMLDivElement  >> = styled.div;
+const typedOperatorLogo: StyledFunction<OperatorLogoProps & React.HTMLProps<HTMLDivElement>> = styled.div;
 export const OperatorLogo = typedOperatorLogo`
-    background: url(${props => formatBackgroundImage(props.backgroundImg, "100", "100")});
+    background: url(${props => formatBackgroundImage(props.backgroundImg, '100', '100')});
     background-repeat: no-repeat;
     background-size: contain;
     width: 100px;
@@ -57,7 +53,7 @@ export const DepartureTimes = styled.div`
 
 export const PlusDays = styled.small`
     position: relative;
-    top: -10px; 
+    top: -10px;
 `;
 
 export const DeparturePrices = styled.button`
@@ -65,6 +61,7 @@ export const DeparturePrices = styled.button`
     padding: 10px 20px;
     border: none;
     color: #0898bd;
+    background: white;
     cursor: pointer;
     border: 1px solid;
 `;
