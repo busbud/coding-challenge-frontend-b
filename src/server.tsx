@@ -31,6 +31,6 @@ app.get('*', (_req, res) => {
     stream.pipe(res);
 });
 
-app.listen(8888, () => {
+app.listen(process.env.PORT || 8888, () => {
     console.log('listening on port 8888...')
 });
