@@ -10,7 +10,7 @@ import {
     Footer,
     Ul, 
     Container, 
-} from './components/styledComponents';
+} from './components/StyledComponents';
 import DepartureItem from './components/DepartureItem/DepartureItem';
 import SearchForm from './components/SearchForm/SearchForm';
 
@@ -22,7 +22,7 @@ interface Props {
 @observer
 class App extends React.Component<Props> {
     render() {
-        const { search, results, isComplete, error } = this.props.store;
+        const { results, isComplete, error } = this.props.store;
         return (
             <Root>
                 <Header>
@@ -30,7 +30,7 @@ class App extends React.Component<Props> {
                     <Image src={'osheaga.png'} />
                 </Header>
                 <Container>
-                    <SearchForm onSubmit={() => search()} />
+                    <SearchForm />
                 </Container>
                 <Container>
                     {isComplete === false && (<LoaderSvg />)}

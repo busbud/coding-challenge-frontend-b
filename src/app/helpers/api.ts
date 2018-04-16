@@ -1,4 +1,4 @@
-import * as format from 'date-fns/format'
+import { format, differenceInCalendarDays } from 'date-fns';
 import { Cities } from "./types/cities";
 import { Operators } from "./types/operators";
 import { Departures, DeparturesResponse } from "./types/departures";
@@ -54,9 +54,11 @@ export const adaptResponse = (results: SearchResponse): SearchResults => {
     departures: results.departures.map(departure => {
       const hours = departure.duration / 60;
       const minutes = Math.round((hours - Math.floor(hours)) * 60);
+      const daysDifference = differenceInCalendarDays(departure.arrival_time, departure.departure_time);
 
       return {
         ...departure,
+        daysDifference,
         arrival_time: format(departure.arrival_time, 'h:mm a'),
         departure_time: format(departure.departure_time, 'h:mm a'),
         totalPrice: (departure.prices.total / 100),

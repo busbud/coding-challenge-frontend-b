@@ -1,4 +1,4 @@
-import { action, observable, when } from 'mobx';
+import { action, observable } from 'mobx';
 import { fetchSearch, SearchResults, adaptResponse } from '../helpers/api';
 
 
@@ -42,18 +42,16 @@ export class SearchStore {
       }
 
       return this.results = adaptResponse(results);
+
     } catch(error) {
+
       this.isComplete = true;
       this.error = error;
+
     } finally {
-      when(
-        () => !searchStore.isComplete,
-        () => { 
-          if (!searchStore.isComplete) {
-            setTimeout(() => this.search(), 1000);
-          }
-        }
-      );
+      if (!searchStore.isComplete) {
+        setTimeout(() => this.search(), 1000);
+      }
     }
   }
 }

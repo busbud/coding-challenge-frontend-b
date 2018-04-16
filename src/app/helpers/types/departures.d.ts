@@ -217,5 +217,6 @@
     details: Details;
     terms: Terms;
     totalPrice: number;
+    daysDifference: number;
 }
 

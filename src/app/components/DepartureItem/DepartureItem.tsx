@@ -4,8 +4,17 @@ import { SearchStore } from '../../store/search';
 import { Departures } from '../../helpers/types/departures';
 import { Locations } from '../../helpers/types/locations';
 import { Operators } from '../../helpers/types/operators';
-import { DepartureListItem, OperatorLogo, DepartureTimes, DeparturePrices, Button } from '../styledComponents';
 import { Bus } from '../BusSvg';
+import { 
+    DepartureListItem, 
+    OperatorLogo, 
+    DepartureTimes, 
+    DeparturePrices, 
+    PlusDays, 
+    Times, 
+    Location, 
+    Duration
+} from './StyledComponents';
 
 interface Props {
   departure: Departures;
@@ -36,35 +45,40 @@ class DepartureItem extends React.Component<MobxProps> {
                 }
             />
             <DepartureTimes>
-                <p>
+                <Times>
                     <b>{departure.departure_time}</b>
                     <br />
-                    <span>
+                    <Location>
                         {getLocationById(
                             results.locations,
                             departure.origin_location_id
                         ).name}
-                    </span>
-                </p>
-
-                <div>
+                    </Location>
+                </Times>
+                <Duration>
                     <h4>{departure.duration}</h4>
                     <Bus />
                     <h4>{departure.has_transfers || 'Non Stop'}</h4>
-                </div>
-                <p>
-                    <b>{departure.arrival_time} </b>
+                </Duration>
+                <Times>
+                    <b>
+                        {departure.arrival_time}
+                        {!(departure.daysDifference > 0) 
+                            ? null
+                            : <PlusDays>+{departure.daysDifference}</PlusDays>
+                        }
+                    </b>
                     <br />
-                    <span>
+                    <Location>
                         {getLocationById(
                             results.locations,
                             departure.destination_location_id
                         ).name}
-                    </span>
-                </p>
+                    </Location>
+                </Times>
             </DepartureTimes>
             <DeparturePrices>
-                <Button>${departure.totalPrice}</Button>
+                ${departure.totalPrice}
             </DeparturePrices>
         </DepartureListItem>
         )
