@@ -30,7 +30,7 @@ app.get('*', (_req, res) => {
     const stream = sheet.interleaveWithNodeStream(renderToNodeStream(jsx));
     stream.pipe(res);
 });
-
-app.listen(process.env.PORT || 8888, () => {
-    console.log('listening on port 8888...')
+const port = process.env.PORT || 8888; 
+app.listen(port, () => {
+    console.log(`listening on port ${port}...`)
 });
