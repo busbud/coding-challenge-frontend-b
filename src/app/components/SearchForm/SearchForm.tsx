@@ -14,50 +14,54 @@ interface MobxProps extends Props {
 const Form = styled.form`
   margin-top: 50px;
   display: flex;
+  flex-wrap: wrap;
 
   > * {
     margin: 0 5px;
     padding: 10px;
     background: none;
     color: white;
+    font-size: 16px;
     border: 1px solid;
+  }
+
+  @media (max-width: 620px) {
+    justify-content: center;
+
+    > * {
+      width: 45%;
+      margin: 5px;
+    }
   }
 `;
 
 @inject('store')
 @observer
 class SearchForm extends React.Component<MobxProps> {
-  state = {
-    date: "2018-08-02",
-    passangerNumber: 1,
-  }
-
-  updatePassangerNumber = (value: string) => {
-    this.setState({
-      passangerNumber: value,
-    })
-  }
-
-  updateDate = (value: string) => {
-    this.setState({
-      date: value,
-    })
-  }
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    this.props.store.search(this.state.date, this.state.passangerNumber)
+    this.props.store.clearResults();
+    this.props.store.search()
   }
 
   render() {
-    const { date, passangerNumber } = this.state;
+    const { setOutboundDate, setPassangerNumber, searchParams } = this.props.store;
 
     return (
       <Form onSubmit={this.handleSubmit}>
         <input type="text" value={'New York'} onChange={() => {}}/>
         <input type="text" value={'Montreal'}  onChange={() => {}}/>
-        <input type='date' value={date} onChange={(e) => this.updateDate(e.target.value)} />
-        <input type='number' value={passangerNumber} onChange={(e) => this.updatePassangerNumber(e.target.value)} />
+        <input 
+          type='date' 
+          value={searchParams.outboundDate} 
+          onChange={(e) => setOutboundDate(e.target.value)} 
+        />
+        <input 
+          type='number' 
+          value={searchParams.passangerNumber} 
+          onChange={(e) => setPassangerNumber(Number(e.target.value))} 
+        />
         <button role="submit"> Search</button>
       </Form>
     )

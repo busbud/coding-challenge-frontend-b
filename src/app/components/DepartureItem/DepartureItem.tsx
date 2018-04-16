@@ -37,12 +37,14 @@ class DepartureItem extends React.Component<MobxProps> {
             />
             <DepartureTimes>
                 <p>
-                  <b>{departure.departure_time}</b>
-                  <br />
-                  {getLocationById(
-                        results.locations,
-                        departure.origin_location_id
-                    ).name}
+                    <b>{departure.departure_time}</b>
+                    <br />
+                    <span>
+                        {getLocationById(
+                            results.locations,
+                            departure.origin_location_id
+                        ).name}
+                    </span>
                 </p>
 
                 <div>
@@ -53,10 +55,12 @@ class DepartureItem extends React.Component<MobxProps> {
                 <p>
                     <b>{departure.arrival_time} </b>
                     <br />
-                    {getLocationById(
-                        results.locations,
-                        departure.destination_location_id
-                    ).name}
+                    <span>
+                        {getLocationById(
+                            results.locations,
+                            departure.destination_location_id
+                        ).name}
+                    </span>
                 </p>
             </DepartureTimes>
             <DeparturePrices>

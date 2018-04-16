@@ -30,7 +30,7 @@ interface SearchResponse {
 
 const endpoint = 'https://napi.busbud.com/x-departures';
 const buildQuery = (
-  outboundDate = "2018-08-02" as string, 
+  outboundDate: string, 
   passangerNumber: number | undefined,
   origin = "dr5reg" as string,
   destination = "f25dvk" as string, 
@@ -42,7 +42,7 @@ const headers = {
   'X-Busbud-Token': 'PARTNER_JSWsVZQcS_KzxNRzGtIt1A'
 };
 
-export const fetchSearch = (outboundDate?: string, passangerNumber?: number): Promise<SearchResponse> => fetch(
+export const fetchSearch = (outboundDate: string, passangerNumber?: number): Promise<SearchResponse> => fetch(
   buildQuery(outboundDate, passangerNumber),
   { headers },
 ).then(res => res.json()) 

@@ -32,16 +32,19 @@ export const DepartureListItem = styled.li`
     justify-content: space-between;
     align-items: center;
     background: white;
-    padding: 0 30px;
+    padding: 10px 30px;
     width: 100%;
     margin: 10px 0;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
-    
-      
+
     &:hover {
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
+
+    @media (max-width: 620px) {
+    }
+    
 `;
 
 export const Ul = styled.ul`
@@ -54,11 +57,17 @@ export const Ul = styled.ul`
 interface OperatorLogoProps { backgroundImg: string; }
 const typedOperatorLogo: StyledFunction<OperatorLogoProps & React.HTMLProps<HTMLDivElement  >> = styled.div;
 export const OperatorLogo = typedOperatorLogo`
-    background: url(${props => formatBackgroundImage(props.backgroundImg, "120", "120")});
+    background: url(${props => formatBackgroundImage(props.backgroundImg, "100", "100")});
     background-repeat: no-repeat;
     background-size: contain;
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
+    padding-right: 20px;
+
+    @media (max-width: 620px) {
+        width: 80px;
+        height: 80px;
+    }
 `;
 
 export const DepartureTimes = styled.div`
@@ -84,6 +93,26 @@ export const DepartureTimes = styled.div`
     h4 {
         font-size: 16px;
         margin: 10px;
+    }
+
+    @media (max-width: 620px) {
+        width: 60%;
+
+        span {
+            display: none;
+        }
+
+        h4 {
+            display: none;
+        }
+
+        p {
+            width: auto;
+        }
+
+        > div {
+            width: 70px;
+        }
     }
 `;
 

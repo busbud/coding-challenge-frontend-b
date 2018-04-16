@@ -282,7 +282,7 @@ var DepartureItem = /** @class */ (function (_super) {
                 React.createElement("p", null,
                     React.createElement("b", null, departure.departure_time),
                     React.createElement("br", null),
-                    getLocationById(results.locations, departure.origin_location_id).name),
+                    React.createElement("span", null, getLocationById(results.locations, departure.origin_location_id).name)),
                 React.createElement("div", null,
                     React.createElement("h4", null, departure.duration),
                     React.createElement(BusSvg_1.Bus, null),
@@ -292,7 +292,7 @@ var DepartureItem = /** @class */ (function (_super) {
                         departure.arrival_time,
                         " "),
                     React.createElement("br", null),
-                    getLocationById(results.locations, departure.destination_location_id).name)),
+                    React.createElement("span", null, getLocationById(results.locations, departure.destination_location_id).name))),
             React.createElement(styledComponents_1.DeparturePrices, null,
                 React.createElement(styledComponents_1.Button, null,
                     "$",
@@ -372,39 +372,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var mobx_react_1 = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
 var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
-var Form = styled_components_1.default.form(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin-top: 50px;\n  display: flex;\n\n  > * {\n    margin: 0 5px;\n    padding: 10px;\n    background: none;\n    color: white;\n    border: 1px solid;\n  }\n"], ["\n  margin-top: 50px;\n  display: flex;\n\n  > * {\n    margin: 0 5px;\n    padding: 10px;\n    background: none;\n    color: white;\n    border: 1px solid;\n  }\n"])));
+var Form = styled_components_1.default.form(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin-top: 50px;\n  display: flex;\n  flex-wrap: wrap;\n\n  > * {\n    margin: 0 5px;\n    padding: 10px;\n    background: none;\n    color: white;\n    font-size: 16px;\n    border: 1px solid;\n  }\n\n  @media (max-width: 620px) {\n    justify-content: center;\n\n    > * {\n      width: 45%;\n      margin: 5px;\n    }\n  }\n"], ["\n  margin-top: 50px;\n  display: flex;\n  flex-wrap: wrap;\n\n  > * {\n    margin: 0 5px;\n    padding: 10px;\n    background: none;\n    color: white;\n    font-size: 16px;\n    border: 1px solid;\n  }\n\n  @media (max-width: 620px) {\n    justify-content: center;\n\n    > * {\n      width: 45%;\n      margin: 5px;\n    }\n  }\n"])));
 var SearchForm = /** @class */ (function (_super) {
     __extends(SearchForm, _super);
     function SearchForm() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.state = {
-            date: "2018-08-02",
-            passangerNumber: 1,
-        };
-        _this.updatePassangerNumber = function (value) {
-            _this.setState({
-                passangerNumber: value,
-            });
-        };
-        _this.updateDate = function (value) {
-            _this.setState({
-                date: value,
-            });
-        };
         _this.handleSubmit = function (event) {
             event.preventDefault();
-            _this.props.store.search(_this.state.date, _this.state.passangerNumber);
+            _this.props.store.clearResults();
+            _this.props.store.search();
         };
         return _this;
     }
     SearchForm.prototype.render = function () {
-        var _this = this;
-        var _a = this.state, date = _a.date, passangerNumber = _a.passangerNumber;
+        var _a = this.props.store, setOutboundDate = _a.setOutboundDate, setPassangerNumber = _a.setPassangerNumber, searchParams = _a.searchParams;
         return (React.createElement(Form, { onSubmit: this.handleSubmit },
             React.createElement("input", { type: "text", value: 'New York', onChange: function () { } }),
             React.createElement("input", { type: "text", value: 'Montreal', onChange: function () { } }),
-            React.createElement("input", { type: 'date', value: date, onChange: function (e) { return _this.updateDate(e.target.value); } }),
-            React.createElement("input", { type: 'number', value: passangerNumber, onChange: function (e) { return _this.updatePassangerNumber(e.target.value); } }),
+            React.createElement("input", { type: 'date', value: searchParams.outboundDate, onChange: function (e) { return setOutboundDate(e.target.value); } }),
+            React.createElement("input", { type: 'number', value: searchParams.passangerNumber, onChange: function (e) { return setPassangerNumber(Number(e.target.value)); } }),
             React.createElement("button", { role: "submit" }, " Search")));
     };
     SearchForm = __decorate([
@@ -440,11 +426,11 @@ var formatBackgroundImage = function (imageUrl, width, height) {
 styled_components_1.injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: 'IBM Plex Sans', sans-serif;\n        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); \n    }\n"], ["\n    body {\n        margin: 0;\n        padding: 0;\n        font-family: 'IBM Plex Sans', sans-serif;\n        background:linear-gradient(180deg,#2880bc 0,#2880bc 22%,#7abdc3 33%,#9bbea5 44%,#d3ad6c 55%,#e7717f 72%,#e7717f); \n    }\n"])));
 exports.Root = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    min-height: 100vh;\n    display: flex;\n    justify-content: flex-end;\n    flex-direction: column;\n"], ["\n    min-height: 100vh;\n    display: flex;\n    justify-content: flex-end;\n    flex-direction: column;\n"])));
 exports.Container = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    padding: 20px;\n    max-width: 1080px;\n    margin: auto;\n    position: relative;\n"], ["\n    padding: 20px;\n    max-width: 1080px;\n    margin: auto;\n    position: relative;\n"])));
-exports.DepartureListItem = styled_components_1.default.li(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background: white;\n    padding: 0 30px;\n    width: 100%;\n    margin: 10px 0;\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);\n    transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);\n    \n      \n    &:hover {\n        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);\n    }\n"], ["\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background: white;\n    padding: 0 30px;\n    width: 100%;\n    margin: 10px 0;\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);\n    transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);\n    \n      \n    &:hover {\n        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);\n    }\n"])));
+exports.DepartureListItem = styled_components_1.default.li(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background: white;\n    padding: 10px 30px;\n    width: 100%;\n    margin: 10px 0;\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);\n    transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);\n\n    &:hover {\n        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);\n    }\n\n    @media (max-width: 620px) {\n    }\n    \n"], ["\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background: white;\n    padding: 10px 30px;\n    width: 100%;\n    margin: 10px 0;\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);\n    transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);\n\n    &:hover {\n        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);\n    }\n\n    @media (max-width: 620px) {\n    }\n    \n"])));
 exports.Ul = styled_components_1.default.ul(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    padding: 0;\n    list-style: none;\n    display: flex;\n    flex-wrap: wrap;\n"], ["\n    padding: 0;\n    list-style: none;\n    display: flex;\n    flex-wrap: wrap;\n"])));
 var typedOperatorLogo = styled_components_1.default.div;
-exports.OperatorLogo = typedOperatorLogo(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    background: url(", ");\n    background-repeat: no-repeat;\n    background-size: contain;\n    width: 120px;\n    height: 120px;\n"], ["\n    background: url(", ");\n    background-repeat: no-repeat;\n    background-size: contain;\n    width: 120px;\n    height: 120px;\n"])), function (props) { return formatBackgroundImage(props.backgroundImg, "120", "120"); });
-exports.DepartureTimes = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    display: flex;\n    width: 70%;\n    justify-content: space-between;\n    align-items: center;\n    text-align: left;\n\n    > div {\n        padding-right: 15px;\n    }\n\n    p {\n        width: 30%;\n        font-size: 14px;\n    }\n\n    b {\n        font-size: 16px;\n    }\n\n    h4 {\n        font-size: 16px;\n        margin: 10px;\n    }\n"], ["\n    display: flex;\n    width: 70%;\n    justify-content: space-between;\n    align-items: center;\n    text-align: left;\n\n    > div {\n        padding-right: 15px;\n    }\n\n    p {\n        width: 30%;\n        font-size: 14px;\n    }\n\n    b {\n        font-size: 16px;\n    }\n\n    h4 {\n        font-size: 16px;\n        margin: 10px;\n    }\n"])));
+exports.OperatorLogo = typedOperatorLogo(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    background: url(", ");\n    background-repeat: no-repeat;\n    background-size: contain;\n    width: 100px;\n    height: 100px;\n    padding-right: 20px;\n\n    @media (max-width: 620px) {\n        width: 80px;\n        height: 80px;\n    }\n"], ["\n    background: url(", ");\n    background-repeat: no-repeat;\n    background-size: contain;\n    width: 100px;\n    height: 100px;\n    padding-right: 20px;\n\n    @media (max-width: 620px) {\n        width: 80px;\n        height: 80px;\n    }\n"])), function (props) { return formatBackgroundImage(props.backgroundImg, "100", "100"); });
+exports.DepartureTimes = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    display: flex;\n    width: 70%;\n    justify-content: space-between;\n    align-items: center;\n    text-align: left;\n\n    > div {\n        padding-right: 15px;\n    }\n\n    p {\n        width: 30%;\n        font-size: 14px;\n    }\n\n    b {\n        font-size: 16px;\n    }\n\n    h4 {\n        font-size: 16px;\n        margin: 10px;\n    }\n\n    @media (max-width: 620px) {\n        width: 60%;\n\n        span {\n            display: none;\n        }\n\n        h4 {\n            display: none;\n        }\n\n        p {\n            width: auto;\n        }\n\n        > div {\n            width: 70px;\n        }\n    }\n"], ["\n    display: flex;\n    width: 70%;\n    justify-content: space-between;\n    align-items: center;\n    text-align: left;\n\n    > div {\n        padding-right: 15px;\n    }\n\n    p {\n        width: 30%;\n        font-size: 14px;\n    }\n\n    b {\n        font-size: 16px;\n    }\n\n    h4 {\n        font-size: 16px;\n        margin: 10px;\n    }\n\n    @media (max-width: 620px) {\n        width: 60%;\n\n        span {\n            display: none;\n        }\n\n        h4 {\n            display: none;\n        }\n\n        p {\n            width: auto;\n        }\n\n        > div {\n            width: 70px;\n        }\n    }\n"])));
 exports.DeparturePrices = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n    display: flex;\n"], ["\n    display: flex;\n"])));
 exports.Footer = styled_components_1.default.footer(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n    min-height: 24vw;\n    background-image: url(oshegaFooter.png);\n    background-repeat: no-repeat;\n    background-size: 100% auto;\n"], ["\n    min-height: 24vw;\n    background-image: url(oshegaFooter.png);\n    background-repeat: no-repeat;\n    background-size: 100% auto;\n"])));
 exports.Header = styled_components_1.default.header(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n    padding-top: 10vh;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    height: 150px;\n"], ["\n    padding-top: 10vh;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    height: 150px;\n"])));
@@ -477,7 +463,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var format = __webpack_require__(/*! date-fns/format */ "./node_modules/date-fns/format/index.js");
 var endpoint = 'https://napi.busbud.com/x-departures';
 var buildQuery = function (outboundDate, passangerNumber, origin, destination) {
-    if (outboundDate === void 0) { outboundDate = "2018-08-02"; }
     if (origin === void 0) { origin = "dr5reg"; }
     if (destination === void 0) { destination = "f25dvk"; }
     return endpoint + "/" + origin + "/" + destination + "/" + outboundDate + (passangerNumber ? "?adult=" + passangerNumber : '');
@@ -557,13 +542,29 @@ var SearchStore = /** @class */ (function () {
         this.isComplete = undefined;
         this.results = undefined;
         this.error = undefined;
-        this.search = function (outboundDate, passangerNumber) { return __awaiter(_this, void 0, void 0, function () {
+        this.searchParams = {
+            passangerNumber: 1,
+            outboundDate: "2018-08-02",
+        };
+        this.clearResults = function () {
+            _this.isComplete = undefined;
+            _this.results = undefined;
+            _this.error = undefined;
+        };
+        this.setPassangerNumber = function (value) {
+            _this.searchParams.passangerNumber = value;
+        };
+        this.setOutboundDate = function (value) {
+            _this.searchParams.outboundDate = value;
+        };
+        this.search = function () { return __awaiter(_this, void 0, void 0, function () {
+            var _this = this;
             var results, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, 3, 4]);
-                        return [4 /*yield*/, api_1.fetchSearch(outboundDate, passangerNumber)];
+                        return [4 /*yield*/, api_1.fetchSearch(this.searchParams.outboundDate, this.searchParams.passangerNumber)];
                     case 1:
                         results = _a.sent();
                         this.isComplete = results.complete;
@@ -579,7 +580,7 @@ var SearchStore = /** @class */ (function () {
                     case 3:
                         mobx_1.when(function () { return !searchStore.isComplete; }, function () {
                             if (!searchStore.isComplete) {
-                                setTimeout(function () { return searchStore.search(outboundDate, passangerNumber); }, 1000);
+                                setTimeout(function () { return _this.search(); }, 1000);
                             }
                         });
                         return [7 /*endfinally*/];
@@ -597,6 +598,18 @@ var SearchStore = /** @class */ (function () {
     __decorate([
         mobx_1.observable
     ], SearchStore.prototype, "error", void 0);
+    __decorate([
+        mobx_1.observable
+    ], SearchStore.prototype, "searchParams", void 0);
+    __decorate([
+        mobx_1.action
+    ], SearchStore.prototype, "clearResults", void 0);
+    __decorate([
+        mobx_1.action
+    ], SearchStore.prototype, "setPassangerNumber", void 0);
+    __decorate([
+        mobx_1.action
+    ], SearchStore.prototype, "setOutboundDate", void 0);
     __decorate([
         mobx_1.action
     ], SearchStore.prototype, "search", void 0);
