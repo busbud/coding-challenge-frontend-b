@@ -21,7 +21,9 @@ app.get('/', function (req, res) {
     var stream = sheet.interleaveWithNodeStream(server_1.renderToNodeStream(jsx));
     stream.pipe(res);
 });
-app.listen(8888, function () {
-    console.log('listening on port 8888...');
+
+const port = process.env.PORT || 8888; 
+app.listen(port, function () {
+    console.log('listening on port:', port);
 });
 //# sourceMappingURL=server.js.map
