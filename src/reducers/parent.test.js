@@ -27,12 +27,12 @@ describe('saveSearchResults is dispatched', () => {
   });
 });
 
-describe('decideIfPollingIsNeeded is dispatched with truthy param', () => {
+describe('decideIfPollingIsNeeded is dispatched with falsey param', () => {
   it('runs pollApiSearch using cached query params and handles result', () => {
     const state = {
       metadata: { searchParams: { fake: 'params' }, departureCount: 3 },
     };
-    expect(parent(state, actions.decideIfPollingIsNeeded(true)))
+    expect(parent(state, actions.decideIfPollingIsNeeded(false)))
       .toEqual(loop(
         state,
         Cmd.run(pollApiSearch, {

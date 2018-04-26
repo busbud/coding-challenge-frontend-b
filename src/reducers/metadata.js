@@ -7,6 +7,11 @@ const metadata = (state = {}, { type, payload }) => {
         ...state,
         departureCount: state.departureCount + payload.departures.length,
       };
+    case 'REPORT_SEARCH_ERROR':
+      return {
+        ...state,
+        searchError: payload,
+      };
     default:
       return state;
   }

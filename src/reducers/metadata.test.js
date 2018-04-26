@@ -17,3 +17,11 @@ describe('saveSearchResults is dispatched', () => {
       .toEqual({ searchParams: { fake: 'params' }, departureCount: 3 });
   });
 });
+
+describe('reportSearchError is dispatched', () => {
+  it('sets searchError keyval to error object', () => {
+    const fakeResponse = { response: { data: { error: { fake: 'error' } } } };
+    expect(metadata(undefined, actions.reportSearchError(fakeResponse)))
+      .toEqual({ searchError: { fake: 'error' } });
+  });
+});

@@ -10,11 +10,17 @@ export const saveSearchResults = (responseData) => {
     payload: responseData,
   };
 };
-export const decideIfPollingIsNeeded = (searchIsIncomplete) => {
-  if (searchIsIncomplete) {
-    return { type: 'POLL_SEARCH' };
+export const decideIfPollingIsNeeded = (searchIsComplete) => {
+  if (searchIsComplete) {
+    return { type: 'COMPLETE_SEARCH' };
   }
-  return { type: 'COMPLETE_SEARCH' };
+  return { type: 'POLL_SEARCH' };
 };
 
-export const reportSearchError = () => {};
+export const reportSearchError = (error) => {
+  const errorObject = error.response.data.error;
+  return {
+    type: 'REPORT_SEARCH_ERROR',
+    payload: errorObject,
+  };
+};
