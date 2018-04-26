@@ -13,10 +13,22 @@ const parent = (state = {}, { type, payload }) => {
           args: [payload],
         }),
       );
+    case 'POLL_SEARCH':
+      return loop(
+        state,
+        Cmd.run(pollApiSearch, {
+          successActionCreator: actions.saveSearchResults,
+          failActionCreator: actions.reportSearchError,
+          args: [{
+            ...state.metadata.searchParams,
+            index: state.metadata.departureCount,
+          }],
+        }),
+      );
     case 'SAVE_SEARCH_RESULTS':
       return loop(
         state,
-        Cmd.action(actions.checkIfPollingIsNeeded(payload.complete)),
+        Cmd.action(actions.decideIfPollingIsNeeded(payload.complete)),
       );
     default:
       return state;

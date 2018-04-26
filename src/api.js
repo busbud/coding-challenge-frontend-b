@@ -9,8 +9,10 @@ const api = axios.create({
   },
 });
 
-export const initializeApiSearch = async (queryParams) => {
+export const initializeApiSearch = (queryParams) => {
   return api({ url: '', params: queryParams });
 };
 
-export const pollApiSearch = () => {};
+export const pollApiSearch = (queryParams) => {
+  return api({ url: '/poll', params: queryParams });
+};

@@ -18,11 +18,31 @@ describe('initializeSearch is dispatched', () => {
 });
 
 describe('saveSearchResults is dispatched', () => {
-  it('checks if polling is necessary', () => {
+  it('decides if polling is necessary', () => {
     expect(parent(undefined, actions.saveSearchResults({ fake: 'response', complete: false })))
       .toEqual(loop(
         {},
-        Cmd.action(actions.checkIfPollingIsNeeded(false)),
+        Cmd.action(actions.decideIfPollingIsNeeded(false)),
+      ));
+  });
+});
+
+describe('decideIfPollingIsNeeded is dispatched with truthy param', () => {
+  it('runs pollApiSearch using cached query params and handles result', () => {
+    const state = {
+      metadata: { searchParams: { fake: 'params' }, departureCount: 3 },
+    };
+    expect(parent(state, actions.decideIfPollingIsNeeded(true)))
+      .toEqual(loop(
+        state,
+        Cmd.run(pollApiSearch, {
+          successActionCreator: actions.saveSearchResults,
+          failActionCreator: actions.reportSearchError,
+          args: [{
+            ...state.metadata.searchParams,
+            index: state.metadata.departureCount,
+          }],
+        }),
       ));
   });
 });

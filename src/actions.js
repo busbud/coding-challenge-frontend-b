@@ -10,10 +10,11 @@ export const saveSearchResults = (responseData) => {
     payload: responseData,
   };
 };
-export const checkIfPollingIsNeeded = () => {
-  return {
-    type: 'FAKE',
-  };
+export const decideIfPollingIsNeeded = (searchIsIncomplete) => {
+  if (searchIsIncomplete) {
+    return { type: 'POLL_SEARCH' };
+  }
+  return { type: 'COMPLETE_SEARCH' };
 };
 
 export const reportSearchError = () => {};
