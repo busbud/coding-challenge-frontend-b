@@ -4,10 +4,12 @@ import * as actions from '../actions';
 import parent from './parent';
 
 describe('initializeSearch is dispatched', () => {
-  it('runs initializeApiSearch using payload and handles result', () => {
-    expect(parent(undefined, actions.initializeSearch({ fake: 'params' })))
+  it('runs initializeApiSearch using params in state and handles result', () => {
+    const state = { metadata: { searchParams: { fake: 'params' } } };
+
+    expect(parent(state, actions.initializeSearch()))
       .toEqual(loop(
-        {},
+        state,
         Cmd.run(initializeApiSearch, {
           successActionCreator: actions.saveSearchResults,
           failActionCreator: actions.reportSearchError,
@@ -19,9 +21,11 @@ describe('initializeSearch is dispatched', () => {
 
 describe('saveSearchResults is dispatched', () => {
   it('decides if polling is necessary', () => {
-    expect(parent(undefined, actions.saveSearchResults({ fake: 'response', complete: false })))
+    const state = { metadata: { searchParams: { fake: 'params' } } };
+
+    expect(parent(state, actions.saveSearchResults({ fake: 'response', complete: false })))
       .toEqual(loop(
-        {},
+        state,
         Cmd.action(actions.decideIfPollingIsNeeded(false)),
       ));
   });

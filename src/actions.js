@@ -1,7 +1,6 @@
-export const initializeSearch = (queryParams) => {
+export const initializeSearch = () => {
   return {
     type: 'INITIALIZE_SEARCH',
-    payload: queryParams,
   };
 };
 export const saveSearchResults = (responseData) => {

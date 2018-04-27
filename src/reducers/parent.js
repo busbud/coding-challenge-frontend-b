@@ -10,7 +10,7 @@ const parent = (state = {}, { type, payload }) => {
         Cmd.run(initializeApiSearch, {
           successActionCreator: actions.saveSearchResults,
           failActionCreator: actions.reportSearchError,
-          args: [payload],
+          args: [state.metadata.searchParams],
         }),
       );
     case 'POLL_SEARCH':
