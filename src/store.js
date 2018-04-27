@@ -4,7 +4,12 @@ import rootReducer from './reducers/index';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const initialState = {
+export const initialState = {
+  tripInformation: {
+    locations: [],
+    departures: [],
+    operators: [],
+  },
   metadata: {
     searchParams: {
       adult: 1,
