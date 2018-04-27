@@ -7,7 +7,7 @@
 }
 
 .App-card {
-  max-width: 90vw; 
+  max-width: 760px; 
   margin: 0px auto;
   padding: 20px;
 };
@@ -17,7 +17,6 @@
 }
 
 .App-header {
-  background-color: white;
   height: 120px;
   display: grid;
   grid-gap: 20px;
@@ -36,3 +35,30 @@
 .App-subheader {
   font-size: large;
 }
+
+.App-body {
+  max-width: 700px; 
+  margin: 0px auto;
+}
+
+.button {
+  grid-column: 1 / -1;
+}
+
+.departure-box {
+  border: 0.5px solid grey;
+  border-radius: 3px;
+  margin-top: 10px;
+  min-width: 280px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 0.7fr));
+  justify-content: center;
+};
+
+.table-chunk {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, 1fr);
+  gridGap: 20px;
+};

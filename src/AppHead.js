@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './images/busbudLogo.png';
 
-const AppHeader = () => {
+const AppHead = () => {
   return (
     <div>
       <header className="App-header">
@@ -15,4 +15,4 @@ const AppHeader = () => {
   );
 };
 
-export default AppHeader;
+export default AppHead;

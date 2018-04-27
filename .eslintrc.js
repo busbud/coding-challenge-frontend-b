@@ -21,6 +21,7 @@ module.exports = {
       peerDependencies: false,
     }],
     'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
+    'react/no-unused-prop-types': 1,
     'react/jsx-uses-react': 2,
     'react/jsx-uses-vars': 2,
   },
