@@ -1,11 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import getMockStore from './testHelpers';
+import { initializeSearch } from './actions';
+
 import App from './App';
 
-it('renders without crashing', () => {
-  shallow(<App />);
-});
+const store = getMockStore({});
 
-it('adds 1 + 2 to equal 3', () => {
-  expect(1 + 2).toEqual(3);
+it('begins search when button is clicked', () => {
+  shallow(<App store={store} />).dive().find('.button').simulate('click');
+  expect(store.getActions())
+    .toEqual(expect.arrayContaining([initializeSearch()]));
 });

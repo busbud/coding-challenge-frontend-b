@@ -1,19 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Button from 'material-ui/Button';
+import { initializeSearch } from './actions';
+import AppBox from './AppBox';
+import AppHeader from './AppHeader';
 import './App.css';
 
-const App = () => {
+const App = ({ dispatch }) => {
+  const searchNow = () => {
+    return dispatch(initializeSearch());
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to React</h1>
-      </header>
-      <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
-    </div>
+    <AppBox>
+      <AppHeader />
+
+      <Button className="button" onClick={searchNow}>
+        Search Now
+      </Button>
+    </AppBox>
   );
 };
 
-export default App;
+App.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+export default connect()(App);
