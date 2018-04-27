@@ -2,9 +2,7 @@ import { createStore, compose } from 'redux';
 import { install } from 'redux-loop';
 import rootReducer from './reducers/index';
 
-const composeEnhancers = process.env.NODE_ENV === 'PRODUCTION'
-  ? compose
-  : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialState = {
   metadata: {
