@@ -1,9 +1,20 @@
-import { curry, omit, mergeDeepWith, concat } from 'ramda';
+import { pick, mergeWith, concat, pipe, map } from 'ramda';
+import renameKeysDeep from '../keyRenamer';
+import snakeToCamel from '../caseConversion';
 
-export const processSearchResults = curry((state, searchResults) => {
-  const unnecessaryKeys = ['complete', 'ttl', 'is_valid_route'];
-  return omit(unnecessaryKeys, mergeDeepWith(concat, state, searchResults));
-});
+const mapAryElementKeysToCamelCase = (searchResults) => {
+  return map(map(renameKeysDeep(snakeToCamel)), searchResults);
+};
+
+export const processSearchResults = (state, searchResults) => {
+  const desiredKeys = ['locations', 'operators', 'departures'];
+
+  return pipe(
+    pick(desiredKeys),
+    mapAryElementKeysToCamelCase,
+    mergeWith(concat, state),
+  )(searchResults);
+};
 
 const tripInformation = (state = {}, { type, payload }) => {
   switch (type) {
