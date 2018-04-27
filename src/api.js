@@ -9,10 +9,19 @@ const api = axios.create({
   },
 });
 
-export const initializeApiSearch = (queryParams) => {
-  return api({ url: '', params: queryParams });
+const later = (delay) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
 };
 
-export const pollApiSearch = (queryParams) => {
-  return api({ url: '/poll', params: queryParams });
+export const initializeApiSearch = async (queryParams) => {
+  const res = await api({ url: '', params: queryParams });
+  return res.data;
+};
+
+export const pollApiSearch = async (queryParams) => {
+  await later(2000);
+  const res = await api({ url: '/poll', params: queryParams });
+  return res.data;
 };
