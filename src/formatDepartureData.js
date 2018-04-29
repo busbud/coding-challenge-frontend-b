@@ -1,5 +1,5 @@
 import { pick, curry, map, pipe, prop } from 'ramda';
-import { findById, findAndGetProps, renameKeys, transformValues, displayISOTime } from './formatData';
+import { findById, findAndGetProps, renameKeys, transformValues } from './formatData';
 
 const findAndGetAddress = findAndGetProps(['name', 'address']);
 const findAndGetName = curry((arrayToSearch, id) => {
@@ -18,8 +18,6 @@ const nameTransformations = {
 const valueTransformations = (locations, operators) => {
   return {
     price: prop('total'),
-    arrivalTime: displayISOTime,
-    departureTime: displayISOTime,
     origin: findAndGetAddress(locations),
     destination: findAndGetAddress(locations),
     operator: findAndGetName(operators),

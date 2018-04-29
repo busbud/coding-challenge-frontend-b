@@ -36,8 +36,8 @@ it('maps state to props correctly', () => {
   expect(shallow(<App store={store} />).prop('departures'))
     .toEqual([{
       price: 2700,
-      departureTime: 'Friday, April 27th 2018, 14:55',
-      arrivalTime: 'Friday, April 27th 2018, 18:55',
+      arrivalTime: '2018-04-27T18:55:00',
+      departureTime: '2018-04-27T14:55:00',
       origin: ['park', 'street', 'the city'],
       destination: ['pool', 'road', 'the town'],
       operator: 'Coach Operator',
