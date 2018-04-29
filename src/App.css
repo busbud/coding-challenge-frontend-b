@@ -84,3 +84,31 @@
   line-height: 1.2;
   font-size: 0.95em;
 }
+
+.search-status {
+  height: 60px;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
+
+.label {
+  font-size: 1.3em;
+  font-weight: lighter;
+  color: DarkSlateGrey;
+}
+
+.search-progress {
+  color: #327EC7;
+}
+
+.search-complete {
+  font-size: 1.3em;
+  font-weight: lighter;
+  color: DarkSlateGrey;
+}
+
+.search-error {
+  font-size: 1.1em;
+  color: FireBrick;
+}
