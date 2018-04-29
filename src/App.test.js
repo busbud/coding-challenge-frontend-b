@@ -6,12 +6,10 @@ import { initializeSearch } from './actions';
 
 import App from './App';
 
-describe('<App />', () => {
-  it('begins search when button is clicked', () => {
-    const store = getMockStore(initialState);
+it('begins search when button is clicked', () => {
+  const store = getMockStore(initialState);
 
-    shallow(<App store={store} />).dive().find('.button').simulate('click');
-    expect(store.getActions())
-      .toEqual(expect.arrayContaining([initializeSearch()]));
-  });
+  shallow(<App store={store} />).dive().find('.button').simulate('click');
+  expect(store.getActions())
+    .toEqual(expect.arrayContaining([initializeSearch()]));
 });
