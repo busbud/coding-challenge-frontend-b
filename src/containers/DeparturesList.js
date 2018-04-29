@@ -9,7 +9,7 @@ const findAndGetName = curry((arrayToSearch, id) => {
   return prop('displayName', findById(id, arrayToSearch));
 });
 
-const desiredKeys = ['prices', 'departureTime', 'arrivalTime', 'originLocationId', 'destinationLocationId', 'operatorId'];
+const desiredKeys = ['prices', 'departureTime', 'arrivalTime', 'originLocationId', 'destinationLocationId', 'operatorId', 'id'];
 
 const nameTransformations = {
   prices: 'price',

@@ -6,7 +6,7 @@ import Departure from './Departure';
 const DeparturesList = ({ departures }) => {
   return (
     <div className="App-body">
-      {map(departureInfo => <Departure {...departureInfo} />, departures)}
+      {map(departureInfo => <Departure key={departureInfo.id} {...departureInfo} />, departures)}
     </div>
   );
 };

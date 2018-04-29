@@ -19,6 +19,7 @@ it('maps state to props correctly', () => {
       originLocationId: 1,
       destinationLocationId: 2,
       operatorId: 'x',
+      id: 'a',
     }],
     operators: [{ id: 'x', displayName: 'Coach Operator' }],
   };
@@ -32,5 +33,6 @@ it('maps state to props correctly', () => {
       origin: ['park', 'street', 'the city'],
       destination: ['pool', 'road', 'the town'],
       operator: 'Coach Operator',
+      id: 'a',
     }]);
 });
