@@ -10,7 +10,7 @@
 .App-card {
   max-width: 760px; 
   margin: 0 auto;
-  padding: 5px;
+  padding: 20px 5px 35px;
 }
 
 .App-logo {
@@ -27,7 +27,6 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  color: black;
 }
 
 .App-title {
@@ -37,16 +36,12 @@
 
 .App-subheader {
   font-size: large;
-  padding: 0 10px;
+  padding: 0 10px 10px;
 }
 
 .App-body {
   max-width: 700px; 
   margin: 0 auto;
-}
-
-.button {
-  grid-column: 1 / -1;
 }
 
 .departure-box {

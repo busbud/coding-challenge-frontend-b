@@ -22,9 +22,9 @@ const App = ({ dispatch, departures }) => {
       <Button className="button" onClick={searchNow}>
         Search Now
       </Button>
-      <body className="App-body">
+      <div className="App-body">
         {map(departureInfo => <Departure {...departureInfo} />, departures)}
-      </body>
+      </div>
     </AppBox>
   );
 };
