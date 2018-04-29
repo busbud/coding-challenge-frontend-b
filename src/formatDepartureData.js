@@ -1,5 +1,5 @@
-import { pick, curry, map, pipe, prop, sortWith, ascend } from 'ramda';
-import { findById, findAndGetProps, renameKeys, transformValues } from './shapeData';
+import { pick, curry, map, pipe, prop } from 'ramda';
+import { findById, findAndGetProps, renameKeys, transformValues, sortByTimes } from './shapeData';
 
 const findAndGetAddress = findAndGetProps(['name', 'address']);
 const findAndGetName = curry((arrayToSearch, id) => {
@@ -23,11 +23,6 @@ const valueTransformations = (locations, operators) => {
     operator: findAndGetName(operators),
   };
 };
-
-const sortByTimes = sortWith([
-  ascend(prop('departureTime')),
-  ascend(prop('arrivalTime')),
-]);
 
 const formatDepartureData = (tripInformation) => {
   const { locations, departures, operators } = tripInformation;

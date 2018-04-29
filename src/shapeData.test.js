@@ -1,5 +1,5 @@
 import { inc, toUpper } from 'ramda';
-import { findById, findAndGetProps, renameKeys, transformValues } from './shapeData';
+import { findById, findAndGetProps, renameKeys, transformValues, sortByTimes } from './shapeData';
 
 describe('findById', () => {
   it('searches for and returns an object by its id prop', () => {
@@ -72,5 +72,31 @@ describe('transformValues', () => {
   it('returns same val if no entry exists for key', () => {
     expect(transformValues({ c: inc }, { a: 1 }))
       .toEqual({ a: 1 });
+  });
+});
+
+describe('sortByTimes', () => {
+  it('sorts by departureTime prop', () => {
+    expect(sortByTimes([
+      { departureTime: '2018-04-27T18:55:00' },
+      { departureTime: '2018-04-29T18:55:00' },
+      { departureTime: '2018-04-26T14:55:00' },
+    ])).toEqual([
+      { departureTime: '2018-04-26T14:55:00' },
+      { departureTime: '2018-04-27T18:55:00' },
+      { departureTime: '2018-04-29T18:55:00' },
+    ]);
+  });
+
+  it('sorts by arrivalTime prop in a tie-break', () => {
+    expect(sortByTimes([
+      { departureTime: '2018-04-27T18:55:00', arrivalTime: '2018-04-28T12:55:00' },
+      { departureTime: '2018-04-27T18:55:00', arrivalTime: '2018-04-28T10:00:00' },
+      { departureTime: '2018-04-27T19:57:00', arrivalTime: '2018-04-28T09:00:00' },
+    ])).toEqual([
+      { departureTime: '2018-04-27T18:55:00', arrivalTime: '2018-04-28T10:00:00' },
+      { departureTime: '2018-04-27T18:55:00', arrivalTime: '2018-04-28T12:55:00' },
+      { departureTime: '2018-04-27T19:57:00', arrivalTime: '2018-04-28T09:00:00' },
+    ]);
   });
 });
