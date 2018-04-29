@@ -16,10 +16,8 @@ export const decideIfPollingIsNeeded = (searchIsComplete) => {
   return { type: 'POLL_SEARCH' };
 };
 
-export const reportSearchError = (error) => {
-  const errorObject = error.response.data.error;
+export const reportSearchError = () => {
   return {
     type: 'REPORT_SEARCH_ERROR',
-    payload: errorObject,
   };
 };

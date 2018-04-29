@@ -18,6 +18,7 @@ export const initialState = {
       lang: 'US',
       currency: 'USD',
     },
+    searchStatus: 'uninitiated',
     departureCount: 0,
   },
 };

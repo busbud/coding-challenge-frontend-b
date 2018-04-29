@@ -2,6 +2,20 @@ import * as actions from '../actions';
 import metadata from './metadata';
 
 describe('metadata reducer', () => {
+  describe('initializeSearch is dispatched', () => {
+    it('sets searchStatus keyval to "inProgress"', () => {
+      expect(metadata(undefined, actions.initializeSearch()))
+        .toEqual({ searchStatus: 'inProgress' });
+    });
+  });
+
+  describe('decideIfPollingIsNeeded is dispatched with truthy val', () => {
+    it('sets searchStatus keyval to "complete"', () => {
+      expect(metadata(undefined, actions.decideIfPollingIsNeeded(true)))
+        .toEqual({ searchStatus: 'complete' });
+    });
+  });
+
   describe('saveSearchResults is dispatched', () => {
     it('updates count of departures received from api', () => {
       const state = { searchParams: { fake: 'params' }, departureCount: 0 };
@@ -13,10 +27,11 @@ describe('metadata reducer', () => {
   });
 
   describe('reportSearchError is dispatched', () => {
-    it('sets searchError keyval to error object', () => {
+    it('sets searchStatus keyval to "error"', () => {
       const fakeResponse = { response: { data: { error: { fake: 'error' } } } };
+
       expect(metadata(undefined, actions.reportSearchError(fakeResponse)))
-        .toEqual({ searchError: { fake: 'error' } });
+        .toEqual({ searchStatus: 'error' });
     });
   });
 });
