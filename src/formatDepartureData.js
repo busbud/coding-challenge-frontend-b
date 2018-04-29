@@ -1,5 +1,5 @@
-import { pick, curry, map, pipe, prop } from 'ramda';
-import { findById, findAndGetProps, renameKeys, transformValues } from './formatData';
+import { pick, curry, map, pipe, prop, sortWith, ascend } from 'ramda';
+import { findById, findAndGetProps, renameKeys, transformValues } from './shapeData';
 
 const findAndGetAddress = findAndGetProps(['name', 'address']);
 const findAndGetName = curry((arrayToSearch, id) => {
@@ -24,14 +24,19 @@ const valueTransformations = (locations, operators) => {
   };
 };
 
+const sortByTimes = sortWith([
+  ascend(prop('departureTime')),
+  ascend(prop('arrivalTime')),
+]);
+
 const formatDepartureData = (tripInformation) => {
   const { locations, departures, operators } = tripInformation;
   const valueTransformer = valueTransformations(locations, operators);
-  return map(pipe(
+  return sortByTimes(map(pipe(
     pick(desiredKeys),
     renameKeys(nameTransformations),
     transformValues(valueTransformer),
-  ), departures);
+  ), departures));
 };
 
 export default formatDepartureData;

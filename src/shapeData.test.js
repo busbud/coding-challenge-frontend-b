@@ -1,5 +1,5 @@
 import { inc, toUpper } from 'ramda';
-import { findById, findAndGetProps, renameKeys, transformValues, displayISOTime } from './formatData';
+import { findById, findAndGetProps, renameKeys, transformValues } from './shapeData';
 
 describe('findById', () => {
   it('searches for and returns an object by its id prop', () => {
@@ -72,12 +72,5 @@ describe('transformValues', () => {
   it('returns same val if no entry exists for key', () => {
     expect(transformValues({ c: inc }, { a: 1 }))
       .toEqual({ a: 1 });
-  });
-});
-
-describe('displayISOTime', () => {
-  it('formats ISO8601 dateTime as human-readable string', () => {
-    expect(displayISOTime('2018-08-02T11:55:55'))
-      .toEqual('Thursday, August 2nd 2018, 11:55');
   });
 });

@@ -1,5 +1,4 @@
 import { curry, mapObjIndexed, propEq, props, find, flatten } from 'ramda';
-import moment from 'moment';
 import { renameKeysShallow } from './renameKeys';
 
 const getProps = (keys, object) => {
@@ -26,7 +25,3 @@ export const transformValues = curry((valueTransformer, obj) => {
     return val;
   }, obj);
 });
-
-export const displayISOTime = (time) => {
-  return moment(time).format('dddd, MMMM Do YYYY, HH:mm');
-};

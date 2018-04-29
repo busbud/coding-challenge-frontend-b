@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { displayISOTime } from './formatData';
-import './App.css';
+import { displayISOTime } from './displayData';
 
 const Departure = (props) => {
   const displayPrice = (price) => {
