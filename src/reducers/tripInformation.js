@@ -1,6 +1,6 @@
 import { pick, mergeWith, concat, pipe, map } from 'ramda';
-import { renameKeysDeep } from '../renameKeys';
-import snakeToCamel from '../caseConversion';
+import { renameKeysDeep } from '../utils/renameKeys';
+import snakeToCamel from '../utils/caseConversion';
 
 const mapAryElementKeysToCamelCase = (searchResults) => {
   return map(map(renameKeysDeep(snakeToCamel)), searchResults);

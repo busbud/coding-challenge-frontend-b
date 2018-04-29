@@ -1,5 +1,8 @@
+import { connect } from 'react-redux';
 import { pick, curry, map, pipe, prop } from 'ramda';
-import { findById, findAndGetProps, renameKeys, transformValues, sortByTimes } from './shapeData';
+
+import { findById, findAndGetProps, renameKeys, transformValues, sortByTimes } from '../utils/shapeData';
+import DeparturesList from '../components/DeparturesList';
 
 const findAndGetAddress = findAndGetProps(['name', 'address']);
 const findAndGetName = curry((arrayToSearch, id) => {
@@ -34,4 +37,9 @@ const formatDepartureData = (tripInformation) => {
   ), departures));
 };
 
-export default formatDepartureData;
+const mapStateToProps = ({ tripInformation }) => {
+  const departures = formatDepartureData(tripInformation);
+  return { departures };
+};
+
+export default connect(mapStateToProps)(DeparturesList);

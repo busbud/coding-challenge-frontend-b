@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { displayISOTime, displayPrice, displayAddressAry } from './displayData';
+import { displayISOTime, displayPrice, displayAddressAry } from '../utils/displayData';
 
 const Departure = (props) => {
   return (
