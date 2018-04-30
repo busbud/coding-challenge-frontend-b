@@ -1,0 +1,107 @@
+.App {
+  text-align: center;
+  background-color: #B8E0FF;
+  min-height: 92vh;
+  min-width: 300px;
+  padding: 4vh 0px;
+  color: #303436;
+}
+
+.App-card {
+  max-width: 760px; 
+  margin: 0 auto;
+  padding: 20px 5px 35px;
+}
+
+.App-logo {
+  width: 100px;
+}
+
+.App-header {
+  height: 120px;
+  padding: 0 10px;
+  display: grid;
+
+  grid-gap: 20px;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.App-title {
+  font-size: 2em;
+  color: #383E40;
+}
+
+.App-subheader {
+  font-size: large;
+  padding: 0 10px 10px;
+}
+
+.App-body {
+  max-width: 700px; 
+  margin: 0 auto;
+}
+
+.departure-box {
+  border: 0.5px solid grey;
+  border-radius: 3px;
+  margin-top: 10px;
+  min-width: 280px;
+  padding: 5px 15px;
+
+  justify-content: center;
+  text-align: left;
+}
+
+.box-title {
+  font-size: 1.3em;
+  padding: 15px 0 5px;
+  display: grid;
+
+  grid-gap: 0 10px;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  justify-items: start;
+  align-items: center;
+}
+
+.box-header {
+  padding: 10px 0;
+  display: grid;
+  justify-content: start;
+  align-content: center;
+}
+
+.box-chunk {
+  display: grid;
+  grid-gap: 10px 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-items: start;
+  white-space: pre-line;
+  line-height: 1.2;
+  font-size: 0.95em;
+}
+
+.search-status {
+  height: 60px;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
+
+.search-progress {
+  color: #327EC7;
+}
+
+.search-complete {
+  font-size: 1.3em;
+  font-weight: lighter;
+  color: DarkSlateGrey;
+}
+
+.search-error {
+  font-size: 1.1em;
+  color: FireBrick;
+}
