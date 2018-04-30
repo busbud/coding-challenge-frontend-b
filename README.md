@@ -1,6 +1,6 @@
-#Osheaga
+# Osheaga
 
-![a-screenshot-of-the-app-homepage](link)
+![a-screenshot-of-the-app-homepage](https://i.imgur.com/CFeqgrv.png)
 
 A single page web app to help festival-goers get from New York to Montréal in time for Osheaga music festival.
 
@@ -21,13 +21,31 @@ npm install
 
 To boot the server: `npm start`.
 
-To run tests: `npm test.`
+To run tests: `npm test`.
 
 ## The App
 
-I've adopted a functional approach as this challenge in
+##### Paradigm
 
-### Core Libraries:
+I've adopted a functional approach to this challenge, as building the site primarily involved manipulating basic data structures returned by the API—a task most suited to the functional paradigm.
+
+##### State
+
+State is managed by redux, and asynchronous actions (i.e. api calls) are handled by redux-loop. 
+
+Based on an initial spike, I decided that relying on vanilla react state would result in at least one reasonably large component that scheduled api calls and handled state updates. Using redux let me separate these concerns from my JSX and increase the modularity of my codebase. 
+
+I chose redux-loop as a middle-ground between two other libraries—it was simpler than redux-saga, but resulted in purer and easier-to-test code than redux-thunk.
+
+##### Tests
+
+All reducers and generic functions (e.g. those found in the `utils` directory) are tested. Sometimes react components handle data in a way that is too specific to extract into a generic function—the `DeparturesList` container is a good example—and these components are also directly tested. 
+
+##### Server
+
+Since there was no need for server-side code, the app is deployed as a static site and is served by Nginx. 
+
+### Core Dependencies:
 
 * [React](https://github.com/facebook/react)
 * [Redux](https://github.com/reactjs/redux)
@@ -40,11 +58,6 @@ I've adopted a functional approach as this challenge in
 * [Eslint](https://github.com/eslint/eslint)
 
 
+## Known Issues
 
-I used redux because a single call needed to update a lot of state, but it was a number of smaller components that were interested in the state.
-
-Holding all the state in a single component and then passing it down seemed messy, unless i used redux which is for scenarios where centralized state is a good idea.
-
-
-
-Things I could improve: Using a redux action to decide whether to poll the server seems a bit unintuitive and counter to redux convention.
+The test runner sometimes crashes with errors concerning `FSEventStreamStart`. I have been unable to locate the precise reason for this bug, but it appears related to Jest's file-watching. Installing watchman with homebrew, or simply cloning a fresh copy of the repository, have both been reported to resolve the issue.

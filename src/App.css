@@ -19,10 +19,10 @@
 
 .App-header {
   height: 120px;
-  display: grid;
-  grid-gap: 20px;
   padding: 0 10px;
+  display: grid;
 
+  grid-gap: 20px;
   grid-auto-flow: column;
   justify-content: center;
   align-content: center;
@@ -58,10 +58,9 @@
 .box-title {
   font-size: 1.3em;
   padding: 15px 0 5px;
-
   display: grid;
-  grid-gap: 0 10px;
 
+  grid-gap: 0 10px;
   grid-auto-flow: column;
   justify-content: space-between;
   justify-items: start;
@@ -69,10 +68,10 @@
 }
 
 .box-header {
+  padding: 10px 0;
   display: grid;
   justify-content: start;
   align-content: center;
-  padding: 10px 0;
 }
 
 .box-chunk {
@@ -90,12 +89,6 @@
   display: grid;
   align-content: center;
   justify-content: center;
-}
-
-.label {
-  font-size: 1.3em;
-  font-weight: lighter;
-  color: DarkSlateGrey;
 }
 
 .search-progress {
