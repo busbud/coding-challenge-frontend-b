@@ -23,6 +23,8 @@ To boot the server: `npm start`.
 
 To run tests: `npm test`.
 
+If you continue to see the message "There was an error loading some of your results; please refresh the page and try again", double-check you have exported the env variable correctly.
+
 ## The App
 
 ##### Paradigm
