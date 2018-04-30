@@ -61,3 +61,5 @@ Since there was no need for server-side code, the app is deployed as a static si
 ## Known Issues
 
 The test runner sometimes crashes with errors concerning `FSEventStreamStart`. I have been unable to locate the precise reason for this bug, but it appears related to Jest's file-watching. Installing watchman with homebrew, or simply cloning a fresh copy of the repository, have both been reported to resolve the issue.
+
+There is no localization support—I know this was a bonus feature, but I'd still have liked time to add it.
