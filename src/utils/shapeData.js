@@ -1,4 +1,4 @@
-import { curry, mapObjIndexed, propEq, props, find, flatten, sortWith, ascend, prop } from 'ramda';
+import { curry, mapObjIndexed, propEq, props, find, flatten } from 'ramda';
 import { renameKeysShallow } from './renameKeys';
 
 const getProps = (keys, object) => {
@@ -25,8 +25,3 @@ export const transformValues = curry((valueTransformer, obj) => {
     return val;
   }, obj);
 });
-
-export const sortByTimes = sortWith([
-  ascend(prop('departureTime')),
-  ascend(prop('arrivalTime')),
-]);
