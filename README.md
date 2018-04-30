@@ -25,6 +25,8 @@ To run tests: `npm test`.
 
 If you continue to see the message "There was an error loading some of your results; please refresh the page and try again", double-check you have exported the env variable correctly.
 
+If you have issues with the test runner, `brew install watchman` can resolve them.
+
 ## The App
 
 ##### Paradigm
@@ -62,6 +64,6 @@ Since there was no need for server-side code, the app is deployed as a static si
 
 ## Known Issues
 
-The test runner sometimes crashes with errors concerning `FSEventStreamStart`. I have been unable to locate the precise reason for this bug, but it appears related to Jest's file-watching. Installing watchman with homebrew, or simply cloning a fresh copy of the repository, have both been reported to resolve the issue.
+There is no localization support. I'd have liked to add this but decided against it for a few reasons: it was specified as a bonus feature; I was running out of time and didn't want to rush the implementation; and I think the project already gives a good indication of my coding level.
 
-There is no localization support—I know this was a bonus feature, but I'd still have liked time to add it.
+The test runner sometimes crashes with errors concerning `FSEventStreamStart`. This appears related to Jest's file-watching, and although I have been able to resolve the issue by installing watchman with homebrew, or by simply cloning a fresh copy of the repository, I have not been able to locate the exact reason for the bug.
