@@ -15,5 +15,6 @@ const server = app.listen(APP_PORT, () => {
   const host = server.address().address;
   const serverPort = server.address().port;
 
+  // eslint-disable-next-line no-console
   console.log('Osheaga React listening at http://%s:%s', host, serverPort);
 });

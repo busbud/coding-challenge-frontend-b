@@ -15,6 +15,7 @@
     },
     "rules": {
       "global-require": 1,
+      "import/extensions": 0,
       "import/no-extraneous-dependencies": 1
     }
 }

@@ -61,14 +61,26 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.scss|.css$/,
         use: [{
           loader: styleLoader,
         }, {
           loader: 'css-loader',
+          options: {
+            includePaths: [path.resolve(__dirname, 'node_modules')],
+          },
         }, {
           loader: 'sass-loader',
         }],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
       },
     ],
   },
