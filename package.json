@@ -9,12 +9,15 @@
   "private": true,
   "scripts": {
     "build": "webpack -p --progress",
-    "start": "webpack-dev-server",
+    "prestart": "npm run build",
+    "start": "node server.js",
+    "start:dev": "webpack-dev-server",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "jest",
     "test:dev": "jest --watch",
-    "validate": "npm run lint && npm run test"
+    "validate": "npm run lint && npm run test",
+    "clean": "rimraf build"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
@@ -23,7 +26,9 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.11",
+    "express": "^4.16.3",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.0-rc.8",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "path": "^0.12.7",
@@ -41,11 +46,18 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
     "jest": "^23.1.0",
+    "rimraf": "^2.6.2",
     "webpack-dev-server": "^3.1.4"
   },
   "engines": {
     "node": ">= 8",
     "yarn": "*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run validate",
+      "pre-push": "npm run validate"
+    }
   },
   "jest": {
     "moduleNameMapper": {

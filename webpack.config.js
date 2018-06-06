@@ -18,7 +18,7 @@ const plugins = [
     template: INDEX_PAGE_PATH,
   }),
   new MiniCssExtractPlugin({
-    filename: '[name].css',
+    filename: '[name].[hash].css',
     chunkFilename: '[id].css',
   }),
 ];
@@ -40,7 +40,7 @@ module.exports = {
 
   output: {
     path: BUILD_DIR,
-    filename: '[name].js',
+    filename: '[name].[hash].js',
   },
 
   module: {
