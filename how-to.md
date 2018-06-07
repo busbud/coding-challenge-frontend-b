@@ -12,6 +12,8 @@
 yarn install
 ```
 
+Then Add an `.env` file from the boilerplate [.env.sample](.env.sample).
+
 ## Test
 
 ```bash

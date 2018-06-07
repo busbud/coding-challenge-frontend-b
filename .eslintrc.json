@@ -1,0 +1,18 @@
+{
+    "extends": "airbnb",
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "plugins": [
+      "react",
+      "import"
+    ],
+    "rules": {
+        "global-require": 1,
+        "import/extensions": 0,
+        "import/no-extraneous-dependencies": 1,
+        "react/forbid-prop-types": 1,
+        "react/no-array-index-key": 1
+    }
+}

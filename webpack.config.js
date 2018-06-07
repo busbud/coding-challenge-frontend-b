@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 const BUILD_DIR = path.resolve(__dirname, 'build');
@@ -12,6 +13,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const plugins = [
   new webpack.HotModuleReplacementPlugin(),
+  new Dotenv(),
   new HtmlWebpackPlugin({
     inject: true,
     favicon: FAVICON_PATH,
@@ -56,7 +58,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            resets: ['es2015', 'react', 'stage-2'],
+            presets: ['es2015', 'react', 'stage-2'],
           },
         },
       },
