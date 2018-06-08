@@ -10,6 +10,9 @@ i18n
   .init({
     resources,
     load: 'languageOnly',
+    react: {
+      wait: true,
+    },
   });
 
 export default i18n;

@@ -52,6 +52,8 @@
   },
   "devDependencies": {
     "@alienfast/i18next-loader": "^1.0.16",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.12.0",
@@ -72,7 +74,11 @@
     }
   },
   "jest": {
+    "setupFiles": [
+      "<rootDir>/__test__/setupTests.js"
+    ],
     "moduleNameMapper": {
+      "react-i18next": "<rootDir>/__mocks__/react-i18next.js",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
     }
