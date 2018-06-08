@@ -18,9 +18,13 @@ class DeparturesContainer extends Component {
   }
 
   componentDidMount() {
-    const { origin, destination, outboundDate } = this.props;
+    const {
+      origin, destination, outboundDate, language,
+    } = this.props;
 
-    searchDepartures(origin, destination, outboundDate).then(({ locations, departures }) => {
+    searchDepartures({
+      origin, destination, outboundDate, language,
+    }).then(({ locations, departures }) => {
       const completeDepartures = mapCitiesToDepartures(locations, departures);
       this.setState({
         departures: completeDepartures,
@@ -46,6 +50,7 @@ DeparturesContainer.propTypes = {
   origin: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,
   outboundDate: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
 };
 
 export default DeparturesContainer;

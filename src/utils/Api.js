@@ -2,7 +2,7 @@ import axios from 'axios';
 import retry from 'retry';
 
 const GET_METHOD = 'get';
-const MAX_RETRIES = 10;
+const MAX_RETRIES = 15;
 const TIME_BETWEEN_TRIES_IN_MS = 1500;
 
 const authToken = process.env.AUTH_TOKEN;
@@ -21,11 +21,17 @@ const call = (url) => {
   }).then(({ data }) => data);
 };
 
-export const searchDepartures = (origin, destination, outboundDate) => {
-  const searchDeparturesUrl = `https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}?adult=1`;
+export const searchDepartures = (parameters) => {
+  const {
+    origin,
+    destination,
+    outboundDate,
+    language,
+  } = parameters;
+  const searchDeparturesUrl = `https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}?adult=1&lang=${language}`;
   const operation = retry.operation({
     retries: MAX_RETRIES,
-    factor: 1,
+    factor: 1.1,
     minTimeout: TIME_BETWEEN_TRIES_IN_MS,
   });
 

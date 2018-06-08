@@ -84,6 +84,10 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /locales/,
+        loader: '@alienfast/i18next-loader',
+      },
     ],
   },
 
