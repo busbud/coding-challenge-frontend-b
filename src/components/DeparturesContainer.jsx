@@ -79,7 +79,7 @@ class DeparturesContainer extends Component {
   render() {
     const { isLoading, departures, hasFail } = this.state;
 
-    const shouldNoResult = departures.length === 0 && !isLoading && !hasFail;
+    const shouldShowNoResultInformation = departures.length === 0 && !isLoading && !hasFail;
 
     return (
       <div className="DeparturesContainer">
@@ -89,7 +89,7 @@ class DeparturesContainer extends Component {
           onRestartSearch={this.handleRestartSearch}
         />}
 
-        {shouldNoResult && <Message
+        {shouldShowNoResultInformation && <Message
           type="info"
           messageKey="infoNoResult"
           onRestartSearch={this.handleRestartSearch}

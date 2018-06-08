@@ -21,7 +21,7 @@ function DepartureItemLocation(props) {
     t,
   } = props;
 
-  const currentLanguage = i18n.language;
+  const currentLanguage = i18n.language.substring(0, 2);
 
   return (
     <div className="DepartureItemLocation">
