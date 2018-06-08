@@ -8,8 +8,8 @@ import './styles/LocaleSwitch.scss';
 
 function LocaleSwitch(props) {
   const { i18n, t } = props;
-  const currentLocale = i18n.language;
 
+  const currentLocale = i18n.language.substring(0, 2);
   const isFrenchCurrentLocale = currentLocale === FRENCH;
 
   const nextLocaleCode = isFrenchCurrentLocale
