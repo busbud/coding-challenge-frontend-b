@@ -1,18 +1,13 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DateTime } from 'luxon';
 import { translate } from 'react-i18next';
+
+import DepartureItemLocation from './DepartureItemLocation';
 
 import './styles/DepartureItem.scss';
 
 const formatPrice = price => (price / 100.0).toFixed(2);
-
-const formatDatetime = (datetime, timezone, languageCode) => DateTime
-  .fromISO(datetime)
-  .setZone(timezone)
-  .setLocale(languageCode)
-  .toLocaleString(DateTime.DATETIME_MED);
 
 const formatLink = link => link
   .replace('{utm_source}', 'microsite')
@@ -20,9 +15,8 @@ const formatLink = link => link
   .replace('{utm_medium}', 'heroku');
 
 function DepartureItem(props) {
-  const { departure, i18n, t } = props;
+  const { departure, t } = props;
 
-  const currentLanguage = i18n.language;
   const {
     arrival_time,
     destinationLocation,
@@ -41,23 +35,17 @@ function DepartureItem(props) {
     <div className="DepartureItem">
       <div className="DepartureItem__informations">
         <div className="DepartureItem__locations">
-          <div className="DepartureItem__location DepartureItem__location--origin">
-            <div className="DepartureItem__city">{originLocation.name}</div>
-            <div className="DepartureItem__date">
-              {t('departure', {
-                date: formatDatetime(departure_time, departure_timezone, currentLanguage),
-              })}
-            </div>
-          </div>
+          <DepartureItemLocation
+            city={originLocation.name}
+            time={departure_time}
+            timezone={departure_timezone}
+          />
 
-          <div className="DepartureItem__location DepartureItem__location--destination">
-            <div className="DepartureItem__city">{destinationLocation.name}</div>
-            <div className="DepartureItem__date">
-              {t('departure', {
-                date: formatDatetime(arrival_time, arrival_timezone, currentLanguage),
-              })}
-            </div>
-          </div>
+          <DepartureItemLocation
+            city={destinationLocation.name}
+            time={arrival_time}
+            timezone={arrival_timezone}
+          />
         </div>
 
         <div className="DepartureItem__price">
@@ -74,7 +62,6 @@ function DepartureItem(props) {
 
 DepartureItem.propTypes = {
   departure: PropTypes.object.isRequired,
-  i18n: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
 };
 

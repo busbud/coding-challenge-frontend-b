@@ -7,7 +7,8 @@
         "departure": "Départ: {{date}}",
         "arrival": "Arrivée: {{date}}",
         "loading": "Veuillez attendre, nous chargeons la magie",
-        "error": "Quelque chose vient de se passer, nous sommes désolé. Veuillez essayer une nouvelle fois",
+        "error": "Quelque chose vient de se passer, nous sommes désolé. Veuillez essayer une nouvelle fois.",
+        "infoNoResult": "Pas de voyage trouvé. Veuillez essayer une nouvelle fois.",
         "restart": "Recharger",
         "selectTravel": "Sélectionner ce voyage"
     }

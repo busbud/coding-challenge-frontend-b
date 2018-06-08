@@ -1,13 +1,16 @@
-.ErrorMessage {
+.Message {
   text-align: center;
+}
+
+.Message--error {
   color: red;
 }
 
-.ErrorMessage__message {
+.Message__message {
   padding: 10px 0;
 }
 
-.ErrorMessage__button {
+.Message__button {
   background: #eee;
   padding: 10px;
   border: none;
