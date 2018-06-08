@@ -2,8 +2,36 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  background: rgba(#fff, 0.25);
+}
+
+.DepartureItem__locations {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.DepartureItem__location--origin {
+  margin-bottom: 15px;
 }
 
 .DepartureItem__price {
   font-size: 20px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 60px;
+}
+
+@media only screen and (max-width: 480px) {
+  .DepartureItem {
+    flex-direction: column;
+  }
+
+  .DepartureItem__price {
+    min-height: auto;
+  }
 }

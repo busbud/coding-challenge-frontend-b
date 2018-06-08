@@ -1,5 +1,14 @@
 .Layout {
   width: 600px;
-  background: #369;
-  padding: 10px;
+  background:rgba(#fff, 0.4);
+  padding: 20px;
+  margin: 40px 0;
+}
+
+@media only screen and (max-width: 480px) {
+  .Layout {
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+  }
 }

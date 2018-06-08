@@ -6,6 +6,7 @@ import DeparturesContainer from './DeparturesContainer';
 import Footer from './Footer';
 import Header from './Header';
 import Layout from './Layout';
+import LocaleSwitch from './LocaleSwitch';
 
 import './styles/App.scss';
 
@@ -20,9 +21,10 @@ function App(props) {
   return (
     <div className="App">
       <Layout>
+        <LocaleSwitch />
         <Header />
 
-        <div className="slogan">{t('slogan')}</div>
+        <h1 className="App__slogan">{t('slogan')}</h1>
 
         <DeparturesContainer
           origin={NEWYORK_GEOHASH}

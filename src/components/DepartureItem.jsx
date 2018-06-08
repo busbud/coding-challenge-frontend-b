@@ -31,12 +31,24 @@ function DepartureItem(props) {
 
   return (
     <div className="DepartureItem">
-      <div className="DepartureItem__travel">
-        <div className="DepartureItem__city DepartureItem__city--origin">{originLocation.name}</div>
-        <div className="DepartureItem__date DepartureItem__date--origin">{formatDatetime(departure_time, departure_timezone, currentLanguage)}</div>
+      <div className="DepartureItem__locations">
+        <div className="DepartureItem__location DepartureItem__location--origin">
+          <div className="DepartureItem__city">{originLocation.name}</div>
+          <div className="DepartureItem__date">
+            {t('departure', {
+              date: formatDatetime(departure_time, departure_timezone, currentLanguage),
+            })}
+          </div>
+        </div>
 
-        <div className="DepartureItem__city DepartureItem__city--destination">{destinationLocation.name}</div>
-        <div className="DepartureItem__date DepartureItem__date--destination">{formatDatetime(arrival_time, arrival_timezone, currentLanguage)}</div>
+        <div className="DepartureItem__location DepartureItem__location--destination">
+          <div className="DepartureItem__city">{destinationLocation.name}</div>
+          <div className="DepartureItem__date">
+            {t('departure', {
+              date: formatDatetime(arrival_time, arrival_timezone, currentLanguage),
+            })}
+          </div>
+        </div>
       </div>
 
       <div className="DepartureItem__price">

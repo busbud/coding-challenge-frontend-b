@@ -3,6 +3,9 @@
         "slogan": "De New-york à Osheaga Montréal",
         "french": "Français",
         "english": "English",
-        "price": "{{price}}$"
+        "price": "{{price}}$",
+        "departure": "Départ: {{date}}",
+        "arrival": "Arrivée: {{date}}",
+        "loading": "Veuillez attendre, nous chargeons la magie"
     }
 }

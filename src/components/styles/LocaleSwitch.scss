@@ -1,0 +1,16 @@
+.LocaleSwitch {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.LocaleSwitch__button {
+  background: none;
+  border: none;
+  padding: 5px;
+  min-width: 60px;
+
+  &:hover {
+    background: rgba(#fff, 0.4);
+    cursor: pointer;
+  }
+}
