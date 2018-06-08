@@ -51,12 +51,14 @@ class DeparturesContainer extends Component {
     const completeDepartures = mapCitiesToDepartures(locations, departures);
     this.setState({
       departures: completeDepartures,
+      hasFail: false,
       isLoading: false,
     });
   }
 
   handleRestartSearch() {
     this.setState({
+      hasFail: false,
       isLoading: true,
     });
 

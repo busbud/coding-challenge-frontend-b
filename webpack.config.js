@@ -10,10 +10,12 @@ const INDEX_PAGE_PATH = path.resolve(__dirname, 'public', 'index.html');
 const FAVICON_PATH = path.resolve(__dirname, 'public', 'favicon.ico');
 
 const isProd = process.env.NODE_ENV === 'production';
+const isDev = process.env.NODE_ENV !== 'production';
 
-const plugins = [
-  new webpack.HotModuleReplacementPlugin(),
-  new Dotenv(),
+const basicPlugins = [
+  new Dotenv({
+    silent: isProd,
+  }),
   new HtmlWebpackPlugin({
     inject: true,
     favicon: FAVICON_PATH,
@@ -23,18 +25,32 @@ const plugins = [
     filename: '[name].[hash].css',
     chunkFilename: '[id].css',
   }),
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    'process.env.AUTH_TOKEN': JSON.stringify(process.env.AUTH_TOKEN),
+  }),
 ];
 
-const styleLoader = isProd
-  ? 'style-loader'
-  : MiniCssExtractPlugin.loader;
+const devPlugins = [
+  new webpack.HotModuleReplacementPlugin(),
+];
+
+const plugins = isDev
+  ? devPlugins.concat(basicPlugins)
+  : basicPlugins;
+
+const styleLoader = isDev
+  ? MiniCssExtractPlugin.loader
+  : 'style-loader';
 
 module.exports = {
-  mode: 'development',
+  mode: isDev
+    ? 'development'
+    : 'production',
 
-  devtool: isProd
-    ? 'hidden-source-map'
-    : 'cheap-module-source-map',
+  devtool: isDev
+    ? 'cheap-module-source-map'
+    : 'hidden-source-map',
 
   entry: [
     `${APP_DIR}/index.jsx`,

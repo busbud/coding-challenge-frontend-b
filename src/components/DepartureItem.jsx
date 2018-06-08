@@ -7,11 +7,17 @@ import { translate } from 'react-i18next';
 import './styles/DepartureItem.scss';
 
 const formatPrice = price => (price / 100.0).toFixed(2);
+
 const formatDatetime = (datetime, timezone, languageCode) => DateTime
   .fromISO(datetime)
   .setZone(timezone)
   .setLocale(languageCode)
   .toLocaleString(DateTime.DATETIME_MED);
+
+const formatLink = link => link
+  .replace('{utm_source}', 'microsite')
+  .replace('{utm_campaign}', 'challenge')
+  .replace('{utm_medium}', 'heroku');
 
 function DepartureItem(props) {
   const { departure, i18n, t } = props;
@@ -25,35 +31,43 @@ function DepartureItem(props) {
     arrival_timezone,
     originLocation,
     prices,
+    links,
   } = departure;
 
+  const { deeplink } = links;
   const price = formatPrice(prices.total);
 
   return (
     <div className="DepartureItem">
-      <div className="DepartureItem__locations">
-        <div className="DepartureItem__location DepartureItem__location--origin">
-          <div className="DepartureItem__city">{originLocation.name}</div>
-          <div className="DepartureItem__date">
-            {t('departure', {
-              date: formatDatetime(departure_time, departure_timezone, currentLanguage),
-            })}
+      <div className="DepartureItem__informations">
+        <div className="DepartureItem__locations">
+          <div className="DepartureItem__location DepartureItem__location--origin">
+            <div className="DepartureItem__city">{originLocation.name}</div>
+            <div className="DepartureItem__date">
+              {t('departure', {
+                date: formatDatetime(departure_time, departure_timezone, currentLanguage),
+              })}
+            </div>
+          </div>
+
+          <div className="DepartureItem__location DepartureItem__location--destination">
+            <div className="DepartureItem__city">{destinationLocation.name}</div>
+            <div className="DepartureItem__date">
+              {t('departure', {
+                date: formatDatetime(arrival_time, arrival_timezone, currentLanguage),
+              })}
+            </div>
           </div>
         </div>
 
-        <div className="DepartureItem__location DepartureItem__location--destination">
-          <div className="DepartureItem__city">{destinationLocation.name}</div>
-          <div className="DepartureItem__date">
-            {t('departure', {
-              date: formatDatetime(arrival_time, arrival_timezone, currentLanguage),
-            })}
-          </div>
+        <div className="DepartureItem__price">
+          {t('price', { price })}
         </div>
       </div>
 
-      <div className="DepartureItem__price">
-        {t('price', { price })}
-      </div>
+      <a className="DepartureItem__select" href={formatLink(deeplink)} target="_blank" rel="noopener noreferrer">
+        {t('selectTravel')}
+      </a>
     </div>
   );
 }

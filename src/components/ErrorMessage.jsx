@@ -10,7 +10,8 @@ function ErrorMessage(props) {
   return (
     <div className="ErrorMessage">
       <div className="ErrorMessage__message">{t('error')}</div>
-      <button onClick={() => onRestartSearch()}>
+
+      <button className="ErrorMessage__button" onClick={() => onRestartSearch()}>
         {t('restart')}
       </button>
     </div>
