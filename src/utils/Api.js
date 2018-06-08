@@ -2,7 +2,8 @@ import axios from 'axios';
 import retry from 'retry';
 
 const GET_METHOD = 'get';
-const MAX_RETRIES = 5;
+const MAX_RETRIES = 10;
+const TIME_BETWEEN_TRIES_IN_MS = 1500;
 
 const authToken = process.env.AUTH_TOKEN;
 
@@ -21,11 +22,11 @@ const call = (url) => {
 };
 
 export const searchDepartures = (origin, destination, outboundDate) => {
-  const searchDeparturesUrl = `https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}/poll?adult=1`;
+  const searchDeparturesUrl = `https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}?adult=1`;
   const operation = retry.operation({
     retries: MAX_RETRIES,
     factor: 1,
-    minTimeout: 1500,
+    minTimeout: TIME_BETWEEN_TRIES_IN_MS,
   });
 
   return new Promise((resolve, reject) => {

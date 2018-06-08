@@ -1,3 +1,9 @@
 .DepartureItem {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
+}
+
+.DepartureItem__price {
+  font-size: 20px;
 }

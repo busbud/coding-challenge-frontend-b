@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Loading from './Loading';
 import DepartureList from './DepartureList';
+
 import { searchDepartures } from '../utils/Api';
 import { mapCitiesToDepartures } from '../utils/Departures';
 
@@ -11,20 +13,30 @@ class DeparturesContainer extends Component {
 
     this.state = {
       departures: [],
+      isLoading: true,
     };
   }
+
   componentDidMount() {
     const { origin, destination, outboundDate } = this.props;
+
     searchDepartures(origin, destination, outboundDate).then(({ locations, departures }) => {
       const completeDepartures = mapCitiesToDepartures(locations, departures);
-      this.setState({ departures: completeDepartures });
+      this.setState({
+        departures: completeDepartures,
+        isLoading: false,
+      });
     });
   }
 
   render() {
+    const { isLoading, departures } = this.state;
+
     return (
       <div className="DeparturesContainer">
-        <DepartureList departures={this.state.departures} />
+        {isLoading && <Loading />}
+
+        <DepartureList departures={departures} />
       </div>
     );
   }
