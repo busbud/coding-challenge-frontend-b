@@ -11,7 +11,6 @@ const call = (url) => {
   const headers = {
     Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
     'X-Busbud-Token': authToken,
-    'Access-Control-Allow-Origin': '*',
   };
 
   return axios({
@@ -29,6 +28,7 @@ export const searchDepartures = (parameters) => {
     language,
   } = parameters;
   const searchDeparturesUrl = `https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}?adult=1&lang=${language}`;
+
   const operation = retry.operation({
     retries: MAX_RETRIES,
     factor: 1.1,

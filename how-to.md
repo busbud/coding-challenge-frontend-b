@@ -30,7 +30,11 @@ then open your favorite browser [http://localhost:8080/](http://localhost:8080/)
 
 ## Deployment
 
+On nodejs server use
+
 ```bash
+npm run start
+# or
 yarn run start
 ```
 

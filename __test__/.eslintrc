@@ -1,6 +1,7 @@
 {
     "rules": {
       "no-undef": 0,
-      "react/jsx-filename-extension": 0
+      "react/jsx-filename-extension": 0,
+      "import/no-extraneous-dependencies": 0
     }
 }
