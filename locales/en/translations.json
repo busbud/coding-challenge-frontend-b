@@ -6,6 +6,8 @@
         "price": "${{price}}",
         "departure": "Departure: {{date}}",
         "arrival": "Arrival: {{date}}",
-        "loading": "Please wait, we are loading the magic"
+        "loading": "Please wait, we are loading the magic",
+        "error": "Something happens, we are sorry. Please try again.",
+        "restart": "Please reload"
   }
 }

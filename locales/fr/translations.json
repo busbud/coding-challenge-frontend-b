@@ -6,6 +6,8 @@
         "price": "{{price}}$",
         "departure": "Départ: {{date}}",
         "arrival": "Arrivée: {{date}}",
-        "loading": "Veuillez attendre, nous chargeons la magie"
+        "loading": "Veuillez attendre, nous chargeons la magie",
+        "error": "Quelque chose vient de se passer, nous sommes désolé. Veuillez essayer une nouvelle fois",
+        "restart": "Recharger"
     }
 }
