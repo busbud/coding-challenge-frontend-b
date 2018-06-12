@@ -1,41 +1,61 @@
 <template>
-  <b-table striped hover :items="travels.departures" :fields="fields"></b-table>
+  <b-table striped hover :items="travels.departures" :fields="fields">
+  </b-table>
 </template>
 
 <script>
 const { fakeTravels } = require('./data.js')
+const moment = require('moment-timezone')
+
 export default {
   name: 'RoadToOsheaga',
   data () {
     return {
-      fields: {
-        departure_time: {
-          label: 'departure_time',
-          sortable: true
+      fields: [
+        /* {
+          key: 'departure_time'
         },
-        departure_timezone: {
-          label: 'departure_timezone',
-          sortable: true
+        {
+          key: 'departure_timezone'
+        }, */
+        {
+          key: 'departure',
+          formatter: (value, key, item) => {
+            return moment(item.departure_time + 'Z').tz(item.departure_timezone).format('LLL')
+          }
         },
-        arrival_time: {
-          label: 'arrival_time',
-          sortable: true
+        /* {
+          key: 'arrival_time'
         },
-        arrival_timezone: {
-          label: 'arrival_timezone',
-          sortable: true
+        {
+          key: 'arrival_timezone'
+        }, */
+        {
+          key: 'arrival',
+          formatter: (value, key, item) => {
+            return moment(item.arrival_time + 'Z').tz(item.arrival_timezone).format('LLL')
+          }
         },
-
-        origin_location_id: {
-          label: 'origin_location_id',
-          sortable: true
+        {
+          key: 'origin_location_id',
+          label: 'Departure location',
+          formatter: (value, key, item) => {
+            // eslint-disable-next-line
+            const result = this.travels.locations.filter(location => location.id === item.origin_location_id)
+            if (result.length > 0) {
+              return result[0].name
+            } else {
+              return 'undefined'
+            }
+          }
         },
-
-        'prices.total': {
-          label: 'Price'
+        {
+          key: 'price',
+          formatter: (value, key, item) => {
+            return item.prices.total + ' ' + this.search.parameters.currency
+          }
         }
-        // departure time, the arrival time, the location name and the price
-      },
+      ],
       pollingJSTaskHandle: undefined,
       travels: {},
       search: {
@@ -66,7 +86,7 @@ export default {
     }
   },
   created: function () {
-    this.fetchTravelsFake()
+    this.fetchTravels()
 
     const component = this
     this.pollingJSTaskHandle = setInterval(function () {
@@ -85,7 +105,6 @@ export default {
           params: this.search.parameters
         })
         .then((response) => {
-          console.log(response.body)
           this.travels = response.body
         })
     },
@@ -118,9 +137,6 @@ export default {
           if (response.body.operators && response.body.operators.length > 0) {
             this.travels.operators = this.travels.operators.concat(response.body.operators)
           }
-
-          console.log('departures' + JSON.stringify(this.travels.departures))
-          console.log('operators' + JSON.stringify(this.travels.operators))
         })
     }
   }
