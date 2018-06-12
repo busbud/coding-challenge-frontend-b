@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <b-alert show>Default Alert</b-alert>
-    <!--img src="./assets/logo.png"-->
     <div class="container">
       <router-view/>
     </div>
