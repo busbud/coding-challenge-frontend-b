@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-alert show>Default Alert</b-alert>
+    <b-alert show>Default Alert 2</b-alert>
     <div class="container">
       <router-view/>
     </div>
