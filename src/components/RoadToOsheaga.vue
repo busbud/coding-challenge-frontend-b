@@ -1,38 +1,49 @@
 <template>
-  <b-table striped hover :items="travels.departures" :fields="fields">
-  </b-table>
+  <div>
+    <TravelSearchPanel :parameters="search.parameters"/>
+    <b-table striped hover :items="travels.departures" :fields="fields">
+    </b-table>
+  </div>
 </template>
 
 <script>
+
+import TravelSearchPanel from '@/components/TravelSearchPanel'
+
 const { fakeTravels } = require('./data.js')
 const moment = require('moment-timezone')
 
 export default {
   name: 'RoadToOsheaga',
+  components: {
+    'TravelSearchPanel': TravelSearchPanel
+  },
   data () {
     return {
       fields: [
-        /* {
+        /* { // debug purposes
           key: 'departure_time'
         },
-        {
+        { // debug purposes
           key: 'departure_timezone'
         }, */
         {
           key: 'departure',
           formatter: (value, key, item) => {
+            // hum.. time seems to be expressed in UTC...
             return moment(item.departure_time + 'Z').tz(item.departure_timezone).format('LLL')
           }
         },
-        /* {
+        /* { // debug purposes
           key: 'arrival_time'
         },
-        {
+        { // debug purposes
           key: 'arrival_timezone'
         }, */
         {
           key: 'arrival',
           formatter: (value, key, item) => {
+            // hum.. time seems to be expressed in UTC...
             return moment(item.arrival_time + 'Z').tz(item.arrival_timezone).format('LLL')
           }
         },
@@ -40,6 +51,7 @@ export default {
           key: 'origin_location_id',
           label: 'Departure location',
           formatter: (value, key, item) => {
+            // get location based on its id
             // eslint-disable-next-line
             const result = this.travels.locations.filter(location => location.id === item.origin_location_id)
             if (result.length > 0) {
