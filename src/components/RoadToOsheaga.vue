@@ -1,8 +1,10 @@
 <template>
   <div>
-    <TravelSearchPanel :parameters="search.parameters"/>
-    <b-table striped hover :items="travels.departures" :fields="fields">
+    <TravelSearchPanel :parameters="search.parameters" :refresh="refresh"/>
+    <b-table striped hover :items="travels.departures" :fields="fields" :sort-by.sync="sortBy"
+             :sort-desc.sync="sortDesc" :sort-compare="comparePrices">
     </b-table>
+    <img src="../assets/spinner.gif" id="osheaga-logo" v-if="showSpinner"/>
   </div>
 </template>
 
@@ -20,6 +22,12 @@ export default {
   },
   data () {
     return {
+      comparePrices: function (a, b, key) {
+        return a.prices.total - b.prices.total
+      },
+      sortBy: 'price',
+      sortDesc: false,
+      showSpinner: true,
       fields: [
         /* { // debug purposes
           key: 'departure_time'
@@ -30,8 +38,7 @@ export default {
         {
           key: 'departure',
           formatter: (value, key, item) => {
-            // hum.. time seems to be expressed in UTC...
-            return moment(item.departure_time + 'Z').tz(item.departure_timezone).format('LLL')
+            return moment(item.departure_time).format('LLL')
           }
         },
         /* { // debug purposes
@@ -43,8 +50,7 @@ export default {
         {
           key: 'arrival',
           formatter: (value, key, item) => {
-            // hum.. time seems to be expressed in UTC...
-            return moment(item.arrival_time + 'Z').tz(item.arrival_timezone).format('LLL')
+            return moment(item.arrival_time).format('LLL')
           }
         },
         {
@@ -63,8 +69,9 @@ export default {
         },
         {
           key: 'price',
+          sortable: true,
           formatter: (value, key, item) => {
-            return item.prices.total + ' ' + this.search.parameters.currency
+            return (item.prices.total / 100) + ' ' + this.search.parameters.currency
           }
         }
       ],
@@ -74,13 +81,13 @@ export default {
         pollingIntervalSeconds: 10,
         geoHashOrigin: 'dr5reg',
         geoHashDestination: 'f25dvk',
-        date: new Date(2018, 8, 2, 0, 0, 0, 0),
         parameters: {
           adult: 1,
           child: 0,
           senior: 0,
           lang: 'EN',
-          currency: 'USD'
+          currency: 'USD',
+          date: new Date(2018, 8, 2, 0, 0, 0, 0)
         },
         headers: {
           'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
@@ -91,25 +98,35 @@ export default {
   },
   computed: {
     serviceUrl: function () {
-      return `https://napi.busbud.com/x-departures/${this.search.geoHashOrigin}/${this.search.geoHashDestination}/${this.search.date.toISOString().split('T')[0]}`
+      return `https://napi.busbud.com/x-departures/${this.search.geoHashOrigin}/${this.search.geoHashDestination}/${this.search.parameters.date.toISOString().split('T')[0]}`
     },
     pollUrl: function () {
       return this.serviceUrl + '/poll'
     }
   },
   created: function () {
-    this.fetchTravels()
-
-    const component = this
-    this.pollingJSTaskHandle = setInterval(function () {
-      // if we get data from the initial API call, then poll departures and operators
-      if (component.travels && component.travels.departures) {
-        component.pollTravels()
-      }
-    }, this.search.pollingIntervalSeconds * 1000)
-    console.log(`polling task handle : ${this.pollingJSTaskHandle}`)
+    this.refresh()
   },
   methods: {
+    refresh (event) {
+      this.showSpinner = true
+      this.travels = {}
+
+      if (this.pollingJSTaskHandle) {
+        clearInterval(this.pollingJSTaskHandle)
+      }
+
+      this.fetchTravels()
+
+      const component = this
+      this.pollingJSTaskHandle = setInterval(function () {
+        // if we get data from the initial API call, then poll departures and operators
+        if (component.travels && component.travels.departures) {
+          component.pollTravels()
+        }
+      }, this.search.pollingIntervalSeconds * 1000)
+      console.log(`polling task handle : ${this.pollingJSTaskHandle}`)
+    },
     fetchTravels () {
       this.$http.get(this.serviceUrl,
         {
@@ -138,6 +155,7 @@ export default {
           if (response.body.complete) {
             console.log('clearing interval')
             clearInterval(this.pollingJSTaskHandle)
+            this.showSpinner = false
           }
 
           // append departures
