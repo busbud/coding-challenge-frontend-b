@@ -1,10 +1,10 @@
 <template>
   <div>
-    <TravelSearchPanel :parameters="search.parameters" :refresh="refresh"/>
+    <TravelSearchPanel :refresh="refresh"/>
     <b-table striped hover :items="travels.departures" :fields="fields" :sort-by.sync="sortBy"
              :sort-desc.sync="sortDesc" :sort-compare="comparePrices">
     </b-table>
-    <img src="../assets/spinner.gif" id="osheaga-logo" v-if="showSpinner"/>
+    <img src="../assets/spinner.gif" id="osheaga-logo" v-if="search.inProgress"/>
   </div>
 </template>
 
@@ -12,7 +12,7 @@
 
 import TravelSearchPanel from '@/components/TravelSearchPanel'
 
-const { fakeTravels } = require('./data.js')
+// const { fakeTravels } = require('./data.js')
 const moment = require('moment-timezone')
 
 export default {
@@ -27,7 +27,6 @@ export default {
       },
       sortBy: 'price',
       sortDesc: false,
-      showSpinner: true,
       fields: [
         /* { // debug purposes
           key: 'departure_time'
@@ -74,34 +73,15 @@ export default {
             return (item.prices.total / 100) + ' ' + this.search.parameters.currency
           }
         }
-      ],
-      pollingJSTaskHandle: undefined,
-      travels: {},
-      search: {
-        pollingIntervalSeconds: 10,
-        geoHashOrigin: 'dr5reg',
-        geoHashDestination: 'f25dvk',
-        parameters: {
-          adult: 1,
-          child: 0,
-          senior: 0,
-          lang: 'EN',
-          currency: 'USD',
-          date: new Date(2018, 8, 2, 0, 0, 0, 0)
-        },
-        headers: {
-          'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-          'X-Busbud-Token': 'PARTNER_IoysifKUTZqIEyiBCLprjQ'
-        }
-      }
+      ]
     }
   },
   computed: {
-    serviceUrl: function () {
-      return `https://napi.busbud.com/x-departures/${this.search.geoHashOrigin}/${this.search.geoHashDestination}/${this.search.parameters.date.toISOString().split('T')[0]}`
+    search () {
+      return this.$store.state.search
     },
-    pollUrl: function () {
-      return this.serviceUrl + '/poll'
+    travels () {
+      return this.$store.state.travels
     }
   },
   created: function () {
@@ -109,65 +89,9 @@ export default {
   },
   methods: {
     refresh (event) {
-      this.showSpinner = true
-      this.travels = {}
-
-      if (this.pollingJSTaskHandle) {
-        clearInterval(this.pollingJSTaskHandle)
-      }
-
-      this.fetchTravels()
-
-      const component = this
-      this.pollingJSTaskHandle = setInterval(function () {
-        // if we get data from the initial API call, then poll departures and operators
-        if (component.travels && component.travels.departures) {
-          component.pollTravels()
-        }
-      }, this.search.pollingIntervalSeconds * 1000)
-      console.log(`polling task handle : ${this.pollingJSTaskHandle}`)
-    },
-    fetchTravels () {
-      this.$http.get(this.serviceUrl,
-        {
-          headers: this.search.headers,
-          params: this.search.parameters
-        })
-        .then((response) => {
-          this.travels = response.body
-        })
-    },
-    fetchTravelsFake () {
-      this.travels = fakeTravels
-      console.log('travels', this.travels)
-    },
-    pollTravels () {
-      let searchParametersCopy = Object.assign({}, this.search.parameters)
-      searchParametersCopy.index = this.travels.departures.length
-
-      this.$http.get(this.pollUrl,
-        {
-          headers: this.search.headers,
-          params: searchParametersCopy
-        })
-        .then((response) => {
-          console.log(`response complete ? ${response.body.complete}`)
-          if (response.body.complete) {
-            console.log('clearing interval')
-            clearInterval(this.pollingJSTaskHandle)
-            this.showSpinner = false
-          }
-
-          // append departures
-          if (response.body.departures && response.body.departures.length > 0) {
-            this.travels.departures = this.travels.departures.concat(response.body.departures)
-          }
-
-          // append operators
-          if (response.body.operators && response.body.operators.length > 0) {
-            this.travels.operators = this.travels.operators.concat(response.body.operators)
-          }
-        })
+      this.$store.dispatch({
+        type: 'search'
+      })
     }
   }
 }
