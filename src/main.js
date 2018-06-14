@@ -3,13 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import travelService from './service/travelService'
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueMoment from 'vue-moment'
 import moment from 'moment-timezone'
 import Vuex from 'vuex'
-import axios from 'axios'
 import VueI18n from 'vue-i18n'
 
 Vue.config.productionTip = false
@@ -21,11 +21,6 @@ Vue.use(VueMoment, {
 Vue.use(Vuex)
 Vue.use(VueI18n)
 
-const headers = {
-  'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-  'X-Busbud-Token': 'PARTNER_IoysifKUTZqIEyiBCLprjQ'
-}
-
 // create store
 const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
@@ -33,8 +28,8 @@ const store = new Vuex.Store({
     travels: {},
     search: {
       pollingTaskHandle: undefined,
-      inProgress: false,
       pollingIntervalSeconds: 10,
+      inProgress: false,
       parameters: {
         geoHashOrigin: 'dr5reg',
         geoHashDestination: 'f25dvk',
@@ -98,7 +93,7 @@ const store = new Vuex.Store({
     search (context) {
       context.commit('reinitSearch')
 
-      fetchTravels()
+      travelService.fetchTravels(context.state.search.parameters)
         .then((response) => {
           context.commit('setTravels', response.data)
         })
@@ -106,7 +101,7 @@ const store = new Vuex.Store({
       const handle = setInterval(function () {
         // if we get data from the initial API call, then poll departures and operators
         if (context.state.travels && context.state.travels.departures) {
-          pollTravels().then((response) => {
+          travelService.pollTravels(context.state.search.parameters, context.state.travels.departures).then((response) => {
             context.commit('completeTravels', response.data.departures, response.data.operators)
 
             if (response.data.complete) {
@@ -119,40 +114,6 @@ const store = new Vuex.Store({
     }
   }
 })
-
-// create a service with that
-const serviceUrl = function () {
-  return `https://napi.busbud.com/x-departures/${store.state.search.parameters.geoHashOrigin}/${store.state.search.parameters.geoHashDestination}/${store.state.search.parameters.date.toISOString().split('T')[0]}`
-}
-const pollUrl = function () {
-  return serviceUrl() + '/poll'
-}
-const fetchTravels = function () {
-  const {adult, child, senior, lang, currency} = store.state.search.parameters
-
-  return axios.get(serviceUrl(),
-    {
-      headers: headers,
-      params: {
-        adult,
-        child,
-        senior,
-        lang,
-        currency
-      }
-    })
-}
-const pollTravels = function () {
-  const {adult, child, senior, lang, currency} = store.state.search.parameters
-  let searchParametersCopy = Object.assign({}, {adult, child, senior, lang, currency})
-  searchParametersCopy.index = store.state.travels.departures.length
-
-  return axios.get(pollUrl(),
-    {
-      headers: headers,
-      params: searchParametersCopy
-    })
-}
 
 /* eslint-disable no-new */
 new Vue({

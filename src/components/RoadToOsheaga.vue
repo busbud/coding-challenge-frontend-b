@@ -4,7 +4,7 @@
     <b-table striped hover :items="travels.departures" :fields="fields" :sort-by.sync="sortBy"
              :sort-desc.sync="sortDesc" :sort-compare="comparePrices">
     </b-table>
-    <img src="../assets/spinner.gif" id="osheaga-logo" v-if="search.inProgress"/>
+    <img src="../assets/spinner.gif" v-if="search.inProgress"/>
   </div>
 </template>
 
