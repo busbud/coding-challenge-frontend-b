@@ -10,6 +10,7 @@ import VueMoment from 'vue-moment'
 import moment from 'moment-timezone'
 import Vuex from 'vuex'
 import axios from 'axios'
+import VueI18n from 'vue-i18n'
 
 Vue.config.productionTip = false
 
@@ -18,6 +19,7 @@ Vue.use(VueMoment, {
   moment
 })
 Vue.use(Vuex)
+Vue.use(VueI18n)
 
 const headers = {
   'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
