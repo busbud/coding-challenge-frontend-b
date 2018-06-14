@@ -13,9 +13,9 @@ const pollUrl = function (parameters) {
   return serviceUrl(parameters) + '/poll'
 }
 
-const extractQueryParams = function(parameters) {
+const extractQueryParams = function (parameters) {
   const {adult, child, senior, lang, currency} = parameters
-  return  {
+  return {
     adult,
     child,
     senior,
