@@ -53,7 +53,6 @@ export default {
   name: 'TravelSearchPanel',
   data () {
     return {
-      selected: null,
       options: [
         { value: null, text: 'Please select a currency' },
         { value: 'CAD', text: 'Dollar Canadien' },
@@ -87,25 +86,28 @@ export default {
     }
   },
   props: {
+    /**
+     * method called when the user wants to refresh the results based on the search criterion
+     */
     'refresh': Function
   }
 }
 </script>
 
-<style>
-#input-date {
-  border: 1px solid #ced4da;
-  width: 100%;
-  color: #495057;
-  text-align: center;
-  border-radius: 0.2rem;
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-input[type="number"] {
-  text-align: right;
-}
-#search-button {
-  float: right;
-}
+<style lang="scss">
+  #input-date {
+    border: 1px solid #ced4da;
+    width: 100%;
+    color: #495057;
+    text-align: center;
+    border-radius: 0.2rem;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  input[type="number"] {
+    text-align: right;
+  }
+  #search-button {
+    float: right;
+  }
 </style>

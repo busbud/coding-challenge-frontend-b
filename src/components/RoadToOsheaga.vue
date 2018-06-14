@@ -9,10 +9,7 @@
 </template>
 
 <script>
-
 import TravelSearchPanel from '@/components/TravelSearchPanel'
-
-// const { fakeTravels } = require('./data.js')
 const moment = require('moment-timezone')
 
 export default {
@@ -22,6 +19,7 @@ export default {
   },
   data () {
     return {
+      // table configuration
       comparePrices: function (a, b, key) {
         return a.prices.total - b.prices.total
       },
@@ -97,29 +95,5 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
-  $primary-color: #f0f;
-  .colargol {
-    color: $primary-color;
-  }
-
-  h1, h2 {
-    font-weight: normal;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
 </style>

@@ -1,5 +1,3 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
 import router from './router'
@@ -27,9 +25,21 @@ const store = new Vuex.Store({
   state: {
     travels: {},
     search: {
+      /**
+       * handle referencing the task that polls travels
+       */
       pollingTaskHandle: undefined,
+      /**
+       * interval in seconds used by the poll travels task
+       */
       pollingIntervalSeconds: 10,
+      /**
+       * indicate if data fetching is in progress or not
+       */
       inProgress: false,
+      /**
+       * related to search parameters
+       */
       parameters: {
         geoHashOrigin: 'dr5reg',
         geoHashDestination: 'f25dvk',
@@ -43,14 +53,29 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
+    /**
+     * indicate the search is finished
+     * @param state
+     */
     searchFinished (state) {
       state.search.inProgress = false
       clearInterval(state.search.pollingTaskHandle)
       state.search.pollingTaskHandle = undefined
     },
+    /**
+     * set the travels in the state
+     * @param state
+     * @param travels
+     */
     setTravels (state, travels) {
       state.travels = travels
     },
+    /**
+     * cpmplete the travels with departures and operators
+     * @param state
+     * @param departures
+     * @param operators
+     */
     completeTravels (state, departures, operators) {
       // append departures
       if (departures && departures.length > 0) {
@@ -62,6 +87,10 @@ const store = new Vuex.Store({
         state.travels.operators = state.travels.operators.concat(operators)
       }
     },
+    /**
+     * reinitialize search => clear travels
+     * @param state
+     */
     reinitSearch (state) {
       state.travels = {}
       state.search.inProgress = true
@@ -70,26 +99,60 @@ const store = new Vuex.Store({
         clearInterval(state.search.pollingTaskHandle)
       }
     },
+    /**
+     * set the polling task handle
+     * @param state
+     * @param handle
+     */
     setPollingTaskHandle (state, handle) {
       state.search.pollingTaskHandle = handle
     },
+    /**
+     * update count of adults
+     * @param state
+     * @param value
+     */
     updateAdult (state, value) {
       state.search.parameters.adult = value
     },
+    /**
+     * update count of seniors
+     * @param state
+     * @param value
+     */
     updateSenior (state, value) {
       state.search.parameters.senior = value
     },
+    /**
+     * update count of children
+     * @param state
+     * @param value
+     */
     updateChild (state, value) {
       state.search.parameters.child = value
     },
+    /**
+     * update currency
+     * @param state
+     * @param value
+     */
     updateCurrency (state, value) {
       state.search.parameters.currency = value
     },
+    /**
+     * update date of search
+     * @param state
+     * @param value
+     */
     updateDate (state, value) {
       state.search.parameters.date = value
     }
   },
   actions: {
+    /**
+     * launch search
+     * @param context
+     */
     search (context) {
       context.commit('reinitSearch')
 

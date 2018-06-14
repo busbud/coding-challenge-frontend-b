@@ -7,8 +7,12 @@
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item-dropdown text="Lang" right>
-            <b-dropdown-item href="#">EN</b-dropdown-item>
-            <b-dropdown-item href="#">FR</b-dropdown-item>
+            <div v-for="lang in langs" :key="lang.value">
+              <b-dropdown-item href="#">{{lang.text}}</b-dropdown-item>
+            </div>
+
+            <!--<b-dropdown-item href="#">EN</b-dropdown-item>-->
+            <!--<b-dropdown-item href="#">FR</b-dropdown-item>-->
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -22,28 +26,35 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      langs: [
+        { value: 'EN', text: 'English' },
+        { value: 'FR', text: 'Français' }
+      ]
+    }
+  }
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+  $navbar-color: #f19020;
+  $navbar-margin: 25px;
 
-$navbar-color: #f19020;
-$navbar-margin: 25px;
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#navbar {
-  background-color: $navbar-color;
-}
-#osheaga-logo {
-  margin-top:$navbar-margin;
-  margin-bottom:$navbar-margin;
-  max-width:100%;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+  #navbar {
+    background-color: $navbar-color;
+  }
+  #osheaga-logo {
+    margin-top:$navbar-margin;
+    margin-bottom:$navbar-margin;
+    max-width:100%;
+  }
 </style>
