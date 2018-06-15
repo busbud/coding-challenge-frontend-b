@@ -159,21 +159,25 @@ const store = new Vuex.Store({
       travelService.fetchTravels(context.state.search.parameters)
         .then((response) => {
           context.commit('setTravels', response.data)
+
+          if (response.data.complete) {
+            context.commit('searchFinished')
+          } else {
+            const handle = setInterval(function () {
+              // if we get data from the initial API call, then poll departures and operators
+              if (context.state.travels && context.state.travels.departures) {
+                travelService.pollTravels(context.state.search.parameters, context.state.travels.departures).then((response) => {
+                  context.commit('completeTravels', response.data.departures, response.data.operators)
+
+                  if (response.data.complete) {
+                    context.commit('searchFinished')
+                  }
+                })
+              }
+            }, context.state.search.pollingIntervalSeconds * 1000)
+            context.commit('setPollingTaskHandle', handle)
+          }
         })
-
-      const handle = setInterval(function () {
-        // if we get data from the initial API call, then poll departures and operators
-        if (context.state.travels && context.state.travels.departures) {
-          travelService.pollTravels(context.state.search.parameters, context.state.travels.departures).then((response) => {
-            context.commit('completeTravels', response.data.departures, response.data.operators)
-
-            if (response.data.complete) {
-              context.commit('searchFinished')
-            }
-          })
-        }
-      }, context.state.search.pollingIntervalSeconds * 1000)
-      context.commit('setPollingTaskHandle', handle)
     }
   }
 })

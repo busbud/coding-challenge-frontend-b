@@ -1,3 +1,4 @@
+// fake data if needed
 /* eslint-disable */
 module.exports.fakeTravels =
 {
