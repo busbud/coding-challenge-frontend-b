@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import TravelSearchPanel from '@/components/TravelSearchPanel'
 const moment = require('moment-timezone')
 
@@ -24,35 +25,35 @@ export default {
         return a.prices.total - b.prices.total
       },
       sortBy: 'price',
-      sortDesc: false,
-      fields: [
-        /* { // debug purposes
-          key: 'departure_time'
-        },
-        { // debug purposes
-          key: 'departure_timezone'
-        }, */
+      sortDesc: false
+    }
+  },
+  computed: {
+    search () {
+      return this.$store.state.search
+    },
+    travels () {
+      return this.$store.state.travels
+    },
+    fields () {
+      return [
         {
           key: 'departure',
+          label: Vue.i18n.translate('travels.columns.departure.label'),
           formatter: (value, key, item) => {
             return moment(item.departure_time).format('LLL')
           }
         },
-        /* { // debug purposes
-          key: 'arrival_time'
-        },
-        { // debug purposes
-          key: 'arrival_timezone'
-        }, */
         {
           key: 'arrival',
+          label: Vue.i18n.translate('travels.columns.arrival.label'),
           formatter: (value, key, item) => {
             return moment(item.arrival_time).format('LLL')
           }
         },
         {
           key: 'origin_location_id',
-          label: 'Departure location',
+          label: Vue.i18n.translate('travels.columns.departure_location.label'),
           formatter: (value, key, item) => {
             // get location based on its id
             // eslint-disable-next-line
@@ -66,20 +67,13 @@ export default {
         },
         {
           key: 'price',
+          label: Vue.i18n.translate('travels.columns.price.label'),
           sortable: true,
           formatter: (value, key, item) => {
             return (item.prices.total / 100) + ' ' + this.search.parameters.currency
           }
         }
       ]
-    }
-  },
-  computed: {
-    search () {
-      return this.$store.state.search
-    },
-    travels () {
-      return this.$store.state.travels
     }
   },
   created: function () {

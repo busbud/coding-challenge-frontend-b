@@ -1,0 +1,43 @@
+{
+  "currencies": {
+    "placeholder": "Sélectionner une devise",
+    "USD": "Dollars US",
+    "CAD": "Dollars Canadiens"
+  },
+  "search": {
+    "button": {
+      "label": "Recherche"
+    },
+    "adult": {
+      "label": "Adulte"
+    },
+    "senior": {
+      "label": "Senior"
+    },
+    "child": {
+      "label": "Enfant"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "currency": {
+      "label": "Devise"
+    }
+  },
+  "travels": {
+    "columns": {
+      "departure": {
+        "label": "Depart"
+      },
+      "arrival": {
+        "label": "Arrivée"
+      },
+      "departure_location": {
+        "label": "Lieu de départ"
+      },
+      "price": {
+        "label": "Prix"
+      }
+    }
+  }
+}

@@ -6,13 +6,10 @@
       <b-collapse is-nav id="nav_collapse">
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown text="Lang" right>
+          <b-nav-item-dropdown :text="currentLang" right>
             <div v-for="lang in langs" :key="lang.value">
-              <b-dropdown-item href="#">{{lang.text}}</b-dropdown-item>
+              <b-dropdown-item v-on:click="setLanguage(lang.value)">{{lang.text}}</b-dropdown-item>
             </div>
-
-            <!--<b-dropdown-item href="#">EN</b-dropdown-item>-->
-            <!--<b-dropdown-item href="#">FR</b-dropdown-item>-->
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -25,14 +22,28 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import moment from 'moment-timezone'
 export default {
   name: 'App',
   data () {
     return {
       langs: [
-        { value: 'EN', text: 'English' },
-        { value: 'FR', text: 'Français' }
+        { value: 'en', text: 'English' },
+        { value: 'fr', text: 'Français' }
       ]
+    }
+  },
+  computed: {
+    currentLang () {
+      return Vue.i18n.locale().toUpperCase()
+    }
+  },
+  methods: {
+    setLanguage (lang) {
+      Vue.i18n.set(lang)
+      moment.locale(Vue.i18n.locale())
+      this.$store.commit('setLocale', lang)
     }
   }
 }

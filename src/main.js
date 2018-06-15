@@ -8,7 +8,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueMoment from 'vue-moment'
 import moment from 'moment-timezone'
 import Vuex from 'vuex'
-import VueI18n from 'vue-i18n'
+import vuexI18n from 'vuex-i18n'
+import i18nEn from './i18n/en.json'
+import i18nFr from './i18n/fr.json'
 
 Vue.config.productionTip = false
 
@@ -17,7 +19,6 @@ Vue.use(VueMoment, {
   moment
 })
 Vue.use(Vuex)
-Vue.use(VueI18n)
 
 // create store
 const store = new Vuex.Store({
@@ -53,6 +54,14 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
+    /**
+     * change locale
+     * @param state
+     * @param locale
+     */
+    setLocale (state, locale) {
+      state.search.parameters.lang = locale.toUpperCase()
+    },
     /**
      * indicate the search is finished
      * @param state
@@ -181,6 +190,12 @@ const store = new Vuex.Store({
     }
   }
 })
+
+Vue.use(vuexI18n.plugin, store)
+
+Vue.i18n.add('en', i18nEn)
+Vue.i18n.add('fr', i18nFr)
+Vue.i18n.set('en')
 
 /* eslint-disable no-new */
 new Vue({
