@@ -39,6 +39,20 @@ export default {
     fields () {
       return [
         {
+          key: 'operator',
+          label: Vue.i18n.translate('travels.columns.operator.label'),
+          formatter: (value, key, item) => {
+            // get operator based on its id
+            // eslint-disable-next-line
+            const result = this.travels.operators.filter(operator => operator.id === item.operator_id)
+            if (result.length > 0) {
+              return result[0].display_name
+            } else {
+              return ''
+            }
+          }
+        },
+        {
           key: 'departure',
           label: Vue.i18n.translate('travels.columns.departure.label'),
           formatter: (value, key, item) => {

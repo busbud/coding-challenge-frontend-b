@@ -27,6 +27,9 @@
   "travels": {
     "load_error": "Error loading travels",
     "columns": {
+      "operator": {
+        "label": "Operator"
+      },
       "departure": {
         "label": "Departure"
       },

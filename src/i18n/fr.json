@@ -27,6 +27,9 @@
   "travels": {
     "load_error": "Problème lors du chargement",
     "columns": {
+      "operator": {
+        "label": "Operateur"
+      },
       "departure": {
         "label": "Depart"
       },
