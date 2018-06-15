@@ -109,5 +109,7 @@ export default {
   }
   #search-button {
     float: right;
+    margin-top:5px;
+    margin-bottom:5px;
   }
 </style>

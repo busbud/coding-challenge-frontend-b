@@ -27,13 +27,17 @@ const store = new Vuex.Store({
     travels: {},
     search: {
       /**
+       * true to indicate if there were issues loading data
+       */
+      error: false,
+      /**
        * handle referencing the task that polls travels
        */
       pollingTaskHandle: undefined,
       /**
        * interval in seconds used by the poll travels task
        */
-      pollingIntervalSeconds: 10,
+      pollingIntervalSeconds: 3,
       /**
        * indicate if data fetching is in progress or not
        */
@@ -68,8 +72,22 @@ const store = new Vuex.Store({
      */
     searchFinished (state) {
       state.search.inProgress = false
-      clearInterval(state.search.pollingTaskHandle)
-      state.search.pollingTaskHandle = undefined
+      if (state.search.pollingTaskHandle) {
+        clearInterval(state.search.pollingTaskHandle)
+        state.search.pollingTaskHandle = undefined
+      }
+    },
+    /**
+     * indicate that the search failed
+     * @param state
+     */
+    searchFailed (state) {
+      state.search.error = true
+      state.search.inProgress = false
+      if (state.search.pollingTaskHandle) {
+        clearInterval(state.search.pollingTaskHandle)
+        state.search.pollingTaskHandle = undefined
+      }
     },
     /**
      * set the travels in the state
@@ -103,6 +121,7 @@ const store = new Vuex.Store({
     reinitSearch (state) {
       state.travels = {}
       state.search.inProgress = true
+      state.search.error = false
 
       if (state.search.pollingTaskHandle) {
         clearInterval(state.search.pollingTaskHandle)
@@ -183,18 +202,24 @@ const store = new Vuex.Store({
                   if (response.data.complete) {
                     context.commit('searchFinished')
                   }
+                }, (e) => {
+                  context.commit('searchFailed')
+                  console.log('error', e)
                 })
               }
             }, context.state.search.pollingIntervalSeconds * 1000)
             context.commit('setPollingTaskHandle', handle)
           }
+        }, (e) => {
+          context.commit('searchFailed')
+          console.log('error', e)
         })
     }
   }
 })
 
+// i18n configuration
 Vue.use(vuexI18n.plugin, store)
-
 Vue.i18n.add('en', i18nEn)
 Vue.i18n.add('fr', i18nFr)
 Vue.i18n.set('en')

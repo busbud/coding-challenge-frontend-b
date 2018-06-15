@@ -25,6 +25,7 @@
     }
   },
   "travels": {
+    "load_error": "Error loading travels",
     "columns": {
       "departure": {
         "label": "Departure"

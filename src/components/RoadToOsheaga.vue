@@ -4,6 +4,7 @@
     <b-table striped hover :items="travels.departures" :fields="fields" :sort-by.sync="sortBy"
              :sort-desc.sync="sortDesc" :sort-compare="comparePrices">
     </b-table>
+    <b-alert show variant="danger" v-if="search.error">{{$t('travels.load_error')}}</b-alert>
     <img src="../assets/spinner.gif" v-if="search.inProgress"/>
   </div>
 </template>
