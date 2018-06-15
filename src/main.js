@@ -196,6 +196,13 @@ const store = new Vuex.Store({
               // if we get data from the initial API call, then poll departures and operators
               if (context.state.travels && context.state.travels.departures) {
                 travelService.pollTravels(context.state.search.parameters, context.state.travels.departures).then((response) => {
+                  // apply currency on each result
+                  if (response.data.departures) {
+                    response.data.departures.forEach(departure => {
+                      departure.prices.currency = context.state.search.parameters.currency
+                    })
+                  }
+
                   console.log('polling travels finished (complete?' + response.data.complete + ')')
                   context.commit('completeTravels', response.data.departures, response.data.operators)
 

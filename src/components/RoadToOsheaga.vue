@@ -71,7 +71,7 @@ export default {
           label: Vue.i18n.translate('travels.columns.price.label'),
           sortable: true,
           formatter: (value, key, item) => {
-            return (item.prices.total / 100) + ' ' + this.search.parameters.currency
+            return (item.prices.total / 100) + ' ' + item.prices.currency
           }
         }
       ]
