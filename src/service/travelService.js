@@ -45,6 +45,7 @@ export default {
    * @returns {AxiosPromise<T>}
    */
   fetchTravels: function (parameters) {
+    console.log('fetching travels...')
     return axios.get(serviceUrl(parameters),
       {
         headers: headers,
@@ -61,6 +62,7 @@ export default {
     let searchParametersCopy = Object.assign({}, extractQueryParams(parameters))
     searchParametersCopy.index = departures.length
 
+    console.log('polling travels...')
     return axios.get(pollUrl(parameters),
       {
         headers: headers,

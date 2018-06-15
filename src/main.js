@@ -167,6 +167,7 @@ const store = new Vuex.Store({
 
       travelService.fetchTravels(context.state.search.parameters)
         .then((response) => {
+          console.log('fetching travels finished (complete?' + response.data.complete + ')')
           context.commit('setTravels', response.data)
 
           if (response.data.complete) {
@@ -176,6 +177,7 @@ const store = new Vuex.Store({
               // if we get data from the initial API call, then poll departures and operators
               if (context.state.travels && context.state.travels.departures) {
                 travelService.pollTravels(context.state.search.parameters, context.state.travels.departures).then((response) => {
+                  console.log('polling travels finished (complete?' + response.data.complete + ')')
                   context.commit('completeTravels', response.data.departures, response.data.operators)
 
                   if (response.data.complete) {
