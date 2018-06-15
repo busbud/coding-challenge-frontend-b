@@ -12,14 +12,14 @@
         <b-row class="my-1" align-h="between">
           <b-col sm="4"><label for="input-child">{{$t('search.child.label')}}:</label></b-col>
           <b-col sm="8">
-            <b-form-input disabled="true" id="input-child" :value="parameters.child" min="0" size="sm" type="number"
+            <b-form-input :disabled="true" id="input-child" :value="parameters.child" min="0" size="sm" type="number"
                           placeholder="How many children" @change="updateChild"></b-form-input>
           </b-col>
         </b-row>
         <b-row class="my-1" align-h="between">
           <b-col sm="4"><label for="input-senior">{{$t('search.senior.label')}}:</label></b-col>
           <b-col sm="8">
-            <b-form-input disabled="true" id="input-senior" :value="parameters.senior" min="0" size="sm" type="number"
+            <b-form-input :disabled="true" id="input-senior" :value="parameters.senior" min="0" size="sm" type="number"
                           placeholder="How many seniors" @change="updateSenior"></b-form-input>
           </b-col>
         </b-row>
