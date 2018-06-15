@@ -48,7 +48,7 @@ const store = new Vuex.Store({
       parameters: {
         geoHashOrigin: 'dr5reg',
         geoHashDestination: 'f25dvk',
-        date: new Date(2018, 8, 2, 0, 0, 0, 0),
+        date: new Date(2018, 7, 2, 0, 0, 0, 0),
         adult: 1,
         child: 0,
         senior: 0,
