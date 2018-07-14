@@ -1,0 +1,14 @@
+{
+  "plugins": ["react", "jest"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:jest/recommended",
+    "plugin:react/recommended",
+    "react-app"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "parser": "babel-eslint"
+}

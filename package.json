@@ -10,7 +10,16 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint --ext=js --ext=jsx .",
+    "precommit": "yarn lint",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-config-recommended": "^3.0.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-plugin-react": "^7.10.0",
+    "husky": "^0.14.3"
   }
 }
