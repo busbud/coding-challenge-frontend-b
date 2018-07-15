@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next'
+import LanguagePicker from './LanguagePicker';
 
 const SearchHeader = (props) => {
   // here we are a oversimplifying the process
@@ -10,20 +12,23 @@ const SearchHeader = (props) => {
     props.onSubmit('dr5reg', 'f25dvk', e.target.outbound_date.value);
   }
 
+  const { t } = props;
   return (<Fragment>
-    <form onSubmit={handleSubmit} >
-      <label>From:</label>
+    <LanguagePicker />
+    <form onSubmit={handleSubmit}>
+      <label>{t('header.from')}</label>
       <input type="text" value="New York" disabled />
-      <label>To:</label>
+      <label>{t('header.to')}</label>
       <input type="text" value="Montréal" disabled />
       <input name="outbound_date" type="date" defaultValue="2018-07-30" />
-      <button type="submit">Search</button>
+      <button type="submit">{t('header.search')}</button>
     </form>
   </Fragment>);
 }
 
 SearchHeader.propTypes = {
   onSubmit: PropTypes.func,
+  t: PropTypes.func,
 };
 
-export default SearchHeader;
+export default translate()(SearchHeader);
