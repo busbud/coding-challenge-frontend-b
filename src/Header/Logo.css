@@ -1,0 +1,8 @@
+.logo--inline {
+  display: flex;
+  align-items: center;
+}
+
+.logo__img {
+  margin-left: 10px;
+}
