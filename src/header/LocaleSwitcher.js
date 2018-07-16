@@ -1,23 +1,42 @@
 import React, { Component } from "react";
 import counterpart from "counterpart";
+import Translate from "react-translate-component";
+
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 class LocaleSwitcher extends Component {
-  handleChange(e) {
-    counterpart.setLocale(e.target.value);
-  }
+  state = {
+    locale: counterpart.getLocale()
+  };
+
+  localeChange = event => {
+    this.setState({ locale: event.target.value });
+    counterpart.setLocale(event.target.value);
+  };
 
   render() {
     return (
       <p>
-        <span>Switch Locale:</span>
-
-        <select
-          defaultValue={counterpart.getLocale()}
-          onChange={this.handleChange}
-        >
-          <option>en</option>
-          <option>de</option>
-        </select>
+        <FormControl>
+          <InputLabel htmlFor="age-helper">
+            <Translate content="menu.language.label" />
+          </InputLabel>
+          <Select
+            value={this.state.locale}
+            onChange={this.localeChange}
+            name="locale"
+          >
+            <MenuItem value="fr">Français</MenuItem>
+            <MenuItem value="en">English</MenuItem>
+          </Select>
+          <FormHelperText>
+            <Translate content="menu.language.helper" />
+          </FormHelperText>
+        </FormControl>
       </p>
     );
   }

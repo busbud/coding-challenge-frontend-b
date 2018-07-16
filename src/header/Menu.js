@@ -7,8 +7,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
-import InboxIcon from "@material-ui/icons/Inbox";
-import DraftsIcon from "@material-ui/icons/Drafts";
+import HelpOutline from "@material-ui/icons/HelpOutline";
+import DirectionsBus from "@material-ui/icons/DirectionsBus";
 import Translate from "react-translate-component";
 
 import LocaleSwitcher from "./LocaleSwitcher";
@@ -31,35 +31,25 @@ class Menu extends Component {
           <List component="nav">
             <ListItem button>
               <ListItemIcon>
-                <InboxIcon />
+                <DirectionsBus />
               </ListItemIcon>
-              <ListItemText primary="Inbox" />
+              <ListItemText
+                primary={<Translate component="None" content="menu.travel" />}
+              />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <DraftsIcon />
+                <HelpOutline />
               </ListItemIcon>
-              <ListItemText primary="Drafts" />
+              <ListItemText
+                primary={<Translate component="None" content="menu.about" />}
+              />
             </ListItem>
           </List>
           <Divider />
           <List>
-            <ListItem button>
-              <ListItemText primary="Trash" />
-            </ListItem>
-            <ListItem button component="a" href="#simple-list">
-              <ListItemText primary="Spam" />
-              <Translate
-                with={{ name: "Martin" }}
-                component="h1"
-                content="example.greeting"
-              />;
-            </ListItem>
-          </List>
-          <Divider />
-          <List>
-            <ListItem button>
-              <LocaleSwitcher />
+            <ListItem>
+              <ListItemText primary={<LocaleSwitcher />} />
             </ListItem>
           </List>
         </div>
