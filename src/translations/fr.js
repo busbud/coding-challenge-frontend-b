@@ -8,5 +8,11 @@ counterpart.registerTranslations("fr", {
       label: "Langue",
       helper: "Langage d'affichage"
     }
+  },
+  header: {
+    logo: {
+      text_before: "Voyage vers",
+      alt: "logo d'Oshega"
+    }
   }
 });

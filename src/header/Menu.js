@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
+// Third party libraries
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -10,9 +10,9 @@ import Divider from "@material-ui/core/Divider";
 import HelpOutline from "@material-ui/icons/HelpOutline";
 import DirectionsBus from "@material-ui/icons/DirectionsBus";
 import Translate from "react-translate-component";
-
+// Components imports
 import LocaleSwitcher from "./LocaleSwitcher";
-
+// Inner imports
 import "./Menu.css";
 
 class Menu extends Component {
@@ -37,7 +37,12 @@ class Menu extends Component {
                 primary={<Translate component="None" content="menu.travel" />}
               />
             </ListItem>
-            <ListItem button>
+            <ListItem
+              button
+              component="a"
+              href="https://www.osheaga.com"
+              target="_blank"
+            >
               <ListItemIcon>
                 <HelpOutline />
               </ListItemIcon>

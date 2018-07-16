@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+// Third party libraries
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-
+// Components imports
 import Logo from "./Logo";
 import Menu from "./Menu";
-
+// Inner imports
 import "./Header.css";
 
 class Header extends Component {

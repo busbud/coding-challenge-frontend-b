@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+// Third party libraries
 import counterpart from "counterpart";
 import Translate from "react-translate-component";
-
+// Components imports
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
