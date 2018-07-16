@@ -7,6 +7,9 @@
 # production
 /build
 
+# CSS generate from preprocessor
+/src/**/*.css
+
 # misc
 .DS_Store
 .env.local
