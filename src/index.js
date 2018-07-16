@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import {I18nextProvider} from 'react-i18next';
 
+import 'bulma/css/bulma.min.css';
+import 'font-awesome/css/font-awesome.min.css';
+
 import App from './App';
 import store from './store';
 import registerServiceWorker from './registerServiceWorker';

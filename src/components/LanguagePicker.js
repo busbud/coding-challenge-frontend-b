@@ -1,17 +1,20 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 const LanguagePicker = (props) => {
-  const { i18n } = props;
-  return (<Fragment>
-    <button onClick={() => i18n.changeLanguage('en')}>en</button>
-    <button onClick={() => i18n.changeLanguage('fr')}>fr</button>
-    <button onClick={() => i18n.changeLanguage('pt')}>pt</button>
-  </Fragment>);
+  return (<div className={classnames("select is-small", props.className)}>
+    <select onChange={e => props.i18n.changeLanguage(e.target.value)}>
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="pt">Português</option>
+    </select>
+  </div>);
 }
 
 LanguagePicker.propTypes = {
+  className: PropTypes.string,
   i18n: PropTypes.shape({
     changeLanguage: PropTypes.func,
   }),
