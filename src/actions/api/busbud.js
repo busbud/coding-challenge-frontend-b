@@ -7,7 +7,7 @@ function getRoutes(origin, destination, outbound_date) {
       'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
       'X-Busbud-Token': BUSBUD_TOKEN,
     },
-  });
+  }).then(response => (response.json()));
 }
 
 export default {

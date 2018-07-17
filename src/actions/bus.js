@@ -14,7 +14,27 @@ export function getRoutes(origin, destination, outbound_date) {
     dispatch(fetchRoutesBegin());
     try {
       const response = await api.getRoutes(origin, destination, outbound_date);
-      const { list, complete } = response.data;
+      const { departures, locations, complete } = response;
+      const locationsObj = locations.reduce((acc, curr) => {
+        acc[curr.id] = curr.name;
+        return acc;
+      }, {});
+      const list = departures.map(d => ({
+        id: d.id,
+        departure: {
+          date: d.departure_time,
+          timezone: d.departure_timezone,
+          location: locationsObj[d.origin_location_id],
+        },
+        arrival: {
+          date: d.arrival_time,
+          timezone: d.arrival_timezone,
+          location: locationsObj[d.destination_location_id],
+        },
+        duration: d.duration,
+        price: d.prices.total / 100, // it seems the value is multiplied by 100
+        currency: d.currency,
+      }));
       dispatch(fetchRoutesSuccess(list, complete));
     } catch (error) {
       dispatch(fetchRoutesFailure(error));
