@@ -2,7 +2,8 @@ import counterpart from "counterpart";
 
 counterpart.registerTranslations("en", {
   menu: {
-    travel: "Find my path",
+    travel_to_oshgea: "Find my path to Oshega",
+    travel_to_anywhere: "Travel anywhere",
     about: "About d'Osheaga",
     language: {
       label: "Language",
