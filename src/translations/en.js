@@ -15,5 +15,25 @@ counterpart.registerTranslations("en", {
       text_before: "Travel to",
       alt: "Oshega logo"
     }
+  },
+  pages: {
+    travel: {
+      title: "Travel any where"
+    },
+    travel_oshega: {
+      title: "Travel to Oshega"
+    }
+  },
+  travel: {
+    search: {
+      selection_title: "TravelSelection",
+      result_title: "TravelList",
+      selection: {
+        from: "From",
+        to: "to",
+        when: "When",
+        search_button: "Find my the best bus !"
+      }
+    }
   }
 });
