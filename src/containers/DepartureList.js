@@ -9,19 +9,17 @@ class DepartureList extends Component {
     routes: PropTypes.shape({
       list: PropTypes.array,
       error: PropTypes.instanceOf(Error),
-      isLoading: PropTypes.bool,
       isComplete: PropTypes.bool,
-    })
-  }
+    }),
+  };
 
   render() {
-    const { list, error, isLoading, isComplete } = this.props.routes || {};
+    const { list, error, isComplete } = this.props.routes || {};
     if (error) {
       return <div>ERROR</div>; // TODO: show better error
     }
     return (<DepartureListComponent
       routes={list}
-      isLoading={isLoading}
       isComplete={isComplete}
     />);
   }

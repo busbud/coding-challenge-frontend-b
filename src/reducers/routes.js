@@ -3,7 +3,6 @@ import { actions } from '../actions/routes';
 export const initialState = {
   list: [],
   error: null,
-  isLoading: false,
   isComplete: null,
 };
 
@@ -13,22 +12,28 @@ export default (state = initialState, action) => {
       return {
         ...state,
         list: [],
-        isLoading: true,
-        isComplete: null,
+        isComplete: false,
         error: null,
       };
+    case actions.ROUTES_FETCH_ADD: {
+      return {
+        ...state,
+        list: state.list.concat(action.routes).sort((d1, d2) =>
+          (d1.departure.date.localeCompare(d2.departure.date))
+        ),
+        isComplete: false,
+        error: null,
+      };
+    }
     case actions.ROUTES_FETCH_SUCCESS:
       return {
         ...state,
-        list: action.routes,
-        isLoading: false,
-        isComplete: action.isComplete,
+        isComplete: true,
         error: null,
       };
     case actions.ROUTES_FETCH_FAILURE:
       return {
         ...state,
-        isLoading: false,
         isComplete: null,
         error: action.error,
       };

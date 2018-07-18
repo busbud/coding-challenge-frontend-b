@@ -3,7 +3,11 @@ import { actions } from '../actions/routes';
 
 expect.hasAssertions();
 
-const validRoute = {};
+const validRoute = {
+  departure: {
+    date: '2018-10-01',
+  },
+};
 
 describe('Test bus route reducer', () => {
   describe('Unknown action', () => {
@@ -14,26 +18,35 @@ describe('Test bus route reducer', () => {
     });
   });
   describe('ROUTES_FETCH_BEGIN action', () => {
-    it('should change loading state', () => {
+    it('should change complete state', () => {
       expect.assertions(1);
       const action = { type: actions.ROUTES_FETCH_BEGIN };
       expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        isLoading: true,
+        isComplete: false,
       });
     });
     it('should reset state - success', () => {
       expect.assertions(1);
-      const routes = [validRoute, validRoute];
 
       let state = reducer(initialState, { type: actions.ROUTES_FETCH_BEGIN });
-      state = reducer(state, { type: actions.ROUTES_FETCH_SUCCESS, routes, isComplete: false });
+      state = reducer(state, { type: actions.ROUTES_FETCH_SUCCESS });
 
       expect(reducer(state, { type: actions.ROUTES_FETCH_BEGIN })).toEqual({
         ...initialState,
-        isLoading: true,
+        isComplete: false,
       });
-
+    });
+    it('should reset state - add', () => {
+      expect.assertions(1);
+      const routes = [validRoute, validRoute];
+      let state = reducer(initialState, { type: actions.ROUTES_FETCH_BEGIN });
+      state = reducer(state, { type: actions.ROUTES_FETCH_ADD, routes });
+      const action = { type: actions.ROUTES_FETCH_BEGIN };
+      expect(reducer(state, action)).toEqual({
+        ...initialState,
+        isComplete: false,
+      });
     });
     it('should reset state - error', () => {
       expect.assertions(1);
@@ -44,37 +57,36 @@ describe('Test bus route reducer', () => {
 
       expect(reducer(state, { type: actions.ROUTES_FETCH_BEGIN })).toEqual({
         ...initialState,
-        isLoading: true,
+        isComplete: false,
+      });
+    });
+  });
+  describe('ROUTES_FETCH_ADD action', () => {
+    it('should not be complete and set list', () => {
+      expect.assertions(1);
+      const routes = [validRoute, validRoute];
+      let state = reducer(initialState, { type: actions.ROUTES_FETCH_BEGIN });
+      const action = { type: actions.ROUTES_FETCH_ADD, routes };
+      expect(reducer(state, action)).toEqual({
+        ...state,
+        list: routes,
+        error: null,
+        isComplete: false
       });
     });
   });
   describe('ROUTES_FETCH_SUCCESS action', () => {
-    it('should stop loading state and set list', () => {
+    it('should be complete and set list', () => {
       expect.assertions(1);
       const routes = [validRoute, validRoute];
-      const isComplete = true;
       let state = reducer(initialState, { type: actions.ROUTES_FETCH_BEGIN });
-      const action = { type: actions.ROUTES_FETCH_SUCCESS, routes, isComplete };
+      state = reducer(state, { type: actions.ROUTES_FETCH_ADD, routes });
+      const action = { type: actions.ROUTES_FETCH_SUCCESS };
       expect(reducer(state, action)).toEqual({
         ...state,
         list: routes,
         error: null,
-        isLoading: false,
-        isComplete
-      });
-    });
-    it('should stop set complete state to false', () => {
-      expect.assertions(1);
-      const routes = [validRoute, validRoute];
-      const isComplete = false;
-      let state = reducer(initialState, { type: actions.ROUTES_FETCH_BEGIN });
-      const action = { type: actions.ROUTES_FETCH_SUCCESS, routes, isComplete };
-      expect(reducer(state, action)).toEqual({
-        ...state,
-        list: routes,
-        error: null,
-        isLoading: false,
-        isComplete
+        isComplete: true
       });
     });
   });
@@ -87,7 +99,6 @@ describe('Test bus route reducer', () => {
       expect(reducer(state, action)).toEqual({
         ...state,
         error,
-        isLoading: false,
         isComplete: null,
       });
     });
@@ -97,14 +108,13 @@ describe('Test bus route reducer', () => {
       const error = new Error('I am an error');
 
       let state = reducer(initialState, { type: actions.ROUTES_FETCH_BEGIN });
-      state = reducer(state, { type: actions.ROUTES_FETCH_SUCCESS, routes, isComplete: false });
+      state = reducer(state, { type: actions.ROUTES_FETCH_ADD, routes });
 
       const action = { type: actions.ROUTES_FETCH_FAILURE, error };
       expect(reducer(state, action)).toEqual({
         ...state,
         list: routes,
         error,
-        isLoading: false,
         isComplete: null
       });
     });

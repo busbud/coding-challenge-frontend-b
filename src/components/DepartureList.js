@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import DepartureCard from './DepartureCard';
+import DepartureCardLoading from './DepartureCardLoading';
 
 const StyledDiv = styled.div`
   margin-top: 2rem;
@@ -29,12 +30,14 @@ const DepartureList = (props) => {
         />
       ))
     }
+    {
+      (props.isComplete !== null && !props.isComplete) && <DepartureCardLoading />
+    }
   </StyledDiv>)
 };
 
 DepartureList.propTypes = {
   routes: PropTypes.array,
-  isLoading: PropTypes.bool,
   isComplete: PropTypes.bool,
 };
 

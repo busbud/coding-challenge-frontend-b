@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { translate } from 'react-i18next'
 import LanguagePicker from './LanguagePicker';
 import styled from 'styled-components';
+import classnames from 'classnames';
+
 
 import logo from '../logo.png';
 
@@ -34,7 +36,7 @@ const SearchHeader = (props) => {
     props.onSubmit('dr5reg', 'f25dvk', e.target.outbound_date.value);
   }
 
-  const { t } = props;
+  const { t, isLoading } = props;
   return (<StyledHeader>
     <nav className="navbar" aria-label="main navigation">
       <div className="container">
@@ -87,7 +89,13 @@ const SearchHeader = (props) => {
                 </p>
               </div>
               <div className="field">
-                <button className="button is-link is-fullwidth" type="submit">{t('header.search')}</button>
+                <button
+                  className={classnames("button is-link is-fullwidth", { 'is-loading': isLoading })}
+                  type="submit"
+                  disabled={isLoading}
+                >
+                  {t('header.search')}
+                </button>
               </div>
             </div>
           </div>
@@ -100,6 +108,7 @@ const SearchHeader = (props) => {
 SearchHeader.propTypes = {
   onSubmit: PropTypes.func,
   t: PropTypes.func,
+  isLoading: PropTypes.bool,
 };
 
 export default translate()(SearchHeader);
