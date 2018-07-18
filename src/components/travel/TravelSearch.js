@@ -66,7 +66,7 @@ class TravelSearch extends Component {
       destinationLocation = (
         locations[departure["destination_location_id"]] || {}
       ).name,
-      prices = departure.prices.total;
+      prices = departure.prices.total / 100; // Convert price in Float with 2 digits after comma because prices.total come from server in Integer
 
     return {
       id,

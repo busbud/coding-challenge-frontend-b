@@ -45,12 +45,14 @@ class TravelSelection extends Component {
                 <Grid item xs={12} sm={6}>
                   <TextField
                     id="townFrom"
+                    defaultValue="New-York City"
                     label={<Translate content="travel.search.selection.from" />}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     id="townTo"
+                    defaultValue="Montréal"
                     label={<Translate content="travel.search.selection.to" />}
                   />
                 </Grid>

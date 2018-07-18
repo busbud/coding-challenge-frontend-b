@@ -5,6 +5,6 @@ export default axios.create({
   headers: {
     Accept:
       "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
-    "X-Busbud-Token": "GUEST_F1g0ANkXROmHImJwfcGh4g"
+    "X-Busbud-Token": "PARTNER_AHm3M6clSAOoyJg4KyCg7w"
   }
 });
