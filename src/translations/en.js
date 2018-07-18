@@ -32,7 +32,7 @@ counterpart.registerTranslations("en", {
         from: "From",
         to: "to",
         when: "When",
-        search_button: "Find my the best bus !"
+        search_button: "Find the best bus journeys !"
       }
     }
   }
