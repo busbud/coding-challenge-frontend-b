@@ -38,16 +38,17 @@ class Journey extends Component {
     );
   }
 }
+export const JourneyPropTypes = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  departureTime: PropTypes.string.isRequired,
+  originLocation: PropTypes.string.isRequired,
+  arrivalTime: PropTypes.string.isRequired,
+  destinationLocation: PropTypes.string.isRequired,
+  prices: PropTypes.number.isRequired
+});
 
 Journey.propTypes = {
-  journey: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    departureTime: PropTypes.string.isRequired,
-    originLocation: PropTypes.string.isRequired,
-    arrivalTime: PropTypes.string.isRequired,
-    destinationLocation: PropTypes.string.isRequired,
-    prices: PropTypes.number.isRequired
-  })
+  journey: JourneyPropTypes.isRequired
 };
 
 export default Journey;

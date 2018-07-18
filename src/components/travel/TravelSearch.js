@@ -9,24 +9,74 @@ import TravelList from "./TravelList";
 import Http from "./../../api/http";
 // Inner imports
 import "./TravelSearch.css";
+import { Object } from "core-js";
 
 class TravelSearch extends Component {
   state = {
-    xDeparturesObj: []
+    departures: []
   };
+
+  constructor() {
+    super();
+    this.index = 200;
+  }
 
   searchBuses = (origin, destination, outboundDate) => {
     Http.getDepartures(origin, destination, outboundDate)
       .then(xDeparturesObj => {
-        this.setState({ xDeparturesObj });
+        this.importXDeparturesObj(xDeparturesObj);
       })
       .catch(e => {
         console.error(e);
       });
   };
 
+  importXDeparturesObj(xDeparturesObj) {
+    const newDepartures = [];
+
+    if (
+      Object.isObject(xDeparturesObj) &&
+      Array.isArray(xDeparturesObj.departures) &&
+      Array.isArray(xDeparturesObj.locations)
+    ) {
+      const locations = xDeparturesObj.locations.reduce(function(map, obj) {
+        map[obj.id] = obj;
+        return map;
+      }, {});
+      // TODO REMOVE
+      console.log(xDeparturesObj.departures);
+      for (let departure of xDeparturesObj.departures) {
+        newDepartures.push(this.convertDeparture(departure, locations));
+      }
+      // TODO REMOVE
+      console.log(newDepartures);
+    }
+
+    this.setState({ departures: this.state.departures.concat(newDepartures) });
+  }
+
+  convertDeparture(departure, locations) {
+    const id = departure.id,
+      departureTime = departure["departure_time"],
+      originLocation = (locations[departure["origin_location_id"]] || {}).name,
+      arrivalTime = departure["arrival_time"],
+      destinationLocation = (
+        locations[departure["destination_location_id"]] || {}
+      ).name,
+      prices = departure.prices.total;
+
+    return {
+      id,
+      departureTime,
+      originLocation,
+      arrivalTime,
+      destinationLocation,
+      prices
+    };
+  }
+
   render() {
-    const { xDeparturesObj } = this.state;
+    const { departures } = this.state;
 
     return (
       <div>
@@ -41,7 +91,7 @@ class TravelSearch extends Component {
             <Translate content="travel.search.result_title" />
           </Typography>
         </div>
-        <TravelList xDepartures={xDeparturesObj} />
+        <TravelList journeys={departures} />
       </div>
     );
   }
