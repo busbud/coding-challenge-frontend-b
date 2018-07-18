@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="box is-radiusless sc-bdVaJa dajSOh"
+>
+  <div
+    className="level is-mobile"
+  >
+    <div
+      className="level-item has-text-centered"
+    >
+      <div
+        className="departure-date"
+      >
+        <p
+          className="day"
+        >
+          30
+        </p>
+        <p
+          className="month"
+        >
+          Jul
+        </p>
+        <p
+          className="year"
+        >
+          2018
+        </p>
+      </div>
+    </div>
+    <div
+      className="level-item"
+    >
+      <div>
+        <div
+          className="departure time-place"
+        >
+          <p
+            className="time"
+          >
+            12:00 AM
+          </p>
+          <p
+            className="place has-text-grey"
+          >
+            Location 1
+          </p>
+        </div>
+        <div
+          className="arrival time-place"
+        >
+          <p
+            className="time"
+          >
+            12:00 AM
+          </p>
+          <p
+            className="place has-text-grey"
+          >
+            Location 2
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="level-item is-hidden-mobile"
+    >
+      <span
+        className="icon is-small"
+      >
+        <i
+          className="fa fa-clock-o has-text-grey"
+        />
+      </span>
+      10h 00m
+    </div>
+    <div
+      className="level-item"
+    >
+      <span
+        className="price"
+      >
+        US$ 
+        100.32
+      </span>
+    </div>
+  </div>
+</div>
+`;
