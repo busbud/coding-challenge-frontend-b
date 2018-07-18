@@ -15,12 +15,11 @@ class DepartureList extends Component {
 
   render() {
     const { list, error, isComplete } = this.props.routes || {};
-    if (error) {
-      return <div>ERROR</div>; // TODO: show better error
-    }
+
     return (<DepartureListComponent
       routes={list}
       isComplete={isComplete}
+      error={error && error.message}
     />);
   }
 }

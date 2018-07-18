@@ -56,7 +56,13 @@ export function getRoutes(origin, destination, outbound_date) {
         isComplete = pollComplete;
       }
       dispatch(fetchRoutesSuccess());
-    } catch (error) {
+    } catch (apiError) {
+      let error;
+      if (apiError.error && apiError.error.details && apiError.error.details.indexOf('date_in_the_past') !== -1) {
+        error = new Error('pastDate');
+      } else {
+        error = new Error('unknown')
+      }
       dispatch(fetchRoutesFailure(error));
     }
   }

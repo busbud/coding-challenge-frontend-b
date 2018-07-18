@@ -5,7 +5,6 @@ import LanguagePicker from './LanguagePicker';
 import styled from 'styled-components';
 import classnames from 'classnames';
 
-
 import logo from '../logo.png';
 
 const StyledHeader = styled.div`
@@ -48,7 +47,7 @@ const SearchHeader = (props) => {
         <div className="navbar-menu">
           <div className="navbar-start">
           </div>
-          <div className="navbar-end">
+          <div className="navbar-end is-mobile">
             <div className="navbar-item">
               <LanguagePicker />
             </div>
@@ -81,6 +80,9 @@ const SearchHeader = (props) => {
                   <input type="text" className="input" value="Montréal" disabled />
                   <span className="icon is-small is-left"><i className="fa fa-map-marker"></i></span>
                 </p>
+              </div>
+              <div className="field-label is-normal is-hidden-tablet">
+                <label className="label">{t('header.outboundDate')}</label>
               </div>
               <div className="field">
                 <p className="control has-icons-left">
