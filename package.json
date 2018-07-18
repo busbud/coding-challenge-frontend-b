@@ -15,7 +15,8 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "react-translate-component": "^0.15.1"
+    "react-translate-component": "^0.15.1",
+    "rxjs": "^6.2.2"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",

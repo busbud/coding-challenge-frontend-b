@@ -1,24 +1,49 @@
-// import API from "./api";
-
-// TMP
-import fakeData from "./fakeData";
+import API from "./api";
+import { Observable } from "rxjs";
 
 class Http {
   static getDepartures(origin, destination, outboundDate) {
     if (origin && destination && outboundDate) {
-      // return API.get(
-      //   `x-departures/${origin}/${destination}/${outboundDate}?adult=1`
-      // ).then(httpResponse => {
-      //   return httpResponse.data;
-      // });
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve(fakeData);
-        }, 1000);
+      return new Observable(observer => {
+        Http.getDeparturesPoll(origin, destination, outboundDate, observer);
       });
     } else {
-      return Promise.reject("One or more parameters are incorrectly defined.");
+      return Observable.throw(
+        "One or more parameters are incorrectly defined."
+      );
     }
+  }
+
+  static getDeparturesPoll(origin, destination, outboundDate, observer, index) {
+    const pollMode = typeof index !== "undefined";
+    const url = `x-departures/${origin}/${destination}/${outboundDate}${
+      pollMode ? "/poll" : ""
+    }?adult=1${pollMode ? `&index=${index}` : ""}`;
+
+    API.get(url)
+      .then(httpResponse => {
+        const result = httpResponse.data;
+        const departuresSize = result.departures.length;
+
+        if (departuresSize > 0) {
+          observer.next(result);
+        }
+
+        if (result.complete === false) {
+          setTimeout(() => {
+            Http.getDeparturesPoll(
+              origin,
+              destination,
+              outboundDate,
+              observer,
+              departuresSize + (pollMode ? index : 0)
+            );
+          }, 5000);
+        } else {
+          observer.complete();
+        }
+      })
+      .catch(e => observer.error(e));
   }
 }
 

@@ -18,17 +18,20 @@ class TravelSearch extends Component {
 
   constructor() {
     super();
-    this.index = 200;
+    this.httpGetDeparturesSubscription = { unsubscribe: () => {} };
   }
 
   searchBuses = (origin, destination, outboundDate) => {
-    Http.getDepartures(origin, destination, outboundDate)
-      .then(xDeparturesObj => {
-        this.importXDeparturesObj(xDeparturesObj);
-      })
-      .catch(e => {
-        console.error(e);
-      });
+    this.httpGetDeparturesSubscription.unsubscribe();
+    this.setState({ departures: [] });
+    this.httpGetDeparturesSubscription = Http.getDepartures(
+      origin,
+      destination,
+      outboundDate
+    ).subscribe(
+      xDeparturesObj => this.importXDeparturesObj(xDeparturesObj),
+      e => console.error(e)
+    );
   };
 
   importXDeparturesObj(xDeparturesObj) {
