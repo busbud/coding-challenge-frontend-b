@@ -44,15 +44,11 @@ const SearchHeader = (props) => {
             <img className="" alt="osheaga festival logo" src={logo} />
           </div>
         </div>
-        <div className="navbar-menu">
-          <div className="navbar-start">
-          </div>
-          <div className="navbar-end is-mobile">
-            <div className="navbar-item">
-              <LanguagePicker />
+          <div className="navbar-end">
+            <div className="level">
+            <LanguagePicker />
             </div>
           </div>
-        </div>
       </div>
     </nav>
     <div className="search-bar">
