@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import SearchHeader from './containers/SearchHeader';
-// import ResultList from './containers/ResultList';
+import DepartureList from './containers/DepartureList';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <SearchHeader />
-        {/* <ResultList /> */}
+        <DepartureList />
       </div>
     );
   }

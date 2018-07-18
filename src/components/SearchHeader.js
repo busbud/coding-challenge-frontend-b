@@ -82,7 +82,7 @@ const SearchHeader = (props) => {
               </div>
               <div className="field">
                 <p className="control has-icons-left">
-                  <input className="input" name="outbound_date" type="date" defaultValue="2018-07-30" />
+                  <input className="input" name="outbound_date" type="date" defaultValue="2018-07-18" />
                   <span className="icon is-small is-left"><i className="fa fa-calendar-o"></i></span>
                 </p>
               </div>
