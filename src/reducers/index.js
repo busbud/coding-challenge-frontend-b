@@ -1,6 +1,6 @@
-import bus from './bus';
+import routes from './routes';
 
 // this file would make more sense if we have more than one reducer
 export default {
-  bus,
+  routes,
 }

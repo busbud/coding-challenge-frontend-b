@@ -1,4 +1,4 @@
-import { actions } from '../actions/bus';
+import { actions } from '../actions/routes';
 
 export const initialState = {
   list: [],

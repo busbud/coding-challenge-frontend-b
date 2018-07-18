@@ -1,5 +1,5 @@
-import reducer, { initialState } from './bus';
-import { actions } from '../actions/bus';
+import reducer, { initialState } from './routes';
+import { actions } from '../actions/routes';
 
 expect.hasAssertions();
 
