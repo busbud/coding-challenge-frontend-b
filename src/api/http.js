@@ -1,5 +1,6 @@
 import API from "./api";
 import { Observable, throwError } from "rxjs";
+import counterpart from "counterpart";
 
 import fakeData from "./fakeData";
 
@@ -48,6 +49,15 @@ class Http {
         }
       })
       .catch(e => observer.error(e));
+  }
+
+  static getMatchedTowns(partielText) {
+    const limit = 5;
+    const locale = counterpart.getLocale();
+    // Example : ttps://napi.busbud.com/search?q=Mon&limit=5&lang=fr&locale=fr
+    const url = `search?q=${partielText}&limit=${limit}&lang=${locale}&locale=${locale}`;
+
+    return API.get(url).then(httpResponse => httpResponse.data);
   }
 }
 

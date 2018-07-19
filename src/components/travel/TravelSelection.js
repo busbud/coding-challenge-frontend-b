@@ -8,22 +8,20 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Translate from "react-translate-component";
+// Components imports
+import Autocomplete from "./Autocomplete";
 // Inner imports
 import "./TravelSelection.css";
 
-/*
-  URL exemple to get cities autocompletion
-  https://napi.busbud.com/search?q=Mon&limit=5&lang=fr&locale=fr
-*/
 class TravelSelection extends Component {
   state = {
     origin: {
       name: "",
-      sha: ""
+      geohash: ""
     },
     destination: {
       name: "",
-      sha: ""
+      geohash: ""
     },
     outboundDate: ""
   };
@@ -35,107 +33,112 @@ class TravelSelection extends Component {
       this.state = {
         origin: {
           name: defaultValue.townFrom,
-          sha: defaultValue.townFromSHA
+          geohash: defaultValue.townFromgeohash
         },
         destination: {
           name: defaultValue.townTo,
-          sha: defaultValue.townToSHA
+          geohash: defaultValue.townTogeohash
         },
         outboundDate: defaultValue.date
       };
     }
   }
 
-  getTownObjFromTownName(townName) {
-    let townObj;
-
-    if (townName === "Montréal") {
-      townObj = {
-        name: "Montréal",
-        sha: "f25dvk"
-      };
-    } else if (townName === "New-York City") {
-      townObj = {
-        name: "New-York City",
-        sha: "dr5reg"
-      };
-    } else {
-      townObj = {
-        name: townName,
-        sha: ""
-      };
-    }
-
-    return townObj;
-  }
-
-  handleDate = event => {
-    const value = event.target.value;
-    // TODO check date format / undefined / string ...
-    console.log(value);
-    this.setState({ outboundDate: value });
-  };
-
   handleOriginUpdate = event => {
-    console.log(event.target.value);
-    const origin = this.getTownObjFromTownName(event.target.value);
-    console.log(origin);
-    this.setState({ origin });
+    this.setState({
+      origin: {
+        name: event.target.value,
+        geohash: "invalid"
+      }
+    });
   };
 
   handleDestinationUpdate = event => {
-    console.log(event.target.value);
-    const destination = this.getTownObjFromTownName(event.target.value);
-    this.setState({ destination });
+    this.setState({
+      destination: {
+        name: event.target.value,
+        geohash: "invalid"
+      }
+    });
   };
 
   handleOutboundDateUpdate = event => {
-    console.log(event.target.value);
     this.setState({ outboundDate: event.target.value });
   };
 
   sendSearch = event => {
     event.preventDefault();
-    // TODO check state of form
     const { origin, destination, outboundDate } = this.state;
     this.props.askSearch(origin, destination, outboundDate);
   };
 
+  townSelection = selectedTownInfo => {
+    const { name, geohash, inputId } = selectedTownInfo;
+    if (inputId === "townFrom") {
+      this.setState({
+        origin: {
+          name,
+          geohash
+        }
+      });
+    } else if (inputId === "townTo") {
+      this.setState({
+        destination: {
+          name,
+          geohash
+        }
+      });
+    } else {
+      console.error(
+        "Autocomplete init error. Check if 'inputId' is presnet in tag."
+      );
+    }
+  };
+
   render() {
     const { defaultValue } = this.props;
+    const { origin, destination, outboundDate } = this.state;
     return (
       <div>
         <Card>
-          <form action="#" onSubmit={this.sendSearch}>
+          <form action="#" onSubmit={this.sendSearch} autoComplete="off">
             <CardContent>
               <Grid container spacing={24} className="travel-select__form-grid">
                 <Grid item xs={12} sm={6}>
                   <TextField
                     id="townFrom"
                     required={true}
-                    value={
-                      defaultValue
-                        ? defaultValue.townFrom
-                        : this.state.origin.name
-                    }
+                    value={defaultValue ? defaultValue.townFrom : origin.name}
                     onChange={this.handleOriginUpdate}
                     inputProps={defaultValue ? { readOnly: "readonly" } : {}}
                     label={<Translate content="travel.search.selection.from" />}
                   />
+                  {defaultValue ? null : (
+                    <Autocomplete
+                      partialText={origin.name}
+                      onSelection={this.townSelection}
+                      inputId="townFrom"
+                    />
+                  )}
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     id="townTo"
                     required={true}
                     value={
-                      defaultValue
-                        ? defaultValue.townTo
-                        : this.state.destination.name
+                      defaultValue ? defaultValue.townTo : destination.name
                     }
                     onChange={this.handleDestinationUpdate}
                     inputProps={defaultValue ? { readOnly: "readonly" } : {}}
                     label={<Translate content="travel.search.selection.to" />}
                   />
+                  {defaultValue ? null : (
+                    <Autocomplete
+                      partialText={destination.name}
+                      onSelection={this.townSelection}
+                      inputId="townTo"
+                    />
+                  )}
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
@@ -143,9 +146,7 @@ class TravelSelection extends Component {
                     required={true}
                     label={<Translate content="travel.search.selection.when" />}
                     type="date"
-                    value={
-                      defaultValue ? defaultValue.date : this.state.outboundDate
-                    }
+                    value={defaultValue ? defaultValue.date : outboundDate}
                     onChange={this.handleOutboundDateUpdate}
                     inputProps={defaultValue ? { readOnly: "readonly" } : {}}
                     InputLabelProps={{
@@ -174,15 +175,15 @@ class TravelSelection extends Component {
 
 export const TravelSelectionDefaultValuePropTypes = PropTypes.shape({
   townFrom: PropTypes.string.isRequired,
-  townFromSHA: PropTypes.string.isRequired,
+  townFromgeohash: PropTypes.string.isRequired,
   townTo: PropTypes.string.isRequired,
-  townToSHA: PropTypes.string.isRequired,
+  townTogeohash: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired
 });
 
-TravelSelection.propTypes = {
+TravelSelection.propTypes = PropTypes.shape({
   askSearch: PropTypes.func.isRequired,
   defaultValue: TravelSelectionDefaultValuePropTypes
-};
+});
 
 export default TravelSelection;

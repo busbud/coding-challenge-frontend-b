@@ -7,7 +7,6 @@ import Translate from "react-translate-component";
 import TravelSelection, {
   TravelSelectionDefaultValuePropTypes
 } from "./TravelSelection";
-
 import TravelList from "./TravelList";
 // Other imports
 import Http from "./../../api/http";
@@ -20,11 +19,11 @@ class TravelSearch extends Component {
     noSearchDone: true,
     origin: {
       name: "",
-      sha: ""
+      geohash: ""
     },
     destination: {
       name: "",
-      sha: ""
+      geohash: ""
     },
     outboundDate: "",
     departures: []
@@ -44,8 +43,8 @@ class TravelSearch extends Component {
       outboundDate
     });
     this.httpGetDeparturesSubscription = Http.getDepartures(
-      origin.sha,
-      destination.sha,
+      origin.geohash,
+      destination.geohash,
       outboundDate
     ).subscribe(
       xDeparturesObj => {
