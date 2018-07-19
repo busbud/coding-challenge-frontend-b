@@ -43,7 +43,29 @@ class Journey extends Component {
               <Grid item className="journey__info-up-left">
                 <Typography>{journey.originLocation}</Typography>
               </Grid>
-              <Grid item className="journey__info-up-middle" />
+              <Grid item className="journey__info-up-middle">
+                <Paper elevation={2} className="journey__operator-logo">
+                  <a
+                    href={journey.operator.url}
+                    target="_blank"
+                    className={
+                      !journey.operator.url
+                        ? "journey__operators-link--disable"
+                        : null
+                    }
+                  >
+                    {journey.operator.logoUrl ? (
+                      <img
+                        alt={journey.operator.name}
+                        src={journey.operator.logoUrl}
+                        title={journey.operator.name}
+                      />
+                    ) : (
+                      <Typography>{journey.operator.name}</Typography>
+                    )}
+                  </a>
+                </Paper>
+              </Grid>
               <Grid item className="journey__info-up-right">
                 <Typography>{journey.destinationLocation}</Typography>
               </Grid>
@@ -86,10 +108,20 @@ class Journey extends Component {
               </Grid>
             </Grid>
             <Grid container>
-              <Grid item xs zeroMinWidth className="journey__operators">
-                <Typography variant="caption">
-                  {journey.operator.name}
-                </Typography>
+              <Grid item xs zeroMinWidth className="journey__operators-text">
+                <a
+                  href={journey.operator.url}
+                  target="_blank"
+                  className={
+                    !journey.operator.url
+                      ? "journey__operators-link--disable"
+                      : null
+                  }
+                >
+                  <Typography variant="caption">
+                    {journey.operator.name}
+                  </Typography>
+                </a>
               </Grid>
             </Grid>
           </Grid>
@@ -107,7 +139,8 @@ export const JourneyPropTypes = PropTypes.shape({
   prices: PropTypes.string.isRequired,
   operator: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    logoUrl: PropTypes.string.isRequired
+    logoUrl: PropTypes.string.isRequired,
+    url: PropTypes.string
   })
 });
 
