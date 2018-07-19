@@ -1,12 +1,74 @@
+.journey__paper {
+  .journey__action {
+    background-color: #f19020;
+    &:hover {
+      background-color: #d1760d;
+    }
+    span {
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+  &:hover {
+    background-color: aliceblue;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .journey__paper {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    .journey__action {
+      -webkit-transition: margin-right 0.2s;
+      transition: margin-right 0.2s;
+      width: 150px;
+      height: 300px;
+      margin-top: -100px;
+      margin-bottom: -100px;
+      margin-right: -170px;
+      margin-left: 20px;
+      span {
+        display: block;
+      }
+      .journey__action-text {
+        display: block;
+      }
+      .journey__action-icon {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    &:hover .journey__action {
+      margin-right: -20px;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .journey__paper {
+    position: relative;
+    overflow: hidden;
+    .journey__action {
+      position: absolute;
+      right: -3px;
+      bottom: -3px;
+      .journey__action-icon {
+        display: none;
+      }
+    }
+  }
+}
+
 .journey__info-up {
-  > div {
+  > * {
     flex: 1;
     align-self: flex-end;
   }
 }
 
 .journey__info-down {
-  > div {
+  > * {
     flex: 1;
     align-self: flex-start;
   }
@@ -100,7 +162,7 @@ div.journey__operators-text {
 
   @media screen and (max-width: 600px) {
     display: block;
-    margin-top: 5px;
+    margin-top: 13px;
     margin-bottom: -10px;
 
     a {

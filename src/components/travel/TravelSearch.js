@@ -13,6 +13,7 @@ import { Object } from "core-js";
 
 class TravelSearch extends Component {
   state = {
+    noSearchDone: true,
     departures: []
   };
 
@@ -29,7 +30,10 @@ class TravelSearch extends Component {
       destination,
       outboundDate
     ).subscribe(
-      xDeparturesObj => this.importXDeparturesObj(xDeparturesObj),
+      xDeparturesObj => {
+        this.importXDeparturesObj(xDeparturesObj);
+        this.setState({ noSearchDone: false });
+      },
       e => console.error(e)
     );
   };
@@ -74,7 +78,8 @@ class TravelSearch extends Component {
         name: operatorTmp.name,
         logoUrl: operatorTmp["logo_url"],
         url: operatorTmp.url
-      };
+      },
+      linksBusbud = departure.links.deeplink;
 
     return {
       id,
@@ -83,12 +88,13 @@ class TravelSearch extends Component {
       arrivalTime,
       destinationLocation,
       prices,
-      operator
+      operator,
+      linksBusbud
     };
   }
 
   render() {
-    const { departures } = this.state;
+    const { departures, noSearchDone } = this.state;
 
     return (
       <div>
@@ -100,7 +106,16 @@ class TravelSearch extends Component {
         <TravelSelection askSearch={this.searchBuses} />
         <div className="travel-search__result-title">
           <Typography variant="title">
-            <Translate content="travel.search.result_title" />
+            <Translate
+              content={`travel.search.result_title.${
+                noSearchDone
+                  ? "nothing_done"
+                  : departures.length > 0
+                    ? "found"
+                    : "not_found"
+              }`}
+              with={{ numberOfDeparture: departures.length }}
+            />
           </Typography>
         </div>
         <TravelList journeys={departures} />

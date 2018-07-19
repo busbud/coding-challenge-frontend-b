@@ -5,9 +5,12 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Translate from "react-translate-component";
 import {
   DirectionsBus as IconDirectionsBus,
-  PlayArrow as IconPlayArrow
+  PlayArrow as IconPlayArrow,
+  TransferWithinAStation as IconTransferWithinAStation
 } from "@material-ui/icons";
 import Moment from "react-moment";
 import moment from "moment";
@@ -26,7 +29,7 @@ class Journey extends Component {
 
     return (
       <Paper className="journey__paper">
-        <Grid container spacing={16}>
+        <Grid container spacing={16} className="journey__info">
           <Grid item className="journey__avatar">
             <Avatar>
               <IconDirectionsBus />
@@ -126,6 +129,21 @@ class Journey extends Component {
             </Grid>
           </Grid>
         </Grid>
+        <Button
+          variant="contained"
+          href={journey.linksBusbud}
+          target="_blank"
+          className="journey__action"
+        >
+          <Translate
+            className="journey__action-text"
+            content="travel.search.result.journey_action_label"
+          />
+          <IconTransferWithinAStation
+            className="journey__action-icon"
+            style={{ fontSize: 36 }}
+          />
+        </Button>
       </Paper>
     );
   }
@@ -141,7 +159,8 @@ export const JourneyPropTypes = PropTypes.shape({
     name: PropTypes.string.isRequired,
     logoUrl: PropTypes.string.isRequired,
     url: PropTypes.string
-  })
+  }),
+  linksBusbud: PropTypes.string
 });
 
 Journey.propTypes = {

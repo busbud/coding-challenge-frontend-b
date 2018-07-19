@@ -27,12 +27,19 @@ counterpart.registerTranslations("en", {
   travel: {
     search: {
       selection_title: "TravelSelection",
-      result_title: "TravelList",
+      result_title: {
+        found: "%(numberOfDeparture)s journeys found",
+        not_found: "No journey found",
+        nothing_done: "No research done"
+      },
       selection: {
         from: "From",
         to: "to",
         when: "When",
         search_button: "Find the best bus journeys !"
+      },
+      result: {
+        journey_action_label: "Jump in this bus !"
       }
     }
   }
