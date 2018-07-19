@@ -5,33 +5,93 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
+import {
+  DirectionsBus as IconDirectionsBus,
+  PlayArrow as IconPlayArrow
+} from "@material-ui/icons";
+import Moment from "react-moment";
+import moment from "moment";
 // Inner imports
-import "./TravelList.css";
+import "./Journey.css";
 
 class Journey extends Component {
+  dateFormat = "YYYY-MM-DD";
+  hourFormat = "HH:MM";
+
   render() {
     const { journey } = this.props;
+    const departureDate = moment(journey.departureTime);
+    const arrivalDate = moment(journey.arrivalTime);
+    const sameDay = departureDate.dayOfYear() === arrivalDate.dayOfYear();
 
     return (
-      <Paper className="travel-list__paper">
-        <Grid container wrap="nowrap" spacing={16}>
-          <Grid item>
-            <Avatar>W</Avatar>
+      <Paper className="journey__paper">
+        <Grid container spacing={16}>
+          <Grid item className="journey__avatar">
+            <Avatar>
+              <IconDirectionsBus />
+            </Avatar>
           </Grid>
           <Grid item xs zeroMinWidth>
-            <Typography noWrap>{journey.departureTime}</Typography>
-          </Grid>
-          <Grid item xs zeroMinWidth>
-            <Typography noWrap>{journey.originLocation}</Typography>
-          </Grid>
-          <Grid item xs zeroMinWidth>
-            <Typography noWrap>{journey.arrivalTime}</Typography>
-          </Grid>
-          <Grid item xs zeroMinWidth>
-            <Typography noWrap>{journey.destinationLocation}</Typography>
-          </Grid>
-          <Grid item xs zeroMinWidth>
-            <Typography noWrap>{journey.prices}</Typography>
+            <Grid
+              container
+              spacing={16}
+              wrap="nowrap"
+              justify="center"
+              className="journey__info-up"
+            >
+              <Grid item className="journey__info-up-left">
+                <Typography>{journey.originLocation}</Typography>
+              </Grid>
+              <Grid item className="journey__info-up-middle" />
+              <Grid item className="journey__info-up-right">
+                <Typography>{journey.destinationLocation}</Typography>
+              </Grid>
+            </Grid>
+            <Grid container>
+              <Grid item xs zeroMinWidth className="journey__arrow">
+                <div />
+                <IconPlayArrow className="journey__arrow-sting" />
+              </Grid>
+            </Grid>
+            <Grid
+              container
+              spacing={16}
+              wrap="nowrap"
+              justify="center"
+              className="journey__info-down"
+            >
+              <Grid item className="journey__info-down-left">
+                {sameDay === false ? (
+                  <Typography>
+                    <Moment format={this.dateFormat}>{departureDate}</Moment>
+                  </Typography>
+                ) : null}
+                <Typography>
+                  <Moment format={this.hourFormat}>{departureDate}</Moment>
+                </Typography>
+              </Grid>
+              <Grid item className="journey__info-down-middle">
+                <Typography>{journey.prices}</Typography>
+              </Grid>
+              <Grid item className="journey__info-down-right">
+                {sameDay === false ? (
+                  <Typography>
+                    <Moment format={this.dateFormat}>{arrivalDate}</Moment>
+                  </Typography>
+                ) : null}
+                <Typography>
+                  <Moment format={this.hourFormat}>{arrivalDate}</Moment>
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container>
+              <Grid item xs zeroMinWidth className="journey__operators">
+                <Typography variant="caption">
+                  {journey.operator.name}
+                </Typography>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Paper>
@@ -44,7 +104,11 @@ export const JourneyPropTypes = PropTypes.shape({
   originLocation: PropTypes.string.isRequired,
   arrivalTime: PropTypes.string.isRequired,
   destinationLocation: PropTypes.string.isRequired,
-  prices: PropTypes.number.isRequired
+  prices: PropTypes.string.isRequired,
+  operator: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    logoUrl: PropTypes.string.isRequired
+  })
 });
 
 Journey.propTypes = {

@@ -1,11 +1,17 @@
 import API from "./api";
 import { Observable } from "rxjs";
 
+import fakeData from "./fakeData";
+
 class Http {
   static getDepartures(origin, destination, outboundDate) {
     if (origin && destination && outboundDate) {
+      // return new Observable(observer => {
+      //   Http.getDeparturesPoll(origin, destination, outboundDate, observer);
+      // });
       return new Observable(observer => {
-        Http.getDeparturesPoll(origin, destination, outboundDate, observer);
+        observer.next(fakeData);
+        observer.complete();
       });
     } else {
       return Observable.throw(

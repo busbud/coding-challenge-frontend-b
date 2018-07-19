@@ -1,0 +1,60 @@
+.journey__info-up {
+  > div {
+    flex: 1;
+    align-self: flex-end;
+  }
+}
+
+.journey__info-down {
+  > div {
+    flex: 1;
+    align-self: flex-start;
+  }
+}
+
+.journey__info-up-left,
+.journey__info-down-left {
+  text-align: left;
+  margin-right: auto;
+  max-width: 40%;
+}
+.journey__info-up-middle,
+.journey__info-down-middle {
+  text-align: center;
+  max-width: 20%;
+}
+.journey__info-up-right,
+.journey__info-down-right {
+  text-align: right;
+  margin-left: auto;
+  max-width: 40%;
+}
+
+.journey__arrow {
+  padding: 10px 15px;
+  position: relative;
+  > div {
+    background-color: #1d7ec8;
+    height: 2px;
+  }
+  > .journey__arrow-sting {
+    color: #1d7ec8;
+    position: absolute;
+    right: 0;
+    right: 8px;
+    bottom: -1px;
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.journey__avatar {
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+}
+
+div.journey__operators {
+  margin-top: 5px;
+  margin-bottom: -10px;
+}

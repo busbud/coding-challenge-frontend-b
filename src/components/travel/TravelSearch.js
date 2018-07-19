@@ -46,19 +46,22 @@ class TravelSearch extends Component {
         map[obj.id] = obj;
         return map;
       }, {});
-      // TODO REMOVE
-      console.log(xDeparturesObj.departures);
+      const operators = xDeparturesObj.operators.reduce(function(map, obj) {
+        map[obj.id] = obj;
+        return map;
+      }, {});
       for (let departure of xDeparturesObj.departures) {
-        newDepartures.push(this.convertDeparture(departure, locations));
+        newDepartures.push(
+          this.convertDeparture(departure, locations, operators)
+        );
       }
-      // TODO REMOVE
-      console.log(newDepartures);
     }
 
     this.setState({ departures: this.state.departures.concat(newDepartures) });
   }
 
-  convertDeparture(departure, locations) {
+  convertDeparture(departure, locations, operators) {
+    const operatorTmp = operators[departure["operator_id"]] || {};
     const id = departure.id,
       departureTime = departure["departure_time"],
       originLocation = (locations[departure["origin_location_id"]] || {}).name,
@@ -66,7 +69,12 @@ class TravelSearch extends Component {
       destinationLocation = (
         locations[departure["destination_location_id"]] || {}
       ).name,
-      prices = departure.prices.total / 100; // Convert price in Float with 2 digits after comma because prices.total come from server in Integer
+      prices = `${departure.prices.total / 100} ${departure.prices.currency}`, // Convert price in Float with 2 digits after comma because prices.total come from server in Integer
+      operator = {
+        name: operatorTmp.name,
+        logoUrl: operatorTmp["logo_url"],
+        url: operatorTmp.url
+      };
 
     return {
       id,
@@ -74,7 +82,8 @@ class TravelSearch extends Component {
       originLocation,
       arrivalTime,
       destinationLocation,
-      prices
+      prices,
+      operator
     };
   }
 
