@@ -1,5 +1,5 @@
 import API from "./api";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 
 import fakeData from "./fakeData";
 
@@ -14,9 +14,7 @@ class Http {
         observer.complete();
       });
     } else {
-      return Observable.throw(
-        "One or more parameters are incorrectly defined."
-      );
+      return throwError("One or more parameters are incorrectly defined.");
     }
   }
 

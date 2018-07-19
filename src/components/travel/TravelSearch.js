@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 // Third party libraries
 import Typography from "@material-ui/core/Typography";
 import Translate from "react-translate-component";
 // Components imports
-import TravelSelection from "./TravelSelection";
+import TravelSelection, {
+  TravelSelectionDefaultValuePropTypes
+} from "./TravelSelection";
+
 import TravelList from "./TravelList";
 // Other imports
 import Http from "./../../api/http";
@@ -14,6 +18,15 @@ import { Object } from "core-js";
 class TravelSearch extends Component {
   state = {
     noSearchDone: true,
+    origin: {
+      name: "",
+      sha: ""
+    },
+    destination: {
+      name: "",
+      sha: ""
+    },
+    outboundDate: "",
     departures: []
   };
 
@@ -24,10 +37,15 @@ class TravelSearch extends Component {
 
   searchBuses = (origin, destination, outboundDate) => {
     this.httpGetDeparturesSubscription.unsubscribe();
-    this.setState({ departures: [] });
-    this.httpGetDeparturesSubscription = Http.getDepartures(
+    this.setState({
+      departures: [],
       origin,
       destination,
+      outboundDate
+    });
+    this.httpGetDeparturesSubscription = Http.getDepartures(
+      origin.sha,
+      destination.sha,
       outboundDate
     ).subscribe(
       xDeparturesObj => {
@@ -94,16 +112,26 @@ class TravelSearch extends Component {
   }
 
   render() {
-    const { departures, noSearchDone } = this.state;
+    const {
+      departures,
+      noSearchDone,
+      origin,
+      destination,
+      outboundDate
+    } = this.state;
+    const { classes = {}, defaultValueTravelSelection } = this.props;
 
     return (
-      <div>
+      <div className={classes.travelSearch}>
         <div className="travel-search__search-title">
           <Typography variant="title">
             <Translate content="travel.search.selection_title" />
           </Typography>
         </div>
-        <TravelSelection askSearch={this.searchBuses} />
+        <TravelSelection
+          askSearch={this.searchBuses}
+          defaultValue={defaultValueTravelSelection}
+        />
         <div className="travel-search__result-title">
           <Typography variant="title">
             <Translate
@@ -114,7 +142,12 @@ class TravelSearch extends Component {
                     ? "found"
                     : "not_found"
               }`}
-              with={{ numberOfDeparture: departures.length }}
+              with={{
+                numberOfDeparture: departures.length,
+                dateSearched: outboundDate,
+                townOrigin: origin.name,
+                townDestination: destination.name
+              }}
             />
           </Typography>
         </div>
@@ -123,5 +156,10 @@ class TravelSearch extends Component {
     );
   }
 }
+
+TravelSearch.propTypes = {
+  classes: PropTypes.object,
+  defaultValueTravelSelection: TravelSelectionDefaultValuePropTypes
+};
 
 export default TravelSearch;

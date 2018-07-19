@@ -18,17 +18,20 @@ counterpart.registerTranslations("en", {
   },
   pages: {
     travel: {
-      title: "Travel any where"
+      img_alt: "Travel any where",
+      description_text: "dasdasda"
     },
     travel_oshega: {
-      title: "Travel to Oshega"
+      img_alt: "Travel to Oshega",
+      description_text: ""
     }
   },
   travel: {
     search: {
-      selection_title: "TravelSelection",
+      selection_title: "Search criteria",
       result_title: {
-        found: "%(numberOfDeparture)s journeys found",
+        found:
+          "%(numberOfDeparture)s journey(s) found from %(townOrigin)s to %(townDestination)s on the %(dateSearched)s",
         not_found: "No journey found",
         nothing_done: "No research done"
       },

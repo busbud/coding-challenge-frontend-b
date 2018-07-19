@@ -148,6 +148,7 @@ class Journey extends Component {
     );
   }
 }
+
 export const JourneyPropTypes = PropTypes.shape({
   id: PropTypes.string.isRequired,
   departureTime: PropTypes.string.isRequired,
