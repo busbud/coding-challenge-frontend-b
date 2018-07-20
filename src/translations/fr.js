@@ -18,12 +18,14 @@ counterpart.registerTranslations("fr", {
   },
   pages: {
     travel: {
-      img_alt: "Voyager vers Oshega",
-      description_text: ""
+      img_alt: "Voyager partout",
+      description_text:
+        "Peu importe la destination, nous avons le bus qu’il te faut pour commencer ton voyage !"
     },
     travel_oshega: {
       img_alt: "Voyager vers Oshega",
-      description_text: ""
+      description_text:
+        "Réserve ton trajet en bus de New York à Montréal et viens découvrir le festival de musique et arts OSHEAGA le 2 août 2018."
     }
   },
   travel: {
@@ -43,7 +45,7 @@ counterpart.registerTranslations("fr", {
         search_button: "Trouvez les meilleurs trajets en bus !"
       },
       result: {
-        journey_action_label: "Monter dans ce bus !"
+        journey_action_label: "Monter dans ce bus"
       }
     }
   }

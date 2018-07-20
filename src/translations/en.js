@@ -19,11 +19,13 @@ counterpart.registerTranslations("en", {
   pages: {
     travel: {
       img_alt: "Travel any where",
-      description_text: "dasdasda"
+      description_text:
+        "No matter the destination as long as you’ve got one of our buses waiting for you to start your journey!"
     },
     travel_oshega: {
       img_alt: "Travel to Oshega",
-      description_text: ""
+      description_text:
+        "Book your bus trip from New York to Montreal and come discover the OSHEAGA Music and art festival on August 2nd 2018."
     }
   },
   travel: {
