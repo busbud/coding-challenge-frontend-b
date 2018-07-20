@@ -39,12 +39,7 @@ class Menu extends Component {
                   <IconDirections />
                 </ListItemIcon>
                 <ListItemText
-                  primary={
-                    <Translate
-                      component="None"
-                      content="menu.travel_to_oshgea"
-                    />
-                  }
+                  primary={<Translate content="menu.travel_to_oshgea" />}
                 />
               </ListItem>
             </Link>
@@ -54,12 +49,7 @@ class Menu extends Component {
                   <IconDirectionsBus />
                 </ListItemIcon>
                 <ListItemText
-                  primary={
-                    <Translate
-                      component="None"
-                      content="menu.travel_to_anywhere"
-                    />
-                  }
+                  primary={<Translate content="menu.travel_to_anywhere" />}
                 />
               </ListItem>
             </Link>
@@ -72,9 +62,7 @@ class Menu extends Component {
               <ListItemIcon>
                 <IconHelpOutline />
               </ListItemIcon>
-              <ListItemText
-                primary={<Translate component="None" content="menu.about" />}
-              />
+              <ListItemText primary={<Translate content="menu.about" />} />
             </ListItem>
           </List>
           <Divider />

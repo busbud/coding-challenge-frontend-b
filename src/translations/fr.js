@@ -18,21 +18,31 @@ counterpart.registerTranslations("fr", {
   },
   pages: {
     travel: {
-      title: "Voyager partout"
+      img_alt: "Voyager vers Oshega",
+      title: ""
     },
     travel_oshega: {
-      title: "Voyager vers Oshega"
+      img_alt: "Voyager vers Oshega",
+      title: ""
     }
   },
   travel: {
     search: {
-      selection_title: "TravelSelection",
-      result_title: "TravelList",
+      selection_title: "Critères de recherche",
+      result_title: {
+        found:
+          "%(numberOfDeparture)s trajet(s) trouvé(s) du %(townOrigin)s à %(townDestination)s pour le %(dateSearched)s",
+        not_found: "Aucun trajet trouvé",
+        nothing_done: "Aucun recherche n'a été effectué"
+      },
       selection: {
         from: "De",
         to: "À",
         when: "Le",
-        search_button: "Trouver le meilleur bus !"
+        search_button: "Trouvez les meilleurs trajets en bus !"
+      },
+      result: {
+        journey_action_label: "Monter dans ce bus !"
       }
     }
   }

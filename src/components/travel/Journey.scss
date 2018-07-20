@@ -1,0 +1,184 @@
+.journey__paper {
+  .journey__action {
+    background-color: #f19020;
+    &:hover {
+      background-color: #d1760d;
+    }
+    span {
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+  &:hover {
+    background-color: aliceblue;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .journey__paper {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    .journey__action {
+      -webkit-transition: margin-right 0.2s;
+      transition: margin-right 0.2s;
+      width: 150px;
+      height: 300px;
+      margin-top: -100px;
+      margin-bottom: -100px;
+      margin-right: -170px;
+      margin-left: 20px;
+      span {
+        display: block;
+      }
+      .journey__action-text {
+        display: block;
+      }
+      .journey__action-icon {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    &:hover .journey__action {
+      margin-right: -20px;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .journey__paper {
+    position: relative;
+    overflow: hidden;
+    .journey__action {
+      position: absolute;
+      right: -3px;
+      bottom: -3px;
+      .journey__action-icon {
+        display: none;
+      }
+    }
+  }
+}
+
+.journey__info-up {
+  > * {
+    flex: 1;
+    align-self: flex-end;
+  }
+}
+
+.journey__info-down {
+  > * {
+    flex: 1;
+    align-self: flex-start;
+  }
+}
+
+.journey__info-up-left,
+.journey__info-down-left {
+  text-align: left;
+  margin-right: auto;
+}
+.journey__info-up-left {
+  max-width: 40%;
+}
+.journey__info-down-left {
+  max-width: 30%;
+}
+.journey__info-up-middle,
+.journey__info-down-middle {
+  text-align: center;
+}
+.journey__info-up-middle {
+  max-width: 20%;
+  display: flex;
+}
+.journey__info-down-middle {
+  max-width: 40%;
+}
+.journey__info-up-right,
+.journey__info-down-right {
+  text-align: right;
+  margin-left: auto;
+}
+.journey__info-up-right {
+  max-width: 40%;
+}
+.journey__info-down-right {
+  max-width: 30%;
+}
+
+.journey__arrow {
+  padding: 10px 15px;
+  position: relative;
+  > div {
+    background-color: #1d7ec8;
+    height: 2px;
+  }
+  > .journey__arrow-sting {
+    color: #1d7ec8;
+    position: absolute;
+    right: 0;
+    right: 8px;
+    bottom: -1px;
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.journey__operator-logo {
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+  margin-left: auto;
+  margin-right: auto;
+
+  a {
+    color: #0060b6;
+    text-decoration: none;
+
+    &:hover {
+      color: #00a0c6;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 50px;
+    vertical-align: middle;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .journey__avatar {
+    display: none;
+  }
+}
+
+div.journey__operators-text {
+  display: none;
+
+  @media screen and (max-width: 600px) {
+    display: block;
+    margin-top: 13px;
+    margin-bottom: -10px;
+
+    a {
+      color: #0060b6;
+      text-decoration: none;
+
+      &:hover {
+        color: #00a0c6;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.journey__operators-link--disable,
+.journey__operators-link--disable > * {
+  cursor: not-allowed;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 // Third party libraries
+import counterpart from "counterpart";
 import Translate from "react-translate-component";
 import Typography from "@material-ui/core/Typography";
 // Inner imports
@@ -11,7 +12,11 @@ const Logo = () => (
     <Typography variant="title" color="inherit">
       <Translate content="header.logo.text_before" />
     </Typography>
-    <img className="logo__img" src={logo} alt="Oshega logo" />
+    <img
+      className="logo__img"
+      src={logo}
+      alt={counterpart.translate("header.logo.alt")}
+    />
   </div>
 );
 

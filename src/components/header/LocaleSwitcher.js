@@ -21,7 +21,7 @@ class LocaleSwitcher extends Component {
 
   render() {
     return (
-      <p>
+      <div>
         <FormControl>
           <InputLabel htmlFor="age-helper">
             <Translate content="menu.language.label" />
@@ -38,7 +38,7 @@ class LocaleSwitcher extends Component {
             <Translate content="menu.language.helper" />
           </FormHelperText>
         </FormControl>
-      </p>
+      </div>
     );
   }
 }

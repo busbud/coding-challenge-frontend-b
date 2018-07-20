@@ -1,17 +1,27 @@
 import React from "react";
-// Third party libraries
-import Typography from "@material-ui/core/Typography";
-import Translate from "react-translate-component";
+// Components imports
+import Introduction from "./Introduction";
+import TravelSearch from "./../travel/TravelSearch";
 // Inner imports
 import "./TravelOshega.css";
+import oshegaLogo from "./img/travel-to-oshega.png";
 
 const TravelOshega = () => (
   <main>
-    <div className="travel-oshega__title">
-      <Typography variant="headline">
-        <Translate content="pages.travel_oshega.title" />
-      </Typography>
-    </div>
+    <Introduction
+      logo={{ src: oshegaLogo, alt: "pages.travel_oshega.img_alt" }}
+      text="pages.travel_oshega.description_text"
+    />
+    <TravelSearch
+      classes={{ travelSearch: "travel-world" }}
+      defaultValueTravelSelection={{
+        townFrom: "New York",
+        townFromGeohash: "dr5reg",
+        townTo: "Montreal",
+        townToGeohash: "f25dvk",
+        date: "2018-08-02"
+      }}
+    />
   </main>
 );
 
