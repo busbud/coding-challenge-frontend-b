@@ -29,7 +29,7 @@ class Header extends Component {
 
   render() {
     return (
-      <AppBar position="static" color="default">
+      <AppBar position="fixed" color="default">
         <Toolbar>
           <IconButton color="inherit" aria-label="Menu" onClick={this.openMenu}>
             <MenuIcon />
