@@ -19,11 +19,11 @@ counterpart.registerTranslations("fr", {
   pages: {
     travel: {
       img_alt: "Voyager vers Oshega",
-      title: ""
+      description_text: ""
     },
     travel_oshega: {
       img_alt: "Voyager vers Oshega",
-      title: ""
+      description_text: ""
     }
   },
   travel: {
@@ -33,7 +33,8 @@ counterpart.registerTranslations("fr", {
         found:
           "%(numberOfDeparture)s trajet(s) trouvé(s) du %(townOrigin)s à %(townDestination)s pour le %(dateSearched)s",
         not_found: "Aucun trajet trouvé",
-        nothing_done: "Aucun recherche n'a été effectué"
+        nothing_done: "Aucun recherche n'a été effectué",
+        in_progess: "Recherche en cours"
       },
       selection: {
         from: "De",

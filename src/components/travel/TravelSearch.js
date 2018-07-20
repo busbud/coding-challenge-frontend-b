@@ -8,6 +8,7 @@ import TravelSelection, {
   TravelSelectionDefaultValuePropTypes
 } from "./TravelSelection";
 import TravelList from "./TravelList";
+import Spinner from "./Spinner";
 // Other imports
 import Http from "./../../api/http";
 // Inner imports
@@ -17,7 +18,7 @@ import { Object } from "core-js";
 class TravelSearch extends Component {
   state = {
     noSearchDone: true,
-    searchDisable: false,
+    searchInProgress: false,
     origin: {
       name: "",
       geohash: ""
@@ -36,15 +37,12 @@ class TravelSearch extends Component {
   }
 
   searchBuses = (origin, destination, outboundDate) => {
-    console.log(origin);
-    console.log(destination);
-    console.log(outboundDate);
     this.setState({
       departures: [],
       origin,
       destination,
       outboundDate,
-      searchDisable: true
+      searchInProgress: true
     });
     this.httpGetDeparturesSubscription.unsubscribe();
     this.httpGetDeparturesSubscription = Http.getDepartures(
@@ -56,13 +54,13 @@ class TravelSearch extends Component {
         this.importXDeparturesObj(xDeparturesObj);
         this.setState({
           noSearchDone: false,
-          searchDisable: false
+          searchInProgress: false
         });
       },
       e => {
         this.setState({
           noSearchDone: false,
-          searchDisable: false
+          searchInProgress: false
         });
         console.error(e);
       }
@@ -131,7 +129,7 @@ class TravelSearch extends Component {
       origin,
       destination,
       outboundDate,
-      searchDisable
+      searchInProgress
     } = this.state;
     const { classes = {}, defaultValueTravelSelection } = this.props;
 
@@ -145,17 +143,19 @@ class TravelSearch extends Component {
         <TravelSelection
           askSearch={this.searchBuses}
           defaultValue={defaultValueTravelSelection}
-          searchDisable={searchDisable}
+          searchDisable={searchInProgress}
         />
         <div className="travel-search__result-title">
           <Typography variant="title">
             <Translate
               content={`travel.search.result_title.${
-                noSearchDone
-                  ? "nothing_done"
-                  : departures.length > 0
-                    ? "found"
-                    : "not_found"
+                searchInProgress
+                  ? "in_progess"
+                  : noSearchDone
+                    ? "nothing_done"
+                    : departures.length > 0
+                      ? "found"
+                      : "not_found"
               }`}
               with={{
                 numberOfDeparture: departures.length,
@@ -165,6 +165,7 @@ class TravelSearch extends Component {
               }}
             />
           </Typography>
+          {searchInProgress ? <Spinner /> : null}
         </div>
         <TravelList journeys={departures} />
       </div>

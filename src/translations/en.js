@@ -33,7 +33,8 @@ counterpart.registerTranslations("en", {
         found:
           "%(numberOfDeparture)s journey(s) found from %(townOrigin)s to %(townDestination)s on the %(dateSearched)s",
         not_found: "No journey found",
-        nothing_done: "No research done"
+        nothing_done: "No research done",
+        in_progess: "Search in progress"
       },
       selection: {
         from: "From",
@@ -42,7 +43,7 @@ counterpart.registerTranslations("en", {
         search_button: "Find the best bus journeys !"
       },
       result: {
-        journey_action_label: "Jump in this bus !"
+        journey_action_label: "Jump on this bus !"
       }
     }
   }
