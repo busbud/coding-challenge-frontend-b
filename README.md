@@ -1,11 +1,10 @@
 # Busbud - Osheaga Coding Challenge
 
 It is my first app with ReactJS, it was pretty cool and very instructive.
-Desktop and Mobile
 
-| Desktop                                                                                    | Mobile                                                                                  |
-| ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
-| ![Desktop screenshot](\readme_assets/screenshot_desktop.png?raw=true "Desktop screenshot") | ![Mobile screenshot](\readme_assets/screenshot_mobile.png?raw=true "Mobile screenshot") |
+| Desktop                                                                                   | Mobile                                                                                 |
+| ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| ![Desktop screenshot](readme_assets/screenshot_desktop.png?raw=true "Desktop screenshot") | ![Mobile screenshot](readme_assets/screenshot_mobile.png?raw=true "Mobile screenshot") |
 
 ## Demo
 
