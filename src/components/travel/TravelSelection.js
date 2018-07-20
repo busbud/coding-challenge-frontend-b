@@ -33,11 +33,11 @@ class TravelSelection extends Component {
       this.state = {
         origin: {
           name: defaultValue.townFrom,
-          geohash: defaultValue.townFromgeohash
+          geohash: defaultValue.townFromGeohash
         },
         destination: {
           name: defaultValue.townTo,
-          geohash: defaultValue.townTogeohash
+          geohash: defaultValue.townToGeohash
         },
         outboundDate: defaultValue.date
       };
@@ -96,7 +96,7 @@ class TravelSelection extends Component {
   };
 
   render() {
-    const { defaultValue } = this.props;
+    const { defaultValue, searchDisable } = this.props;
     const { origin, destination, outboundDate } = this.state;
     return (
       <div>
@@ -162,6 +162,7 @@ class TravelSelection extends Component {
                 size="large"
                 color="secondary"
                 type="submit"
+                disabled={searchDisable}
               >
                 <Translate content="travel.search.selection.search_button" />
               </Button>
@@ -175,15 +176,16 @@ class TravelSelection extends Component {
 
 export const TravelSelectionDefaultValuePropTypes = PropTypes.shape({
   townFrom: PropTypes.string.isRequired,
-  townFromgeohash: PropTypes.string.isRequired,
+  townFromGeohash: PropTypes.string.isRequired,
   townTo: PropTypes.string.isRequired,
-  townTogeohash: PropTypes.string.isRequired,
+  townToGeohash: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired
 });
 
 TravelSelection.propTypes = PropTypes.shape({
   askSearch: PropTypes.func.isRequired,
-  defaultValue: TravelSelectionDefaultValuePropTypes
-});
+  defaultValue: TravelSelectionDefaultValuePropTypes,
+  searchDisable: PropTypes.bool
+}).isRequired;
 
 export default TravelSelection;

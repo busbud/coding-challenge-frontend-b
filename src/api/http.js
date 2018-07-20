@@ -2,17 +2,11 @@ import API from "./api";
 import { Observable, throwError } from "rxjs";
 import counterpart from "counterpart";
 
-import fakeData from "./fakeData";
-
 class Http {
   static getDepartures(origin, destination, outboundDate) {
     if (origin && destination && outboundDate) {
-      // return new Observable(observer => {
-      //   Http.getDeparturesPoll(origin, destination, outboundDate, observer);
-      // });
       return new Observable(observer => {
-        observer.next(fakeData);
-        observer.complete();
+        Http.getDeparturesPoll(origin, destination, outboundDate, observer);
       });
     } else {
       return throwError("One or more parameters are incorrectly defined.");

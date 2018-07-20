@@ -77,6 +77,6 @@ Autocomplete.propTypes = PropTypes.shape({
   partialText: PropTypes.string,
   onSelection: PropTypes.func.isRequired,
   inputId: PropTypes.string.isRequired
-});
+}).isRequired;
 
 export default Autocomplete;

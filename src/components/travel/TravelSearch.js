@@ -17,6 +17,7 @@ import { Object } from "core-js";
 class TravelSearch extends Component {
   state = {
     noSearchDone: true,
+    searchDisable: false,
     origin: {
       name: "",
       geohash: ""
@@ -35,13 +36,17 @@ class TravelSearch extends Component {
   }
 
   searchBuses = (origin, destination, outboundDate) => {
-    this.httpGetDeparturesSubscription.unsubscribe();
+    console.log(origin);
+    console.log(destination);
+    console.log(outboundDate);
     this.setState({
       departures: [],
       origin,
       destination,
-      outboundDate
+      outboundDate,
+      searchDisable: true
     });
+    this.httpGetDeparturesSubscription.unsubscribe();
     this.httpGetDeparturesSubscription = Http.getDepartures(
       origin.geohash,
       destination.geohash,
@@ -49,9 +54,18 @@ class TravelSearch extends Component {
     ).subscribe(
       xDeparturesObj => {
         this.importXDeparturesObj(xDeparturesObj);
-        this.setState({ noSearchDone: false });
+        this.setState({
+          noSearchDone: false,
+          searchDisable: false
+        });
       },
-      e => console.error(e)
+      e => {
+        this.setState({
+          noSearchDone: false,
+          searchDisable: false
+        });
+        console.error(e);
+      }
     );
   };
 
@@ -116,7 +130,8 @@ class TravelSearch extends Component {
       noSearchDone,
       origin,
       destination,
-      outboundDate
+      outboundDate,
+      searchDisable
     } = this.state;
     const { classes = {}, defaultValueTravelSelection } = this.props;
 
@@ -130,6 +145,7 @@ class TravelSearch extends Component {
         <TravelSelection
           askSearch={this.searchBuses}
           defaultValue={defaultValueTravelSelection}
+          searchDisable={searchDisable}
         />
         <div className="travel-search__result-title">
           <Typography variant="title">

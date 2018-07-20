@@ -15,10 +15,10 @@ const TravelOshega = () => (
     <TravelSearch
       classes={{ travelSearch: "travel-world" }}
       defaultValueTravelSelection={{
-        townFrom: "New-York City",
-        townFromSHA: "dr5reg",
-        townTo: "Montréal",
-        townToSHA: "f25dvk",
+        townFrom: "New York",
+        townFromGeohash: "dr5reg",
+        townTo: "Montreal",
+        townToGeohash: "f25dvk",
         date: "2018-08-02"
       }}
     />
