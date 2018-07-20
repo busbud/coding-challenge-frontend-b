@@ -1,0 +1,16 @@
+.travel__container {
+  text-align: center;
+  .travel__description {
+    margin-top: 5px;
+    @media screen and (max-width: 600px) {
+      margin-top: 0;
+    }
+  }
+}
+
+.travel__logo {
+  max-height: 130px;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+}
