@@ -1,6 +1,7 @@
 # Busbud - Osheaga Coding Challenge
 
-It is my first app with ReactJS, it was pretty cool and very instructive.
+It is my first app with ReactJS, it was pretty cool and very instructive even if the philosophy is completely different from Angular. I learnt a lot of things and I liked the easiness of the components implementation.
+Unfortunately I had not the time to tend over the unit test. It would have been my next step if I had extra time.
 
 | Desktop                                                                                   | Mobile                                                                                 |
 | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -35,19 +36,19 @@ yarn start
 
 ## Functional content
 
-- Header, menu navigation and language switch (En, Fr)
-- Page special travel to Oshega with pre-filled (and read-only) fields
-- Free search page with town name autocomplete and date picker
-- Multi-fechting data from Busbud server and add of them dynamicly in view
-- Result presentation with link to operator (if available), link to Busbud plateforme for each journey, date display in case of an arrival on next day, ...
-- Responsive design (space optimisation, from fields placement, operator name, action button, ...)
+- Header, menu navigation and language switching (En, Fr)
+- Special page Travel to Oshega with pre-filled (and read-only) fields
+- Free entries search page with autocomplete city names and date picker
+- Multi-fechting data from Busbud server with a dynamic addition in the view
+- List of search results with links to operators (if available), direct links to Busbud plateform for each journey, date display in case of an arrival on the next day, ...
+- Responsive design (space view optimization, form fields placement, operator names, action buttons, ...)
 
 ## Technical content
 
 - SASS preprocessor
 - Observable to manage responses on multi-fetching Busbud server
-- React-Material component for reusage existing and improve the productivity
-- React-translate-component to manage language changement and map dico
+- React-Material component to improve productivity
+- React-translate-component to manage language switching
 
 ### Dev Dependencies
 
@@ -65,14 +66,14 @@ yarn start
 
 ## Technical improvements
 
-- Secure the partner token
-- Create tests
-- Add comments to methods and compenents minimaly
-- Use Redux in stand of [React Router](https://github.com/ReactTraining/react-router)
-- Use react-material color theme and factoring color in variable SASS
+- Securing the partner token
+- Creating unit tests
+- Adding comments to methods and compenents at least
+- Using Redux in stand of [React Router](https://github.com/ReactTraining/react-router)
+- Using react-material color theme and factoring color in variable SASS
 
 ## Functional improvements
 
-- Found and use a really React [Material](https://material.io/) date picker (or create one)
-- Improve the dropdown autocomplete or use an existing one
-- Improve user experience with the partial loading departures
+- Creating and using a better React [Material](https://material.io/) date picker
+- Improving the dropdown autocomplete or using an existing one
+- Improving the user experience with the partial loading departures
