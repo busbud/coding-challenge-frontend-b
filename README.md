@@ -1,7 +1,7 @@
 # Busbud - Osheaga Coding Challenge
 
 It is my first app with ReactJS, it was pretty cool and very instructive even if the philosophy is completely different from Angular. I learnt a lot of things and I liked the easiness of the components implementation.
-Unfortunately I had not the time to tend over the unit test. It would have been my next step if I had extra time.
+Unfortunately I was only able to do a few unit tests but it allowed me to implement additionnal testing libraries.
 
 | Desktop                                                                                   | Mobile                                                                                 |
 | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -50,7 +50,7 @@ yarn start
 - React-Material component to improve productivity
 - React-translate-component to manage language switching
 
-### Dev Dependencies
+### Dependencies
 
 - [React](https://github.com/facebook/react)
 - [Axios](https://github.com/axios/axios)
@@ -62,6 +62,8 @@ yarn start
 
 ### Dev Dependencies
 
+- [Chai](https://github.com/chaijs/chai)
+- [Enzyme](https://github.com/airbnb/enzyme)
 - [Prettier](https://github.com/prettier/prettier)
 
 ## Technical improvements
