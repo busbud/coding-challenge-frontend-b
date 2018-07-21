@@ -1,0 +1,11 @@
+.logo--inline {
+  display: flex;
+  align-items: center;
+}
+
+.logo__img {
+  margin-left: 10px;
+  @media screen and (max-width: 600px) {
+    width: 100px;
+  }
+}

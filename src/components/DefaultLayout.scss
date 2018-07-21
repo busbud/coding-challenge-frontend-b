@@ -1,0 +1,7 @@
+.main__header-space {
+  padding-top: 56px;
+
+  @media screen and (min-width: 600px) {
+    padding-top: 64px;
+  }
+}
