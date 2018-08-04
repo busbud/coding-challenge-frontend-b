@@ -1,0 +1,33 @@
+{
+  "name": "oshega-ticketing",
+  "version": "0.0.1",
+  "description": "Book your bus tickets to Oshega Festival",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadwinderpaul/coding-challenge-frontend-b.git"
+  },
+  "author": "yadwinderpaul@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yadwinderpaul/coding-challenge-frontend-b/issues"
+  },
+  "homepage": "https://github.com/yadwinderpaul/coding-challenge-frontend-b#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "koa": "^2.5.2",
+    "koa-static": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-standard": "^3.1.0"
+  }
+}
