@@ -1,0 +1,36 @@
+.app-wrap {
+  height: 100vh;
+  background-color: $bck-color;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-grid {
+  flex-grow: 1;
+
+  .logo-wrap {
+    padding: 10px;
+  }
+
+  .bus-wrap {
+    display: inline-block;
+    margin: 30px 0;
+    border-bottom: 1px solid $light-gray;
+
+    img {
+      animation: bump 0.75s infinite linear;
+    }
+  }
+}
+
+@keyframes bump {
+  0% {
+    transform: translate(0, 0);
+  }
+  60% {
+    transform: translate(0, -2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
