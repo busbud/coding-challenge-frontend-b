@@ -4,6 +4,7 @@ import AppTopbar from './components/AppTopbar'
 import AppFooter from './components/AppFooter'
 import Welcome from './views/Welcome'
 import SearchForm from './views/SearchForm'
+import SearchResults from './views/SearchResults'
 import './index.scss'
 
 export default class App extends React.Component {
@@ -14,7 +15,11 @@ export default class App extends React.Component {
           <AppTopbar />
           <div className="app-grid">
             <Route path={'/'} component={Welcome} exact={true} />
-            <Route path={'/search'} component={SearchForm} />
+            <Route path={'/search-form'} component={SearchForm} />
+            <Route
+              path={'/search-results/:origin/:destination/:date'}
+              component={SearchResults}
+            />
           </div>
           <AppFooter />
         </div>
