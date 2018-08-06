@@ -1,6 +1,5 @@
 const initialState = {
   state: 'INIT', // INIT, LOADING, LOADED, ERRORED, EXPIRED
-  isComplete: false,
   inputs: {
     originCity: {
       geohash: 'dr5reg',
@@ -42,7 +41,16 @@ const store = (state = initialState, action) => {
     case 'UPDATE_SEARCH_RESULTS_SUCCESS':
       return {
         ...state,
-        state: 'LOADED',
+        state: 'LOADED'
+      }
+    case 'UPDATE_SEARCH_RESULTS_ERRORED':
+      return {
+        ...state,
+        state: 'ERRORED'
+      }
+    case 'UPDATE_SEARCH_RESULTS':
+      return {
+        ...state,
         results: {
           ...state.results,
           cities: action.cities || [],
@@ -50,11 +58,6 @@ const store = (state = initialState, action) => {
           operators: action.operators || [],
           departures: action.departures || []
         }
-      }
-    case 'UPDATE_SEARCH_RESULTS_ERRORED':
-      return {
-        ...state,
-        state: 'ERRORED'
       }
     default:
       return state

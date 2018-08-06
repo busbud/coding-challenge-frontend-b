@@ -15,11 +15,7 @@ export function updateSearchResultsStart () {
 
 export function updateSearchResultsSuccess (results) {
   return {
-    type: 'UPDATE_SEARCH_RESULTS_SUCCESS',
-    cities: results.cities,
-    locations: results.locations,
-    operators: results.operators,
-    departures: results.departures
+    type: 'UPDATE_SEARCH_RESULTS_SUCCESS'
   }
 }
 
@@ -29,13 +25,36 @@ export function updateSearchResultsErrored () {
   }
 }
 
-export function updateSearchResults () {
+export function updateSearchResults (results) {
+  return {
+    type: 'UPDATE_SEARCH_RESULTS',
+    cities: results.cities || [],
+    locations: results.locations || [],
+    operators: results.operators || [],
+    departures: results.departures || []
+  }
+}
+
+export function fetchDepartures (poll = false) {
   return async function (dispatch, getState) {
     const currentState = getState()
     try {
-      dispatch(updateSearchResultsStart())
-      const results = await departures.search(currentState.inputs)
-      dispatch(updateSearchResultsSuccess(results))
+      if (!poll) {
+        dispatch(updateSearchResultsStart())
+      }
+      const results = await departures.search({
+        origin: currentState.inputs.originCity.geohash,
+        destination: currentState.inputs.destinationCity.geohash,
+        date: currentState.inputs.date,
+        poll: poll
+      })
+
+      dispatch(updateSearchResults(results))
+      if (!results.complete) {
+        dispatch(fetchDepartures(true))
+      } else {
+        dispatch(updateSearchResultsSuccess(results))
+      }
     } catch (error) {
       console.error(
         'failed to fetch departures with inputs:', currentState.inputs

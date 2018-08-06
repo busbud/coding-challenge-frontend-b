@@ -1,21 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Loader } from 'semantic-ui-react'
 import SearchDetails from './components/SearchDetails'
 import DeparturesList from './components/DeparturesList'
-import { updateSearchResults } from '@/App/actions'
+import NoDepartures from './components/NoDepartures'
+import { fetchDepartures } from '@/App/actions'
 import './index.scss'
 
 class SearchResults extends React.Component {
   constructor (props) {
     super(props)
-    props.updateSearchResults()
+    props.fetchDepartures()
   }
 
   render () {
-    console.log('departures', this.props.departures)
-
     return (
       <Grid
         verticalAlign={'middle'}
@@ -32,6 +31,14 @@ class SearchResults extends React.Component {
               />
             </div>
             <DeparturesList departures={this.props.departures}/>
+            {
+              this.props.departures.length === 0 && !this.props.isLoading
+                ? NoDepartures
+                : ''
+            }
+            <div>
+              <Loader active={this.props.isLoading} inline='centered' />
+            </div>
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -42,14 +49,15 @@ class SearchResults extends React.Component {
 const mapStateToProps = state => {
   return {
     inputs: state.inputs,
-    departures: state.results.departures
+    departures: state.results.departures,
+    isLoading: state.state === 'LOADING'
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateSearchResults () {
-      dispatch(updateSearchResults(...arguments))
+    fetchDepartures () {
+      dispatch(fetchDepartures(...arguments))
     }
   }
 }
@@ -67,7 +75,8 @@ SearchResults.propTypes = {
     adults: PropTypes.number
   }),
   departures: PropTypes.array,
-  updateSearchResults: PropTypes.func
+  isLoading: PropTypes.bool,
+  fetchDepartures: PropTypes.func
 }
 
 export default connect(
