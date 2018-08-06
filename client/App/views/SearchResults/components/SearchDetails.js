@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Accordion, Icon } from 'semantic-ui-react'
 
-export default class SearchDetails extends React.Component {
+class SearchDetails extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -17,6 +18,12 @@ export default class SearchDetails extends React.Component {
 
   render () {
     const { isOpen } = this.state
+    const formattedDate = this.props.date.toLocaleDateString('en-US', {
+      weekday: 'short',
+      year: '2-digit',
+      month: 'short',
+      day: 'numeric'
+    })
 
     return (
       <Accordion styled>
@@ -26,16 +33,23 @@ export default class SearchDetails extends React.Component {
           onClick={this.handleAccordionClick.bind(this)}
         >
           <Icon name='dropdown' />
-          Trips from: Source to: Destination for date: Foobar
+          Trips from: {this.props.origin} to: {this.props.destination} for {formattedDate}
         </Accordion.Title>
         <Accordion.Content active={isOpen}>
-          <p>
-            A dog is a type of domesticated animal. Known for its loyalty and
-            faithfulness, it can be found as a welcome guest in many households
-            across the world.
-          </p>
+          <ul>
+            <li>Adults: {this.props.adults}</li>
+          </ul>
         </Accordion.Content>
       </Accordion>
     )
   }
 }
+
+SearchDetails.propTypes = {
+  origin: PropTypes.string,
+  destination: PropTypes.string,
+  date: PropTypes.instanceOf(Date),
+  adults: PropTypes.number
+}
+
+export default SearchDetails

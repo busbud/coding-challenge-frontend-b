@@ -4,6 +4,10 @@
     "react"
   ],
   "plugins": [
-    "transform-runtime"
+    // for async await
+    "transform-runtime",
+
+    // for rest-spread
+    "transform-object-rest-spread"
   ]
 }

@@ -1,12 +1,7 @@
 import React from 'react'
 import { Card, Icon } from 'semantic-ui-react'
 
-export default class DeparturesList extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {}
-  }
-
+class DepartureCard extends React.Component {
   render () {
     return (
       <Card fluid>
@@ -29,3 +24,5 @@ export default class DeparturesList extends React.Component {
     )
   }
 }
+
+export default DepartureCard

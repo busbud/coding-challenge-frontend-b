@@ -11,6 +11,12 @@ module.exports = {
     publicPath: '/'
   },
 
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../client')
+    }
+  },
+
   module: {
     rules: [
       {

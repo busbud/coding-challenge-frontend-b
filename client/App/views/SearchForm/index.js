@@ -1,28 +1,33 @@
 import React from 'react'
-import {
-  Grid,
-  Card,
-  Button,
-  Form,
-  Input
-} from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Grid, Card, Button, Form, Input } from 'semantic-ui-react'
 import CitySearch from './components/CitySearch'
+import { updateSearchInputs } from '@/App/actions'
 import './index.scss'
 
-export default class SearchForm extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      originCity: null,
-      destinationCity: null,
-      numberOfAdults: 1,
-      dateOfTravel: new Date(2018, 8, 1)
-    }
+class SearchForm extends React.Component {
+  handleOriginChange (event, { value }) {
+    this.props.updateSearchInputs({
+      ...this.state, originCity: value
+    })
+  }
+
+  handleDestinationChange (event, { value }) {
+    this.props.updateSearchInputs({
+      ...this.state, destinationCity: value
+    })
+  }
+
+  handleAdultsChange (event, { value }) {
+    this.props.updateSearchInputs({
+      ...this.state,
+      adults: (value && parseInt(value)) || 0
+    })
   }
 
   render () {
-    const { dateOfTravel, numberOfAdults } = this.state
-    const formattedDateOfTravel = dateOfTravel.toLocaleDateString('en-US', {
+    const formattedDate = this.props.inputs.date.toLocaleDateString('en-US', {
       weekday: 'short',
       year: '2-digit',
       month: 'short',
@@ -41,17 +46,26 @@ export default class SearchForm extends React.Component {
                 <Form>
                   <Form.Field required>
                     <label>Origin City</label>
-                    <CitySearch placeholder={'Search origin city'} />
+                    <CitySearch
+                      value={this.props.inputs.originCity}
+                      onChange={this.handleOriginChange.bind(this)}
+                      placeholder={'Search origin city'}
+                    />
                   </Form.Field>
                   <Form.Field required>
                     <label>Destination City</label>
-                    <CitySearch placeholder={'Search destination city'} />
+                    <CitySearch
+                      value={this.props.inputs.destinationCity}
+                      onChange={this.handleDestinationChange.bind(this)}
+                      placeholder={'Search destination city'}
+                    />
                   </Form.Field>
                   <Form.Group widths='equal'>
                     <Form.Field required>
                       <label>Adults</label>
                       <Input
-                        value={numberOfAdults}
+                        value={this.props.inputs.adults}
+                        onChange={this.handleAdultsChange.bind(this)}
                         icon='users'
                         placeholder='Number of adult travelers'
                       />
@@ -59,7 +73,7 @@ export default class SearchForm extends React.Component {
                     <Form.Field required>
                       <label>Date of Travel</label>
                       <Input
-                        value={formattedDateOfTravel}
+                        value={formattedDate}
                         icon='calendar'
                         placeholder='Date of Travel'
                         disabled
@@ -80,3 +94,37 @@ export default class SearchForm extends React.Component {
     )
   }
 }
+
+const cityShape = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  geohash: PropTypes.string.isRequired
+})
+
+SearchForm.propTypes = {
+  inputs: PropTypes.shape({
+    originCity: cityShape,
+    destinationCity: cityShape,
+    date: PropTypes.instanceOf(Date).isRequired,
+    adults: PropTypes.number
+  }),
+  updateSearchInputs: PropTypes.func
+}
+
+const mapStateToProps = state => {
+  return {
+    inputs: state.inputs
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateSearchInputs () {
+      dispatch(updateSearchInputs(...arguments))
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchForm)
