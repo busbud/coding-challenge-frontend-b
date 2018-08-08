@@ -20,7 +20,7 @@ export default class App extends React.Component {
         <Router>
           <div className="app-wrap">
             <AppTopbar />
-            <div className="app-grid">
+            <div className="app-content">
               <Route path={'/'} component={Welcome} exact={true} />
               <Route path={'/search-form'} component={SearchForm} />
               <Route path={'/search-results'} component={SearchResults} />

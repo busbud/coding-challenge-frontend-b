@@ -5,8 +5,9 @@
   flex-direction: column;
 }
 
-.app-grid {
+.app-content {
   flex-grow: 1;
+  overflow-y: scroll;
 }
 
 @keyframes bump {

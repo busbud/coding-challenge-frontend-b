@@ -15,7 +15,6 @@ const client = axios.create({
 
 export default {
   async search ({ origin, destination, date, poll }) {
-    console.log('departures.search inputs', origin, destination, date, poll)
     let url = `${origin}/${destination}/${toIsoDate(date)}`
     if (poll) {
       url += '/poll'

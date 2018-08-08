@@ -1,6 +1,9 @@
 import React from 'react'
+import moment from 'moment'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { Accordion, Icon } from 'semantic-ui-react'
+import './SearchDetails.scss'
 
 class SearchDetails extends React.Component {
   constructor (props) {
@@ -18,12 +21,6 @@ class SearchDetails extends React.Component {
 
   render () {
     const { isOpen } = this.state
-    const formattedDate = this.props.date.toLocaleDateString('en-US', {
-      weekday: 'short',
-      year: '2-digit',
-      month: 'short',
-      day: 'numeric'
-    })
 
     return (
       <Accordion styled>
@@ -32,13 +29,20 @@ class SearchDetails extends React.Component {
           index={0}
           onClick={this.handleAccordionClick.bind(this)}
         >
-          <Icon name='dropdown' />
-          Trips from: {this.props.origin} to: {this.props.destination} for {formattedDate}
+          <Link to="/search-form" className="back-button">
+            <Icon name='angle left' />
+          </Link>
+          {[
+            'Trips from',
+            this.props.origin,
+            'to',
+            this.props.destination,
+            'for',
+            moment(this.props.date).format('ll')
+          ].join(' ')}
         </Accordion.Title>
         <Accordion.Content active={isOpen}>
-          <ul>
-            <li>Adults: {this.props.adults}</li>
-          </ul>
+          <Icon name='users' /> {this.props.adults} Adults
         </Accordion.Content>
       </Accordion>
     )

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Grid, Loader } from 'semantic-ui-react'
+import { Container, Grid, Loader } from 'semantic-ui-react'
 import SearchDetails from './components/SearchDetails'
 import DeparturesList from './components/DeparturesList'
 import NoDepartures from './components/NoDepartures'
@@ -16,32 +16,36 @@ class SearchResults extends React.Component {
 
   render () {
     return (
-      <Grid
-        verticalAlign={'middle'}
-        textAlign={'center'}
-      >
-        <Grid.Row>
-          <Grid.Column mobile={15} tablet={9} largeScreen={6}>
-            <div className="search-details">
-              <SearchDetails
-                origin={this.props.inputs.originCity.name}
-                destination={this.props.inputs.destinationCity.name}
-                date={this.props.inputs.date}
-                adults={this.props.inputs.adults}
-              />
-            </div>
-            <DeparturesList departures={this.props.departures}/>
-            {
-              this.props.departures.length === 0 && !this.props.isLoading
-                ? NoDepartures
-                : ''
-            }
-            <div>
-              <Loader active={this.props.isLoading} inline='centered' />
-            </div>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <Container className="search-results-wrap">
+        <Grid centered={true}>
+          <Grid.Row>
+            <Grid.Column
+              mobile={15}
+              tablet={9}
+              computer={8}
+              largeScreen={7}
+            >
+              <div className="search-details">
+                <SearchDetails
+                  origin={this.props.inputs.originCity.name}
+                  destination={this.props.inputs.destinationCity.name}
+                  date={this.props.inputs.date}
+                  adults={this.props.inputs.adults}
+                />
+              </div>
+              <DeparturesList departures={this.props.departures}/>
+              {
+                this.props.departures.length === 0 && !this.props.isLoading
+                  ? <NoDepartures />
+                  : ''
+              }
+              <div>
+                <Loader active={this.props.isLoading} inline='centered' />
+              </div>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
     )
   }
 }
