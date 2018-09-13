@@ -6,44 +6,36 @@ block content
       h3.margin-top-0
         i.fas.fa-bus
         |  The Best Way to Book Bus Tickets
+      form
+        .form-body
+          .row
+            .col-md-6
+              .form-group
+                label.col-sm-2.control-label(for='origin') Departure
+                input#origin.form-control(name='origin', type='text', placeholder='Leaving from', value='')
+            .col-md-6
+              .form-group
+                label.col-sm-2.control-label(for='destination') Destination
+                input#destination.form-control(name='destination', type='text', placeholder='Going to', value='')
+          .row
+            .col-md-6
+              .form-group
+                label.col-sm-2.control-label(for='outbound_date') From
+                input#outbound_date.form-control.datepicker(name='outbound_date', type='text', placeholder='One way', value='')
+            .col-md-6
+              .form-group
+                label.col-sm-2.control-label(for='toDate') To
+                input#toDate.form-control.datepicker(name='toDate', type='text', placeholder='Return', value='')
+          .row
+            .col-md-6
+              .form-group
+                label.col-sm-2.control-label(for='passenger') Passenger
+                input#passenger.form-control(name='passenger', type='text', placeholder='Passenger')
+            .col-md-6
+              .form-group.margin-bottom-0.pull-right.margin-right-0.margin-top-25
+                input#submit.btn.btn-primary(name='submit', type='submit', value='Search')
       .row
-        .col-md-6
-          form.form-horizontal.center.margin-top-20(role='form')
-            .row
-              .col-md-12
-                .form-group
-                  label.col-sm-2.control-label(for='departure') Departure
-                  .col-sm-10
-                    input#departure.form-control(name='departure', type='text', placeholder='Leaving from', value='')
-            .row
-              .col-md-12
-                .form-group
-                  label.col-sm-2.control-label(for='destination') Destination
-                  .col-sm-10
-                    input#destination.form-control(name='destination', type='text', placeholder='Going to', value='')
-            .row
-              .col-md-12
-                .form-group
-                  label.col-sm-2.control-label(for='fromDate') From
-                  .col-sm-10
-                    input#fromDate.form-control.datepicker(name='fromDate', type='text', placeholder='One way', value='')
-            .row
-              .col-md-12
-                .form-group
-                  label.col-sm-2.control-label(for='toDate') To
-                  .col-sm-10
-                    input#toDate.form-control.datepicker(name='toDate', type='text', placeholder='Return', value='')
-            .row
-              .col-md-12
-                .form-group
-                  label.col-sm-2.control-label(for='passenger') Passenger
-                  .col-sm-10
-                    input#passenger.form-control(name='passenger', type='text', placeholder='Passenger')
-            .row
-              .col-md-12
-                .form-group.margin-bottom-0.pull-right.margin-right-0
-                  .col-sm-10.col-sm-offset-2
-                    input#submit.btn.btn-primary(name='submit', type='submit', value='Search')
+        .col-md-3
         .col-md-6
           div.margin-top-20
             .row
@@ -51,16 +43,33 @@ block content
                 h4
                   i.fas.fa-road
                   |  Results
-            .row.result
-              .col-md-2
-                span Company name
-              .col-md-8
-                span
-                  i.fas.fa-map-marker.margin-right-5
-                  | 12:01 AM - New York 85th street
-                br
-                span
-                  i.fas.fa-map-marker-alt.margin-right-5
-                  | 08:30 PM - Montreal Metro Papineau
-              .col-md-2
-                span 35€
+                  span= departures.length
+            for departure in departures
+              if departure.departure_time
+                .row.result
+                  .col-md-2
+                    for operator in operators
+                      if operator.id == departure.operator_id
+                        span= operator.name
+                  .col-md-8
+                    span
+                      i.fas.fa-map-marker.margin-right-5
+                      span #{moment(Date.parse(departure.departure_time)).format('hh:mm a')}
+                      |  - 
+                      for location in locations
+                        if location.id == departure.origin_location_id
+                          span= location.name
+                    br
+                    span
+                      i.fas.fa-map-marker-alt.margin-right-5
+                      span #{moment(Date.parse(departure.arrival_time)).format('hh:mm a')}
+                      |  - 
+                      for location in locations
+                        if location.id == departure.destination_location_id
+                          span= location.name
+                  .col-md-2
+                    if departure.prices
+                      span= departure.prices.total
+                      span= departure.prices.currency
+                      br
+                      a(href= departure.links.deeplink) Select
