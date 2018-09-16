@@ -6,7 +6,7 @@ html {
 body {
   background-color: #A9EBE7;
   font-family: Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
-  padding: 50px;
+  padding: 60px;
 }
 
 /* Override bootstrap */
@@ -58,10 +58,24 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   border-color: #006e6e;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:active {
   color: #fff;
   background-color: #006e6e;
   border-color: #006e6e;
+}
+
+.btn-yellow {
+  color: #fff;
+  background-color: #f1c40f;
+  border-color: #f1b50f;
+}
+
+.btn-yellow:hover,
+.btn-yellow:active {
+  color: #fff;
+  background-color: #f1b50f;
+  border-color: #f1b50f;
 }
 
 /* Custom style */

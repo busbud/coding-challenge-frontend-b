@@ -12,16 +12,22 @@ block content
             .col-md-6
               .form-group
                 label.col-sm-2.control-label(for='origin') Departure
-                input#origin.form-control(name='origin', type='text', placeholder='Leaving from', value='')
+                select#origin.form-control.bs-select(name='origin', title='Leaving from', value='dr5reg')
+                  each val, index in {chicago: 'Chicago', detroit: 'Detroit', marseille: 'Marseille', lyon: 'Lyon', f25dvk: 'Montréal', nantes: 'Nantes', dr5reg: 'New-York', paris: 'Paris', quebec: 'Québec'}
+                    - var select=null; if (index == 'dr5reg') select='selected';
+                    option(value= index selected=select)= val
             .col-md-6
               .form-group
                 label.col-sm-2.control-label(for='destination') Destination
-                input#destination.form-control(name='destination', type='text', placeholder='Going to', value='')
+                select#destination.form-control.bs-select(name='destination', title='Going to', value='f25dvk')
+                  each val, index in {chicago: 'Chicago', detroit: 'Detroit', marseille: 'Marseille', lyon: 'Lyon', f25dvk: 'Montréal', nantes: 'Nantes', dr5reg: 'New-York', paris: 'Paris', quebec: 'Québec'}
+                    - var select=null; if (index == 'f25dvk') select='selected';
+                    option(value= index selected=select)= val
           .row
             .col-md-6
               .form-group
                 label.col-sm-2.control-label(for='outbound_date') From
-                input#outbound_date.form-control.datepicker(name='outbound_date', type='text', placeholder='One way', value='')
+                input#outbound_date.form-control.datepicker(name='outbound_date', type='text', placeholder='One way', value='01-Oct-2018')
             .col-md-6
               .form-group
                 label.col-sm-2.control-label(for='toDate') To
@@ -30,7 +36,10 @@ block content
             .col-md-6
               .form-group
                 label.col-sm-2.control-label(for='passenger') Passenger
-                input#passenger.form-control(name='passenger', type='text', placeholder='Passenger')
+                select#passenger.form-control(name="passenger", title="Passenger")
+                  -for(var i = 1;i<10;i++){
+                  option(value="#{i}")  #{i}
+                  -}
             .col-md-6
               .form-group.margin-bottom-0.pull-right.margin-right-0.margin-top-25
                 input#submit.btn.btn-primary(name='submit', type='submit', value='Search')
@@ -42,8 +51,9 @@ block content
               .col-md-12
                 h4
                   i.fas.fa-road
-                  |  Results
+                  |  Results ( 
                   span= departures.length
+                  |  )
             for departure in departures
               if departure.departure_time
                 .row.result
@@ -72,4 +82,4 @@ block content
                       span= departure.prices.total
                       span= departure.prices.currency
                       br
-                      a(href= departure.links.deeplink) Select
+                      a.btn.btn-yellow(href= departure.links.deeplink) Select

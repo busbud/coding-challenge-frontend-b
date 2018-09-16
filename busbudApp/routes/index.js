@@ -47,11 +47,13 @@ router.get('/', function(req, res, next) {
       var departuresJson = firstResponse.departures;
       var locationsJson = firstResponse.locations;
       var operatorsJson = firstResponse.operators;
-      for (var i = 0; i < operatorsJson.length; i++) {
-        console.dir(operatorsJson[i].name);
-      }
 
-      res.render('index', { title: 'Home', departures: departuresJson, locations: locationsJson, operators: operatorsJson});
+      res.render('index', {
+        title: 'Home',
+        departures: departuresJson,
+        locations: locationsJson,
+        operators: operatorsJson
+      });
 
     });
    
