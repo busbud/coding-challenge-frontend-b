@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -6,14 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  search = false;
-  constructor() { }
+  // today : any;
+  searchResults: any;
+  constructor(private homeService: HomeService) { }
 
   ngOnInit() {
+    this.getDate();
   }
 
-  onClickSearch() {
-    this.search = !this.search;
+  getDate(){
+   const today = new Date('August 19, 2018 00:00:00');
+   today.setDate(2);
+  return today.toISOString();
   }
 
+  onClickSearch(): void {
+    this.homeService.getData(this.getDate()).subscribe(res => {
+      console.log(res);
+      this.searchResults = res;
+    });
+  }
 }

@@ -6,12 +6,13 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class DetailsCardService {
+export class HomeService {
 
     constructor(private http: HttpClient) {}
 
-    getData():Observable<any> {
-        return this.http.get('https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date').map(res => {
+    getData(today:any):Observable<any> {
+        return this.http.get('https://napi.busbud.com/x-departures/dr5reg/f25dvk/'+today).map(res => {
+            console.log(res);
             return JSON.parse(res['_body']);
     })
     }
