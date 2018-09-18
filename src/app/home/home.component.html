@@ -1,25 +1,35 @@
 <div class="container-fluid px-0">
-<app-nav-bar></app-nav-bar>
-<div class="container pt-4">
-<form>
-    <div class="form-row">
-        <div class="form-group col-xs-1 col-md-6">
-            <input type="text" placeholder="Leaving From" class="w-100">
+    <app-nav-bar></app-nav-bar>
+    <div class="container-fluid pt-4 secondary-container">
+        <div class="tag-container mt-4">
+            <p class="tag-line text-center">Comfort and style your mile with busbud!</p>
         </div>
-        <div class="form-group col-xs-1 col-md-6">
-            <input type="text" placeholder="Going to" class="w-100">
+        <form class="mx-auto">
+            <div class="form-row">
+                <div class="form-group col-sm-12 col-md-6">
+                    <input class="w-100 pl-2" type="text" placeholder="Leaving From">
+                </div>
+                <div class="form-group col-sm-12 col-md-6">
+                    <input class="w-100 pl-2" type="text" placeholder="Going To">
+                </div>
+            </div>
+            <div class="form-row pb-5">
+                <div class="form-group col-sm-12 col-md-6">
+                    <input class="w-100 pl-2" type="text" placeholder="Date">
+                </div>
+                <div class="form-group col-sm-12 col-md-6">
+                    <input class="w-100 pl-2" type="number" min="0" max="1" placeholder="Passenger">
+                </div>
+                <div class="text-center col-12 mt-3">
+                    <button type="submit" class="search-btn" (click)="onClickSearch()">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="osheaga text-center row mx-0 w-100 justify-content-center">
+        <div class="osheaga-logo col-auto align-self-center">
+            <img class="osheaga-image" src="../../assets/images/Osheaga_Logo-2.png">
         </div>
     </div>
-    <div class="form-row">
-        <div class="form-group col-xs-6">
-            <input type="text" placeholder="Date">
-        </div>
-        <div form="form-group col-xs-6">
-            <input type="number" placeholder="passenger">
-        </div>
-        <button type="submit" class="submit-btn d-none">Search</button>
-    </div>
-    <button type="submit" class="submit-btn d-block col-xs-12">Search</button>
-</form>
 </div>
-</div>
+<app-details-card></app-details-card>
