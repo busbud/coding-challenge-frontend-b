@@ -1,0 +1,165 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #2880bc 0, #2880bc 22%, #7abdc3 33%, #9bbea5 44%, #d3ad6c 55%, #e7717f 72%, #e7717f); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: sans-serif;
+  font-weight: bold; }
+
+h1, h2 {
+  line-height: 1.1; }
+
+h3, h4 {
+  line-height: 1.3; }
+
+h1 {
+  font-size: 2.75rem;
+  letter-spacing: -2px; }
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -1px; }
+
+h3 {
+  font-size: 2.25rem; }
+
+h4 {
+  font-size: 2rem; }
+
+h5 {
+  font-size: 1.5rem; }
+
+.w-100 {
+  width: 100%; }
+
+.flex {
+  display: flex; }
+
+.flex-column {
+  flex-direction: column; }
+
+.flex-wrap {
+  flex-wrap: wrap; }
+
+.justify-space-between {
+  justify-content: space-between; }
+
+.justify-space-around {
+  justify-content: space-around; }
+
+.justify-center {
+  justify-content: center; }
+
+.align-items-center {
+  align-items: center; }
+
+.header .logo {
+  width: 75%;
+  max-width: 390px;
+  height: auto;
+  padding: 2em; }
+
+.departure-list .title {
+  color: white;
+  margin: 0px auto;
+  width: 100%;
+  max-width: 1000px;
+  text-align: center; }
+
+.departure-list .departure-list-wrapper {
+  padding: 0.5em;
+  max-width: 1665px;
+  margin: 0 auto; }
+  .departure-list .departure-list-wrapper .departure-list-empty {
+    background-color: #e7717f;
+    border: 10px solid white;
+    color: white;
+    padding: 1em;
+    margin: 1em 0px;
+    width: 100%; }
+
+.departure {
+  background-color: #ffd83f;
+  border: 10px solid white;
+  padding: 1em;
+  margin: 1em auto;
+  width: 100%;
+  max-width: 1000px; }
+  @media (min-width: 1300px) {
+    .departure {
+      width: calc(50% - 1em);
+      margin: 0.5em; } }
+  .departure .departure-name {
+    color: #0f3852;
+    width: 100%; }
+    @media (min-width: 765px) {
+      .departure .departure-name {
+        width: calc(100% - 7.25em); } }
+  .departure .departure-price {
+    width: 7em;
+    padding: 1em;
+    margin: 0.25em;
+    background-color: #9bbea5;
+    border: 2px solid #9bbea5;
+    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1em;
+    color: white;
+    text-align: center; }
+  .departure .departure-info .info-block {
+    padding: 1em 0px;
+    width: 100%; }
+    @media (min-width: 765px) {
+      .departure .departure-info .info-block {
+        width: auto; } }
+    .departure .departure-info .info-block .label {
+      color: #7abdc3;
+      text-align: center;
+      font-weight: 600;
+      padding-bottom: 0.25em;
+      margin-bottom: 0.25em;
+      border-bottom: 2px solid #7abdc3; }
+    .departure .departure-info .info-block .time {
+      color: #7abdc3;
+      font-weight: 600; }

@@ -8,6 +8,6 @@
     }
 
   } @else {
-    @warn 'Invalid breakpoint: #{$breakpoint}.';
+    @warn "Invalid breakpoint: #{$breakpoint}.";
   }
 }
