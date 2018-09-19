@@ -44,6 +44,14 @@
                 </div>
             </div>
         </div> -->
-        <app-details-card></app-details-card>
+        <app-details-card [departure]="departure" [cities]="searchResults.cities" *ngFor="let departure of searchResults.departures">
+        </app-details-card>
     <!-- </div> -->
+        <!-- Details Cards.................................................................. -->
+
+
+
+
+
+
 </div>

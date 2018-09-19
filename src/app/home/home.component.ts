@@ -7,24 +7,20 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  // today : any;
-  searchResults: any;
+  searchResults: any = {
+    departures: []
+  };
   constructor(private homeService: HomeService) { }
 
   ngOnInit() {
-    this.getDate();
-  }
-
-  getDate(){
-   const today = new Date('August 19, 2018 00:00:00');
-   today.setDate(2);
-  return today.toISOString();
   }
 
   onClickSearch(): void {
-    this.homeService.getData(this.getDate()).subscribe(res => {
-      console.log(res);
+    this.homeService.getData().subscribe(res => {
       this.searchResults = res;
+      console.log(this.searchResults);
     });
   }
 }
+
+

@@ -1,4 +1,3 @@
-
 <div class="container px-0">
   <div class="row card">
     <div class="col-12">
@@ -9,21 +8,21 @@
         <div class="col-6 time text-center">
           <div class="dept-time-details mb-2">
             Dept Time
-            <span class="d-time"> 19:00 hrs</span>
+            <span class="d-time"> {{departure.departure_time | date:'shortTime'}}</span>
           </div>
           <div class="arr-time-details">Arr Time
-            <span class="a-time"> 2:00 hrs</span>
+            <span class="a-time">{{departure.arrival_time | date:'shortTime'}}</span>
           </div>
         </div>
         <div class="col-6 location text-center">
-          <div class="departing-location-details mb-2"> From
-            <span class="d-location">New York</span>
+          <div class="departing-location-details mb-2"> Origin
+            <span class="d-location">{{ cities[0].name }}</span>
           </div>
-          <div class="arriving-location-details"> To
-              <span class="a-location">Montreal</span>
-            </div>
+          <div class="arriving-location-details"> Destination
+            <span class="a-location">{{ cities[1].name }}</span>
+          </div>
         </div>
-        <div class="col-12 price text-center mt-2 mb-2 ">C$ 100</div>
+        <div class="col-12 price text-center mt-2 mb-2 ">USD {{ departure.prices.total }}</div>
       </div>
     </div>
   </div>
