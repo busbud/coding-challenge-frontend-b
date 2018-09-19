@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   searchResults: any = {
     departures: []
   };
+
   constructor(private homeService: HomeService) { }
 
   ngOnInit() {

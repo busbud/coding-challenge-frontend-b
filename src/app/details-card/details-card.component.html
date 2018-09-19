@@ -15,10 +15,10 @@
           </div>
         </div>
         <div class="col-6 location text-center">
-          <div class="departing-location-details mb-2"> Origin
-            <span class="d-location">{{ cities[0].name }}</span>
+          <div class="departing-location-details mb-2">{{ 'details-card.leaving' | translate }}
+            <span class="d-location">{{ cities[0].name }} {{ 'details-card.new_york' | translate }}</span>
           </div>
-          <div class="arriving-location-details"> Destination
+          <div class="arriving-location-details"> {{ 'details-card.destination' | translate }}
             <span class="a-location">{{ cities[1].name }}</span>
           </div>
         </div>

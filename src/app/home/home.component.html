@@ -1,5 +1,5 @@
 <div class="container-fluid px-0 mb-5">
-    <app-nav-bar></app-nav-bar>
+    <app-nav-bar [changLang]="language"></app-nav-bar>
     <div class="container-fluid pt-4 secondary-container">
         <div class="tag-container mt-4">
             <p class="tag-line text-center">Comfort and style your mile with busbud!</p>
@@ -31,27 +31,7 @@
             <img class="osheaga-image" src="../../assets/images/Osheaga_Logo-2.png">
         </div>
     </div>
-    <!-- <div class="container itenary mx-auto">
-        <div class="row">
-            <div class="col-6">
-                <div class="Destination">
-                    New York -> Montreal
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="Day">
-                    Tuesday, Sep 18
-                </div>
-            </div>
-        </div> -->
         <app-details-card [departure]="departure" [cities]="searchResults.cities" *ngFor="let departure of searchResults.departures">
         </app-details-card>
-    <!-- </div> -->
-        <!-- Details Cards.................................................................. -->
-
-
-
-
-
 
 </div>
