@@ -10,10 +10,18 @@ export class HomeComponent implements OnInit {
   searchResults: any = {
     departures: []
   };
+  poll: any;
 
   constructor(private homeService: HomeService) { }
 
   ngOnInit() {
+    this.enablePolling();
+  }
+
+  enablePolling() {
+  this.poll = setInterval(this.onClickSearch, 1000);
+  console.log(this.poll);
+
   }
 
   onClickSearch(): void {
