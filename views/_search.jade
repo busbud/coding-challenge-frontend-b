@@ -1,0 +1,47 @@
+.search
+  form.search__form(method='GET' action='/results')
+    .search__form__field
+      .form-group
+        label(for='origin') #{translation.LABEL_FROM}:
+        input#origin.form-control(type='text' placeholder='#{translation.INPUT_CITY}' name='origin' autocomplete='off')
+        ul.search__options
+      .form-group
+        label(for='destination') #{translation.LABEL_TO}:
+        input#destination.form-control(type='text' placeholder= '#{translation.INPUT_CITY}' name='destination' autocomplete='off')
+        ul.search__options
+      .form-group
+        label(for='departure') #{translation.LABEL_DEPART}:
+        #bus-datepicker(class='input-daterange input-group')
+          input#departure.form-control(type='text' placeholder='dd-mm-yyyy' autocomplete="off" class='input-sm form-control' name='departure' data-date-format='DD, MM d' readonly= "readonly")
+      .passengers.form-group
+        .label #{translation.LABEL_TRAVELLERS}:
+        .form-control
+          span.passenger--number 1
+          span.passenger--sub  #{translation.INPUT_PASSENGER}
+        .passengers__details
+          .passengers__details__item
+            label(for='adults') #{translation.INPUT_ADULTS}:
+            .passengers__details__item--information
+              .passenger--subtract
+              input#adults.form-control(type='text' name='adults' value= "1")
+              .passenger--add
+          .passengers__details__item
+            label(for='children') #{translation.INPUT_CHILDREN}:
+            .passengers__details__item--information
+              .passenger--subtract
+              input#children.form-control(type='text' name='children' value= "0")
+              .passenger--add
+          .passengers__details__item
+            label(for='seniors') #{translation.INPUT_SENIORS}:
+            .passengers__details__item--information
+              .passenger--subtract
+              input#seniors.form-control(type='text' name='seniors' value= "0")
+              .passenger--add
+
+    .search__form__button
+      button#search__btn.btn.btn-primary.btn-block.error-origin.error-destination(type='submit' data-toggle="modal" data-target="#loadingModal" disabled) #{translation.BUTTON_SEARCH}
+
+include _modal.jade
+
+
+

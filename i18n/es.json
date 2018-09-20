@@ -1,0 +1,21 @@
+{
+  "LABEL_FROM": "Desde",
+  "LABEL_TO": "Hasta",
+  "LABEL_DEPART": "Fecha",
+  "LABEL_TRAVELLERS": "Pasajeros",
+  "INPUT_CITY": "Ciudad",
+  "LABEL_PASSENGERS": "Pasajeros",
+  "INPUT_PASSENGER": "pasajero",
+  "INPUT_ADULTS": "Adultos",
+  "INPUT_CHILDREN": "Niños",
+  "INPUT_SENIORS": "Seniors",
+  "BUTTON_SEARCH": "Buscando autobuses",
+  "PROMOTION_TITLE": "En mi camino",
+  "PROMOTION_TRIP": "Viajando desde Nueva York",
+  "PROMOTION_TRIP_DATE": "Sep 28",
+  "PROMOTION_DATE": "29 Sept",
+  "PROMOTION_BUTTON": "¡Únete a la fiesta!",
+  "PROMOTION_URL": "/results?lang=es&origin=New+York&destination=Montreal&departure=28-09-2018&adults=1&children=0&seniors=0",
+  "ERROR_RESULT": "No hay resultados encontrados",
+  "ERROR_SEARCH": "Error en la búsqueda"
+}

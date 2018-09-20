@@ -1,0 +1,21 @@
+{
+  "LABEL_FROM": "From",
+  "LABEL_TO": "To",
+  "LABEL_DEPART": "Depart",
+  "LABEL_TRAVELLERS": "Travellers",
+  "INPUT_CITY": "City",
+  "LABEL_PASSENGERS": "Passengers",
+  "INPUT_PASSENGER": "passenger",
+  "INPUT_ADULTS": "Adults",
+  "INPUT_CHILDREN": "Children",
+  "INPUT_SENIORS": "Seniors",
+  "BUTTON_SEARCH": "Search for buses",
+  "PROMOTION_TITLE": "On your way",
+  "PROMOTION_TRIP": "Travelling from New York",
+  "PROMOTION_TRIP_DATE": "Sep 28",
+  "PROMOTION_DATE": "29 Sept",
+  "PROMOTION_URL": "/results?lang=en&origin=New+York&destination=Montreal&departure=28-09-2018&adults=1&children=0&seniors=0",
+  "PROMOTION_BUTTON": "Join to the party!",
+  "ERROR_RESULT": "No results found",
+  "ERROR_SEARCH": "Search failed"
+}

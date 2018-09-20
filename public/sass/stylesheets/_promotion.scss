@@ -1,0 +1,127 @@
+.promotion{
+  position:relative;
+  &::before {
+    z-index: 2;
+    background-color: $white;
+    height: calc(100% - 10px);
+    width: 3px;
+    font-weight: bold;
+    content: '';
+    border-bottom: solid 1px #fff;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border-radius: 10px;
+  }
+  &::after {
+    z-index: 2;
+    background-color: $white;
+    height: 3px;
+    width: 100%;
+    font-weight: bold;
+    content: '';
+    border-bottom: solid 1px #fff;
+    position: absolute;
+    bottom: 10px;
+    border-radius: 10px;
+  }
+  a{
+    color: #0f3852;
+  }
+}
+.promotion--intro{
+  padding-bottom: 5px;
+}
+.promotion__title{
+  font-size: 1.3em;
+  padding: 10px 20px 0;
+  font-weight: 600;
+}
+.promotion__information{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.promotion__main{
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  align-items: flex-end;
+  overflow: hidden;
+  position:relative;
+  a{
+    color: #0f3852;
+  }
+
+}
+.promotion__main--details{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 330px;
+    margin-left: auto;
+}
+
+.promotion__main--logo{
+  display:  flex;
+  justify-content:  center;
+  img{
+    width: 60%;
+    height:60%;
+  }
+}
+.promotion__main--date, .promotion__main--link{
+  text-align:center;
+  font-weight: 600;
+}
+.promotion__main--link{
+  color: $white;
+  padding-top: 30px;
+  span{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: $yellow;
+  }
+}
+
+@media (min-width: 768px) {
+  .promotion--intro{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0px;
+  }
+  .promotion__information--date{
+    padding-left: 40px;
+  }
+}
+.promotion__main--background{
+  background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(241,144,32,0.12) 50%), url(/images/festival.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+.promotion__main--details{
+  z-index: 2;
+  pointer-events: none;
+}
+.promotion__main--background {
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+}
+
+.promotion__main--background:hover, .promotion__main--background:focus{
+  -ms-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+}
