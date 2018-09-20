@@ -26,6 +26,14 @@ form {
     // only till xs screen size......................
     max-width: 400px;
 }
+
+.date {
+  border-radius: 2px;
+  border-style: none;
+  height: 35px;
+  background : #fff;
+}
+
 .form-group {
   input {
     border-radius: 2px;
@@ -49,11 +57,15 @@ form {
 
 .osheaga {
   height: 150px;
-  .osheaga-image {
-    width: 250px;
-  }
+}
+.osheaga-image {
+  width: 250px;
+}
+.book-tickets {
+  font-size: 22px;
 }
 
-.itenary {
-  max-width: 500px;
-}
+
+// .itenary {
+//   max-width: 500px;
+// }

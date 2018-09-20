@@ -19,17 +19,17 @@ export class HomeComponent implements OnInit {
   }
 
   enablePolling() {
-  this.poll = setInterval(this.onClickSearch, 1000);
+  this.poll = setInterval(this.onClickSearch, 3000);
   console.log(this.poll);
-
   }
 
   onClickSearch(): void {
     this.homeService.getData().subscribe(res => {
       this.searchResults = res;
-      console.log(this.searchResults);
     });
   }
 }
+
+
 
 

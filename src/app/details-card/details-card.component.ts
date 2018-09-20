@@ -11,7 +11,6 @@ export class DetailsCardComponent implements OnInit {
   @Input() cities: any;
 
   ngOnInit(){
-    console.log(this.departure);
   }
 
 }

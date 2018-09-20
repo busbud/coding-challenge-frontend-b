@@ -1,9 +1,9 @@
 <nav class="navbar navigation">
   <a href="#"><img  class="busbud-logo" src="../../assets/images/busbud.png" alt="busbud logo"></a>
-  <!-- <div class="navbar-nav"></div> -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a href="#" class="nav-link lang-multi">EN/FR</a>
+      <button type="button" class="lang-btn mr-2" (click)="useLanguage('en')">EN</button>
+      <button type="button" class="lang-btn" (click)="useLanguage('fr')">FR</button>
     </li>
   </ul>
 </nav>
