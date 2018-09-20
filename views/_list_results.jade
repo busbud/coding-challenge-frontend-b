@@ -1,0 +1,19 @@
+ul.results__list
+  li.results__item.results__item--empty #{translation.ERROR_RESULT}.
+  each val, i in results.departure
+    li.results__item
+      .results__item__main
+        .results__item__departure
+          .results__item__date= results.departure[i]
+          .results__item__location= results.origin[i]
+        .results__item__arrival
+          .results__item__arrival--time
+            .results__item__date= results.arrival[i]
+            .results__item__arrival--time-sub= results.diffDays[i]
+          .results__item__location= results.destination[i]
+      .results__item__details
+        .results__item__diffTime= results.diffTime[i]
+        .results__item__price
+          .results__item__price--number
+            span= results.price[i]
+            span= results.currency[i]

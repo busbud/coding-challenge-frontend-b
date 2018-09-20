@@ -1,0 +1,19 @@
+.promotion
+  .promotion--intro
+    h2.promotion__title #{translation.PROMOTION_TITLE}
+    .promotion__information
+      .promotion__information--origin
+        span #{translation.PROMOTION_TRIP}
+      .promotion__information--date
+        span #{translation.PROMOTION_TRIP_DATE}
+  .promotion--link(data-toggle="modal" data-target="#loadingModal")
+    a.promotion__main(href="#{translation.PROMOTION_URL}")
+      .promotion__main--background
+        .promotion__main--details
+          .promotion__main--logo
+            img(src="https://www.osheaga.com/uploads/osheaga/Logos/BellALtTeleLogo.png?v=dfa633f007b7ca70427ad388a1d3be52" alt="Oshegana")
+          .promotion__main--date
+            span #{translation.PROMOTION_DATE}
+          .promotion__main--link
+            span #{translation.PROMOTION_BUTTON}
+

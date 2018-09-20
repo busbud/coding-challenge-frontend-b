@@ -1,0 +1,251 @@
+// Generic
+
+.search{
+  background: $blue;
+  padding: 10px;
+  display:flex;
+}
+.search__form{
+  width: 100%;
+}
+.search__form__button{
+  margin: 0 10px;
+}
+#search__btn{
+  margin: 20px 0;
+  font-weight: 600;
+}
+.form-group{
+  padding: 0 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.form-control[readonly]{
+  background: $white;
+}
+label, .label{
+  color: $white;
+  font-size: 0.8em;
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+// Autocomplete
+
+.search__options{
+  position: absolute;
+  background: $white;
+  color: $dark-gray;
+  top: 66px;
+  border-radius: 4px;
+  width: calc(100% - 20px);
+  padding: 0;
+  list-style: none;
+  z-index: 4;
+  li{
+    padding: 5px 14px;
+    &:hover{
+      background-color: $yellow;
+      color: $white;
+      border-radius:4px;
+    }
+  }
+}
+
+// Datapicker
+
+#bus-datepicker{
+  &:after {
+    font-family: FontAwesome;
+    content: "\f073";
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    color: $dark-gray;
+    pointer-events: none;
+    z-index: 3;
+  }
+}
+.datepicker{
+  width: calc(100% - 40px);
+  display: flex;
+  border: 2px solid $light-gray;
+  color: $dark-gray;
+  justify-content: stretch;
+  text-align: center;
+  padding: 0;
+  .datepicker-days, .table-condensed{
+    width: 100%;
+  }
+  thead{
+    border-bottom: 1px solid $light-gray;
+    tr{
+      background:  $light-gray;
+      color:  $dark-gray;
+      &:last-child{
+        background: $white;
+        th{
+          font-weight: normal;
+        }
+        //color:  $light-gray;
+      }
+      &:first-child{
+        height: 0;
+      }
+    }
+  }
+  td{
+    &:hover{
+      background: $yellow;
+      color: $white;
+      border-radius: 3px;
+    }
+    &.disabled{
+      color: $light-gray;
+      &:hover{
+        background-color: $white;
+      }
+    }
+  }
+  th{
+    &.prev:hover, &.next:hover{
+      background: $yellow;
+      color: $white;
+    }
+  }
+  .datepicker-switch{
+    pointer-events: none;
+  }
+}
+
+// Passengers
+
+.passengers{
+  .form-control:after{
+    font-family: FontAwesome;
+    content: "\f0c0";
+    position: absolute;
+    right: 20px;
+    color: $dark-gray;
+  }
+}
+.passengers__details{
+  position: absolute;
+  top: 66px;
+  width: calc(100% - 20px);
+  background: $white;
+  color: $dark-gray;
+  border-radius: 4px;
+  padding: 5px 0;
+  display: none;
+  z-index: 1;
+  label{
+    margin-bottom: 0;
+    color: $dark-gray;
+    width: 50%;
+    padding: 5px 14px;
+    font-size: 0.9em;
+    font-weight: normal;
+  }
+}
+.passengers__details__item, .passengers__details__item--information{
+  display:flex;
+  align-items: center;
+}
+.passengers__details__item--information{
+  width: 50%;
+  justify-content: space-between;
+  width: 60px;
+  margin: auto;
+  input{
+    width: 26px;
+    padding: 0;
+    height: auto;
+    text-align: center;
+    border: none;
+    color: $dark-gray;
+    pointer-events: none;
+    &:disabled{
+      background: transparent;
+    }
+  }
+
+}
+.passenger--add{
+  &:before{
+    font-family: FontAwesome;
+    content: "\f055";
+    color: $light-gray;
+  }
+  &:hover:before{
+    color: $yellow;
+  }
+}
+.passenger--subtract{
+  &:before{
+    font-family: FontAwesome;
+    content: "\f056";
+    color: $light-gray;
+  }
+  &:hover:before{
+    color: $yellow;
+  }
+}
+//Tablet resolution
+@media (min-width: 768px) {
+  .search__form__field{
+    display: flex;
+  }
+  .search__form{
+    max-width: 800px;
+    width:100%;
+    margin: auto;
+    flex-direction: column;
+  }
+  .datepicker{
+    width: calc(180px);
+  }
+}
+
+//Computer resolution
+@media (min-width: 1024px) {
+  .search__form__field{
+    display: flex;
+  }
+  .search__form{
+    display: flex;
+    flex-direction: row;
+    max-width: 1000px;
+    width:100%;
+  }
+  #search__btn{
+    margin: 29px 0 20px;
+    padding: 6px 10px;
+  }
+}
+
+// Exclusive home
+@media (min-width: 768px) {
+  .home{
+    .search{
+      background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(241,144,32,0.12) 50%), url(/images/adult-2693054_1920.jpg);
+      padding: 80px 10px 40px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .search__form{
+      display: inline-block;
+      max-width: 800px;
+      width:100%;
+    }
+    .search__form__button{
+      width: 300px;
+      margin: 0 auto;
+    }
+    #search__btn{
+      padding: 10px;
+    }
+  }
+}

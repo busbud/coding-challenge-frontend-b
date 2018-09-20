@@ -1,0 +1,84 @@
+.modal-loading{
+  display: flex;
+  align-items: center;
+  height: 80vh;
+  justify-content: center;
+}
+.modal-loading--container{
+  width: 240px;
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #ffffffd9;
+  border-radius: 5px;
+  border: 1px solid $yellow;
+}
+.modal__img{
+  margin-top: 10px;
+  img{
+    width: 130px;
+  }
+}
+.modal__animation {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: 15px;
+}
+.modal__animation--item {
+    // .LoaderBalls__wrapper__item
+    $anim-drt: 0.4s;
+    $anim-ease: cubic-bezier(.6,.05,.15,.95);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: $yellow;
+    margin: 10px;
+    &:nth-child(1) {
+      animation: bouncing $anim-drt alternate infinite $anim-ease;
+    }
+
+    &:nth-child(2) {
+      animation: bouncing $anim-drt $anim-drt/4 alternate infinite $anim-ease backwards;
+    }
+
+    &:nth-child(3) {
+      animation: bouncing $anim-drt $anim-drt/2 alternate infinite $anim-ease backwards;
+    }
+  }
+
+@keyframes bouncing {
+
+  0% {
+    transform: translate3d(0, 10px, 0) scale(1.2, 0.65);
+  }
+
+  100% {
+    transform: translate3d(0, -10px, 0) scale(0.9, 1.1);
+  }
+}
+
+// Show error modal
+.modal__error{
+  display: none;
+  width: 240px;
+  height: 260px;
+  justify-content: center;
+  align-items: center;
+  background: #ffffffd9;
+  border-radius: 5px;
+  border: 1px solid $yellow;
+  color: $yellow;
+  font-weight: 600;
+}
+.results--error {
+  .modal-loading--container{
+    display: none;
+  }
+  .modal__error{
+    display: flex;
+  }
+}
