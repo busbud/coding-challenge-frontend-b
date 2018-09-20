@@ -15,11 +15,10 @@ export class HomeComponent implements OnInit {
   constructor(private homeService: HomeService) { }
 
   ngOnInit() {
-    this.enablePolling();
   }
 
   enablePolling() {
-  this.poll = setInterval(this.onClickSearch, 3000);
+  this.poll = setInterval(this.onClickSearch.bind(this), 3000);
   console.log(this.poll);
   }
 
