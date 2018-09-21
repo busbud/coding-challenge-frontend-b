@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
 
   enablePolling() {
   this.poll = setInterval(this.onClickSearch.bind(this), 3000);
-  console.log(this.poll);
   }
 
   onClickSearch(): void {
