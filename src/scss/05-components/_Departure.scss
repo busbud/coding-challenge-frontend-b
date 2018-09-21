@@ -1,0 +1,60 @@
+.departure {
+  background-color: $bright-yellow;
+  border: 10px solid white;
+  padding: 1em;
+  margin: 1em auto;
+  width: 100%;
+  max-width: 1000px;
+
+  @include respond-above(lg) {
+    width: calc(50% - 1em);
+    margin: 0.5em;
+  }
+
+  .departure-name {
+    color: $navy;
+    width: 100%;
+
+    @include respond-above(sm) {
+      width: calc(100% - 7.25em);
+    }
+  }
+
+  .departure-price {
+    width: 7em;
+    padding: 1em;
+    margin: 0.25em;
+    background-color: $cyan;
+    border: 2px solid $cyan;
+    box-shadow: 2px 2px 5px rgba(white, 0.3);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+  }
+
+  .departure-info {
+    .info-block {
+      padding: 1em 0px;
+      width: 100%;
+
+      @include respond-above(sm) {
+        width: auto;
+      }
+
+      .label {
+        color: $teal;
+        text-align: center;
+        font-weight: 600;
+        padding-bottom: 0.25em;
+        margin-bottom: 0.25em;
+        border-bottom: 2px solid $teal;
+      }
+      .time {
+        color: $teal;
+        font-weight: 600;
+      }
+    }
+  }
+}

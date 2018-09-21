@@ -1,0 +1,13 @@
+{
+  "logo-alt": "Osheaga Festival Musique et Arts",
+  "departureList": {
+    "h1": "Voyage de {{from}} à {{to}}",
+    "title": "Liste de départ",
+    "empty": "Désolé, aucun départ disponible."
+  },
+  "departure": {
+    "departureTime": "Heure de départ",
+    "arrivalTime": "Heure d'arrivée",
+    "noAddress": "Pas d'adresse disponible"
+  }
+}
