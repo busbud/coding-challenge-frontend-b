@@ -1,0 +1,29 @@
+<div class="container px-0">
+  <div class="row card">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12 company-logo text-left">
+          <img class="brand-logo" src="../../assets/images/company.png" alt="image not found">
+        </div>
+        <div class="col-6 time text-center">
+          <div class="dept-time-details mb-2">
+            Dept Time
+            <span class="d-time"> {{departure.departure_time | date:'shortTime'}}</span>
+          </div>
+          <div class="arr-time-details">Arr Time
+            <span class="a-time">{{departure.arrival_time | date:'shortTime'}}</span>
+          </div>
+        </div>
+        <div class="col-6 location text-center">
+          <div class="departing-location-details mb-2">{{ 'details-card.leaving' | translate }}
+            <span class="d-location">{{ 'details-card.new_york' | translate }}</span>
+          </div>
+          <div class="arriving-location-details"> {{ 'details-card.destination' | translate }}
+            <span class="a-location">{{ 'details-card.montreal' | translate }}</span>
+          </div>
+        </div>
+        <div class="col-12 price text-center mt-2 mb-2 ">USD {{ departure.prices.total }}</div>
+      </div>
+    </div>
+  </div>
+</div>

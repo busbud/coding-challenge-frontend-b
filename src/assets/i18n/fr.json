@@ -1,0 +1,17 @@
+{
+  "home": {
+    "comfort_travel": "Réconfortez et coiffez votre mile avec busbud!",
+    "Leaving_from": "Départ de",
+    "destination": "Destination",
+    "passenger": "passager",
+    "search": "Rechercher",
+    "date": "Vend, Sept",
+    "book_tickets": "Livre votre des billets pour"
+  },
+  "details-card": {
+    "leaving": "Départ de",
+    "destination": "Destination",
+    "new_york": "New York",
+    "montreal": "Montréal"
+  }
+}

@@ -1,0 +1,71 @@
+.tag-line {
+  font-size: 20px;
+  font-weight: 600;
+}
+.secondary-container {
+  background: linear-gradient(
+    to right top,
+    #487ccb,
+    #0092c6,
+    #00a0a4,
+    #4ca67c,
+    #92a663
+  );
+  background-color: rgba(73, 155, 234, 1);
+  // @include media-breakpoint-down(sm) {
+  //     background-color: rgba(73,155,234,1);
+  // }
+
+  //display background image after 768px..................................................
+  // @include media-breakpoint-up(md) {
+  // background-image: url("../../assets/images/back-image.jpg");
+  // }
+  // background-position:
+}
+form {
+    // only till xs screen size......................
+    max-width: 400px;
+}
+
+.date {
+  border-radius: 2px;
+  border-style: none;
+  height: 35px;
+  background : #fff;
+}
+
+.form-group {
+  input {
+    border-radius: 2px;
+    border-style: none;
+    height:35px;
+  }
+}
+.search-btn {
+  border-style: none;
+  border-radius: none;
+  background: #f19000;
+  border-radius: 2px;
+  color: #fff;
+  padding: 5px 30px;
+  cursor: pointer;
+//   margin: 0px 5px;
+//   @include media-breakpoint-only(xs) {
+//       width: 100%;
+//   }
+}
+
+.osheaga {
+  height: 150px;
+}
+.osheaga-image {
+  width: 250px;
+}
+.book-tickets {
+  font-size: 22px;
+}
+
+
+// .itenary {
+//   max-width: 500px;
+// }

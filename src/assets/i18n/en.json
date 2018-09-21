@@ -1,0 +1,17 @@
+{
+    "home": {
+        "comfort_travel": "Comfort and style your mile with busbud!",
+        "Leaving_from": "Leaving From",
+        "destination": "Going To",
+        "passenger": "passenger",
+        "search": "Search",
+        "date": "Fri, Sept",
+        "book_tickets": "Book yout tickets for"
+    },
+    "details-card":{
+        "leaving": "Origin",
+        "destination": "Destination",
+        "new_york": "New York",
+        "montreal": "Montreal"
+    }
+}
