@@ -1,0 +1,23 @@
+.departure-list {
+  .title {
+    color: white;
+    margin: 0px auto;
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+  }
+  .departure-list-wrapper {
+    padding: 0.5em;
+    max-width: $max-width;
+    margin: 0 auto;
+
+    .departure-list-empty {
+      background-color: $pink;
+      border: 10px solid white;
+      color: white;
+      padding: 1em;
+      margin: 1em 0px;
+      width: 100%;
+    }
+  }
+}
