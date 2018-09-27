@@ -1,0 +1,15 @@
+{
+  "translations": {
+        "slogan": "From New-york to Montreal Osheaga !",
+        "french": "Français",
+        "english": "English",
+        "price": "${{price}}",
+        "departure": "Departure: {{date}}",
+        "arrival": "Arrival: {{date}}",
+        "loading": "Please wait, we are loading the magic",
+        "error": "Something happens, we are sorry. Please try again.",
+        "infoNoResult": "No travel found. Please try again.",
+        "restart": "Please reload",
+        "selectTravel": "Select this travel"
+  }
+}

@@ -1,0 +1,22 @@
+.Message {
+  text-align: center;
+}
+
+.Message--error {
+  color: red;
+}
+
+.Message__message {
+  padding: 10px 0;
+}
+
+.Message__button {
+  background: #eee;
+  padding: 10px;
+  border: none;
+
+  &:hover {
+    background: rgba(green, 0.4);
+    cursor: pointer;
+  }
+}
