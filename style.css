@@ -1,0 +1,106 @@
+body{
+  /*background-color: #FE938C;*/
+  font-family: Helvetica;
+  background-image: url('whirling_Dervs.jpg');
+  background-size:100%;
+
+}
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.banner {
+  justify-content: space-around;
+
+}
+#photo{
+  margin-top:140px;
+  margin-bottom:10px;
+}
+#caption{
+  padding:10px;
+  text-shadow: 2px 2px #ff0000;
+  color:#b0b4df;
+  font-family: 'Righteous';
+  font-size:33px;
+}
+.action-form {
+  padding:10px;
+  flex-direction: column;
+  align-items: center;
+  display:flex;
+  justify-content: space-around;
+}
+
+.input-field {
+  border-radius: 7px;
+  padding:5px;
+  box-shadow:
+}
+
+h1 {
+color:#add399;
+font-family:'Righteous',cursive;
+text-align:center;
+text-shadow: 5px;
+font-size:47px;
+font-weight:lighter;
+}
+#title{
+  padding:10px;
+  margin-bottom:0px;
+  font-size:25px;
+}
+
+#tagline{
+  margin-top:0px;
+  text-shadow: 3px 3px #5a0e09;
+  border-radius: 20px;
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+form {
+  display:flex;
+  align-items:center;
+  flex-direction: column;
+}
+.from, .leaving-on, .button {
+  color:#5a0e09;
+
+  margin:10px;
+
+}
+
+#button {
+  color:#add399;
+  font-size:17px;
+  width:200px;
+  padding: 10px;
+  background-color: #e85341;
+  border-radius:5px;
+  border:1px white;
+  box-shadow:  5px left;
+}
+#button:hover {
+  background-color:#5a0e09 ;
+
+}
+
+table {
+  width: 77%;
+  background-color: bisque;
+  border-radius: 10px;
+  box-shadow: 10px;
+  margin-bottom:50px;
+}
+table, th, td {
+    text-align:center;
+    padding: 10px;
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+

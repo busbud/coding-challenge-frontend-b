@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New Yorkers hit Osheaga</title>
+  <script src="main.js" async></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Righteous" rel="stylesheet">
+</head>
+
+<body>
+  <div class="flex-container">
+    <div class="flex-item banner">
+      <img src="osheaga.png" alt="Osheaga Music Festical" id="photo">
+    </div>
+    <h1 id="tagline"> Find your bus to Montreal for Osheaga 2018! </h1>
+    <div class="action-form flex-item">
+      <form action="results.html">
+        <div class="from">
+          BUSES FROM <input class="input-field" type="text" name="origin" value="New York" readonly>
+          TO <input type="text" name="destination" value="Montreal" readonly><br>
+        </div>
+        <div class="leaving-on">
+          DEPARTING ON <input class="input-field" type="text" name="date" value="02 August 2018" readonly><br>
+        </div>
+        <div class="button">
+          <input id="button" type="submit" class="input-field" value="Find My Bus!">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+
+<!-- https://napi.busbud.com/x-departures/dr5reg/f25dvk/2018-08-02 -->
+
+
+<!--
+ Use PARTNER_IoysifKUTZqIEyiBCLprjQ as the value for the X-Busbud-Token HTTP Header when prompted.  -->
