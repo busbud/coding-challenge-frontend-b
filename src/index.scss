@@ -1,3 +1,8 @@
 $primary: rebeccapurple;
 
-@import "~bulma/bulma";
+@import "~bulma/sass/utilities/_all.sass";
+@import "~bulma/sass/base/_all.sass";
+@import "~bulma/sass/layout/hero.sass";
+@import "~bulma/sass/layout/section.sass";
+@import "~bulma/sass/elements/container.sass";
+@import "~bulma/sass/elements/title.sass";
