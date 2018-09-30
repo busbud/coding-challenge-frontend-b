@@ -1,5 +1,5 @@
 # coding-challenge-frontend-b
-Using Express, Parcel, React, Pug, Sass & Bulma!
+Using Express, Parcel, Preact, Pug, Sass & Bulma!
 
 Use `yarn run lint` to lint the `.js` files.
 

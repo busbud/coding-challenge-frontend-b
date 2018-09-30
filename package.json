@@ -9,12 +9,16 @@
     "start": "node index.js",
     "lint": "eslint --ext .js ."
   },
+  "alias": {
+    "react": "preact-compat",
+    "react-dom": "preact-compat"
+  },
   "dependencies": {
     "compression": "^1.7.3",
     "express": "^4.16.3",
     "parcel-bundler": "^1.10.1",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "preact": "^8.3.1",
+    "preact-compat": "^3.18.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
