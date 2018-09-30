@@ -1,0 +1,33 @@
+{
+  "name": "coding-challenge-frontend-b",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/buschallenger/coding-challenge-frontend-b.git",
+  "author": "buschallenger <buschallenger@users.noreply.github.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint --ext .js ."
+  },
+  "dependencies": {
+    "compression": "^1.7.3",
+    "express": "^4.16.3",
+    "parcel-bundler": "^1.10.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "bulma": "^0.7.1",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "pug": "^2.0.3",
+    "sass": "^1.14.1"
+  }
+}
