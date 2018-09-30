@@ -1,8 +1,12 @@
-$primary: rebeccapurple;
+$primary: lightcoral;
+$box-padding: 1rem;
+$box-radius: 4px;
 
 @import "~bulma/sass/utilities/_all.sass";
 @import "~bulma/sass/base/_all.sass";
+@import "~bulma/sass/grid/columns.sass";
 @import "~bulma/sass/layout/hero.sass";
 @import "~bulma/sass/layout/section.sass";
 @import "~bulma/sass/elements/container.sass";
 @import "~bulma/sass/elements/title.sass";
+@import "~bulma/sass/elements/box.sass";

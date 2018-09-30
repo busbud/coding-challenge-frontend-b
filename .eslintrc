@@ -6,6 +6,9 @@
       "node": true
     },
     "rules": {
-      "react/jsx-filename-extension": 0
+      // it seems reasonable to me to have JSX in .js files
+      "react/jsx-filename-extension": 0,
+      // throws error because of the preact alias
+      "import/no-unresolved": 0
     }
 }
