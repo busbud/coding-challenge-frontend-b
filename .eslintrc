@@ -9,6 +9,8 @@
       // it seems reasonable to me to have JSX in .js files
       "react/jsx-filename-extension": 0,
       // throws error because of the preact alias
-      "import/no-unresolved": 0
+      "import/no-unresolved": 0,
+      // only warn about arrow functions with block statement
+      "arrow-body-style": 1
     }
 }

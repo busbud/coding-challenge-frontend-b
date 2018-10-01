@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { compareAsc } from 'date-fns';
 import ResultsCard from './ResultsCard';
 
 function Results(props) {
@@ -14,7 +15,10 @@ function Results(props) {
 
   return (
     <div className="results">
-      {data.departures.map(departure => (
+      <p>Sorted by departure time</p>
+      {data.departures.sort((x, y) => {
+        return compareAsc(new Date(x.departure_time), new Date(y.departure_time));
+      }).map(departure => (
         <ResultsCard
           departureTime={departure.departure_time}
           departureLocation={data.locations.find(x => x.id === departure.origin_location_id)}
