@@ -34,7 +34,7 @@ To interact with it from your code, you'll need to provide the following HTTP he
 
 HTTP Header | Value
 ------------|------
-Accept | application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/
+Accept | `application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/`
 X-Busbud-Token | value provided in challenge invitation email (if not contact us)
 
 ### Search overview
