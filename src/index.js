@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import { format } from 'date-fns';
 import './index.scss';
 import Results from './components/Results';
 
@@ -99,7 +100,7 @@ class App extends React.Component {
         <section className="section">
           <div className="container">
             <h1 className="title is-4">
-              {`From ${origin.label} to ${destination.label} on ${date}`}
+              {`From ${origin.label} to ${destination.label} on ${format(new Date(`${date}T12:00:00`), 'dddd, MMMM Do (YYYY)')}`}
             </h1>
             <Results isLoading={isLoading} data={data} />
           </div>
