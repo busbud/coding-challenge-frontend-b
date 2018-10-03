@@ -1,14 +1,15 @@
 import React from 'react';
-import Input from '@material-ui/core/Input';
+import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 //Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchData } from '../actions/index';
+import { fetchData, fetchFinish } from '../actions/index';
 
 const ORIGIN = 'dr5reg';
-const DESTINATION = 'f25dvkL';
+const DESTINATION = 'f25dvk';
 const DATE = '2019-09-02'
 
 const styles = theme => ({
@@ -21,78 +22,104 @@ const styles = theme => ({
     },
 });
 
+const geoMapping = [
+    { geotag: 'dr5reg', name: "New York" },
+    { geotag: 'f25dvk', name: "Montreal" }
+]
+
 class SearchBar extends React.Component {
 
     state = {
-        origin: '',
-        destination: '',
-        departure: '2019-09-02',
+        origin: 'New York',
+        originGeotag: { geotag: ORIGIN },
+        destination: 'Montreal',
+        destinationGeotag: { geotag: DESTINATION },
+        departure: DATE,
         return: '',
         passangers: ''
     }
 
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value })
+        this.setState({ [event.target.name + 'Geotag']: geoMapping.find(tag => tag.name === event.target.value) })
     }
 
     handleSearch(event) {
         event.prevent.default();
-        // here fetch data
     }
 
-    componentWillMount() {
-        fetchData(ORIGIN, DESTINATION, DATE)
+    handleClick(origin, destination, departure) {
+        if (origin && destination && departure) {
+            this.props.fetchData(origin, destination, departure);
+        }
     }
     render() {
-        console.log('this.props', this.props)
         const { classes } = this.props;
         return <form className={classes.container}>
-            <TextField
-                label="Leaving from"
-                className={classes.input}
-                value={this.state.origin}
-                name="origin"
-                inputProps={{
-                    'aria-label': 'Origin'
-                }}
-                onChange={(event) => this.handleChange(event)}
-            />
-            <TextField
-                label="Going to"
-                value={this.state.destination}
-                className={classes.input}
-                name="destination"
-                inputProps={{
-                    'aria-label': 'Destination',
-                }}
-                onChange={(event) => this.handleChange(event)}
-            />
-            <TextField
-                label="Leaving on"
-                value={this.state.departure}
-                name="departure"
-                className={classes.textField}
-                InputLabelProps={{
-                    'aria-label': 'Departure'
-                }}
-            />
-            <TextField
-                label="Number of Passangers"
-                value={this.state.passangers}
-                className={classes.input}
-                name="passangers"
-                inputProps={{
-                    'aria-label': 'Number of Passangers',
-                }}
-                onChange={(event) => this.handleChange(event)}
-            />
-        </form>
+            <Grid container
+                alignItems="center"
+                spacing={8}>
+                <Grid item xs={6} sm={3}>
+                    <TextField
+                        label="Leaving from"
+                        className={classes.input}
+                        value={this.state.origin}
+                        name="origin"
+                        inputProps={{
+                            'aria-label': 'Origin'
+                        }}
+                        onChange={(event) => this.handleChange(event)} />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                    <TextField
+                        label="Going to"
+                        value={this.state.destination}
+                        className={classes.input}
+                        name="destination"
+                        inputProps={{
+                            'aria-label': 'Destination',
+                        }}
+                        onChange={(event) => this.handleChange(event)} />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                    <TextField
+                        label="Leaving on"
+                        value={this.state.departure}
+                        name="departure"
+                        className={classes.input}
+                        InputLabelProps={{
+                            'aria-label': 'Departure'
+                        }} />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        className={classes.button}
+                        fullWidth
+                        onClick={() => this.handleClick(
+                            this.state.originGeotag.geotag,
+                            this.state.destinationGeotag.geotag,
+                            this.state.departure
+                        )}>
+                        Search
+                    </Button>
+                </Grid>
+            </Grid>
+        </form >
+
     }
 }
-
+function mapStateToProps(state) {
+    return {
+        ...state
+    };
+}
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ fetchData }, dispatch)
+    return bindActionCreators({ fetchData, fetchFinish }, dispatch)
 }
 
-// export default withStyles(styles)(SearchBar);
-export default connect(null, mapDispatchToProps)(withStyles(styles)(SearchBar))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SearchBar))
+
+
