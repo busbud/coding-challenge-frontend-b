@@ -7,10 +7,15 @@ function Results(props) {
   const {
     isLoading,
     data,
+    error,
   } = props;
 
   if (isLoading) {
     return <div className="loading">Loading results...</div>;
+  }
+
+  if (error) {
+    return <div className="notification is-warning">{error}</div>;
   }
 
   return (
@@ -37,6 +42,7 @@ function Results(props) {
 Results.defaultProps = {
   isLoading: true,
   data: {},
+  error: null,
 };
 
 Results.propTypes = {
@@ -52,6 +58,7 @@ Results.propTypes = {
     ttl: PropTypes.number,
     is_valid_route: PropTypes.bool,
   }),
+  error: PropTypes.string,
 };
 
 export default Results;

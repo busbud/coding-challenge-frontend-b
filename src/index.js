@@ -28,6 +28,7 @@ class App extends React.Component {
       currency: 'USD',
       isLoading: true,
       data: {},
+      error: null,
     };
   }
 
@@ -79,7 +80,8 @@ class App extends React.Component {
               setTimeout(pollDepartures, 2000);
             }
           }
-        });
+        })
+        .catch(error => this.setState({ error: JSON.stringify(error) }));
     };
 
     const getDepartures = () => {
@@ -111,7 +113,8 @@ class App extends React.Component {
           } else {
             setTimeout(getDepartures, 2000);
           }
-        });
+        })
+        .catch(error => this.setState({ error: JSON.stringify(error) }));
     };
 
     getDepartures();
@@ -124,6 +127,7 @@ class App extends React.Component {
       destination,
       isLoading,
       data,
+      error,
     } = this.state;
     return (
       <div>
@@ -141,7 +145,7 @@ class App extends React.Component {
             <h1 className="title is-4">
               {`From ${origin.label} to ${destination.label} on ${format(new Date(`${date}T12:00:00`), 'dddd, MMMM Do (YYYY)')}`}
             </h1>
-            <Results isLoading={isLoading} data={data} />
+            <Results isLoading={isLoading} data={data} error={error} />
           </div>
         </section>
       </div>

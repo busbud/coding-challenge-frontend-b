@@ -9,6 +9,7 @@ const file = './src/index.pug';
 const options = {};
 const bundler = new Bundler(file, options);
 
+// using gzip compression to speed things up
 app.use(compression());
 app.use(bundler.middleware());
 
