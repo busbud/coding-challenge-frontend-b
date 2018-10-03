@@ -41,7 +41,7 @@ class SearchBar extends React.Component {
 
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value })
-        this.setState({ [event.target.name + 'Geotag']: geoMapping.find(tag => tag.name === event.target.value) })
+        this.setState({ [event.target.name + 'Geotag']: geoMapping.find(tag => tag.name === event.target.value) || {geotag: eval((event.target.name).toUpperCase())} })
     }
 
     handleSearch(event) {
@@ -51,7 +51,10 @@ class SearchBar extends React.Component {
     handleClick(origin, destination, departure) {
         if (origin && destination && departure) {
             this.props.fetchData(origin, destination, departure);
+        } else {
+            this.props.fetchData(ORIGIN, DESTINATION, DATE)
         }
+
     }
     render() {
         const { classes } = this.props;
