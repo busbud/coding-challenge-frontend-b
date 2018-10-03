@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { format } from 'date-fns';
+import merge from 'deepmerge';
 import './index.scss';
 import Results from './components/Results';
 
@@ -49,6 +50,38 @@ class App extends React.Component {
       timeout: 1000,
     });
 
+    const pollDepartures = () => {
+      const { data } = this.state;
+      busbudClient
+        .get(
+          `/x-departures/${origin.geohash}/${destination.geohash}/${date}/poll`,
+          {
+            params: {
+              adult: passengers.adults,
+              child: passengers.children,
+              senior: passengers.seniors,
+              lang,
+              currency,
+              index: data.departures ? data.departures.length : 0,
+            },
+          },
+        )
+        .then((res) => {
+          if (res.data) {
+            this.setState({
+              data: merge(data, res.data),
+            });
+            if (res.data.complete === true) {
+              this.setState({
+                isLoading: false,
+              });
+            } else {
+              setTimeout(pollDepartures, 2000);
+            }
+          }
+        });
+    };
+
     const getDepartures = () => {
       busbudClient
         .get(
@@ -64,11 +97,17 @@ class App extends React.Component {
           },
         )
         .then((res) => {
-          if (res.data.complete === true) {
+          if (res.data) {
             this.setState({
-              isLoading: false,
               data: res.data,
             });
+            if (res.data.complete === true) {
+              this.setState({
+                isLoading: false,
+              });
+            } else {
+              setTimeout(pollDepartures, 2000);
+            }
           } else {
             setTimeout(getDepartures, 2000);
           }
