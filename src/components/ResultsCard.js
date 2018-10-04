@@ -22,26 +22,26 @@ function ResultsCard(props) {
             <div className="column">
               <div>
                 <p>Departing</p>
-                <p className="is-size-6 has-text-weight-bold">{format(new Date(departureTime), 'h:mma')}</p>
-                <p>{departureLocation.name}</p>
+                <p className="departure-time is-size-6 has-text-weight-bold">{format(new Date(departureTime), 'h:mma')}</p>
+                <p className="departure-location-name">{departureLocation.name}</p>
               </div>
             </div>
             <div className="column is-narrow has-text-weight-bold">
               <div>
-                <p className="is-size-6">→</p>
+                <p className="arrow is-size-6">→</p>
               </div>
             </div>
             <div className="column">
               <div>
                 <p>Arriving</p>
-                <p className="is-size-6 has-text-weight-bold">{format(new Date(arrivalTime), 'h:mma')}</p>
-                <p>{arrivalLocation.name}</p>
+                <p className="arrival-time is-size-6 has-text-weight-bold">{format(new Date(arrivalTime), 'h:mma')}</p>
+                <p className="arrival-location-name">{arrivalLocation.name}</p>
               </div>
             </div>
           </div>
         </div>
         <div className="column is-one-quarter">
-          <a className="button is-primary is-medium" href={link}>{price.toLocaleString('en-US', { style: 'currency', minimumFractionDigits: 0, currency })}</a>
+          <a className="price button is-primary is-medium" href={link}>{price.toLocaleString('en-US', { style: 'currency', minimumFractionDigits: 0, currency })}</a>
         </div>
       </div>
       <div className="operator">

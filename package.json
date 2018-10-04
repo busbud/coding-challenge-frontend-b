@@ -7,7 +7,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node index.js",
-    "lint": "eslint --ext .js ."
+    "lint": "eslint --ext .js .",
+    "test": "npx cypress run --browser chrome"
   },
   "alias": {
     "react": "preact-compat",
@@ -30,8 +31,10 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "bulma": "^0.7.1",
+    "cypress": "^3.1.0",
     "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-cypress": "^2.0.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
