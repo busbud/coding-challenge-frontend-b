@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Osheaga | Festival Musique et Arts</title>
+	<link rel="icon" href="https://www.osheaga.com/images/osheaga/favicon.ico?v=1c28c2e1327dd97a519e773ae0f34788" type="image/x-icon">
+	<meta charset="utf-8">
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="css/fontawesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/daterangepicker.css">
+	
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/moment.min.js"></script>
+	<script type="text/javascript" src="js/daterangepicker.js"></script>
+	<script type="text/javascript" src="js/osheaga.js"></script>
+	
+
+</head>
+<body class="container-fluid">
+	<header class="">
+		<div class="row no-flex">
+			<div class="col-md-4">
+				<img src="images/logo-white2x.png" id="busbud-logo" alt="">
+			</div>
+			<div class="logo offset-md-4 col-md-4 ">
+				<img src="https://www.osheaga.com/uploads/osheaga/Logos/BellALtTeleLogoEN.png?v=76ed2b0087e821db4ae1eb7951f8954" alt="" id="osheaga_logo">
+			</div>
+		</div>
+		<div class="row content">
+			<div class="inputs offset-md-1 col-md-10">
+				<div class="input-group mb-3">
+				  <input type="text" class="form-control" id="origin-input" placeholder="Leaving from" aria-label="LeavingFrom" value="" aria-describedby="basic-addon2">
+				  <input type="text" class="form-control fa fa-map-marker" id="destination-input" placeholder="Going to" aria-label="destination" value="" aria-describedby="basic-addon2">
+				  <input type="text" class="form-control" id="datepicker-startDate" placeholder="calendar
+				  startDate" aria-label="calendar-startDate" value="" aria-describedby="basic-addon2">
+				  <input type="text" class="form-control" id="datepicker-endDate" placeholder="Return" aria-label="calendar-endDate" value="" aria-describedby="basic-addon2">
+				  <input type="text" class="form-control" id="passengers-number" placeholder="Passenger" value="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+				  <div class="input-group-append">
+				    <button class="btn" id="search-button" type="button">Search</button>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<div class="content">
+		<table class="table table-hover" id="busbud-table">
+			<thead>
+				<tr>
+					<th scope="col">From</th>
+					<th scope="col">To</th>
+					<th scope="col">Departure Location</th>
+					<th scope="col">Arrival Location</th>
+					<th scope="col">Departure Time</th>
+					<th scope="col">Arrival Time</th>
+					<th scope="col">Price(USD)</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+	<footer class="row"></footer>
+</body>
+</html>
