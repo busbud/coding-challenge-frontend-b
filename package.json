@@ -5,6 +5,11 @@
   "repository": "https://github.com/buschallenger/coding-challenge-frontend-b.git",
   "author": "buschallenger <buschallenger@users.noreply.github.com>",
   "license": "UNLICENSED",
+  "engines": {
+    "node":  "10.11.0",
+    "npm": "6.4.1",
+    "yarn": "1.10.1"
+  },
   "scripts": {
     "start": "node index.js",
     "lint": "eslint --ext .js .",
