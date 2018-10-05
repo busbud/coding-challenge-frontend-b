@@ -1,7 +1,7 @@
 # coding-challenge-frontend-b
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 
-It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)! 
+It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)!
 Your challenge is to build a microsite that allows a traveler from NYC to find one-way departure schedules for the festival's opening weekend.
 
 ## Functional Requirements
@@ -51,7 +51,7 @@ To get departures, search is initialized via the following endpoint:
 
     https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date
 
-Path parameters:  
+Path parameters:
 
 - `origin` : Origin's geohash
 - `destination` : Destination's geohash
@@ -280,3 +280,32 @@ The response is similar to:
   "ttl": 900
 }
 ```
+
+> Osheaga
+
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+
+# run unit tests
+npm run unit
+
+# run e2e tests
+npm run e2e
+
+# run all tests
+npm test
+```
+
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

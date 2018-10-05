@@ -1,0 +1,47 @@
+{
+  "currencies": {
+    "placeholder": "Please select a currency",
+    "USD": "US Dollars",
+    "CAD": "Canadian Dollars"
+  },
+  "search": {
+    "button": {
+      "label": "Search"
+    },
+    "adult": {
+      "label": "Adult"
+    },
+    "senior": {
+      "label": "Senior"
+    },
+    "child": {
+      "label": "Child"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "currency": {
+      "label": "Currency"
+    }
+  },
+  "travels": {
+    "load_error": "Error loading travels",
+    "columns": {
+      "operator": {
+        "label": "Operator"
+      },
+      "departure": {
+        "label": "Departure"
+      },
+      "arrival": {
+        "label": "Arrival"
+      },
+      "departure_location": {
+        "label": "Departure location"
+      },
+      "price": {
+        "label": "Price"
+      }
+    }
+  }
+}
