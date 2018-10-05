@@ -1,0 +1,111 @@
+body {
+  background-color: #fafaf5;
+  color: #4f285a;
+}
+
+@media (min-width: 576px) {
+  .details-row {
+    display:none;
+  }
+}
+
+.search-form {
+  background-color: #4f285a;
+  text-align: center;
+}
+
+.search-form-date-name,
+.search-form-route-name {
+  display:block;
+}
+
+.search-form-date-name {
+  font-size:1.4rem;
+  font-weight:bold;
+}
+
+.search-form-route-name {
+  font-size:1.2rem;
+}
+
+.departure-card .departure .departure-time,
+.departure-card .arrival .arrival-time {
+  color: #ed4a95;
+  display:inline-block;
+  width:100px;
+  text-align: left;
+}
+
+.departure-card .departure .departure-time {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.departure-card .departure .origin-location,
+.departure-card .arrival .destination-location {
+  display:block;
+}
+
+.departure-card .duration {
+  color:grey;
+}
+
+.departure-card .duration .material-icons {
+  position: relative;
+  top:4px;
+}
+
+.departure-card .price-total {
+  text-align: right;
+}
+
+.departure-card .price-total .cost {
+  font-size:1.4rem;
+  font-weight:bold;
+}
+
+.departure-card .price-total .price-notice {
+  display:block;
+}
+
+.next-day-indicator {
+  color: #4f285a;
+  font-weight:bold;
+  position: relative;
+  top:-0.5em;
+  left:0.2em;
+}
+
+.day-nav .material-icons {
+  position: relative;
+  top:5px;
+  width: 25px;
+}
+/*.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}*/
