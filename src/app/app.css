@@ -1,0 +1,359 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background: #fff;
+    margin-bottom: 60px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#home {
+    position: absolute;
+    left: 0;
+    top: 0;
+ }
+
+.bg-black {
+    background: #000;
+}
+
+.logo {
+    letter-spacing: -2px;
+    font-weight: 900;
+    font-size: 1.5rem;
+    font-family: 'Yeseva One', sans-serif;
+}
+
+.logo-icon {
+    color: #000;
+}
+
+.headline {
+    letter-spacing: 0;
+    font-weight: 400;
+    font-size: 60%;
+    text-transform: uppercase;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 0 15px 0 5px;
+}
+
+.rw-dropdown-list {
+    width: 150px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.rw-widget-container {
+    background-color: transparent !important;
+    border-radius: 2px !important;
+    border: 1px solid #007bff !important;
+}
+
+.rw-input {
+    color: #FFF !important;
+}
+
+.rw-btn-select {
+    color: #fff !important;
+}
+
+.rw-list-option.rw-state-selected,
+.rw-list-option.rw-state-selected:hover {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+}
+
+#wrap {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+}
+
+.footer p {
+    margin-bottom: 0;
+}
+
+/** CONTENTS **/
+
+.app .header {
+    color: #fff;
+}
+
+.app .btn-outline-primary {
+    border-color: #fff;
+    color: #fff;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-area {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.form-search {
+    font-size: 18px;
+}
+
+.hero-content-block {
+    margin: 0;
+}
+
+.form-search .form-group {
+    margin-bottom: 5px;
+}
+
+.form-search label {
+    padding-left: 12px;
+    display: none;
+}
+
+.form-search .input-group-text {
+    border: 0;
+    background-color: #f1f1f1;
+}
+
+.form-search .form-control {
+    font-size: 100%;
+    padding: 1.334em 0.8rem;
+    background: #f1f1f1;
+    border: 0;
+}
+
+.form-search .btn {
+    width: 100%;
+    font-size: 100%;
+    display: block;
+    border: 0;
+    padding: 0 0.8rem;
+    height: 48px;
+    line-height: 48px;
+}
+
+.loading {
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.tickets {
+    position: relative;
+    margin-top: 35px;
+    border-top: 1px solid #F1F1F1;
+    padding-top: 40px;
+}
+
+.route-name {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.route-name .fa-calendar-alt {
+    margin-right: 10px;
+    font-size: 50%;
+    vertical-align: middle;
+}
+
+.tickets .card:hover,
+.tickets .card:focus {
+    background: #f1f1f1;
+}
+
+.tickets .card-body {
+    display: table;
+    padding-bottom: 5px;
+}
+
+.currency {
+    font-size: 50%;
+}
+
+.card-col {
+    line-height: 1.2;
+    position: relative;
+    display: table;
+    width: 100%;
+}
+
+.card-col .location {
+    font-size: 18px;
+    margin-top: 5px;
+    padding-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 80px;
+    max-width: 170px;
+    display: table-cell;
+}
+
+.card-col .time {
+    padding-left: 5px;
+    display: table-cell;
+    font-size: 19px;
+    font-weight: 900;
+    text-align: right;
+}
+
+.departureTime {
+    color: #007bff;
+}
+
+.card-col time {
+    display: block !important;
+}
+
+.card-col .detail-label {
+    color: #a1a1a1;
+    font-weight: 900;
+    font-size: 83%;
+    padding-bottom: 2px;
+    display: none;
+    border-bottom: 1px dashed #e5e5e5;
+}
+
+.card-col.cost {
+    font-size: 26px;
+    font-weight: 900;
+    margin-top: 5px;
+}
+
+.card-col.cost {
+    text-align: left;
+}
+
+.card-col.cost .detail-label {
+    font-size: 38%;
+    padding-right: 0;
+    border: 0;
+    display: block;
+}
+
+.card-col .direction {
+    display: none;
+    font-size: 20px;
+    vertical-align: middle;
+    color: #c4c4c4;
+    font-weight: 100;
+}
+
+.card-col .mid {
+    margin: 0 5px;
+}
+
+.arrow-direction {
+    font-size: 90%;
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    display: block;
+    width: auto;
+}
+
+.duration .fa-map-marker-alt {
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 90%;
+    color: #000;
+}
+
+.operator-logo {
+    display: none;
+}
+
+.filter {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    background: #fff;
+    height: 60px;
+    margin-top: -30px;
+}
+
+
+@media (min-width: 768px) {
+    .rw-dropdown-list {
+        margin: 0;
+    }
+    .form-area {
+        padding: 0;
+    }
+    .form-search,
+    .hero {
+        width: 100%;
+    }
+    .form-search .cols {
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+    .form-search label {
+        text-align: left;
+        display: block;
+    }
+    .tickets .card-body {
+        padding-bottom: 1.25rem;
+    }
+    .card-col {
+        display: table-cell;
+        vertical-align: middle;
+        width: 20%;
+    }
+    .operator-logo {
+        text-align: center;
+    }
+    .arrow-direction {
+        position: static;
+        text-align: center;
+        color: #8d8a8a;
+    }
+    .arrow-direction .direction {
+        display: inline-block;
+    }
+    .arrow-direction .duration .fa-map-marker-alt {
+        display: none;
+    }
+    .card-col .location {
+        min-width: 80px;
+        max-width: 190px;
+        letter-spacing: -1px;
+        font-size: 15px;
+    }
+    .card-col .detail-label {
+        display: inline-block;
+    }
+    .card-col .time {
+        display: block;
+        text-align: left;
+        padding-left: 0;
+        font-size: 25px;
+    }
+    .card-col.cost {
+        text-align: right;
+        font-size: 35px;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-col .location {
+        font-size: 18px;
+        text-overflow:  unset;
+        overflow: visible;
+    }
+    .card-col.cost {
+        font-size: 40px;
+    }
+}
