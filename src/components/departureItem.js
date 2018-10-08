@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import { Translation } from '../languages/lang';
+import { Amenities } from './amenities';
+import { Terms } from './terms';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -14,10 +16,13 @@ export class DepartureItem extends Component {
             .replace(/{width}/, width)
             .replace(/{height}/, height);
         return (
-            <div className="card">
+            <div id={this.props.departure.id} className="card">
                 <div className="card-body">
                     <div className="card-col operator-logo">
-                        <img src={logo_url} alt={this.props.departure.operator.display_name} />
+                        <img
+                            src={logo_url}
+                            alt={this.props.departure.operator.display_name}
+                        />
                     </div>
                     <div className="card-col">
                         <div className="detail-label">
@@ -78,7 +83,16 @@ export class DepartureItem extends Component {
                                 {this.props.departure.currency}
                             </span>
                         </div>
-                        <div className="detail-label">{Translation.busWay}</div>
+                        <div className="detail-label">
+                            {Translation.numberOfPerson} &middot;{' '}
+                            {Translation.busWay}
+                        </div>
+                    </div>
+                </div>
+                <div className="card-body">
+                    <div className="details">
+                        <Amenities departure={this.props.departure} />
+                        <Terms departure={this.props.departure} />
                     </div>
                 </div>
             </div>

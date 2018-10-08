@@ -33,8 +33,67 @@ const departureObj = (departure, locations, operators) => {
         price: price,
         destination: destination,
         operator: operator,
-        amenities: departure.amenities
+        amenities: departure.amenities,
+        terms: departure.terms
     };
+};
+
+export const compressedDepartureObj = (departures, language = 'en') => {
+    const dictionary = {};
+
+    departures.forEach(d => {
+        if (!dictionary[d.operator.display_name]) {
+            dictionary[d.operator.display_name] = {
+                duration: [d.totalDuration],
+                destination: [d.destination.name],
+                about: [],
+                origin: {},
+                location: {}
+            };
+
+            dictionary[d.operator.display_name].about = [
+                {
+                    departureTime: d.departureTime,
+                    arrivalTime: d.arrivalTime,
+                    origin: d.origin.name,
+                    destination: d.destination.name,
+                    price: d.price,
+                    currency: d.currency,
+                    amenities: d.amenities,
+                    terms: d.amenities
+                }
+            ];
+
+            dictionary[d.operator.display_name]['location'][
+                d.origin.name.concat('|').concat(d.destination.name)
+            ] = 1;
+            dictionary[d.operator.display_name]['origin'][d.origin.name] = 1;
+            dictionary[d.operator.display_name]['destination'][
+                d.destination.name
+            ] = 1;
+        } else {
+            dictionary[d.operator.display_name]['origin'][d.origin.name] = 1;
+            dictionary[d.operator.display_name]['destination'][
+                d.destination.name
+            ] = 1;
+            dictionary[d.operator.display_name]['location'][
+                d.origin.name.concat('|').concat(d.destination.name)
+            ] = 1;
+
+            dictionary[d.operator.display_name].about.push({
+                departureTime: d.departureTime,
+                arrivalTime: d.arrivalTime,
+                origin: d.origin.name,
+                destination: d.destination.name,
+                price: d.price,
+                currency: d.currency,
+                amenities: d.amenities,
+                terms: d.amenities
+            });
+        }
+    });
+
+    return dictionary;
 };
 
 export const getDestination = obj => {

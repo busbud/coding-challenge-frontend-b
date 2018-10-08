@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ButtonDropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 
 import { Translation } from '../languages/lang';
 import { DepartureItem } from './departureItem';
+import { Filters } from './filters';
 
 const localStorage = window.localStorage;
 
@@ -56,31 +56,13 @@ export class Departure extends Component {
 					</div>
 				) : (
 					<div className="row">
-						<div className="filter">
-							<ButtonDropdown
-								isOpen={this.state.dropdownOpen}
-								toggle={this.toggle}
-							>
-								<DropdownToggle caret>
-									{Translation.sortBy} {this.state.sortBy}
-								</DropdownToggle>
-								<DropdownMenu>
-									{this.props.filters.map(s => (
-										//eslint-disable-next-line
-										<a
-											href="#"
-											key={s.id}
-											onClick={event =>
-												this.sortDepartures(event, s.id)
-											}
-											className="dropdown-item"
-										>
-											{s.name}
-										</a>
-									))}
-								</DropdownMenu>
-							</ButtonDropdown>
-						</div>
+						<Filters
+							filters={this.props.filters}
+							dropdownOpen={this.state.dropdownOpen}
+							sortBy={this.state.sortBy}
+							toggle={this.toggle}
+							sortDepartures={this.sortDepartures}
+						 />
 						<div className="col-12">
 							<h2 className="route-name">
 								{this.props.departures.length}{' '}

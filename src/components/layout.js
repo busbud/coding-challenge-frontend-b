@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { DropdownList } from 'react-widgets';
 import 'react-widgets/dist/css/react-widgets.css';
 
-import { Languages, DEFAULT_LANGUAGE, Translation } from '../languages/lang';
+import { Languages, Translation } from '../languages/lang';
 
 export default class Layout extends Component {
 	render() {

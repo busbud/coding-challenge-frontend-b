@@ -13,7 +13,7 @@ body {
     position: absolute;
     left: 0;
     top: 0;
- }
+}
 
 .bg-black {
     background: #000;
@@ -88,7 +88,7 @@ body {
     color: #fff;
 }
 
-.app .btn-outline-primary {
+.app .header .btn-outline-primary {
     border-color: #fff;
     color: #fff;
 }
@@ -149,11 +149,19 @@ body {
     width: 100%;
 }
 
+.loading img {
+    width: 15%;
+}
+
 .tickets {
     position: relative;
     margin-top: 35px;
     border-top: 1px solid #F1F1F1;
     padding-top: 40px;
+}
+
+.tickets>.row>.row {
+    margin: 0;
 }
 
 .route-name {
@@ -173,6 +181,7 @@ body {
 }
 
 .tickets .card-body {
+    width: 100%;
     display: table;
     padding-bottom: 5px;
 }
@@ -196,7 +205,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     min-width: 80px;
-    max-width: 170px;
+    max-width: 150px;
     display: table-cell;
 }
 
@@ -223,6 +232,30 @@ body {
     padding-bottom: 2px;
     display: none;
     border-bottom: 1px dashed #e5e5e5;
+}
+
+
+.details {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.details>ul,
+.details>ul>li {
+    padding: 0 20px;
+    list-style: none;
+    font-size: 15px;
+    text-align: left;
+}
+
+.details .details-header {
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.details .svg-inline--fa {
+    padding-right: 5px;
 }
 
 .card-col.cost {
@@ -274,73 +307,199 @@ body {
     display: none;
 }
 
+.compressed-card {
+    padding: 20px;
+    background: #f6f6f6;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.compressed-card .destination {
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.compressed-card .btn {
+    display: block;
+    width: 100%;
+}
+
+.compressed-card .cb {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 18px;
+    padding: 0 15px;
+}
+
+.compressed-card .cb.active .btn{
+    background: #007bff;
+    color: #fff;
+}
+
+.compressed-card .cb .details {
+    display: none;
+}
+
+.compressed-card .cb.active .details {
+    display: block;
+}
+
+.compressed-card .cb.active .details ul {
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.compressed-card .price {
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.compressed-card .cb .currency {
+    font-size: 80%;
+}
+
 .filter {
-    position: absolute;
-    right: 0;
-    top: 0;
+    width: 100%;
     padding: 10px;
     background: #fff;
     height: 60px;
-    margin-top: -30px;
 }
 
+.filter .btn-group {
+    width: 100%;
+    padding: 0 35px;
+    display: block;
+}
+
+.filter button {
+    width: 100%;
+}
+
+.filter .dropdown-menu {
+    width: 100%;
+}
+
+.layout-view {
+    position: absolute;
+    top: -21px;
+    left: 50%;
+    margin-left: -105px;
+    background: #fff;
+    border: 0;
+    width: 210px;
+}
+
+.layout-view .nav-link {
+    cursor: pointer;
+    color: #76b8ff !important;
+    border: 0;
+    border-radius: 0;
+}
+
+.layout-view .active.nav-link {
+    font-weight: 900;
+    color: #005dc0 !important;
+}
+
+.layout-view>li:first-child .active.nav-link {
+    border-right: 1px solid #dee2e6;
+}
+
+.layout-view>li:last-child .active.nav-link {
+    border-left: 1px solid #dee2e6;
+}
+
+.tickets .tab-content {
+    padding: 0 25px;
+}
 
 @media (min-width: 768px) {
+    .layout-view {
+        left: 20px;
+        margin-left: 0;
+    }
+
+    .filter {
+        width: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-top: -30px;
+    }
+
     .rw-dropdown-list {
         margin: 0;
     }
+
     .form-area {
         padding: 0;
     }
+
     .form-search,
     .hero {
         width: 100%;
     }
+
     .form-search .cols {
         padding-left: 1px;
         padding-right: 1px;
     }
+
     .form-search label {
         text-align: left;
         display: block;
     }
+
     .tickets .card-body {
         padding-bottom: 1.25rem;
     }
+
     .card-col {
         display: table-cell;
         vertical-align: middle;
         width: 20%;
     }
+
     .operator-logo {
         text-align: center;
     }
+
     .arrow-direction {
         position: static;
         text-align: center;
         color: #8d8a8a;
     }
+
     .arrow-direction .direction {
         display: inline-block;
     }
+
     .arrow-direction .duration .fa-map-marker-alt {
         display: none;
     }
+
     .card-col .location {
         min-width: 80px;
         max-width: 190px;
         letter-spacing: -1px;
         font-size: 15px;
     }
+
     .card-col .detail-label {
         display: inline-block;
     }
+
     .card-col .time {
         display: block;
         text-align: left;
         padding-left: 0;
         font-size: 25px;
     }
+
     .card-col.cost {
         text-align: right;
         font-size: 35px;
@@ -350,9 +509,10 @@ body {
 @media (min-width: 992px) {
     .card-col .location {
         font-size: 18px;
-        text-overflow:  unset;
+        text-overflow: unset;
         overflow: visible;
     }
+
     .card-col.cost {
         font-size: 40px;
     }

@@ -11,11 +11,15 @@ import {
     faMapPin,
     faLongArrowAltRight,
     faMapMarkerAlt,
-    faCalendarAlt
+    faCalendarAlt,
+    faBars,
+    faThLarge,
+    faCheck
 } from '@fortawesome/free-solid-svg-icons';
 
 
 library.add(faSearch, faMapPin, faLongArrowAltRight, faMapMarkerAlt, faCalendarAlt);
+library.add(faBars, faThLarge, faCheck);
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
