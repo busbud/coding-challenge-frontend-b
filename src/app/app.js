@@ -15,6 +15,8 @@ import { FormSearch } from '../components/formSearch';
 
 import '../api/libs';
 
+const localStorage = window.localStorage;
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -32,12 +34,14 @@ class App extends Component {
 
 		this.formSubmit = this.formSubmit.bind(this);
         this.setLanguage = this.setLanguage.bind(this);
-	}
-	componentDidMount() {
-		this.setLanguage(DEFAULT_LANGUAGE);
+    }
+    componentWillMount() {
+        let language = localStorage.getItem('lang') || DEFAULT_LANGUAGE;
+		this.setLanguage(language);
 		this.fetch();
 	}
 	setLanguage(lang) {
+        localStorage.setItem('lang', lang);
 		Translation.setLanguage(lang);
 		this.setState({
 			filters: [
@@ -151,7 +155,7 @@ class App extends Component {
 	render() {
 		const originCityName = geohashToCity(this.state.origin);
         const destinationCityName = geohashToCity(this.state.destination);
-        const dateFormat = (new Date(this.state.date)).format('DDD. D MMM.');
+        const dateFormat = (new Date(this.state.date)).format(Translation.getLanguage() === 'en' ? 'DDD, MMM D' : 'DDD, D MMM.');
 		return (
 			<Layout onChange={this.setLanguage}>
 				<div id="wrap" className="container">

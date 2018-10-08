@@ -11,7 +11,7 @@ export default class Layout extends Component {
 			<span>
 				<img src={item.img} alt={item.lang} /> {item.lang}
 			</span>
-		);
+        );
 		return (
 			<div className="app">
 				<div className="header d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-black border-bottom shadow-sm">
@@ -29,7 +29,7 @@ export default class Layout extends Component {
 						valueField="id"
 						itemComponent={ValueInput}
 						valueComponent={ValueInput}
-						defaultValue={DEFAULT_LANGUAGE}
+						defaultValue={Translation.getLanguage()}
 						onChange={({ id }) => this.props.onChange(id)}
 					/>
 				</div>
