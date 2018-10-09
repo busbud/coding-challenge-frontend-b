@@ -87,6 +87,14 @@ export class DepartureItem extends Component {
                             {Translation.numberOfPerson} &middot;{' '}
                             {Translation.busWay}
                         </div>
+                        <div className="d-xs mobile-operator-logo">
+                            {/* eslint-disable-next-line */}
+                            <img
+                                src={this.props.departure.operator.logo_url
+                                    .replace(/{width}/, 72)
+                                    .replace(/{height}/, 72)}
+                            />{' '}
+                        </div>
                     </div>
                 </div>
                 <div className="card-body">

@@ -48,7 +48,8 @@ export const compressedDepartureObj = (departures, language = 'en') => {
                 destination: {},
                 about: [],
                 origin: {},
-                location: {}
+                location: {},
+                logo: d.operator.logo_url
             };
 
             dictionary[d.operator.display_name].about = [

@@ -321,6 +321,10 @@ body {
     margin-bottom: 20px;
 }
 
+.compressed-card>h2 {
+    font-size: 1.5rem;
+}
+
 .compressed-card .border-dark {
     border-color: #c6c5c5 !important;
 }
@@ -401,10 +405,11 @@ body {
     position: absolute;
     top: -21px;
     left: 50%;
-    margin-left: -128px;
+    margin-left: -140px;
     background: #fff;
     border: 0;
-    width: 256px;
+    width: 285px;
+    text-align: center;
 }
 
 .layout-view .nav-link {
@@ -431,7 +436,18 @@ body {
     padding: 0 15px;
 }
 
+.mobile-operator-logo {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: -10px;
+}
+
 @media (min-width: 768px) {
+    .mobile-operator-logo {
+        display: none;
+    }
+
     .layout-view {
         left: 20px;
         margin-left: 0;
