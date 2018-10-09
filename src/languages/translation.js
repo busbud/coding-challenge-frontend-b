@@ -23,6 +23,7 @@ export const Translation = new LocalizedStrings({
         travelTime: 'Fastest travel time',
         backtoTop: 'Back to top',
         loading: 'Getting results. Please wait.',
+        gettingMoreResults: 'Getting more results.',
         fetchErrorMessage:
             'Oops! We encountered an error. Please try again later.',
         days: 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
@@ -47,6 +48,11 @@ export const Translation = new LocalizedStrings({
             norefund: 'No Refund',
             kg_by_bag: 'Max {terms.kg_by_bag}kg per bag',
             extra_bag_cost: 'Extra bag cost {terms.extra_bag_cost}'
+        },
+        trips: 'Found {trips} trips',
+        view: {
+            list: 'List view',
+            compressed: 'Compressed view'
         }
     },
     fr: {
@@ -71,6 +77,7 @@ export const Translation = new LocalizedStrings({
         travelTime: 'Temps de trajet le plus rapide',
         backtoTop: 'Retour au sommet',
         loading: "Obtenir des résultats. S'il vous plaît, attendez.",
+        gettingMoreResults: 'Obtenir plus de résultats.',
         fetchErrorMessage:
             'Oops! Nous avons rencontré une erreur. Veuillez réessayer plus tard.',
         days: 'Dimanche,Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi',
@@ -95,6 +102,11 @@ export const Translation = new LocalizedStrings({
             norefund: 'Aucun remboursement',
             kg_by_bag: 'Max {terms.kg_by_bag}kg par sac',
             extra_bag_cost: 'Coût du sac supplémentaire {terms.extra_bag_cost}'
+        },
+        trips: '{trips} voyages trouvés',
+        view: {
+            list: 'Vue liste',
+            compressed: 'Vue comprimée'
         }
     }
 });

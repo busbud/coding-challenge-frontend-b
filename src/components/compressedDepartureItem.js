@@ -6,6 +6,7 @@ import { Amenities } from './amenities';
 import { Terms } from './terms';
 
 import classnames from 'classnames';
+import { Translation } from '../languages/lang';
 
 export class CompressedDepartureItem extends Component {
     constructor(props) {
@@ -34,73 +35,79 @@ export class CompressedDepartureItem extends Component {
                                 {loc.replace('|', ' - ')}
                             </div>
                             {about.length &&
-                                about
-                                    .map(
-                                        (t, index) =>
-                                            loc.indexOf(t.origin) > -1 &&
-                                            loc.indexOf(t.destination) > -1 && (
-                                                <div
-                                                    key={index}
-                                                    className={classnames({
-                                                        cb: true,
-                                                        active:
-                                                            this.state
-                                                                .active ===
-                                                            index
-                                                    })}>
-                                                    <button
-                                                        onClick={event =>
-                                                            this.onClick(
-                                                                event,
-                                                                index
-                                                            )
-                                                        }
-                                                        className="btn btn-outline-primary">
-                                                        <div className="price">
-                                                            ${t.price}{' '}
-                                                            <span className="currency">
-                                                                {t.currency}
-                                                            </span>
+                                about.map(
+                                    (t, colIndex) =>
+                                        loc.indexOf(t.origin) > -1 &&
+                                        loc.indexOf(t.destination) > -1 && (
+                                            <div
+                                                key={colIndex}
+                                                className="cb">
+                                                <div className="card compressed-box border-dark">
+                                                    <div className="card-header border-dark">
+                                                        <div className="text-dark">
+                                                            <Moment
+                                                                format={
+                                                                    this.props.isEng
+                                                                        ? 'hh:mm a'
+                                                                        : 'HH:mm'
+                                                                }>
+                                                                {t.departureTime}
+                                                            </Moment>
+                                                            &ndash;
+                                                            <Moment
+                                                                format={
+                                                                    this.props.isEng
+                                                                        ? 'hh:mm a'
+                                                                        : 'HH:mm'
+                                                                }>
+                                                                {t.arrivalTime}
+                                                            </Moment>
                                                         </div>
-                                                        <Moment
-                                                            format={
-                                                                this.props.isEng
-                                                                    ? 'hh:mm a'
-                                                                    : 'HH:mm'
-                                                            }>
-                                                            {t.departureTime}
-                                                        </Moment>
-                                                        &ndash;
-                                                        <Moment
-                                                            format={
-                                                                this.props.isEng
-                                                                    ? 'hh:mm a'
-                                                                    : 'HH:mm'
-                                                            }>
-                                                            {t.arrivalTime}
-                                                        </Moment>
-                                                        <div className="details">
-                                                            <Amenities
-                                                                departure={t}
-                                                            />
-                                                            <Terms
-                                                                departure={t}
-                                                            />
+                                                    </div>
+                                                    <div className="card-body">
+                                                        <div className="col-12 price-area">
+                                                            <div className="text-center mb-1">{Translation.trips.replace(/{trips}/, t.price.length)}</div>
+                                                            {t.price &&
+                                                                t.price.map(
+                                                                    (
+                                                                        info,
+                                                                        index
+                                                                    ) => (
+                                                                        <div key={index} 
+                                                                            className={classnames({
+                                                                                price: true,
+                                                                                active: this.state.active === colIndex
+                                                                            })}
+                                                                            >
+                                                                            <span
+                                                                                onClick={
+                                                                                    event => this.onClick(event, colIndex)
+                                                                                }
+                                                                                className={classnames({
+                                                                                    btn: true,
+                                                                                    "btn-outline-primary": true,
+                                                                                    active: this.state.active === colIndex
+                                                                                })}>
+                                                                                ${info.price}{' '}    
+                                                                                <span className="currency">
+                                                                                    {info.currency}
+                                                                                </span>
+                                                                            </span>
+                                                                            <div className="details">
+                                                                                <Amenities
+                                                                                    departure={info}
+                                                                                />
+                                                                                <Terms departure={info} />
+                                                                            </div>
+                                                                        </div>
+                                                                    )
+                                                                )}
                                                         </div>
-                                                    </button>
+                                                    </div>
                                                 </div>
-                                            )
-                                    )
-                                    .sort((a, b) => {
-                                        let nowTime = new Date(a.departureTime);
-                                        let nextTime = new Date(
-                                            b.departureTime
-                                        );
-                                        return (
-                                            a.price - b.price ||
-                                            nowTime - nextTime
-                                        );
-                                    })}
+                                            </div>
+                                        )
+                                )}
                         </div>
                     ))}
             </div>

@@ -234,8 +234,15 @@ body {
     border-bottom: 1px dashed #e5e5e5;
 }
 
-
 .details {
+    display: none;
+}
+
+.compressed-card .active .details {
+    display: block;
+}
+
+.details.active {
     text-align: center;
     display: flex;
     justify-content: center;
@@ -243,7 +250,6 @@ body {
 
 .details>ul,
 .details>ul>li {
-    padding: 0 20px;
     list-style: none;
     font-size: 15px;
     text-align: left;
@@ -251,6 +257,7 @@ body {
 
 .details .details-header {
     font-weight: 900;
+    text-align: center;
     margin-bottom: 5px;
 }
 
@@ -314,15 +321,22 @@ body {
     margin-bottom: 20px;
 }
 
+.compressed-card .border-dark {
+    border-color: #c6c5c5 !important;
+}
+
+.compressed-card .card-header {
+    font-weight: 900;
+}
+
+.compressed-card .card-body {
+    padding: 10px;
+}
+
 .compressed-card .destination {
     font-size: 16px;
     font-weight: 900;
     margin-bottom: 10px;
-}
-
-.compressed-card .btn {
-    display: block;
-    width: 100%;
 }
 
 .compressed-card .cb {
@@ -330,32 +344,32 @@ body {
     text-align: center;
     font-size: 18px;
     padding: 0 15px;
-}
-
-.compressed-card .cb.active .btn{
-    background: #007bff;
-    color: #fff;
-}
-
-.compressed-card .cb .details {
-    display: none;
-}
-
-.compressed-card .cb.active .details {
     display: block;
+    width: 100%;
 }
 
-.compressed-card .cb.active .details ul {
+
+.compressed-card .details ul {
     margin-top: 10px;
+    padding: 0 7px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    font-weight: 200;
+}
+
+.compressed-box {
+    background: transparent;
 }
 
 .compressed-card .price {
     font-weight: 900;
     font-size: 20px;
+    margin: 0 3px;
+    display: inline-block;
+}
+
+.compressed-card .price-area {
+    padding: 0;
+    margin-top: 5px;
 }
 
 .compressed-card .cb .currency {
@@ -387,10 +401,10 @@ body {
     position: absolute;
     top: -21px;
     left: 50%;
-    margin-left: -105px;
+    margin-left: -128px;
     background: #fff;
     border: 0;
-    width: 210px;
+    width: 256px;
 }
 
 .layout-view .nav-link {
@@ -414,7 +428,7 @@ body {
 }
 
 .tickets .tab-content {
-    padding: 0 25px;
+    padding: 0 15px;
 }
 
 @media (min-width: 768px) {
@@ -482,6 +496,10 @@ body {
         display: none;
     }
 
+    .tickets .tab-content {
+        padding: 0 25px;
+    }
+
     .card-col .location {
         min-width: 80px;
         max-width: 190px;
@@ -503,6 +521,43 @@ body {
     .card-col.cost {
         text-align: right;
         font-size: 35px;
+    }
+
+    .compressed-card .price.active:first-child {
+        border-right: 1px solid #c6c5c5;
+    }
+
+    .compressed-card .price {
+        display: inline-block;
+    }
+
+    .compressed-card .active .details {
+        display: flex;
+    }
+
+    .compressed-card .details ul {
+        margin-top: 10px;
+        text-align: center;
+        font-weight: 200;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .details>ul,
+    .details>ul>li {
+        padding: 0 20px;
+    }
+
+    .compressed-card .cb {
+        width: auto;
+        flex-wrap: wrap;
+        align-self: auto;
+        justify-content: center;
+    }
+
+    .compressed-card .price {
+        display: inline-block;
     }
 }
 

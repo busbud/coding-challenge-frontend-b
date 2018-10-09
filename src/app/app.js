@@ -36,7 +36,8 @@ class App extends Component {
             fetchError: false,
             loading: true,
             activeTab: '1',
-            submitted: false
+            submitted: false,
+            pollingLoading: false
         };
 
         this.formSubmit = this.formSubmit.bind(this);
@@ -117,26 +118,38 @@ class App extends Component {
             destination: this.state.destination,
             date: this.state.date
         };
+        this.setState({
+            pollingLoading: true,
+            submitted: true
+        });
         apiFetch(api, true, {
             index: initalResult
-        }).then(pollObj => {
-            const newDepartures = getDestination(pollObj);
-            console.log('poll: ', newDepartures);
-            this.setState({
-                departures: this.setDeparture([
-                    ...this.state.departures,
-                    ...newDepartures
-                ])
-            });
-            if (!pollObj.complete) {
-                timeout(2500).then(() => this.poll(initalResult));
-            }
+        })
+            .then(pollObj => {
+                const newDepartures = getDestination(pollObj);
+                console.log('poll: ', newDepartures);
+                this.setState({
+                    departures: this.setDeparture([
+                        ...this.state.departures,
+                        ...newDepartures
+                    ])
+                });
+                if (!pollObj.complete) {
+                    timeout(2500).then(() => this.poll(initalResult));
+                }
 
-            this.setState({
-                loading: false,
-                submitted: false
+                this.setState({
+                    pollingLoading: false,
+                    loading: false,
+                    submitted: false
+                });
+            })
+            .catch(ex => {
+                this.setState({
+                    pollingLoading: false,
+                    loading: false
+                });
             });
-        });
     }
     setDeparture(departures, sort = '') {
         const sorting = sort || this.state.sort;
@@ -195,6 +208,15 @@ class App extends Component {
                         </div>
                     </div>
                     <div className="tickets">
+                        {this.state.pollingLoading && (
+                            <div className="loading">
+                                <img
+                                    src="img/pollingloading.svg"
+                                    alt={Translation.gettingMoreResults}
+                                />{' '}
+                                {Translation.gettingMoreResults}
+                            </div>
+                        )}
                         {this.state.loading ? (
                             <div className="loading">
                                 <img
@@ -215,7 +237,8 @@ class App extends Component {
                                             onClick={() => {
                                                 this.toggleTab('1');
                                             }}>
-                                            <FontAwesomeIcon icon="bars" /> List
+                                            <FontAwesomeIcon icon="bars" />{' '}
+                                            {Translation.view.list}
                                         </NavLink>
                                     </NavItem>
                                     <NavItem>
@@ -228,7 +251,7 @@ class App extends Component {
                                                 this.toggleTab('2');
                                             }}>
                                             <FontAwesomeIcon icon="th-large" />{' '}
-                                            Compressed
+                                            {Translation.view.compressed}
                                         </NavLink>
                                     </NavItem>
                                 </Nav>

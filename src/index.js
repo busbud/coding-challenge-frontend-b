@@ -14,12 +14,13 @@ import {
     faCalendarAlt,
     faBars,
     faThLarge,
-    faCheck
+    faCheck,
+    faTimes
 } from '@fortawesome/free-solid-svg-icons';
 
 
 library.add(faSearch, faMapPin, faLongArrowAltRight, faMapMarkerAlt, faCalendarAlt);
-library.add(faBars, faThLarge, faCheck);
+library.add(faBars, faThLarge, faCheck, faTimes);
 
 
 ReactDOM.render(<App />, document.getElementById('root'));

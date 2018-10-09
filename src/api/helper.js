@@ -45,7 +45,7 @@ export const compressedDepartureObj = (departures, language = 'en') => {
         if (!dictionary[d.operator.display_name]) {
             dictionary[d.operator.display_name] = {
                 duration: [d.totalDuration],
-                destination: [d.destination.name],
+                destination: {},
                 about: [],
                 origin: {},
                 location: {}
@@ -60,7 +60,7 @@ export const compressedDepartureObj = (departures, language = 'en') => {
                     price: d.price,
                     currency: d.currency,
                     amenities: d.amenities,
-                    terms: d.amenities
+                    terms: d.terms
                 }
             ];
 
@@ -68,14 +68,10 @@ export const compressedDepartureObj = (departures, language = 'en') => {
                 d.origin.name.concat('|').concat(d.destination.name)
             ] = 1;
             dictionary[d.operator.display_name]['origin'][d.origin.name] = 1;
-            dictionary[d.operator.display_name]['destination'][
-                d.destination.name
-            ] = 1;
+            dictionary[d.operator.display_name]['destination'][d.destination.name] = 1;
         } else {
             dictionary[d.operator.display_name]['origin'][d.origin.name] = 1;
-            dictionary[d.operator.display_name]['destination'][
-                d.destination.name
-            ] = 1;
+            dictionary[d.operator.display_name]['destination'][d.destination.name] = 1;
             dictionary[d.operator.display_name]['location'][
                 d.origin.name.concat('|').concat(d.destination.name)
             ] = 1;
@@ -88,11 +84,36 @@ export const compressedDepartureObj = (departures, language = 'en') => {
                 price: d.price,
                 currency: d.currency,
                 amenities: d.amenities,
-                terms: d.amenities
+                terms: d.terms
             });
         }
     });
 
+    for (let prop in dictionary) {
+        dictionary[prop].about = dictionary[prop].about.filter(
+            (elem, pos, arr) => {
+                const matches = arr.findIndex(
+                    a =>
+                        a.departureTime === elem.departureTime &&
+                        a.arrivalTime === elem.arrivalTime
+                );
+
+                elem.price = arr
+                    .filter(
+                        a =>
+                            a.departureTime === elem.departureTime &&
+                            a.arrivalTime === elem.arrivalTime
+                    )
+                    .map(a => ({
+                        price: a.price,
+                        currency: a.currency,
+                        amenities: a.amenities,
+                        terms: a.terms
+                    }));
+                return pos === matches;
+            }
+        );
+    }
     return dictionary;
 };
 
