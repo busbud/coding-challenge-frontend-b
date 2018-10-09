@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  div.container
+    .jumbotron.margin-bottom-0
+      h3.margin-top-0
+        i.fas.fa-paper-plane
+        |  #{title}
+      .row
+        .col-md-6
+          form.form-horizontal(role='form', style='margin-top: 20px;')
+            .row
+              .col-md-12
+                .form-group
+                  label.col-sm-2.control-label(for='name') Name
+                  .col-sm-10
+                    input#name.form-control(name='name', type='text', placeholder='First & Last Name', value='')
+            .row
+              .col-md-12
+                .form-group
+                  label.col-sm-2.control-label(for='email') Email
+                  .col-sm-10
+                    input#email.form-control(name='email', type='email', placeholder='example@domain.com', value='')
+            .row
+              .col-md-12
+                .form-group
+                  label.col-sm-2.control-label(for='message') Message
+                  .col-sm-10
+                    textarea.form-control(name='message', rows='4')
+            .row
+              .col-md-12
+                .form-group
+                  label.col-sm-2.control-label(for='human') 2 + 3 = ?
+                  .col-sm-10
+                    input#human.form-control(name='human', type='text', placeholder='Your Answer')
+            .row
+              .col-md-12
+                .form-group.margin-bottom-0.pull-right.margin-right-0
+                  .col-sm-10.col-sm-offset-2
+                    input#submit.btn.btn-primary(name='submit', type='submit', value='Send')

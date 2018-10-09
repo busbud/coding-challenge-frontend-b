@@ -1,0 +1,85 @@
+extends layout
+
+block content
+  div.container
+    .jumbotron.margin-bottom-0
+      h3.margin-top-0
+        i.fas.fa-bus
+        |  The Best Way to Book Bus Tickets
+      form
+        .form-body
+          .row
+            .col-md-6
+              .form-group
+                label.col-sm-2.control-label(for='origin') Departure
+                select#origin.form-control.bs-select(name='origin', title='Leaving from', value='dr5reg')
+                  each val, index in {chicago: 'Chicago', detroit: 'Detroit', marseille: 'Marseille', lyon: 'Lyon', f25dvk: 'Montréal', nantes: 'Nantes', dr5reg: 'New-York', paris: 'Paris', quebec: 'Québec'}
+                    - var select=null; if (index == 'dr5reg') select='selected';
+                    option(value= index selected=select)= val
+            .col-md-6
+              .form-group
+                label.col-sm-2.control-label(for='destination') Destination
+                select#destination.form-control.bs-select(name='destination', title='Going to', value='f25dvk')
+                  each val, index in {chicago: 'Chicago', detroit: 'Detroit', marseille: 'Marseille', lyon: 'Lyon', f25dvk: 'Montréal', nantes: 'Nantes', dr5reg: 'New-York', paris: 'Paris', quebec: 'Québec'}
+                    - var select=null; if (index == 'f25dvk') select='selected';
+                    option(value= index selected=select)= val
+          .row
+            .col-md-6
+              .form-group
+                label.col-sm-2.control-label(for='outbound_date') From
+                input#outbound_date.form-control.datepicker(name='outbound_date', type='text', placeholder='One way', value='01-Oct-2018')
+            .col-md-6
+              .form-group
+                label.col-sm-2.control-label(for='toDate') To
+                input#toDate.form-control.datepicker(name='toDate', type='text', placeholder='Return', value='')
+          .row
+            .col-md-6
+              .form-group
+                label.col-sm-2.control-label(for='passenger') Passenger
+                select#passenger.form-control(name="passenger", title="Passenger")
+                  -for(var i = 1;i<10;i++){
+                  option(value="#{i}")  #{i}
+                  -}
+            .col-md-6
+              .form-group.margin-bottom-0.pull-right.margin-right-0.margin-top-25
+                input#submit.btn.btn-primary(name='submit', type='submit', value='Search')
+      .row
+        .col-md-3
+        .col-md-6
+          div.margin-top-20
+            .row
+              .col-md-12
+                h4
+                  i.fas.fa-road
+                  |  Results ( 
+                  span= departures.length
+                  |  )
+            for departure in departures
+              if departure.departure_time
+                .row.result
+                  .col-md-2
+                    for operator in operators
+                      if operator.id == departure.operator_id
+                        span= operator.name
+                  .col-md-8
+                    span
+                      i.fas.fa-map-marker.margin-right-5
+                      span #{moment(Date.parse(departure.departure_time)).format('hh:mm a')}
+                      |  - 
+                      for location in locations
+                        if location.id == departure.origin_location_id
+                          span= location.name
+                    br
+                    span
+                      i.fas.fa-map-marker-alt.margin-right-5
+                      span #{moment(Date.parse(departure.arrival_time)).format('hh:mm a')}
+                      |  - 
+                      for location in locations
+                        if location.id == departure.destination_location_id
+                          span= location.name
+                  .col-md-2
+                    if departure.prices
+                      span= departure.prices.total
+                      span= departure.prices.currency
+                      br
+                      a.btn.btn-yellow(href= departure.links.deeplink) Select
