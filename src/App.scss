@@ -1,0 +1,47 @@
+@import '~antd/dist/antd.css';
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.App {
+
+}
+
+// Overriding Progress styles
+.progress--topBar {
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  height: 2px!important;
+  & > div, .ant-progress-outer, .ant-progress-inner, .ant-progress-bg {
+    height: 2px!important;
+  }
+
+  .ant-progress-inner {
+    position: absolute;
+    top: 0;
+  }
+  .ant-progress-bg {
+    border-radius: 0!important;
+  }
+
+  &.ant-progress-status-success {
+    animation: fade-out .2s forwards;
+  }
+}
+

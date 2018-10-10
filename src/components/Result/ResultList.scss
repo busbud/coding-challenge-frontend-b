@@ -1,0 +1,25 @@
+h2 {
+  font-size: 2em;
+  font-weight: normal;
+
+  .originLabel {
+    color: #2593FC;
+  }
+
+  .destinationLabel {
+    color: #57C22D;
+  }
+
+  .departureDate {
+    color: #F3B014;
+  }
+}
+
+.ant-spin-spinning {
+  margin-top: -18px;
+  margin-right: 10px;
+}
+
+.fadeIn {
+  animation: fade-in .2s forwards;
+}

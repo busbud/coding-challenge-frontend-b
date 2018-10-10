@@ -1,0 +1,12 @@
+{
+  "mainTitle": "Welcome to the Magic Bus !",
+  "searching_01": " departures for ",
+  "searching_02": " on ",
+  "book": "Book for",
+  "with": "with",
+  "sort": {
+    "title": "Sort by",
+    "schedule": "schedule",
+    "price": "price"
+  }
+}

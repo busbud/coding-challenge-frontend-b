@@ -1,0 +1,12 @@
+{
+  "mainTitle": "Bienvenue dans le Bus Magique !",
+  "searching_01": " departs pour ",
+  "searching_02": " le ",
+  "book": "Réserver pour",
+  "with": "avec",
+  "sort": {
+    "title": "Trier par",
+    "schedule": "horaire",
+    "price": "prix"
+  }
+}
