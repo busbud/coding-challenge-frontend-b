@@ -16,8 +16,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "serve -s build",
-    "dev": "npm-run-all -p watch-css start-js",
+    "start": "npm-run-all -p watch-css start-js",
     "start-js": "NODE_PATH=src/ react-scripts start",
     "build": "npm-run-all build-css build-js",
     "build-js": "NODE_PATH=src/ react-scripts build",
@@ -34,8 +33,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "serve": "^10.0.2"
-  }
+  ]
 }
