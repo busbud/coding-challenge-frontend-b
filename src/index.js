@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from 'containers';
+import App from 'containers';
 import { Provider } from 'react-redux'
 import makeStore from './store/makeStore';
 import * as serviceWorker from './serviceWorker';

@@ -4,7 +4,7 @@ $color-orange: #f19020;
 .departures {
   max-width: 980px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 0px 40px;
 
   .departure {
     margin: 1.42rem 0;
@@ -48,6 +48,18 @@ $color-orange: #f19020;
         color: rgba($color-orange, .54);
         font-weight: 400;
       }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .departures {
+    padding: 0px 20px;
+    margin-top: 1.42rem;
+    .departure {
+      margin: 0px;
+      padding: 20px;
+      border-radius: 0px;
     }
   }
 }

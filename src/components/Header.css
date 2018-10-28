@@ -1,0 +1,17 @@
+.header {
+  background-color: #127ccb;
+  padding: 30px 40px; }
+  .header .search-status {
+    max-width: 980px;
+    margin: 0px auto;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+
+@media (max-width: 600px) {
+  .header .search-status {
+    display: initial;
+    text-align: center; } }

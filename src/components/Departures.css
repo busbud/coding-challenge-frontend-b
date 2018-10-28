@@ -1,7 +1,7 @@
 .departures {
   max-width: 980px;
   margin: 0 auto;
-  padding: 40px; }
+  padding: 0px 40px; }
   .departures .departure {
     margin: 1.42rem 0;
     padding: 24px 38px;
@@ -29,3 +29,12 @@
       .departures .departure .departure-prices small {
         color: rgba(241, 144, 32, 0.54);
         font-weight: 400; }
+
+@media (max-width: 600px) {
+  .departures {
+    padding: 0px 20px;
+    margin-top: 1.42rem; }
+    .departures .departure {
+      margin: 0px;
+      padding: 20px;
+      border-radius: 0px; } }

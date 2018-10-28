@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Departures } from 'components';
+import Departures from '../components/Departures';
 
 const mapStateToProps = (state) => ({
   schedules: state.schedules
