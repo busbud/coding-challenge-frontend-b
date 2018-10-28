@@ -28,4 +28,5 @@ node_modules
 
 build
 *.swp
+*.css
 .env
