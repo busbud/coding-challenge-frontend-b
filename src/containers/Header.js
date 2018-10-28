@@ -10,7 +10,7 @@ const defaultCities = {
 const defaultQuery = {
   origin: 'dr5reg',
   destination: 'f25dvk',
-  outbound_date: '2019-08-01'
+  outbound_date: '2019-08-02'
 }
 
 const defaultParams = {
