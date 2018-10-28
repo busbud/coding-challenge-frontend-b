@@ -1,0 +1,53 @@
+$color-blue: #127ccb;
+$color-orange: #f19020;
+
+.departures {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 40px;
+
+  .departure {
+    margin: 1.42rem 0;
+    padding: 24px 38px;
+
+    border: none;
+    box-shadow: 0 1px 3px 0 rgba(black, .24);
+    border-radius: 4px;
+    background: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .departure-summary {
+      span.time {
+        margin-right: 15px;
+        font-weight: bold;
+      }
+      span.city strong {
+        &:after {
+          content: ' - ';
+        }
+      }
+      .departure-summary-origin {
+        span.time {
+          color: $color-blue;
+        }
+      }
+      .departure-summary-destination {
+        margin-top: 10px;
+        color: rgba(32, 37, 43, .35);
+      }
+    }
+
+    .departure-prices {
+      color: $color-orange;
+      font-weight: 700;
+      font-size: 24px;
+      small {
+        color: rgba($color-orange, .54);
+        font-weight: 400;
+      }
+    }
+  }
+}

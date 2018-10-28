@@ -1,7 +1,10 @@
 body {
   margin: 0;
   padding: 0;
-  line-height: 1; }
+  color: #1f242b;
+  line-height: 1;
+  background-color: #f6f6f6;
+  font-family: 'Helvetica Neue'; }
 
 h1 {
   text-align: center; }

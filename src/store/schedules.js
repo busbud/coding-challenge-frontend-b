@@ -27,10 +27,10 @@ export function initializeSearchSchedules ({origin, destination, outbound_date},
     return fetch(queryURL, options).then(handleResponse).then(json => {
       dispatch({
         type: INITIALIZE_SEARCH_SUCCESSFUL,
-        data: {
-          isLoading: !json.complete,
-          departures: json.departures
-        }
+        cities: json.cities,
+        departures: json.departures,
+        locations: json.locations.reduce((_, location) => ({..._, [location.id]: location}), {}),
+        isLoading: !json.complete
       })
 
       if (!json.complete) {
@@ -58,7 +58,8 @@ export function pollSearchSchedules ({origin, destination, outbound_date}, param
     return fetch(queryURL, options).then(handleResponse).then(json => {
       return dispatch({
         type: POLL_SEARCH_SUCCESSFUL,
-        data: json
+        departures: json.departures,
+        isLoading: !json.complete
       })
     })
   }
@@ -69,7 +70,9 @@ export function pollSearchSchedules ({origin, destination, outbound_date}, param
  */
 const initState = {
   isLoading: false,
-  departures: []
+  cities: [],
+  departures: [],
+  locations: {}
 }
 
 export default function reducer (state = initState, action) {
@@ -77,16 +80,23 @@ export default function reducer (state = initState, action) {
     case INITIALIZE_SEARCH_REQUESTED:
       return Object.assign({}, state, {
         isLoading: true,
-        departures: []
+        cities: [],
+        departures: [],
+        locations:{}
       })
     case INITIALIZE_SEARCH_SUCCESSFUL:
-      return Object.assign({}, state, action.data)
+      return Object.assign({}, state, {
+        isLoading: action.isLoading,
+        cities: action.cities,
+        departures: action.departures,
+        locations: action.locations
+      })
     case POLL_SEARCH_SUCCESSFUL:
       return Object.assign({}, state, {
-        isLoading: !action.data.complete,
+        isLoading: action.isLoading,
         departures: [
           ...state.departures,
-          ...action.data.departures
+          ...action.departures
         ]
       })
     default:

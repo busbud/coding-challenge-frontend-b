@@ -9,7 +9,7 @@ import './App.css';
 const defaultQuery = {
   origin: 'dr5reg',
   destination: 'f25dvk',
-  outbound_date: '2019-08-03'
+  outbound_date: '2019-08-01'
 }
 
 const defaultParams = {
