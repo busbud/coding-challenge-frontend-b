@@ -9,23 +9,25 @@ import messages from 'locales'
 
 class DynamicIntlProvider extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     if (props.lang) {
-      numeral.locale(props.lang)
-      moment.locale(props.lang)
+      numeral.locale(props.lang);
+      moment.locale(props.lang);
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.lang !== this.props.lang) {
-      numeral.locale(nextProps.lang)
-      moment.locale(nextProps.lang)
+      if (nextProps.lang === 'fr') {
+        numeral.locale('fr-ca');
+      }
+      moment.locale(nextProps.lang);
     }
   }
 
   render() {
-    const { lang, children } = this.props
+    const { lang, children } = this.props;
 
     return (
       <IntlProvider locale={lang} messages={messages[lang]} textComponent={React.Fragment}>
@@ -35,4 +37,4 @@ class DynamicIntlProvider extends React.Component {
   }
 }
 
-export default connect(state => ({ lang: state.locale.lang }))(DynamicIntlProvider)
+export default connect(state => ({ lang: state.locale.lang }))(DynamicIntlProvider);
