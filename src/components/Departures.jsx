@@ -2,6 +2,7 @@ import React from 'react';
 import Loading from './Loading';
 import moment from 'moment';
 import numeral from 'numeral';
+import { FormattedMessage } from 'react-intl';
 import './Departures.css';
 
 export default class Departures extends React.Component {
@@ -9,12 +10,27 @@ export default class Departures extends React.Component {
     const { schedules } = this.props
     return (
       <div className='departures'>
+        <div className='result-number'>
+          <FormattedMessage
+            id='departures.result'
+            defaultMessage='{number, plural,
+            =0 {No results}
+            one {# Result}
+            other {# Results}}'
+            description='Departures result number'
+            values={{
+              number: schedules.departures.length
+            }}
+          />
+        </div>
+
+        { schedules.isLoading && <Loading /> }
+
         {
           schedules.departures.map(
             departure => <Departure key={departure.id} departure={departure} schedules={schedules} />
           )
         }
-        { schedules.isLoading && <Loading /> }
       </div>
     )
   }

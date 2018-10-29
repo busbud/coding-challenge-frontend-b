@@ -2,6 +2,8 @@
   max-width: 980px;
   margin: 0 auto;
   padding: 0px 40px; }
+  .departures .result-number {
+    margin-top: 20px; }
   .departures .departure {
     margin: 1.42rem 0;
     padding: 24px 38px;

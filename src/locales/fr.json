@@ -1,0 +1,3 @@
+{
+	"departures.result": "{number, plural, =0 {Pas de résultats} one {# résultat} other {# résultats}}"
+}

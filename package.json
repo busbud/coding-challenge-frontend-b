@@ -9,6 +9,7 @@
     "numeral": "^2.0.6",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-intl": "^2.7.2",
     "react-redux": "^5.1.0",
     "react-scripts": "2.0.5",
     "redux": "^4.0.1",
@@ -22,6 +23,7 @@
     "build-js": "NODE_PATH=src/ react-scripts build",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/styles --include-path ./node_modules src/ -o src/ --watch --recursive",
     "build-css": "node-sass-chokidar --include-path ./src/resources/styles --include-path ./node_modules src/  -o src/",
+    "translate": "NODE_ENV=production babel ./src >/dev/null",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -33,5 +35,11 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/plugin-syntax-json-strings": "^7.0.0",
+    "babel-plugin-react-intl": "^3.0.1",
+    "babel-preset-react-app": "^5.0.4"
+  }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import DynamicIntlProvider from './DynamicIntlProvider'
 import App from 'containers';
 import { Provider } from 'react-redux'
 import makeStore from './store/makeStore';
@@ -10,8 +11,11 @@ const store = makeStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
-  </Provider>, document.getElementById('root'));
+    <DynamicIntlProvider>
+      <App />
+    </DynamicIntlProvider>
+  </Provider>
+  , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
