@@ -3,8 +3,10 @@
  */
 
 import { combineReducers } from 'redux';
+import localeReducer from './locale';
 import schedulesReducer from './schedules';
 
 export default combineReducers({
-  schedules: schedulesReducer
+  schedules: schedulesReducer,
+  locale: localeReducer
 });

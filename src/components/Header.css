@@ -1,6 +1,12 @@
 .header {
   background-color: #127ccb;
-  padding: 30px 40px; }
+  padding: 10px 40px 35px; }
+  .header .locale {
+    max-width: 980px;
+    margin: 0px auto 10px;
+    text-align: right; }
+    .header .locale select {
+      text-transform: uppercase; }
   .header .search-status {
     max-width: 980px;
     margin: 0px auto;

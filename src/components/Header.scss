@@ -3,7 +3,17 @@ $color-gray: #dbdbdb;
 
 .header {
   background-color: $color-blue;
-  padding: 30px 40px;
+  padding: 10px 40px 35px;
+
+  .locale {
+    max-width: 980px;
+    margin: 0px auto 10px;
+    text-align: right;
+
+    select {
+      text-transform: uppercase;
+    }
+  }
 
   .search-status {
     max-width: 980px;

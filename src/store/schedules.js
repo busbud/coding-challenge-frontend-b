@@ -13,10 +13,12 @@ const POLL_SEARCH_SUCCESSFUL = 'POLL_SEARCH_SUCCESSFUL';
  */
 export function initializeSearchSchedules ({origin, destination, outbound_date}, params) {
   return (dispatch, getState) => {
-    const { schedules } = getState();
+    const { schedules, locale } = getState();
     /* When there is data loading return null */
     if (schedules.isLoading) { return; }
 
+    params.lang = locale.lang
+    params.currency = locale.currency
     const queryURL = queryBuilder(['x-departures', origin, destination, outbound_date], params);
     const options = { headers };
 
