@@ -30,7 +30,7 @@ const Departure = ({departure, schedules}) => (
         <span className='time'>{moment(departure.departure_time).format(dateFormat)}</span>
         <span className='city'>
           <strong>{schedules.cities[0].name}</strong>
-          {schedules.locations[departure.destination_location_id].name}
+          {schedules.locations[departure.origin_location_id].name}
         </span>
       </div>
 
@@ -38,7 +38,7 @@ const Departure = ({departure, schedules}) => (
         <span className='time'>{moment(departure.arrival_time).format(dateFormat)}</span>
         <span className='city'>
           <strong>{schedules.cities[1].name}</strong>
-          {schedules.locations[departure.origin_location_id].name}
+          {schedules.locations[departure.destination_location_id].name}
         </span>
       </div>
 
