@@ -1,0 +1,66 @@
+<ng-container *ngIf="departures$ | async as tripDetails">
+  <div *ngIf="loading$ | async" class="loader">Loading...</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 spacing">
+        <div *ngIf="tripDetails.cities?.length" class="card card-1">
+          <h3 class="title">
+            {{ tripDetails.cities[0].full_name }}
+            <i class="fa fa-arrow-down" aria-hidden="true"></i>
+            {{ tripDetails.cities[1].full_name }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 title">
+        <h1>Available departures</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let departure of tripDetails.departures" class="col-md-4">
+        <h3 class="price">
+          $ {{departure.prices.total | number: '1.2-2'}}
+        </h3>
+        <div class="card card-3">
+          <h3>
+            <i class="fa fa-bus" aria-hidden="true"></i>
+            Departure at {{ departure.departure_time | date: 'shortTime' }}
+            <i class="fa fa-arrow-right arrow-space" aria-hidden="true"></i>
+            <span>
+              <i class="fa fa-bus" aria-hidden="true"></i>
+            </span>
+            Arrival at {{ departure.arrival_time | date: 'shortTime' }}
+          </h3>
+          <p>
+            <span class="details">
+              <i class="fa fa-suitcase" aria-hidden="true"></i>
+              {{ departure.class }}
+            </span>
+
+            <span *ngIf="departure.amenities.wifi" class="details">
+              <i class="fa fa-wifi details-icon" aria-hidden="true"></i>
+              <span>Available</span>
+            </span>
+
+            <span *ngIf="departure.amenities.power_outlets" class="details">
+              <i class="fa fa-plug details-icon" aria-hidden="true"></i>
+              <span>Available</span>
+            </span>
+
+            <span *ngIf="departure.amenities.tv" class="details">
+              <i class="fa fa-tv details-icon" aria-hidden="true"></i>
+              <span>Available</span>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
