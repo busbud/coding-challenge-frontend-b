@@ -10,6 +10,8 @@ import { DepartureComponent } from './departure.component';
 import { reducers } from './store';
 import { effects } from './store/effects';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 export const ROUTES: Routes = [
   {
     path: '',
@@ -22,6 +24,7 @@ export const ROUTES: Routes = [
   imports: [
     CommonModule,
     HttpClientModule,
+    TranslateModule,
     RouterModule.forChild(ROUTES),
     StoreModule.forFeature('departures', reducers),
     EffectsModule.forFeature(effects),

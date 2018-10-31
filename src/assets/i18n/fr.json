@@ -1,0 +1,11 @@
+{
+  "dashboard": {
+    "departures": {
+      "availableDepartures": "Départs disponibles",
+      "departure": "Départ",
+      "arrival": "Arrivée",
+      "economy": "Economy",
+      "available": "Disponible"
+    }
+  }
+}

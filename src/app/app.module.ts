@@ -8,6 +8,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppComponent } from './app.component';
 import { DepartureModule } from './departure/departure.module';
 
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'departures' },
   {
@@ -26,6 +33,13 @@ export const ROUTES: Routes = [
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
     }),
   ],
   bootstrap: [AppComponent],

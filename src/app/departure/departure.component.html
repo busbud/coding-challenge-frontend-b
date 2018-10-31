@@ -1,5 +1,9 @@
 <ng-container *ngIf="departures$ | async as tripDetails">
   <div *ngIf="loading$ | async" class="loader">Loading...</div>
+  <select (change)="onChange($event)" class="form-control custom-select">
+    <option value="en">English</option>
+    <option value="fr">French</option>
+  </select>
   <div class="container">
     <div class="row">
       <div class="col-md-4 spacing">
@@ -17,7 +21,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 title">
-        <h1>Available departures</h1>
+        <h1>{{ 'dashboard.departures.availableDepartures' | translate}}</h1>
       </div>
     </div>
   </div>
@@ -31,12 +35,12 @@
         <div class="card card-3">
           <h3>
             <i class="fa fa-bus" aria-hidden="true"></i>
-            Departure at {{ departure.departure_time | date: 'shortTime' }}
+            {{ 'dashboard.departures.departure' | translate }} at {{ departure.departure_time | date: 'shortTime' }}
             <i class="fa fa-arrow-right arrow-space" aria-hidden="true"></i>
             <span>
               <i class="fa fa-bus" aria-hidden="true"></i>
             </span>
-            Arrival at {{ departure.arrival_time | date: 'shortTime' }}
+            {{ 'dashboard.departures.arrival' | translate }} at {{ departure.arrival_time | date: 'shortTime' }}
           </h3>
           <p>
             <span class="details">
@@ -46,17 +50,17 @@
 
             <span *ngIf="departure.amenities.wifi" class="details">
               <i class="fa fa-wifi details-icon" aria-hidden="true"></i>
-              <span>Available</span>
+              <span>{{ 'dashboard.departures.available' | translate}}</span>
             </span>
 
             <span *ngIf="departure.amenities.power_outlets" class="details">
               <i class="fa fa-plug details-icon" aria-hidden="true"></i>
-              <span>Available</span>
+              <span>{{ 'dashboard.departures.available' | translate}}</span>
             </span>
 
             <span *ngIf="departure.amenities.tv" class="details">
               <i class="fa fa-tv details-icon" aria-hidden="true"></i>
-              <span>Available</span>
+              <span>{{ 'dashboard.departures.available' | translate}}</span>
             </span>
           </p>
         </div>
