@@ -48,7 +48,7 @@ class Search extends React.Component {
                         <DepartureResult 
                             key={result.id} 
                             departure={result} 
-                            location={this.props.locations.find(x => x.id === result.origin_location_id)} />
+                            locations={this.props.locations} />
                     ))}
                 </div>
             </React.Fragment>
