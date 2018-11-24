@@ -6,13 +6,16 @@ import { searchOperations } from './duck';
 function mapStateToProps(state) {
     const { searchReducer } = state;
     return {
-        results: searchReducer.results,
+        departures: searchReducer.departures,
+        locations: searchReducer.locations,
+        cities: searchReducer.cities,
         isSearching: searchReducer.isSearching,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
+        getCity: searchOperations.getCity,
         search: searchOperations.search,
     }, dispatch);
 }

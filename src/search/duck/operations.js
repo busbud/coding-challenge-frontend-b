@@ -1,6 +1,15 @@
 import actions from './actions';
 import ApiClient from '../../apiClient';
 
+const getCity = (geoHash) => (dispatch) => {
+    dispatch(actions.requestCity());
+    return new ApiClient().get(`https://napi.busbud.com/cities/${geoHash}`)
+        .then(
+            res => dispatch(actions.receiveCity(res)),
+            err => dispatch(actions.receiveCityFail(err))
+        );
+};
+
 const search = (origin, destination, outboundDate) => (dispatch) => {
     /*
     Path parameters:
@@ -15,6 +24,7 @@ const search = (origin, destination, outboundDate) => (dispatch) => {
         lang : ISO 3166-1 alpha-2 language code
         currency : ISO 4217 currency code
     */
+   
     dispatch(actions.requestSearch());
     return new ApiClient().get(`https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}`, { query: {
             adult: 1,
@@ -23,8 +33,10 @@ const search = (origin, destination, outboundDate) => (dispatch) => {
             lang: 'EN',
             currency: 'CAD'
         }})
-        .then(res => res.json(), err => dispatch(actions.receiveSearchResultsFail(err)))
-        .then(results => dispatch(actions.receiveSearchResults(results)));
+        .then(
+            res => dispatch(actions.receiveSearchResults(res)),
+            err => dispatch(actions.receiveSearchResultsFail(err))
+        );
 };
 
 const poll = (origin, destination, outboundDate) => (dispatch) => {
@@ -52,11 +64,14 @@ const poll = (origin, destination, outboundDate) => (dispatch) => {
             lang: 'EN',
             currency: 'CAD'
         }})
-        .then(res => res.json(), err => dispatch(actions.receiveSearchResultsFail(err)))
-        .then(results => dispatch(actions.receiveSearchResults(results)));
+        .then(
+            res => dispatch(actions.receiveSearchResults(res.departures)),
+            err => dispatch(actions.receiveSearchResultsFail(err))
+        );
 };
 
 export default {
+    getCity,
     search,
     poll,
 };

@@ -14,8 +14,26 @@ const receiveSearchResultsFail = error => ({
     error
 });
 
+const requestCity = () => ({
+    type: types.GET_CITY,
+});
+
+const receiveCity = results => ({
+    type: types.GET_CITY_SUCCESS,
+    results
+});
+
+const receiveCityFail = error => ({
+    type: types.GET_CITY_FAILURE,
+    error
+});
+
 export default {
     requestSearch,
     receiveSearchResults,
     receiveSearchResultsFail,
+
+    requestCity,
+    receiveCity,
+    receiveCityFail,
 };
