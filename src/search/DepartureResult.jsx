@@ -6,25 +6,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const monthNames = [
-    "January", "February", "March",
-    "April", "May", "June", "July",
-    "August", "September", "October",
-    "November", "December"
-];
 const options = { weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' };
-
 
 const DepartureResult = props => {
     const externalLink = () => <a href={props.departure.links.deeplink} target="_blank">View Details</a>
-    
-    const formatDate = (date) => {
-        var day = date.getDate();
-        var monthIndex = date.getMonth();
-        var year = date.getFullYear();
-      
-        return `${day} ${monthNames[monthIndex]} ${year} at `;
-    }
 
     return (<Card>
         <CardContent>

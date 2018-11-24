@@ -1,32 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withRouter } from "react-router";
-import logo from './logo.svg';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
-class Layout extends React.Component {
-    render() {
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        Edit <code>src/App.jsx</code> and save to reload.
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        Learn React
-                    </a>
-                    {this.props.children}
-                </header>
-            </div>
-        );
-    };
-}
-
-Layout.propTypes = {
-};
+const Layout = props => (
+    <div>
+        <AppBar position="fixed">
+            <Toolbar>
+            <Typography variant="h6" color="inherit" noWrap>
+                Osheaga bus finder
+            </Typography>
+            </Toolbar>
+        </AppBar>
+        <main>
+            <div />
+            {props.children}
+        </main>
+    </div>
+);
 
 export default withRouter(Layout);
