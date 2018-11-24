@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
 import SearchForm from './SearchForm';
-import DepartureResult from './DepartureResult';
+import DepartureResults from './DepartureResults';
 
 class Search extends React.Component {
     static propTypes = {
@@ -11,6 +12,10 @@ class Search extends React.Component {
         isSearching: PropTypes.bool.isRequired,
         search: PropTypes.func.isRequired,
         getCity: PropTypes.func.isRequired,
+    };
+
+    state = {
+        destinationCity: null,
     };
 
     componentWillMount() {
@@ -31,26 +36,29 @@ class Search extends React.Component {
     }
 
     handleSearch = (origin, destination, departureDate) => {
+        this.setState({
+            destinationCity: this.props.cities.find(city => city.geohash === destination)
+        });
+
         this.props.search(origin, destination, departureDate);
     };
 
     render() {
         return (
             <React.Fragment>
-                <div>
-                    <h1>Search</h1>
-                </div>
-                <SearchForm cities={this.props.cities} isSearching={this.props.isSearching} onSubmit={this.handleSearch} />
+                <Typography variant="h4" gutterBottom align='center'>
+                    Search for bus tickets
+                </Typography>
+
+                        <SearchForm cities={this.props.cities} isSearching={this.props.isSearching} onSubmit={this.handleSearch} />
                 
                 {this.props.isSearching && <div>Searching</div>}
-                <div>
-                    {this.props.departures && this.props.departures.map(result => (
-                        <DepartureResult 
-                            key={result.id} 
-                            departure={result} 
-                            locations={this.props.locations} />
-                    ))}
-                </div>
+                {this.props.departures && 
+                    <DepartureResults
+                        departures={this.props.departures} 
+                        locations={this.props.locations}
+                        city={this.state.destinationCity} />
+                }
             </React.Fragment>
         );
     }

@@ -4,7 +4,9 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 import CityPicker from '../components/CityPicker';
+import './SearchForm.scss';
 
 class SearchForm extends React.Component {
     static propTypes = {
@@ -29,47 +31,55 @@ class SearchForm extends React.Component {
 
     render() {
         return (
-            <form>
-                <FormControl margin="normal" fullWidth>
-                    <InputLabel>Origin City</InputLabel>
-                    <CityPicker 
-                        cities={this.props.cities} 
-                        value={this.state.origin}
-                        onChange={this.handleChange}
-                        name='origin' />
-                </FormControl>
+            <div className='search-form'>
+                <Grid container spacing={24}>
+                    <Grid item xs={12} sm={6}>
+                        <FormControl margin="normal" fullWidth>
+                            <InputLabel>Origin City</InputLabel>
+                            <CityPicker 
+                                cities={this.props.cities} 
+                                value={this.state.origin}
+                                onChange={this.handleChange}
+                                name='origin' />
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <FormControl margin="normal" fullWidth>
+                            <InputLabel>Destination City</InputLabel>
+                            <CityPicker 
+                                cities={this.props.cities} 
+                                value={this.state.destination}
+                                onChange={this.handleChange}
+                                name='destination' />
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <FormControl margin="normal" fullWidth>
+                            <InputLabel>Departure Date</InputLabel>
+                            <TextField
+                                disabled
+                                name="date"
+                                type="date"
+                                value={this.state.departureDate}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }} />
+                        </FormControl>
+                    </Grid>
 
-                <FormControl margin="normal" fullWidth>
-                    <InputLabel>Destination City</InputLabel>
-                    <CityPicker 
-                        cities={this.props.cities} 
-                        value={this.state.destination}
-                        onChange={this.handleChange}
-                        name='destination' />
-                </FormControl>
-
-                <FormControl margin="normal" fullWidth>
-                    <InputLabel>Departure Date</InputLabel>
-                    <TextField
-                        disabled
-                        name="date"
-                        type="date"
-                        value={this.state.departureDate}
-                        InputLabelProps={{
-                            shrink: true,
-                        }} />
-                </FormControl>
-
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    disabled={this.props.isSearching || !(this.state.origin && this.state.destination)}
-                    onClick={this.handleSubmit}>
-                    Search
-                </Button>
-            </form>
+                    <div className='actions'>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            disabled={this.props.isSearching || !(this.state.origin && this.state.destination)}
+                            onClick={this.handleSubmit}>
+                            Search
+                        </Button>
+                    </div>
+                </Grid>
+            </div>
         );
     }
 }

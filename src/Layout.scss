@@ -1,0 +1,16 @@
+.layout {
+    display: flex;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .img-container {
+        text-align: center;
+        margin: 24px 0;
+    }
+
+    .main {
+        flex-grow: 1;
+        padding: 24px;
+    }
+}
