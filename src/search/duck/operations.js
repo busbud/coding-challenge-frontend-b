@@ -1,9 +1,11 @@
 import actions from './actions';
 import ApiClient from '../../apiClient';
 
+const apiClient = new ApiClient();
+
 const getCity = (geoHash) => (dispatch) => {
     dispatch(actions.requestCity());
-    return new ApiClient().get(`https://napi.busbud.com/cities/${geoHash}`)
+    return apiClient.get(`https://napi.busbud.com/cities/${geoHash}`)
         .then(
             res => dispatch(actions.receiveCity(res)),
             err => dispatch(actions.receiveCityFail(err))
@@ -29,7 +31,7 @@ Querystring parameters:
 */
 const search = (origin, destination, outboundDate, lang = 'en') => (dispatch) => {
     dispatch(actions.requestSearch());
-    return new ApiClient().get(`https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}`, { query: {
+    return apiClient.get(`https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}`, { query: {
             adult: 1,
             child: 0,
             senior: 0,
@@ -59,7 +61,7 @@ Querystring parameters:
 const poll = (origin, destination, outboundDate, lang = 'en') => (dispatch) => {
     // TODO Maybe update actions
     dispatch(actions.requestSearch());
-    return new ApiClient().get(`https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}/poll`, { query: {
+    return apiClient.get(`https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}/poll`, { query: {
             adult: 1,
             child: 0,
             senior: 0,
