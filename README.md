@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Project website
+
+This project is hosted on Heroku at https://floating-bayou-38788.herokuapp.com/.
+
 ## Available Scripts
 
 In the project directory, you can run:
