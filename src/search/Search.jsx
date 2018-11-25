@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withNamespaces } from "react-i18next";
 import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import SearchForm from './SearchForm';
 import DepartureResults from './DepartureResults';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 class Search extends React.Component {
     static propTypes = {
@@ -37,7 +39,13 @@ class Search extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.cities && nextProps.cities.length > 1) {
-            nextProps.cities.sort(this.sortByName);
+            const sortByName = (a, b) => {
+                if (a.name < b.name) return -1;
+                else if (a.name > b.name) return 1;
+                else return 0;
+            }
+
+            nextProps.cities.sort(sortByName);
         }
     }
 
@@ -45,12 +53,6 @@ class Search extends React.Component {
         clearInterval(this.timer);
         this.timer = null;
     };
-
-    sortByName(a, b) {
-        if (a.name < b.name) return -1;
-        else if (a.name > b.name) return 1;
-        else return 0;
-    }
 
     handleSearch = (origin, destination, departureDate) => {
         this.setState({
@@ -76,8 +78,10 @@ class Search extends React.Component {
         return (
             <React.Fragment>
                 <Typography variant="h4" gutterBottom align='center'>
-                    Search for bus tickets
+                    {this.props.t('search.title')}
                 </Typography>
+
+                <LanguageSwitcher />
 
                 <SearchForm cities={this.props.cities} isSearching={this.props.isSearching} onSubmit={this.handleSearch} />
                 
@@ -95,4 +99,4 @@ class Search extends React.Component {
     }
 }
 
-export default Search;
+export default withNamespaces()(Search);

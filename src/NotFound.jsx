@@ -1,12 +1,15 @@
 import React from 'react';
+import { withNamespaces } from "react-i18next";
 import Typography from '@material-ui/core/Typography';
 
-export default () =>
+const NotFound = props =>
     <div>
         <Typography variant="h4" gutterBottom align='center'>
-            404 - Not Found
+            {props.t('404.title')}
         </Typography>
         <Typography variant="h6" gutterBottom align='center'>
-            The page was not found!
+            {props.t('404.description')}
         </Typography>
     </div>;
+
+export default withNamespaces()(NotFound);

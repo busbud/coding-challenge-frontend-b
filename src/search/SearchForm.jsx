@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withNamespaces } from "react-i18next";
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -35,7 +36,7 @@ class SearchForm extends React.Component {
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={6}>
                         <FormControl margin="normal" fullWidth>
-                            <InputLabel>Origin City</InputLabel>
+                            <InputLabel>{this.props.t('search.form.origin')}</InputLabel>
                             <CityPicker 
                                 cities={this.props.cities} 
                                 value={this.state.origin}
@@ -45,7 +46,7 @@ class SearchForm extends React.Component {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <FormControl margin="normal" fullWidth>
-                            <InputLabel>Destination City</InputLabel>
+                            <InputLabel>{this.props.t('search.form.destination')}</InputLabel>
                             <CityPicker 
                                 cities={this.props.cities} 
                                 value={this.state.destination}
@@ -55,8 +56,9 @@ class SearchForm extends React.Component {
                     </Grid>
                     <Grid item xs={12}>
                         <FormControl margin="normal" fullWidth>
-                            <InputLabel>Departure Date</InputLabel>
+                            <InputLabel>{this.props.t('search.form.departure')}</InputLabel>
                             <TextField
+                                disabled
                                 name="date"
                                 type="date"
                                 value={this.state.departureDate}
@@ -74,7 +76,7 @@ class SearchForm extends React.Component {
                             color="primary"
                             disabled={this.props.isSearching || !(this.state.origin && this.state.destination)}
                             onClick={this.handleSubmit}>
-                            Search
+                            {this.props.t('search.form.okButton')}
                         </Button>
                     </div>
                 </Grid>
@@ -83,4 +85,4 @@ class SearchForm extends React.Component {
     }
 }
 
-export default SearchForm;
+export default withNamespaces()(SearchForm);
