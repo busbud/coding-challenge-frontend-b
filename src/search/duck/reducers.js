@@ -28,8 +28,16 @@ const searchReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isCompleteResults: action.results.complete,
-                departures: [ ...state.departures, ...action.results.departures ],
+                departures: action.results.departures,
                 locations: action.results.locations,
+                isSearching: !(state.isSearching && action.results.complete),
+            };
+
+        case types.GET_POLL_SUCCESS:
+            return {
+                ...state,
+                isCompleteResults: action.results.complete,
+                departures: [ ...state.departures, ...action.results.departures ],
                 isSearching: !(state.isSearching && action.results.complete),
             };
 

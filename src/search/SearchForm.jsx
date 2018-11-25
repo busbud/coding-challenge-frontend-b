@@ -71,7 +71,6 @@ class SearchForm extends React.Component {
                     <div className='actions'>
                         <Button
                             type="submit"
-                            fullWidth
                             variant="contained"
                             color="primary"
                             disabled={this.props.isSearching || !(this.state.origin && this.state.destination)}

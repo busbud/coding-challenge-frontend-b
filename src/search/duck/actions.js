@@ -18,6 +18,11 @@ const receiveSearchResultsFail = error => ({
     error
 });
 
+const receivePollResults = results => ({
+    type: types.GET_POLL_SUCCESS,
+    results
+});
+
 const requestCity = () => ({
     type: types.GET_CITY,
 });
@@ -38,6 +43,8 @@ export default {
     requestSearch,
     receiveSearchResults,
     receiveSearchResultsFail,
+    
+    receivePollResults,
 
     requestCity,
     receiveCity,

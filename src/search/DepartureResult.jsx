@@ -4,6 +4,7 @@ import { withNamespaces } from "react-i18next";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Hidden from '@material-ui/core/Hidden';
 import Button from '@material-ui/core/Button';
 import './DepartureResult.scss';
 
@@ -20,9 +21,11 @@ const DepartureResult = props => {
     return (
         <Paper className='departure-result'>
             <Grid container spacing={16}>
-                <Grid item>
-                    <img alt="complex" src={props.city.image_url} />
-                </Grid>
+                <Hidden smDown>
+                    <Grid item>
+                        <img alt="complex" src={props.city.image_url} />
+                    </Grid>
+                </Hidden>
                 <Grid item xs={12} sm container>
                     <Grid item xs container direction="column" spacing={16}>
                         <Grid item xs>

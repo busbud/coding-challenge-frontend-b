@@ -59,7 +59,6 @@ Querystring parameters:
     index : Index from which to return new departures, generally set to the total number of departures received since the initial search
 */
 const poll = (origin, destination, outboundDate, index, lang = 'en') => (dispatch) => {
-    // TODO Maybe update actions
     dispatch(actions.requestSearch());
     return apiClient.get(`https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}/poll`, { query: {
             adult: 1,
@@ -70,7 +69,7 @@ const poll = (origin, destination, outboundDate, index, lang = 'en') => (dispatc
             index,
         }})
         .then(
-            res => dispatch(actions.receiveSearchResults(res)),
+            res => dispatch(actions.receivePollResults(res)),
             err => dispatch(actions.receiveSearchResultsFail(err))
         );
 };
