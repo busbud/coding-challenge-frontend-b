@@ -1,6 +1,7 @@
 {
   "name": "coding-challenge-frontend-b",
   "version": "0.1.0",
+  "author": "Maxime Gaudreault Proulx <maxime.gaudreault.proulx@gmail.com> (https://pricewi.se/)",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.5.1",
