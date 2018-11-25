@@ -12,3 +12,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+div[class^="MuiTypography-"], div[class*=" MuiTypography-"],
+div[class^="MuiFormLabel-"], div[class*=" MuiFormLabel-"] {
+    color: #0f3852;
+}

@@ -9,7 +9,31 @@ import './App.scss';
 
 const theme = createMuiTheme({
     typography: {
-        useNextVariants: true
+        useNextVariants: true,
+        fontFamily: 'Poppins,sans-serif',
+        h4: {
+            fontFamily: 'Changa One, impact, sans-serif',
+            color: '#0f3852',
+        }
+    },
+    palette: {
+        primary: {
+            main: '#2880bc',
+        },
+        secondary: {
+            main: '#80cbb2',
+        },
+        background: {
+            default: '#2880bc',
+        }
+    },
+    overrides: {
+        MuiButton: {
+            root: {
+                fontFamily: 'Changa One, impact, sans-serif',
+                padding: '0 30px',
+            },
+        }
     }
 });
 
@@ -25,7 +49,7 @@ class App extends Component {
     render() {
         return (
             <MuiThemeProvider theme={theme}>
-                <CssBaseline />
+                <CssBaseline>
                 <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
                     <Switch>
                         <Route path='/' exact render={() => this.createLayout(<SearchContainer />)} />
@@ -33,6 +57,7 @@ class App extends Component {
                         <Route render={() => this.createLayout(<NotFound />)} />
                     </Switch>
                 </BrowserRouter>
+                </CssBaseline>
             </MuiThemeProvider>
         );
     }

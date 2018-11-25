@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withNamespaces } from "react-i18next";
 import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Paper from '@material-ui/core/Paper';
 import SearchForm from './SearchForm';
 import DepartureResults from './DepartureResults';
 import LanguageSwitcher from '../components/LanguageSwitcher';
@@ -89,10 +90,12 @@ class Search extends React.Component {
 
                 <LanguageSwitcher />
 
-                <SearchForm cities={this.props.cities} isSearching={this.props.isSearching} onSubmit={this.handleSearch} />
+                <Paper square elevation={0}>
+                    <SearchForm cities={this.props.cities} isSearching={this.props.isSearching} onSubmit={this.handleSearch} />
+                </Paper>
                 
                 {this.props.isSearching && 
-                    <LinearProgress />
+                    <LinearProgress color='secondary' />
                 }
                 {this.props.departures && !!this.props.departures.length && 
                     <DepartureResults

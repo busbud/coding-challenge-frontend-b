@@ -72,7 +72,7 @@ class SearchForm extends React.Component {
                         <Button
                             type="submit"
                             variant="contained"
-                            color="primary"
+                            color="secondary"
                             disabled={this.props.isSearching || !(this.state.origin && this.state.destination)}
                             onClick={this.handleSubmit}>
                             {this.props.t('search.form.okButton')}

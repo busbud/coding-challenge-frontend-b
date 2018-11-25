@@ -10,10 +10,10 @@ const LanguageSwitcher = props => {
 
     return (
         <div className='language-buttons'>
-            <Button variant="outlined" onClick={() => changeLanguage('en')}>
+            <Button color="secondary" onClick={() => changeLanguage('en')}>
                 {props.t('language.english')}
             </Button>
-            <Button variant="outlined" onClick={() => changeLanguage('fr')}>
+            <Button color="secondary" onClick={() => changeLanguage('fr')}>
                 {props.t('language.french')}
             </Button>
         </div>

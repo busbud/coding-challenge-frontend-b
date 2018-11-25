@@ -19,7 +19,7 @@ const DepartureResult = props => {
     const arrivalTime = new Date(props.departure.arrival_time).toLocaleDateString('en-CA', options);
 
     return (
-        <Paper className='departure-result'>
+        <Paper className='departure-result' square elevation={0}>
             <Grid container spacing={16}>
                 <Hidden smDown>
                     <Grid item>
