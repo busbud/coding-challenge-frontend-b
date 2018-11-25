@@ -58,7 +58,7 @@ Querystring parameters:
     currency : ISO 4217 currency code
     index : Index from which to return new departures, generally set to the total number of departures received since the initial search
 */
-const poll = (origin, destination, outboundDate, lang = 'en') => (dispatch) => {
+const poll = (origin, destination, outboundDate, index, lang = 'en') => (dispatch) => {
     // TODO Maybe update actions
     dispatch(actions.requestSearch());
     return apiClient.get(`https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}/poll`, { query: {
@@ -66,7 +66,8 @@ const poll = (origin, destination, outboundDate, lang = 'en') => (dispatch) => {
             child: 0,
             senior: 0,
             lang,
-            currency: 'CAD'
+            currency: 'CAD',
+            index,
         }})
         .then(
             res => dispatch(actions.receiveSearchResults(res)),

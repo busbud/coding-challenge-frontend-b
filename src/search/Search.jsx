@@ -70,7 +70,13 @@ class Search extends React.Component {
 
     poll = () => {
         if (this.props.isSearching) {
-            this.props.poll(this.state.origin, this.state.destination, this.state.departureDate, this.props.i18n.language);
+            this.props.poll(
+                this.state.origin, 
+                this.state.destination, 
+                this.state.departureDate, 
+                this.props.departures.length, 
+                this.props.i18n.language,
+            );
         }
     };
 

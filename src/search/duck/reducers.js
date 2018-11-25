@@ -28,7 +28,6 @@ const searchReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isCompleteResults: action.results.complete,
-                // TODO Append new results only
                 departures: [ ...state.departures, ...action.results.departures ],
                 locations: action.results.locations,
                 isSearching: !(state.isSearching && action.results.complete),
