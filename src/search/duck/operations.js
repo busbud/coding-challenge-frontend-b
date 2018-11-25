@@ -27,13 +27,13 @@ Querystring parameters:
     lang : ISO 3166-1 alpha-2 language code
     currency : ISO 4217 currency code
 */
-const search = (origin, destination, outboundDate) => (dispatch) => {
+const search = (origin, destination, outboundDate, lang = 'en') => (dispatch) => {
     dispatch(actions.requestSearch());
     return new ApiClient().get(`https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}`, { query: {
             adult: 1,
             child: 0,
             senior: 0,
-            lang: 'EN',
+            lang,
             currency: 'CAD'
         }})
         .then(
@@ -56,14 +56,14 @@ Querystring parameters:
     currency : ISO 4217 currency code
     index : Index from which to return new departures, generally set to the total number of departures received since the initial search
 */
-const poll = (origin, destination, outboundDate) => (dispatch) => {
+const poll = (origin, destination, outboundDate, lang = 'en') => (dispatch) => {
     // TODO Maybe update actions
     dispatch(actions.requestSearch());
     return new ApiClient().get(`https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}/poll`, { query: {
             adult: 1,
             child: 0,
             senior: 0,
-            lang: 'EN',
+            lang,
             currency: 'CAD'
         }})
         .then(

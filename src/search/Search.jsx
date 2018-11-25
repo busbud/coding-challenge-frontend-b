@@ -63,14 +63,14 @@ class Search extends React.Component {
         });
 
         this.props.clearSearchResults();
-        this.props.search(origin, destination, departureDate);
+        this.props.search(origin, destination, departureDate, this.props.i18n.language);
         
         this.timer = setInterval(() => this.poll(), 3000);
     };
 
     poll = () => {
         if (this.props.isSearching) {
-            this.props.poll(this.state.origin, this.state.destination, this.state.departureDate);
+            this.props.poll(this.state.origin, this.state.destination, this.state.departureDate, this.props.i18n.language);
         }
     };
 
