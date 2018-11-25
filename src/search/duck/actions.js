@@ -1,5 +1,9 @@
 import types from './types';
 
+const clearSearchResults = () => ({
+    type: types.CLEAR_SEARCH,
+});
+
 const requestSearch = () => ({
     type: types.GET_SEARCH,
 });
@@ -29,6 +33,8 @@ const receiveCityFail = error => ({
 });
 
 export default {
+    clearSearchResults,
+    
     requestSearch,
     receiveSearchResults,
     receiveSearchResultsFail,

@@ -10,13 +10,16 @@ function mapStateToProps(state) {
         locations: searchReducer.locations,
         cities: searchReducer.cities,
         isSearching: searchReducer.isSearching,
+        isCompleteResults: searchReducer.isCompleteResults,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
+        clearSearchResults: searchOperations.clearSearchResults,
         getCity: searchOperations.getCity,
         search: searchOperations.search,
+        poll: searchOperations.poll,
     }, dispatch);
 }
 

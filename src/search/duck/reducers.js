@@ -4,6 +4,7 @@ const initialState = {
     departures: [],
     locations: [],
     cities: [],
+    isCompleteResults: false,
     isSearching: false,
     isFetchingCity: false,
     error: false
@@ -11,6 +12,12 @@ const initialState = {
 
 const searchReducer = (state = initialState, action) => {
     switch (action.type) {
+        case types.CLEAR_SEARCH:
+            return {
+                ...state,
+                departures: initialState.departures,
+            };
+
         case types.GET_SEARCH: 
             return {
                 ...state,
@@ -20,9 +27,10 @@ const searchReducer = (state = initialState, action) => {
         case types.GET_SEARCH_SUCCESS: 
             return {
                 ...state,
-                departures: action.results.departures,
+                isCompleteResults: action.results.complete,
+                departures: [ ...state.departures, ...action.results.departures ],
                 locations: action.results.locations,
-                isSearching: false,
+                isSearching: !(state.isSearching && action.results.complete),
             };
 
         case types.GET_SEARCH_FAILURE:

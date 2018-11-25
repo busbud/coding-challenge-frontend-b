@@ -7,6 +7,7 @@ const DepartureResults = props => (
     <div className='departure-results'>
         {props.departures.map(departure => (
             <DepartureResult 
+                key={departure.id}
                 departure={departure} 
                 locations={props.locations}
                 city={props.city} />

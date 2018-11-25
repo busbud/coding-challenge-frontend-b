@@ -57,7 +57,6 @@ class SearchForm extends React.Component {
                         <FormControl margin="normal" fullWidth>
                             <InputLabel>Departure Date</InputLabel>
                             <TextField
-                                disabled
                                 name="date"
                                 type="date"
                                 value={this.state.departureDate}

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import SearchForm from './SearchForm';
 import DepartureResults from './DepartureResults';
 
@@ -10,17 +11,28 @@ class Search extends React.Component {
         locations: PropTypes.array.isRequired,
         cities: PropTypes.array.isRequired,
         isSearching: PropTypes.bool.isRequired,
+        isCompleteResults: PropTypes.bool.isRequired,
+        clearSearchResults: PropTypes.func.isRequired,
         search: PropTypes.func.isRequired,
         getCity: PropTypes.func.isRequired,
     };
 
     state = {
-        destinationCity: null,
+        destinationCity: undefined,
+        origin: undefined,
+        destination: undefined,
+        departureDate: undefined,
     };
+
+    timer = null;
 
     componentWillMount() {
         this.props.getCity('dr5reg'); // New York
         this.props.getCity('f25dvk'); // Montreal
+    }
+
+    componentWillUnmount() {
+        this.stopPolling();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -28,6 +40,11 @@ class Search extends React.Component {
             nextProps.cities.sort(this.sortByName);
         }
     }
+
+    stopPolling = () => {
+        clearInterval(this.timer);
+        this.timer = null;
+    };
 
     sortByName(a, b) {
         if (a.name < b.name) return -1;
@@ -37,10 +54,22 @@ class Search extends React.Component {
 
     handleSearch = (origin, destination, departureDate) => {
         this.setState({
-            destinationCity: this.props.cities.find(city => city.geohash === destination)
+            destinationCity: this.props.cities.find(city => city.geohash === destination),
+            origin,
+            destination,
+            departureDate,
         });
 
+        this.props.clearSearchResults();
         this.props.search(origin, destination, departureDate);
+        
+        this.timer = setInterval(() => this.poll(), 3000);
+    };
+
+    poll = () => {
+        if (this.props.isSearching) {
+            this.props.poll(this.state.origin, this.state.destination, this.state.departureDate);
+        }
     };
 
     render() {
@@ -50,10 +79,12 @@ class Search extends React.Component {
                     Search for bus tickets
                 </Typography>
 
-                        <SearchForm cities={this.props.cities} isSearching={this.props.isSearching} onSubmit={this.handleSearch} />
+                <SearchForm cities={this.props.cities} isSearching={this.props.isSearching} onSubmit={this.handleSearch} />
                 
-                {this.props.isSearching && <div>Searching</div>}
-                {this.props.departures && 
+                {this.props.isSearching && 
+                    <LinearProgress />
+                }
+                {this.props.departures && !!this.props.departures.length && 
                     <DepartureResults
                         departures={this.props.departures} 
                         locations={this.props.locations}
