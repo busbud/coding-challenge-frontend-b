@@ -1,0 +1,26 @@
+{
+    "env": {
+        "browser": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "no-console": "off",
+      "react/jsx-uses-react": "warn",
+      "react/jsx-uses-vars": "warn",
+      "react/jsx-no-bind": "warn",
+      "no-invalid-this": "off",
+      "babel/no-invalid-this": "error"
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true,
+        "experimentalObjectRestSpread": true
+      },
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react",
+      "babel"
+    ]
+}
