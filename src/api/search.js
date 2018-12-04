@@ -16,7 +16,7 @@ export default class Search extends Core {
   }
 
   async pollSearch(index) {
-    const data = await this.get(`/x-departures/${this.searchUrl}/pull`, {...this.params, index});
+    const data = await this.get(`/x-departures/${this.searchUrl}/poll`, {...this.params, index});
 
     return toResults(data);
   }
