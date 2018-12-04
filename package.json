@@ -6,7 +6,8 @@
   "author": "Matthieu Moreau <dev@matthieumoreau.fr>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "heroku-postbuild": "cd app && yarn && yarn run build"
   },
   "dependencies": {
     "express": "^4.16.4"
