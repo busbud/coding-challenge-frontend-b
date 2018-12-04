@@ -1,9 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import SearchContainer from './SearchContainer';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {SearchContainer} from './search';
 
-const Index = () => {
+function Index() {
   return <div><SearchContainer/></div>;
-};
+}
 
-ReactDOM.render(<Index />, document.getElementById("index"));
+ReactDOM.render(<Index />, document.getElementById('index'));
