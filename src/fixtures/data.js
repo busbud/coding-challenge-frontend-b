@@ -77,7 +77,7 @@ export const departures = [
     destLocName: 'test loc 2',
     id: 'departures1',
     originLocName: 'test loc 1',
-    price: 20,
+    price: '0.02',
     currency: 'CAD'
   },
   {
@@ -87,5 +87,5 @@ export const departures = [
     id: 'departures2',
     originLocName: 'test loc 1',
     currency: 'CAD',
-    price: 30}
+    price: '0.03'}
 ];

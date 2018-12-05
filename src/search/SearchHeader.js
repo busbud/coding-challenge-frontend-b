@@ -2,6 +2,7 @@ import React from 'react';
 import injectSheet from 'react-jss';
 import {translate} from 'react-i18next';
 import PropTypes from 'prop-types';
+import {languages} from '../config';
 
 const column = {
   paddingLeft: 8,
@@ -12,7 +13,6 @@ const column = {
   paddingRight: 8,
   border: '1px solid #dbdbdb'
 };
-const languages = ['fr', 'en'];
 
 const styles = {
   column,
@@ -67,7 +67,7 @@ function SearchHeader({classes, t, changeLanguage, i18n, date}) {
           <div>
             <select onChange={changeLanguage} value={i18n.language}>
               {languages.map(lang => {
-                return <option key={lang} value={lang}>{lang}</option>;
+                return <option key={lang.value} value={lang.value}>{lang.display}</option>;
               })}
             </select>
           </div>

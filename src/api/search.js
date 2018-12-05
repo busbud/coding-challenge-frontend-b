@@ -1,28 +1,48 @@
 import Core from './core';
 import _ from 'lodash';
 import moment from 'moment';
+import {languages} from '../config';
 
 export default class Search extends Core {
-  constructor(origin, destination, outboundDate, params) {
+  constructor(origin, destination, outboundDate, params = {}) {
     super();
 
     this.searchUrl = `${origin}/${destination}/${outboundDate}`;
-    this.params = {currency: 'CAD', ...params};
+    this.params = params;
   }
 
   async intialSearch(params = {}) {
-    const data = await this.get(`/x-departures/${this.searchUrl}`, {...this.params, ...params});
+    const data = await this.get(`/x-departures/${this.searchUrl}`, {...this.params, ...getCurrency(params)});
 
     return toResults(data, params);
   }
 
   async pollSearch(params = {}) {
-    const data = await this.get(`/x-departures/${this.searchUrl}/poll`, {...this.params, ...params});
+    const data = await this.get(`/x-departures/${this.searchUrl}/poll`, {...this.params, ...getCurrency(params)});
 
     return toResults(data, params);
   }
 
 }
+
+function getCurrency(param) {
+  if (!param.lang || param.currency) {
+    return param;
+  }
+
+
+
+  const language = languages.find(lang => lang.value === param.lang);
+
+  if (!language) {
+    return param;
+  }
+
+
+  return {...param, currency: language.currency};
+
+}
+
 /* eslint camelcase: "warn"*/
 export function toResults({departures, locations, complete}, {lang = 'en'}) {
 
