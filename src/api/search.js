@@ -46,7 +46,7 @@ export function toResults({departures, locations, complete}, {lang = 'en'}) {
     const departureTime = momentDepart.format('ddd, MMM, h:mm a');
     const arrivalTime = momentArrival.format('ddd, MMM, h:mm a');
 
-    const price = _.get(prices, 'total');
+    const price = (_.get(prices, 'total', 0) / 1000).toFixed(2);
     const currency = _.get(prices, 'currency');
 
     return {
