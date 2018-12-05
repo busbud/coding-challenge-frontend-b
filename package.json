@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:debug": "node --inspect node_modules/.bin/jest --watch --runInBand",
-    "start": "node server.js", 
+    "start": "node server.js",
     "dev": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "express": "^4.16.4",
     "i18next": "^12.1.0",
     "i18next-browser-languagedetector": "^2.2.4",
     "lodash": "^4.17.11",
