@@ -41,7 +41,7 @@ class SearchContainer extends React.PureComponent {
     const language = lang || this.props.i18n.language;
 
     this.setState({loading: true});
-    const result = await this.search.intialSearch({language});
+    const result = await this.search.intialSearch({lang: language});
 
     this.setState({...result, loading: false});
 
@@ -52,7 +52,7 @@ class SearchContainer extends React.PureComponent {
         pending = true;
         const index = this.state.results.length;
 
-        const pollSearch = await this.search.pollSearch({index, language});
+        const pollSearch = await this.search.pollSearch({index, lang: language});
         const results = [...this.state.results, ...pollSearch.results];
         const complete = pollSearch.complete;
 

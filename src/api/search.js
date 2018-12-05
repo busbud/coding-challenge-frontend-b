@@ -24,9 +24,9 @@ export default class Search extends Core {
 
 }
 /* eslint camelcase: "warn"*/
-export function toResults({departures, locations, complete}, {language = 'en'}) {
+export function toResults({departures, locations, complete}, {lang = 'en'}) {
 
-  moment.locale(language);
+  moment.locale(lang);
 
   const results = _.map(departures, ({
     busbud_departure_id,
