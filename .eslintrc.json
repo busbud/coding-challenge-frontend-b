@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest/globals": true
   },
   "extends": "plugin:react/recommended",
   "rules": {
@@ -418,6 +419,7 @@
   },
   "plugins": [
     "react",
-    "babel"
+    "babel",
+    "jest"
   ]
 }

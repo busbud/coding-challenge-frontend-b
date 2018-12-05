@@ -1,5 +1,6 @@
 import Core from './core';
 import _ from 'lodash';
+import moment from 'moment';
 
 export default class Search extends Core {
   constructor(origin, destination, outboundDate, params) {
@@ -9,21 +10,24 @@ export default class Search extends Core {
     this.params = {currency: 'CAD', ...params};
   }
 
-  async intialSearch() {
-    const data = await this.get(`/x-departures/${this.searchUrl}`, this.params);
+  async intialSearch(params = {}) {
+    const data = await this.get(`/x-departures/${this.searchUrl}`, {...this.params, ...params});
 
-    return toResults(data);
+    return toResults(data, params);
   }
 
-  async pollSearch(index) {
-    const data = await this.get(`/x-departures/${this.searchUrl}/poll`, {...this.params, index});
+  async pollSearch(params = {}) {
+    const data = await this.get(`/x-departures/${this.searchUrl}/poll`, {...this.params, ...params});
 
-    return toResults(data);
+    return toResults(data, params);
   }
 
 }
 /* eslint camelcase: "warn"*/
-function toResults({departures, locations, complete}) {
+export function toResults({departures, locations, complete}, {language = 'en'}) {
+
+  moment.locale(language);
+
   const results = _.map(departures, ({
     busbud_departure_id,
     prices,
@@ -36,15 +40,19 @@ function toResults({departures, locations, complete}) {
     const originLocName = _.get(originalLocation, 'name');
     const destLocName = _.get(destionationLocation, 'name');
 
-    // timezone
-    const departureTime = departure_time ? new Date(departure_time).toDateString() : '';
-    const arrivalTime = arrival_time ? new Date(arrival_time).toDateString() : '';
+    const momentDepart = moment(departure_time);
+    const momentArrival = moment(arrival_time);
+
+    const departureTime = momentDepart.format('ddd, MMM, h:mm a');
+    const arrivalTime = momentArrival.format('ddd, MMM, h:mm a');
 
     const price = _.get(prices, 'total');
+    const currency = _.get(prices, 'currency');
 
     return {
       id: busbud_departure_id,
       originLocName,
+      currency,
       destLocName,
       departureTime,
       arrivalTime,

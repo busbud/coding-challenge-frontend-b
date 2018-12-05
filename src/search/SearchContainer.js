@@ -1,12 +1,28 @@
 import React from 'react';
 import {Search} from '../api';
 import SearchList from './SearchList';
+import SearchHeader from './SearchHeader';
+import injectSheet from 'react-jss';
+import {translate} from 'react-i18next';
+import PropTypes from 'prop-types';
+import moment from 'moment';
 
-export default class SearchContainer extends React.PureComponent {
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+};
+
+const definedDate = '2019-08-02';
+
+class SearchContainer extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.search = new Search('dr5reg', 'f25dvk', '2019-08-12', {adult: 1});
+    this.search = new Search('dr5reg', 'f25dvk', definedDate, {adult: 1});
 
     this.state = {
       results: [],
@@ -15,10 +31,19 @@ export default class SearchContainer extends React.PureComponent {
     };
   }
 
-  async componentDidMount() {
-    const result = await this.search.intialSearch();
+  componentDidMount() {
+    this.initalLoading();
+  }
 
-    this.setState(result);
+  initalLoading = async (lang) => {
+    clearInterval(this.interval);
+
+    const language = lang || this.props.i18n.language;
+
+    this.setState({loading: true});
+    const result = await this.search.intialSearch({language});
+
+    this.setState({...result, loading: false});
 
     let pending = false;
 
@@ -27,7 +52,7 @@ export default class SearchContainer extends React.PureComponent {
         pending = true;
         const index = this.state.results.length;
 
-        const pollSearch = await this.search.pollSearch(index);
+        const pollSearch = await this.search.pollSearch({index, language});
         const results = [...this.state.results, ...pollSearch.results];
         const complete = pollSearch.complete;
 
@@ -43,10 +68,31 @@ export default class SearchContainer extends React.PureComponent {
     clearInterval(this.interval);
   }
 
+  changeLanguage = (event) => {
+    const lng = event.currentTarget.value;
+
+    this.props.i18n.changeLanguage(lng);
+    this.initalLoading(lng);
+  }
 
   render() {
-    const {results} = this.state;
+    const {results, loading} = this.state;
+    const {classes, t, i18n} = this.props;
+    const date = moment(definedDate).locale(i18n.language).format('dddd, MMMM Do YYYY');
 
-    return <div>Hello<SearchList results={results}/></div>;
+    return (
+      <div className={classes.container}>
+        <SearchHeader changeLanguage={this.changeLanguage} date={date}/>
+        {loading ? t('loading') : <SearchList results={results}/>}
+      </div>
+    );
   }
 }
+
+SearchContainer.propTypes = {
+  classes: PropTypes.object,
+  t: PropTypes.func,
+  i18n: PropTypes.object
+};
+
+export default injectSheet(styles)(translate('translations')(SearchContainer));
