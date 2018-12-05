@@ -6,5 +6,34 @@
 
     .text-field {
         margin-right: 20px;
+        
+    }
+}
+
+@media screen and (max-width:500px) {
+    .SearchForm {
+        flex-direction: column;
+        .text-field {
+            margin-right: 0;
+            min-width: 300px;
+        }
+        button {
+            width: 300px;
+            margin-top: 20px;
+        }
+    }
+}
+
+@media screen and (min-width:500px) and (max-width:800px) {
+    .SearchForm {
+        flex-wrap: wrap;
+        .text-field {
+            margin-right: 0;
+            min-width: 350px;
+        }
+        button {
+            width: 350px;
+            margin-top: 20px;
+        }
     }
 }
