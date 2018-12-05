@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
+import SearchForm from './components/searchForm/SearchForm';
+import Departures from './components/departures/Departures';
 
-class App extends Component {
-    render(){
-       return  (<div>Hello Busbud</div>)
-    }
+const App = () => {
+    return (
+        <Fragment>
+            <SearchForm />
+            <Departures />
+        </Fragment >
+    )
 }
-
 export default App;

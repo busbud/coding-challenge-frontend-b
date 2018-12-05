@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Departures renders correctly 1`] = `
+<div
+  className="Departures"
+>
+  <DeparturesDetails
+    departure={
+      Object {
+        "destination_location_id": 223,
+        "origin_location_id": 221,
+      }
+    }
+    destinationLocation={
+      Object {
+        "name": "gare2",
+      }
+    }
+    originLocation={
+      Object {
+        "name": "gare1",
+      }
+    }
+  />
+</div>
+`;

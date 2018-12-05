@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchRequestSuccess should return SEARCH_REQUEST_SUCCESS and normalized data 1`] = `
+Object {
+  "departures": Array [
+    Object {
+      "paris": "montparnasse",
+    },
+    Object {
+      "bordeaux": "pessac",
+    },
+  ],
+  "locations": Object {
+    "12": Object {
+      "id": 12,
+      "name": "paris 14",
+    },
+    "22": Object {
+      "id": 22,
+      "name": "centre",
+    },
+  },
+  "type": "SEARCH_REQUEST_SUCCESS",
+}
+`;

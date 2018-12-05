@@ -1,0 +1,38 @@
+.DepartureDetails {
+    margin: 20px;
+    min-width: 300px;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        .departure, 
+        .destination {
+            display: flex;
+            & :first-child {
+                margin-right: 10px
+            }
+        }
+
+        .bus {
+            margin: 5px;
+        }
+
+        .price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+
+            button {
+                color: white;
+                align-self: flex-end;
+                background-color: #ffc107;
+                &:hover {
+                    background-color: #ff9800
+                }
+            }
+        }
+    } 
+}

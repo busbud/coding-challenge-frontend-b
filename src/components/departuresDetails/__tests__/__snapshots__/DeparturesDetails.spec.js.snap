@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeparturesDetails renders correctly 1`] = `
+<div
+  className="DepartureDetails"
+>
+  <Button
+    className="container"
+  >
+    <div
+      className="departure"
+    >
+      <div>
+        09:55
+      </div>
+      <div>
+        new york
+      </div>
+    </div>
+    <div
+      className="bus"
+    >
+      🚌
+    </div>
+    <div
+      className="destination"
+    >
+      <div>
+        07:55
+      </div>
+      <div>
+        Montréal
+      </div>
+    </div>
+    <div
+      className="price"
+    >
+      <div
+        className="passenger"
+      >
+        1 passenger
+      </div>
+      <button
+        className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-raised-15"
+        disabled={false}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-2"
+        >
+          25
+        </span>
+        <span
+          className="MuiTouchRipple-root-30"
+        />
+      </button>
+    </div>
+  </Button>
+</div>
+`;
