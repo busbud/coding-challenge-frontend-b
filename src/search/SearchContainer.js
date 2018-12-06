@@ -2,19 +2,10 @@ import React from 'react';
 import {Search} from '../api';
 import SearchList from './SearchList';
 import SearchHeader from './SearchHeader';
-import injectSheet from 'react-jss';
 import {translate} from 'react-i18next';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-};
+import classes from './searchContainer.less';
 
 const definedDate = '2019-08-02';
 
@@ -77,7 +68,7 @@ class SearchContainer extends React.PureComponent {
 
   render() {
     const {results, loading} = this.state;
-    const {classes, t, i18n} = this.props;
+    const {t, i18n} = this.props;
     const date = moment(definedDate).locale(i18n.language).format('dddd, MMMM Do YYYY');
 
     return (
@@ -90,9 +81,8 @@ class SearchContainer extends React.PureComponent {
 }
 
 SearchContainer.propTypes = {
-  classes: PropTypes.object,
   t: PropTypes.func,
   i18n: PropTypes.object
 };
 
-export default injectSheet(styles)(translate('translations')(SearchContainer));
+export default (translate('translations')(SearchContainer));

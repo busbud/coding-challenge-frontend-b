@@ -1,0 +1,65 @@
+@import '../global.less';
+@height: @space;
+@header-min-height: 100px;
+@header-background: rgb(18; 124; 203);
+
+.column {
+  padding-left: @small-space;
+  flex: 1;
+  height: @height;
+  white-space: nowrap;
+  line-height: @height;
+  padding-right: @small-space;
+  border: 1px solid @border-color;
+}
+
+.container {
+  .flex-row-center;
+  flex-wrap: wrap;
+  background: white;
+  min-height: @height;
+  margin: auto;
+  flex-basis: 800px;
+}
+
+.header {
+  .flex-row-center;
+  top: 0;
+  position: fixed;
+  flex: 1;
+  background: @header-background;
+  min-height: @header-min-height;
+  width: 100%;
+}
+
+
+@media (max-width: 1146px) {
+  .info {
+    position: relative;
+  }
+}
+
+@media (min-width: 1147px) {
+  .info {
+    position: absolute;
+    left: 0;
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: @medium-space;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.brand {
+  margin-right: @medium-space;
+}
+
+.headerContainer {
+  .flex-row-center;
+  flex: 1;
+
+}

@@ -1,0 +1,69 @@
+@import '../global.less';
+@price-color: @orange;
+@arrival-time-color: @gray;
+
+.timeDetail {
+  margin-right: @medium-space;
+  flex-shrink: 0;
+}
+
+@media (max-width: 334px) {
+  .searchContainer {
+    margin-top: 200px;
+  }
+}
+
+@media (min-width: 335px) {
+  .searchContainer {
+    margin-top: 150px;
+  }
+}
+
+.item {
+  margin-bottom: @small-space;
+  padding: @medium-space;
+  border: none;
+  box-shadow: @box-shadow;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.location {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+}
+
+.time {
+  display: flex;
+  flex-direction: column
+}
+
+.priceContainer {
+  font-weight: bold;
+  display: flex;
+  color: @price-color;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+
+.detail {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.departureTimeDetail {
+  .timeDetail;
+  color: #127ccb;
+}
+
+.arrivalTimeDetail {
+  .timeDetail;
+  color: @arrival-time-color;
+}
+
+.currency {
+  margin-right: @t-space;
+}
