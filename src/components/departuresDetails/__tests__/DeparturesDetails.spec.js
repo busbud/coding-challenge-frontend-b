@@ -13,6 +13,8 @@ const props = {
             total: 25
         }
     },
+    departure_city: 'new york',
+    arrival_city: 'montréal',
     originLocation: {
         name: 'new york'
     },

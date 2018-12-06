@@ -2,11 +2,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    background-color: #287FC6;
+
 
     .text-field {
         margin-right: 20px;
+        label + div{
+            color: white;
+        }
         
+        label {
+            color: white;
+        } 
+        fieldset {
+            border-color: white;
+        }
+    }
+
+    button {
+        color: white;
+        background-color: #ffc107;
+        &:hover {
+            background-color: #ff9800
+        }
     }
 }
 

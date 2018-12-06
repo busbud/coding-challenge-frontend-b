@@ -34,9 +34,9 @@ export class SearchForm extends Component {
     
     async fetchWithIndex(url, index){
         try {
-            const WITH_INDEX = `${url}${index}`;
+            // const WITH_INDEX = `${url}${index}`;
             index += 10;
-            const response = await fetch(WITH_INDEX, HEARDERS);
+            const response = await fetch(url, HEARDERS);
             const data = await response.json();
             this.props.searchRequestSuccess(data)
     

@@ -5,12 +5,14 @@ exports[`Departures renders correctly 1`] = `
   className="Departures"
 >
   <DeparturesDetails
+    arrival_city="Montréal"
     departure={
       Object {
         "destination_location_id": 223,
         "origin_location_id": 221,
       }
     }
+    departure_city="New York"
     destinationLocation={
       Object {
         "name": "gare2",

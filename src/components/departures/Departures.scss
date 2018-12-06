@@ -1,5 +1,11 @@
 .Departures {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: #F6F6F6;
+
+    p, div {
+        font-family: Arial, Helvetica, sans-serif
+    }
 }

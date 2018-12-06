@@ -14,6 +14,8 @@ export const Departures = (props) => {
                         departure={departure}
                         originLocation={props.locations[departure.origin_location_id]}
                         destinationLocation={props.locations[departure.destination_location_id]}
+                        departure_city="New York"
+                        arrival_city="Montréal"
                     />
                 )
             })}

@@ -10,10 +10,20 @@ exports[`DeparturesDetails renders correctly 1`] = `
     <div
       className="departure"
     >
-      <div>
-        09:55
+      <div
+        className="time"
+      >
+        09:55 AM
       </div>
-      <div>
+      <div
+        className="city"
+      >
+        new york
+         - 
+      </div>
+      <div
+        className="origin-location"
+      >
         new york
       </div>
     </div>
@@ -25,10 +35,20 @@ exports[`DeparturesDetails renders correctly 1`] = `
     <div
       className="destination"
     >
-      <div>
-        07:55
+      <div
+        className="time"
+      >
+        07:55 PM
       </div>
-      <div>
+      <div
+        className="city"
+      >
+        montréal
+         -
+      </div>
+      <div
+        className="destination-location"
+      >
         Montréal
       </div>
     </div>
@@ -40,31 +60,13 @@ exports[`DeparturesDetails renders correctly 1`] = `
       >
         1 passenger
       </div>
-      <button
-        className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-raised-15"
-        disabled={false}
-        onBlur={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex="0"
-        type="button"
+      <div
+        className="total"
       >
-        <span
-          className="MuiButton-label-2"
-        >
-          25
-        </span>
-        <span
-          className="MuiTouchRipple-root-30"
-        />
-      </button>
+         
+        25
+          
+      </div>
     </div>
   </Button>
 </div>
