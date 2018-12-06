@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 import moment from 'moment';
-import './DeparturesDetails.scss';
+import './DepartureDetails.scss';
 
-const DeparturesDetails = props => {
+const DepartureDetails = props => {
     const displayTime = (time) => {
         return moment(time).format('hh:mm A')
     }
@@ -33,7 +32,7 @@ const DeparturesDetails = props => {
     )
 }
 
-DeparturesDetails.propTypes = {
+DepartureDetails.propTypes = {
     departure: PropTypes.shape({
         departure_time: PropTypes.string,
         arrival_time: PropTypes.string,
@@ -52,4 +51,4 @@ DeparturesDetails.propTypes = {
     }).isRequired
 }
 
-export default DeparturesDetails;
+export default DepartureDetails;

@@ -4,7 +4,7 @@ exports[`Departures renders correctly 1`] = `
 <div
   className="Departures"
 >
-  <DeparturesDetails
+  <DepartureDetails
     arrival_city="Montréal"
     departure={
       Object {

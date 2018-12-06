@@ -1,5 +1,5 @@
 import React from 'react';
-import DeparturesDetails from '../DeparturesDetails';
+import DepartureDetails from '../DepartureDetails';
 import renderer from 'react-test-renderer';
 
 jest.mock('@material-ui/core/Paper', () => 'Paper');
@@ -23,10 +23,10 @@ const props = {
     }
 }
 
-describe('DeparturesDetails', () => {
+describe('DepartureDetails', () => {
     it('renders correctly', () => {
         const tree = renderer
-            .create(<DeparturesDetails {...props} />)
+            .create(<DepartureDetails {...props} />)
             .toJSON();
         expect(tree).toMatchSnapshot();
     });

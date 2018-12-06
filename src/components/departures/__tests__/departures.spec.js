@@ -1,7 +1,7 @@
 import React from 'react';
 import { Departures } from '../Departures';
 import renderer from 'react-test-renderer';
-jest.mock('../../departuresDetails/DeparturesDetails', () => 'DeparturesDetails');
+jest.mock('../../departureDetails/DepartureDetails', () => 'DepartureDetails');
 
 const props = {
     departures: [{

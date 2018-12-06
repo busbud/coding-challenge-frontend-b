@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
-import DepartureDetails from '../departuresDetails/DeparturesDetails';
+import React from 'react';
+import PropTypes from 'prop-types';
+import DepartureDetails from '../departureDetails/DepartureDetails';
 import { connect } from 'react-redux';
 
 import './Departures.scss';
@@ -21,6 +22,11 @@ export const Departures = (props) => {
             })}
         </div>
     )
+}
+
+Departures.propTypes = {
+    departures: PropTypes.arrayOf(PropTypes.object).isRequired,
+    locations: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({

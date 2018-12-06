@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
-import { wait } from '../../helpers/wait';
+import { delay } from '../../helpers/delay';
 import { cleanStore, searchRequestSuccess } from '../../actions/search.actions';
 import { URL_INIT_SEARCH, URL_POLL_SEARCH, HEARDERS } from '../../constants/applications';
 import './SearchForm.scss';
@@ -24,27 +24,26 @@ export class SearchForm extends Component {
         this.props.cleanStore();
         try {
             const response = await fetch(URL_INIT_SEARCH, HEARDERS)
-            if(response.status === 200) {
-                await this.fetchWithIndex(URL_POLL_SEARCH, 10);
+            if (response.status === 200) {
+                await this.pollSearch(URL_POLL_SEARCH);
             }
         } catch (err) {
             console.log('Init search failed');
         }
     }
-    
-    async fetchWithIndex(url, index){
+
+    async pollSearch(url, index = 0) {
         try {
-            // const WITH_INDEX = `${url}${index}`;
-            index += 10;
+            url = (index !== 0) ? `${url}?index=${index}` : url;
             const response = await fetch(url, HEARDERS);
             const data = await response.json();
             this.props.searchRequestSuccess(data)
-    
-            if(!data.complete){
-                await wait(3000);
-                fetchWithIndex(URL_POLL_SEARCH, index);
+
+            if (!data.complete) {
+                await delay(3000);
+                await fetchWithIndex(URL_POLL_SEARCH, data.departures.length);
             }
-    
+
         } catch (err) {
             console.log('Poll search failed');
         }
