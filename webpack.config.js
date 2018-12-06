@@ -5,8 +5,26 @@ const htmlPlugin = new HtmlWebPackPlugin({
   template: './src/index.html',
   filename: './index.html'
 });
+const MinifyPlugin = require('babel-minify-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = { // eslint-disable-line
+  optimization: {
+    minimizer: [
+      new MinifyPlugin(),
+      new OptimizeCSSAssetsPlugin({})
+    ],
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
+  },
   module: {
     rules: [
       {
@@ -39,7 +57,7 @@ module.exports = { // eslint-disable-line
       }
     ]
   },
-  devtool: 'source-map',
+  devtool: devMode ? 'source-map' : '',
   plugins: [htmlPlugin, new MiniCssExtractPlugin({
     filename: devMode ? '[name].css' : '[name].[hash].css',
     chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
