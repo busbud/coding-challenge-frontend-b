@@ -16,17 +16,17 @@ This website is responsive design, so you can see all the departure details with
  // Intall
   yarn or npm install
 
- // Run
+ // Run 
   yarn dev or npm run dev
 
  //Test
   yarn test or npm run test
 ```
 
-### Technical choice
+# Technical choice
 
 ## React
-
+I choose React because i have some experience with this libraries. It makes the creation of interactive UIs more simple, and the life cycle of the component is under control. And another reason is i want to use the context API to manage the translation.
 
 ## Webpack
 
@@ -53,3 +53,4 @@ Just for the disign
 
 * Use React Suspense for async Rendering
 * The departure search work only for New York and Montrél with a define date and one passenger right, in the future all the text field should be active, and search with more possibilities.
+* Use enzyme to complete the UI Components test.

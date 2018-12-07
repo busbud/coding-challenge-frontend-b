@@ -63,3 +63,17 @@
         }
     } 
 }
+
+
+@media screen and (max-width:500px) {
+
+    .DepartureDetails {
+        .origin-location,
+        .destination-location{
+            white-space: nowrap;
+            width: 190px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}

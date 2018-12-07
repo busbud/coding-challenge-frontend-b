@@ -6,7 +6,6 @@ module.exports = {
     devServer: {
         contentBase: '/dist'
     },
-    devtool: 'inline-source-map',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
