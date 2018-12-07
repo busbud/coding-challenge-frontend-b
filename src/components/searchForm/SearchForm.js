@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { delay } from '../../helpers/delay';
 import { cleanStore, searchRequestSuccess } from '../../actions/search.actions';
 import { URL_INIT_SEARCH, URL_POLL_SEARCH, HEARDERS } from '../../constants/applications';
+
 import './SearchForm.scss';
 
 export class SearchForm extends Component {
@@ -25,23 +26,22 @@ export class SearchForm extends Component {
         try {
             const response = await fetch(URL_INIT_SEARCH, HEARDERS)
             if (response.status === 200) {
-                await this.pollSearch(URL_POLL_SEARCH);
+                await this.pollSearch(URL_POLL_SEARCH, HEARDERS);
             }
         } catch (err) {
             console.log('Init search failed');
         }
     }
 
-    async pollSearch(url, index = 0) {
+    async pollSearch(url, HEADERS, index = 0) {
         try {
             url = (index !== 0) ? `${url}?index=${index}` : url;
-            const response = await fetch(url, HEARDERS);
+            const response = await fetch(url, HEADERS);
             const data = await response.json();
             this.props.searchRequestSuccess(data)
-
             if (!data.complete) {
-                await delay(3000);
-                await fetchWithIndex(URL_POLL_SEARCH, data.departures.length);
+                delay(3000);
+                this.pollSearch(url, HEADERS, data.departures.length);
             }
 
         } catch (err) {
