@@ -37,8 +37,9 @@ export class SearchForm extends Component {
 
     async pollSearch(url, HEADERS, index = 0) {
         try {
-            url = (index !== 0) ? `${url}?index=${index}` : url;
-            const response = await fetch(url, HEADERS);
+
+            const withIndex = (index !== 0) ? `${url}?index=${index}` : url;
+            const response = await fetch(withIndex, HEADERS);
             const data = await response.json();
             this.props.searchRequestSuccess(data)
             if (!data.complete) {

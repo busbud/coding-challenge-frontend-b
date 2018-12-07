@@ -1,10 +1,16 @@
 .SearchForm{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 100px;
+    padding-top: 30px;
     padding-bottom: 30px;
     background-color: #287FC6;
+    box-shadow: 0 8px 6px -4px #9E9E9E;
+
 
 
     .text-field {
@@ -32,6 +38,7 @@
 
 @media screen and (max-width:500px) {
     .SearchForm {
+        position: static;
         flex-direction: column;
         .text-field {
             margin-right: 0;
@@ -46,6 +53,7 @@
 
 @media screen and (min-width:500px) and (max-width:800px) {
     .SearchForm {
+        
         flex-wrap: wrap;
         .text-field {
             margin-right: 0;
