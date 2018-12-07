@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { delay } from '../../helpers/delay';
 import { cleanStore, searchRequestSuccess } from '../../actions/search.actions';
 import { URL_INIT_SEARCH, URL_POLL_SEARCH, HEARDERS } from '../../constants/applications';
+import withI18n from '../../contexts/withI18n';
 
 import './SearchForm.scss';
 
@@ -49,32 +51,34 @@ export class SearchForm extends Component {
         }
     }
 
+  
+
     render() {
         return (
             <div className="SearchForm">
                 <TextField
-                    label="Leaving from"
+                    label = { this.props.i18n._('departure')}
                     className="text-field"
-                    value={this.state.departure}
+                    value= { this.state.departure}
                     margin="normal"
                     variant="outlined"
                 />
                 <TextField
-                    label="Going to"
+                    label= {this.props.i18n._('destination')}
                     className="text-field"
                     value={this.state.arrival}
                     margin="normal"
                     variant="outlined"
                 />
                 <TextField
-                    label="Date"
+                    label = {this.props.i18n._('date')}
                     className="text-field"
-                    value={this.state.date}
+                    value={moment(this.state.date).format(this.props.i18n._('dateformat'))}
                     margin="normal"
                     variant="outlined"
                 />
                 <TextField
-                    label="passenger"
+                    label={this.props.i18n._('passenger')}
                     className="text-field"
                     value={this.state.passenger}
                     margin="normal"
@@ -97,4 +101,5 @@ const mapDispatchToProps = {
     searchRequestSuccess
 }
 
-export default connect(undefined, mapDispatchToProps)(SearchForm);
+export const searchForm = SearchForm;
+export default connect(undefined, mapDispatchToProps)(withI18n(SearchForm));

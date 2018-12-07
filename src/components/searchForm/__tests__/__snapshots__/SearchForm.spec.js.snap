@@ -6,28 +6,28 @@ exports[`SearchForm renders correctly 1`] = `
 >
   <TextField
     className="text-field"
-    label="Leaving from"
+    label="translation mock"
     margin="normal"
     value="New York"
     variant="outlined"
   />
   <TextField
     className="text-field"
-    label="Going to"
+    label="translation mock"
     margin="normal"
     value="Montreal"
     variant="outlined"
   />
   <TextField
     className="text-field"
-    label="Date"
+    label="translation mock"
     margin="normal"
     value="2019-08-02"
     variant="outlined"
   />
   <TextField
     className="text-field"
-    label="passenger"
+    label="translation mock"
     margin="normal"
     value="1 Adult"
     variant="outlined"

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withI18n should return the component wrapped in i18n 1`] = `
+<div>
+  en
+</div>
+`;

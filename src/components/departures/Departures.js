@@ -8,18 +8,20 @@ import './Departures.scss';
 export const Departures = (props) => {
     return (
         <div className="Departures">
-            {props.departures.map((departure, index) => {
-                return (
-                    <DepartureDetails
-                        key={index}
-                        departure={departure}
-                        originLocation={props.locations[departure.origin_location_id]}
-                        destinationLocation={props.locations[departure.destination_location_id]}
-                        departure_city="New York"
-                        arrival_city="Montréal"
-                    />
-                )
-            })}
+            {props.departures.length !== 0 ?
+                props.departures.map((departure, index) => {
+                    return (
+                        <DepartureDetails
+                            key={index}
+                            departure={departure}
+                            originLocation={props.locations[departure.origin_location_id]}
+                            destinationLocation={props.locations[departure.destination_location_id]}
+                            departure_city="New York"
+                            arrival_city="Montréal"
+                        />
+                    )
+                }) : null
+            }
         </div>
     )
 }

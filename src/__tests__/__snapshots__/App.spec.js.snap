@@ -2,6 +2,24 @@
 
 exports[`renders correctly 1`] = `
 Array [
+  <div
+    className="lang"
+  >
+    <div
+      className="lang"
+    >
+      <div
+        onClick={[Function]}
+      >
+        🇬🇧
+      </div>
+      <div
+        onClick={[Function]}
+      >
+        🇫🇷
+      </div>
+    </div>
+  </div>,
   <SearchForm />,
   <Departures />,
 ]
