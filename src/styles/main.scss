@@ -1,0 +1,16 @@
+$background-color: #F6F6F6;
+$content-color: white;
+
+body {
+	background-color: $background-color;
+}
+
+.departure-list {
+
+	.departure-item {
+		background-color: $content-color;
+		margin: 10px;
+		padding: 20px;
+		border-radius: 10px;
+	}
+}
