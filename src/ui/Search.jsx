@@ -14,6 +14,17 @@ import i18n from '../i18n';
 
 /** Main component that display web page. */
 export default class Search extends React.Component {
+  /**
+   * Eliminate duplicate obj in array
+   */
+  static eliminateDuplicates(array) {
+    return array.filter((arr, index, self) => (
+      index === self.findIndex(a => arr.id === a.id)));
+  }
+
+  /**
+   * Search compoment constructor
+   */
   constructor(props) {
     super(props);
 
@@ -74,11 +85,15 @@ export default class Search extends React.Component {
    */
   getUpdatedResults(newResults) {
     const { results } = this.state;
-    const oldResults = results;
-    const departures = oldResults.departures.concat(newResults.departures);
-    const operators = oldResults.operators.concat(newResults.operators);
+    // We first concat brutally the 2 arrays
+    let departures = results.departures.concat(newResults.departures);
+    let operators = results.operators.concat(newResults.operators);
+    // Then remove duplicate elements.
+    departures = Search.eliminateDuplicates(departures);
+    operators = Search.eliminateDuplicates(operators);
+
     return {
-      ...oldResults,
+      ...results,
       departures,
       operators,
     };
