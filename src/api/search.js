@@ -3,38 +3,32 @@ import BaseAPI from './base';
 
 /** Class to initialize search and poll results. */
 export default class SearchAPI extends BaseAPI {
-
   /**
    * Set up a boolean to know if search has been initialized
    */
-  constructor(params={}) {
+  constructor(params = {}) {
     super();
     // Boolean to store if a search has already been initialized
     this.searchInitialized = false;
     // Querystring parameters for search requests
     this.searchParams = {
       ...searchParams,
-      ...params
-    }
-    console.log("###############################");
-    console.log(params);
-    console.log("-------------------------------");
-    console.log(searchParams);
-    console.log("###############################");
+      ...params,
+    };
   }
 
   /**
    * Return Busbud URL to query
    */
   getURL() {
-    let params = [
+    const params = [
       'x-departures',
       search.origin,
       search.destination,
-      search.date
-    ]
+      search.date,
+    ];
     if (this.searchInitialized) {
-      params.push("poll");
+      params.push('poll');
     }
     return params.join('/');
   }
@@ -59,10 +53,9 @@ export default class SearchAPI extends BaseAPI {
     const url = this.getURL();
     const params = {
       ...this.searchParams,
-      index
-    }
+      index,
+    };
     const data = await this.get(url, params);
     return data;
   }
-
 }

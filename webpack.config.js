@@ -1,44 +1,49 @@
 module.exports = {
 
-  entry: ['babel-polyfill', './src/app.js'],
-  
+  entry: ['babel-polyfill', './src/app.jsx'],
+
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.scss$/,
         use: [
           {
-            loader: "style-loader" // creates style nodes from JS strings
+            loader: 'style-loader', // creates style nodes from JS strings
           },
           {
-            loader: "css-loader" // translates CSS into CommonJS
+            loader: 'css-loader', // translates CSS into CommonJS
           },
           {
-            loader: "sass-loader" // compiles Sass to CSS
-          }
-        ]
-      }
-    ]
+            loader: 'sass-loader', // compiles Sass to CSS
+          },
+        ],
+      },
+    ],
   },
-  
+
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
   },
-  
+
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
-  
+
   devServer: {
-    contentBase: './dist'
-  }
-}
+    contentBase: './dist',
+  },
+};

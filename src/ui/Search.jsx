@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from "react-dom";
 
 import LocalizedStrings from 'react-localization';
 import moment from 'moment';
@@ -10,12 +9,11 @@ import OrderingPanel from './OrderingPanel';
 import FilteringPanel from './FilteringPanel';
 import DepartureList from './DepartureList';
 
-import { i18n } from '../i18n';
+import i18n from '../i18n';
 
 
 /** Main component that display web page. */
 export default class Search extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -23,11 +21,10 @@ export default class Search extends React.Component {
 
     this.state = {
       results: {},
-      loading: false,
       complete: false,
       filters: {},
-      currency: "CAD",
-      strings
+      currency: 'CAD',
+      strings,
     };
 
     this.onLanguageChange = this.onLanguageChange.bind(this);
@@ -40,41 +37,51 @@ export default class Search extends React.Component {
    * On component mount, get search results
    */
   componentDidMount() {
-    const lang = this.state.strings.getLanguage();
-    const currency = this.state.currency;
+    const { strings, currency } = this.state;
+    const lang = strings.getLanguage();
     this.launchSearch(lang, currency);
+  }
+
+  /**
+   * On component unmount, stop polling results
+   */
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   /**
    * Update language and relaunch search
    */
   onLanguageChange(lang) {
-    this.state.strings.setLanguage(lang);
-    this.setState({strings: this.state.strings});
-    this.launchSearch(lang, this.state.currency);
+    const { strings, currency } = this.state;
+    strings.setLanguage(lang);
+    this.setState({ strings });
+    this.launchSearch(lang, currency);
   }
 
   /**
    * Update currency and relaunch search
    */
   onCurrencyChange(currency) {
-    this.setState({currency});
-    const lang = this.state.strings.getLanguage();
+    const { strings } = this.state;
+    this.setState({ currency });
+    const lang = strings.getLanguage();
     this.launchSearch(lang, currency);
   }
 
   /**
-   * Initialize a search
+   * Merge polled results with existing departures
    */
-  async initializeSearch() {
-    // We reset state as it is a new search
-    this.setState({
-      results: {},
-      loading: true,
-      complete: false
-    });
-    const results = await this.search.initialize();
-    this.setState({loading: false, results});  
+  getUpdatedResults(newResults) {
+    const { results } = this.state;
+    const oldResults = results;
+    const departures = oldResults.departures.concat(newResults.departures);
+    const operators = oldResults.operators.concat(newResults.operators);
+    return {
+      ...oldResults,
+      departures,
+      operators,
+    };
   }
 
   /**
@@ -85,12 +92,13 @@ export default class Search extends React.Component {
     let pending = false;
 
     this.interval = setInterval(async () => {
+      const { complete, results } = this.state;
       // If not all results polled and no pending requests
-      if (!this.state.complete && !pending) {
+      if (!complete && !pending) {
         // We are currently polling results
         pending = true;
         // We define the search index as the number of results already polled
-        const index = this.state.results.departures.length;
+        const index = results.departures.length;
         // Let's poll results
         const search = await this.search.poll(index);
         // Polling is now complete
@@ -99,9 +107,9 @@ export default class Search extends React.Component {
         const updatedResults = this.getUpdatedResults(search);
         this.setState({
           results: updatedResults,
-          complete: search.complete
-        })
-      } else if (this.state.complete) {
+          complete: search.complete,
+        });
+      } else if (complete) {
         // We have all the results we can stop polling
         clearInterval(this.interval);
       }
@@ -109,48 +117,46 @@ export default class Search extends React.Component {
   }
 
   /**
-   * Merge polled results with existing departures
+   * Initialize a search
    */
-  getUpdatedResults(newResults) {
-    const oldResults = this.state.results;
-    const departures = oldResults.departures.concat(newResults.departures);
-    const operators = oldResults.operators.concat(newResults.operators);
-    return {
-      ...oldResults,
-      departures,
-      operators
-    }
+  async initializeSearch() {
+    // We reset state as it is a new search
+    this.setState({
+      results: {},
+      complete: false,
+    });
+    const results = await this.search.initialize();
+    this.setState({ results });
   }
 
   /**
    * Order results. Possible choices ; earliest, latest, cheapest, fastest
    */
   orderBy(orderType) {
-    let departures = this.state.results.departures;
+    const { results } = this.state;
+    const { departures } = results;
     departures.sort((a, b) => {
-      if (orderType == "earliest") {
+      if (orderType === 'earliest') {
         return (moment(a.departure_time).isAfter(moment(b.departure_time))) ? 1 : -1;
       }
-      else if (orderType == "latest") {
+      if (orderType === 'latest') {
         return (moment(a.departure_time).isBefore(moment(b.departure_time))) ? 1 : -1;
       }
-      else if (orderType == "cheapest") {
+      if (orderType === 'cheapest') {
         return (a.prices.total > b.prices.total) ? 1 : -1;
       }
-      else if (orderType == "fastest") {
+      if (orderType === 'fastest') {
         const durationA = moment(a.arrival_time).diff(moment(a.departure_time));
         const durationB = moment(b.arrival_time).diff(moment(b.departure_time));
         return (durationA > durationB) ? 1 : -1;
       }
-      else {
-        throw new Error("Order filter not implemented !");
-      }
+      throw new Error('Order filter not implemented !');
     });
-    const results = {
-      ...this.state.results,
-      departures
+    const newResults = {
+      ...results,
+      departures,
     };
-    this.setState({results});
+    this.setState({ results: newResults });
   }
 
   /**
@@ -162,65 +168,57 @@ export default class Search extends React.Component {
    * TODO: this method is too long and should be refactored
    */
   filterByOperator(operatorId, isChecked) {
-    let filters;
+    let newFilters;
     let filtersUpdated = false;
 
-    // No filtering yet
-    if (!this.state.filters.operators && isChecked) {
-      // No filter applied yet. Start filtering.
-      filters = {
-        unfilteredResults: this.state.results,
-        operators: [operatorId]
+    const { filters, results } = this.state;
+    if (!filters.operators && isChecked) {
+      // No filter applied yet. Create a filter.
+      newFilters = {
+        unfilteredResults: results,
+        operators: [operatorId],
       };
       filtersUpdated = true;
-    }
-
-    // Update existing filtering
-    else {
-      let operators = this.state.filters.operators;
+    } else {
+      // Update existing filter
+      const { operators } = filters;
       const index = operators.indexOf(operatorId);
       if (!isChecked) {
-        // One filter is removed
+        // One operator filter is removed
         if (index !== -1) {
           operators.splice(index, 1);
-          filters = {
-            ...this.state.filters,
-            operators
+          newFilters = {
+            ...filters,
+            operators,
           };
           filtersUpdated = true;
         }
-      }
-      else {
+      } else if (index === -1) {
         // one filter is added
-        if (index === -1) {
-          operators.push(operatorId);
-          filters = {
-            ...this.state.filters,
-            operators
-          };
-          filtersUpdated = true;
-        }
+        operators.push(operatorId);
+        newFilters = {
+          ...filters,
+          operators,
+        };
+        filtersUpdated = true;
       }
     }
 
     // Then apply filters
     if (filtersUpdated) {
-      let results;
-      if (filters.operators.length === 0) {
-        results = filters.unfilteredResults;
+      let newResults;
+      if (newFilters.operators.length === 0) {
+        newResults = filters.unfilteredResults;
+      } else {
+        const departures = newFilters.unfilteredResults.departures.filter(departure => (
+          newFilters.operators.indexOf(departure.operator_id) !== -1
+        ));
+        newResults = {
+          ...newFilters.unfilteredResults,
+          departures,
+        };
       }
-      else {
-        const departures = filters.unfilteredResults.departures.filter((departure) => {
-          if (filters.operators.indexOf(departure.operator_id) !== -1) {
-            return true;
-          }
-        });
-        results = {
-          ...filters.unfilteredResults,
-          departures
-        }
-      }
-      this.setState({filters, results});
+      this.setState({ results: newResults, filters: newFilters });
     }
   }
 
@@ -229,27 +227,21 @@ export default class Search extends React.Component {
    */
   async launchSearch(lang, currency) {
     clearInterval(this.interval);
-    this.search = new SearchAPI({lang, currency});
+    this.search = new SearchAPI({ lang, currency });
     this.initializeSearch();
     this.pollResults();
-  }
-
-  /**
-   * On component unmount, stop polling results
-   */
-  componentWillUnmount() {
-    clearInterval(this.interval);
   }
 
   /**
    * Render ordering panel, filter panel and results
    */
   renderResults() {
-    if (!this.state.results.departures) {
+    const { results, strings, currency } = this.state;
+    if (!results.departures) {
       return (
         <div className="container">
           <div className="panel">
-            <p>{this.state.strings.unstarted}</p>
+            <p>{strings.unstarted}</p>
           </div>
         </div>
       );
@@ -257,22 +249,22 @@ export default class Search extends React.Component {
     return (
       <div>
         <OrderingPanel
-          strings={this.state.strings}
-          nbResults={this.state.results.departures.length}
+          strings={strings}
+          nbResults={results.departures.length}
           orderBy={this.orderBy}
         />
         <div className="container">
           <div className="row">
             <div className="col-md-4">
               <FilteringPanel
-                operators={this.state.results.operators}
+                operators={results.operators}
                 filterByOperator={this.filterByOperator}
               />
             </div>
             <div className="col-md-8">
               <DepartureList
-                results={this.state.results}
-                currency={this.state.currency}
+                results={results}
+                currency={currency}
               />
             </div>
           </div>
@@ -285,11 +277,12 @@ export default class Search extends React.Component {
    * Render departure item
    */
   render() {
+    const { strings, currency } = this.state;
     return (
       <div>
-        <Header 
-          strings={this.state.strings}
-          currency={this.state.currency}
+        <Header
+          strings={strings}
+          currency={currency}
           onLanguageChange={this.onLanguageChange}
           onCurrencyChange={this.onCurrencyChange}
         />
@@ -297,5 +290,4 @@ export default class Search extends React.Component {
       </div>
     );
   }
-
 }

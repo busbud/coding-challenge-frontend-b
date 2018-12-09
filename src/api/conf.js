@@ -8,10 +8,10 @@ export const base = {
    * Busbud API call headers
    */
   headers: {
-    'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-    'X-Busbud-Token': 'PARTNER_AHm3M6clSAOoyJg4KyCg7w'
-  }
-}
+    Accept: 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
+    'X-Busbud-Token': 'PARTNER_AHm3M6clSAOoyJg4KyCg7w',
+  },
+};
 
 export const search = {
   /**
@@ -27,8 +27,8 @@ export const search = {
   /**
    * ISO 8601 Outbound departure date
    */
-  date: '2019-08-02'
-}
+  date: '2019-08-02',
+};
 
 export const searchParams = {
   /**
@@ -44,5 +44,5 @@ export const searchParams = {
   /**
    * Number of senior
    */
-  senior: 0
-}
+  senior: 0,
+};

@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactDOM from "react-dom";
+
+import PropTypes from 'prop-types';
 
 
 /** Panel that displays ordering filters. */
 export default class OrderingPanel extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -13,28 +13,36 @@ export default class OrderingPanel extends React.Component {
 
   onBadgeClick(event) {
     const orderType = event.currentTarget.dataset.id;
-    this.props.orderBy(orderType);
+    const { orderBy } = this.props;
+    orderBy(orderType);
   }
 
   /**
    * Render departure item
    */
   render() {
+    const { strings, nbResults } = this.props;
+    const displayResults = `${nbResults} ${strings.results}`;
     return (
       <div className="ordering-panel container">
         <div className="panel">
           <div className="row">
             <div className="col-md-9">
-              <span className="badge" onClick={this.onBadgeClick} data-id="earliest">{this.props.strings.earliest}</span>
-              <span className="badge" onClick={this.onBadgeClick} data-id="latest">{this.props.strings.latest}</span>
-              <span className="badge" onClick={this.onBadgeClick} data-id="cheapest">{this.props.strings.cheapest}</span>
-              <span className="badge" onClick={this.onBadgeClick} data-id="fastest">{this.props.strings.fastest}</span>
+              <span className="badge" onClick={this.onBadgeClick} onKeyPress={this.onBadgeClick} data-id="earliest" role="radio" tabIndex="0" aria-checked="false">{strings.earliest}</span>
+              <span className="badge" onClick={this.onBadgeClick} onKeyPress={this.onBadgeClick} data-id="latest" role="radio" tabIndex="-1" aria-checked="false">{strings.latest}</span>
+              <span className="badge" onClick={this.onBadgeClick} onKeyPress={this.onBadgeClick} data-id="cheapest" role="radio" tabIndex="-2" aria-checked="false">{strings.cheapest}</span>
+              <span className="badge" onClick={this.onBadgeClick} onKeyPress={this.onBadgeClick} data-id="fastest" role="radio" tabIndex="-3" aria-checked="false">{strings.fastest}</span>
             </div>
-            <div className="col-md-3 text-right results">{this.props.nbResults} {this.props.strings.results}</div>
+            <div className="col-md-3 text-right results">{displayResults}</div>
           </div>
         </div>
       </div>
     );
   }
-
 }
+
+OrderingPanel.propTypes = {
+  orderBy: PropTypes.func.isRequired,
+  nbResults: PropTypes.number.isRequired,
+  strings: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};

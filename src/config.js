@@ -4,19 +4,19 @@
 export const languages = [
   {
     value: 'fr',
-    display: 'Français'
+    display: 'Français',
   }, {
     value: 'en',
-    display: 'English'
-  }
-]
+    display: 'English',
+  },
+];
 
 export const currencies = [
   {
     value: 'CAD',
-    display: '$ CAD'
+    display: '$ CAD',
   }, {
     value: 'USD',
-    display: '$ USD'
-  }
-]
+    display: '$ USD',
+  },
+];
