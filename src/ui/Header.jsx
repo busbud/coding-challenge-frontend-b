@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 
-import { languages } from '../config';
+import { languages, currencies } from '../config';
 
 
 /** Header of the page. */
@@ -11,6 +11,7 @@ export default class Header extends React.Component {
     super(props);
 
     this.onLanguageChange = this.onLanguageChange.bind(this);
+    this.onCurrencyChange = this.onCurrencyChange.bind(this);
   }
 
   /**
@@ -21,6 +22,17 @@ export default class Header extends React.Component {
     this.props.onLanguageChange(lang);
   }
 
+  /**
+   * Get currency from event and call parent method
+   */
+  onCurrencyChange(event) {
+    const curr = event.target.value;
+    this.props.onCurrencyChange(curr);
+  }
+
+  /**
+   * Render a select field to set language
+   */
   renderLanguageSelect() {
     return (
       <select onChange={this.onLanguageChange} value={this.props.strings.getLanguage()} className="lang-select form-control">
@@ -39,6 +51,26 @@ export default class Header extends React.Component {
   }
 
   /**
+   * Render a select field to set currency
+   */
+  renderCurrencySelect() {
+    return (
+      <select onChange={this.onCurrencyChange} value={this.props.currency} className="curr-select form-control">
+        {currencies.map(curr => {
+          return (
+            <option
+              key={curr.value}
+              value={curr.value}
+            >
+              {curr.display}
+            </option>
+          );
+        })}
+      </select>
+    );
+  }
+
+  /**
    * Render departure item
    */
   render() {
@@ -46,6 +78,7 @@ export default class Header extends React.Component {
       <div className="header jumbotron">
         <div className="container">
           {this.renderLanguageSelect()}
+          {this.renderCurrencySelect()}
           <h1>{this.props.strings.welcome}</h1>
           <p>{this.props.strings.descr}</p>
           <p>{this.props.strings.search}</p>

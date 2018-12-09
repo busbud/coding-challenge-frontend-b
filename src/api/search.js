@@ -16,6 +16,11 @@ export default class SearchAPI extends BaseAPI {
       ...searchParams,
       ...params
     }
+    console.log("###############################");
+    console.log(params);
+    console.log("-------------------------------");
+    console.log(searchParams);
+    console.log("###############################");
   }
 
   /**

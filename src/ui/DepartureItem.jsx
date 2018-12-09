@@ -26,7 +26,7 @@ export default class DepartureItem extends React.PureComponent {
    */
   formatPrice(centPrice) {
     const price = centPrice.toFixed(2) / 100;
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'CAD', minimumFractionDigits: 0 }).format(price)
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: this.props.currency, minimumFractionDigits: 0 }).format(price)
   }
 
   /**
@@ -57,19 +57,23 @@ export default class DepartureItem extends React.PureComponent {
     return (
       <div className="departure-item">
         <div className="row">
-          <div className="col-md-10">{this.getOperatorName(departure.operator_id)}</div>
-          <div className="col-md-2 text-right">{this.formatPrice(departure.prices.total)}</div>
+          <div className="col-md-10 operator">{this.getOperatorName(departure.operator_id)}</div>
+          <div className="col-md-2 text-right price">{this.formatPrice(departure.prices.total)}</div>
         </div>
         <div className="row">
-          <Moment className="col-md-2" format="hh:mm a">{departure.departure_time}</Moment>
-          <div className="col-md-10">{this.getLocationName(departure.origin_location_id)}</div>
-        </div>
-        <div className="row">
-          <Moment className="col-md-2" format="hh:mm a">{departure.arrival_time}</Moment>
-          <div className="col-md-10">{this.getLocationName(departure.destination_location_id)}</div>
-        </div>
-        <div className="row">
-          <div className="col-md-12">{this.computeDuration(departure.departure_time, departure.arrival_time)}</div>
+          <div className="col-md-10">
+            <div className="row">
+              <Moment className="col-md-3" format="hh:mm a">{departure.departure_time}</Moment>
+              <div className="col-md-9">{this.getLocationName(departure.origin_location_id)}</div>
+            </div>
+            <div className="row">
+              <Moment className="col-md-3" format="hh:mm a">{departure.arrival_time}</Moment>
+              <div className="col-md-9">{this.getLocationName(departure.destination_location_id)}</div>
+            </div>
+          </div>
+          <div className="col-md-2">
+            <div className="duration">{this.computeDuration(departure.departure_time, departure.arrival_time)}</div>
+          </div>
         </div>
       </div>
     );

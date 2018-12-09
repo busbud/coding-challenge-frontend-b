@@ -10,3 +10,13 @@ export const languages = [
     display: 'English'
   }
 ]
+
+export const currencies = [
+  {
+    value: 'CAD',
+    display: '$ CAD'
+  }, {
+    value: 'USD',
+    display: '$ USD'
+  }
+]

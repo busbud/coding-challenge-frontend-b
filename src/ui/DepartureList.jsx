@@ -20,6 +20,7 @@ export default class DepartureList extends React.PureComponent {
           departure={departure}
           locations={this.props.results.locations}
           operators={this.props.results.operators}
+          currency={this.props.currency}
         />
       );
     });

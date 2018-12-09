@@ -30,7 +30,7 @@ export default class OrderingPanel extends React.Component {
               <span className="badge" onClick={this.onBadgeClick} data-id="cheapest">{this.props.strings.cheapest}</span>
               <span className="badge" onClick={this.onBadgeClick} data-id="fastest">{this.props.strings.fastest}</span>
             </div>
-            <div className="col-md-3 text-right">{this.props.nbResults} {this.props.strings.results}</div>
+            <div className="col-md-3 text-right results">{this.props.nbResults} {this.props.strings.results}</div>
           </div>
         </div>
       </div>

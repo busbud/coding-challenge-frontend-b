@@ -31,7 +31,6 @@ export const search = {
 }
 
 export const searchParams = {
-
   /**
    * Number of adults
    */
@@ -45,15 +44,5 @@ export const searchParams = {
   /**
    * Number of senior
    */
-  senior: 0,
-
-  /**
-   * ISO 3166-1 alpha-2 language code
-   */
-  lang: 'en',  // default that can be overriten by language set by user
-
-  /**
-   * ISO 4217 currency code
-   */
-  currency: 'CAD'
+  senior: 0
 }

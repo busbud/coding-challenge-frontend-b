@@ -26,28 +26,41 @@ export default class Search extends React.Component {
       loading: false,
       complete: false,
       filters: {},
+      currency: "CAD",
       strings
     };
 
     this.onLanguageChange = this.onLanguageChange.bind(this);
+    this.onCurrencyChange = this.onCurrencyChange.bind(this);
     this.orderBy = this.orderBy.bind(this);
     this.filterByOperator = this.filterByOperator.bind(this);
-  }
-
-  /**
-   * Update language
-   */
-  onLanguageChange(lang) {
-    this.state.strings.setLanguage(lang);
-    this.setState({strings: this.state.strings});
-    this.launchSearch(lang);
   }
 
   /**
    * On component mount, get search results
    */
   componentDidMount() {
-    this.launchSearch(this.state.strings.getLanguage());
+    const lang = this.state.strings.getLanguage();
+    const currency = this.state.currency;
+    this.launchSearch(lang, currency);
+  }
+
+  /**
+   * Update language and relaunch search
+   */
+  onLanguageChange(lang) {
+    this.state.strings.setLanguage(lang);
+    this.setState({strings: this.state.strings});
+    this.launchSearch(lang, this.state.currency);
+  }
+
+  /**
+   * Update currency and relaunch search
+   */
+  onCurrencyChange(currency) {
+    this.setState({currency});
+    const lang = this.state.strings.getLanguage();
+    this.launchSearch(lang, currency);
   }
 
   /**
@@ -214,9 +227,9 @@ export default class Search extends React.Component {
   /**
    * Launch search
    */
-  async launchSearch(lang) {
+  async launchSearch(lang, currency) {
     clearInterval(this.interval);
-    this.search = new SearchAPI({lang});
+    this.search = new SearchAPI({lang, currency});
     this.initializeSearch();
     this.pollResults();
   }
@@ -259,6 +272,7 @@ export default class Search extends React.Component {
             <div className="col-md-8">
               <DepartureList
                 results={this.state.results}
+                currency={this.state.currency}
               />
             </div>
           </div>
@@ -275,7 +289,9 @@ export default class Search extends React.Component {
       <div>
         <Header 
           strings={this.state.strings}
+          currency={this.state.currency}
           onLanguageChange={this.onLanguageChange}
+          onCurrencyChange={this.onCurrencyChange}
         />
         {this.renderResults()}
       </div>
