@@ -2,7 +2,7 @@ import { search, searchParams } from './conf';
 import BaseAPI from './base';
 
 /** Class to initialize search and poll results. */
-export default class Search extends BaseAPI {
+export default class SearchAPI extends BaseAPI {
 
   /**
    * Set up a boolean to know if search has been initialized

@@ -26,7 +26,7 @@ export default class DepartureItem extends React.PureComponent {
    */
   formatPrice(centPrice) {
     const price = centPrice.toFixed(2) / 100;
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(price)
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'CAD', minimumFractionDigits: 0 }).format(price)
   }
 
   /**

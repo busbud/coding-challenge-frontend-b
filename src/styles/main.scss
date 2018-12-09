@@ -1,16 +1,39 @@
-$background-color: #F6F6F6;
+$header-color: #127ccb;
+$body-color: #F6F6F6;
 $content-color: white;
 
 body {
-	background-color: $background-color;
+	background-color: $body-color;
+}
+
+.header {
+	background-color: #127ccb;
+	color: white;
+	padding: 15px 0;
+
+	.lang-select {
+		float: right;
+		width: fit-content;
+	}
+}
+
+.ordering-filters {
+	.panel {
+		padding: 10px 20px;
+
+		.badge {
+			padding: 5px;
+			margin-right: 5px;
+		}
+	}
 }
 
 .departure-list {
 
 	.departure-item {
 		background-color: $content-color;
-		margin: 10px;
+		margin: 10px 0;
 		padding: 20px;
-		border-radius: 10px;
+		border-radius: 4px;  /* 4px to be aligned with the bootstrap panel border-radius */
 	}
 }
