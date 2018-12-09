@@ -17,7 +17,7 @@ body {
 	}
 }
 
-.ordering-filters {
+.ordering-panel {
 	.panel {
 		padding: 10px 20px;
 
@@ -28,11 +28,24 @@ body {
 	}
 }
 
+.filtering-panel {
+	padding: 10px;
+
+	label {
+		font-weight: inherit;
+		display: block;
+
+		input {
+			margin-right: 10px;
+		}
+	}
+}
+
 .departure-list {
 
 	.departure-item {
 		background-color: $content-color;
-		margin: 10px 0;
+		margin-bottom: 10px;
 		padding: 20px;
 		border-radius: 4px;  /* 4px to be aligned with the bootstrap panel border-radius */
 	}

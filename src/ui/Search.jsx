@@ -6,7 +6,8 @@ import moment from 'moment';
 
 import SearchAPI from '../api/search';
 import Header from './Header';
-import OrderingFilters from './OrderingFilters';
+import OrderingPanel from './OrderingPanel';
+import FilteringPanel from './FilteringPanel';
 import DepartureList from './DepartureList';
 
 import { i18n } from '../i18n';
@@ -24,11 +25,13 @@ export default class Search extends React.Component {
       results: {},
       loading: false,
       complete: false,
+      filters: {},
       strings
     };
 
     this.onLanguageChange = this.onLanguageChange.bind(this);
     this.orderBy = this.orderBy.bind(this);
+    this.filterByOperator = this.filterByOperator.bind(this);
   }
 
   /**
@@ -138,6 +141,77 @@ export default class Search extends React.Component {
   }
 
   /**
+   * Filter results by operator
+   *
+   * We store a list of unfiltered results in state.
+   * We also store the filters applied.
+   *
+   * TODO: this method is too long and should be refactored
+   */
+  filterByOperator(operatorId, isChecked) {
+    let filters;
+    let filtersUpdated = false;
+
+    // No filtering yet
+    if (!this.state.filters.operators && isChecked) {
+      // No filter applied yet. Start filtering.
+      filters = {
+        unfilteredResults: this.state.results,
+        operators: [operatorId]
+      };
+      filtersUpdated = true;
+    }
+
+    // Update existing filtering
+    else {
+      let operators = this.state.filters.operators;
+      const index = operators.indexOf(operatorId);
+      if (!isChecked) {
+        // One filter is removed
+        if (index !== -1) {
+          operators.splice(index, 1);
+          filters = {
+            ...this.state.filters,
+            operators
+          };
+          filtersUpdated = true;
+        }
+      }
+      else {
+        // one filter is added
+        if (index === -1) {
+          operators.push(operatorId);
+          filters = {
+            ...this.state.filters,
+            operators
+          };
+          filtersUpdated = true;
+        }
+      }
+    }
+
+    // Then apply filters
+    if (filtersUpdated) {
+      let results;
+      if (filters.operators.length === 0) {
+        results = filters.unfilteredResults;
+      }
+      else {
+        const departures = filters.unfilteredResults.departures.filter((departure) => {
+          if (filters.operators.indexOf(departure.operator_id) !== -1) {
+            return true;
+          }
+        });
+        results = {
+          ...filters.unfilteredResults,
+          departures
+        }
+      }
+      this.setState({filters, results});
+    }
+  }
+
+  /**
    * Launch search
    */
   async launchSearch(lang) {
@@ -169,14 +243,26 @@ export default class Search extends React.Component {
     }
     return (
       <div>
-        <OrderingFilters
+        <OrderingPanel
           strings={this.state.strings}
           nbResults={this.state.results.departures.length}
           orderBy={this.orderBy}
         />
-        <DepartureList
-          results={this.state.results}
-        />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4">
+              <FilteringPanel
+                operators={this.state.results.operators}
+                filterByOperator={this.filterByOperator}
+              />
+            </div>
+            <div className="col-md-8">
+              <DepartureList
+                results={this.state.results}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 
 /** Panel that displays ordering filters. */
-export default class OrderingFilters extends React.Component {
+export default class OrderingPanel extends React.Component {
 
   constructor(props) {
     super(props);
@@ -21,7 +21,7 @@ export default class OrderingFilters extends React.Component {
    */
   render() {
     return (
-      <div className="ordering-filters container">
+      <div className="ordering-panel container">
         <div className="panel">
           <div className="row">
             <div className="col-md-9">

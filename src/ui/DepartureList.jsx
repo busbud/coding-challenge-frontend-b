@@ -24,7 +24,7 @@ export default class DepartureList extends React.PureComponent {
       );
     });
     return (
-      <div className="departure-list container">{departureList}</div>
+      <div className="departure-list">{departureList}</div>
     );
   }
 
