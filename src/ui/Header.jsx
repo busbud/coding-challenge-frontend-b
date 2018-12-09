@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import { languages, currencies } from '../config';
 
-
 /** Header of the page. */
 export default class Header extends React.Component {
   constructor(props) {
@@ -71,7 +70,7 @@ export default class Header extends React.Component {
   }
 
   /**
-   * Render departure item
+   * Render header
    */
   render() {
     const { strings } = this.props;

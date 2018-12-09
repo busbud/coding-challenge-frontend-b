@@ -11,6 +11,9 @@ export default class OrderingPanel extends React.Component {
     this.onBadgeClick = this.onBadgeClick.bind(this);
   }
 
+  /**
+   * Handle order button onClick
+   */
   onBadgeClick(event) {
     const orderType = event.currentTarget.dataset.id;
     const { orderBy } = this.props;
@@ -18,7 +21,7 @@ export default class OrderingPanel extends React.Component {
   }
 
   /**
-   * Render departure item
+   * Render ordering panel
    */
   render() {
     const { strings, nbResults } = this.props;
