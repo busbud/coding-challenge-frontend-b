@@ -11,7 +11,7 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 
 ## Non-functional requirements
 
-- Challenge is submitted as pull request against this repo ([fork it](https://help.github.com/articles/fork-a-repo/) and [create a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
+- Challenge is submitted as pull request against this repo ([fork it](https://help.github.com/articles/fork-a-repo/) and [create a pull request])(https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 - The microsite should be deployed to [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
 ### Bonus
@@ -45,7 +45,7 @@ Search is performed in two steps
 
 ### Initialize search
 
-Initiating kicks off a search against the various supplier systems if one has yet to be started. It also includes a wealth of related models (cities, locations, oeprators, etc) in its response to ensure a client has all the context necessary to present a compelling experience to the user. If the cache already holds departures for the requested search, the departures will be returned as part of the response.
+Initiating kicks off a search against the various supplier systems if one has yet to be started. It also includes a wealth of related models (cities, locations, operators, etc) in its response to ensure a client has all the context necessary to present a compelling experience to the user. If the cache already holds departures for the requested search, the departures will be returned as part of the response.
 
 To get departures, search is initialized via the following endpoint:
 

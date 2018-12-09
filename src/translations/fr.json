@@ -1,0 +1,9 @@
+{
+  "search": {
+    "result": {
+      "length": "{{count}} résultat",
+      "length_plural": "{{count}} résultats",
+      "none": "Pas de résultat"
+    }
+  }
+}
