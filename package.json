@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)",
   "main": "index.js",
+  "engines": {
+    "npm": "6.4.1",
+    "node": "v10.13.0"
+  },
   "scripts": {
-    "start": "webpack-dev-server --mode=development",
-    "dev": "webpack --mode=development",
+    "start": "node server.js",
+    "dev": "webpack-dev-server --mode=development",
     "build": "webpack --mode=production",
     "test": "jest"
   },
@@ -53,6 +57,7 @@
     "babel-jest": "^23.6.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "express": "^4.16.4",
     "jest": "^23.6.0",
     "moment": "^2.22.2",
     "node-sass": "^4.10.0",
