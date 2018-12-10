@@ -6,12 +6,14 @@ import Adapter from 'enzyme-adapter-react-16';
 import sinon from 'sinon';
 import { mount, shallow } from 'enzyme';
 
-import { initResults, polledResults } from '../fixtures';
 import Search from '../../ui/Search';
+
+import { initResults, polledResults } from '../factories';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('<Search />', () => {
+
   it('should render properly', () => {
     const render = () => {
       shallow(<Search />);
@@ -40,9 +42,11 @@ describe('<Search />', () => {
   it('should trigger a new search on currency change', () => {
     const launchSearch = sinon.spy(Search.prototype, 'launchSearch');
     const wrapper = mount(<Search />);
-    expect(launchSearch.calledWith('fr', 'CAD'));
+    expect(launchSearch.calledOnce).toBe(true);
+    expect(launchSearch.firstCall.calledWith('en', 'CAD')).toBe(true);
     wrapper.instance().onCurrencyChange('USD');
-    expect(launchSearch.calledWith('fr', 'USD'));
+    expect(launchSearch.callCount).toBe(2);
+    expect(launchSearch.secondCall.calledWith('en', 'USD')).toBe(true);
     wrapper.unmount();
     launchSearch.restore();
   });
@@ -56,6 +60,7 @@ describe('<Search />', () => {
       const updatedResults = wrapper.instance().getUpdatedResults(initResults);
       expect(updatedResults.departures.length).toBe(1);
       expect(updatedResults.operators.length).toBe(1);
+      wrapper.unmount();
     });
 
     it('should add new elements', () => {
@@ -66,6 +71,7 @@ describe('<Search />', () => {
       const updatedResults = wrapper.instance().getUpdatedResults(polledResults);
       expect(updatedResults.departures.length).toBe(2);
       expect(updatedResults.operators.length).toBe(2);
+      wrapper.unmount();
     });
   });
 
