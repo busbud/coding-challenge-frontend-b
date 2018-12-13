@@ -17,8 +17,6 @@ const DepartureCard = ({
     duration,
   } = departure;
 
-  console.log(locations)
-
   return (
     <div className="departure-card">
       <div className="departure-card__header">
