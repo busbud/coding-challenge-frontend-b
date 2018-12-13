@@ -1,0 +1,10 @@
+@import './../../styles/shared';
+
+.loading,
+.error {
+  padding: 10px;
+  background-color: $grey-light;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+}

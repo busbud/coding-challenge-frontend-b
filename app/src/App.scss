@@ -1,0 +1,30 @@
+@import "styles/shared.scss";
+
+.app {
+  max-width: 1070px;
+  padding: 0 15px;
+  margin: 0 auto;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }  
+
+  h1 {
+    text-align: center;
+    font-size: 1.25rem;
+
+  }
+
+  @include md {
+    &__content {
+      flex-direction: row;
+    } 
+
+    h1 {
+    text-align: left;
+    font-size: 1.75rem;
+    padding: 0 10px;
+  }
+  }
+}

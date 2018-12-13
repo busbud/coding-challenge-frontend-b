@@ -1,0 +1,83 @@
+@import './../../styles/shared';
+
+.departure-card {
+  background-color: $grey-light;
+  border-radius: 6px;
+  padding: 10px;
+  
+
+  &:not(:first-child) {
+    margin: 15px 0 0;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      max-height: 15px;
+    }
+  }
+
+  &__price {
+    margin: 0; 
+    font-size: 1rem;
+  }
+
+  &__content {
+    margin: 15px 0;
+    font-size: 0.875rem;
+  }
+
+  &__origin,
+  &__destination {
+    display: flex;
+    margin: 10px 0;
+  }
+
+  &__time {
+    color: $primary-color;
+    font-weight: 600;
+    margin-right: 10px;
+  }
+
+  &__location {
+    display: flex;
+    flex-direction: column;
+    &__place {
+      font-weight: 400;
+      font-size: 0.75rem;
+    }
+
+    &__city {
+      font-weight: 600;
+
+    }
+  }
+
+  &__travel-time {
+    color: #3b3b3b;
+    font-size: 12px;
+  }
+  
+
+  @include lg {
+
+    &__header {
+      img {
+        max-height: 25px;
+      }
+    }
+    
+    padding: 20px 30px;
+
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1100px;
+  }
+}

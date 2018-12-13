@@ -23,6 +23,37 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 * You can setup your microsite any way you like; we're partial to NodeJS, ExpressJS and React
 * CSS can be written using SASS, LESS or similar higher-level language
 
+
+# Getting started
+
+Go to app folder
+
+```
+cd app
+```
+
+Install packages
+
+```
+yarn
+```
+
+Start
+
+```bash
+yarn start
+```
+
+Build
+
+```bash
+yarn build
+```
+
+## Heroku
+
+This project is also available on Heroku : https://afternoon-spire-61890.herokuapp.com/
+
 # Documentation
 
 ## Supporting API

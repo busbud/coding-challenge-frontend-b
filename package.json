@@ -1,0 +1,18 @@
+{
+  "name": "coding-challenge-frontend-b",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:matthieumoreau/coding-challenge-frontend-b.git",
+  "author": "Matthieu Moreau <dev@matthieumoreau.fr>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "heroku-postbuild": "cd app && yarn && yarn add node-sass && yarn build"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "engines": {
+    "node": "10.9.0"
+  }
+}

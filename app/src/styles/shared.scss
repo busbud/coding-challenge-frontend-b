@@ -1,0 +1,12 @@
+@import '_variables';
+@import '_mixins';
+@import '~normalize.css/normalize.css';
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "Arial";
+  color: $primary-color;
+}
