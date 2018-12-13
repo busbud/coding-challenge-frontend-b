@@ -30,7 +30,7 @@ class DeparturesProvider extends Component {
         adult: 1,
         child: 0,
         senior: 0,
-        lang: "fr",
+        lang: "en",
         currency: "USD",
       }
     }
