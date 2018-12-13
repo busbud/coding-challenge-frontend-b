@@ -37,6 +37,7 @@ class DeparturesProvider extends Component {
   }
 
 
+
   async fetchDepartures(urlParams, searchParams, index = 0, loop = 0) {
 
     const searchParamsSerialize = serialize(searchParams);
@@ -45,7 +46,7 @@ class DeparturesProvider extends Component {
       headers: new Headers(
         {
           "Accept": "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
-          "X-Busbud-Token": "PARTNER_AHm3M6clSAOoyJg4KyCg7w"
+          "X-Busbud-Token": process.env.REACT_APP_BUSBUD_TOKEN
         }
       ),
       mode: 'cors',
