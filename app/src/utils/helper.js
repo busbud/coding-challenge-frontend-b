@@ -31,3 +31,7 @@ export const extendCities = (cities, origin_city_id, destination_city_id) => {
   }
 }
 
+export const formatPrice = (price) => {
+  return (Math.round((price / 100) * Math.pow(10, 2)) / Math.pow(10, 2)).toFixed(2)
+}
+

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { getTimeFromMins, getTimefromDate } from "./../../utils/helper"
+import { getTimeFromMins, getTimefromDate, formatPrice } from "./../../utils/helper"
 
 import "./DepartureCard.scss";
 
@@ -23,7 +23,7 @@ const DepartureCard = ({
     <div className="departure-card">
       <div className="departure-card__header">
         <img src={operator.logo_url} alt={operator.name} />
-        <p className="departure-card__price">{prices.total / 100} {prices.currency}</p>
+        <p className="departure-card__price">{formatPrice(prices.total)} {prices.currency}</p>
       </div>
       <div className="departure-card__content">
         <div className="departure-card__origin">
