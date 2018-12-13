@@ -1,40 +1,45 @@
 import React, { Component, createContext } from "react";
 
-
 import { serialize } from "./../../utils/serialize";
-
+import { extendCities } from "./../../utils/helper";
 
 export const DeparturesContext = createContext();
 
 class DeparturesProvider extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      complete: false,
       departures: [],
+      operators: [],
+      locations: [],
+      cities: null,
+      originCityId: null,
+      destinationCityId: null,
       isLoading: false,
       error: null,
-      index: 0
+      index: 0,
     };
 
-    this.urlParams = {
-      origin: "dr5reg",
-      destination: "f25dvk",
-      outbound_date: "2019-02-20"
-    };
-
-    this.searchParams = {
-      adult: 1,
-      child: 0,
-      senior: 0,
-      lang: "fr",
-      currency: "EUR",
-    };
+    this.params = {
+      urlParams: {
+        origin: "dr5reg",
+        destination: "f25dvk",
+        outbound_date: "2019-08-02"
+      },
+      searchParams: {
+        adult: 1,
+        child: 0,
+        senior: 0,
+        lang: "fr",
+        currency: "USD",
+      }
+    }
   }
 
-  async fetchDepartures(urlParams, searchParams, index = 0) {
+
+  async fetchDepartures(urlParams, searchParams, index = 0, loop = 0) {
+
     const searchParamsSerialize = serialize(searchParams);
-    const url = `https://napi.busbud.com/x-departures/${urlParams.origin}/${urlParams.destination}/${urlParams.outbound_date}/poll?${searchParamsSerialize}&index=${index}`
     const init = {
       method: 'GET',
       headers: new Headers(
@@ -47,45 +52,74 @@ class DeparturesProvider extends Component {
       cache: 'default'
     }
 
+    const urlComplete = `https://napi.busbud.com/x-departures/${urlParams.origin}/${urlParams.destination}/${urlParams.outbound_date}?${searchParamsSerialize}`
+    const fetchCompleteResponse = await fetch(urlComplete, init)
+    const completeResponse = await fetchCompleteResponse.json()
 
+
+    this.setState({
+      cities: extendCities(completeResponse.cities, completeResponse.origin_city_id, completeResponse.destination_city_id),
+      locations: completeResponse.locations,
+      originCityId: completeResponse.origin_city_id,
+      destinationCityId: completeResponse.destination_city_id,
+    })
+
+    const url = `https://napi.busbud.com/x-departures/${urlParams.origin}/${urlParams.destination}/${urlParams.outbound_date}/poll?${searchParamsSerialize}&index=${index}`
     const fetchResponse = await fetch(url, init)
-    const responseObject = await fetchResponse.json()
-    if (!responseObject.complete) {
-      const departures = this.state.departures.concat(responseObject.departures);
+    const response = await fetchResponse.json()
+
+    const departures = this.state.departures.concat(response.departures);
+    const operators = this.state.operators.concat(response.operators);
+
+    if (!response.complete) {
       this.setState({
-        complete: false,
         isLoading: true,
-        departures,
       })
-      console.log('not complete', responseObject, this.state.departures);
-      setTimeout(() => this.fetchDepartures(urlParams, searchParams, responseObject.departures.length), 1000)
+      setTimeout(() => this.fetchDepartures(urlParams, searchParams, response.departures.length, loop + 1), 1500)
     } else {
-      //this.fetchDepartures(urlParams, searchParams, responseObject.departures.length)
-      const urlComplete = `https://napi.busbud.com/x-departures/${urlParams.origin}/${urlParams.destination}/${urlParams.outbound_date}?${searchParamsSerialize}`
-      const fetchCompleteResponse = await fetch(urlComplete, init)
-      const CompleteResponseObject = await fetchCompleteResponse.json()
-
       this.setState({
-        complete: true,
         isLoading: false,
-        departures: CompleteResponseObject.departures,
       })
-
-      console.log('complete', CompleteResponseObject, this.state.departures);
-
     }
-    console.log(this.state);
+
+    this.setState({
+      departures,
+      operators
+    })
   }
 
   componentDidMount() {
-    this.fetchDepartures(this.urlParams, this.searchParams, 0);
-
+    this.fetchDepartures(this.params.urlParams, this.params.searchParams);
   }
 
+
   render() {
-    const { departures, isLoading, error } = this.state;
+    const {
+      params,
+      state: {
+        departures,
+        originCityId,
+        destinationCityId,
+        operators,
+        locations,
+        cities,
+        isLoading,
+        error
+      }
+    } = this;
+
     return (
-      <DeparturesContext.Provider value={{ departures, isLoading, error }}>
+      <DeparturesContext.Provider value={{
+        params,
+        originCityId,
+        destinationCityId,
+        departures,
+        operators,
+        locations,
+        cities,
+        isLoading,
+        error
+      }}>
         {this.props.children}
       </DeparturesContext.Provider>
     );

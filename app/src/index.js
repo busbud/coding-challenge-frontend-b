@@ -4,13 +4,10 @@ import "./index.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import DeparturesProvider from "./store/DeparturesProvider/DeparturesProvider";
+
 
 ReactDOM.render(
-  <DeparturesProvider>
-    <App />
-  </DeparturesProvider>,
-
+  <App />,
   document.getElementById("root")
 );
 

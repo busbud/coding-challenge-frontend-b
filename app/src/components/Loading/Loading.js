@@ -1,21 +1,23 @@
 import React, { Fragment } from "react";
 
+import { withDepartures } from "../../hoc/withDepartures";
+
 import "./Loading.scss";
 
 const Loading = ({ isLoading, error }) => (
   <Fragment>
     {isLoading && (
-      <div id="loading">
-        <p>Chargement...</p>
+      <div class="loading">
+        <p>Loading...</p>
       </div>
     )}
 
     {error && (
-      <div id="error">
-        <p>Le service est momentanément indisponible</p>
+      <div class="error">
+        <p>The service is temporarily unavailable</p>
       </div>
     )}
   </Fragment>
 );
 
-export default Loading;
+export default withDepartures(Loading);

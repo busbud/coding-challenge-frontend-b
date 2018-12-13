@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 
+import DeparturesProvider from "./store/DeparturesProvider/DeparturesProvider";
+
+import DeparturesList from "./components/DeparturesList/DeparturesList";
 import Search from "./components/Search/Search";
-import Results from "./components/Results/Results";
 
 import "./App.scss";
 
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header" />
-        <Search />
-        <Results />
+      <div className="app">
+        <DeparturesProvider>
+          <Search />
+          <DeparturesList />
+        </DeparturesProvider>
       </div>
     );
   }
