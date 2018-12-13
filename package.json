@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
-    "heroku-postbuild": "cd app && yarn && yarn run build"
+    "heroku-postbuild": "cd app && yarn && yarn add node-sass && yarn build"
   },
   "dependencies": {
     "express": "^4.16.4"
