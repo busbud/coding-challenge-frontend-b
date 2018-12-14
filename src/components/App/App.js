@@ -2,16 +2,8 @@
 import React from 'react';
 import './App.css';
 
-export type Props = {||};
-
-export const App = (): Props => (
+export const App = () => (
   <div>
-    {' '}
-    <p>
-      {' '}
-      {'HEllo'}
-      {' '}
-    </p>
-    {' '}
+    <p>HEllo</p>
   </div>
 );
