@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1",
-    "@storybook/react": "^4.1.1",
+    "@material-ui/core": "^3.6.2",
     "@storybook/addon-actions": "^4.1.1",
     "@storybook/addon-links": "^4.1.1",
-    "@storybook/addons": "^4.1.1"
+    "@storybook/addons": "^4.1.1",
+    "@storybook/react": "^4.1.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,12 +28,12 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/core": "^7.2.0",
     "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-flowtype-essential": "^1.0.0",
     "eslint-plugin-flowtype": "^3.2.0",
-    "flow-bin": "^0.89.0",
-    "@babel/core": "^7.2.0",
-    "babel-loader": "^8.0.4"
+    "flow-bin": "^0.89.0"
   }
 }
