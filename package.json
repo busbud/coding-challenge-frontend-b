@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.6.2",
+    "@material-ui/icons": "^3.0.1",
     "@storybook/addon-actions": "^4.1.1",
     "@storybook/addon-links": "^4.1.1",
     "@storybook/addons": "^4.1.1",

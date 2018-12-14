@@ -1,10 +1,32 @@
 // @flow
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
+import { TextField, InputAdornment } from '@material-ui/core';
+import CalendarToday from '@material-ui/icons/CalendarToday';
+
 import styles from './DatePicker.css';
 
-export const DatePicker = () => (
-  <div className={styles.DatePicker}>
-    <TextField id="standard-uncontrolled" label="Uncontrolled" defaultValue="foo" margin="normal" />
-  </div>
-);
+type Props = {|
+  onChange: (value: string) => void,
+  label: string,
+|};
+
+export const DatePicker = (props: Props) => {
+  const { onChange, label } = props;
+
+  return (
+    <TextField
+      onChange={e => onChange(e.target.value)}
+      label={label}
+      type="date"
+      variant="outlined"
+      InputProps={{
+        shrink: true,
+        startAdornment: (
+          <InputAdornment position="start">
+            <CalendarToday />
+          </InputAdornment>
+        ),
+      }}
+    />
+  );
+};

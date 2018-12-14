@@ -1,2 +1,4 @@
-.DatePicker {
+.datePicker {
+  width: 100%;
+  display: flex;
 }
