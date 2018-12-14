@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
-import './App.css';
+import styles from './App.css';
 
 export const App = () => (
-  <div>
+  <div className={styles.App}>
     <p>HEllo</p>
   </div>
 );

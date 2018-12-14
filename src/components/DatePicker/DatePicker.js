@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
-import './DatePicker.css';
+import styles from './DatePicker.css';
 
 export const DatePicker = () => (
-  <div>
+  <div className={styles.DatePicker}>
     <p>HEllo</p>
   </div>
 );
