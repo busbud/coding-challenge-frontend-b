@@ -8,5 +8,8 @@
   },
   "globals": {
     "document": true
+  },
+  "env": {
+    "jest": true
   }
 }
