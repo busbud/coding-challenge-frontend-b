@@ -2,8 +2,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { TravelerCountSelector } from './Tata';
+import { TravelerCountSelector } from './TravelerCountSelector';
 
 storiesOf('TravelerCountSelector', module).add('Default', () => (
-  <TravelerCountSelector onChange={action('changed')} />
+  <TravelerCountSelector label="label" onChange={action('changed')} />
 ));

@@ -3,8 +3,6 @@ import React from 'react';
 import { TextField, InputAdornment } from '@material-ui/core';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 
-import styles from './DatePicker.css';
-
 type Props = {|
   onChange: (value: string) => void,
   label: string,
