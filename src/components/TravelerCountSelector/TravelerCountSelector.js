@@ -9,9 +9,13 @@ import { withStyles } from '@material-ui/core/styles';
 import type { Sign } from './types';
 import { computeTravellerCount } from './helpers';
 
+type Classes = {|
+  input: string,
+|};
 type Props = {|
   onChange: (value: number) => void,
   label: string,
+  classes: Classes,
 |};
 
 type State = {|
@@ -33,7 +37,6 @@ const styles: Styles = {
 class UnstyledTravellerCountSelector extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-
     this.state = {
       travellerCount: 0,
     };
@@ -51,16 +54,17 @@ class UnstyledTravellerCountSelector extends React.Component<Props, State> {
 
   render() {
     const { travellerCount } = this.state;
-    const { label } = this.props;
+    const { label, classes } = this.props;
+
     return (
       <TextField
         variant="outlined"
-        className={styles.input}
         label={label}
         value={travellerCount}
         type="number"
         InputProps={{
           shrink: true,
+          className: classes.input,
           endAdornment: (
             <InputAdornment position="end">
               <IconButton
