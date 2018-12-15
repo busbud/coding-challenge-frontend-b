@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TravelerCountSelector renders correctly 1`] = `
+<div>
+  <div
+    className="MuiFormControl-root-1"
+  >
+    <label
+      className="MuiFormLabel-root-16 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-shrink-12 MuiInputLabel-outlined-15"
+      data-shrink={true}
+      htmlFor="outlined-adornment-password"
+    >
+      Password
+    </label>
+    <div
+      className="MuiInputBase-root-36 MuiOutlinedInput-root-23 MuiInputBase-formControl-37 MuiInputBase-adornedStart-40 MuiOutlinedInput-adornedStart-26 MuiInputBase-adornedEnd-41 MuiOutlinedInput-adornedEnd-27"
+      onClick={[Function]}
+      shrink={true}
+    >
+      <fieldset
+        aria-hidden={true}
+        className="MuiPrivateNotchedOutline-root-53 MuiOutlinedInput-notchedOutline-30"
+        style={
+          Object {
+            "paddingLeft": 8,
+          }
+        }
+      >
+        <legend
+          className="MuiPrivateNotchedOutline-legend-54"
+          style={
+            Object {
+              "width": 0,
+            }
+          }
+        >
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "&#8203;",
+              }
+            }
+          />
+        </legend>
+      </fieldset>
+      <div
+        className="MuiInputAdornment-root-55 MuiInputAdornment-positionEnd-58"
+      >
+        <button
+          aria-label="Toggle password visibility"
+          className="MuiButtonBase-root-65 MuiIconButton-root-59"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-64"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-68"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+          <span
+            className="MuiTouchRipple-root-77"
+          />
+        </button>
+      </div>
+      <input
+        aria-invalid={false}
+        className="MuiInputBase-input-46 MuiOutlinedInput-input-31 MuiInputBase-inputAdornedStart-51 MuiOutlinedInput-inputAdornedStart-34 MuiInputBase-inputAdornedEnd-52 MuiOutlinedInput-inputAdornedEnd-35"
+        disabled={false}
+        id="outlined-adornment-password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        type="text"
+      />
+      <div
+        className="MuiInputAdornment-root-55 MuiInputAdornment-positionEnd-58"
+      >
+        <button
+          aria-label="Toggle password visibility"
+          className="MuiButtonBase-root-65 MuiIconButton-root-59"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-64"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-68"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13H5v-2h14v2z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+          <span
+            className="MuiTouchRipple-root-77"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
