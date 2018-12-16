@@ -2,7 +2,7 @@
 
 exports[`DatePicker renders correctly 1`] = `
 <div
-  className="MuiFormControl-root-1"
+  className="MuiFormControl-root-1 MuiFormControl-fullWidth-4"
 >
   <label
     className="MuiFormLabel-root-16 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-shrink-12 MuiInputLabel-outlined-15"
@@ -11,7 +11,7 @@ exports[`DatePicker renders correctly 1`] = `
     label
   </label>
   <div
-    className="MuiInputBase-root-36 MuiOutlinedInput-root-23 MuiInputBase-formControl-37 MuiInputBase-adornedStart-40 MuiOutlinedInput-adornedStart-26"
+    className="MuiInputBase-root-36 MuiOutlinedInput-root-23 MuiInputBase-fullWidth-45 MuiInputBase-formControl-37 MuiInputBase-adornedStart-40 MuiOutlinedInput-adornedStart-26"
     onClick={[Function]}
     shrink={true}
   >

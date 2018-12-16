@@ -1,6 +1,6 @@
 // @flow
-import type { Suggestion } from '../types';
+import type { LocationSuggestion } from '../../../types';
 
-export const suggestions: Array<Suggestion> = [
+export const suggestions: Array<LocationSuggestion> = [
   { label: 'Montréal', value: 'Montréal', geohash: 'f25dvk' },
 ];

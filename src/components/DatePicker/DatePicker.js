@@ -15,6 +15,7 @@ export const DatePicker = (props: Props) => {
     <TextField
       onChange={e => onChange(e.target.value)}
       label={label}
+      fullWidth
       type="date"
       defaultValue="2019-08-12"
       variant="outlined"

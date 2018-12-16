@@ -10,3 +10,9 @@ export type ProposedTrip = {|
     logoUrl: string,
   },
 |};
+
+export type LocationSuggestion = {|
+  label: string,
+  value: string,
+  geohash: string,
+|};
