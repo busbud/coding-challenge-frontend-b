@@ -19,7 +19,10 @@ type Classes = {|
   search: string,
   yourJouney: string,
   travellingDates: string,
+  searchForm: string,
+  sectionTitle: string,
   travellersInformations: string,
+  button: string,
 |};
 
 type SearchInfos = {|
@@ -29,15 +32,15 @@ type SearchInfos = {|
     senior: number,
   |},
   locations: {
-    arrival: LocationSuggestion,
-    departure: LocationSuggestion,
+    arrival: ?LocationSuggestion,
+    departure: ?LocationSuggestion,
   },
-  departureDate: string,
+  departureDate: ?string,
 |};
 
 type Props = {|
   classes: Classes,
-  onSearch: () => SearchInfos,
+  onSearch: (searchInfos: SearchInfos) => void,
 |};
 
 type LocationInfo = LocationSuggestion & {|
@@ -59,7 +62,7 @@ type State = {|
 
 type TravllerInfo = {|
   travellerCount: number,
-  travvellerTyper: string,
+  travellerType: string,
 |};
 
 const styles = theme => ({
