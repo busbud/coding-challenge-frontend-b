@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "cd busbud-challenge && npm build",
-    "start": "cd busbud-challenge && npm install && npm run build"
+    "heroku-prebuild": "cd busbud-challenge && npm install",
+    "start": "cd busbud-challenge && npm run build"
   }
 }
