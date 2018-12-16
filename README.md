@@ -45,7 +45,7 @@ Search is performed in two steps
 
 ### Initialize search
 
-Initiating kicks off a search against the various supplier systems if one has yet to be started. It also includes a wealth of related models (cities, locations, oeprators, etc) in its response to ensure a client has all the context necessary to present a compelling experience to the user. If the cache already holds departures for the requested search, the departures will be returned as part of the response.
+Initiating kicks off a search against the various supplier systems if one has yet to be started. It also includes a wealth of related models (cities, locations, operators, etc) in its response to ensure a client has all the context necessary to present a compelling experience to the user. If the cache already holds departures for the requested search, the departures will be returned as part of the response.
 
 To get departures, search is initialized via the following endpoint:
 
