@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "build": "cd busbud-challenge && npm build",
-    "start": "cd busbud-challenge && npm install && npm build"
+    "start": "cd busbud-challenge && npm install && npm run build"
   }
 }
