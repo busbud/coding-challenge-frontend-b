@@ -2,7 +2,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
 import React, { Component } from 'react';
-import set from 'lodash/fp/set';
+import { get, set, values } from 'lodash/fp';
 import { LocationSelector } from '../LocationSelector';
 import { DatePicker } from '../DatePicker';
 import { TravelerCountSelector } from '../TravelerCountSelector';
@@ -44,8 +44,17 @@ type LocationInfo = LocationSuggestion & {|
   type: string,
 |};
 
+type Errors = {
+  travellerSelectorErrored: boolean,
+  departureDateError: boolean,
+  locationSelectorError: boolean,
+};
+
 type State = {|
   searchInfos: SearchInfos,
+  errors: Errors,
+  isErrored: boolean,
+  isPristine: boolean,
 |};
 
 type TravllerInfo = {|
@@ -108,15 +117,27 @@ class UnStyledSearch extends Component<Props, State> {
         },
         departureDate: null,
       },
+      errors: {
+        travellerSelectorErrored: false,
+        departureDateError: false,
+        locationSelectorError: false,
+      },
+      isErrored: false,
+      isPristine: true,
     };
   }
 
   handleTravelerCountChange = (travellerInfo: TravllerInfo) => {
     const { travellerCount, travellerType } = travellerInfo;
+    const { errors } = this.state;
+    const newErrors = set('travellerSelectorErrored', false, errors);
+
     const { searchInfos } = this.state;
     const newSerchInfos = set(`travellers[${travellerType}]`, travellerCount, searchInfos);
     this.setState({
+      isPristine: false,
       searchInfos: newSerchInfos,
+      errors: newErrors,
     });
   };
 
@@ -125,26 +146,68 @@ class UnStyledSearch extends Component<Props, State> {
       value, type, geohash, label,
     } = locationInfo;
 
+    const { errors } = this.state;
+    const newErrors = set('locationSelectorError', false, errors);
+
     const { searchInfos } = this.state;
     const newSerchInfos = set(`locations[${type}]`, { value, geohash, label }, searchInfos);
 
     this.setState({
       searchInfos: newSerchInfos,
+      isPristine: false,
+      errors: newErrors,
     });
   };
 
   handleDepartureDateChange = (departureDate: string) => {
-    console.log(departureDate);
     const { searchInfos } = this.state;
+    const { errors } = this.state;
+    const newErrors = set('departureDateError', false, errors);
     const newSerchInfos = set('departureDate', departureDate, searchInfos);
     this.setState({
+      isPristine: false,
       searchInfos: newSerchInfos,
+      errors: newErrors,
     });
   };
 
+  handleOnSearch = () => {
+    const { travellers, locations, departureDate } = get('searchInfos', this.state);
+    const errors = get('errors', this.state);
+    const { onSearch } = this.props;
+
+    let newErrors = errors;
+
+    const { adult, senior } = travellers;
+
+    if (adult === 0 && senior === 0) {
+      newErrors = set('travellerSelectorErrored', true, newErrors);
+    }
+
+    if (!locations.departure || !locations.arrival) {
+      newErrors = set('locationSelectorError', true, newErrors);
+    }
+
+    if (!departureDate) {
+      newErrors = set('departureDateError', true, newErrors);
+    }
+
+    if (values(newErrors).some(item => item === true)) {
+      this.setState({ errors: newErrors, isErrored: true });
+    } else {
+      onSearch({ travellers, locations, departureDate });
+    }
+    this.setState({ searchInfos: { travellers, locations, departureDate } });
+  };
+
   render() {
-    const { classes, onSearch } = this.props;
-    const { searchInfos } = this.state;
+    const { classes } = this.props;
+    const { travellerSelectorErrored, departureDateError, locationSelectorError } = get(
+      'errors',
+      this.state,
+    );
+    const { isErrored, isPristine } = this.state;
+
     return (
       <div>
         <div className={classes.searchForm}>
@@ -153,11 +216,13 @@ class UnStyledSearch extends Component<Props, State> {
               Your Journey
             </Typography>
             <LocationSelector
+              isErrored={locationSelectorError}
               onChange={value => this.handleLocationChange({ ...value, type: 'departure' })}
               suggestions={departureSuggestion}
               label="Departure"
             />
             <LocationSelector
+              isErrored={locationSelectorError}
               suggestions={arrivalSuggestion}
               label="Arrival"
               onChange={value => this.handleLocationChange({ ...value, type: 'arrival' })}
@@ -167,21 +232,28 @@ class UnStyledSearch extends Component<Props, State> {
             <Typography className={classes.sectionTitle} variant="h6">
               Travelling Date
             </Typography>
-            <DatePicker onChange={this.handleDepartureDateChange} label="Departure Time" />
+            <DatePicker
+              isErrored={departureDateError}
+              onChange={this.handleDepartureDateChange}
+              label="Departure Time"
+            />
           </div>
           <div className={classes.travellersInformations}>
             <Typography className={classes.sectionTitle} variant="h6">
               Travellers
             </Typography>
             <TravelerCountSelector
+              isErrored={travellerSelectorErrored}
               travellerType="adult"
               onChange={this.handleTravelerCountChange}
             />
             <TravelerCountSelector
+              isErrored={travellerSelectorErrored}
               travellerType="senior"
               onChange={this.handleTravelerCountChange}
             />
             <TravelerCountSelector
+              isErrored={travellerSelectorErrored}
               travellerType="children"
               onChange={this.handleTravelerCountChange}
             />
@@ -189,7 +261,8 @@ class UnStyledSearch extends Component<Props, State> {
         </div>
 
         <Button
-          onClick={() => onSearch(searchInfos)}
+          disabled={isErrored || isPristine}
+          onClick={this.handleOnSearch}
           variant="contained"
           color="secondary"
           className={classes.button}
