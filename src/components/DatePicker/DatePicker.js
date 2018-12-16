@@ -16,6 +16,7 @@ export const DatePicker = (props: Props) => {
       onChange={e => onChange(e.target.value)}
       label={label}
       type="date"
+      defaultValue="2019-08-12"
       variant="outlined"
       InputProps={{
         shrink: true,

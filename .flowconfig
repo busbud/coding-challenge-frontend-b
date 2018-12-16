@@ -1,4 +1,7 @@
 [ignore]
+.*data.*
+.*dist.*
+.*\.tmp.*
 
 [include]
 

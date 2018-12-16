@@ -9,6 +9,7 @@
     "@storybook/addon-links": "^4.1.1",
     "@storybook/addons": "^4.1.1",
     "@storybook/react": "^4.1.1",
+    "mui-downshift": "^1.2.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
@@ -36,6 +37,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-flowtype-essential": "^1.0.0",
     "eslint-plugin-flowtype": "^3.2.0",
-    "flow-bin": "^0.89.0"
+    "flow-bin": "^0.89.0",
+    "flow-typed": "^2.5.1"
   }
 }
