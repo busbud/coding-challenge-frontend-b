@@ -63,6 +63,7 @@ exports[`DatePicker renders correctly 1`] = `
     <input
       aria-invalid={false}
       className="MuiInputBase-input-46 MuiOutlinedInput-input-31 MuiInputBase-inputType-49 MuiInputBase-inputAdornedStart-51 MuiOutlinedInput-inputAdornedStart-34"
+      defaultValue="2019-08-12"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
