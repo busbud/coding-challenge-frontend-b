@@ -8,7 +8,14 @@ import { LocationSelector } from './LocationSelector';
 describe('LocationSelector', () => {
   it('renders correctly', () => {
     const tree = renderer
-      .create(<LocationSelector suggestions={suggestions} label="label" onKeyDown={() => {}} />)
+      .create(
+        <LocationSelector
+          suggestions={suggestions}
+          isErrored={false}
+          label="label"
+          onKeyDown={() => {}}
+        />,
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -6,7 +6,7 @@ import { TravelerCountSelector } from './TravelerCountSelector';
 describe('TravelerCountSelector', () => {
   it('renders correctly', () => {
     const tree = renderer
-      .create(<TravelerCountSelector travelerType="children" onChange={() => {}} />)
+      .create(<TravelerCountSelector isErrored travelerType="children" onChange={() => {}} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

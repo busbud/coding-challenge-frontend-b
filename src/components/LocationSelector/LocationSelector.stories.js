@@ -8,8 +8,16 @@ import { suggestions } from './fixtures/arrival-fixture';
 
 storiesOf('LocationSelector', module)
   .add('With Results', () => (
-    <LocationSelector suggestions={suggestions} label="label" onChange={action('onChange')} />
+    <LocationSelector
+      suggestions={suggestions}
+      isErrored={false}
+      label="label"
+      onChange={action('onChange')}
+    />
   ))
   .add('Without Results', () => (
     <LocationSelector suggestions={[]} label="label" onChange={action('onChange')} />
+  ))
+  .add('with errors', () => (
+    <LocationSelector isErrored suggestions={[]} label="label" onChange={action('onChange')} />
   ));

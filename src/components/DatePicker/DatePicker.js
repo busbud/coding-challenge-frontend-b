@@ -6,18 +6,19 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 type Props = {|
   onChange: (value: string) => void,
   label: string,
+  isErrored: boolean,
 |};
 
 export const DatePicker = (props: Props) => {
-  const { onChange, label } = props;
+  const { onChange, label, isErrored } = props;
 
   return (
     <TextField
       onChange={e => onChange(e.target.value)}
       label={label}
       fullWidth
+      error={isErrored}
       type="date"
-      defaultValue="2019-08-12"
       variant="outlined"
       InputProps={{
         shrink: true,

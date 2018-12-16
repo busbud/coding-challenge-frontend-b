@@ -18,6 +18,7 @@ type Props = {|
   onChange: (value: any) => {| travellerCount: number, travellerType: TravellerType |},
   travellerType: TravellerType,
   classes: Classes,
+  isErrored: boolean,
 |};
 
 type State = {|
@@ -56,14 +57,14 @@ class UnstyledTravellerCountSelector extends React.Component<Props, State> {
 
   render() {
     const { travellerCount } = this.state;
-    const { classes, travellerType } = this.props;
+    const { classes, travellerType, isErrored } = this.props;
 
     return (
       <TextField
         variant="outlined"
+        error={isErrored}
         value={travellerCount}
         type="number"
-        fullWidth
         InputProps={{
           shrink: true,
           className: classes.input,

@@ -8,16 +8,20 @@ import type { LocationSuggestion } from '../../types';
 type Props = {|
   suggestions: Array<LocationSuggestion>,
   label: string,
+  isErrored: boolean,
   onChange: () => Array<any>,
 |};
 
 const UnstyledLocationSelector = (props: Props) => {
-  const { suggestions, label, onChange } = props;
+  const {
+    suggestions, label, onChange, isErrored,
+  } = props;
   return (
     <MuiDownshift
       items={suggestions}
       getInputProps={() => ({
         label,
+        error: isErrored,
       })}
       onChange={onChange}
     />

@@ -9,6 +9,7 @@
     "@storybook/addon-links": "^4.1.1",
     "@storybook/addons": "^4.1.1",
     "@storybook/react": "^4.1.1",
+    "lodash": "^4.17.11",
     "moment": "^2.23.0",
     "mui-downshift": "^1.2.1",
     "numeral": "^2.0.6",

@@ -4,20 +4,14 @@ exports[`TravelerCountSelector renders correctly 1`] = `
 <div
   className="MuiFormControl-root-2"
 >
-  <label
-    className="MuiFormLabel-root-17 MuiFormLabel-filled-21 MuiInputLabel-root-6 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-shrink-13 MuiInputLabel-outlined-16"
-    data-shrink={true}
-  >
-    label
-  </label>
   <div
-    className="MuiInputBase-root-37 MuiOutlinedInput-root-24 MuiInputBase-formControl-38 MuiInputBase-adornedStart-41 MuiOutlinedInput-adornedStart-27 MuiInputBase-adornedEnd-42 MuiOutlinedInput-adornedEnd-28 UnstyledTravellerCountSelector-input-1"
+    className="MuiInputBase-root-19 MuiOutlinedInput-root-6 MuiInputBase-error-25 MuiOutlinedInput-error-11 MuiInputBase-formControl-20 MuiInputBase-adornedStart-23 MuiOutlinedInput-adornedStart-9 MuiInputBase-adornedEnd-24 MuiOutlinedInput-adornedEnd-10 UnstyledTravellerCountSelector-input-1"
     onClick={[Function]}
     shrink={true}
   >
     <fieldset
       aria-hidden={true}
-      className="MuiPrivateNotchedOutline-root-54 MuiOutlinedInput-notchedOutline-31"
+      className="MuiPrivateNotchedOutline-root-36 MuiOutlinedInput-notchedOutline-13"
       style={
         Object {
           "paddingLeft": 8,
@@ -25,7 +19,7 @@ exports[`TravelerCountSelector renders correctly 1`] = `
       }
     >
       <legend
-        className="MuiPrivateNotchedOutline-legend-55"
+        className="MuiPrivateNotchedOutline-legend-37"
         style={
           Object {
             "width": 0,
@@ -42,11 +36,11 @@ exports[`TravelerCountSelector renders correctly 1`] = `
       </legend>
     </fieldset>
     <div
-      className="MuiInputAdornment-root-56 MuiInputAdornment-positionEnd-59"
+      className="MuiInputAdornment-root-38 MuiInputAdornment-positionEnd-41"
     >
       <button
-        aria-label="Toggle password visibility"
-        className="MuiButtonBase-root-66 MuiIconButton-root-60"
+        aria-label="Increase traveller Count"
+        className="MuiButtonBase-root-48 MuiIconButton-root-42"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -63,11 +57,11 @@ exports[`TravelerCountSelector renders correctly 1`] = `
         type="button"
       >
         <span
-          className="MuiIconButton-label-65"
+          className="MuiIconButton-label-47"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-69"
+            className="MuiSvgIcon-root-51"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -82,13 +76,13 @@ exports[`TravelerCountSelector renders correctly 1`] = `
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-78"
+          className="MuiTouchRipple-root-60"
         />
       </button>
     </div>
     <input
-      aria-invalid={false}
-      className="MuiInputBase-input-47 MuiOutlinedInput-input-32 MuiInputBase-inputType-50 MuiInputBase-inputAdornedStart-52 MuiOutlinedInput-inputAdornedStart-35 MuiInputBase-inputAdornedEnd-53 MuiOutlinedInput-inputAdornedEnd-36"
+      aria-invalid={true}
+      className="MuiInputBase-input-29 MuiOutlinedInput-input-14 MuiInputBase-inputType-32 MuiInputBase-inputAdornedStart-34 MuiOutlinedInput-inputAdornedStart-17 MuiInputBase-inputAdornedEnd-35 MuiOutlinedInput-inputAdornedEnd-18"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
@@ -98,11 +92,11 @@ exports[`TravelerCountSelector renders correctly 1`] = `
       value={0}
     />
     <div
-      className="MuiInputAdornment-root-56 MuiInputAdornment-positionEnd-59"
+      className="MuiInputAdornment-root-38 MuiInputAdornment-positionEnd-41"
     >
       <button
-        aria-label="Toggle password visibility"
-        className="MuiButtonBase-root-66 MuiIconButton-root-60"
+        aria-label="deacrese traveller Count"
+        className="MuiButtonBase-root-48 MuiIconButton-root-42"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -119,11 +113,11 @@ exports[`TravelerCountSelector renders correctly 1`] = `
         type="button"
       >
         <span
-          className="MuiIconButton-label-65"
+          className="MuiIconButton-label-47"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-69"
+            className="MuiSvgIcon-root-51"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -138,7 +132,7 @@ exports[`TravelerCountSelector renders correctly 1`] = `
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-78"
+          className="MuiTouchRipple-root-60"
         />
       </button>
     </div>
