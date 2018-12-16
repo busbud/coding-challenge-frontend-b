@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "cd busbud-challenge && npm build"
+    "build": "cd busbud-challenge && npm build",
+    "start": "cd busbud-challenge && npm start"
   }
 }
