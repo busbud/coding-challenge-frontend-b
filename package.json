@@ -1,0 +1,8 @@
+{
+  "name": "busbud-challenge-root",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "cd busbud-challenge && npm build"
+  }
+}
