@@ -15,7 +15,7 @@ export const proposedTripList: Array<ProposedTrip> = [
   },
   {
     arrivalTime: '2018-12-16T09:26:30+0000',
-    departureTime: '2018-12-10T09:26:30+0000',
+    departureTime: '2018-12-09T09:26:30+0000',
     totalPrice: '960',
     operator: {
       name: 'GreyHound',
@@ -26,7 +26,7 @@ export const proposedTripList: Array<ProposedTrip> = [
   },
   {
     arrivalTime: '2018-12-16T09:26:30+0000',
-    departureTime: '2018-12-10T09:26:30+0000',
+    departureTime: '2018-12-08T09:26:30+0000',
     totalPrice: '960',
     operator: {
       name: 'GreyHound',

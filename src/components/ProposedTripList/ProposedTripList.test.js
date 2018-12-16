@@ -5,9 +5,9 @@ import { proposedTripList } from './fixtures/proposedTripList';
 
 import { ProposedTripList } from './ProposedTripList';
 
-describe('LocationSelector', () => {
+describe('ProposedTripList', () => {
   it('renders correctly', () => {
-    const tree = renderer.create(<ProposedTripList proposedTrip={proposedTripList} />).toJSON();
+    const tree = renderer.create(<ProposedTripList proposedTrips={proposedTripList} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

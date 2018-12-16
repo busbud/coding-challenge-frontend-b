@@ -11,6 +11,7 @@ import {
 import type { ProposedTrip as ProposedTripType } from '../../types';
 
 type Classes = {|
+  proposedTrip: string,
   tripComplementatryInformations: string,
   costInformations: string,
   tripInformations: string,

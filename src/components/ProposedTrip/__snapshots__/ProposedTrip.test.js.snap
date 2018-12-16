@@ -2,13 +2,13 @@
 
 exports[`LocationSelector renders correctly 1`] = `
 <div
-  className="MuiPaper-root-7 MuiPaper-elevation1-10 MuiPaper-rounded-8 MuiCard-root-6"
+  className="MuiPaper-root-8 MuiPaper-elevation1-11 MuiPaper-rounded-9 MuiCard-root-7 UnStyledProposedTrip-proposedTrip-1"
 >
   <div
-    className="MuiCardContent-root-34"
+    className="MuiCardContent-root-35"
   >
     <div
-      className="MuiCardMedia-root-35 UnStyledProposedTrip-media-1"
+      className="MuiCardMedia-root-36 UnStyledProposedTrip-media-2"
       style={
         Object {
           "backgroundImage": "url(\\"https://via.placeholder.com/150\\")",
@@ -17,41 +17,41 @@ exports[`LocationSelector renders correctly 1`] = `
       title="Paella dish"
     />
     <div
-      className="UnStyledProposedTrip-tripInformations-2"
+      className="UnStyledProposedTrip-tripInformations-3"
     >
       <div
-        className="UnStyledProposedTrip-timeInformations-3"
+        className="UnStyledProposedTrip-timeInformations-4"
       >
         <p
-          className="MuiTypography-root-37 MuiTypography-body1-46"
+          className="MuiTypography-root-38 MuiTypography-body1-47"
         >
           10:26 AM
         </p>
         -&gt;
         <p
-          className="MuiTypography-root-37 MuiTypography-body1-46"
+          className="MuiTypography-root-38 MuiTypography-body1-47"
         >
           10:26 AM
         </p>
       </div>
       <div>
         <h6
-          className="MuiTypography-root-37 MuiTypography-subtitle1-55"
+          className="MuiTypography-root-38 MuiTypography-subtitle1-56"
         >
           $960.00
         </h6>
         <p
-          className="MuiTypography-root-37 MuiTypography-body1-46 MuiTypography-colorTextSecondary-70 UnStyledProposedTrip-travellerCount-4"
+          className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 UnStyledProposedTrip-travellerCount-5"
         >
           For 18 traveller(s)
         </p>
       </div>
     </div>
     <div
-      className="UnStyledProposedTrip-tripComplementatryInformations-5"
+      className="UnStyledProposedTrip-tripComplementatryInformations-6"
     >
       <p
-        className="MuiTypography-root-37 MuiTypography-body1-46"
+        className="MuiTypography-root-38 MuiTypography-body1-47"
       >
         <span>
           From: 

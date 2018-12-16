@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProposedTripList renders correctly 1`] = `
+<div
+  className="UnStyledProposedTripList-proposedTrips-1"
+>
+  <div
+    className="MuiPaper-root-9 MuiPaper-elevation1-12 MuiPaper-rounded-10 MuiCard-root-8 UnStyledProposedTrip-proposedTrip-2"
+  >
+    <div
+      className="MuiCardContent-root-36"
+    >
+      <div
+        className="MuiCardMedia-root-37 UnStyledProposedTrip-media-3"
+        style={
+          Object {
+            "backgroundImage": "url(\\"https://via.placeholder.com/150\\")",
+          }
+        }
+        title="Paella dish"
+      />
+      <div
+        className="UnStyledProposedTrip-tripInformations-4"
+      >
+        <div
+          className="UnStyledProposedTrip-timeInformations-5"
+        >
+          <p
+            className="MuiTypography-root-39 MuiTypography-body1-48"
+          >
+            10:26 AM
+          </p>
+          -&gt;
+          <p
+            className="MuiTypography-root-39 MuiTypography-body1-48"
+          >
+            10:26 AM
+          </p>
+        </div>
+        <div>
+          <h6
+            className="MuiTypography-root-39 MuiTypography-subtitle1-57"
+          >
+            $960.00
+          </h6>
+          <p
+            className="MuiTypography-root-39 MuiTypography-body1-48 MuiTypography-colorTextSecondary-72 UnStyledProposedTrip-travellerCount-6"
+          >
+            For 9 traveller(s)
+          </p>
+        </div>
+      </div>
+      <div
+        className="UnStyledProposedTrip-tripComplementatryInformations-7"
+      >
+        <p
+          className="MuiTypography-root-39 MuiTypography-body1-48"
+        >
+          <span>
+            From: 
+          </span>
+          In front of the bakery
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiPaper-root-9 MuiPaper-elevation1-12 MuiPaper-rounded-10 MuiCard-root-8 UnStyledProposedTrip-proposedTrip-2"
+  >
+    <div
+      className="MuiCardContent-root-36"
+    >
+      <div
+        className="MuiCardMedia-root-37 UnStyledProposedTrip-media-3"
+        style={
+          Object {
+            "backgroundImage": "url(\\"https://via.placeholder.com/150\\")",
+          }
+        }
+        title="Paella dish"
+      />
+      <div
+        className="UnStyledProposedTrip-tripInformations-4"
+      >
+        <div
+          className="UnStyledProposedTrip-timeInformations-5"
+        >
+          <p
+            className="MuiTypography-root-39 MuiTypography-body1-48"
+          >
+            10:26 AM
+          </p>
+          -&gt;
+          <p
+            className="MuiTypography-root-39 MuiTypography-body1-48"
+          >
+            10:26 AM
+          </p>
+        </div>
+        <div>
+          <h6
+            className="MuiTypography-root-39 MuiTypography-subtitle1-57"
+          >
+            $960.00
+          </h6>
+          <p
+            className="MuiTypography-root-39 MuiTypography-body1-48 MuiTypography-colorTextSecondary-72 UnStyledProposedTrip-travellerCount-6"
+          >
+            For 8 traveller(s)
+          </p>
+        </div>
+      </div>
+      <div
+        className="UnStyledProposedTrip-tripComplementatryInformations-7"
+      >
+        <p
+          className="MuiTypography-root-39 MuiTypography-body1-48"
+        >
+          <span>
+            From: 
+          </span>
+          in the middle of nowhere, Center Park, Iowa
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiPaper-root-9 MuiPaper-elevation1-12 MuiPaper-rounded-10 MuiCard-root-8 UnStyledProposedTrip-proposedTrip-2"
+  >
+    <div
+      className="MuiCardContent-root-36"
+    >
+      <div
+        className="MuiCardMedia-root-37 UnStyledProposedTrip-media-3"
+        style={
+          Object {
+            "backgroundImage": "url(\\"https://via.placeholder.com/150\\")",
+          }
+        }
+        title="Paella dish"
+      />
+      <div
+        className="UnStyledProposedTrip-tripInformations-4"
+      >
+        <div
+          className="UnStyledProposedTrip-timeInformations-5"
+        >
+          <p
+            className="MuiTypography-root-39 MuiTypography-body1-48"
+          >
+            10:26 AM
+          </p>
+          -&gt;
+          <p
+            className="MuiTypography-root-39 MuiTypography-body1-48"
+          >
+            10:26 AM
+          </p>
+        </div>
+        <div>
+          <h6
+            className="MuiTypography-root-39 MuiTypography-subtitle1-57"
+          >
+            $960.00
+          </h6>
+          <p
+            className="MuiTypography-root-39 MuiTypography-body1-48 MuiTypography-colorTextSecondary-72 UnStyledProposedTrip-travellerCount-6"
+          >
+            For 18 traveller(s)
+          </p>
+        </div>
+      </div>
+      <div
+        className="UnStyledProposedTrip-tripComplementatryInformations-7"
+      >
+        <p
+          className="MuiTypography-root-39 MuiTypography-body1-48"
+        >
+          <span>
+            From: 
+          </span>
+          Between here and there 
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
