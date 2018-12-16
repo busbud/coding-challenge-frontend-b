@@ -27,7 +27,7 @@ function getFormattedDate(date) {
 export const ResultCard = (props) => (
   <Card
     p={3}
-    width={11/12}
+    width={[1, 11/12]}
     borderRadius={2}
     boxShadow='0 0 16px rgba(0, 0, 0, .25)'
     bg="#565656"
