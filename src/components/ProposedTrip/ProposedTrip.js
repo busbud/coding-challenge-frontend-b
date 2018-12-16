@@ -8,7 +8,7 @@ import numeral from 'numeral';
 import {
   Card, CardContent, Typography, CardMedia,
 } from '@material-ui/core';
-import type { ProposedTrip as ProposedTripType } from './types';
+import type { ProposedTrip as ProposedTripType } from '../../types';
 
 type Classes = {|
   tripComplementatryInformations: string,
@@ -25,6 +25,9 @@ type Props = {|
 |};
 
 const styles = {
+  proposedTrip: {
+    marginBottom: '16px',
+  },
   media: {
     width: '120px',
     height: '80px',
@@ -40,18 +43,12 @@ const styles = {
     display: 'flex',
   },
   travellerCount: {
-    fontSize: 5,
+    fontSize: 12,
   },
   tripComplementatryInformations: {
     marginTop: '6px',
   },
 };
-
-export type CardHeaderProps = {|
-  classes: {|
-    title: string,
-  |},
-|};
 
 const UnStyledProposedTrip = (props: Props & ProposedTripType) => {
   const {
@@ -65,7 +62,7 @@ const UnStyledProposedTrip = (props: Props & ProposedTripType) => {
   } = props;
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.proposedTrip}>
       <CardContent>
         <CardMedia className={classes.media} image={operator.logoUrl} title="Paella dish" />
         <div className={classes.tripInformations}>
