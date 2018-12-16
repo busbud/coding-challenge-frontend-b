@@ -9,12 +9,14 @@ import { withStyles } from '@material-ui/core/styles';
 import type { Sign } from './types';
 import { computeTravellerCount } from './helpers';
 
+type TravellerType = 'children' | 'adult' | 'senior';
+
 type Classes = {|
   input: string,
 |};
 type Props = {|
-  onChange: (value: number) => void,
-  label: string,
+  onChange: (value: any) => {| travellerCount: number, travellerType: TravellerType |},
+  travellerType: TravellerType,
   classes: Classes,
 |};
 
@@ -44,44 +46,45 @@ class UnstyledTravellerCountSelector extends React.Component<Props, State> {
 
   handleIncrementTravellerCount = (sign: Sign) => {
     const { travellerCount } = this.state;
-    const { onChange } = this.props;
+    const { onChange, travellerType } = this.props;
     const newTravellerCount = computeTravellerCount(sign, travellerCount);
     this.setState({
       travellerCount: newTravellerCount,
     });
-    onChange(newTravellerCount);
+    onChange({ travellerCount: newTravellerCount, travellerType });
   };
 
   render() {
     const { travellerCount } = this.state;
-    const { label, classes } = this.props;
+    const { classes, travellerType } = this.props;
 
     return (
       <TextField
         variant="outlined"
-        label={label}
         value={travellerCount}
         type="number"
+        fullWidth
         InputProps={{
           shrink: true,
           className: classes.input,
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="Toggle password visibility"
-                onClick={() => this.handleIncrementTravellerCount('-')}
-              >
-                <Remove />
-              </IconButton>
-            </InputAdornment>
-          ),
           startAdornment: (
             <InputAdornment position="end">
               <IconButton
-                aria-label="Toggle password visibility"
+                aria-label="Increase traveller Count"
                 onClick={() => this.handleIncrementTravellerCount('+')}
               >
                 <Add />
+              </IconButton>
+            </InputAdornment>
+          ),
+          endAdornment: (
+            <InputAdornment position="end">
+              {travellerType}
+              <IconButton
+                aria-label="deacrese traveller Count"
+                onClick={() => this.handleIncrementTravellerCount('-')}
+              >
+                <Remove />
               </IconButton>
             </InputAdornment>
           ),

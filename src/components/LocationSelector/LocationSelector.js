@@ -3,7 +3,7 @@ import React from 'react';
 
 import MuiDownshift from 'mui-downshift';
 import { withStyles } from '@material-ui/core/styles';
-import type { Suggestion } from './types';
+import type { Suggestion } from '../../types';
 
 type Props = {|
   suggestions: Array<Suggestion>,

@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 import { ProposedTrip } from '../ProposedTrip';
 
 import type { ProposedTrip as ProposedTripType } from '../../types';
@@ -33,7 +34,16 @@ const UnStyledProposedTripList = (props: Props) => {
     />
   ));
 
-  return <div className={classes.proposedTrips}>{renderProposedTrip()}</div>;
+  return (
+    <div className={classes.proposedTrips}>
+      {' '}
+      {proposedTrips.length === 0 ? (
+        <Typography variant="subheading">No result found </Typography>
+      ) : (
+        renderProposedTrip()
+      )}
+    </div>
+  );
 };
 
 export const ProposedTripList = withStyles(styles)(UnStyledProposedTripList);

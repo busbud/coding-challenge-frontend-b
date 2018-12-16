@@ -4,6 +4,7 @@ exports[`ProposedTripList renders correctly 1`] = `
 <div
   className="UnStyledProposedTripList-proposedTrips-1"
 >
+   
   <div
     className="MuiPaper-root-9 MuiPaper-elevation1-12 MuiPaper-rounded-10 MuiCard-root-8 UnStyledProposedTrip-proposedTrip-2"
   >
