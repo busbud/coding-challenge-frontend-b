@@ -1,15 +1,13 @@
 import React from 'react';
 
 import renderer from 'react-test-renderer';
-import { suggestions } from './fixtures';
+import { proposedTrip } from './fixtures/proposedTrip';
 
-import { LocationSelector } from './LocationSelector';
+import { ProposedTrip } from './ProposedTrip';
 
 describe('LocationSelector', () => {
   it('renders correctly', () => {
-    const tree = renderer
-      .create(<LocationSelector suggestions={suggestions} label="label" onKeyDown={() => {}} />)
-      .toJSON();
+    const tree = renderer.create(<ProposedTrip {...proposedTrip} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

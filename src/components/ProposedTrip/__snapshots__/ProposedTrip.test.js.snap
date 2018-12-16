@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationSelector renders correctly 1`] = `
+<div
+  className="MuiPaper-root-7 MuiPaper-elevation1-10 MuiPaper-rounded-8 MuiCard-root-6"
+>
+  <div
+    className="MuiCardContent-root-34"
+  >
+    <div
+      className="MuiCardMedia-root-35 UnStyledProposedTrip-media-1"
+      style={
+        Object {
+          "backgroundImage": "url(\\"https://via.placeholder.com/150\\")",
+        }
+      }
+      title="Paella dish"
+    />
+    <div
+      className="UnStyledProposedTrip-tripInformations-2"
+    >
+      <div
+        className="UnStyledProposedTrip-timeInformations-3"
+      >
+        <p
+          className="MuiTypography-root-37 MuiTypography-body1-46"
+        >
+          10:26 AM
+        </p>
+        -&gt;
+        <p
+          className="MuiTypography-root-37 MuiTypography-body1-46"
+        >
+          10:26 AM
+        </p>
+      </div>
+      <div>
+        <h6
+          className="MuiTypography-root-37 MuiTypography-subtitle1-55"
+        >
+          $960.00
+        </h6>
+        <p
+          className="MuiTypography-root-37 MuiTypography-body1-46 MuiTypography-colorTextSecondary-70 UnStyledProposedTrip-travellerCount-4"
+        >
+          For 18 traveller(s)
+        </p>
+      </div>
+    </div>
+    <div
+      className="UnStyledProposedTrip-tripComplementatryInformations-5"
+    >
+      <p
+        className="MuiTypography-root-37 MuiTypography-body1-46"
+      >
+        <span>
+          From: 
+        </span>
+        in the middle of nowhere, Center Park, Iowa
+      </p>
+    </div>
+  </div>
+</div>
+`;

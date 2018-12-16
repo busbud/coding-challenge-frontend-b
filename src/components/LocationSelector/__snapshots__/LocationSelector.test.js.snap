@@ -2,54 +2,91 @@
 
 exports[`LocationSelector renders correctly 1`] = `
 <div
-  className="MuiFormControl-root-2"
+  aria-expanded={false}
+  aria-haspopup="listbox"
+  aria-labelledby="downshift-0-label"
+  aria-owns={null}
+  role="combobox"
 >
-  <label
-    className="MuiFormLabel-root-17 MuiInputLabel-root-6 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-outlined-16"
-    data-shrink={false}
-  >
-    label
-  </label>
   <div
-    className="MuiInputBase-root-37 MuiOutlinedInput-root-24 MuiInputBase-formControl-38"
-    onClick={[Function]}
+    className="MuiFormControl-root-1 MuiFormControl-fullWidth-4"
   >
-    <fieldset
-      aria-hidden={true}
-      className="MuiPrivateNotchedOutline-root-54 MuiOutlinedInput-notchedOutline-31"
-      style={
-        Object {
-          "paddingLeft": 8,
-        }
-      }
+    <label
+      className="MuiFormLabel-root-16 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
+      data-shrink={false}
+      htmlFor="downshift-0-input"
+      id="downshift-0-label"
     >
-      <legend
-        className="MuiPrivateNotchedOutline-legend-55"
-        style={
-          Object {
-            "width": 0.01,
-          }
-        }
+      label
+    </label>
+    <div
+      aria-activedescendant={null}
+      aria-autocomplete="list"
+      aria-controls={null}
+      aria-labelledby="downshift-0-label"
+      className="MuiInputBase-root-36 MuiInput-root-23 MuiInput-underline-27 MuiInputBase-formControl-37 MuiInput-formControl-24 MuiInputBase-adornedEnd-41"
+      onClick={[Function]}
+    >
+      <input
+        aria-invalid={false}
+        autoComplete="off"
+        className="MuiInputBase-input-46 MuiInput-input-31 MuiInputBase-inputAdornedEnd-52"
+        disabled={false}
+        id="downshift-0-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        required={false}
+        type="text"
+        value=""
+      />
+      <div
+        className="MuiInputAdornment-root-53 MuiInputAdornment-positionEnd-56"
       >
-        <span
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "&#8203;",
-            }
-          }
-        />
-      </legend>
-    </fieldset>
-    <input
-      aria-invalid={false}
-      className="MuiInputBase-input-47 MuiOutlinedInput-input-32 MuiInputBase-inputType-50"
-      disabled={false}
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      required={false}
-      type="number"
-    />
+        <button
+          aria-label="Toggle menu open"
+          className="MuiButtonBase-root-63 MuiIconButton-root-57"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-62"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-66"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+          <span
+            className="MuiTouchRipple-root-76"
+          />
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 `;

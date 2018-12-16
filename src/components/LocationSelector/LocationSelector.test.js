@@ -1,7 +1,7 @@
 import React from 'react';
 
 import renderer from 'react-test-renderer';
-import { suggestions } from './fixtures';
+import { suggestions } from './fixtures/arrival-fixture';
 
 import { LocationSelector } from './LocationSelector';
 

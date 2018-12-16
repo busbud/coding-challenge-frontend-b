@@ -4,5 +4,10 @@ export type ProposedTrip = {|
   arrivalTime: string,
   departureTime: string,
   totalPrice: string,
-  operatorName: string,
+  departureLocation: string,
+  travellersCount: number,
+  operator: {
+    name: string,
+    logoUrl: string,
+  },
 |};
