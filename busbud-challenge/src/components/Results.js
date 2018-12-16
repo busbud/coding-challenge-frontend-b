@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { requestToApi } from 'react-data-fetching';
-import { Container, Loader, HeroBanner, ResultCard } from './ui-components'
+import { Flex, Box } from 'rebass';
+import { Container, Loader, HeroBanner, ResultCard } from './ui-components';
 
 const date = '2019-08-02';
 const API = 'https://napi.busbud.com/x-departures/dr5reg/f25dvk/' + date + '?adult=1';
@@ -17,9 +18,20 @@ class Results extends Component {
 		loading: true,
 		originCity: '',
 		destinationCity: '',
+		complete: false,
 	}
 
 	componentDidMount() {
+		this.fetchData();
+	}
+	shouldComponentUpdate() {
+		if( this.state.complete === false ) {
+			this.fetchData();
+			return true;
+		}
+	}
+
+	fetchData = () => {
 		requestToApi({
 			url: API,
 			headers: HEADERS,
@@ -31,6 +43,7 @@ class Results extends Component {
 				departures: response.data.departures, 
 				cities: response.data.cities, 
 				locations: response.data.locations,
+				complete: response.data.complete,
 				originCity: (response.data.cities.filter((city) => {
 					return response.data.origin_city_id === city.id
 				})),
@@ -53,7 +66,7 @@ class Results extends Component {
 						)}
 						<Container>
 							{this.state.loading ? <Loader /> : (
-								<Fragment>
+								<Flex flexWrap='wrap'>
 									{this.state.departures.map((journey, i) => {
 										let departingStop;
 										let arrivingStop;
@@ -67,19 +80,24 @@ class Results extends Component {
 										});
 
 										return (
-											<ResultCard 
-												key={i}
-												title={this.state.originCity[0].name + ' to ' + this.state.destinationCity[0].name}
-												departure={new Date(journey.departure_time)}
-												arrival={new Date(journey.departure_time)}
-												price={(journey.prices.total / 100).toFixed(2)}
-												currency={journey.prices.currency}
-												depLocation={departingStop[0].name}
-												arrLocation={arrivingStop[0].name}
-											/>
+											<Box
+												my={3}
+												width={[1, 6/12]}
+											>
+												<ResultCard 
+													key={i}
+													title={this.state.originCity[0].name + ' to ' + this.state.destinationCity[0].name}
+													departure={new Date(journey.departure_time)}
+													arrival={new Date(journey.departure_time)}
+													price={(journey.prices.total / 100).toFixed(2)}
+													currency={journey.prices.currency}
+													depLocation={departingStop[0].name}
+													arrLocation={arrivingStop[0].name}
+												/>
+											</Box>
 										)}
 									)}
-								</Fragment>						
+								</Flex>						
 							)}
 						</Container>
 					</Fragment>

@@ -1,25 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import {
+  Card,
+  Heading
+} from 'rebass';
 
-const Card = styled.div`
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  padding: 0.5rem;
-  margin-top: 1rem;
-`
-
-const Flex= styled.div`
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-`
-
-const Title = styled.h1`
-  font-size: 2rem;
-`
-
-const DataCopy = styled.p`
+const Text = styled.p`
   font-size: 1rem;
-  bold {
+  b {
     font-weight: 700
   }
 `
@@ -37,14 +25,35 @@ function getFormattedDate(date) {
 }
 
 export const ResultCard = (props) => (
-  <Card>
-    <Title>{props.title}</Title>
-      <Flex>
-        <DataCopy><b>Departure:</b> {getFormattedDate(props.departure)}</DataCopy>
-        <DataCopy><b>Arrival:</b> {getFormattedDate(props.arrival)}</DataCopy>
-        <DataCopy><b>From:</b> {props.depLocation}</DataCopy>
-        <DataCopy><b>To:</b> {props.arrLocation}</DataCopy>
-        <DataCopy><b>Price:</b> {props.price} {props.currency}</DataCopy>
-      </Flex>
+  <Card
+    p={3}
+    width={11/12}
+    borderRadius={2}
+    boxShadow='0 0 16px rgba(0, 0, 0, .25)'
+    bg="#565656"
+    color="#48b1bf"
+  >
+    <Heading as='h2'>{props.title}</Heading>
+    <Text><b>Departure:</b> {getFormattedDate(props.departure)}</Text>
+    <Text><b>Arrival:</b> {getFormattedDate(props.arrival)}</Text>
+    <Text><b>From:</b> {props.depLocation}</Text>
+    <Text><b>To:</b> {props.arrLocation}</Text>
+    <Text><b>Price:</b> {props.price} {props.currency}</Text>
   </Card>
 )
+/* 
+  <Card
+    p={1}
+    borderRadius={2}
+    boxShadow='0 0 16px rgba(0, 0, 0, .25)'>
+    <Image src={photo} />
+    <Box px={2}>
+      <Heading as='h3'>
+        Card
+      </Heading>
+      <Text fontSize={0}>
+        Small meta text
+      </Text>
+    </Box>
+  </Card>
+*/
