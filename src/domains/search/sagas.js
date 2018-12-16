@@ -1,8 +1,10 @@
-import { all, call, select, takeLatest, put, takeEvery } from 'redux-saga/effects';
-import { ApiConfiguration } from '../../configuration';
+import {
+  all, call, takeLatest, put,
+} from 'redux-saga/effects';
 
-import { getsearchQuery } from './selectors';
-import { sagaRequest } from '../../helpers';
+import { Api } from '../../helpers/ApiFactory';
+
+import { buildUrl } from './helpers';
 
 import { ActionTypes } from './index';
 
@@ -10,59 +12,45 @@ import * as ActionCreators from './actionCreators';
 
 // WORKERS
 
-export function* getResultsWorker() {
-  const { filter, value, page } = yield select(getsearchQuery);
+export function* pollApi() {}
 
-  const workingPage = page || 1;
-  let url = `${ApiConfiguration.search}`;
-  const terms = value.replace(' ', '+');
-  if (filter !== 'all') {
-    url = `${url}${filter}=${terms}`;
-  } else {
-    url = `${url}q=${terms}`;
-  }
+export function* initSearchWorker({ payload }) {
+  const { travellers, locations, departureDate } = payload;
 
-  url = `${url}&page=${workingPage}`;
+  const { adult: adultCount, child: childCount, senior: seniorCount } = travellers;
+  const { departure, arrival } = locations;
+  const url = buildUrl({
+    adultCount,
+    childCount,
+    seniorCount,
+    originGeohash: departure.geoHash,
+    arrivalGeohash: arrival.geoHash,
+    outboundDate: departureDate,
+  });
 
-  yield call(sagaRequest, ActionTypes.PERFORM_SEARCH, url, {
+  const result = yield call(Api, url, {
     method: 'GET',
   });
-}
 
-export function* peformSepecificSearchWorker({ payload }) {
-  const { filter, value } = yield select(getsearchQuery);
-
-  let workingPage = payload.page;
-
-  if ((filter && filter !== payload.filter) || (value && value !== payload.value)) {
-    workingPage = 1;
+  if (result.complete) {
+    yield put(ActionCreators.dispatchResult(result));
+  } else {
+    yield call(pollApi, {
+      adultCount: adult,
+      childCount: child,
+      seniorCount: senior,
+      departureGeo,
+    });
   }
-
-  let workingFilter = payload.filter || filter;
-
-  if (!workingFilter) {
-    workingFilter = payload.filter;
-  }
-
-  yield put(ActionCreators.updateSearchQuery({
-    value: payload.value,
-    page: parseInt(workingPage, 10),
-    filter: workingFilter,
-  }));
-  yield put(ActionCreators.performSearch());
 }
 
 // WATCHERS
 
-function* getResultsWatcher() {
-  yield takeLatest(ActionTypes.PERFORM_SEARCH.BASE, getResultsWorker);
-}
-
-function* peformSepecificSearchWatcher() {
-  yield takeEvery(ActionTypes.PERFORM_SPECIFIC_SEARCH, peformSepecificSearchWorker);
+function* initSearchWatcher(params) {
+  yield takeLatest(ActionTypes.INIT_SEARCH.BASE, initSearchWorker);
 }
 
 // DEFAULT
 export default function* searchSaga() {
-  yield all([getResultsWatcher(), peformSepecificSearchWatcher()]);
+  yield all([initSearchWatcher()]);
 }

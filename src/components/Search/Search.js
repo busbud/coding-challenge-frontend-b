@@ -6,7 +6,7 @@ import { get, set, values } from 'lodash/fp';
 import { LocationSelector } from '../LocationSelector';
 import { DatePicker } from '../DatePicker';
 import { TravelerCountSelector } from '../TravelerCountSelector';
-import type { LocationSuggestion } from '../../types';
+import type { LocationSuggestion, SearchInfos } from '../../types';
 
 // ---- TODO; Replace those fixtures by a real search location suggestion engine -- POC purpose only
 
@@ -23,19 +23,6 @@ type Classes = {|
   sectionTitle: string,
   travellersInformations: string,
   button: string,
-|};
-
-type SearchInfos = {|
-  travellers: {|
-    child: number,
-    adult: number,
-    senior: number,
-  |},
-  locations: {
-    arrival: ?LocationSuggestion,
-    departure: ?LocationSuggestion,
-  },
-  departureDate: ?string,
 |};
 
 type Props = {|
@@ -130,6 +117,8 @@ class UnStyledSearch extends Component<Props, State> {
     };
   }
 
+  hasErrors = (errors: Errors) => values(errors).some(item => item === true);
+
   handleTravelerCountChange = (travellerInfo: TravllerInfo) => {
     const { travellerCount, travellerType } = travellerInfo;
     const { errors } = this.state;
@@ -195,7 +184,7 @@ class UnStyledSearch extends Component<Props, State> {
       newErrors = set('departureDateError', true, newErrors);
     }
 
-    if (values(newErrors).some(item => item === true)) {
+    if (this.hasErrors(newErrors)) {
       this.setState({ errors: newErrors, isErrored: true });
     } else {
       onSearch({ travellers, locations, departureDate });
@@ -209,7 +198,7 @@ class UnStyledSearch extends Component<Props, State> {
       'errors',
       this.state,
     );
-    const { isErrored, isPristine } = this.state;
+    const { errors, isPristine } = this.state;
 
     return (
       <div>
@@ -264,7 +253,7 @@ class UnStyledSearch extends Component<Props, State> {
         </div>
 
         <Button
-          disabled={isErrored || isPristine}
+          disabled={this.hasErrors(errors) || isPristine}
           onClick={this.handleOnSearch}
           variant="contained"
           color="secondary"

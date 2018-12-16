@@ -16,3 +16,16 @@ export type LocationSuggestion = {|
   value: string,
   geohash: string,
 |};
+
+export type SearchInfos = {|
+  travellers: {|
+    child: number,
+    adult: number,
+    senior: number,
+  |},
+  locations: {
+    arrival: ?LocationSuggestion,
+    departure: ?LocationSuggestion,
+  },
+  departureDate: ?string,
+|};

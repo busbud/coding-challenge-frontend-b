@@ -2,8 +2,17 @@
 import React from 'react';
 import styles from './App.css';
 
-export const App = () => (
-  <div className={styles.App}>
-    <p>HEllo</p>
-  </div>
-);
+import { Search } from '../Search';
+import { ProposedTripList } from '../ProposedTripList';
+
+type Props = {| onSearch: () => void |};
+
+export const App = (props: Props) => {
+  const { onSearch } = props;
+  return (
+    <div className={styles.App}>
+      <Search onSearch={onSearch} />
+      <ProposedTripList proposedTrips={[]} />
+    </div>
+  );
+};

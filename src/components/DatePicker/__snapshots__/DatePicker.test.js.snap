@@ -13,7 +13,7 @@ exports[`DatePicker renders correctly 1`] = `
   <div
     className="MuiInputBase-root-36 MuiOutlinedInput-root-23 MuiInputBase-fullWidth-45 MuiInputBase-formControl-37 MuiInputBase-adornedStart-40 MuiOutlinedInput-adornedStart-26"
     onClick={[Function]}
-    shrink={true}
+    shrink={1}
   >
     <fieldset
       aria-hidden={true}

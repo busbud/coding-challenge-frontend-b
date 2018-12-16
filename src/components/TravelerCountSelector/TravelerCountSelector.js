@@ -66,7 +66,7 @@ class UnstyledTravellerCountSelector extends React.Component<Props, State> {
         value={travellerCount}
         type="number"
         InputProps={{
-          shrink: true,
+          shrink: 1,
           className: classes.input,
           startAdornment: (
             <InputAdornment position="end">

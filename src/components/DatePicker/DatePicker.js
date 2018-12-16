@@ -21,7 +21,7 @@ export const DatePicker = (props: Props) => {
       type="date"
       variant="outlined"
       InputProps={{
-        shrink: true,
+        shrink: 1,
         startAdornment: (
           <InputAdornment position="start">
             <CalendarToday />

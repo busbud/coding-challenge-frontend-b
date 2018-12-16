@@ -7,7 +7,7 @@ exports[`TravelerCountSelector renders correctly 1`] = `
   <div
     className="MuiInputBase-root-19 MuiOutlinedInput-root-6 MuiInputBase-error-25 MuiOutlinedInput-error-11 MuiInputBase-formControl-20 MuiInputBase-adornedStart-23 MuiOutlinedInput-adornedStart-9 MuiInputBase-adornedEnd-24 MuiOutlinedInput-adornedEnd-10 UnstyledTravellerCountSelector-input-1"
     onClick={[Function]}
-    shrink={true}
+    shrink={1}
   >
     <fieldset
       aria-hidden={true}
