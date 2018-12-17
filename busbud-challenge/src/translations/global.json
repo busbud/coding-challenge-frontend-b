@@ -1,0 +1,34 @@
+{
+  "landing_title": [
+    "Fuck from New York to Montreal for the 2nd August 2019!",      
+    "Billets de New York à Montréal pour le 2 août 2019!" 
+  ],
+  "landing_cta": [
+    "Find Bus Rides!",    
+    "Trouvez des voyages!" 
+  ],
+  "results_heading": [
+    "Your Search Results",    
+    "Vos résultats de recherche" 
+  ],
+  "results_departure": [
+    "Departure",    
+    "Départ" 
+  ],
+  "results_arrival": [
+    "Arrival",    
+    "Arrivée"
+  ],
+  "results_from": [
+    "From",    
+    "De"
+  ],
+  "results_to": [
+    "To",    
+    "À" 
+  ],
+  "results_price": [
+    "Price",    
+    "Prix" 
+  ]
+}

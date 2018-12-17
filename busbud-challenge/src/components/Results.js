@@ -28,7 +28,7 @@ class Results extends Component {
 		if( this.state.complete === false ) {
 			this.fetchData();
 			return true;
-		}
+		} else return false;
 	}
 
 	fetchData = () => {
@@ -37,7 +37,7 @@ class Results extends Component {
 			headers: HEADERS,
 			method: 'GET',
 			onTimeout: () => console.log('⏱️ Timeout!'),
-			onProgress: (progression) => ('♻️ Progressing...', progression),
+			onProgress: (progression) => ('♻️ Progressing...' + progression),
 			timeout: 5000,
 		}).then(response => this.setState(() => ({ 
 				departures: response.data.departures, 
@@ -60,9 +60,10 @@ class Results extends Component {
 					<Fragment>
 						{!this.state.loading && (
 							<HeroBanner 
-							title={'Your search results for: ' + date + ' to ' +  this.state.destinationCity[0].name}
-							image={this.state.destinationCity[0].image_url}
-							/>
+								image={this.state.destinationCity[0].image_url}
+							>
+								Your Search Results
+							</HeroBanner>
 						)}
 						<Container>
 							{this.state.loading ? <Loader /> : (
@@ -83,6 +84,7 @@ class Results extends Component {
 											<Box
 												my={3}
 												width={[1, 6/12]}
+												key={i}
 											>
 												<ResultCard 
 													key={i}

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Heading } from 'rebass';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -19,7 +20,7 @@ const Image = styled.img`
 const TextWrapper = styled.div`
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -28,7 +29,7 @@ const TextWrapper = styled.div`
 export const HeroBanner = (props) => (
   <Wrapper>
     <TextWrapper>
-      <h2>{props.title}</h2>
+      <Heading as="h1" fontSize={[4,5,6]}>{props.children}</Heading>
     </TextWrapper>
   <Image src={props.image} />
   </Wrapper> 
