@@ -16,7 +16,7 @@ type Classes = {|
   costInformations: string,
   tripInformations: string,
   timeInformations: string,
-  travellerCount: string,
+  travellersCount: string,
   card: string,
   media: string,
 |};
@@ -43,7 +43,7 @@ const styles = {
   timeInformations: {
     display: 'flex',
   },
-  travellerCount: {
+  travellersCount: {
     fontSize: 12,
   },
   tripComplementatryInformations: {
@@ -74,7 +74,7 @@ const UnStyledProposedTrip = (props: Props & ProposedTripType) => {
           </div>
           <div className={classes.costInformations}>
             <Typography variant="subtitle1">{numeral(totalPrice).format('$0.00')}</Typography>
-            <Typography className={classes.travellerCount} color="textSecondary">
+            <Typography className={classes.travellersCount} color="textSecondary">
               {`For ${travellersCount} traveller(s)`}
             </Typography>
           </div>

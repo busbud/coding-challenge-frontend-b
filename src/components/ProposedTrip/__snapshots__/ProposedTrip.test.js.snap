@@ -41,7 +41,7 @@ exports[`LocationSelector renders correctly 1`] = `
           $960.00
         </h6>
         <p
-          className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 UnStyledProposedTrip-travellerCount-5"
+          className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 UnStyledProposedTrip-travellersCount-5"
         >
           For 18 traveller(s)
         </p>

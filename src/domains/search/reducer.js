@@ -36,14 +36,11 @@ export const initialState: State = {
   isLoading: false,
 };
 
-const onPerformSearchStarted = (state: State, payload: SearchInformations) => {
-  const { adultCount, childCount, seniorCount } = payload;
-  return {
-    ...state,
-    searchInformations: { ...payload, travellerCount: adultCount + childCount + seniorCount },
-    isLoading: true,
-  };
-};
+const onPerformSearchStarted = (state: State, payload: SearchInformations) => ({
+  ...state,
+  searchInformations: payload,
+  isLoading: true,
+});
 
 const onPerformSearchSuceeded = (state: State) => ({
   ...state,
@@ -51,9 +48,14 @@ const onPerformSearchSuceeded = (state: State) => ({
 });
 
 const onResultDispatched = (state: State, payload) => {
-  const proposedTrips = mapApiResultToProposedTrip(payload);
+  const { searchInformations } = state;
+  const enhancedPayload = { ...payload, travellersCount: searchInformations.travellersCount };
+  const proposedTrips = mapApiResultToProposedTrip(enhancedPayload);
 
-  const sortedProposedTrip = sortBy(item => moment(item.departureTime), proposedTrips).reverse();
+  const sortedProposedTrip: Array<ProposedTrip> = sortBy(
+    item => moment(item.departureTime),
+    proposedTrips,
+  ).reverse();
 
   return {
     ...state,
@@ -63,13 +65,14 @@ const onResultDispatched = (state: State, payload) => {
 };
 
 const onDispatchPartialResult = (state: State, payload) => {
-  const { proposedTrips } = state;
-  const newProposedTrip = mapApiResultToProposedTrip({
-    ...payload,
-    locations: state.travelInformations.locations,
+  const { proposedTrips, travelInformations, searchInformations } = state;
+  const enhancedPayload = { ...payload, travellersCount: searchInformations.travellersCount };
+  const newProposedTrip: Array<ProposedTrip> = mapApiResultToProposedTrip({
+    ...enhancedPayload,
+    locations: travelInformations.locations,
   });
 
-  const mergedAndSortedProposedTrip = sortBy(
+  const mergedAndSortedProposedTrip: Array<ProposedTrip> = sortBy(
     item => moment(item.departureTime),
     proposedTrips.concat(newProposedTrip),
   ).reverse();

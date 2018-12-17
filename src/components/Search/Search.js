@@ -48,7 +48,7 @@ type State = {|
 |};
 
 type TravllerInfo = {|
-  travellerCount: number,
+  travellersCount: number,
   travellerType: string,
 |};
 
@@ -120,12 +120,12 @@ class UnStyledSearch extends Component<Props, State> {
   hasErrors = (errors: Errors) => values(errors).some(item => item === true);
 
   handleTravelerCountChange = (travellerInfo: TravllerInfo) => {
-    const { travellerCount, travellerType } = travellerInfo;
+    const { travellersCount, travellerType } = travellerInfo;
     const { errors } = this.state;
     const newErrors = set('travellerSelectorErrored', false, errors);
 
     const { searchInfos } = this.state;
-    const newSerchInfos = set(`travellers[${travellerType}]`, travellerCount, searchInfos);
+    const newSerchInfos = set(`travellers[${travellerType}]`, travellersCount, searchInfos);
     this.setState({
       isPristine: false,
       searchInfos: newSerchInfos,

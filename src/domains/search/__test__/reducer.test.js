@@ -23,7 +23,7 @@ describe('search domain reducer', () => {
       isLoading: true,
       searchInformations: {
         ...searchInfos,
-        travellerCount: adultCount + childCount + seniorCount,
+        travellersCount: adultCount + childCount + seniorCount,
       },
     });
   });

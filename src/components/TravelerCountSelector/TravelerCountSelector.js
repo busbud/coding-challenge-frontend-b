@@ -15,14 +15,14 @@ type Classes = {|
   input: string,
 |};
 type Props = {|
-  onChange: (value: any) => {| travellerCount: number, travellerType: TravellerType |},
+  onChange: (value: any) => {| travellersCount: number, travellerType: TravellerType |},
   travellerType: TravellerType,
   classes: Classes,
   isErrored: boolean,
 |};
 
 type State = {|
-  travellerCount: number,
+  travellersCount: number,
 |};
 
 type Styles = {|
@@ -41,29 +41,29 @@ class UnstyledTravellerCountSelector extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      travellerCount: 0,
+      travellersCount: 0,
     };
   }
 
   handleIncrementTravellerCount = (sign: Sign) => {
-    const { travellerCount } = this.state;
+    const { travellersCount } = this.state;
     const { onChange, travellerType } = this.props;
-    const newTravellerCount = computeTravellerCount(sign, travellerCount);
+    const newTravellerCount = computeTravellerCount(sign, travellersCount);
     this.setState({
-      travellerCount: newTravellerCount,
+      travellersCount: newTravellerCount,
     });
-    onChange({ travellerCount: newTravellerCount, travellerType });
+    onChange({ travellersCount: newTravellerCount, travellerType });
   };
 
   render() {
-    const { travellerCount } = this.state;
+    const { travellersCount } = this.state;
     const { classes, travellerType, isErrored } = this.props;
 
     return (
       <TextField
         variant="outlined"
         error={isErrored}
-        value={travellerCount}
+        value={travellersCount}
         type="number"
         InputProps={{
           shrink: 1,

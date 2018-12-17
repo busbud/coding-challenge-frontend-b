@@ -45,7 +45,7 @@ exports[`ProposedTripList renders correctly 1`] = `
             $960.00
           </h6>
           <p
-            className="MuiTypography-root-39 MuiTypography-body1-48 MuiTypography-colorTextSecondary-72 UnStyledProposedTrip-travellerCount-6"
+            className="MuiTypography-root-39 MuiTypography-body1-48 MuiTypography-colorTextSecondary-72 UnStyledProposedTrip-travellersCount-6"
           >
             For 9 traveller(s)
           </p>
@@ -105,7 +105,7 @@ exports[`ProposedTripList renders correctly 1`] = `
             $960.00
           </h6>
           <p
-            className="MuiTypography-root-39 MuiTypography-body1-48 MuiTypography-colorTextSecondary-72 UnStyledProposedTrip-travellerCount-6"
+            className="MuiTypography-root-39 MuiTypography-body1-48 MuiTypography-colorTextSecondary-72 UnStyledProposedTrip-travellersCount-6"
           >
             For 8 traveller(s)
           </p>
@@ -165,7 +165,7 @@ exports[`ProposedTripList renders correctly 1`] = `
             $960.00
           </h6>
           <p
-            className="MuiTypography-root-39 MuiTypography-body1-48 MuiTypography-colorTextSecondary-72 UnStyledProposedTrip-travellerCount-6"
+            className="MuiTypography-root-39 MuiTypography-body1-48 MuiTypography-colorTextSecondary-72 UnStyledProposedTrip-travellersCount-6"
           >
             For 18 traveller(s)
           </p>
