@@ -1,8 +1,9 @@
 import { render } from 'react-dom'
 import * as React from 'react'
 import './css/application.sass'
+import SearchWrapper from './components/SearchWrapper'
 
 render(
-  <h1>My app</h1>,
+  <SearchWrapper></SearchWrapper>,
   document.getElementById('app')
 )
