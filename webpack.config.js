@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 
 let config = {
-  entry: ['./src/app.tsx'],
+  entry: ['./src/app.tsx', './src/css/application.sass'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'app.js',
@@ -26,7 +26,15 @@ let config = {
         test: /\.tsx?/,
         loader: 'ts-loader',
         exclude: [/node_modules/]
-      }
+      },
+      {
+        test: /\.sass$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]
+      },
     ]
   }
 }
