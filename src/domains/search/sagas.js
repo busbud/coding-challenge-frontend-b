@@ -47,7 +47,7 @@ export function* initSearchWorker({ payload }) {
     });
     isComplete = get('complete', result);
     index += getOr(0, 'departures.length', result);
-    yield put(ActionCreators.dispatchResult(result));
+    yield put(ActionCreators.dispatchPartialResult(result));
   }
 
   yield put(ActionCreators.onSearchSucceed());

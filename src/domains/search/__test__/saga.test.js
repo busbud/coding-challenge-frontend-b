@@ -81,7 +81,7 @@ describe('search Saga', () => {
       }),
     );
     expect(clone.next(uncompletedApiResult).value).toEqual(
-      put(ActionCreators.dispatchResult(uncompletedApiResult)),
+      put(ActionCreators.dispatchPartialResult(uncompletedApiResult)),
     );
 
     index += getOr(0, 'departures.length', uncompletedApiResult);
@@ -93,7 +93,7 @@ describe('search Saga', () => {
       }),
     );
     expect(clone.next(uncompletedApiResult).value).toEqual(
-      put(ActionCreators.dispatchResult(uncompletedApiResult)),
+      put(ActionCreators.dispatchPartialResult(uncompletedApiResult)),
     );
 
     index += getOr(0, 'departures.length', uncompletedApiResult);
@@ -105,7 +105,9 @@ describe('search Saga', () => {
       }),
     );
 
-    expect(clone.next(apiResult).value).toEqual(put(ActionCreators.dispatchResult(apiResult)));
+    expect(clone.next(apiResult).value).toEqual(
+      put(ActionCreators.dispatchPartialResult(apiResult)),
+    );
     expect(clone.next().value).toEqual(put(ActionCreators.onSearchSucceed()));
     expect(clone.next().done).toEqual(true);
   });
