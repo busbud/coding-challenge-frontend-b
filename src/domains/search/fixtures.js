@@ -5,8 +5,8 @@ import type { SearchInfos } from '../../types';
 export const searchInfos: SearchInfos = {
   travellers: { child: 0, adult: 1, senior: 1 },
   locations: {
-    departure: { label: 'foo', value: 'foo', geoHash: 666 },
-    arrival: { label: 'baz', value: 'baz', geoHash: 666 },
+    departure: { label: 'foo', value: 'foo', geohash: 'geoH@5h' },
+    arrival: { label: 'baz', value: 'baz', geohash: 'geoH@5h' },
   },
   departureDate: '2019-26-59',
 };

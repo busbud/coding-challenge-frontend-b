@@ -2,6 +2,9 @@ import {
   all, call, takeLatest, put,
 } from 'redux-saga/effects';
 
+import { delay } from 'redux-saga';
+
+import { getOr, get } from 'lodash/fp';
 import { Api } from '../../helpers/ApiFactory';
 
 import { buildUrl } from './helpers';
@@ -12,41 +15,47 @@ import * as ActionCreators from './actionCreators';
 
 // WORKERS
 
-export function* pollApi() {}
-
 export function* initSearchWorker({ payload }) {
   const { travellers, locations, departureDate } = payload;
 
   const { adult: adultCount, child: childCount, senior: seniorCount } = travellers;
   const { departure, arrival } = locations;
-  const url = buildUrl({
+
+  const urlProps = {
     adultCount,
     childCount,
     seniorCount,
-    originGeohash: departure.geoHash,
-    arrivalGeohash: arrival.geoHash,
+    originGeohash: departure.geohash,
+    arrivalGeohash: arrival.geohash,
     outboundDate: departureDate,
-  });
+  };
 
-  const result = yield call(Api, url, {
+  const url = buildUrl(urlProps);
+  const pollingUrl = buildUrl({ ...urlProps, pollingUrl: true });
+
+  let result = yield call(Api, url, {
     method: 'GET',
   });
 
-  if (result.complete) {
-    yield put(ActionCreators.dispatchResult(result));
-  } else {
-    yield call(pollApi, {
-      adultCount: adult,
-      childCount: child,
-      seniorCount: senior,
-      departureGeo,
+  let isComplete = get('complete', result);
+  let index = getOr(0, 'departures.length', result);
+
+  yield put(ActionCreators.dispatchResult(result));
+
+  while (!isComplete) {
+    yield call(delay, 3000);
+    result = yield call(Api, `${pollingUrl}&index=${index}`, {
+      method: 'GET',
     });
+    isComplete = get('complete', result);
+    index += getOr(0, 'departures.length', result);
+    yield put(ActionCreators.dispatchResult(result));
   }
 }
 
 // WATCHERS
 
-function* initSearchWatcher(params) {
+function* initSearchWatcher() {
   yield takeLatest(ActionTypes.INIT_SEARCH.BASE, initSearchWorker);
 }
 

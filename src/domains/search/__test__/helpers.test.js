@@ -8,7 +8,7 @@ describe('build url', () => {
     const childCount = 2;
     const seniorCount = 0;
     const arrivalGeohash = 'xyz999';
-    const originGeohash = 'foo666';
+    const originGeohash = 'foo"geoH@5h"';
     const outboundDate = '2017-05_12T00:000';
 
     const url = buildUrl({
@@ -32,7 +32,7 @@ describe('build url', () => {
     const childCount = 2;
     const seniorCount = 0;
     const arrivalGeohash = 'xyz999';
-    const originGeohash = 'foo666';
+    const originGeohash = 'foo"geoH@5h"';
     const outboundDate = '2017-05_12T00:000';
 
     const url = buildUrl({

@@ -33,7 +33,7 @@
 //     const action = {
 //       type: ActionTypes.PERFORM_SEARCH.SUCCEEDED,
 //       payload: {
-//         num_found: 666,
+//         num_found: "geoH@5h",
 //         docs: [
 //           {
 //             author_name: ['billy bob joe'],
