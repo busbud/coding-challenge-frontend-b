@@ -15,26 +15,12 @@ import * as ActionCreators from '../actionCreators';
 import * as Sagas from '../sagas';
 
 describe('search Saga', () => {
-  const { travellers, locations, departureDate } = searchInfos;
-
-  const { adult: adultCount, child: childCount, senior: seniorCount } = travellers;
-  const { departure, arrival } = locations;
-
-  const urlProps = {
-    adultCount,
-    childCount,
-    seniorCount,
-    originGeohash: departure.geohash,
-    arrivalGeohash: arrival.geohash,
-    outboundDate: departureDate,
-  };
-
   it('search should succucceed without polling', () => {
     const action = {
       payload: searchInfos,
     };
 
-    const url = buildUrl(urlProps);
+    const url = buildUrl(searchInfos);
     const generator = cloneableGenerator(Sagas.initSearchWorker)(action);
     expect(generator.next().value).toEqual(
       call(Api, url, {
@@ -43,7 +29,7 @@ describe('search Saga', () => {
     );
 
     const clone = generator.clone();
-    expect(clone.next(apiResult).value).toEqual(put(ActionCreators.onSearchStarted()));
+    expect(clone.next(apiResult).value).toEqual(put(ActionCreators.onSearchStarted(searchInfos)));
     expect(clone.next(apiResult).value).toEqual(put(ActionCreators.dispatchResult(apiResult)));
     expect(clone.next().value).toEqual(put(ActionCreators.onSearchSucceed()));
     expect(clone.next().done).toEqual(true);
@@ -55,8 +41,8 @@ describe('search Saga', () => {
       payload: searchInfos,
     };
 
-    const url = buildUrl(urlProps);
-    const pollingUrl = buildUrl({ ...urlProps, pollingUrl: true });
+    const url = buildUrl(searchInfos);
+    const pollingUrl = buildUrl({ ...searchInfos, pollingUrl: true });
     const generator = cloneableGenerator(Sagas.initSearchWorker)(action);
 
     expect(generator.next().value).toEqual(
@@ -67,7 +53,9 @@ describe('search Saga', () => {
 
     const clone = generator.clone();
 
-    expect(clone.next(uncompletedApiResult).value).toEqual(put(ActionCreators.onSearchStarted()));
+    expect(clone.next(uncompletedApiResult).value).toEqual(
+      put(ActionCreators.onSearchStarted(searchInfos)),
+    );
     let index = getOr(0, 'departures.length', uncompletedApiResult);
 
     expect(clone.next(uncompletedApiResult).value).toEqual(

@@ -1,14 +1,23 @@
 // @flow
 
-import type { SearchInfos } from '../../types';
+import type { SearchFormParameters } from '../../types';
 
-export const searchInfos: SearchInfos = {
+export const legacy_searchInfos: SearchFormParameters = {
   travellers: { child: 0, adult: 1, senior: 1 },
   locations: {
     departure: { label: 'foo', value: 'foo', geohash: 'geoH@5h' },
     arrival: { label: 'baz', value: 'baz', geohash: 'geoH@5h' },
   },
   departureDate: '2019-26-59',
+};
+
+export const searchInfos: SearchInformations = {
+  adultCount: 1,
+  childCount: 0,
+  seniorCount: 0,
+  originGeohash: 'foo',
+  arrivalGeohash: 'baz',
+  outboundDate: '2016-01-14T07:55:00',
 };
 
 export const apiResult = {

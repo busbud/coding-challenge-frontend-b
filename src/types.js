@@ -17,7 +17,7 @@ export type LocationSuggestion = {|
   geohash: string,
 |};
 
-export type SearchInfos = {|
+export type SearchFormParameters = {|
   travellers: {|
     child: number,
     adult: number,
@@ -28,4 +28,13 @@ export type SearchInfos = {|
     departure: ?LocationSuggestion,
   },
   departureDate: ?string,
+|};
+
+export type SearchInformations = {|
+  adultCount: number,
+  childCount: number,
+  seniorCount: number,
+  originGeohash: string,
+  arrivalGeohash: string,
+  outboundDate: string,
 |};

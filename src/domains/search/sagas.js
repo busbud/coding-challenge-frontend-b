@@ -12,23 +12,9 @@ import * as ActionCreators from './actionCreators';
 
 // WORKERS
 
-export function* initSearchWorker({ payload }) {
-  const { travellers, locations, departureDate } = payload;
-
-  const { adult: adultCount, child: childCount, senior: seniorCount } = travellers;
-  const { departure, arrival } = locations;
-
-  const urlProps = {
-    adultCount,
-    childCount,
-    seniorCount,
-    originGeohash: departure.geohash,
-    arrivalGeohash: arrival.geohash,
-    outboundDate: departureDate,
-  };
-
-  const url = buildUrl(urlProps);
-  const pollingUrl = buildUrl({ ...urlProps, pollingUrl: true });
+export function* initSearchWorker({ payload: searchInformations }) {
+  const url = buildUrl(searchInformations);
+  const pollingUrl = buildUrl({ ...searchInformations, pollingUrl: true });
 
   let result = yield call(Api, url, {
     method: 'GET',
@@ -37,7 +23,7 @@ export function* initSearchWorker({ payload }) {
   let isComplete = get('complete', result);
   let index = getOr(0, 'departures.length', result);
 
-  yield put(ActionCreators.onSearchStarted());
+  yield put(ActionCreators.onSearchStarted(searchInformations));
   yield put(ActionCreators.dispatchResult(result));
 
   while (!isComplete) {
