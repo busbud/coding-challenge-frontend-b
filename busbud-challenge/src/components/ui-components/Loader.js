@@ -32,22 +32,15 @@ const Spinner = styled.div`
     }
   }
 `
-const Bounce1 = styled.div`
+const Bounce = styled.div`
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 `
 
-const Bounce2 = styled.div`
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-`
-
-const Bounce3 = styled.div``
-
 export const Loader = () => (
   <Spinner>
-    <Bounce1 />
-    <Bounce2 />
-    <Bounce3 />
+    <Bounce />
+    <Bounce />
+    <Bounce />
   </Spinner>
 )
