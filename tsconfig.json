@@ -1,0 +1,15 @@
+{
+  "files": [
+    "src/app.tsx"
+  ],
+  "compilerOptions": {
+    "target": "es6",
+    "module": "ES6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "strict": true,
+    "allowJs": true,
+    "jsx": "react"
+  },
+  "exclude": ["node_modules"]
+}
