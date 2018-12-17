@@ -1,6 +1,6 @@
 // @flow
 
-import type { SearchFormParameters } from '../../types';
+import type { SearchFormParameters, SearchInformations } from '../../types';
 
 export const legacy_searchInfos: SearchFormParameters = {
   travellers: { child: 0, adult: 1, senior: 1 },

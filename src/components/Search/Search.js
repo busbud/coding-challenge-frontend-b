@@ -6,7 +6,7 @@ import { get, set, values } from 'lodash/fp';
 import { LocationSelector } from '../LocationSelector';
 import { DatePicker } from '../DatePicker';
 import { TravelerCountSelector } from '../TravelerCountSelector';
-import type { LocationSuggestion, SearchFormParameters } from '../../types';
+import type { LocationSuggestion, SearchFormParameters, SearchInformations } from '../../types';
 
 // ---- TODO; Replace those fixtures by a real search location suggestion engine -- POC purpose only
 
@@ -27,7 +27,7 @@ type Classes = {|
 
 type Props = {|
   classes: Classes,
-  onSearch: (searchInfos: SearchFormParameters) => void,
+  onSearch: (searchInfos: SearchInformations) => void,
 |};
 
 type LocationInfo = LocationSuggestion & {|
@@ -190,7 +190,7 @@ class UnStyledSearch extends Component<Props, State> {
       const { adult: adultCount, child: childCount, senior: seniorCount } = travellers;
       const { departure, arrival } = locations;
 
-      const searchInformations = {
+      const searchInformations: SearchInformations = {
         adultCount,
         childCount,
         seniorCount,
