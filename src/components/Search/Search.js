@@ -5,8 +5,14 @@ import React, { Component } from 'react';
 import { get, set, values } from 'lodash/fp';
 import { LocationSelector } from '../LocationSelector';
 import { DatePicker } from '../DatePicker';
+import { ProposedTripList } from '../ProposedTripList';
 import { TravelerCountSelector } from '../TravelerCountSelector';
-import type { LocationSuggestion, SearchFormParameters, SearchInformations } from '../../types';
+import type {
+  LocationSuggestion,
+  SearchFormParameters,
+  SearchInformations,
+  ProposedTrip,
+} from '../../types';
 
 // ---- TODO; Replace those fixtures by a real search location suggestion engine -- POC purpose only
 
@@ -27,6 +33,7 @@ type Classes = {|
 
 type Props = {|
   classes: Classes,
+  proposedTrips: Array<ProposedTrip>,
   onSearch: (searchInfos: SearchInformations) => void,
 |};
 
@@ -88,6 +95,10 @@ const styles = theme => ({
   },
   sectionTitle: {
     marginBottom: '16px',
+  },
+  proposedTrips: {
+    marginTop: '20px',
+    width: '100%',
   },
 });
 
@@ -206,7 +217,7 @@ class UnStyledSearch extends Component<Props, State> {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, proposedTrips } = this.props;
     const { travellerSelectorErrored, departureDateError, locationSelectorError } = get(
       'errors',
       this.state,
@@ -274,6 +285,12 @@ class UnStyledSearch extends Component<Props, State> {
         >
           Search
         </Button>
+
+        {!isPristine ? (
+          <div className={classes.proposedTrips}>
+            <ProposedTripList proposedTrips={proposedTrips} />
+          </div>
+        ) : null}
       </div>
     );
   }

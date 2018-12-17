@@ -1,18 +1,18 @@
 // @flow
 import React from 'react';
+import { Provider } from 'react-redux';
 import styles from './App.css';
 
+import configureStore from '../../store/configureStore';
+
 import { Search } from '../Search';
-import { ProposedTripList } from '../ProposedTripList';
 
-type Props = {| onSearch: () => void |};
+const store = configureStore();
 
-export const App = (props: Props) => {
-  const { onSearch } = props;
-  return (
+export const App = () => (
+  <Provider store={store}>
     <div className={styles.App}>
-      <Search onSearch={onSearch} />
-      <ProposedTripList proposedTrips={[]} />
+      <Search />
     </div>
-  );
-};
+  </Provider>
+);

@@ -1,1 +1,2 @@
-export * from './App';
+import { connect } from 'redux';
+import { App } from './App';
