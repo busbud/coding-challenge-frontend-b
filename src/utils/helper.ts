@@ -10,8 +10,16 @@ export const getLocations = (idFrom: string, idTo: string, locationsArray: Array
   return locations
 }
 
-
 export const getOperator = (id: number, operators: any) => {
   const operator = operators.filter(operator => operator.id === id)[0]
   return operator
+}
+
+export const getFormattedPrice = (price: number) => {
+  return Math.round(price / 100)
+}
+
+export const getFormattedDate = (dateString: string) => {
+  const date = new Date(dateString)
+  return date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
 }

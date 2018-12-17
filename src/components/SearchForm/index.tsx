@@ -1,5 +1,9 @@
 import * as React from 'react'
 
+interface SearchFormProps {
+  buttonClick: (ev: React.MouseEvent<HTMLButtonElement>) => void
+}
+
 interface SearchFormState {
   from: string,
   to: string,
@@ -7,8 +11,8 @@ interface SearchFormState {
   passengers: string
 }
 
-export default class SearchForm extends React.Component<any, SearchFormState> {
-  constructor (props: any) {
+export default class SearchForm extends React.Component<SearchFormProps, SearchFormState> {
+  constructor (props: SearchFormProps) {
     super(props)
     this.state = {
       from: 'New York',

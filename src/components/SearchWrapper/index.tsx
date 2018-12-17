@@ -7,10 +7,17 @@ import SearchResults from '../SearchResults'
 interface SearchState {
   origin: string,
   destination: string,
-  outboundDate: string
+  outboundDate: string,
+  params: any,
+  cities: Array<any>,
+  locations: Array<any>,
+  operators: Array<any>,
+  departures: Array<any>,
+  searchHasStarted: boolean,
+  complete: boolean
 }
 
-export default class SearchWrapper extends React.Component<any, any> {
+export default class SearchWrapper extends React.Component<any, SearchState> {
   constructor (props: any) {
     super(props)
 
@@ -19,13 +26,32 @@ export default class SearchWrapper extends React.Component<any, any> {
     this.state = {
       origin: 'dr5reg',
       destination: 'f25dvk',
-      outboundDate: '2019-08-02'
+      outboundDate: '2019-08-02',
+      params: {
+        adult: 1,
+        child: 0,
+        senior: 0,
+        currency: 'CAD'
+      },
+      cities: [],
+      locations: [],
+      operators: [],
+      departures: [],
+      searchHasStarted: false,
+      complete: false
     }
   }
 
   async getResults () {
-    const results = await getResults(this.state.origin, this.state.destination, this.state.outboundDate, {})
-    console.log(results)
+    const results = await getResults(this.state.origin, this.state.destination, this.state.outboundDate, this.state.params)
+    this.setState({
+      cities: results.cities,
+      locations: results.locations,
+      operators: results.operators,
+      departures: results.departures,
+      searchHasStarted: true,
+      complete: results.complete
+    })
   }
 
   render () {
@@ -33,7 +59,14 @@ export default class SearchWrapper extends React.Component<any, any> {
       <React.Fragment>
         <Header/>
         <SearchForm buttonClick={this.getResults} />
-        <SearchResults />
+        {this.state.searchHasStarted ?
+         <SearchResults
+          cities={this.state.cities}
+          departures={this.state.departures}
+          operators={this.state.operators}
+          locations={this.state.locations}
+         />
+        : null }
       </React.Fragment>
     )
   }
