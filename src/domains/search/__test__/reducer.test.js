@@ -1,7 +1,13 @@
-import { mapSearchResultToTravelInformations } from '../helpers';
+import flatten from 'lodash/fp/flatten';
 import reducer, { initialState } from '../reducer';
 import * as ActionTypes from '../actionTypes';
-import { searchInfos, apiResult, travelInformations } from '../fixtures';
+import {
+  searchInfos,
+  apiResult,
+  travelInformations,
+  proposedTrips,
+  partialAPIResult,
+} from '../fixtures';
 
 describe('search domain reducer', () => {
   it('should set isLoading status to true when search has started', () => {
@@ -33,7 +39,7 @@ describe('search domain reducer', () => {
     });
   });
 
-  it('should store the current travel informations', () => {
+  it('should store the current travel informations and store proposed trip', () => {
     const action = {
       type: ActionTypes.DISPATCH_RESULT,
       payload: apiResult,
@@ -41,7 +47,8 @@ describe('search domain reducer', () => {
 
     expect(reducer(initialState, action)).toEqual({
       ...initialState,
-      travelInformations: mapSearchResultToTravelInformations(apiResult),
+      travelInformations,
+      proposedTrips,
     });
   });
 
@@ -51,13 +58,30 @@ describe('search domain reducer', () => {
       travelInformations,
     };
     const action = {
-      type: ActionTypes.DISPATCH_RESULT,
-      payload: apiResult,
+      type: ActionTypes.DISPATCH_PARTIAL_RESULT,
+      payload: partialAPIResult,
     };
 
     expect(reducer(state, action)).toEqual({
+      ...state,
+      proposedTrips,
+    });
+  });
+
+  it('should store the formatted search result', () => {
+    const state = {
       ...initialState,
-      searchResult: {},
+      travelInformations,
+      proposedTrips,
+    };
+    const action = {
+      type: ActionTypes.DISPATCH_PARTIAL_RESULT,
+      payload: partialAPIResult,
+    };
+
+    expect(reducer(state, action)).toEqual({
+      ...state,
+      proposedTrips: proposedTrips.concat(proposedTrips),
     });
   });
 });

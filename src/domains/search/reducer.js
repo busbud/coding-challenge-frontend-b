@@ -1,13 +1,19 @@
 // @flow
 
+import { sortBy } from 'lodash/fp';
+import moment from 'moment';
 import * as ActionTypes from './actionTypes';
 import type { ProposedTrip, SearchInformations, TravelInformations } from '../../types';
-import { mapSearchResultToTravelInformations } from './helpers';
+import { mapSearchResultToTravelInformations, mapApiResultToProposedTrip } from './helpers';
 
+type Action = {
+  type: string,
+  payload: any,
+};
 type State = {|
   isLoading: boolean,
   travelInformations: TravelInformations,
-  searchResults: Array<ProposedTrip>,
+  proposedTrips: Array<ProposedTrip>,
   searchInformations: SearchInformations,
 |};
 
@@ -24,8 +30,9 @@ export const initialState: State = {
     originGeohash: '',
     arrivalGeohash: '',
     outboundDate: '',
+    travellersCount: 0,
   },
-  searchResults: [],
+  proposedTrips: [],
   isLoading: false,
 };
 
@@ -43,12 +50,37 @@ const onPerformSearchSuceeded = (state: State) => ({
   isLoading: false,
 });
 
-const onResultDispatched = (state: State, payload) => ({
-  ...state,
-  travelInformations: mapSearchResultToTravelInformations(payload),
-});
+const onResultDispatched = (state: State, payload) => {
+  const proposedTrips = mapApiResultToProposedTrip(payload);
 
-export default function (state: State = initialState, action) {
+  const sortedProposedTrip = sortBy(item => moment(item.departureTime), proposedTrips).reverse();
+
+  return {
+    ...state,
+    travelInformations: mapSearchResultToTravelInformations(payload),
+    proposedTrips: sortedProposedTrip,
+  };
+};
+
+const onDispatchPartialResult = (state: State, payload) => {
+  const { proposedTrips } = state;
+  const newProposedTrip = mapApiResultToProposedTrip({
+    ...payload,
+    locations: state.travelInformations.locations,
+  });
+
+  const mergedAndSortedProposedTrip = sortBy(
+    item => moment(item.departureTime),
+    proposedTrips.concat(newProposedTrip),
+  ).reverse();
+
+  return {
+    ...state,
+    proposedTrips: mergedAndSortedProposedTrip,
+  };
+};
+
+export default function (state: State = initialState, action: Action) {
   switch (action.type) {
     case ActionTypes.PERFORM_SEARCH.STARTED:
       return onPerformSearchStarted(state, action.payload);
@@ -58,6 +90,9 @@ export default function (state: State = initialState, action) {
 
     case ActionTypes.DISPATCH_RESULT:
       return onResultDispatched(state, action.payload);
+
+    case ActionTypes.DISPATCH_PARTIAL_RESULT:
+      return onDispatchPartialResult(state, action.payload);
     default:
       return state;
   }

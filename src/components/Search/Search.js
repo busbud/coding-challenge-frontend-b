@@ -197,6 +197,7 @@ class UnStyledSearch extends Component<Props, State> {
         originGeohash: departure.geohash,
         arrivalGeohash: arrival.geohash,
         outboundDate: departureDate,
+        travellersCount: adultCount + seniorCount + childCount,
       };
 
       onSearch(searchInformations);

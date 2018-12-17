@@ -3,11 +3,11 @@
 import {
   buildUrl,
   mapSearchResultToTravelInformations,
-  mapPartiaApiResultToProposedTrip,
+  mapApiResultToProposedTrip,
 } from '../helpers';
 import type { ProposedTrip, TravelInformations } from '../../../types';
 
-import { apiResult, travelInformations, partialAPIResult } from '../fixtures';
+import { apiResult, travelInformations, proposedTrips } from '../fixtures';
 
 import { ApiConfiguration } from '../../../configuration';
 
@@ -69,7 +69,9 @@ describe('format server input', () => {
     expect(result).toEqual(travelInformations);
   });
 
-  it('should mapPartiaApiResultToPropsedTrip', () => {
-    const result: ProposedTrip = mapPartiaApiResultToProposedTrip(partialAPIResult);
+  it('should mapApiResultToPropsedTrips', () => {
+    const result: Array<ProposedTrip> = mapApiResultToProposedTrip(apiResult);
+
+    expect(result).toEqual(proposedTrips);
   });
 });

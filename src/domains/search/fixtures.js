@@ -1,10 +1,6 @@
 // @flow
 
-import type {
-  SearchInformations,
-  TravelInformations,
-  PartialTravelInformations,
-} from '../../types';
+import type { SearchInformations, ProposedTrip, TravelInformations } from '../../types';
 
 export const searchInfos: SearchInformations = {
   adultCount: 1,
@@ -13,7 +9,24 @@ export const searchInfos: SearchInformations = {
   originGeohash: 'foo',
   arrivalGeohash: 'baz',
   outboundDate: '2016-01-14T07:55:00',
+  travellersCount: 1,
 };
+
+export const proposedTrips: Array<ProposedTrip> = [
+  {
+    arrivalTime: '2016-01-14T07:55:00',
+    departureTime: '2016-01-14T00:01:00',
+    totalPrice: 5200,
+    departureLocation:
+      'Métro Bonaventure Bus Station, 997 Rue St-Antoine Ouest, Montreal, QC H3C 1A6',
+    travellersCount: 1,
+    operator: {
+      name: 'Greyhound',
+      logoUrl:
+        'https://busbud-pubweb-assets-staging.global.ssl.fastly.net/images-service/operator-logos/greyhound.png?hash=1{&height,width}',
+    },
+  },
+];
 
 export const travelInformations: TravelInformations = {
   cities: [
@@ -26,8 +39,8 @@ export const travelInformations: TravelInformations = {
 
   locations: [
     {
-      id: 3970,
-      city_id: '375dd5879001acbd84a4683dedfb933e',
+      id: 1942,
+      city_id: '375dd5879001acbd84a4683deda84183',
       name: 'Métro Bonaventure Bus Station',
       address: ['997 Rue St-Antoine Ouest', 'Montreal, QC H3C 1A6'],
     },
@@ -79,8 +92,8 @@ export const apiResult = {
   ],
   locations: [
     {
-      id: 3970,
-      city_id: '375dd5879001acbd84a4683dedfb933e',
+      id: 1942,
+      city_id: '375dd5879001acbd84a4683deda84183',
       name: 'Métro Bonaventure Bus Station',
       address: ['997 Rue St-Antoine Ouest', 'Montreal, QC H3C 1A6'],
       type: 'transit_station',

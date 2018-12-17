@@ -65,4 +65,36 @@ export const mapSearchResultToTravelInformations = (searchResult: any): TravelIn
   };
 };
 
-export const mapPartiaApiResultToProposedTrip = (oartialApiResult: any): ProposedTrip => ({});
+const buildLocation = (name: string, address: Array<string>) => `${name}, ${address.join(', ')}`;
+
+export const mapApiResultToProposedTrip = (apiResult: any): Array<ProposedTrip> => {
+  const { operators, locations, departures } = apiResult;
+
+  const proposedTrips = departures.map((departure) => {
+    const {
+      departure_time: departureTime,
+      arrival_time: arrivalTime,
+      prices,
+      origin_location_id: originLocationId,
+      operator_id: operatorId,
+    } = departure;
+
+    const foundLocation = locations.find(location => location.id === originLocationId);
+
+    const foundOperator = operators.find(operator => operator.id === operatorId);
+
+    return {
+      arrivalTime,
+      departureTime,
+      totalPrice: prices.total,
+      departureLocation: buildLocation(foundLocation.name, foundLocation.address),
+      travellersCount: 1,
+      operator: {
+        name: foundOperator.display_name,
+        logoUrl: foundOperator.logo_url,
+      },
+    };
+  });
+
+  return proposedTrips;
+};

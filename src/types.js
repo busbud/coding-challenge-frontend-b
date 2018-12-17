@@ -2,7 +2,7 @@
 export type ProposedTrip = {|
   arrivalTime: string,
   departureTime: string,
-  totalPrice: string,
+  totalPrice: number,
   departureLocation: string,
   travellersCount: number,
   operator: {
@@ -37,6 +37,7 @@ export type SearchInformations = {|
   originGeohash: string,
   arrivalGeohash: string,
   outboundDate: string,
+  travellersCount: number,
 |};
 
 // @flow
