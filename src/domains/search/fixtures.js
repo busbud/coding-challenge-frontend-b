@@ -1,15 +1,10 @@
 // @flow
 
-import type { SearchFormParameters, SearchInformations } from '../../types';
-
-export const legacy_searchInfos: SearchFormParameters = {
-  travellers: { child: 0, adult: 1, senior: 1 },
-  locations: {
-    departure: { label: 'foo', value: 'foo', geohash: 'geoH@5h' },
-    arrival: { label: 'baz', value: 'baz', geohash: 'geoH@5h' },
-  },
-  departureDate: '2019-26-59',
-};
+import type {
+  SearchInformations,
+  TravelInformations,
+  PartialTravelInformations,
+} from '../../types';
 
 export const searchInfos: SearchInformations = {
   adultCount: 1,
@@ -18,6 +13,34 @@ export const searchInfos: SearchInformations = {
   originGeohash: 'foo',
   arrivalGeohash: 'baz',
   outboundDate: '2016-01-14T07:55:00',
+};
+
+export const travelInformations: TravelInformations = {
+  cities: [
+    {
+      id: '375dd5879001acbd84a4683deda84183',
+      name: 'New York',
+      full_name: 'New York, New York, United States',
+    },
+  ],
+
+  locations: [
+    {
+      id: 3970,
+      city_id: '375dd5879001acbd84a4683dedfb933e',
+      name: 'Métro Bonaventure Bus Station',
+      address: ['997 Rue St-Antoine Ouest', 'Montreal, QC H3C 1A6'],
+    },
+  ],
+
+  operators: [
+    {
+      id: 'bfc27cd544ca49c18d000f2bc00c58c0',
+      logo_url:
+        'https://busbud-pubweb-assets-staging.global.ssl.fastly.net/images-service/operator-logos/greyhound.png?hash=1{&height,width}',
+      display_name: 'Greyhound',
+    },
+  ],
 };
 
 export const apiResult = {
@@ -170,4 +193,110 @@ export const apiResult = {
   complete: true,
   ttl: 900,
   is_valid_route: true,
+};
+
+export const partialAPIResult = {
+  departures: [
+    {
+      id: '7c5dd26a',
+      source_id: 155,
+      checkout_type: 'new',
+      operator_id: 'bfc27cd544ca49c18d000f2bc00c58c0',
+      origin_location_id: 1942,
+      destination_location_id: 1938,
+      class: 'Economy',
+      class_name: 'Economy',
+      amenities: {
+        display_name: 'Economy',
+        wifi: true,
+        toilet: true,
+        ac: true,
+        food: false,
+        refreshment: false,
+        power_outlets: true,
+        tv: false,
+        bus_attendant: false,
+        leg_room: false,
+      },
+      available_seats: 55,
+      prices: {
+        total: 5200,
+        breakdown: {
+          base: 5200,
+        },
+        categories: {},
+        discounted: false,
+      },
+      ticket_types: ['print'],
+      departure_timezone: 'America/New_York',
+      arrival_timezone: 'America/Montreal',
+      departure_time: '2016-01-14T00:01:00',
+      arrival_time: '2016-01-14T07:55:00',
+    },
+  ],
+  operators: [
+    {
+      id: 'bfc27cd544ca49c18d000f2bc00c58c0',
+      source_id: 155,
+      profile_id: 111,
+      name: 'Greyhound',
+      url: null,
+      logo_url:
+        'https://busbud-pubweb-assets-staging.global.ssl.fastly.net/images-service/operator-logos/greyhound.png?hash=1{&height,width}',
+      display_name: 'Greyhound',
+      sellable: true,
+      fuzzy_prices: false,
+      sell_tickets_cutoff: {
+        hours: 1,
+      },
+      amenities: {
+        classes: {
+          Normal: {
+            display_name: 'Economy',
+            wifi: true,
+            toilet: true,
+            ac: true,
+            food: false,
+            refreshment: false,
+            power_outlets: true,
+            tv: false,
+            bus_attendant: false,
+            leg_room: false,
+          },
+          Economy: {
+            display_name: 'Economy',
+            wifi: true,
+            toilet: true,
+            ac: true,
+            food: false,
+            refreshment: false,
+            power_outlets: true,
+            tv: false,
+            bus_attendant: false,
+            leg_room: false,
+          },
+        },
+      },
+      source: 'greyhound_us',
+      referral_deal: false,
+      display_url: null,
+      fraud_check: 'iovation',
+      terms: {
+        refund: false,
+        exchange: true,
+        bag_allowed: true,
+        piece_of_id: false,
+        boarding_requirement: 'printed_tkt',
+        extra_bag_policy: true,
+        use_new_ticket: false,
+        exchange_cutoff: 24,
+        nb_checked_bags: 1,
+        kg_by_bag: 25,
+        nb_carry_on: 1,
+        extra_bag_cost: 1500,
+      },
+    },
+  ],
+  complete: true,
+  ttl: 900,
 };

@@ -2,8 +2,9 @@
 
 import get from 'lodash/fp/get';
 import { ApiConfiguration } from '../../configuration';
+import type { TravelInformations, ProposedTrip } from '../../types';
 
-type buildUrlParams = {|
+type BuildUrlParams = {|
   adultCount: number,
   childCount: number,
   seniorCount: number,
@@ -13,7 +14,7 @@ type buildUrlParams = {|
   polling: ?boolean,
 |};
 
-export const buildUrl = (buildParams: buildUrlParams): string => {
+export const buildUrl = (buildParams: BuildUrlParams): string => {
   const {
     adultCount,
     childCount,
@@ -32,3 +33,36 @@ export const buildUrl = (buildParams: buildUrlParams): string => {
 
   return url.replace(':poll', '');
 };
+
+export const mapSearchResultToTravelInformations = (searchResult: any): TravelInformations => {
+  const cities = get('cities', searchResult);
+  const locations = get('locations', searchResult);
+  const operators = get('operators', searchResult);
+
+  const mapperdOperator = operators.map(operator => ({
+    id: operator.id,
+    logo_url: operator.logo_url,
+    display_name: operator.display_name,
+  }));
+
+  const mappedCities = cities.map(city => ({
+    id: city.id,
+    name: city.name,
+    full_name: city.full_name,
+  }));
+
+  const mappedLocations = locations.map(location => ({
+    id: location.id,
+    name: location.name,
+    city_id: location.city_id,
+    address: location.address,
+  }));
+
+  return {
+    operators: mapperdOperator,
+    cities: mappedCities,
+    locations: mappedLocations,
+  };
+};
+
+export const mapPartiaApiResultToProposedTrip = (oartialApiResult: any): ProposedTrip => ({});

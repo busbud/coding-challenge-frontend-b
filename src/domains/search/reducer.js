@@ -1,73 +1,63 @@
 // @flow
 
 import * as ActionTypes from './actionTypes';
-import type { ProposedTrip, SearchFormParameters } from '../../types';
-
-type City = {
-  id: string,
-  name: string,
-  full_name: string,
-};
-
-type Location = {
-  id: string,
-  city_id: string,
-  name: string,
-  address: Array<string>,
-};
-
-type Operator = {
-  id: string,
-  logo_url: string,
-  display_name: string,
-};
-
-type Departure = {
-  id: string,
-  origin_location_id: string,
-  destination_location_id: string,
-  operator_id: string,
-  prices: {
-    total: string,
-  },
-  departure_time: string,
-  arrivalTime: string,
-};
-
-type TravelInformations = {|
-  cities: Array<City>,
-  locations: Array<Location>,
-  operators: Array<Operator>,
-|};
+import type { ProposedTrip, SearchInformations, TravelInformations } from '../../types';
+import { mapSearchResultToTravelInformations } from './helpers';
 
 type State = {|
-  isLoading: true,
-  travelInformation: TravelInformations,
-  searchResults: Array<PropsedTrip>,
-  searchInformation: SearchFormParameters,
+  isLoading: boolean,
+  travelInformations: TravelInformations,
+  searchResults: Array<ProposedTrip>,
+  searchInformations: SearchInformations,
 |};
 
 export const initialState: State = {
-  travelInformations: {},
+  travelInformations: {
+    cities: [],
+    locations: [],
+    operators: [],
+  },
+  searchInformations: {
+    adultCount: 0,
+    childCount: 0,
+    seniorCount: 0,
+    originGeohash: '',
+    arrivalGeohash: '',
+    outboundDate: '',
+  },
+  searchResults: [],
+  isLoading: false,
 };
 
-const onPerformSearchStarted = state => ({
-  ...state,
-  isLoading: true,
-});
+const onPerformSearchStarted = (state: State, payload: SearchInformations) => {
+  const { adultCount, childCount, seniorCount } = payload;
+  return {
+    ...state,
+    searchInformations: { ...payload, travellerCount: adultCount + childCount + seniorCount },
+    isLoading: true,
+  };
+};
 
-const onPerformSearchSuceeded = state => ({
+const onPerformSearchSuceeded = (state: State) => ({
   ...state,
   isLoading: false,
 });
 
-export default function (state = initialState, action) {
+const onResultDispatched = (state: State, payload) => ({
+  ...state,
+  travelInformations: mapSearchResultToTravelInformations(payload),
+});
+
+export default function (state: State = initialState, action) {
   switch (action.type) {
     case ActionTypes.PERFORM_SEARCH.STARTED:
-      return onPerformSearchStarted(state);
+      return onPerformSearchStarted(state, action.payload);
 
     case ActionTypes.PERFORM_SEARCH.SUCCEEDED:
       return onPerformSearchSuceeded(state);
+
+    case ActionTypes.DISPATCH_RESULT:
+      return onResultDispatched(state, action.payload);
     default:
       return state;
   }
