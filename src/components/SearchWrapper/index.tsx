@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Header from '../Header'
+import SearchForm from '../SearchForm'
 
 export default class SearchWrapper extends React.Component<any, any> {
   constructor (props: any) {
@@ -8,7 +9,10 @@ export default class SearchWrapper extends React.Component<any, any> {
 
   render () {
     return(
-      <Header/>
+      <React.Fragment>
+        <Header/>
+        <SearchForm/>
+      </React.Fragment>
     )
   }
 }
