@@ -28,24 +28,25 @@ describe('search Saga', () => {
     arrivalGeohash: arrival.geohash,
     outboundDate: departureDate,
   };
-  describe('initSearchWorker', () => {
-    xit('search should succucceed without polling', () => {
-      const action = {
-        payload: searchInfos,
-      };
 
-      const url = buildUrl(urlProps);
-      const generator = cloneableGenerator(Sagas.initSearchWorker)(action);
-      expect(generator.next().value).toEqual(
-        call(Api, url, {
-          method: 'GET',
-        }),
-      );
+  it('search should succucceed without polling', () => {
+    const action = {
+      payload: searchInfos,
+    };
 
-      const clone = generator.clone();
-      expect(clone.next(apiResult).value).toEqual(put(ActionCreators.dispatchResult(apiResult)));
-      expect(clone.next().done).toEqual(true);
-    });
+    const url = buildUrl(urlProps);
+    const generator = cloneableGenerator(Sagas.initSearchWorker)(action);
+    expect(generator.next().value).toEqual(
+      call(Api, url, {
+        method: 'GET',
+      }),
+    );
+
+    const clone = generator.clone();
+    expect(clone.next(apiResult).value).toEqual(put(ActionCreators.onSearchStarted()));
+    expect(clone.next(apiResult).value).toEqual(put(ActionCreators.dispatchResult(apiResult)));
+    expect(clone.next().value).toEqual(put(ActionCreators.onSearchSucceed()));
+    expect(clone.next().done).toEqual(true);
   });
 
   it('should should succeed after polling', () => {
@@ -57,6 +58,7 @@ describe('search Saga', () => {
     const url = buildUrl(urlProps);
     const pollingUrl = buildUrl({ ...urlProps, pollingUrl: true });
     const generator = cloneableGenerator(Sagas.initSearchWorker)(action);
+
     expect(generator.next().value).toEqual(
       call(Api, url, {
         method: 'GET',
@@ -64,7 +66,10 @@ describe('search Saga', () => {
     );
 
     const clone = generator.clone();
+
+    expect(clone.next(uncompletedApiResult).value).toEqual(put(ActionCreators.onSearchStarted()));
     let index = getOr(0, 'departures.length', uncompletedApiResult);
+
     expect(clone.next(uncompletedApiResult).value).toEqual(
       put(ActionCreators.dispatchResult(uncompletedApiResult)),
     );
@@ -101,7 +106,7 @@ describe('search Saga', () => {
     );
 
     expect(clone.next(apiResult).value).toEqual(put(ActionCreators.dispatchResult(apiResult)));
-
+    expect(clone.next().value).toEqual(put(ActionCreators.onSearchSucceed()));
     expect(clone.next().done).toEqual(true);
   });
 });

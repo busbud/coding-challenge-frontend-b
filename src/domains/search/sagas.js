@@ -3,12 +3,9 @@ import {
 } from 'redux-saga/effects';
 
 import { delay } from 'redux-saga';
-
 import { getOr, get } from 'lodash/fp';
 import { Api } from '../../helpers/ApiFactory';
-
 import { buildUrl } from './helpers';
-
 import { ActionTypes } from './index';
 
 import * as ActionCreators from './actionCreators';
@@ -40,6 +37,7 @@ export function* initSearchWorker({ payload }) {
   let isComplete = get('complete', result);
   let index = getOr(0, 'departures.length', result);
 
+  yield put(ActionCreators.onSearchStarted());
   yield put(ActionCreators.dispatchResult(result));
 
   while (!isComplete) {
@@ -51,12 +49,14 @@ export function* initSearchWorker({ payload }) {
     index += getOr(0, 'departures.length', result);
     yield put(ActionCreators.dispatchResult(result));
   }
+
+  yield put(ActionCreators.onSearchSucceed());
 }
 
 // WATCHERS
 
 function* initSearchWatcher() {
-  yield takeLatest(ActionTypes.INIT_SEARCH.BASE, initSearchWorker);
+  yield takeLatest(ActionTypes.PERFORM_SEARCH.BASE, initSearchWorker);
 }
 
 // DEFAULT
