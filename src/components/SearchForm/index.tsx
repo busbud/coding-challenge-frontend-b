@@ -1,13 +1,13 @@
 import * as React from 'react'
 
-interface SearchBarState {
+interface SearchFormState {
   from: string,
   to: string,
   date: string,
   passengers: string
 }
 
-export default class SearchBar extends React.Component<any, SearchBarState> {
+export default class SearchForm extends React.Component<any, SearchFormState> {
   constructor (props: any) {
     super(props)
     this.state = {
@@ -19,7 +19,7 @@ export default class SearchBar extends React.Component<any, SearchBarState> {
   }
 
   render () {
-    return(
+    return (
       <section className='search'>
         <div className='search-container container'>
           <div className='row justify-content-center align-items-end'>
@@ -42,7 +42,7 @@ export default class SearchBar extends React.Component<any, SearchBarState> {
               <input type='text' value={this.state.passengers} name='passengers' className='form-input' arial-label='passenger' readOnly/>
             </div>
             <div className='col-md-2'>
-              <button type='button' className='form-button'>Search</button>
+              <button type='button' className='form-button' onClick={this.props.buttonClick}>Search</button>
             </div>
           </div>
         </div>
