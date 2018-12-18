@@ -7,7 +7,8 @@
     "test": "",
     "dev": "webpack-dev-server ---mode=development",
     "build": "webpack --mode=production",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd coding-challenge-frontend-b && npm build"
   },
   "repository": {
     "type": "git",
