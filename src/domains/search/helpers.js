@@ -68,7 +68,9 @@ export const mapSearchResultToTravelInformations = (searchResult: any): TravelIn
 const buildLocation = (name: string, address: Array<string>) => `${name}, ${address.join(', ')}`;
 
 export const mapApiResultToProposedTrip = (apiResult: any): Array<ProposedTrip> => {
-  const { operators, locations, departures } = apiResult;
+  const {
+    operators, locations, departures, travellersCount,
+  } = apiResult;
 
   const proposedTrips = departures.map((departure) => {
     const {
@@ -88,7 +90,7 @@ export const mapApiResultToProposedTrip = (apiResult: any): Array<ProposedTrip> 
       departureTime,
       totalPrice: prices.total,
       departureLocation: buildLocation(foundLocation.name, foundLocation.address),
-      travellersCount: 1,
+      travellersCount,
       operator: {
         name: foundOperator.display_name,
         logoUrl: foundOperator.logo_url,

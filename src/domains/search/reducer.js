@@ -66,6 +66,7 @@ const onResultDispatched = (state: State, payload) => {
 
 const onDispatchPartialResult = (state: State, payload) => {
   const { proposedTrips, travelInformations, searchInformations } = state;
+
   const enhancedPayload = { ...payload, travellersCount: searchInformations.travellersCount };
   const newProposedTrip: Array<ProposedTrip> = mapApiResultToProposedTrip({
     ...enhancedPayload,

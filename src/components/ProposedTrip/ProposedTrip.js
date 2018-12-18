@@ -31,7 +31,7 @@ const styles = {
   },
   media: {
     width: '120px',
-    height: '80px',
+    height: '120px',
     marginBottom: '9px',
   },
   tripInformations: {

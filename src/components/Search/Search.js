@@ -1,7 +1,8 @@
 // @flow
 import { withStyles } from '@material-ui/core/styles';
-import { Typography, Button } from '@material-ui/core';
+import { Typography, Button, CircularProgress } from '@material-ui/core';
 import React, { Component } from 'react';
+import moment from 'moment';
 import { get, set, values } from 'lodash/fp';
 import { LocationSelector } from '../LocationSelector';
 import { DatePicker } from '../DatePicker';
@@ -29,11 +30,15 @@ type Classes = {|
   sectionTitle: string,
   travellersInformations: string,
   button: string,
+  proposedTrips: string,
+  loader: string,
+  search: string,
 |};
 
 type Props = {|
   classes: Classes,
   proposedTrips: Array<ProposedTrip>,
+  isLoading: boolean,
   onSearch: (searchInfos: SearchInformations) => void,
 |};
 
@@ -60,9 +65,12 @@ type TravllerInfo = {|
 |};
 
 const styles = theme => ({
+  search : {
+    padding : "30px"
+  },
   searchForm: {
     margin: '1.5rem',
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('lg')]: {
       display: 'flex',
     },
   },
@@ -90,7 +98,7 @@ const styles = theme => ({
 
   travellersInformations: {
     [theme.breakpoints.up('lg')]: {
-      width: '45%',
+      width: '50%',
     },
   },
   sectionTitle: {
@@ -99,6 +107,12 @@ const styles = theme => ({
   proposedTrips: {
     marginTop: '20px',
     width: '100%',
+  },
+  loader: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    padding: '30px',
   },
 });
 
@@ -191,7 +205,7 @@ class UnStyledSearch extends Component<Props, State> {
       newErrors = set('locationSelectorError', true, newErrors);
     }
 
-    if (!departureDate) {
+    if (!departureDate || !moment(departureDate).isSameOrAfter(new Date())) {
       newErrors = set('departureDateError', true, newErrors);
     }
 
@@ -210,14 +224,13 @@ class UnStyledSearch extends Component<Props, State> {
         outboundDate: departureDate,
         travellersCount: adultCount + seniorCount + childCount,
       };
-
       onSearch(searchInformations);
     }
     this.setState({ searchInfos: { travellers, locations, departureDate } });
   };
 
   render() {
-    const { classes, proposedTrips } = this.props;
+    const { classes, proposedTrips, isLoading } = this.props;
     const { travellerSelectorErrored, departureDateError, locationSelectorError } = get(
       'errors',
       this.state,
@@ -225,7 +238,7 @@ class UnStyledSearch extends Component<Props, State> {
     const { errors, isPristine } = this.state;
 
     return (
-      <div>
+      <div className={classes.search}>
         <div className={classes.searchForm}>
           <div className={classes.yourJouney}>
             <Typography className={classes.sectionTitle} variant="h6">
@@ -270,7 +283,7 @@ class UnStyledSearch extends Component<Props, State> {
             />
             <TravelerCountSelector
               isErrored={travellerSelectorErrored}
-              travellerType="children"
+              travellerType="child"
               onChange={this.handleTravelerCountChange}
             />
           </div>
@@ -286,7 +299,15 @@ class UnStyledSearch extends Component<Props, State> {
           Search
         </Button>
 
-        {!isPristine ? (
+        {isLoading ? (
+          <div className={classes.loader}>
+            {' '}
+            <CircularProgress />
+            {' '}
+          </div>
+        ) : null}
+
+        {!isPristine && proposedTrips.length > 0 ? (
           <div className={classes.proposedTrips}>
             <ProposedTripList proposedTrips={proposedTrips} />
           </div>

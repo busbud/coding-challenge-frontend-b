@@ -70,7 +70,10 @@ describe('format server input', () => {
   });
 
   it('should mapApiResultToPropsedTrips', () => {
-    const result: Array<ProposedTrip> = mapApiResultToProposedTrip(apiResult);
+    const result: Array<ProposedTrip> = mapApiResultToProposedTrip({
+      ...apiResult,
+      travellersCount: 0,
+    });
 
     expect(result).toEqual(proposedTrips);
   });

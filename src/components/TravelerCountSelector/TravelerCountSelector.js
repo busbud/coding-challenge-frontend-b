@@ -63,6 +63,7 @@ class UnstyledTravellerCountSelector extends React.Component<Props, State> {
       <TextField
         variant="outlined"
         error={isErrored}
+        fullWidth
         value={travellersCount}
         type="number"
         InputProps={{

@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import { ActionCreators } from '../../domains/search';
 
 import { Search } from './Search';
@@ -6,12 +7,13 @@ const mapStateToProps = (state) => {
   const { search } = state;
 
   return {
-    propsedTrips: search.proposedTrips,
+    proposedTrips: search.proposedTrips,
     isLoading: search.isLoading,
   };
 };
+
 const mapDispatchToProps = {
-  onPerformSearch: ActionCreators.onPerformSearch,
+  onSearch: ActionCreators.initSearch,
 };
 
 export default connect(

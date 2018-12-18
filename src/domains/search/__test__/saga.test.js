@@ -22,14 +22,16 @@ describe('search Saga', () => {
 
     const url = buildUrl(searchInfos);
     const generator = cloneableGenerator(Sagas.initSearchWorker)(action);
-    expect(generator.next().value).toEqual(
+
+    expect(generator.next().value).toEqual(put(ActionCreators.onSearchStarted(searchInfos)));
+
+    const clone = generator.clone();
+
+    expect(clone.next(apiResult).value).toEqual(
       call(Api, url, {
         method: 'GET',
       }),
     );
-
-    const clone = generator.clone();
-    expect(clone.next(apiResult).value).toEqual(put(ActionCreators.onSearchStarted(searchInfos)));
     expect(clone.next(apiResult).value).toEqual(put(ActionCreators.dispatchResult(apiResult)));
     expect(clone.next().value).toEqual(put(ActionCreators.onSearchSucceed()));
     expect(clone.next().done).toEqual(true);
@@ -45,16 +47,14 @@ describe('search Saga', () => {
     const pollingUrl = buildUrl({ ...searchInfos, pollingUrl: true });
     const generator = cloneableGenerator(Sagas.initSearchWorker)(action);
 
-    expect(generator.next().value).toEqual(
-      call(Api, url, {
-        method: 'GET',
-      }),
-    );
+    expect(generator.next().value).toEqual(put(ActionCreators.onSearchStarted(searchInfos)));
 
     const clone = generator.clone();
 
-    expect(clone.next(uncompletedApiResult).value).toEqual(
-      put(ActionCreators.onSearchStarted(searchInfos)),
+    expect(clone.next(apiResult).value).toEqual(
+      call(Api, url, {
+        method: 'GET',
+      }),
     );
     let index = getOr(0, 'departures.length', uncompletedApiResult);
 

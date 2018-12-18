@@ -8,6 +8,11 @@ import { Fixtures } from '../../domains/search';
 
 storiesOf('Search', module)
   .add('default', () => (
-    <Search proposedTrips={Fixtures.proposedTrips} onSearch={action('onSearh')} />
+    <Search proposedTrips={Fixtures.proposedTrips} isLoading={false} onSearch={action('onSearh')} />
   ))
-  .add('without proposed trip', () => <Search proposedTrips={[]} onSearch={action('onSearh')} />);
+  .add('without proposed trip', () => (
+    <Search proposedTrips={[]} isLoading={false} onSearch={action('onSearh')} />
+  ))
+  .add('is loading', () => (
+    <Search proposedTrips={Fixtures.proposedTrips} isLoading onSearch={action('onSearh')} />
+  ));

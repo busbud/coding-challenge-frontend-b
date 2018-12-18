@@ -16,6 +16,8 @@ export function* initSearchWorker({ payload: searchInformations }) {
   const url = buildUrl(searchInformations);
   const pollingUrl = buildUrl({ ...searchInformations, pollingUrl: true });
 
+  yield put(ActionCreators.onSearchStarted(searchInformations));
+
   let result = yield call(Api, url, {
     method: 'GET',
   });
@@ -23,7 +25,6 @@ export function* initSearchWorker({ payload: searchInformations }) {
   let isComplete = get('complete', result);
   let index = getOr(0, 'departures.length', result);
 
-  yield put(ActionCreators.onSearchStarted(searchInformations));
   yield put(ActionCreators.dispatchResult(result));
 
   while (!isComplete) {

@@ -5,7 +5,7 @@ import styles from './App.css';
 
 import configureStore from '../../store/configureStore';
 
-import { Search } from '../Search';
+import Search from '../Search';
 
 const store = configureStore();
 

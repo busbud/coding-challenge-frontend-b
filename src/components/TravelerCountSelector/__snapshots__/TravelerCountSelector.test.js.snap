@@ -2,10 +2,10 @@
 
 exports[`TravelerCountSelector renders correctly 1`] = `
 <div
-  className="MuiFormControl-root-2"
+  className="MuiFormControl-root-2 MuiFormControl-fullWidth-5"
 >
   <div
-    className="MuiInputBase-root-19 MuiOutlinedInput-root-6 MuiInputBase-error-25 MuiOutlinedInput-error-11 MuiInputBase-formControl-20 MuiInputBase-adornedStart-23 MuiOutlinedInput-adornedStart-9 MuiInputBase-adornedEnd-24 MuiOutlinedInput-adornedEnd-10 UnstyledTravellerCountSelector-input-1"
+    className="MuiInputBase-root-19 MuiOutlinedInput-root-6 MuiInputBase-error-25 MuiOutlinedInput-error-11 MuiInputBase-fullWidth-28 MuiInputBase-formControl-20 MuiInputBase-adornedStart-23 MuiOutlinedInput-adornedStart-9 MuiInputBase-adornedEnd-24 MuiOutlinedInput-adornedEnd-10 UnstyledTravellerCountSelector-input-1"
     onClick={[Function]}
     shrink={1}
   >
@@ -44,6 +44,7 @@ exports[`TravelerCountSelector renders correctly 1`] = `
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
+        onContextMenu={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -100,6 +101,7 @@ exports[`TravelerCountSelector renders correctly 1`] = `
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
+        onContextMenu={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}

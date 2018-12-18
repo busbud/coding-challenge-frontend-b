@@ -19,7 +19,7 @@ export const proposedTrips: Array<ProposedTrip> = [
     totalPrice: 5200,
     departureLocation:
       'Métro Bonaventure Bus Station, 997 Rue St-Antoine Ouest, Montreal, QC H3C 1A6',
-    travellersCount: 1,
+    travellersCount: 0,
     operator: {
       name: 'Greyhound',
       logoUrl:
