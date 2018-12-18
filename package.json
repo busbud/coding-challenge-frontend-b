@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server ---mode=development",
     "build": "webpack --mode=production",
     "start": "node server.js",
-    "heroku-postbuild": "npm build"
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
