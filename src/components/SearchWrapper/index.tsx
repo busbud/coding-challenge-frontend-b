@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { getResults } from '../../api'
+import { getResults, getPollResults } from '../../api'
 import Header from '../Header'
 import SearchForm from '../SearchForm'
 import SearchResults from '../SearchResults'
@@ -51,7 +51,37 @@ export default class SearchWrapper extends React.Component<any, SearchState> {
       departures: results.departures,
       searchHasStarted: true,
       complete: results.complete
+    }, () => {
+      this.startPollInterval()
     })
+  }
+
+  async getPollResults () {
+    const index: number = this.state.departures.length
+    const params: Array<any> = this.state.params
+
+    params['index'] = index
+
+    const results = await getPollResults(this.state.origin, this.state.destination, this.state.outboundDate, this.state.params)
+
+    this.setState({
+      locations: this.state.locations.concat(results.locations),
+      operators: this.state.operators.concat(results.operators),
+      departures: this.state.departures.concat(results.departures),
+      complete: results.complete
+    })
+  }
+
+  startPollInterval () {
+    const intervalLength: number = 3000
+
+    const interval = setInterval(() => {
+      if (!this.state.complete) {
+        this.getPollResults()
+      } else {
+        clearInterval(interval)
+      }
+    }, intervalLength)
   }
 
   render () {
