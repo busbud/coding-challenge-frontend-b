@@ -76,10 +76,12 @@ export default class SearchWrapper extends React.Component<any, SearchState> {
     })
   }
 
-  langChange(lang) {
+  langChange() {
     const params: Array<any> = this.state.params
-    params['lang'] = lang
-    this.setState(this.state)
+    params['lang'] = localStorage.getItem('i18nextLng')
+    this.setState(this.state, () => {
+      this.getResults()
+    })
   }
 
   startPollInterval () {

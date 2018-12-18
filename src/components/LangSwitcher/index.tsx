@@ -23,7 +23,7 @@ export default class LangSwitch extends React.Component<LangSwitchProps, LangSwi
     const lang = target.value
     i18n.changeLanguage(lang)
     this.setState({ currentLang: lang }, () => {
-      this.props.langChange(this.state.currentLang)
+      this.props.langChange()
     })
   }
 
