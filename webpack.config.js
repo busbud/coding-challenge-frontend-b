@@ -4,10 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 let config = {
   entry: ['./src/app.tsx', './src/css/application.sass'],
+  devServer: {
+    contentBase: '/dist'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'app.js',
-    publicPath: '/dist'
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx']
