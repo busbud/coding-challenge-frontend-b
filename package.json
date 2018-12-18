@@ -6,7 +6,8 @@
   "scripts": {
     "test": "",
     "dev": "webpack-dev-server ---mode=development",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/gen035/coding-challenge-frontend-b#readme",
   "devDependencies": {
+    "@types/jest": "^23.3.10",
     "@types/react": "^16.7.17",
     "@types/react-dom": "^16.0.11",
     "axios": "^0.18.0",
@@ -27,6 +29,7 @@
     "file-loader": "^2.0.0",
     "i18next": "^13.0.0",
     "i18next-browser-languagedetector": "^2.2.4",
+    "jest": "^23.6.0",
     "node-sass": "^4.11.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
