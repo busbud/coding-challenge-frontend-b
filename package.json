@@ -33,7 +33,8 @@
     "eject": "react-scripts eject",
     "flow": "flow",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "heroku-postbuild": "npm run build"
   },
   "browserslist": [
     ">0.2%",
