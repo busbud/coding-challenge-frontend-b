@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 let config = {
   entry: ['./src/app.tsx', './src/css/application.sass'],
@@ -47,7 +48,13 @@ let config = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      filename: './index.html'
+    })
+  ]
 }
 
 module.exports = config
