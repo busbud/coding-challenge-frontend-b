@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server ---mode=development",
     "build": "webpack --mode=production",
     "start": "node server.js",
-    "heroku-postbuild": "cd coding-challenge-frontend-b && npm build"
+    "heroku-postbuild": "npm build"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gen035/coding-challenge-frontend-b/issues"
+  },
+  "engines": { 
+    "node": ">=10.14"
   },
   "homepage": "https://github.com/gen035/coding-challenge-frontend-b#readme",
   "devDependencies": {
