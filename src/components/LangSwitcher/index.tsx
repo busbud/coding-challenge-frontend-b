@@ -1,12 +1,16 @@
 import * as React from 'react'
 import i18n from 'i18next'
+import { Trans } from 'react-i18next'
+interface LangSwitchProps {
+  langChange: any
+}
 
 interface LangSwitcherState {
   currentLang: string
 }
 
-export default class LangSwitch extends React.Component<any, LangSwitcherState> {
-  constructor (props: any) {
+export default class LangSwitch extends React.Component<LangSwitchProps, LangSwitcherState> {
+  constructor (props: LangSwitchProps) {
     super(props)
 
     this.state = {
@@ -18,7 +22,9 @@ export default class LangSwitch extends React.Component<any, LangSwitcherState> 
     const target = e.target as HTMLInputElement
     const lang = target.value
     i18n.changeLanguage(lang)
-    this.setState({ currentLang: lang })
+    this.setState({ currentLang: lang }, () => {
+      this.props.langChange(this.state.currentLang)
+    })
   }
 
   componentDidMount () {

@@ -20,8 +20,11 @@ interface SearchState {
 export default class SearchWrapper extends React.Component<any, SearchState> {
   constructor (props: any) {
     super(props)
+    
+    const currentLang: any = localStorage.getItem('i18nextLng')
 
     this.getResults = this.getResults.bind(this)
+    this.langChange = this.langChange.bind(this)
 
     this.state = {
       origin: 'dr5reg',
@@ -31,7 +34,8 @@ export default class SearchWrapper extends React.Component<any, SearchState> {
         adult: 1,
         child: 0,
         senior: 0,
-        currency: 'CAD'
+        currency: 'CAD',
+        lang: currentLang
       },
       cities: [],
       locations: [],
@@ -72,6 +76,12 @@ export default class SearchWrapper extends React.Component<any, SearchState> {
     })
   }
 
+  langChange(lang) {
+    const params: Array<any> = this.state.params
+    params['lang'] = lang
+    this.setState(this.state)
+  }
+
   startPollInterval () {
     const intervalLength: number = 3000
 
@@ -87,7 +97,7 @@ export default class SearchWrapper extends React.Component<any, SearchState> {
   render () {
     return(
       <React.Fragment>
-        <Header/>
+        <Header onLangChange={this.langChange}/>
         <SearchForm buttonClick={this.getResults} />
         {this.state.searchHasStarted ?
          <SearchResults
