@@ -17,3 +17,15 @@ export const getResults = (origin: string, destination: string, outboundDate: st
     })
   )
 }
+
+export const getPollResults = (origin: string, destination: string, outboundDate: string, params: any) => {
+  const url = `${origin}/${destination}/${outboundDate}/poll`
+  return(
+    axiosInstance.get(url, {
+      params: params
+    })
+    .then(response => {
+      return response.data
+    })
+  )
+}
