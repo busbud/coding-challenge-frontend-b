@@ -14,7 +14,7 @@ import * as ActionCreators from './actionCreators';
 
 export function* initSearchWorker({ payload: searchInformations }) {
   const url = buildUrl(searchInformations);
-  const pollingUrl = buildUrl({ ...searchInformations, pollingUrl: true });
+  const pollingUrl = buildUrl({ ...searchInformations, polling: true });
 
   yield put(ActionCreators.onSearchStarted(searchInformations));
 

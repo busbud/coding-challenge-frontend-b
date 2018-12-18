@@ -44,7 +44,7 @@ describe('search Saga', () => {
     };
 
     const url = buildUrl(searchInfos);
-    const pollingUrl = buildUrl({ ...searchInfos, pollingUrl: true });
+    const pollingUrl = buildUrl({ ...searchInfos, polling: true });
     const generator = cloneableGenerator(Sagas.initSearchWorker)(action);
 
     expect(generator.next().value).toEqual(put(ActionCreators.onSearchStarted(searchInfos)));

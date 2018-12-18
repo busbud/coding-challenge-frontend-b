@@ -276,7 +276,9 @@ class UnStyledSearch extends Component<Props, State> {
               travellerType="adult"
               onChange={this.handleTravelerCountChange}
             />
-            <TravelerCountSelector
+
+            {/* // will be deployed in a next release */}
+            {/* <TravelerCountSelector
               isErrored={travellerSelectorErrored}
               travellerType="senior"
               onChange={this.handleTravelerCountChange}
@@ -285,7 +287,7 @@ class UnStyledSearch extends Component<Props, State> {
               isErrored={travellerSelectorErrored}
               travellerType="child"
               onChange={this.handleTravelerCountChange}
-            />
+            /> */}
           </div>
         </div>
 
