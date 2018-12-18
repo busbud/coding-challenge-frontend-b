@@ -12,7 +12,6 @@ interface SearchResultsProps {
 export default class SearchResults extends React.Component<SearchResultsProps, any> {
   constructor (props: SearchResultsProps) {
     super(props)
-    console.log(this.props.departures)
   }
 
   render () {
