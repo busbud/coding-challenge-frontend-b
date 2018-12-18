@@ -1,5 +1,5 @@
 /* eslint-disable */
-require('es6-promise').polyfill();
+require('es6-promise/auto');
 
 const ApiCall = (url, configuration, currentLanguage) =>
   new Promise((resolve, reject) => {
