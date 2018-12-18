@@ -1,4 +1,5 @@
 import * as React from 'react'
+import LangSwitcher from '../../components/LangSwitcher'
 
 export default class TopBar extends React.Component {
   constructor (props: any) {
@@ -12,7 +13,7 @@ export default class TopBar extends React.Component {
           <div className='row align-items-center'>
             <div className='col-md-3 header-top-bar-logo'></div>
             <div className='col-md-9 header-top-bar-lang'>
-              LANG Switcher
+              <LangSwitcher />
             </div>
           </div>
         </div>

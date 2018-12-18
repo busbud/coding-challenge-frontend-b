@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Departure from './../Departure'
 import { getLocations, getOperator } from '../../utils/helper'
+import { Trans } from 'react-i18next'
 
 interface SearchResultsProps {
   cities: Array<any>,
@@ -21,7 +22,7 @@ export default class SearchResults extends React.Component<SearchResultsProps, a
           <div className='offset-md-2 col-md-8'>
             <div className='results-top'>
               <div className='col-md-4'>
-                {this.props.departures.length} results
+                {this.props.departures.length} <Trans>results</Trans>
               </div>
             </div>
           </div>

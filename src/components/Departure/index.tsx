@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { getFormattedPrice, getFormattedDate } from './../../utils/helper'
+import { Trans } from 'react-i18next'
 
 interface DepartureProps {
   departure: any,
@@ -30,9 +31,9 @@ export default class Departure extends React.Component<DepartureProps, any> {
             </div>
           </div>
           <div className='col-lg-2'>
-            <div className='departure-price'>{getFormattedPrice(this.props.departure.prices.total)}<span>{this.props.departure.prices.currency}</span></div>
+            <div className='departure-price'>${getFormattedPrice(this.props.departure.prices.total)}<span>{this.props.departure.prices.currency}</span></div>
             <div className='departure-select'>
-              <button>select</button>
+              <button><Trans>select</Trans></button>
             </div>
           </div>
         </div>
