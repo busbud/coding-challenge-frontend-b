@@ -1,9 +1,13 @@
 import Departures from "@/services/departures";
-import * as fetchMock from "fetch-mock";
+
+import { newYork, montreal } from "@/utils/geo";
+import { startDate } from "@/utils/festivalDates";
+
+const fetch = require("jest-fetch-mock");
 
 describe("departures", () => {
 
-  afterEach(fetchMock.restore);
+  afterEach(fetch.resetMocks);
 
   describe("getDeparturesFromNewYork()", () => {
 
@@ -11,8 +15,11 @@ describe("departures", () => {
       expect(Departures.getDeparturesFromNewYork).toBeDefined();
     });
 
-    it("should call te busbud API", () => {
-      fetchMock.mock("https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date", 200);
+    it("should call te busbud API", async () => {
+      fetch.mockResponseOnce(`https://napi.busbud.com/x-departures/${newYork}/${montreal}/${startDate}`, 200);
+
+      await Departures.getDeparturesFromNewYork();
+      expect(fetch).toHaveBeenCalledWith(`https://napi.busbud.com/x-departures/${newYork}/${montreal}/${startDate}`);
     });
   });
 });
