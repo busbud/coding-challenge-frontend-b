@@ -1,9 +1,15 @@
 import geo from "@/utils/geo";
 import { startDate as osheagaStartDate } from "@/utils/festivalDates";
+import { apiRequestHeader } from "@/utils/bubudRequestHelper"
 
 class Departures {
+
     async getDeparturesFromNewYork() {
-        await fetch(`https://napi.busbud.com/x-departures/${geo.newYork}/${geo.montreal}/${osheagaStartDate}`);
+        const headers: Headers = new Headers(apiRequestHeader);
+        await fetch(
+            `https://napi.busbud.com/x-departures/${geo.newYork}/${geo.montreal}/${osheagaStartDate}`,
+            { headers },
+        );
     }
 }
 
