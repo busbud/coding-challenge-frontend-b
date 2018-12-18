@@ -8,7 +8,9 @@
   transform: scale(1.025)
 
 .departure-logo
-  max-width: 150px
+  max-width: 100px
+  @media(min-width: 768px)
+    max-width: 150px
 
 .departure-hour
   display: inline-block
@@ -18,8 +20,32 @@
   width: 70px
   text-align: right
 
+.departure-city
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  
 .departure-from
+  display: flex
   margin-bottom: 8px
+  font-size: 12px
+  @media(min-width: 768px)
+    display: inline-block
+    font-size: 14px
+  @media(min-width: 992px)
+    font-size: 16px
+
+
+.departure-to
+  display: flex
+  font-size: 12px
+  margin-bottom: 8px
+  @media(min-width: 768px)
+    display: inline-block
+    font-size: 14px
+    margin-bottom: 0
+  @media(min-width: 768px)
+    font-size: 16px
 
 .departure-hour--to
   color: $medium-grey
@@ -48,6 +74,9 @@
   color: $white
   cursor: pointer
   transition: background-color 250ms linear
+  width: 100%
+  @media(min-width: 992px)
+    width: auto
 
 .departure-select button:hover
   background-color: $orange

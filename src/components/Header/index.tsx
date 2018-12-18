@@ -9,7 +9,7 @@ export default class TopBar extends React.Component {
     return (
       <div className='header-top-bar'>
         <div className='container'>
-          <div className='row'>
+          <div className='row align-items-center'>
             <div className='col-md-3 header-top-bar-logo'></div>
             <div className='col-md-9 header-top-bar-lang'>
               LANG Switcher

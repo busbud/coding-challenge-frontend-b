@@ -16,7 +16,7 @@ export default class Departure extends React.Component<DepartureProps, any> {
     return(
       <div className='departure'>
         <div className='row'>
-          <div className='col-md-9'>
+          <div className='col-lg-10'>
             <div className='departure-logo'>
               <img src={this.props.operator.logo_url} alt={this.props.operator.display_name} />
             </div>
@@ -29,7 +29,7 @@ export default class Departure extends React.Component<DepartureProps, any> {
               <span className='departure-city departure-city--to'><b>{this.props.locations.toCity.name}</b> - {this.props.locations.to.name}</span>
             </div>
           </div>
-          <div className='col-md-3'>
+          <div className='col-lg-2'>
             <div className='departure-price'>{getFormattedPrice(this.props.departure.prices.total)}<span>{this.props.departure.prices.currency}</span></div>
             <div className='departure-select'>
               <button>select</button>
