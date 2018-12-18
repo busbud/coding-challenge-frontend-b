@@ -1,7 +1,7 @@
 import * as React from 'react'
 import i18n from 'i18next'
 import { Trans } from 'react-i18next'
-interface LangSwitchProps {
+interface LangSwitcherProps {
   langChange: any
 }
 
@@ -9,8 +9,8 @@ interface LangSwitcherState {
   currentLang: string
 }
 
-export default class LangSwitch extends React.Component<LangSwitchProps, LangSwitcherState> {
-  constructor (props: LangSwitchProps) {
+export default class LangSwitcher extends React.Component<LangSwitcherProps, LangSwitcherState> {
+  constructor (props: LangSwitcherProps) {
     super(props)
 
     this.state = {

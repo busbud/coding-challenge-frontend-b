@@ -20,11 +20,12 @@ interface SearchState {
 export default class SearchWrapper extends React.Component<any, SearchState> {
   constructor (props: any) {
     super(props)
-    
     const currentLang: any = localStorage.getItem('i18nextLng')
+    const currency: any = localStorage.getItem('currency') ? localStorage.getItem('currency') : 'USD'
 
     this.getResults = this.getResults.bind(this)
     this.langChange = this.langChange.bind(this)
+    this.currencyChange = this.currencyChange.bind(this)
 
     this.state = {
       origin: 'dr5reg',
@@ -34,7 +35,7 @@ export default class SearchWrapper extends React.Component<any, SearchState> {
         adult: 1,
         child: 0,
         senior: 0,
-        currency: 'CAD',
+        currency: currency,
         lang: currentLang
       },
       cities: [],
@@ -76,12 +77,23 @@ export default class SearchWrapper extends React.Component<any, SearchState> {
     })
   }
 
-  langChange() {
+  langChange () {
     const params: Array<any> = this.state.params
     params['lang'] = localStorage.getItem('i18nextLng')
     this.setState(this.state, () => {
-      this.getResults()
+      if (this.state.departures.length > 0) {
+        this.getResults()
+      }
     })
+  }
+
+  currencyChange () {
+    const currency: any = localStorage.getItem('currency')
+    const params: Array<any> = this.state.params
+    params['currency'] = currency
+    if (this.state.departures.length > 0) {
+      this.getResults()
+    }
   }
 
   startPollInterval () {
@@ -99,7 +111,7 @@ export default class SearchWrapper extends React.Component<any, SearchState> {
   render () {
     return(
       <React.Fragment>
-        <Header onLangChange={this.langChange}/>
+        <Header onLangChange={this.langChange} onCurrencyChange={this.currencyChange} />
         <SearchForm buttonClick={this.getResults} />
         {this.state.searchHasStarted ?
          <SearchResults
