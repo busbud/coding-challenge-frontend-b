@@ -1,15 +1,21 @@
 <template>
-  <div id="app">
+  <div class="main">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/new-york-to-montreal">How to get to Montreal</router-link>
     </div>
     <router-view/>
   </div>
 </template>
 
 <style lang="scss">
-#app {
+body {
+  background-image: url("https://busbud.imgix.net/city-hires/1474307214311-Montreal,Quebec,Canada.jpg?h={height}&w={width}&auto=format,compress");
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: .9;
+}
+.main {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
