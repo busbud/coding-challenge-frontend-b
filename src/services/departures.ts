@@ -4,26 +4,35 @@ import geo from "@/utils/geo";
 
 const departuresService = {
 
-  getDeparturesFromNewYork(): Promise<any> {
-    return this.fetchDepartures()
-      .catch((error) => {
-        throw new Error(error);
-      });
-  },
-  async fetchDepartures() {
-    const headers: Headers = new Headers(apiRequestHeader);
-    try {
-      const response: Response = await fetch(
-        `https://napi.busbud.com/x-departures/${geo.newYork}/${geo.montreal}/${osheagaStartDate}`,
-        { headers },
-      );
-      if (!response.ok) {
-        return Promise.reject(response.body);
-      }
+  async getDeparturesFromNewYork(): Promise<any> {
+    let departuresList: any[] = [];
+    let pollingComplete: boolean = false;
+    while (!pollingComplete) {
+      const departuresObject: any = await this.fetchDepartures();
 
-      return response.json();
+      departuresList = [...departuresList, ...departuresObject.departures];
+      pollingComplete = departuresObject.complete;
+
+      if (pollingComplete) {
+        departuresObject.departures = departuresList;
+
+        return departuresObject;
+      }
+    }
+  },
+  async fetchDepartures(): Promise<any> {
+    const headers: Headers = new Headers(apiRequestHeader);
+    const url: string = `https://napi.busbud.com/x-departures/${geo.newYork}/${geo.montreal}/${osheagaStartDate}`;
+    try {
+      const response: Response = await fetch(url, { headers });
+
+      if (response.ok) {
+        return response.json();
+      }
+      const errorResponse: any = await response.json();
+      throw new Error(errorResponse.error);
     } catch (error) {
-        throw new Error(error);
+      throw new Error(`Departures fetch failed. The reason is: ${error.message}`);
     }
   },
 };
