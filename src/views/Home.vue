@@ -15,3 +15,13 @@ import { Component, Vue } from "vue-property-decorator";
 })
 export default class Home extends Vue {}
 </script>
+
+<style lang="scss" scoped>
+.home {
+  background-image: url("https://busbud.imgix.net/city-hires/1474307214311-Montreal,Quebec,Canada.jpg?h={height}&w={width}&auto=format,compress");
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: .9;
+}
+</style>
+

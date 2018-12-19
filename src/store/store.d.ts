@@ -3,5 +3,7 @@ export interface Departure {
 }
 
 export interface DepartureState {
+    destinationCity: any;
     departures: Departure[];
+    departingCity: any;
 }

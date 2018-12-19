@@ -16,7 +16,7 @@ const departuresService = {
         .catch((error) => {
             console.error(error);
         });
-    }
-}
+    },
+};
 
 export default departuresService;

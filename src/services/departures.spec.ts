@@ -19,7 +19,7 @@ describe("departures", () => {
     it("should call te busbud API", async () => {
       const response = Promise.resolve({ departures: [] });
       fetch.mockResponseOnce(JSON.stringify(response), 200);
-      
+
       const headers: Headers = new Headers({
         "Accept": "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
         "X-Busbud-Token": "this_is_a_busbud_token",

@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div id="nav">
+    <div class="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/new-york-to-montreal">How to get to Montreal</router-link>
     </div>
@@ -10,20 +10,18 @@
 
 <style lang="scss">
 body {
-  background-image: url("https://busbud.imgix.net/city-hires/1474307214311-Montreal,Quebec,Canada.jpg?h={height}&w={width}&auto=format,compress");
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: .9;
+  margin: 0;
 }
 .main {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
-#nav {
+.nav {
   padding: 30px;
+  text-align: center;
+  
   a {
     font-weight: bold;
     color: #2c3e50;

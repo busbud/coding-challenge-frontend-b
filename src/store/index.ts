@@ -7,21 +7,28 @@ import departuresService from "@/services/departures";
 Vue.use(Vuex);
 
 export const stateDefinition: DepartureState = {
+  destinationCity: {},
   departures: [],
+  departingCity: {},
 };
 
 export const mutations =  {
   addDepartures(state, departures) {
     state.departures.push(...departures);
   },
+  setCities(state, cities) {
+    state.departingCity = cities[0];
+    state.destinationCity = cities[1];
+  },
 };
 
 export const actions = {
   async fetchDepartures({ commit }: { commit: Commit }): Promise<any> {
-    return await departuresService.getDeparturesFromNewYork()
-      .then(({ departures }) => {
-        commit("addDepartures", departures);
-      });
+    const departureResults = await departuresService.getDeparturesFromNewYork();
+    const { cities, departures } = departureResults;
+
+    commit("addDepartures", departures);
+    commit("setCities", cities);
   },
 };
 
