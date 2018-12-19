@@ -26,14 +26,14 @@
 </template>
 
 <script lang="ts">
+import CityBanners from "@/components/CityBanners.vue";
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Action, State } from "vuex-class";
-import CityBanners from "@/components/CityBanners.vue"
 
 @Component({
   components: {
-    CityBanners
-  }
+    CityBanners,
+  },
 })
 export default class DeparturesList extends Vue {
   @State public departures;

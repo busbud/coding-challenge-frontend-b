@@ -21,32 +21,8 @@ describe("store", () => {
 
     beforeEach(() => {
       this.cities = [
-        {
-          id: "375dd5879001acbd84a4683deda84183",
-          locale: "en",
-          region_id: 6417,
-          name: "New York",
-          geohash: "dr5reg",
-          timezone: "America/New_York",
-          image_url: "/images/promos/city-blocks/new-york.jpg",
-          legacy_url_form: "NewYork,NewYork,UnitedStates",
-          full_name: "New York, New York, United States",
-          region: { id: 6417 },
-        },
-        {
-          country_code2: "CA",
-          full_name: "Montreal, Quebec, Canada",
-          geohash: "f25dvk",
-          hero_image_url: "https://busbud.imgix.net/city-heroes/montreal.jpg?h={height}&w={width}&auto=format",
-          id: "375dd587-9001-acbd-84a4-683dedfb933e",
-          image_url: "https://busbud.imgix.net/city-hires/1474307214311-Montreal,Quebec,Canada.jpg?h={height}&w={width}&auto=format,compress",
-          legacy_url_form: "Montreal,Quebec,Canada",
-          locale: "en",
-          name: "Montreal",
-          region: { id: 3361 },
-          region_id: 3361,
-          timezone: "America/Montreal",
-        },
+        { id: "375dd5879001acbd84a4683deda84183" },
+        { id: "375dd587-9001-acbd-84a4-683dedfb933e" },
       ];
       this.departures = [{}];
       departuresService.getDeparturesFromNewYork = jest.fn(() => Promise.resolve({
