@@ -31,9 +31,16 @@ export default class CityBanners extends Vue {
   background-size: cover;
   padding: 32px 0; 
   width: 100%;
-  height: 300px;
-  background-position-y: 50%;
+  height: 150px;
+  background-position: 50%;
   z-index: -1;
+
+  @media screen and (min-width: 500px) {
+    height: 225px;
+  }
+  @media screen and (min-width: 700px) {
+    height: 300px;
+  }
 
   &__title {
     padding-left: 32px;

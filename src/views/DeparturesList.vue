@@ -53,28 +53,32 @@ export default class DeparturesList extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-pre {
-  text-align: left;
-}
 .departures {
   list-style: none;
   margin: 16px;
   padding: 0;
 
   &__departure {
-    display: flex;
     padding: 16px 0;
     width: 100%;
+
+    @media screen and (min-width: 400px) {
+      display: flex;
+    }
   }
 
   &__info {
-    flex-grow: 1;
+    @media screen and (min-width: 400px) {
+      flex-grow: 1;
+    }
   }
 
   &__buy {
-    flex-grow: 1;
-    align-self: center;
-    text-align: right;
+    @media screen and (min-width: 400px) {
+      flex-grow: 1;
+      align-self: center;
+      text-align: right;
+    }
   }
 
   &__buy-button {
@@ -82,8 +86,19 @@ pre {
     color: #fff;
     background-color: #f19020;
     border-color: #f19020;
-    padding: 12px 16px;
+    padding: 12px 0;
     border-radius: 5px;
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    width: 100%;
+
+    @media screen and (min-width: 400px) {
+      padding: 12px 16px;
+      display: inline;
+      margin-top: 0;
+      width: auto;
+    }
   }
 }
 </style>
