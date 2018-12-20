@@ -1,4 +1,7 @@
-# Technical
+# README
+
+## Live app
+To see the app in action go to https://busbud-by-tdg.herokuapp.com
 
 ## ENV vars
 To be able to run this app you need a busbud api key.
