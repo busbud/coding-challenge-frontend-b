@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="departures-list">
     <city-banners></city-banners>
     <ul class="departures">
       <li
@@ -22,23 +22,27 @@
         </div>
       </li>
     </ul>
+    <loader v-if="!areAllDeparturesLoaded"></loader>
   </div>
 </template>
 
 <script lang="ts">
 import CityBanners from "@/components/CityBanners.vue";
+import Loader from "@/components/Loader.vue";
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Action, State } from "vuex-class";
 
 @Component({
   components: {
     CityBanners,
+    Loader,
   },
 })
 export default class DeparturesList extends Vue {
   @State public departures;
   @State public destinationCity;
   @State public departingCity;
+  @State public areAllDeparturesLoaded;
   @Action private fetchDepartures;
 
   public async created() {
@@ -53,6 +57,10 @@ export default class DeparturesList extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.departures-list {
+  margin-bottom: 50px;
+}
+
 .departures {
   list-style: none;
   margin: 16px;
@@ -61,6 +69,7 @@ export default class DeparturesList extends Vue {
   &__departure {
     padding: 16px 0;
     width: 100%;
+    border-bottom: 1px solid #ccc;
 
     @media screen and (min-width: 400px) {
       display: flex;

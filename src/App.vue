@@ -1,12 +1,24 @@
 <template>
   <div class="main">
-    <div class="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/new-york-to-montreal">How to get to Montreal</router-link>
-    </div>
+    <osheaga-header></osheaga-header>
     <router-view/>
   </div>
 </template>
+
+<script lang="ts">
+import OsheagaHeader from "@/components/OsheagaHeader.vue";
+import Loader from "@/components/Loader.vue";
+import { Component, Prop, Vue } from "vue-property-decorator";
+import { Action, State } from "vuex-class";
+
+@Component({
+  components: {
+    OsheagaHeader,
+  },
+})
+export default class App extends Vue {}
+</script>
+
 
 <style lang="scss">
 body {
@@ -17,17 +29,5 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-}
-.nav {
-  padding: 30px;
-  text-align: center;
-  
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
