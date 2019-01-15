@@ -2,29 +2,28 @@ import { apiRequestHeader } from "@/utils/bubudRequestHelper";
 import { startDate as osheagaStartDate } from "@/utils/festivalDates";
 import geo from "@/utils/geo";
 
+const headers: Headers = new Headers(apiRequestHeader);
+const fetchUrl: string = `https://napi.busbud.com/x-departures/${geo.newYork}/${geo.montreal}/${osheagaStartDate}`;
+
 const departuresService = {
 
-  async getDeparturesFromNewYork(): Promise<any> {
-    let departuresList: any[] = [];
-    let pollingComplete: boolean = false;
-    while (!pollingComplete) {
-      const departuresObject: any = await this.fetchDepartures();
+  async pollDepartures(numberOfDeparturesToRetrieve: number): Promise<any> {
+    const pollUrl: string = `${fetchUrl}/poll?index=${numberOfDeparturesToRetrieve}`;
+    try {
+      const response: Response = await fetch(pollUrl, { headers });
 
-      departuresList = [...departuresList, ...departuresObject.departures];
-      pollingComplete = departuresObject.complete;
-
-      if (pollingComplete) {
-        departuresObject.departures = departuresList;
-
-        return departuresObject;
+      if (response.ok) {
+        return response.json();
       }
+      const errorResponse: any = await response.json();
+      throw new Error(errorResponse.error);
+    } catch (error) {
+      throw new Error(`Departures poll failed. The reason is: ${error.message}`);
     }
   },
   async fetchDepartures(): Promise<any> {
-    const headers: Headers = new Headers(apiRequestHeader);
-    const url: string = `https://napi.busbud.com/x-departures/${geo.newYork}/${geo.montreal}/${osheagaStartDate}`;
     try {
-      const response: Response = await fetch(url, { headers });
+      const response: Response = await fetch(fetchUrl, { headers });
 
       if (response.ok) {
         return response.json();

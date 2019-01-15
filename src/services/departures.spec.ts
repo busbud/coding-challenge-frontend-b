@@ -8,12 +8,23 @@ const fetch = require("jest-fetch-mock");
 
 describe("departures", () => {
 
+  beforeEach(() => {
+    this.headers = new Headers({
+      "Accept": "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
+      "X-Busbud-Token": "this_is_a_busbud_token",
+    }) as Headers;
+  });
+
   afterEach(fetch.resetMocks);
 
-  describe("getDeparturesFromNewYork()", () => {
+  describe("pollDepartures()", () => {
+
+    beforeEach(() => {
+      this.numberOfDeparturesToRetrieve = 10 as number;
+    });
 
     it("should be defined", () => {
-      expect(departuresService.getDeparturesFromNewYork).toBeDefined();
+      expect(departuresService.pollDepartures).toBeDefined();
     });
 
     it("should call te busbud API", async () => {
@@ -28,57 +39,15 @@ describe("departures", () => {
         "X-Busbud-Token": "this_is_a_busbud_token",
       });
 
-      await departuresService.getDeparturesFromNewYork();
+      await departuresService.pollDepartures(this.numberOfDeparturesToRetrieve);
       expect(fetch).toHaveBeenCalledWith(
-        `https://napi.busbud.com/x-departures/${newYork}/${montreal}/${startDate}`,
+        // tslint:disable-next-line:max-line-length
+        `https://napi.busbud.com/x-departures/${newYork}/${montreal}/${startDate}/poll?index=${this.numberOfDeparturesToRetrieve}`,
         { headers },
       );
     });
 
-    describe("when there is a polling needed", () => {
-
-      beforeEach(() => {
-        this.incompleteResponse = {
-          complete: false,
-          departures: [{ id: "MzNmMjVhOGM6YzM2NGI3ZjA" }],
-        };
-        this.completeResponse = {
-          complete: true,
-          departures: [{ id: "MjhiZWZmYjg6NmU1YTk2NTA" }],
-        };
-        fetch.mockResponses(
-          [
-            JSON.stringify(this.incompleteResponse),
-            { status: 200 },
-          ],
-          [
-            JSON.stringify(this.incompleteResponse),
-            { status: 200 },
-          ],
-          [
-            JSON.stringify(this.completeResponse),
-            { status: 200 },
-          ],
-        );
-      });
-
-      it("should call the api until the complete field s true", async () => {
-        await departuresService.getDeparturesFromNewYork();
-        expect(fetch).toHaveBeenCalledTimes(3);
-      });
-
-      it("should return a complete object with all the retrieved departures", async () => {
-        const departuresObject = await departuresService.getDeparturesFromNewYork();
-        expect(departuresObject.departures.length).toBe(3);
-        expect(departuresObject.departures).toEqual([
-          ...this.incompleteResponse.departures,
-          ...this.incompleteResponse.departures,
-          ...this.completeResponse.departures,
-        ]);
-      });
-    });
-
-    describe("when fetch call fails", () => {
+    describe("when poll call fails", () => {
 
       beforeEach(() => {
         fetch.mockReject(new Error("fake error message"));
@@ -87,7 +56,64 @@ describe("departures", () => {
       it("should throw error", async () => {
         let errorMessage;
         try {
-          await departuresService.getDeparturesFromNewYork();
+          await departuresService.pollDepartures(this.numberOfDeparturesToRetrieve);
+        } catch (error) {
+          errorMessage = error.message;
+        }
+        expect(errorMessage).toBe("Departures poll failed. The reason is: fake error message");
+      });
+    });
+
+    describe("when the promise rejects", () => {
+
+      beforeEach(() => {
+        const response = { error: "fake internal error" };
+
+        fetch.mockResponseOnce(JSON.stringify(response), { status: 500 });
+      });
+
+      it("should throw an error", async () => {
+        let errorMessage;
+        try {
+          await departuresService.pollDepartures(this.numberOfDeparturesToRetrieve);
+        } catch (error) {
+          errorMessage = error.message;
+        }
+        expect(errorMessage).toBe("Departures poll failed. The reason is: fake internal error");
+      });
+    });
+  });
+
+  describe("fetchDepartures()", () => {
+
+    it("should be defined", () => {
+      expect(departuresService.fetchDepartures).toBeDefined();
+    });
+
+    it("should call te busbud API", async () => {
+      const response = {
+        complete: true,
+        departures: [{}],
+      };
+      fetch.mockResponseOnce(JSON.stringify(response), { status: 200 });
+
+      await departuresService.fetchDepartures();
+      expect(fetch).toHaveBeenCalledWith(
+        `https://napi.busbud.com/x-departures/${newYork}/${montreal}/${startDate}`,
+        { headers: this.headers },
+      );
+    });
+
+    describe("when poll call fails", () => {
+
+      beforeEach(() => {
+        fetch.mockReject(new Error("fake error message"));
+      });
+
+      it("should throw error", async () => {
+        let errorMessage;
+        try {
+          await departuresService.fetchDepartures();
         } catch (error) {
           errorMessage = error.message;
         }
@@ -106,7 +132,7 @@ describe("departures", () => {
       it("should throw an error", async () => {
         let errorMessage;
         try {
-          await departuresService.getDeparturesFromNewYork();
+          await departuresService.fetchDepartures();
         } catch (error) {
           errorMessage = error.message;
         }

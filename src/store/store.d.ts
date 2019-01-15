@@ -3,7 +3,9 @@ export interface Departure {
 }
 
 export interface DepartureState {
+    areAllDeparturesLoaded: boolean;
     destinationCity: any;
     departures: Departure[];
+    departuresLength: number;
     departingCity: any;
 }
