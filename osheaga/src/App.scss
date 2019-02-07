@@ -1,0 +1,191 @@
+$busBBlue: #127ccb;
+$break-small: 500px;
+$break-medium: 950px;
+
+header {
+  background-color: $busBBlue;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+  img {
+    height: 6vmin;
+    float: left;
+    margin-left: 1em;
+  }
+}
+
+.App {
+  font-size: 1em;
+  font-family: sans-serif;
+}
+
+.searchSection {
+  align-items: center;
+
+  .introHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: $break-medium){
+      flex-wrap: wrap;
+    }
+
+    .introText {
+      flex-direction: column;
+      justify-content: center;
+      color: $busBBlue;
+      @media screen and (max-width: $break-small){
+        font-size: 1.5em;
+      }
+    }
+
+    .OsheagaPic {
+      flex-direction: column;
+      height: 60px;
+      padding-left: 10px;
+      @media screen and (max-width: $break-small){
+        height: 40px;
+      }
+    }
+  }
+
+  .searchArea {
+    padding: .5em;
+
+    form {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      label{
+        flex-direction: column;
+        align-items: center;
+        padding: 5px;
+        @media screen and (max-width: $break-medium){
+          margin: 0 20px;
+        }
+        @media screen and (max-width: $break-small){
+          display: inline-block;
+          margin: 0 50px;
+        }
+
+        input {
+          border-radius: .3em;
+          margin-left: .5em;
+          flex-direction: row;
+          font-family: inherit;
+          color: #7A7A7A;
+          font-size: 1em;
+          margin: .5em;
+        }
+      }
+
+      .searchButton {
+        padding: 5px 15px;
+        margin: 10px;
+        background-color: #f19020;
+        color: black;
+        border-radius: .3em;
+        font-family: inherit;
+        font-size: inherit;
+        @media screen and (max-width: $break-medium){
+          margin: 20px;
+        }
+        @media screen and (max-width: $break-small){
+          margin: 20px;
+        }
+      }
+    }
+  }
+}
+
+.ResultsWindom {
+  .resultsBanner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: $busBBlue;
+    color: white;
+    padding: 10px;
+  }
+  .busRoute {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+    border: 1px solid 50%,$busBBlue;
+    border-radius: .3em;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.24);
+    @media screen and (max-width: $break-small){
+      flex-flow: column wrap;
+      justify-content: space-around
+    }
+
+    .priceDiv {
+      order: 10;
+      align-self: center;
+      justify-content: flex-end;
+      text-align: right;
+      @media screen and (max-width: $break-small){
+        text-align: center;
+        order: 3;
+      }
+      p {
+        font-weight: 700;
+        color: $busBBlue;
+        padding-right: 8px;
+      }
+    }
+
+    .departInfo {
+      flex: 1 0 45%;
+      flex-flow: column wrap;
+      align-items: flex-start;
+      justify-content: center;
+      padding-left: 8px;
+      @media screen and (max-width: $break-medium){
+        text-align: center;
+        flex: 1 0 30%;
+      }
+      @media screen and (max-width: $break-small){
+        text-align: center;
+        order: 1;
+      }
+      .departTime {
+        font-weight: 700;
+        color: $busBBlue;
+      }
+    }
+
+    .arriveInfo {
+      flex: 1 0 45%;
+      flex-flow: column wrap;
+      align-items: flex-start;
+      justify-content: center;
+      @media screen and (max-width: $break-medium){
+        text-align: center;
+        flex: 1 0 30%;
+      }
+      @media screen and (max-width: $break-small){
+        flex-flow: row wrap;
+        justify-content: space-around;
+        text-align: center;
+        order: 2;
+      }
+      .arriveTime {
+        font-weight: 700;
+      }
+    }
+  }
+}
