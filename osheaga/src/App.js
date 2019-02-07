@@ -18,11 +18,10 @@ class App extends Component {
   }
   componentDidMount() {}
 
-
   getResults = url => {
     const myHeaders = new Headers();
     myHeaders.append('Accept', 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/');
-    myHeaders.append('X-Busbud-Token', 'PARTNER_AHm3M6clSAOoyJg4KyCg7w');
+    myHeaders.append('X-Busbud-Token', process.env.REACT_APP_API_KEY);
 
     fetch(url, {
       method: 'GET',
@@ -31,6 +30,7 @@ class App extends Component {
     .then(data => data.json())
     .then(json => {
       this.setState({
+
         departures: json.departures,
         locations: json.locations
       })
