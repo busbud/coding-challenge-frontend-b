@@ -1,4 +1,5 @@
 import React from 'react';
+import mockedAxios from 'axios';
 import { Provider } from 'react-redux';
 import {
   render as rtlRender,
@@ -7,49 +8,51 @@ import {
 } from 'react-testing-library';
 import App from './App';
 import { configureStore } from './store/configureStore';
-import { getDepartures } from './api';
 
-jest.mock('./api', () => {
+jest.mock('axios', () => {
   return {
-    getDepartures: jest.fn(() =>
+    defaults: { headers: { common: {} } },
+    request: jest.fn(() =>
       Promise.resolve({
-        departures: [
-          {
-            departure_time: '2019-08-02T00:01:00',
-            arrival_time: '2019-08-02T08:20:00',
-            prices: {
-              currency: 'USD',
-              total: 7500
+        data: {
+          departures: [
+            {
+              departure_time: '2019-08-02T00:01:00',
+              arrival_time: '2019-08-02T08:20:00',
+              prices: {
+                currency: 'USD',
+                total: 7500
+              },
+              origin_location_id: 36102,
+              destination_location_id: 1938
             },
-            origin_location_id: 36102,
-            destination_location_id: 1938
-          },
-          {
-            departure_time: '2019-09-27T18:30:00',
-            arrival_time: '2019-09-28T02:55:00',
-            prices: {
-              currency: 'USD',
-              total: 7800
+            {
+              departure_time: '2019-09-27T18:30:00',
+              arrival_time: '2019-09-28T02:55:00',
+              prices: {
+                currency: 'USD',
+                total: 7800
+              },
+              origin_location_id: 1942,
+              destination_location_id: 1938
+            }
+          ],
+          locations: [
+            {
+              id: 36102,
+              name: 'George Washington Bridge'
             },
-            origin_location_id: 1942,
-            destination_location_id: 1938
-          }
-        ],
-        locations: [
-          {
-            id: 36102,
-            name: 'George Washington Bridge'
-          },
-          {
-            id: 1942,
-            name: 'Port Authority Bus Terminal'
-          },
-          {
-            id: 1938,
-            name: "Gare d'autocars de Montréal"
-          }
-        ],
-        complete: true
+            {
+              id: 1942,
+              name: 'Port Authority Bus Terminal'
+            },
+            {
+              id: 1938,
+              name: "Gare d'autocars de Montréal"
+            }
+          ],
+          complete: true
+        }
       })
     )
   };
@@ -95,4 +98,6 @@ it('should render a list of departures when it is cached on the api (complete is
   ).toBeInTheDocument();
 
   expect(within(departures[1]).queryByText(/\$78/)).toBeInTheDocument();
+
+  expect(mockedAxios.request).toHaveBeenCalledTimes(1);
 });

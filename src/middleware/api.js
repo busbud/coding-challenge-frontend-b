@@ -1,6 +1,10 @@
+import axios from 'axios';
 import { API } from '../constants/actionTypes';
 import { apiStart, apiEnd } from '../actions/apiActions';
-import { getDepartures } from '../api';
+
+axios.defaults.baseURL = 'https://napi.busbud.com/x-departures/';
+axios.defaults.headers.common['Accept'] =
+  'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/';
 
 export const api = ({ getState, dispatch }) => next => async action => {
   next(action);
@@ -14,7 +18,11 @@ export const api = ({ getState, dispatch }) => next => async action => {
   dispatch(apiStart(label));
 
   try {
-    const data = await getDepartures();
+    const { data } = await axios.request({
+      method: 'GET',
+      url: `dr5reg/f25dvk/2019-09-27`,
+      headers: { 'X-Busbud-Token': process.env.REACT_APP_API_TOKEN }
+    });
     dispatch(onSuccess(data));
   } catch (error) {
     dispatch(onFailure(error));
