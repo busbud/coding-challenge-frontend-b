@@ -1,0 +1,5 @@
+export const API = 'API';
+export const API_START = 'API_START';
+export const API_END = 'API_END';
+export const SET_DEPARTURES_LOCATIONS = 'SET_DEPARTURES_LOCATIONS';
+export const GET_DEPARTURES_LOCATIONS = 'GET_DEPARTURES_LOCATIONS';

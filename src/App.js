@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { GET_DEPARTURES_LOCATIONS } from './constants/actionTypes';
+import { getDeparturesAndLocations } from './actions/apiActions';
+
 import './App.css';
-import { getDepartures } from './api';
 
 const getAmPmTime = isoDate => {
   const date = new Date(isoDate);
@@ -15,18 +18,12 @@ const getAmPmTime = isoDate => {
 };
 
 class App extends Component {
-  state = {
-    departures: [],
-    locations: []
-  };
-
   async componentDidMount() {
-    const { departures, locations } = await getDepartures();
-    this.setState({ departures, locations });
+    this.props.getDeparturesAndLocations();
   }
 
   renderDepartures = () => {
-    const { departures, locations } = this.state;
+    const { departures, locations } = this.props;
 
     if (!departures.length) {
       return <div>Loading departures ...</div>;
@@ -79,4 +76,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ departures, locations, isLoading }) => ({
+  departures,
+  locations,
+  loadingDepartures: isLoading[GET_DEPARTURES_LOCATIONS]
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    getDeparturesAndLocations
+  }
+)(App);

@@ -1,6 +1,12 @@
 import React from 'react';
-import { render, waitForElement, within } from 'react-testing-library';
+import { Provider } from 'react-redux';
+import {
+  render as rtlRender,
+  waitForElement,
+  within
+} from 'react-testing-library';
 import App from './App';
+import { configureStore } from './store/configureStore';
 import { getDepartures } from './api';
 
 jest.mock('./api', () => {
@@ -48,6 +54,12 @@ jest.mock('./api', () => {
     )
   };
 });
+
+function render(component) {
+  const store = configureStore();
+
+  return rtlRender(<Provider store={store}>{component}</Provider>);
+}
 
 it('should render a list of departures when it is cached on the api (complete is true)', async () => {
   const { queryByText, getAllByTestId } = render(<App />);
