@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, within } from 'react-testing-library';
+import { render, waitForElement, within } from 'react-testing-library';
 import App from './App';
 import { getDepartures } from './api';
 
@@ -60,27 +60,27 @@ it('should render a list of departures when it is cached on the api (complete is
 
   expect(departures).toHaveLength(2);
 
-  expect(within(departures[0]).queryByText('12:01 am')).toBeInTheDocument();
-  expect(within(departures[0]).queryByText('8:20 am')).toBeInTheDocument();
+  expect(within(departures[0]).queryByText(/12:01 am/)).toBeInTheDocument();
+  expect(within(departures[0]).queryByText(/8:20 am/)).toBeInTheDocument();
 
   expect(
-    within(departures[0]).queryByText('George Washington Bridge')
+    within(departures[0]).queryByText(/George Washington Bridge/)
   ).toBeInTheDocument();
   expect(
-    within(departures[0]).queryByText("Gare d'autocars de Montréal")
+    within(departures[0]).queryByText(/Gare d'autocars de Montréal/)
   ).toBeInTheDocument();
 
-  expect(within(departures[0]).queryByText('$75')).toBeInTheDocument();
+  expect(within(departures[0]).queryByText(/\$75/)).toBeInTheDocument();
 
-  expect(within(departures[1]).queryByText('6:30 pm')).toBeInTheDocument();
-  expect(within(departures[1]).queryByText('2:55 am')).toBeInTheDocument();
+  expect(within(departures[1]).queryByText(/6:30 pm/)).toBeInTheDocument();
+  expect(within(departures[1]).queryByText(/2:55 am/)).toBeInTheDocument();
 
   expect(
-    within(departures[1]).queryByText('Port Authority Bus Terminal')
+    within(departures[1]).queryByText(/Port Authority Bus Terminal/)
   ).toBeInTheDocument();
   expect(
-    within(departures[1]).queryByText("Gare d'autocars de Montréal")
+    within(departures[1]).queryByText(/Gare d'autocars de Montréal/)
   ).toBeInTheDocument();
 
-  expect(within(departures[1]).queryByText('$78')).toBeInTheDocument();
+  expect(within(departures[1]).queryByText(/\$78/)).toBeInTheDocument();
 });
