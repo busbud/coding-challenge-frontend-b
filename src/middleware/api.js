@@ -21,7 +21,14 @@ export const api = ({ getState, dispatch }) => next => async action => {
     const { data } = await axios.request({
       method: 'GET',
       url: `dr5reg/f25dvk/2019-09-27`,
-      headers: { 'X-Busbud-Token': process.env.REACT_APP_API_TOKEN }
+      headers: { 'X-Busbud-Token': process.env.REACT_APP_API_TOKEN },
+      params: {
+        adult: 1,
+        child: 0,
+        senior: 0,
+        lang: 'us',
+        currency: 'usd'
+      }
     });
     dispatch(onSuccess(data));
   } catch (error) {
