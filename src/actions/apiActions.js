@@ -3,7 +3,8 @@ import {
   API_START,
   API_END,
   SET_DEPARTURES_LOCATIONS,
-  GET_DEPARTURES_LOCATIONS
+  GET_DEPARTURES_LOCATIONS,
+  UPDATE_DEPARTURES
 } from '../constants/actionTypes';
 
 export const apiStart = payload => ({
@@ -15,6 +16,13 @@ export const apiEnd = payload => ({
   type: API_END,
   payload
 });
+
+export const updateDepartures = payload => {
+  return {
+    type: UPDATE_DEPARTURES,
+    payload
+  };
+};
 
 const setDeparturesAndLocations = payload => {
   return {

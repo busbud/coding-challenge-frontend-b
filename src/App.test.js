@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import {
   render as rtlRender,
   waitForElement,
+  wait,
   within
 } from 'react-testing-library';
 import App from './App';
@@ -113,18 +114,20 @@ it('should poll the data when returned departure list is incomplete (complete is
   mockedAxios.request.mockImplementation(({ params: { index } }) => {
     return Promise.resolve({
       data: {
-        departures: index ? departures[index] : [],
+        departures: typeof index !== 'undefined' ? [departures[index]] : [],
         locations,
         complete: index === 1
       }
     });
   });
 
-  const { queryByText, getAllByTestId, queryAllByTestId, debug } = render(
-    <App />
-  );
+  const { queryByText, getAllByTestId, queryAllByTestId } = render(<App />);
 
   await waitForElement(() => queryByText(/Loading departures/));
+
+  await wait();
+  expect(queryAllByTestId('departure-item')).toHaveLength(0);
+  expect(mockedAxios.request).toHaveBeenCalledTimes(1);
 
   const firstDepartureBatch = await waitForElement(() =>
     getAllByTestId('departure-item')
@@ -149,6 +152,10 @@ it('should poll the data when returned departure list is incomplete (complete is
   expect(
     within(firstDepartureBatch[0]).queryByText(/\$75/)
   ).toBeInTheDocument();
+
+  await wait();
+  expect(queryAllByTestId('departure-item')).toHaveLength(1);
+  expect(mockedAxios.request).toHaveBeenCalledTimes(2);
 
   await wait(() => expect(queryAllByTestId('departure-item')).toHaveLength(2));
 
