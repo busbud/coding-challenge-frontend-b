@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { GET_DEPARTURES_LOCATIONS } from './constants/actionTypes';
+import { GET_DEPARTURES_LOCATIONS, POLL_START } from './constants/actionTypes';
 import { getDeparturesAndLocations } from './actions/apiActions';
 
 import './App.css';
@@ -23,9 +23,9 @@ class App extends Component {
   }
 
   renderDepartures = () => {
-    const { departures, locations } = this.props;
+    const { departures, locations, loadingDepartures } = this.props;
 
-    if (!departures.length) {
+    if (loadingDepartures) {
       return <div>Loading departures ...</div>;
     }
 
