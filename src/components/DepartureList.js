@@ -30,8 +30,12 @@ export class DepartureList extends Component {
                 destination_location_id,
                 prices
               }) => {
-                const departureLocation = locations.find(elem => elem.id === origin_location_id);
-                const arrivalLocation = locations.find(elem => elem.id === destination_location_id);
+                const departureLocation = locations.filter(
+                  elem => elem.id === origin_location_id
+                )[0];
+                const arrivalLocation = locations.filter(
+                  elem => elem.id === destination_location_id
+                )[0];
                 return (
                   <DepartureListItem
                     key={busbud_departure_id}
