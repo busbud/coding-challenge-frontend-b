@@ -39,18 +39,19 @@ const failureHandler = error => {
   };
 };
 
-export const getDeparturesAndLocations = () => {
+export const getDeparturesAndLocations = ({
+  departureDate,
+  originCity,
+  destinationCity,
+  ...params
+}) => {
+  const url = `${originCity.geohash}/${destinationCity.geohash}/${departureDate}`;
+
   return {
     type: API,
     payload: {
-      url: `dr5reg/f25dvk/2019-09-21`,
-      params: {
-        adult: 1,
-        child: 0,
-        senior: 0,
-        lang: 'us',
-        currency: 'usd'
-      },
+      url,
+      params,
       label: GET_DEPARTURES_LOCATIONS,
       onSuccess: setDeparturesAndLocations,
       onFailure: failureHandler
@@ -58,19 +59,15 @@ export const getDeparturesAndLocations = () => {
   };
 };
 
-export const startPolling = data => {
+export const startPolling = ({ url, params, index }) => {
   return {
     type: API,
     payload: {
-      url: `dr5reg/f25dvk/2019-09-21/poll`,
+      url: url.indexOf('/poll') < 0 ? `${url}/poll` : url,
       delay: 2000,
       params: {
-        adult: 1,
-        child: 0,
-        senior: 0,
-        lang: 'us',
-        currency: 'usd',
-        index: data.departures.length
+        ...params,
+        index
       },
       label: POLL_START,
       onSuccess: updateDepartures,

@@ -5,7 +5,8 @@ import {
   render as rtlRender,
   waitForElement,
   wait,
-  within
+  within,
+  fireEvent
 } from 'react-testing-library';
 import App from './App';
 import { configureStore } from '../store/configureStore';
@@ -81,14 +82,12 @@ it('renders and onboarding screen with hardcoded city names and date', async () 
 
   expect(within(onboardingSection).queryByText(/Montreal/)).toBeInTheDocument();
 
-  expect(
-    within(onboardingSection).queryByText(/2019-08-02/)
-  ).toBeInTheDocument();
+  expect(within(onboardingSection).queryByText(/2019-08-02/)).toBeInTheDocument();
 
   expect(within(onboardingSection).queryByText(/Search/)).toBeInTheDocument();
 });
 
-it('renders a list of departures when it is cached on the api (complete is true)', async () => {
+it('renders a list of departures on search click when the data is cached on the api (complete is true)', async () => {
   mockedAxios.request.mockImplementation(() =>
     Promise.resolve({
       data: {
@@ -98,78 +97,104 @@ it('renders a list of departures when it is cached on the api (complete is true)
       }
     })
   );
-
   const { queryByText, getAllByTestId } = render(<App />);
 
-  await waitForElement(() => queryByText(/Loading departures/));
+  await wait();
+  expect(mockedAxios.request).toHaveBeenCalledTimes(0);
 
-  const departuresItems = await waitForElement(() =>
-    getAllByTestId('departure-item')
-  );
+  fireEvent.click(queryByText(/Search/i));
+
+  const departuresItems = await waitForElement(() => getAllByTestId('departure-item'));
 
   expect(departuresItems).toHaveLength(2);
 
-  expect(
-    within(departuresItems[0]).queryByText(/12:01 am/)
-  ).toBeInTheDocument();
+  expect(within(departuresItems[0]).queryByText(/12:01 am/)).toBeInTheDocument();
   expect(within(departuresItems[0]).queryByText(/8:20 am/)).toBeInTheDocument();
 
-  expect(
-    within(departuresItems[0]).queryByText(/George Washington Bridge/)
-  ).toBeInTheDocument();
-  expect(
-    within(departuresItems[0]).queryByText(/Gare d'autocars de Montréal/)
-  ).toBeInTheDocument();
+  expect(within(departuresItems[0]).queryByText(/George Washington Bridge/)).toBeInTheDocument();
+  expect(within(departuresItems[0]).queryByText(/Gare d'autocars de Montréal/)).toBeInTheDocument();
 
   expect(within(departuresItems[0]).queryByText(/\$75/)).toBeInTheDocument();
 
   expect(within(departuresItems[1]).queryByText(/6:30 pm/)).toBeInTheDocument();
   expect(within(departuresItems[1]).queryByText(/2:55 am/)).toBeInTheDocument();
 
-  expect(
-    within(departuresItems[1]).queryByText(/Port Authority Bus Terminal/)
-  ).toBeInTheDocument();
-  expect(
-    within(departuresItems[1]).queryByText(/Gare d'autocars de Montréal/)
-  ).toBeInTheDocument();
+  expect(within(departuresItems[1]).queryByText(/Port Authority Bus Terminal/)).toBeInTheDocument();
+  expect(within(departuresItems[1]).queryByText(/Gare d'autocars de Montréal/)).toBeInTheDocument();
 
   expect(within(departuresItems[1]).queryByText(/\$78/)).toBeInTheDocument();
 
   expect(mockedAxios.request).toHaveBeenCalledTimes(1);
 });
 
-it('should poll the data when returned departure list is incomplete (complete is false)', async () => {
-  mockedAxios.request.mockImplementation(({ params: { index } }) => {
-    return Promise.resolve({
-      data: {
-        departures: typeof index !== 'undefined' ? [departures[index]] : [],
-        locations,
-        complete: index === 1
-      }
+it('polls the data when returned departure list is incomplete (complete is false)', async () => {
+  mockedAxios.request
+    .mockImplementationOnce(() => {
+      return Promise.resolve({
+        data: {
+          departures: [],
+          locations,
+          complete: false
+        }
+      });
+    })
+    .mockImplementationOnce(() => {
+      return Promise.resolve({
+        data: {
+          departures: [departures[0]],
+          locations,
+          complete: false
+        }
+      });
+    })
+    .mockImplementationOnce(() => {
+      return Promise.resolve({
+        data: {
+          departures: [],
+          locations,
+          complete: false
+        }
+      });
+    })
+    .mockImplementationOnce(() => {
+      return Promise.resolve({
+        data: {
+          departures: [departures[1]],
+          locations,
+          complete: true
+        }
+      });
     });
-  });
 
   const { queryByText, getAllByTestId, queryAllByTestId } = render(<App />);
 
-  await waitForElement(() => queryByText(/Loading departures/));
+  fireEvent.click(queryByText(/Search/i));
 
-  await wait();
-  expect(queryAllByTestId('departure-item')).toHaveLength(0);
-  expect(mockedAxios.request).toHaveBeenCalledTimes(1);
+  await wait(() => expect(mockedAxios.request).toHaveBeenCalledTimes(1));
 
-  const firstDepartureBatch = await waitForElement(() =>
-    getAllByTestId('departure-item')
+  expect(mockedAxios.request).toHaveBeenLastCalledWith(
+    expect.objectContaining({
+      url: 'dr5reg/f25dvk/2019-08-02',
+      params: { adult: 1, child: 0, currency: 'usd', lang: 'us', senior: 0 }
+    })
   );
+
+  expect(queryAllByTestId('departure-item')).toHaveLength(0);
+
+  const firstDepartureBatch = await waitForElement(() => getAllByTestId('departure-item'));
 
   expect(firstDepartureBatch).toHaveLength(1);
   expect(mockedAxios.request).toHaveBeenCalledTimes(2);
 
-  expect(
-    within(firstDepartureBatch[0]).queryByText(/12:01 am/i)
-  ).toBeInTheDocument();
-  expect(
-    within(firstDepartureBatch[0]).queryByText(/8:20 am/i)
-  ).toBeInTheDocument();
+  expect(mockedAxios.request).toHaveBeenLastCalledWith(
+    expect.objectContaining({
+      url: 'dr5reg/f25dvk/2019-08-02/poll',
+      params: { adult: 1, child: 0, currency: 'usd', lang: 'us', senior: 0, index: 0 }
+    })
+  );
+
+  expect(within(firstDepartureBatch[0]).queryByText(/12:01 am/i)).toBeInTheDocument();
+  expect(within(firstDepartureBatch[0]).queryByText(/8:20 am/i)).toBeInTheDocument();
 
   expect(
     within(firstDepartureBatch[0]).queryByText(/George Washington Bridge/i)
@@ -177,36 +202,40 @@ it('should poll the data when returned departure list is incomplete (complete is
   expect(
     within(firstDepartureBatch[0]).queryByText(/Gare d'autocars de Montréal/i)
   ).toBeInTheDocument();
+  expect(within(firstDepartureBatch[0]).queryByText(/\$75/)).toBeInTheDocument();
+
+  await wait(() => expect(mockedAxios.request).toHaveBeenCalledTimes(3));
+
+  expect(mockedAxios.request).toHaveBeenLastCalledWith(
+    expect.objectContaining({
+      url: 'dr5reg/f25dvk/2019-08-02/poll',
+      params: { adult: 1, child: 0, currency: 'usd', lang: 'us', senior: 0, index: 1 }
+    })
+  );
+
+  await wait(() => expect(mockedAxios.request).toHaveBeenCalledTimes(4));
+
+  expect(mockedAxios.request).toHaveBeenLastCalledWith(
+    expect.objectContaining({
+      url: 'dr5reg/f25dvk/2019-08-02/poll',
+      params: { adult: 1, child: 0, currency: 'usd', lang: 'us', senior: 0, index: 1 }
+    })
+  );
+
+  const thirdDepartureBatch = getAllByTestId('departure-item');
+  expect(thirdDepartureBatch).toHaveLength(2);
+
+  expect(within(thirdDepartureBatch[1]).queryByText(/6:30 pm/i)).toBeInTheDocument();
+  expect(within(thirdDepartureBatch[1]).queryByText(/2:55 am/i)).toBeInTheDocument();
+
   expect(
-    within(firstDepartureBatch[0]).queryByText(/\$75/)
+    within(thirdDepartureBatch[1]).queryByText(/Port Authority Bus Terminal/i)
+  ).toBeInTheDocument();
+  expect(
+    within(thirdDepartureBatch[1]).queryByText(/Gare d'autocars de Montréal/i)
   ).toBeInTheDocument();
 
-  await wait();
-  expect(queryAllByTestId('departure-item')).toHaveLength(1);
-  expect(mockedAxios.request).toHaveBeenCalledTimes(2);
+  expect(within(thirdDepartureBatch[1]).queryByText(/\$78/)).toBeInTheDocument();
 
-  await wait(() => expect(queryAllByTestId('departure-item')).toHaveLength(2));
-
-  const secondDepartureBatch = getAllByTestId('departure-item');
-  expect(secondDepartureBatch).toHaveLength(2);
-
-  expect(
-    within(secondDepartureBatch[1]).queryByText(/6:30 pm/i)
-  ).toBeInTheDocument();
-  expect(
-    within(secondDepartureBatch[1]).queryByText(/2:55 am/i)
-  ).toBeInTheDocument();
-
-  expect(
-    within(secondDepartureBatch[1]).queryByText(/Port Authority Bus Terminal/i)
-  ).toBeInTheDocument();
-  expect(
-    within(secondDepartureBatch[1]).queryByText(/Gare d'autocars de Montréal/i)
-  ).toBeInTheDocument();
-
-  expect(
-    within(secondDepartureBatch[1]).queryByText(/\$78/)
-  ).toBeInTheDocument();
-
-  expect(mockedAxios.request).toHaveBeenCalledTimes(3);
+  expect(mockedAxios.request).toHaveBeenCalledTimes(4);
 });

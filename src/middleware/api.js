@@ -35,7 +35,8 @@ export const api = ({ getState, dispatch }) => next => async action => {
     });
 
     if (!data.complete) {
-      dispatch(startPolling(data));
+      const index = getState().departures.length + data.departures.length;
+      dispatch(startPolling({ url, params, index }));
     }
 
     dispatch(onSuccess(data));

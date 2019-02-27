@@ -15,7 +15,12 @@ const searchParams = {
     name: 'Montreal',
     geohash: 'f25dvk'
   },
-  departureDate: '2019-08-02'
+  departureDate: '2019-08-02',
+  adult: 1,
+  child: 0,
+  senior: 0,
+  lang: 'us',
+  currency: 'usd'
 };
 
 const mapStateToProps = ({ departures, locations, isLoading }) => ({

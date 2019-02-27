@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import { DepartureListItem } from './DepartureListItem';
 import { Onboarding } from './Onboarding';
+import debounce from 'lodash.debounce';
 
 import styles from './DepartureList.module.css';
 
 export class DepartureList extends Component {
-  componentDidMount() {
-    this.props.getDeparturesAndLocations();
-  }
+  onSearchClick = debounce(() => {
+    const { getDeparturesAndLocations, searchParams } = this.props;
+    getDeparturesAndLocations(searchParams);
+  }, 100);
 
   render() {
-    const {
-      loadingDepartures,
-      departures,
-      locations,
-      searchParams
-    } = this.props;
+    const { loadingDepartures, departures, locations, searchParams } = this.props;
 
     return (
       <main className={styles.container}>
-        <Onboarding {...searchParams} />
+        <Onboarding {...searchParams} onSearchClick={this.onSearchClick} />
         <ul className={styles.departures}>
           {loadingDepartures ? (
             <li>Loading departures ...</li>
@@ -33,12 +30,8 @@ export class DepartureList extends Component {
                 destination_location_id,
                 prices
               }) => {
-                const departureLocation = locations.find(
-                  elem => elem.id === origin_location_id
-                );
-                const arrivalLocation = locations.find(
-                  elem => elem.id === destination_location_id
-                );
+                const departureLocation = locations.find(elem => elem.id === origin_location_id);
+                const arrivalLocation = locations.find(elem => elem.id === destination_location_id);
                 return (
                   <DepartureListItem
                     key={busbud_departure_id}
