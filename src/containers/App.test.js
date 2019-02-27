@@ -8,10 +8,11 @@ import {
   within
 } from 'react-testing-library';
 import App from './App';
-import { configureStore } from './store/configureStore';
+import { configureStore } from '../store/configureStore';
 
 const departures = [
   {
+    busbud_departure_id: 1,
     departure_time: '2019-08-02T00:01:00',
     arrival_time: '2019-08-02T08:20:00',
     prices: {
@@ -22,6 +23,7 @@ const departures = [
     destination_location_id: 1938
   },
   {
+    busbud_departure_id: 2,
     departure_time: '2019-08-27T18:30:00',
     arrival_time: '2019-08-28T02:55:00',
     prices: {
