@@ -22,14 +22,7 @@
 }
 
 .button {
-  padding: 5px 10px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #ffffff;
-  background-color: #f19020;
-  border: 2px solid #f19020;
-  cursor: pointer;
-  border-radius: 4px;
+  composes: button from '../shared-styles/buttons.css';
   margin-left: 20px;
 }
 

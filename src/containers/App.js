@@ -6,10 +6,23 @@ import { DepartureList } from '../components/DepartureList';
 
 const App = props => <DepartureList {...props} />;
 
+const searchParams = {
+  originCity: {
+    name: 'New York',
+    geohash: 'dr5reg'
+  },
+  destinationCity: {
+    name: 'Montreal',
+    geohash: 'f25dvk'
+  },
+  departureDate: '2019-08-02'
+};
+
 const mapStateToProps = ({ departures, locations, isLoading }) => ({
   departures,
   locations,
-  loadingDepartures: isLoading[GET_DEPARTURES_LOCATIONS]
+  loadingDepartures: isLoading[GET_DEPARTURES_LOCATIONS],
+  searchParams
 });
 
 export default connect(

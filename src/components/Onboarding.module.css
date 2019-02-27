@@ -1,0 +1,38 @@
+@value small from '../shared-styles/breakpoints.css';
+
+.onboarding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+  background-color: #127ccb;
+  color: #fff;
+}
+
+.onboarding-date {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.button {
+  composes: button from '../shared-styles/buttons.css';
+  font-size: 1.3rem;
+  padding: 10px 20px;
+}
+
+@media small {
+  .onboarding {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .button {
+    margin-left: auto;
+  }
+}

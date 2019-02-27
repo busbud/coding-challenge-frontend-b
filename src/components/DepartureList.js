@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { DepartureListItem } from './DepartureListItem';
+import { Onboarding } from './Onboarding';
 
 import styles from './DepartureList.module.css';
 
@@ -9,15 +10,16 @@ export class DepartureList extends Component {
   }
 
   render() {
-    const { loadingDepartures, departures, locations } = this.props;
+    const {
+      loadingDepartures,
+      departures,
+      locations,
+      searchParams
+    } = this.props;
 
     return (
       <main className={styles.container}>
-        <section data-testid="onboarding">
-          <p>New York - Montreal</p>
-          <p>2019-08-02</p>
-          <button>Search</button>
-        </section>
+        <Onboarding {...searchParams} />
         <ul className={styles.departures}>
           {loadingDepartures ? (
             <li>Loading departures ...</li>
