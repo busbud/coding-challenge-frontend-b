@@ -62,7 +62,33 @@ afterEach(() => {
   mockedAxios.request.mockReset();
 });
 
-it('should render a list of departures when it is cached on the api (complete is true)', async () => {
+it('renders and onboarding screen with hardcoded city names and date', async () => {
+  mockedAxios.request.mockImplementation(() =>
+    Promise.resolve({
+      data: {
+        departures,
+        locations,
+        complete: true
+      }
+    })
+  );
+
+  const { getByTestId } = render(<App />);
+
+  const onboardingSection = getByTestId('onboarding');
+
+  expect(within(onboardingSection).queryByText(/New York/)).toBeInTheDocument();
+
+  expect(within(onboardingSection).queryByText(/Montreal/)).toBeInTheDocument();
+
+  expect(
+    within(onboardingSection).queryByText(/2019-08-02/)
+  ).toBeInTheDocument();
+
+  expect(within(onboardingSection).queryByText(/Search/)).toBeInTheDocument();
+});
+
+it('renders a list of departures when it is cached on the api (complete is true)', async () => {
   mockedAxios.request.mockImplementation(() =>
     Promise.resolve({
       data: {
