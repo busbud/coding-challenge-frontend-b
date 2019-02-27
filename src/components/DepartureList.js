@@ -13,6 +13,11 @@ export class DepartureList extends Component {
 
     return (
       <main className={styles.container}>
+        <section data-testid="onboarding">
+          <p>New York - Montreal</p>
+          <p>2019-08-02</p>
+          <button>Search</button>
+        </section>
         <ul className={styles.departures}>
           {loadingDepartures ? (
             <li>Loading departures ...</li>
