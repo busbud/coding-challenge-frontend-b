@@ -1,0 +1,19 @@
+@import '~normalize.css';
+
+@value font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+@value font-size-base: 1rem;
+@value font-weight-base: 400;
+@value line-height-base: 1.5;
+
+@value body-color: #000000;
+@value body-bg: #ffffff;
+
+body {
+  font-size: font-size-base;
+  font-family: font-family-base;
+  font-weight: font-weight-base;
+  line-height: line-height-base;
+  margin: 0;
+  color: body-color;
+  background-color: body-bg;
+}

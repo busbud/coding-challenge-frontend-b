@@ -1,0 +1,12 @@
+.container {
+  padding: 6rem 4%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.departures {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

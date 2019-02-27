@@ -1,6 +1,8 @@
 import { getAmPmTime } from '../utils/date-manipulation';
 import React from 'react';
 
+import styles from './DepartureListItem.module.css';
+
 export const DepartureListItem = ({
   departureTime,
   arrivalTime,
@@ -8,16 +10,22 @@ export const DepartureListItem = ({
   arrivalLocation,
   prices
 }) => (
-  <li data-testid="departure-item">
-    <h3>
-      {departureLocation.name} - {arrivalLocation.name}
-    </h3>
-    <div>
-      {getAmPmTime(departureTime)} - {getAmPmTime(arrivalTime)}
+  <li className={styles['departure-item']} data-testid="departure-item">
+    <div className={styles['departure-description']}>
+      <p>
+        {departureLocation.name} - {arrivalLocation.name}
+      </p>
+      <h3>
+        {getAmPmTime(departureTime)} - {getAmPmTime(arrivalTime)}
+      </h3>
     </div>
-    <div>
-      <b>{`$${prices.total / 100}`}</b>
-      <button type="button">Select</button>
+    <div className={styles['departure-offer']}>
+      <p>
+        <b>{`$${prices.total / 100}`}</b>
+      </p>
+      <button className={styles.button} type="button">
+        Select
+      </button>
     </div>
   </li>
 );

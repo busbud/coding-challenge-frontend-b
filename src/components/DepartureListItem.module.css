@@ -1,0 +1,54 @@
+@value small from '../shared-styles/breakpoints.css';
+
+.departure-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.departure-description {
+  flex-grow: 1;
+}
+
+.departure-offer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  padding: 5px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #f19020;
+  border: 2px solid #f19020;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 20px;
+}
+
+.button:hover,
+.button:active {
+  background-color: #d1760d;
+  border-color: #c7710d;
+}
+
+@media small {
+  .departure-item {
+    flex-direction: row;
+  }
+
+  .departure-offer {
+    flex-direction: column;
+  }
+
+  .button {
+    margin-left: 0;
+  }
+}
