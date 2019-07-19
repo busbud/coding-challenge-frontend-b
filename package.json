@@ -1,0 +1,45 @@
+{
+  "name": "coding-challenge-frontend-b",
+  "version": "1.0.0",
+  "description": "Vanessa's approach to tackling Busbud's coding challenge",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js --mode development",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js  --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/busbud/coding-challenge-frontend-b.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/busbud/coding-challenge-frontend-b/issues"
+  },
+  "homepage": "https://github.com/busbud/coding-challenge-frontend-b#readme",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^5.2.0",
+    "css-loader": "^3.1.0",
+    "file-loader": "^4.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
+    "react-hot-loader": "^4.12.8",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "cssnano": "^4.1.10",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
