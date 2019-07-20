@@ -9,15 +9,11 @@ import {
 } from "./containers";
 
 class App extends React.Component {
-  onClickBack = () => {
-    this.props.history.push("/");
-  };
-
   render() {
     return (
       <div className="full-height-layout">
         <header className="app-header">
-          <HeaderContainer onClick={this.onClickBack} />
+          <HeaderContainer {...this.props} />
         </header>
         <main className="app-main">
           <Switch>
