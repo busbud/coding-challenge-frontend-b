@@ -42,6 +42,7 @@ module.exports = {
   },
   devServer: {
     contentBase: commonPaths.outputPath,
+    historyApiFallback: true,
     hot: true
   }
 };

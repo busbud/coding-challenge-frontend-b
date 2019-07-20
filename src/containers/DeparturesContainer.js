@@ -43,7 +43,7 @@ export default class DeparturesContainer extends React.Component {
               <div className="schedule-details">
                 <div className="column">
                   <div className="duration">
-                    <i class="fa fa-clock-o" />
+                    <i className="fa fa-clock-o" />
                     {duration}
                   </div>
                 </div>
