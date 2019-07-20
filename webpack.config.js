@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|mp4)$/i,
-        use: [{ loader: "file-loader?name=[name]__[hash:base64:5].[ext]" }],
+        use: [{ loader: "file-loader?name=img/[name]__[hash:base64:5].[ext]" }],
         include: commonPaths.stylePath
       },
       {

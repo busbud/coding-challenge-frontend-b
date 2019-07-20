@@ -1,20 +1,33 @@
 .home-page-container {
   height: 100%;
   width: 100%;
-  // display: flex;
   display: flex;
-  // flex-wrap: wrap;
   flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
+
   h1 {
     text-align: center;
-    padding: 0 2.5rem 2.5rem;
+    padding: 1.5rem 2.5rem 2.5rem;
     font-size: 1.3rem;
   }
 
-  p {
-    padding: 0 2.5rem 2.5rem;
-    margin: 0;
+  .page-header {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 1.1rem 1.1rem;
+
+    .page-header__icon {
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url("./img/osheaga-logo.png");
+      height: 130px;
+      padding: 1.1rem 1.1rem;
+    }
+
+    .page-header__tagline {
+      text-align: center;
+      line-height: 1.6rem;
+      padding: 1rem 0rem;
+    }
   }
 }
