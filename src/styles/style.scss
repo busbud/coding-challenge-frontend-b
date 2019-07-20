@@ -2,6 +2,7 @@
 @import "./modules/button";
 @import "./modules/home_container";
 @import "./modules/header_container";
+@import "./modules/departures_container";
 
 body {
   font-family: "Perpetua", sans-serif;
@@ -22,5 +23,12 @@ body {
 .app-header {
   flex: none;
   height: 60px;
+  width: 100%;
+  position: fixed;
+}
+
+.app-main {
+  margin-top: 60px;
+  height: 100%;
   width: 100%;
 }

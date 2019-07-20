@@ -1,0 +1,57 @@
+.departures-page-container {
+  display: flex;
+  flex-direction: column;
+
+  .departure-info-container {
+    margin: 0.3rem 0.3rem 0;
+    background: white;
+    box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 0.2rem;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0.3rem;
+
+    .schedule-info {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex-grow: 1;
+
+      .operator-logo {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("./img/operator-logo.png");
+      }
+
+      .time {
+        color: rgb(205, 92, 92);
+        margin-bottom: 0.2rem;
+      }
+    }
+
+    .schedule-details {
+      display: flex;
+      flex-direction: row;
+
+      .duration {
+        color: #808080;
+
+        i {
+          margin: 0.5rem 0.5rem 0;
+        }
+      }
+
+      .price {
+        text-align: right;
+        margin: 0.5rem 0.5rem 0;
+        color: #808080;
+      }
+    }
+
+    .column {
+      flex: 1 1 auto;
+    }
+  }
+}

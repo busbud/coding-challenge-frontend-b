@@ -13,8 +13,10 @@ export default class App extends React.Component {
         <header className="app-header">
           <HeaderContainer />
         </header>
-        <HomeContainer />
-        {/* <DeparturesContainer /> */}
+        <div className="app-main">
+          {/* <HomeContainer /> */}
+          <DeparturesContainer />
+        </div>
       </div>
     );
   }
