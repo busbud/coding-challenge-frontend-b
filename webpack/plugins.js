@@ -1,18 +1,37 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const dotenv = require("dotenv");
+const _ = require("lodash");
 const commonPaths = require("./config.path");
 
-const webpackPlugins = [
-  new HtmlWebpackPlugin({
-    template: commonPaths.templatePath
-  }),
-  new webpack.DefinePlugin({
-    "process.env.NODE_ENV": process.env.NODE_ENV
-      ? JSON.stringify(process.env.NODE_ENV)
-      : JSON.stringify("development")
-  })
-];
+// Use .env file to set environment variables
+const env = dotenv.config().parsed;
 
-webpackPlugins.push(new webpack.HotModuleReplacementPlugin());
+let envKeys = _.reduce(
+  env,
+  (result, value, key) => {
+    result[`process.env.${key}`] = JSON.stringify(value);
+    return result;
+  },
+  {}
+);
 
-module.exports = webpackPlugins;
+envKeys = {
+  ...envKeys,
+  "process.env.NODE_ENV": process.env.NODE_ENV
+    ? JSON.stringify(process.env.NODE_ENV)
+    : JSON.stringify("development")
+};
+
+// List of webpack plugins
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
+  template: commonPaths.templatePath
+});
+
+const webpackPlugins = new webpack.DefinePlugin(envKeys);
+
+const webpackHotModulePlugin = new webpack.HotModuleReplacementPlugin();
+
+const plugins = [htmlWebpackPlugin, webpackPlugins, webpackHotModulePlugin];
+
+module.exports = plugins;
