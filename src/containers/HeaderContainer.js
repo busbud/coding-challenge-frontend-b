@@ -1,19 +1,10 @@
 import React from "react";
 
-import {
-  changeLanguage,
-  currentLanguageDisplay
-} from "../services/language-service";
+import LanguageSelect from "../components/LanguageSelect";
 
 export default class HeaderContainer extends React.Component {
   onClickBack = () => {
     this.props.history.goBack();
-  };
-
-  onClick = event => {
-    event.preventDefault();
-    changeLanguage();
-    window.location.reload();
   };
 
   render() {
@@ -28,8 +19,8 @@ export default class HeaderContainer extends React.Component {
             <i className="fa fa-angle-left" />
           </div>
         )}
-        <div className="language" onClick={this.onClick}>
-          {currentLanguageDisplay()}
+        <div className="language">
+          <LanguageSelect />
         </div>
       </div>
     );
