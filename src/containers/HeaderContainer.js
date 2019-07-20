@@ -1,16 +1,26 @@
 import React from "react";
 
+import {
+  changeLanguage,
+  currentLanguageDisplay
+} from "../services/language-service";
+
 export default class HeaderContainer extends React.Component {
   onClickBack = () => {
     this.props.history.goBack();
-    // console.log(this.props);
+  };
+
+  onClick = event => {
+    event.preventDefault();
+    changeLanguage();
+    window.location.reload();
   };
 
   render() {
     const {
       location: { pathname }
     } = this.props;
-    console.log(this.props);
+
     return (
       <div className="top-bar-container">
         {pathname !== "/" && (
@@ -18,7 +28,9 @@ export default class HeaderContainer extends React.Component {
             <i className="fa fa-angle-left" />
           </div>
         )}
-        <div className="language">EN</div>
+        <div className="language" onClick={this.onClick}>
+          {currentLanguageDisplay()}
+        </div>
       </div>
     );
   }

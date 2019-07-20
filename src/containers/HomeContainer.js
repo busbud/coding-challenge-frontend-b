@@ -1,17 +1,19 @@
 import React from "react";
+import { withNamespaces } from "react-i18next";
 
+@withNamespaces()
 export default class HomeContainer extends React.Component {
   render() {
+    const { t } = this.props;
     return (
       <div className="home-page-container">
         <div className="page-header">
           <div className="page-header__icon" />
           <div className="page-header__tagline">
-            Excited for an upcoming weekend at Osheaga? Click below to see all
-            departures for one adult on Aug 2nd 2019 for the following route:
+            {t("Excited for an upcoming weekend at Osheaga?")}
           </div>
-          <h1>New York to Montreal</h1>
-          <div className="button">Search</div>
+          <h1>{t("NYC to MTL")}</h1>
+          <div className="button">{t("Search")}</div>
         </div>
       </div>
     );
