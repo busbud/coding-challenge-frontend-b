@@ -9,8 +9,12 @@
 
   .language {
     display: flex;
-    // text-align: right;
     margin-left: auto;
-    // flex: none;
+    color: white;
+  }
+
+  .fa-angle-left {
+    font-size: 24px;
+    color: white;
   }
 }
