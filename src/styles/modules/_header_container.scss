@@ -1,0 +1,16 @@
+.top-bar-container {
+  background: rgb(205, 92, 92);
+  height: 100%;
+  box-sizing: border-box;
+  flex: none;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+
+  .language {
+    display: flex;
+    // text-align: right;
+    margin-left: auto;
+    // flex: none;
+  }
+}
