@@ -3,19 +3,13 @@ import React from "react";
 import LanguageSelect from "../components/LanguageSelect";
 
 export default class HeaderContainer extends React.Component {
-  onClickBack = () => {
-    this.props.history.goBack();
-  };
-
   render() {
-    const {
-      location: { pathname }
-    } = this.props;
+    const { onClick, displayDepartures } = this.props;
 
     return (
       <div className="top-bar-container">
-        {pathname !== "/" && (
-          <div onClick={this.onClickBack}>
+        {displayDepartures && (
+          <div onClick={onClick}>
             <i className="fa fa-angle-left" />
           </div>
         )}

@@ -4,16 +4,15 @@ function findLocationName(locationId, locations) {
 }
 
 export function formatDeparturesData(data) {
-  const { newDepartures, locations } = data;
-
+  const { newDepartures, newLocations } = data;
   return _.map(newDepartures, departure => {
     const { origin_location_id, destination_location_id } = departure;
     return {
       ...departure,
-      origin_location_name: findLocationName(origin_location_id, locations),
+      origin_location_name: findLocationName(origin_location_id, newLocations),
       destination_location_name: findLocationName(
         destination_location_id,
-        locations
+        newLocations
       )
     };
   });
