@@ -4,7 +4,7 @@ import { withNamespaces } from "react-i18next";
 @withNamespaces()
 export default class HomeContainer extends React.Component {
   render() {
-    const { t } = this.props;
+    const { t, onClick } = this.props;
     return (
       <div className="home-page-container">
         <div className="page-header">
@@ -13,7 +13,9 @@ export default class HomeContainer extends React.Component {
             {t("Excited for an upcoming weekend at Osheaga?")}
           </div>
           <h1>{t("NYC to MTL")}</h1>
-          <div className="button">{t("Search")}</div>
+          <div className="button" onClick={onClick}>
+            {t("Search")}
+          </div>
         </div>
       </div>
     );
