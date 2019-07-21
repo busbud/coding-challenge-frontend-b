@@ -4,6 +4,7 @@ import { withRouter } from "react-router";
 
 import axios from "axios";
 import { pollUntilFetchFinished } from "./services/fetch-departure-service";
+import { formatDeparturesData } from "./utils/format-departures-data-helper";
 
 import {
   DeparturesContainer,
@@ -12,7 +13,7 @@ import {
 } from "./containers";
 
 const URL =
-  "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-10/poll";
+  "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-02/poll";
 
 const headers = {
   Accept:
@@ -56,14 +57,15 @@ class App extends React.Component {
       } = fetchResponse;
 
       let newDepartures = arrayToContenate(departures);
-      console.log(newDepartures);
+
       if (!complete) {
         const numOfDepartures = getIndex(departures.length);
         setTimeout(() => pollUntilFetchFinished(numOfDepartures), 500);
       } else {
+        const data = formatDeparturesData({ newDepartures, locations });
         this.setState({
           ...this.state,
-          data: { newDepartures, locations, operators }
+          data
         });
       }
     } catch (e) {

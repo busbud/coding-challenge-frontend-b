@@ -9,21 +9,15 @@
     border-radius: 0.2rem;
     height: 80px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 0.5rem 0.3rem;
 
     .schedule-info {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       flex-wrap: wrap;
       flex-grow: 1;
-
-      .operator-logo {
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-image: url("./img/operator-logo.png");
-      }
+      font-size: 12px;
 
       .time {
         color: rgb(205, 92, 92);
@@ -33,15 +27,10 @@
 
     .schedule-details {
       display: flex;
-      flex-direction: row;
-
-      .duration {
-        color: #808080;
-
-        i {
-          margin: 0.5rem 0.5rem 0;
-        }
-      }
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      justify-content: center;
 
       .price {
         text-align: right;
@@ -50,8 +39,9 @@
       }
     }
 
-    .column {
+    .row {
       flex: 1 1 auto;
+      margin-bottom: 0.4rem;
     }
   }
 }
