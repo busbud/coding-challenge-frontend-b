@@ -1,0 +1,62 @@
+.DepartureCard {
+    display: block;
+    position: relative;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    color: #313131;
+    text-decoration: none;
+    overflow: hidden;
+    background-color:white;
+    box-shadow: 0px 1px 3px rgba(206, 206, 206, 0.64);
+}
+
+.DepartureCard::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    width: 0.5rem;
+    height: 100%;
+    background-color: #9bdf56;
+    background-color: #448fff;
+    background-color: #facb0c;
+}
+
+.DepartureCard__time-container, .DepartureCard__footer, .DepartureCard__locations {
+    display: flex;
+    justify-content: space-between;
+}
+.DepartureCard__time-container, .DepartureCard__locations{
+    margin-bottom: 1.5rem;
+}
+
+.DepartureCard__time span:first-child {
+    font-size: 3.2rem;
+}
+
+.DepartureCard__time span:last-child {
+    font-size: 2rem;
+}
+
+.DepartureCard__location{
+    text-align: left
+}
+.DepartureCard__location div:first-child {
+    font-size: 2rem;
+}
+
+.DepartureCard__location div:last-child {
+    font-size: 1.5rem;
+}
+.DepartureCard__price {
+    color: #127ccb;
+    font-weight: bold
+}
+.DepartureCard__price span:first-child{
+    font-size: 4.0rem;
+}
+.DepartureCard__price span:last-child{
+    font-size: 2rem;
+
+}

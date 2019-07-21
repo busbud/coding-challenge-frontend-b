@@ -1,5 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
+import Results from "./components/Results"
+import Search from "./components/Search"
+import { StateProvider } from './contexts/SearchContext'
 import './App.css';
 
 function App() {
@@ -19,6 +22,11 @@ function App() {
           Learn React
         </a>
       </header>
+      <StateProvider>
+        <Search />
+        <Results />
+      </StateProvider>
+
     </div>
   );
 }
