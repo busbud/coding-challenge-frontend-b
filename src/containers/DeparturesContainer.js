@@ -2,12 +2,12 @@ import React from "react";
 import _ from "lodash";
 import axios from "axios";
 
-import { formatDeparturesData } from "../utils/format-departures-data-helper";
 import { getCurrentLanguage } from "../services/language-service";
 import DepartureInfo from "../components/DepartureInfo";
+import Placeholder from "../components/Placeholder";
 
 const URL =
-  "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-11/poll";
+  "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-08/poll";
 
 const headers = {
   Accept:
@@ -21,27 +21,13 @@ function getIndex(num) {
   return prevNum;
 }
 
-let newArrD = [];
-function arrayToContenate(data) {
-  newArrD = _.concat(newArrD, data);
-  return newArrD;
-}
-
-let newArrL = [];
-function arrayToContenateLocations(data) {
-  newArrL = _.concat(newArrL, data);
-  return newArrL;
-}
-
-let newArrO = [];
-function arrayToContenateOperators(data) {
-  newArrO = _.concat(newArrO, data);
-  return newArrO;
-}
-
 export default class DeparturesContainer extends React.Component {
   state = {
-    data: {},
+    data: {
+      departures: [],
+      operators: [],
+      locations: []
+    },
     errorMessage: "",
     isFetching: true
   };
@@ -66,26 +52,23 @@ export default class DeparturesContainer extends React.Component {
         headers
       });
 
-      const {
-        data: { complete, departures, locations, operators }
-      } = fetchResponse;
+      const { complete, departures } = fetchResponse.data;
 
-      let newDepartures = arrayToContenate(departures);
-      console.log("newDepartures", newDepartures);
-
-      let newLocations = arrayToContenateLocations(locations);
-      let newOperators = arrayToContenateOperators(operators);
-
-      if (!complete) {
-        const numOfDepartures = getIndex(departures.length);
-        setTimeout(() => this.fetchDepartures(numOfDepartures), 2000);
-        this.setState({ ...this.state, isFetching: true });
-      } else {
+      if (complete) {
         this._asyncRequest = null;
-        newLocations = _.uniqBy(newLocations, location => location.id);
-        const data = formatDeparturesData({ newDepartures, newLocations });
-        this.setState({ ...this.state, data, isFetching: false });
+        return this.setState({
+          ...this.state,
+          isFetching: false,
+          data: this.formatData(fetchResponse.data)
+        });
       }
+
+      setTimeout(() => this.fetchDepartures(getIndex(departures.length)), 2000);
+      this.setState({
+        ...this.state,
+        isFetching: true,
+        data: this.formatData(fetchResponse.data)
+      });
     } catch (e) {
       this.setState({
         ...this.state,
@@ -94,14 +77,44 @@ export default class DeparturesContainer extends React.Component {
     }
   };
 
+  formatData = ({ departures, locations, operators }) => {
+    const {
+      data: {
+        departures: stateDepartures,
+        locations: stateLocations,
+        operators: stateOperators
+      }
+    } = this.state;
+
+    return {
+      departures: _.concat(stateDepartures, departures),
+      locations: _.concat(
+        stateLocations,
+        this.filterOutDuplicateData(stateLocations, locations)
+      ),
+      operators: _.concat(
+        stateOperators,
+        this.filterOutDuplicateData(stateOperators, operators)
+      )
+    };
+  };
+
+  filterOutDuplicateData = (stateData, data) => {
+    return _.filter(data, el => {
+      if (!_.some(stateData, stateEL => el.id === stateEL.id)) {
+        return el;
+      }
+    });
+  };
+
   render() {
-    const { data: departures, isFetching } = this.state;
+    const {
+      data: { departures, locations },
+      isFetching
+    } = this.state;
+
     if (isFetching) {
-      return (
-        <div className="departures-page-container">
-          Please wait while we fetch the departures...
-        </div>
-      );
+      return <Placeholder content="Fetching..." />;
     }
     return (
       <div className="departures-page-container">
@@ -110,6 +123,7 @@ export default class DeparturesContainer extends React.Component {
             <DepartureInfo
               departure={departure}
               key={departure.busbud_departure_id}
+              locations={locations}
             />
           );
         })}
