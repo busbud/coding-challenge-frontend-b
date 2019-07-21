@@ -3,8 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import { withRouter } from "react-router";
 
 import axios from "axios";
-import { pollUntilFetchFinished } from "./services/fetch-departure-service";
 import { formatDeparturesData } from "./utils/format-departures-data-helper";
+import { getCurrentLanguage } from "./services/language-service";
 
 import {
   DeparturesContainer,
@@ -45,10 +45,12 @@ class App extends React.Component {
   };
 
   pollUntilFetchFinished = async (index = 0) => {
+    const language = getCurrentLanguage();
+
     try {
       const fetchResponse = await axios({
         method: "get",
-        url: `${URL}?index=${index}`,
+        url: `${URL}?index=${index}&lang=${language}`,
         headers
       });
 
@@ -60,7 +62,7 @@ class App extends React.Component {
 
       if (!complete) {
         const numOfDepartures = getIndex(departures.length);
-        setTimeout(() => pollUntilFetchFinished(numOfDepartures), 500);
+        setTimeout(() => this.pollUntilFetchFinished(numOfDepartures), 500);
       } else {
         const data = formatDeparturesData({ newDepartures, locations });
         this.setState({

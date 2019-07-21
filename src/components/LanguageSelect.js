@@ -14,6 +14,7 @@ export default class LanguageSelect extends React.Component {
   onChange = event => {
     const { value } = event.target;
     changeLanguage(value);
+    window.location.reload();
     this.setState({ currentLanguage: value });
   };
 
