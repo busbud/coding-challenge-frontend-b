@@ -1,6 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import axios from "axios";
+import { withNamespaces } from "react-i18next";
 
 import { getCurrentLanguage } from "../services/language-service";
 import { filterOutDuplicateData } from "../utils/format-departures-data-helper";
@@ -18,6 +19,7 @@ const headers = {
 
 const FETCH_INTERVAL = 3000;
 
+@withNamespaces()
 export default class DeparturesContainer extends React.Component {
   state = {
     data: {
@@ -71,9 +73,10 @@ export default class DeparturesContainer extends React.Component {
         this.clearFetchingInterval();
       }
     } catch (e) {
+      const { t } = this.props;
       this.setState({
         ...this.state,
-        errorMessage: "Failed to fetch"
+        errorMessage: t("Failed to fetch")
       });
     }
   };

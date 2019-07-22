@@ -13,7 +13,8 @@ const resources = {
       "NYC to MTL": "New York to Montreal",
       Search: "Search",
       Departure: "Departure",
-      Arrival: "Arrival"
+      Arrival: "Arrival",
+      "Failed to fetch": "Failed to fetch"
     }
   },
   [FRENCH]: {
@@ -23,7 +24,8 @@ const resources = {
       "NYC to MTL": "New York à Montréal",
       Search: "Chercher",
       Departure: "Départ",
-      Arrival: "Arrivée"
+      Arrival: "Arrivée",
+      "Failed to fetch": "Pas réussi à aller chercher"
     }
   }
 };
