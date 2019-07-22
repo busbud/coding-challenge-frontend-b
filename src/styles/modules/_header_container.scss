@@ -7,10 +7,16 @@
   align-items: center;
   padding: 1rem;
 
-  .attribute {
+  .top-bar-selection {
     display: flex;
+    flex-direction: row;
     margin-left: auto;
-    color: white;
+
+    .attribute {
+      display: flex;
+      color: white;
+      margin-right: 10px;
+    }
   }
 
   .fa-angle-left {

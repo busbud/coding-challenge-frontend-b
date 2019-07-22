@@ -42,18 +42,20 @@ class HeaderContainer extends React.Component {
             <i className="fa fa-angle-left" />
           </div>
         )}
-        {_.map(selectAttributeMapper, (attributes, type) => {
-          const { getCurrentValue, changeValue, listOfValues } = attributes;
-          return (
-            <div className="attribute" key={type}>
-              <AttributeSelection
-                getCurrentValue={getCurrentValue}
-                changeValue={changeValue}
-                listOfValues={listOfValues}
-              />
-            </div>
-          );
-        })}
+        <div className="top-bar-selection">
+          {_.map(selectAttributeMapper, (attributes, type) => {
+            const { getCurrentValue, changeValue, listOfValues } = attributes;
+            return (
+              <div className="attribute" key={type}>
+                <AttributeSelection
+                  getCurrentValue={getCurrentValue}
+                  changeValue={changeValue}
+                  listOfValues={listOfValues}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
