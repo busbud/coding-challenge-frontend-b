@@ -7,7 +7,7 @@ module.exports = {
   },
   output: {
     path: commonPaths.outputPath,
-    publicPath: "./",
+    publicPath: "/",
     filename: "[name].bundle.js"
   },
   devtool: "source-map",

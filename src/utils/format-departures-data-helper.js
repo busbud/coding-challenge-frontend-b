@@ -1,4 +1,7 @@
-export function findLocationName(locationId, locations) {
-  const location = _.find(locations, location => location.id === locationId);
-  return location.name;
+export function filterOutDuplicateData(stateData, data) {
+  return _.filter(data, el => {
+    if (!_.some(stateData, stateEL => el.id === stateEL.id)) {
+      return el;
+    }
+  });
 }

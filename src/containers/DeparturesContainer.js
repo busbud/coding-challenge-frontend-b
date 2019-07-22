@@ -3,11 +3,12 @@ import _ from "lodash";
 import axios from "axios";
 
 import { getCurrentLanguage } from "../services/language-service";
+import { filterOutDuplicateData } from "../utils/format-departures-data-helper";
 import DepartureInfo from "../components/DepartureInfo";
 import Placeholder from "../components/Placeholder";
 
 const URL =
-  "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-08/poll";
+  "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-04/poll";
 
 const headers = {
   Accept:
@@ -15,11 +16,7 @@ const headers = {
   "X-Busbud-Token": `${process.env.X_BUSBUD_TOKEN}`
 };
 
-let prevNum = 0;
-function getIndex(num) {
-  prevNum = prevNum + num;
-  return prevNum;
-}
+const FETCH_INTERVAL = 3000;
 
 export default class DeparturesContainer extends React.Component {
   state = {
@@ -32,43 +29,47 @@ export default class DeparturesContainer extends React.Component {
     isFetching: true
   };
 
+  scheduleFetchingDepartures = async () => {
+    this.fetchDepartures();
+    this.pollingDepratureInterval = setInterval(() => {
+      this.fetchDepartures();
+    }, FETCH_INTERVAL);
+  };
+
+  clearFetchingInterval = async () => {
+    clearInterval(this.pollingDepratureInterval);
+  };
+
   componentDidMount() {
-    this._asyncRequest = this.fetchDepartures();
+    this.scheduleFetchingDepartures();
   }
 
   componentWillUnmount() {
-    if (this._asyncRequest) {
-      this._asyncRequest.cancel();
-    }
+    this.clearFetchingInterval();
   }
 
-  fetchDepartures = async (index = 0) => {
+  fetchDepartures = async () => {
     const language = getCurrentLanguage();
 
     try {
+      const index = this.state.data.departures.length;
       const fetchResponse = await axios({
         method: "get",
         url: `${URL}?index=${index}&lang=${language}`,
         headers
       });
 
-      const { complete, departures } = fetchResponse.data;
+      const { complete } = fetchResponse.data;
 
-      if (complete) {
-        this._asyncRequest = null;
-        return this.setState({
-          ...this.state,
-          isFetching: false,
-          data: this.formatData(fetchResponse.data)
-        });
-      }
-
-      setTimeout(() => this.fetchDepartures(getIndex(departures.length)), 2000);
       this.setState({
         ...this.state,
         isFetching: true,
-        data: this.formatData(fetchResponse.data)
+        data: this.concatDataToState(fetchResponse.data)
       });
+
+      if (complete) {
+        this.clearFetchingInterval();
+      }
     } catch (e) {
       this.setState({
         ...this.state,
@@ -77,7 +78,7 @@ export default class DeparturesContainer extends React.Component {
     }
   };
 
-  formatData = ({ departures, locations, operators }) => {
+  concatDataToState = ({ departures, locations, operators }) => {
     const {
       data: {
         departures: stateDepartures,
@@ -90,21 +91,13 @@ export default class DeparturesContainer extends React.Component {
       departures: _.concat(stateDepartures, departures),
       locations: _.concat(
         stateLocations,
-        this.filterOutDuplicateData(stateLocations, locations)
+        filterOutDuplicateData(stateLocations, locations)
       ),
       operators: _.concat(
         stateOperators,
-        this.filterOutDuplicateData(stateOperators, operators)
+        filterOutDuplicateData(stateOperators, operators)
       )
     };
-  };
-
-  filterOutDuplicateData = (stateData, data) => {
-    return _.filter(data, el => {
-      if (!_.some(stateData, stateEL => el.id === stateEL.id)) {
-        return el;
-      }
-    });
   };
 
   render() {
@@ -113,9 +106,6 @@ export default class DeparturesContainer extends React.Component {
       isFetching
     } = this.state;
 
-    if (isFetching) {
-      return <Placeholder content="Fetching..." />;
-    }
     return (
       <div className="departures-page-container">
         {_.map(departures, departure => {

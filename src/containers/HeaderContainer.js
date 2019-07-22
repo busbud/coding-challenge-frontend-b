@@ -1,15 +1,21 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import LanguageSelect from "../components/LanguageSelect";
 
-export default class HeaderContainer extends React.Component {
-  render() {
-    const { onClick, displayDepartures } = this.props;
+class HeaderContainer extends React.Component {
+  onClick = () => {
+    this.props.history.push("/");
+  };
 
+  render() {
+    const {
+      location: { pathname }
+    } = this.props;
     return (
       <div className="top-bar-container">
-        {displayDepartures && (
-          <div onClick={onClick}>
+        {pathname !== "/" && (
+          <div onClick={this.onClick}>
             <i className="fa fa-angle-left" />
           </div>
         )}
@@ -20,3 +26,5 @@ export default class HeaderContainer extends React.Component {
     );
   }
 }
+
+export default withRouter(HeaderContainer);

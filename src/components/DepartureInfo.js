@@ -1,12 +1,14 @@
 import React from "react";
 
-import { formatTime, formatPrice } from "../utils/format-departure-info-helper";
-import { findLocationName } from "../utils/format-departures-data-helper";
+import {
+  formatTime,
+  formatPrice,
+  findLocationName
+} from "../utils/format-departure-info-helper";
 
 export default class DepartureInfo extends React.Component {
   render() {
     const { departure, locations } = this.props;
-
     const {
       arrival_time,
       departure_time,
