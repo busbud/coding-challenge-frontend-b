@@ -1,11 +1,11 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import {
   DeparturesContainer,
   HomeContainer,
-  HeaderContainer
-} from "./containers";
+  HeaderContainer,
+} from './containers';
 
 export default class App extends React.Component {
   render() {

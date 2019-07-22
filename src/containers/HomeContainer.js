@@ -1,10 +1,10 @@
-import React from "react";
-import { withNamespaces } from "react-i18next";
+import React from 'react';
+import { withNamespaces } from 'react-i18next';
 
 @withNamespaces()
 export default class HomeContainer extends React.Component {
   onClick = () => {
-    this.props.history.push("/departures");
+    this.props.history.push('/departures');
   };
 
   render() {
@@ -14,11 +14,11 @@ export default class HomeContainer extends React.Component {
         <div className="page-header">
           <div className="page-header__icon" />
           <div className="page-header__tagline">
-            {t("Excited for an upcoming weekend at Osheaga?")}
+            {t('Excited for an upcoming weekend at Osheaga?')}
           </div>
-          <h1>{t("NYC to MTL")}</h1>
+          <h1>{t('NYC to MTL')}</h1>
           <div className="button" onClick={this.onClick}>
-            {t("Search")}
+            {t('Search')}
           </div>
         </div>
       </div>

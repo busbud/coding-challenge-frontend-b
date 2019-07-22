@@ -1,20 +1,20 @@
-import React from "react";
-import _ from "lodash";
-import axios from "axios";
-import { withNamespaces } from "react-i18next";
+import React from 'react';
+import _ from 'lodash';
+import axios from 'axios';
+import { withNamespaces } from 'react-i18next';
 
-import { getCurrentLanguage } from "../services/attribute-service";
-import { filterOutDuplicateData } from "../utils/format-departures-data-helper";
-import DepartureInfo from "../components/DepartureInfo";
-import Loading from "../components/Loading";
+import { getCurrentLanguage } from '../services/attribute-service';
+import { filterOutDuplicateData } from '../utils/format-departures-data-helper';
+import DepartureInfo from '../components/DepartureInfo';
+import Loading from '../components/Loading';
 
 const URL =
-  "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-07/poll";
+  'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-07/poll';
 
 const headers = {
   Accept:
-    "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
-  "X-Busbud-Token": `${process.env.X_BUSBUD_TOKEN}`
+    'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
+  'X-Busbud-Token': `${process.env.X_BUSBUD_TOKEN}`,
 };
 
 const FETCH_INTERVAL = 3000;
@@ -25,10 +25,10 @@ export default class DeparturesContainer extends React.Component {
     data: {
       departures: [],
       operators: [],
-      locations: []
+      locations: [],
     },
-    errorMessage: "",
-    isFetching: true
+    errorMessage: '',
+    isFetching: true,
   };
 
   scheduleFetchingDepartures = async () => {
@@ -57,9 +57,9 @@ export default class DeparturesContainer extends React.Component {
     try {
       const index = this.state.data.departures.length;
       const fetchResponse = await axios({
-        method: "get",
+        method: 'get',
         url: `${URL}?index=${index}&lang=${language}&currency=${currency}`,
-        headers
+        headers,
       });
 
       const { complete } = fetchResponse.data;
@@ -67,21 +67,21 @@ export default class DeparturesContainer extends React.Component {
       this.setState({
         ...this.state,
         isFetching: true,
-        data: this.concatDataToState(fetchResponse.data)
+        data: this.concatDataToState(fetchResponse.data),
       });
 
       if (complete) {
         this.clearFetchingInterval();
         this.setState({
           ...this.state,
-          isFetching: false
+          isFetching: false,
         });
       }
     } catch (e) {
       const { t } = this.props;
       this.setState({
         ...this.state,
-        errorMessage: t("Failed to fetch")
+        errorMessage: t('Failed to fetch'),
       });
     }
   };
@@ -91,27 +91,27 @@ export default class DeparturesContainer extends React.Component {
       data: {
         departures: stateDepartures,
         locations: stateLocations,
-        operators: stateOperators
-      }
+        operators: stateOperators,
+      },
     } = this.state;
 
     return {
       departures: _.concat(stateDepartures, departures),
       locations: _.concat(
         stateLocations,
-        filterOutDuplicateData(stateLocations, locations)
+        filterOutDuplicateData(stateLocations, locations),
       ),
       operators: _.concat(
         stateOperators,
-        filterOutDuplicateData(stateOperators, operators)
-      )
+        filterOutDuplicateData(stateOperators, operators),
+      ),
     };
   };
 
   render() {
     const {
       data: { departures, locations },
-      isFetching
+      isFetching,
     } = this.state;
     const { t } = this.props;
     return (
@@ -126,7 +126,7 @@ export default class DeparturesContainer extends React.Component {
           );
         })}
         <div className="departures-loading-container">
-          {isFetching ? <Loading /> : t("Request complete")}
+          {isFetching ? <Loading /> : t('Request complete')}
         </div>
       </div>
     );

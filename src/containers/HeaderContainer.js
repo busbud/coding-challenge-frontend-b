@@ -1,43 +1,43 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-import AttributeSelection from "../components/AttributeSelection";
+import AttributeSelection from '../components/AttributeSelection';
 
 import {
   getCurrentLanguage,
   changeLanguage,
   changeCurrency,
-  getCurrentCurrency
-} from "../services/attribute-service";
+  getCurrentCurrency,
+} from '../services/attribute-service';
 
-import languages from "../languageList";
-import currencies from "../currencyList";
+import languages from '../languageList';
+import currencies from '../currencyList';
 
 const selectAttributeMapper = {
   language: {
     getCurrentValue: getCurrentLanguage,
     changeValue: changeLanguage,
-    listOfValues: languages
+    listOfValues: languages,
   },
   currency: {
     getCurrentValue: getCurrentCurrency,
     changeValue: changeCurrency,
-    listOfValues: currencies
-  }
+    listOfValues: currencies,
+  },
 };
 
 class HeaderContainer extends React.Component {
   onClick = () => {
-    this.props.history.push("/");
+    this.props.history.push('/');
   };
 
   render() {
     const {
-      location: { pathname }
+      location: { pathname },
     } = this.props;
     return (
       <div className="top-bar-container">
-        {pathname !== "/" && (
+        {pathname !== '/' && (
           <div onClick={this.onClick}>
             <i className="fa fa-angle-left" />
           </div>

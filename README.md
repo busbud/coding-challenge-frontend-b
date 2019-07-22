@@ -1,10 +1,12 @@
 # coding-challenge-frontend-b
+
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 
-It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)! 
+It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)!
 Your challenge is to build a microsite that allows a traveler from NYC to find one-way departure schedules for the festival's opening weekend.
 
 ## Functional Requirements
+
 - Has a simple onboarding screen that will trigger the departure search
 - Lists all the departures for a given origin city (**New York - geohash: dr5reg**) and a given destination city (**Montréal - geohash: f25dvk**) for a given day (**the 2nd of August 2019**) for **1** adult.
 - For each departure, we want, at least, to see the **departure time**, the **arrival time**, the **location name** and the **price** (use `prices.total` of the `departure`).
@@ -15,29 +17,32 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 - The microsite should be deployed to [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
 ### Bonus
-* Localization: support for multiple languages (English, French, ...)
-* Responsive design
+
+- Localization: support for multiple languages (English, French, ...)
+- Responsive design
 
 ### Remarks
 
-* You can setup your microsite any way you like; we're partial to NodeJS, ExpressJS and React
-* CSS can be written using SASS, LESS or similar higher-level language
+- You can setup your microsite any way you like; we're partial to NodeJS, ExpressJS and React
+- CSS can be written using SASS, LESS or similar higher-level language
 
 # Documentation
 
 ## Supporting API
+
 The following documentation describes the API you'll need to use to build out the challenge deliverable.
 
 The API you'll be using is hosted at https://napi.busbud.com. This is the Busbud production API.
 
 To interact with it from your code, you'll need to provide the following HTTP headers
 
-HTTP Header | Value
-------------|------
-Accept | `application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/`
-X-Busbud-Token | value provided in challenge invitation email (if not contact us)
+| HTTP Header    | Value                                                                           |
+| -------------- | ------------------------------------------------------------------------------- |
+| Accept         | `application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/` |
+| X-Busbud-Token | value provided in challenge invitation email (if not contact us)                |
 
 ### Search overview
+
 Search is performed in two steps
 
 1. A [search is initialized](#initialize-search), and may be `complete` if results are served from cache
@@ -51,7 +56,7 @@ To get departures, search is initialized via the following endpoint:
 
     https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date
 
-Path parameters:  
+Path parameters:
 
 - `origin` : Origin's geohash
 - `destination` : Destination's geohash
@@ -66,6 +71,7 @@ Querystring parameters:
 - `currency` : ISO 4217 currency code
 
 The response looks like:
+
 ```
 {
   "origin_city_id": "375dd5879001acbd84a4683dedf9eed1",
@@ -93,6 +99,7 @@ The response looks like:
 ```
 
 Where a City is like:
+
 ```
    {
       "id": "375dd5879001acbd84a4683deda84183",
@@ -124,7 +131,9 @@ Where a City is like:
       }
     }
 ```
+
 Where a Location is like:
+
 ```
     {
       "id": 3970,
@@ -140,7 +149,9 @@ Where a Location is like:
       "geohash": "f25dvfzcz"
     }
 ```
+
 Where an Operator is like:
+
 ```
     {
       "id": "bfc27cd544ca49c18d000f2bc00c58c0",
@@ -203,7 +214,9 @@ Where an Operator is like:
       }
     }
 ```
+
 And an XDeparture is :
+
 ```
     {
       "id": "7c5dd26a",
@@ -261,11 +274,12 @@ While the `complete` property from the response is false, you need to call:
 
     https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date/poll
 
-with ***all*** the same parameters as the previous endpoint, plus the following additional querystring parameter:
+with **_all_** the same parameters as the previous endpoint, plus the following additional querystring parameter:
 
 - `index` : Index from which to return new departures, generally set to the total number of departures received since the initial search
 
 The response is similar to:
+
 ```
 {
   "departures": [

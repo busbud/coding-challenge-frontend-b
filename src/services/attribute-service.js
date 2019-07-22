@@ -1,4 +1,4 @@
-import i18n from "../i18n";
+import i18n from '../i18n';
 
 function setAttribute(type, value) {
   window.localStorage.setItem(type, value);
@@ -10,18 +10,18 @@ export function getCurrentLanguage() {
 }
 
 export function changeLanguage(language) {
-  setAttribute("lang", language);
+  setAttribute('lang', language);
   i18n.changeLanguage(language);
 }
 
 export function changeCurrency(currency) {
-  setAttribute("currency", currency);
+  setAttribute('currency', currency);
 }
 
 export function getCurrentCurrency() {
   const { currency } = window.localStorage;
   if (!currency) {
-    return "CAD";
+    return 'CAD';
   }
   return currency;
 }

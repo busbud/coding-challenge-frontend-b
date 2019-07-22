@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
 export default class LanguageSelect extends React.Component {
   state = {
-    currentValue: this.props.getCurrentValue()
+    currentValue: this.props.getCurrentValue(),
   };
 
   onChange = event => {

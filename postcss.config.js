@@ -1,5 +1,5 @@
 module.exports = ({ _file, _options, env }) => ({
   plugins: {
-    cssnano: env === "production"
-  }
+    cssnano: env === 'production',
+  },
 });

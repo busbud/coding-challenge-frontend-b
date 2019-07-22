@@ -1,4 +1,4 @@
 export default {
-  ENGLISH: "en",
-  FRENCH: "fr"
+  ENGLISH: 'en',
+  FRENCH: 'fr',
 };

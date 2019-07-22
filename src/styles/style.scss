@@ -1,13 +1,13 @@
 /*Modules*/
-@import "./modules/button";
-@import "./modules/loading";
-@import "./modules/select";
-@import "./modules/home_container";
-@import "./modules/header_container";
-@import "./modules/departures_container";
+@import './modules/button';
+@import './modules/loading';
+@import './modules/select';
+@import './modules/home_container';
+@import './modules/header_container';
+@import './modules/departures_container';
 
 body {
-  font-family: "Perpetua", sans-serif;
+  font-family: 'Perpetua', sans-serif;
   line-height: 1.3;
   color: black;
   background: #f6f6f6;
