@@ -18,6 +18,7 @@ export default class DepartureInfo extends React.Component {
       origin_location_id,
       prices: { total }
     } = departure;
+    const { currency } = window.localStorage;
     return (
       <div className="departure-info-container">
         <div className="schedule-info">
@@ -39,7 +40,9 @@ export default class DepartureInfo extends React.Component {
           </div>
         </div>
         <div className="schedule-details">
-          <div className="price">${formatPrice(total)} USD</div>
+          <div className="price">
+            {formatPrice(total)} {currency}
+          </div>
         </div>
       </div>
     );

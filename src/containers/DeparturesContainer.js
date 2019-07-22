@@ -3,13 +3,13 @@ import _ from "lodash";
 import axios from "axios";
 import { withNamespaces } from "react-i18next";
 
-import { getCurrentLanguage } from "../services/language-service";
+import { getCurrentLanguage } from "../services/attribute-service";
 import { filterOutDuplicateData } from "../utils/format-departures-data-helper";
 import DepartureInfo from "../components/DepartureInfo";
 import Loading from "../components/Loading";
 
 const URL =
-  "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-06/poll";
+  "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-07/poll";
 
 const headers = {
   Accept:
@@ -52,12 +52,13 @@ export default class DeparturesContainer extends React.Component {
 
   fetchDepartures = async () => {
     const language = getCurrentLanguage();
+    const { currency } = window.localStorage;
 
     try {
       const index = this.state.data.departures.length;
       const fetchResponse = await axios({
         method: "get",
-        url: `${URL}?index=${index}&lang=${language}`,
+        url: `${URL}?index=${index}&lang=${language}&currency=${currency}`,
         headers
       });
 

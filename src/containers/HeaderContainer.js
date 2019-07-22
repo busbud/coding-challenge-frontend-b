@@ -1,7 +1,30 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-import LanguageSelect from "../components/LanguageSelect";
+import AttributeSelection from "../components/AttributeSelection";
+
+import {
+  getCurrentLanguage,
+  changeLanguage,
+  changeCurrency,
+  getCurrentCurrency
+} from "../services/attribute-service";
+
+import languages from "../languageList";
+import currencies from "../currencyList";
+
+const selectAttributeMapper = {
+  language: {
+    getCurrentValue: getCurrentLanguage,
+    changeValue: changeLanguage,
+    listOfValues: languages
+  },
+  currency: {
+    getCurrentValue: getCurrentCurrency,
+    changeValue: changeCurrency,
+    listOfValues: currencies
+  }
+};
 
 class HeaderContainer extends React.Component {
   onClick = () => {
@@ -19,9 +42,18 @@ class HeaderContainer extends React.Component {
             <i className="fa fa-angle-left" />
           </div>
         )}
-        <div className="language">
-          <LanguageSelect />
-        </div>
+        {_.map(selectAttributeMapper, (attributes, type) => {
+          const { getCurrentValue, changeValue, listOfValues } = attributes;
+          return (
+            <div className="attribute" key={type}>
+              <AttributeSelection
+                getCurrentValue={getCurrentValue}
+                changeValue={changeValue}
+                listOfValues={listOfValues}
+              />
+            </div>
+          );
+        })}
       </div>
     );
   }
