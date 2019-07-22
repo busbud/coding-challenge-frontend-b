@@ -146,9 +146,7 @@ export default class DeparturesContainer extends React.Component {
             />
           );
         })}
-        <div className="departures-loading-container">
-          {isFetching && <Loading />}
-        </div>
+        {isFetching && <Loading />}
       </div>
     );
   }
