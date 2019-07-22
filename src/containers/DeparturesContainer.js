@@ -1,7 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
 import axios from 'axios';
-import { withNamespaces } from 'react-i18next';
 
 import { getCurrentLanguage } from '../services/attribute-service';
 import { filterOutDuplicateData } from '../utils/format-departures-data-helper';
@@ -10,7 +9,7 @@ import ErrorMessage from '../components/ErrorMessage';
 import Loading from '../components/Loading';
 
 const URL =
-  'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-08/poll';
+  'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-02/poll';
 
 const headers = {
   Accept:
@@ -20,7 +19,6 @@ const headers = {
 
 const FETCH_INTERVAL = 3000;
 
-@withNamespaces()
 export default class DeparturesContainer extends React.Component {
   state = {
     data: {
@@ -89,19 +87,17 @@ export default class DeparturesContainer extends React.Component {
       data: { departures },
     } = this.state;
 
-    const { t } = this.props;
-
     if (_.isEmpty(departures)) {
       return this.setState({
         ...this.state,
-        errorMessage: t('Failed to fetch'),
+        errorMessage: 'Failed to fetch',
         isFetching: false,
       });
     }
 
     this.setState({
       ...this.state,
-      errorMessage: t('Request was interrupted'),
+      errorMessage: 'Request was interrupted',
     });
   };
 
