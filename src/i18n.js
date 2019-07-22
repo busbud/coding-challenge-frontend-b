@@ -14,7 +14,8 @@ const resources = {
       Search: "Search",
       Departure: "Departure",
       Arrival: "Arrival",
-      "Failed to fetch": "Failed to fetch"
+      "Failed to fetch": "Failed to fetch",
+      "Request complete": "Request complete"
     }
   },
   [FRENCH]: {
@@ -25,7 +26,8 @@ const resources = {
       Search: "Chercher",
       Departure: "Départ",
       Arrival: "Arrivée",
-      "Failed to fetch": "Pas réussi à aller chercher"
+      "Failed to fetch": "Pas réussi à aller chercher",
+      "Request complete": "Demande terminée"
     }
   }
 };

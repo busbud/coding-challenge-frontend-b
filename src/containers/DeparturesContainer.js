@@ -6,10 +6,10 @@ import { withNamespaces } from "react-i18next";
 import { getCurrentLanguage } from "../services/language-service";
 import { filterOutDuplicateData } from "../utils/format-departures-data-helper";
 import DepartureInfo from "../components/DepartureInfo";
-import Placeholder from "../components/Placeholder";
+import Loading from "../components/Loading";
 
 const URL =
-  "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-04/poll";
+  "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-06/poll";
 
 const headers = {
   Accept:
@@ -71,6 +71,10 @@ export default class DeparturesContainer extends React.Component {
 
       if (complete) {
         this.clearFetchingInterval();
+        this.setState({
+          ...this.state,
+          isFetching: false
+        });
       }
     } catch (e) {
       const { t } = this.props;
@@ -108,7 +112,7 @@ export default class DeparturesContainer extends React.Component {
       data: { departures, locations },
       isFetching
     } = this.state;
-
+    const { t } = this.props;
     return (
       <div className="departures-page-container">
         {_.map(departures, departure => {
@@ -120,6 +124,9 @@ export default class DeparturesContainer extends React.Component {
             />
           );
         })}
+        <div className="departures-loading-container">
+          {isFetching ? <Loading /> : t("Request complete")}
+        </div>
       </div>
     );
   }
