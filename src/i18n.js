@@ -14,8 +14,10 @@ const resources = {
       Search: 'Search',
       Departure: 'Departure',
       Arrival: 'Arrival',
-      'Failed to fetch': 'Failed to fetch',
+      'Failed to fetch': 'Failed to fetch.',
       'Request complete': 'Request complete',
+      'Request was interrupted':
+        'Request was interrupted. Please refresh the page to try again',
     },
   },
   [FRENCH]: {
@@ -26,8 +28,10 @@ const resources = {
       Search: 'Chercher',
       Departure: 'Départ',
       Arrival: 'Arrivée',
-      'Failed to fetch': 'Pas réussi à aller chercher',
+      'Failed to fetch': 'Pas réussi à aller chercher.',
       'Request complete': 'Demande terminée',
+      'Request was interrupted':
+        'La demande a été interrompue. Veuillez actualiser la page pour réessayer.',
     },
   },
 };

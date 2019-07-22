@@ -6,10 +6,11 @@ import { withNamespaces } from 'react-i18next';
 import { getCurrentLanguage } from '../services/attribute-service';
 import { filterOutDuplicateData } from '../utils/format-departures-data-helper';
 import DepartureInfo from '../components/DepartureInfo';
+import ErrorMessage from '../components/ErrorMessage';
 import Loading from '../components/Loading';
 
 const URL =
-  'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-07/poll';
+  'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-08/poll';
 
 const headers = {
   Accept:
@@ -78,12 +79,30 @@ export default class DeparturesContainer extends React.Component {
         });
       }
     } catch (e) {
-      const { t } = this.props;
-      this.setState({
+      this.clearFetchingInterval();
+      this.handleError();
+    }
+  };
+
+  handleError = () => {
+    const {
+      data: { departures },
+    } = this.state;
+
+    const { t } = this.props;
+
+    if (_.isEmpty(departures)) {
+      return this.setState({
         ...this.state,
         errorMessage: t('Failed to fetch'),
+        isFetching: false,
       });
     }
+
+    this.setState({
+      ...this.state,
+      errorMessage: t('Request was interrupted'),
+    });
   };
 
   concatDataToState = ({ departures, locations, operators }) => {
@@ -112,10 +131,12 @@ export default class DeparturesContainer extends React.Component {
     const {
       data: { departures, locations },
       isFetching,
+      errorMessage,
     } = this.state;
-    const { t } = this.props;
+
     return (
       <div className="departures-page-container">
+        {errorMessage && <ErrorMessage text={errorMessage} />}
         {_.map(departures, departure => {
           return (
             <DepartureInfo
@@ -126,7 +147,7 @@ export default class DeparturesContainer extends React.Component {
           );
         })}
         <div className="departures-loading-container">
-          {isFetching ? <Loading /> : t('Request complete')}
+          {isFetching && <Loading />}
         </div>
       </div>
     );
