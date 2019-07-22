@@ -129,7 +129,7 @@ export default class DeparturesContainer extends React.Component {
 
   render() {
     const {
-      data: { departures, locations },
+      data: { departures, locations, operators },
       isFetching,
       errorMessage,
     } = this.state;
@@ -143,6 +143,7 @@ export default class DeparturesContainer extends React.Component {
               departure={departure}
               key={departure.busbud_departure_id}
               locations={locations}
+              operators={operators}
             />
           );
         })}

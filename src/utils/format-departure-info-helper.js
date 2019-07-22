@@ -17,3 +17,11 @@ export function findLocationName(locationId, locations) {
   const location = _.find(locations, location => location.id === locationId);
   return location.name;
 }
+
+export function getOperatorLogo(operatorId, operators) {
+  const operator = _.find(
+    operators,
+    operator => operator.source_id === operatorId,
+  );
+  return operator.logo_url;
+}

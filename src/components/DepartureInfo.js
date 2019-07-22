@@ -5,18 +5,20 @@ import {
   formatTime,
   formatPrice,
   findLocationName,
+  getOperatorLogo,
 } from '../utils/format-departure-info-helper';
 
 @withNamespaces()
 export default class DepartureInfo extends React.Component {
   render() {
-    const { departure, locations, t } = this.props;
+    const { departure, locations, operators, t } = this.props;
     const {
       arrival_time,
       departure_time,
       destination_location_id,
       origin_location_id,
       prices: { total },
+      source_id,
     } = departure;
     const { currency } = window.localStorage;
     return (
@@ -40,6 +42,9 @@ export default class DepartureInfo extends React.Component {
           </div>
         </div>
         <div className="schedule-details">
+          <div className="operator-logo">
+            <img src={getOperatorLogo(source_id, operators)} />
+          </div>
           <div className="price">
             {formatPrice(total)} {currency}
           </div>
