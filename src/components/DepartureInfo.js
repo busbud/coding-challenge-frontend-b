@@ -23,7 +23,7 @@ export default class DepartureInfo extends React.Component {
     const { currency } = window.localStorage;
     return (
       <div className="departure-info-container">
-        <div className="schedule-info">
+        <div className="schedule-time">
           <div className="row">
             <div className="time">
               {t('Departure')}: {formatTime(departure_time)}
