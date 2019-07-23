@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { reactI18nextModule } from 'react-i18next';
 import detector from 'i18next-browser-languagedetector';
-import languages from './languageList';
+import languages from './utils/languageList';
 
 const { ENGLISH, FRENCH } = languages;
 
@@ -14,7 +14,8 @@ const resources = {
       Search: 'Search',
       Departure: 'Departure',
       Arrival: 'Arrival',
-      'Failed to fetch': 'Failed to fetch.',
+      'Could not find departures':
+        'Could not find departures. Please try again',
       'Request complete': 'Request complete',
       'Request was interrupted':
         'Request was interrupted. Please refresh the page to try again',
@@ -28,7 +29,8 @@ const resources = {
       Search: 'Chercher',
       Departure: 'Départ',
       Arrival: 'Arrivée',
-      'Failed to fetch': 'Pas réussi à aller chercher.',
+      'Could not find departures':
+        'Impossible de trouver les départs. Veuillez réessayer',
       'Request complete': 'Demande terminée',
       'Request was interrupted':
         'La demande a été interrompue. Veuillez actualiser la page pour réessayer.',

@@ -10,8 +10,8 @@ import {
   getCurrentCurrency,
 } from '../services/attribute-service';
 
-import languages from '../languageList';
-import currencies from '../currencyList';
+import languages from '../utils/languageList';
+import currencies from '../utils/currencyList';
 
 const selectAttributeMapper = {
   language: {

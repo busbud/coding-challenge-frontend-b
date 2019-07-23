@@ -55,7 +55,7 @@ export default class DeparturesContainer extends React.Component {
 
       this.setState({
         ...this.state,
-        isFetching: true,
+        isFetching: complete ? false : true,
         data: {
           departures: _.concat(departures, newDepartures),
           locations: _.concat(
@@ -71,10 +71,6 @@ export default class DeparturesContainer extends React.Component {
 
       if (complete) {
         this.clearFetchingInterval();
-        this.setState({
-          ...this.state,
-          isFetching: false,
-        });
       }
     } catch (e) {
       this.clearFetchingInterval();
@@ -83,21 +79,10 @@ export default class DeparturesContainer extends React.Component {
   };
 
   handleError = () => {
-    const {
-      data: { departures },
-    } = this.state;
-
-    if (_.isEmpty(departures)) {
-      return this.setState({
-        ...this.state,
-        errorMessage: 'Failed to fetch',
-        isFetching: false,
-      });
-    }
-
     this.setState({
       ...this.state,
-      errorMessage: 'Request was interrupted',
+      isFetching: false,
+      errorMessage: 'Could not find departures',
     });
   };
 
