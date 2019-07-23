@@ -71,7 +71,7 @@ export default class DeparturesContainer extends React.Component {
 
       if (complete) {
         this.clearFetchingInterval();
-        if (_.isEmpty(departures)) {
+        if (_.isEmpty(newDepartures)) {
           this.setState({
             ...this.state,
             errorMessage: 'No departures available',
