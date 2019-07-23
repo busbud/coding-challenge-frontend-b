@@ -20,16 +20,16 @@ export const Search = () => {
         <form method="GET" action="" onSubmit={onSubmit} data-testid="search-form" >
 
             <div className="Search grid-wrapper ">
-                <div className="col-3">
+                <div className="col-3 col-sm-12">
                     <AutocompleteInput name="from" placeholder={t("Leaving from")} />
                 </div>
-                <div className="col-3">
+                <div className="col-3 col-sm-12">
                     <AutocompleteInput name="to" placeholder={t("Going to")} />
                 </div>
-                <div className="col-3">
+                <div className="col-3 col-sm-12">
                     <DatePicker />
                 </div>
-                <div className="col-3">
+                <div className="col-3 col-sm-12">
                     <button type="submit" className="Search__button">
                         {t("Search")}
                     </button>

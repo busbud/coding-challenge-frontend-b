@@ -60,3 +60,21 @@
     font-size: 2rem;
 
 }
+@media screen and (max-width: 480px) {
+
+.DepartureCard__time span:first-child {
+    font-size: 2.5rem;
+}
+
+.DepartureCard__time span:last-child {
+    font-size: 1.5rem;
+}
+
+.DepartureCard__location div:first-child {
+    font-size: 1.5rem;
+}
+
+.DepartureCard__location div:last-child {
+    font-size: 1.2rem;
+}
+}

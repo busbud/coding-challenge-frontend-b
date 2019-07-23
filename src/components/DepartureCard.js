@@ -15,7 +15,7 @@ export const DepartureCard = memo(({ item, destinationCity, originCity, destinat
                 <span>{format(new Date(item.departure_time), 'HH:mm')}</span>
                 <span>{format(new Date(item.departure_time), 'a')}</span>
             </div>
-            <div className="DepartureCard__time">
+            <div className="DepartureCard__time hidden-sm">
                 {duration.days ? duration.days + 'd' : null}
                 {duration.hours ? duration.hours + 'h' : null}
                 {duration.minutes ? duration.minutes + 'm' : null}

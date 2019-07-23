@@ -15,7 +15,7 @@ export const Results = () => {
     return <div>
         <div className="container">
             <div className="grid-wrapper">
-                <div className="col-12">
+                <div className="col-12 col-sm-12">
                     <div className="Results__locations">
                         {
                             departureKeys.map((index) =>

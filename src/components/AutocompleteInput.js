@@ -41,7 +41,7 @@ export const AutocompleteInput = ({ placeholder, name }) => {
                 {suggestions.map(item => {
                     return <li key={item.geohash} className="AutoInput__dropdown-item">
                         <button type="button" onClick={selectSuggestion(item)} className="AutoInput__dropdown-button">
-                            {item.geohash} - {item.name}
+                            {item.name}
                         </button>
                     </li>
                 })}

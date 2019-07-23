@@ -81,7 +81,7 @@ const reducer = (state, action) => {
 
 
 
-const INITIAL_RETRIES = 5;
+const INITIAL_RETRIES = 8;
 const REQUEST_TM = 2000;
 
 export const StateContext = createContext();

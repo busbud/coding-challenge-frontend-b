@@ -27,6 +27,12 @@ code {
   padding: 0 1rem;
   margin: 0 auto;
 }
+.grid-wrapper div {
+  margin-bottom:0.5rem;
+}
+.hidden-sm {
+  display: block;
+}
 @media screen and (min-width: 992px) {
   .container {
     max-width: 1140px;
@@ -50,4 +56,31 @@ code {
   .col-10 { grid-column: span 10; }
   .col-11 { grid-column: span 11; }
   .col-12 { grid-column: span 12; }
+  .grid-wrapper div {
+    margin:0;
+  }
+}
+@media screen and (max-width: 991px) {
+  .grid-wrapper {
+    display: grid;
+    grid-gap: 0 2rem;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .col-sm-1 { grid-column: span 1; }
+  .col-sm-2 { grid-column: span 2; }
+  .col-sm-3 { grid-column: span 3; }
+  .col-sm-4 { grid-column: span 4; }
+  .col-sm-5 { grid-column: span 5; }
+  .col-sm-6 { grid-column: span 6; }
+  .col-sm-7 { grid-column: span 7; }
+  .col-sm-8 { grid-column: span 8; }
+  .col-sm-9 { grid-column: span 9; }
+  .col-sm-10 { grid-column: span 10; }
+  .col-sm-11 { grid-column: span 11; }
+  .col-sm-12 { grid-column: span 12; }
+  .hidden-sm {
+    display: none;
+  }
 }
