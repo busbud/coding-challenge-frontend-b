@@ -1,21 +1,11 @@
 import React from 'react';
 import _ from 'lodash';
-import axios from 'axios';
 
-import { getCurrentLanguage } from '../services/attribute-service';
+import { fetchDepartures } from '../services/fetch-departures-service';
 import { filterOutDuplicateData } from '../utils/format-departures-data-helper';
 import DepartureInfo from '../components/DepartureInfo';
 import ErrorMessage from '../components/ErrorMessage';
 import Loading from '../components/Loading';
-
-const URL =
-  'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2019-08-02/poll';
-
-const headers = {
-  Accept:
-    'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
-  'X-Busbud-Token': `${process.env.X_BUSBUD_TOKEN}`,
-};
 
 const FETCH_INTERVAL = 3000;
 
@@ -50,23 +40,33 @@ export default class DeparturesContainer extends React.Component {
   }
 
   fetchDepartures = async () => {
-    const language = getCurrentLanguage();
-    const { currency } = window.localStorage;
+    const index = this.state.data.departures.length;
 
     try {
-      const index = this.state.data.departures.length;
-      const fetchResponse = await axios({
-        method: 'get',
-        url: `${URL}?index=${index}&lang=${language}&currency=${currency}`,
-        headers,
-      });
+      const fetchResponse = await fetchDepartures(index);
 
-      const { complete } = fetchResponse.data;
+      const {
+        complete,
+        departures: newDepartures,
+        operators: newOperators,
+        locations: newLocations,
+      } = fetchResponse;
+      const { departures, locations, operators } = this.state.data;
 
       this.setState({
         ...this.state,
         isFetching: true,
-        data: this.concatDataToState(fetchResponse.data),
+        data: {
+          departures: _.concat(departures, newDepartures),
+          locations: _.concat(
+            locations,
+            filterOutDuplicateData(locations, newLocations),
+          ),
+          operators: _.concat(
+            operators,
+            filterOutDuplicateData(operators, newOperators),
+          ),
+        },
       });
 
       if (complete) {
@@ -99,28 +99,6 @@ export default class DeparturesContainer extends React.Component {
       ...this.state,
       errorMessage: 'Request was interrupted',
     });
-  };
-
-  concatDataToState = ({ departures, locations, operators }) => {
-    const {
-      data: {
-        departures: stateDepartures,
-        locations: stateLocations,
-        operators: stateOperators,
-      },
-    } = this.state;
-
-    return {
-      departures: _.concat(stateDepartures, departures),
-      locations: _.concat(
-        stateLocations,
-        filterOutDuplicateData(stateLocations, locations),
-      ),
-      operators: _.concat(
-        stateOperators,
-        filterOutDuplicateData(stateOperators, operators),
-      ),
-    };
   };
 
   render() {

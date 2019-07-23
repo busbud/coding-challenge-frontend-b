@@ -37,7 +37,8 @@ const resources = {
 };
 
 const options = {
-  // order and from where user language should be detected
+  // if localStorage is empty, then it will detect language from browser.
+  // if translations aren't available , then the fallback is English
   order: [
     'localStorage',
     'navigator',
