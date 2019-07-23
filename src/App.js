@@ -10,7 +10,6 @@ import './App.css';
 const LANGUAGES = ["en", "fr", "ru"]
 function App() {
   const { i18n } = useTranslation();
-  console.log(i18n)
   return (
     <div className="App">
       <header className="App-header">
@@ -21,7 +20,7 @@ function App() {
             </div>
             <div className="col-8"></div>
             <div className="col-2">
-              {LANGUAGES.map(lang => <button className={i18n.language === lang ? ' Language__button Language__button_active' : 'Language__button'} type="button" onClick={() => i18n.changeLanguage(lang)}>{lang.toUpperCase()}</button>)}
+              {LANGUAGES.map(lang => <button key={lang} className={i18n.language === lang ? ' Language__button Language__button_active' : 'Language__button'} type="button" onClick={() => i18n.changeLanguage(lang)}>{lang.toUpperCase()}</button>)}
             </div>
           </div>
         </div>

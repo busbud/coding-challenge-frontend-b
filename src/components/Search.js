@@ -1,12 +1,11 @@
 
 import React from "react";
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
 import { useTranslation } from 'react-i18next';
 
 import { useDataProvider } from '../contexts/SearchContext';
 import './Search.css';
 import { AutocompleteInput } from "./AutocompleteInput";
+import { DatePicker } from "./DatePicker";
 export const Search = () => {
     const dataProv = useDataProvider();
     const { t } = useTranslation();
@@ -28,14 +27,7 @@ export const Search = () => {
                     <AutocompleteInput name="to" placeholder={t("Going to")} />
                 </div>
                 <div className="col-3">
-                    <DayPickerInput name="date" onDayChange={
-
-                        day => dataProv.dispatch({
-                            type: "SET_SEARCH_PARAM",
-                            name: "date",
-                            value: day.toISOString().slice(0, 10)
-                        })
-                    } className="Search__input" placeholder={t("Departure date")} format="YYYY-MM-DD" />
+                    <DatePicker />
                 </div>
                 <div className="col-3">
                     <button type="submit" className="Search__button">

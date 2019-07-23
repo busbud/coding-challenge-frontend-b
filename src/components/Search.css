@@ -8,13 +8,6 @@
     margin:2rem auto;
     box-sizing: border-box;
 }
-.DayPickerInput{
-    display:block;
-
-}
-.DayPicker {
-    font-size: 16px;
-}
 .Search__input, .DayPickerInput input {
     font-weight: 400;
     font-style: normal;
