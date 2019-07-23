@@ -27,6 +27,7 @@ const initialState = {
         },
         date: ""
     },
+    loading: false,
     complete: false,
 }
 const dataMerger = (data, state, field) => {
@@ -39,23 +40,30 @@ const dataMerger = (data, state, field) => {
 }
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'LOAD_ITEMS':
 
+        case 'STOP_LOADING':
+            return {
+                ...state,
+                loading: false,
+            };
+        case 'LOAD_ITEMS':
             return {
                 ...state,
                 locations: dataMerger(action.data, state, "locations"),
                 cities: dataMerger(action.data, state, "cities"),
                 operators: dataMerger(action.data, state, "operators"),
                 complete: action.data.complete,
+                loading: !action.data.complete,
                 departures: dataMerger(action.data, state, "departures"),
             };
-        case 'RESET_RESULTS':
+        case 'START_LOADING':
             return {
                 ...state,
                 locations: {},
                 cities: {},
                 operators: {},
                 complete: false,
+                loading: true,
                 departures: {}
             }
         case 'SET_SEARCH_PARAM':
@@ -85,13 +93,13 @@ export const StateProvider = ({ children }) => {
         fetchData: function fetchData(retries = INITIAL_RETRIES) {
             if (retries < 0) return;
             const isPoll = retries !== INITIAL_RETRIES;
+
             if (!isPoll) {
                 dispatch({
-                    type: "RESET_RESULTS"
+                    type: "START_LOADING"
                 })
             }
             if (state.searchParams.from.geohash === null || state.searchParams.to.geohash === null || state.searchParams.date === "") return;
-            console.log(state);
             //instance.get(`/dr5reg/f25dvk/2019-08-03/${isPoll ? 'poll' : ''}`)
             instance.get(`/${state.searchParams.from.geohash}/${state.searchParams.to.geohash}/${state.searchParams.date}/${isPoll ? 'poll' : ''}`)
                 .then(function ({ data }) {

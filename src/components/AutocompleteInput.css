@@ -9,7 +9,8 @@
     margin:0;
     background-color: #f1f2f6;
     min-width: 15rem;
-    list-style: none;
+    list-style: none;    z-index: 999;
+
 }
 .AutoInput__dropdown-item{
     padding: 0;

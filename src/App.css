@@ -14,3 +14,16 @@
 .App-link {
   color: #61dafb;
 }
+.Language__button{
+margin: 1rem 0.5rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  background-color: #bfbfbf;
+  color: #fff;
+  border:none;
+  border-radius: 0.5rem;
+  cursor: pointer
+}
+.Language__button_active{
+  background-color: #f19020;
+}

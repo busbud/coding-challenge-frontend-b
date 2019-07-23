@@ -1,10 +1,14 @@
 import React, { memo } from 'react';
 import format from 'date-fns/format';
+import { useTranslation } from 'react-i18next';
+
 import { useDataProvider } from '../contexts/SearchContext';
+
 import './DepartureCard.css';
 import { getDepartureDuration } from '../utils/time'
 export const DepartureCard = memo(({ item, destinationCity, originCity, destinationLocation, originLocation }) => {
     let duration = getDepartureDuration(item);
+    const { t } = useTranslation();
     return <a className="DepartureCard" href="#details" data-testid="departure-card">
         <div className="DepartureCard__time-container">
             <div className="DepartureCard__time">
@@ -34,7 +38,7 @@ export const DepartureCard = memo(({ item, destinationCity, originCity, destinat
         </div>
         <div className="DepartureCard__footer">
             <div className="DepartureCard__details">
-                Show details &darr;
+                {t("Details")}
             </div>
             <div className="DepartureCard__price">
                 <span>{item.prices.total / 100} </span>
