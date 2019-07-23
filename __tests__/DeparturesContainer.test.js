@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import DeparturesContainer from '../src/containers/DeparturesContainer';
+import DepartureInfo from '../src/components/DepartureInfo';
 
 jest.mock('../src/services/fetch-departures-service', () => ({
   fetchDepartures: () => ({
@@ -45,9 +46,13 @@ describe.only('Departures container', function() {
     expect(this.wrapper.exists()).toBe(true);
   });
 
-  test('should update departures state', () => {
+  test('should update departures state when component did mount', () => {
     expect(this.wrapper.state().data.departures).toHaveLength(2);
     expect(this.wrapper.state().data.locations).toHaveLength(2);
     expect(this.wrapper.state().data.departures[1].price).toEqual('6200');
+  });
+
+  test('should render DepartureInfo component when departures state is updated', () => {
+    expect(this.wrapper.children(DepartureInfo).length).toEqual(2);
   });
 });
