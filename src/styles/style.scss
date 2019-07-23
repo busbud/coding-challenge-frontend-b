@@ -11,16 +11,17 @@ body {
   font-family: 'Perpetua', sans-serif;
   line-height: 1.3;
   color: black;
-  background: #f6f6f6;
+  background: rgb(205, 92, 92);
   height: 100%;
   margin: 0;
 }
 
 .full-height-layout {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background: #f6f6f6;
 }
 
 .app-header {
@@ -34,4 +35,11 @@ body {
   margin-top: 60px;
   height: 100%;
   width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .full-height-layout {
+    max-width: 700px;
+    margin: auto;
+  }
 }

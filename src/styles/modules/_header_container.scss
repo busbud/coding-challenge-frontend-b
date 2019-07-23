@@ -24,3 +24,9 @@
     color: white;
   }
 }
+
+@media only screen and (min-width: 600px) {
+  .top-bar-container {
+    max-width: 700px;
+  }
+}
