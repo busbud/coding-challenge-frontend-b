@@ -1,0 +1,66 @@
+{
+    "375dd587-9001-acbd-84a4-683dedfb933e": {
+        "id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "region_id": 3361,
+        "name": "Montreal",
+        "lat": 45.50884,
+        "lon": -73.58781,
+        "geohash": "f25dvk",
+        "timezone": "America/Montreal",
+        "image_url": "https://busbud.imgix.net/city-hires/1474307214311-Montreal,Quebec,Canada.jpg?h={height}&w={width}&auto=format,compress",
+        "hero_image_url": "https://busbud.imgix.net/city-heroes/montreal.jpg?h={height}&w={width}&auto=format",
+        "legacy_url_form": "Montreal,Quebec,Canada",
+        "country_code2": "CA",
+        "full_name": "Montreal, Quebec, Canada",
+        "locale": "en",
+        "region": {
+            "id": 3361,
+            "region_code": "QC",
+            "country_code2": "CA",
+            "name": "Quebec",
+            "locale": "en",
+            "country": {
+                "code2": "CA",
+                "code3": "CAN",
+                "name": "Canada",
+                "continent": "NA",
+                "default_locale": "en",
+                "default_currency": "CAD",
+                "population": 33679000,
+                "locale": "en"
+            }
+        }
+    },
+    "375dd587-9001-acbd-84a4-683deda7d276": {
+        "id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "region_id": 3357,
+        "name": "Halifax",
+        "lat": 44.646,
+        "lon": -63.57333,
+        "geohash": "dxfvcr",
+        "timezone": "America/Halifax",
+        "image_url": null,
+        "hero_image_url": null,
+        "legacy_url_form": "Halifax,NovaScotia,Canada",
+        "country_code2": "CA",
+        "full_name": "Halifax, Nova Scotia, Canada",
+        "locale": "en",
+        "region": {
+            "id": 3357,
+            "region_code": "NS",
+            "country_code2": "CA",
+            "name": "Nova Scotia",
+            "locale": "en",
+            "country": {
+                "code2": "CA",
+                "code3": "CAN",
+                "name": "Canada",
+                "continent": "NA",
+                "default_locale": "en",
+                "default_currency": "CAD",
+                "population": 33679000,
+                "locale": "en"
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+.AutoInput{
+    position: relative;
+}
+.AutoInput__dropdown {
+    position: absolute;
+    top:50px;
+    padding:1rem 0;
+    border-radius: 1rem;
+    margin:0;
+    background-color: #f1f2f6;
+    min-width: 15rem;
+    list-style: none;
+}
+.AutoInput__dropdown-item{
+    padding: 0;
+}
+.AutoInput__dropdown-item:hover{
+    background-color: #d5d9e6;
+}
+
+.AutoInput__dropdown-button{
+    background: none;
+    padding: 1rem;
+    border:none;
+    cursor:pointer;
+    font-size: 16px;
+    text-align: left;
+    letter-spacing: .3px;
+    color: #132968;
+}

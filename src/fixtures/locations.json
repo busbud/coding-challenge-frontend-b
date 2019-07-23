@@ -1,0 +1,687 @@
+{
+    "1938": {
+        "id": 1938,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Gare d'autocars",
+        "address": [
+            "1717 Rue Berri",
+            "Montréal, QC H2L 4E9",
+            "Canada"
+        ],
+        "type": "bus_station",
+        "lat": 45.516235,
+        "lon": -73.562668,
+        "geohash": "f25dyjcr3"
+    },
+    "3970": {
+        "id": 3970,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Place Bonaventure",
+        "address": [
+            "Place Bonaventure",
+            "Montréal, QC",
+            "Canada"
+        ],
+        "type": "transit_station",
+        "lat": 45.4988273060484,
+        "lon": -73.5644745826722,
+        "geohash": "f25dvfzcz"
+    },
+    "5160": {
+        "id": 5160,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Gare d'autocars",
+        "address": [
+            "1717 Rue Berri",
+            "Montreal, QC H2L 4E9"
+        ],
+        "type": "bus_station",
+        "lat": 45.516235,
+        "lon": -73.562668,
+        "geohash": "f25dyjcr3"
+    },
+    "12166": {
+        "id": 12166,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Radisson",
+        "address": [
+            "7155 Rue Sherbrooke E, quai 5",
+            "Montréal, QC H1N"
+        ],
+        "type": "subway_station",
+        "lat": 45.58889,
+        "lon": -73.53987,
+        "geohash": "f25eqe1ys"
+    },
+    "12186": {
+        "id": 12186,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Aéroport YUL",
+        "address": [
+            "Roméo-Vachon Blvd North (Departures)",
+            "Dorval, QC H4Y 1G8",
+            "Canada"
+        ],
+        "type": "airport",
+        "lat": 45.4576547718173,
+        "lon": -73.7496221065521,
+        "geohash": "f25d9g34j"
+    },
+    "12230": {
+        "id": 12230,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Stanfield International Airport",
+        "address": [
+            "1 Bell Blvd",
+            "Enfield, NS B2T 1K2"
+        ],
+        "type": "airport",
+        "lat": 44.88633,
+        "lon": -63.51475,
+        "geohash": "dxfz6emcz"
+    },
+    "12231": {
+        "id": 12231,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Train Station",
+        "address": [
+            "1161 Hollis St",
+            "Halifax, NS B3H 2P6"
+        ],
+        "type": "transit_station",
+        "lat": 44.63971,
+        "lon": -63.56796,
+        "geohash": "dxfvcqrjp"
+    },
+    "17505": {
+        "id": 17505,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Gare Centrale",
+        "address": [
+            "895 Rue de la Gauchetière O",
+            "Montréal",
+            "QC H3B 4G1, Canada"
+        ],
+        "type": "bus_station",
+        "lat": 45.499918,
+        "lon": -73.566459,
+        "geohash": "f25dvgn81"
+    },
+    "17508": {
+        "id": 17508,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Saint-Denis & Saint-Joseph",
+        "address": [
+            "389 Boulevard Saint-Joseph Est",
+            "Montréal, QC H2T 1J5",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.5262379894414,
+        "lon": -73.5881536441803,
+        "geohash": "f25dvry9x"
+    },
+    "17511": {
+        "id": 17511,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "René-Lévesque & Robert-Bourassa",
+        "address": [
+            "645 Boulevard René-Lévesque O",
+            "Montréal, QC H3B 1S5",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.5021298156559,
+        "lon": -73.5673371779098,
+        "geohash": "f25dvgmvh"
+    },
+    "17525": {
+        "id": 17525,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Jean-Talon",
+        "address": [
+            "7160 Rue Saint-Denis",
+            "Montréal, QC H2R 2E2",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.5382699406975,
+        "lon": -73.6146678134918,
+        "geohash": "f25ehcgrt"
+    },
+    "17529": {
+        "id": 17529,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Aéroport YUL",
+        "address": [
+            "Aéroport Montréal-Trudeau, H4Y 1H1, Dorval, Québec"
+        ],
+        "type": "airport",
+        "lat": 45.45764,
+        "lon": -73.7497,
+        "geohash": "f25d9g31g"
+    },
+    "17530": {
+        "id": 17530,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "René-Lévesque & St Urbain",
+        "address": [
+            "200 Boulevard René-Lévesque O",
+            "Montréal",
+            "QC H2Z 1X4",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.507147,
+        "lon": -73.56292,
+        "geohash": "f25dyh347"
+    },
+    "20837": {
+        "id": 20837,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Prince George Hotel (Airport Shuttle only)",
+        "address": [
+            "1725 Market St",
+            "Halifax, NS",
+            " B3J 3N9"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6473304,
+        "lon": -63.5761087,
+        "geohash": "dxfvcrc39"
+    },
+    "20838": {
+        "id": 20838,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Lord Nelson Hotel (Airport Shuttle only)",
+        "address": [
+            "1515 South Park St",
+            "Halifax, NS ",
+            "B3J 2L2"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6423654470735,
+        "lon": -63.5796923074097,
+        "geohash": "dxfvcnyst"
+    },
+    "20839": {
+        "id": 20839,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax The Hollis A Doubletree Suites By Hilton (Airport Shuttle only)",
+        "address": [
+            "1649 Hollis St",
+            "Halifax, NS ",
+            "B3J 1V8"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6468013,
+        "lon": -63.5720536,
+        "geohash": "dxfvcrsnr"
+    },
+    "20840": {
+        "id": 20840,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Saint Mary's University (Airport Shuttle only)",
+        "address": [
+            "923 Robie St",
+            " Halifax, NS ",
+            "B3H 3C3"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6307185,
+        "lon": -63.5781598,
+        "geohash": "dxfvchzbc"
+    },
+    "20841": {
+        "id": 20841,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Marriott Res Inn Halifax Downtown",
+        "address": [
+            "1599 Grafton St",
+            " Halifax, NS",
+            " B3J 2C3"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6457031101752,
+        "lon": -63.5746014951065,
+        "geohash": "dxfvcrd2h"
+    },
+    "20842": {
+        "id": 20842,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Marriott Courtyard Halifax Downtown",
+        "address": [
+            "5120 Salter St",
+            "Halifax, NS ",
+            "B3J 0A1"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6,
+        "lon": -63.6,
+        "geohash": "dxfv8xpvu"
+    },
+    "20843": {
+        "id": 20843,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Homewood Suites",
+        "address": [
+            "1960 Brunswick St",
+            "Halifax, NS ",
+            "B3J 3J8"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6500849,
+        "lon": -63.5788302,
+        "geohash": "dxfy10r39"
+    },
+    "20844": {
+        "id": 20844,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Holiday Inn Harbourview-Dart (Airport Shuttle only)",
+        "address": [
+            "101 Wyse Rd",
+            "Dartmouth, NS ",
+            "B3A 1L9"
+        ],
+        "type": "bus_stop",
+        "lat": 44.669400242643,
+        "lon": -63.5778836645569,
+        "geohash": "dxfy15zfp"
+    },
+    "20845": {
+        "id": 20845,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Hampton Inn and Suites Dartmouth Crossing (Airport Shuttle only)",
+        "address": [
+            "65 Cromarty Dr",
+            "Dartmouth, NS ",
+            "B3B 0G2"
+        ],
+        "type": "bus_stop",
+        "lat": 44.7047068,
+        "lon": -63.5604375,
+        "geohash": "dxfy3dhxy"
+    },
+    "20846": {
+        "id": 20846,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifx Marriott Harbourfront Hotel (Airport Shuttle only)",
+        "address": [
+            "1919 Upper Water St",
+            " Halifax, NS ",
+            "B3J 3J5"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6510853,
+        "lon": -63.5734941,
+        "geohash": "dxfy127pq"
+    },
+    "20847": {
+        "id": 20847,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Four Points By Sheraton (Airport Shuttle only)",
+        "address": [
+            "1496 Hollis St",
+            "Halifax, NS ",
+            "B3J 3Z1"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6445967,
+        "lon": -63.5717874,
+        "geohash": "dxfvcrk3t"
+    },
+    "20848": {
+        "id": 20848,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Delta Halifax",
+        "address": [
+            "1990 Barrington St",
+            "Halifax, NS ",
+            "B3J 1P2"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6505646,
+        "lon": -63.5757704,
+        "geohash": "dxfy123s3"
+    },
+    "20849": {
+        "id": 20849,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Delta Barrington (Airport Shuttle only)",
+        "address": [
+            "1875 Barrington St",
+            "Halifax",
+            "NS B3J, Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6497326450501,
+        "lon": -63.5750622968201,
+        "geohash": "dxfy124p9"
+    },
+    "20850": {
+        "id": 20850,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Dalhousie Univ SUB (Airport Shuttle only)",
+        "address": [
+            "6136 University Ave",
+            "Halifax, NS ",
+            "B3H 4J2"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6368772,
+        "lon": -63.5892844,
+        "geohash": "dxfvbvzsw"
+    },
+    "20851": {
+        "id": 20851,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Dalhousie University Shirreff Hall (Airport Shuttle only)",
+        "address": [
+            "6299 South St",
+            "Halifax, NS ",
+            "B3H 4J1"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6361621,
+        "lon": -63.5931373,
+        "geohash": "dxfvbvubk"
+    },
+    "20852": {
+        "id": 20852,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Dalhousie University Howe Hall (Airport Shuttle only)",
+        "address": [
+            "6230 Coburg Rd",
+            "Halifax, NS",
+            "B3H 1Z7"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6387193,
+        "lon": -63.591518,
+        "geohash": "dxfvbynp6"
+    },
+    "20853": {
+        "id": 20853,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Dalhousie University Gerard Hall (Airport Shuttle only)",
+        "address": [
+            "5303 Morris St",
+            "Halifax, NS"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6413848564976,
+        "lon": -63.5740591779098,
+        "geohash": "dxfvcqdyc"
+    },
+    "20854": {
+        "id": 20854,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Cambridge Suites (Airport Shuttle only)",
+        "address": [
+            "1583 Brunswick St",
+            "Halifax, NS",
+            " B3J 3P5"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6451873,
+        "lon": -63.5755275,
+        "geohash": "dxfvcr3tn"
+    },
+    "20855": {
+        "id": 20855,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Hfx Atlantica Hotel (Airport Shuttle only)",
+        "address": [
+            "1980 Robie ",
+            "St, Halifax, NS",
+            "B3H 3G5"
+        ],
+        "type": "bus_stop",
+        "lat": 44.6467182,
+        "lon": -63.5907019,
+        "geohash": "dxfvbzwtv"
+    },
+    "20870": {
+        "id": 20870,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Bus Station",
+        "address": [
+            "1161 Hollis St",
+            "Halifax, NS ",
+            "B3H 2P6"
+        ],
+        "type": "bus_station",
+        "lat": 44.6396078,
+        "lon": -63.5679353,
+        "geohash": "dxfvcqrhx"
+    },
+    "20878": {
+        "id": 20878,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Airport",
+        "address": [
+            "1 Bell Blvd",
+            "Enfield, NS ",
+            "B2T 1K2"
+        ],
+        "type": "airport",
+        "lat": 44.8782101,
+        "lon": -63.5341166,
+        "geohash": "dxfz61zfe"
+    },
+    "24108": {
+        "id": 24108,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "René-Lévesque & Jeanne-Mance",
+        "address": [
+            "220 Boulevard René-Lévesque O",
+            "Montréal",
+            "QC H5B, Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.5063360495651,
+        "lon": -73.5635840171967,
+        "geohash": "f25dyh0ts"
+    },
+    "24112": {
+        "id": 24112,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Robert-Bourassa & René-Lévesque",
+        "address": [
+            "800 Boulevard Robert-Bourassa",
+            "Montréal, QC H3B",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.5019518197437,
+        "lon": -73.5671702027321,
+        "geohash": "f25dvgqh0"
+    },
+    "24134": {
+        "id": 24134,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Terminus Mansfield",
+        "address": [
+            "243 Rue Mansfield, Boarding Area 6",
+            "Montréal",
+            "QC H3C, Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.4978168765594,
+        "lon": -73.5640573795537,
+        "geohash": "f25dy487c"
+    },
+    "25179": {
+        "id": 25179,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Radisson",
+        "address": [
+            "7200 Rue Sherbrooke E",
+            "Montréal, QC H1N 1E7",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.5888,
+        "lon": -73.53948,
+        "geohash": "f25eqe4nj"
+    },
+    "25180": {
+        "id": 25180,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Crémazie",
+        "address": [
+            "401 Rue Berri",
+            "Montréal, QC H2M",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.5456615477858,
+        "lon": -73.6389907876969,
+        "geohash": "f25eh73dx"
+    },
+    "35991": {
+        "id": 35991,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Aéroport YUL",
+        "address": [
+            "975 Roméo-Vachon Blvd North (bus & taxi loop)",
+            "Dorval, QC H4Y",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.4568721045985,
+        "lon": -73.7516283988953,
+        "geohash": "f25d9eptq"
+    },
+    "36020": {
+        "id": 36020,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "120 PLACE CHARLES LEMOYNE",
+        "address": [],
+        "type": "other",
+        "lat": 45.253,
+        "lon": -73.522,
+        "geohash": "f259qyncv"
+    },
+    "45265": {
+        "id": 45265,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Young St and Robie St",
+        "address": [
+            "2394 Robie St",
+            "Halifax, NS B3K 4M7",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 44.65102,
+        "lon": -63.592564,
+        "geohash": "dxfy0bmr1"
+    },
+    "45268": {
+        "id": 45268,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Infirmary and Summer St",
+        "address": [
+            "1763 Robie St",
+            "Halifax, NS B3H 3G2",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 44.64556,
+        "lon": -63.58792,
+        "geohash": "dxfvcp2xn"
+    },
+    "45270": {
+        "id": 45270,
+        "city_id": "375dd587-9001-acbd-84a4-683deda7d276",
+        "name": "Halifax Scotia Square",
+        "address": [
+            "1968 Barrington St",
+            "Halifax, NS B3J 2A8",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 44.650192,
+        "lon": -63.575832,
+        "geohash": "dxfy1236p"
+    },
+    "51843": {
+        "id": 51843,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Gare Centrale",
+        "address": [
+            "800 Rue de la Gauchetière O",
+            "Montréal, QC H5A 1K8",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.500133,
+        "lon": -73.5652994,
+        "geohash": "f25dvgp3k"
+    },
+    "52191": {
+        "id": 52191,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Dorion",
+        "address": [
+            "205 Boulevard Harwood",
+            "Vaudreuil-Dorion",
+            "QC J7V 1Y3",
+            "Canada"
+        ],
+        "type": "bus_stop",
+        "lat": 45.383,
+        "lon": -74.014,
+        "geohash": "f2565v8xh"
+    },
+    "54315": {
+        "id": 54315,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "AUTEUIL",
+        "address": [],
+        "type": "other",
+        "lat": 45.619,
+        "lon": -73.676,
+        "geohash": "f25ee2wvb"
+    },
+    "54316": {
+        "id": 54316,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "AUTEUIL",
+        "address": [],
+        "type": "other",
+        "lat": 45.619,
+        "lon": -73.676,
+        "geohash": "f25ee2wvb"
+    },
+    "54317": {
+        "id": 54317,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Laval - Cartier métro",
+        "address": [
+            "Laval",
+            "Laval",
+            "QC H7N 0A3",
+            "Canada"
+        ],
+        "type": "other",
+        "lat": 45.5603,
+        "lon": -73.6817,
+        "geohash": "f25e5mfxg"
+    },
+    "54328": {
+        "id": 54328,
+        "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+        "name": "Longueuil - Terminus métro",
+        "address": [
+            "120 Place Charles-Le Moyne",
+            "Longueuil",
+            "QC J4K 2T4",
+            "Canada"
+        ],
+        "type": "other",
+        "lat": 45.5242577,
+        "lon": -73.5217692,
+        "geohash": "f25dyzrn4"
+    }
+}

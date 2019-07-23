@@ -5,14 +5,16 @@ import './DepartureCard.css';
 import { getDepartureDuration } from '../utils/time'
 export const DepartureCard = memo(({ item, destinationCity, originCity, destinationLocation, originLocation }) => {
     let duration = getDepartureDuration(item);
-    return <a className="DepartureCard" href="">
+    return <a className="DepartureCard" href="#details" data-testid="departure-card">
         <div className="DepartureCard__time-container">
             <div className="DepartureCard__time">
                 <span>{format(new Date(item.departure_time), 'HH:mm')}</span>
                 <span>{format(new Date(item.departure_time), 'a')}</span>
             </div>
             <div className="DepartureCard__time">
-                {duration.days}d {duration.hours}h {duration.minutes}m
+                {duration.days ? duration.days + 'd' : null}
+                {duration.hours ? duration.hours + 'h' : null}
+                {duration.minutes ? duration.minutes + 'm' : null}
             </div>
             <div className="DepartureCard__time">
                 <span>{format(new Date(item.arrival_time), 'HH:mm')}</span>

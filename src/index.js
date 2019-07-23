@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { initI18N } from './utils/i18n';
+
+initI18N();
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

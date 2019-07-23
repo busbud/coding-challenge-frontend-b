@@ -1,0 +1,2476 @@
+{
+    "YjVmNTJjMjY6ZjNkMDgxYTE": {
+        "amenities": {
+            "display_name": "",
+            "wifi": false,
+            "toilet": false,
+            "ac": true,
+            "refreshment": false,
+            "food": false,
+            "hot_meal": false,
+            "power_outlets": true,
+            "tv": false,
+            "bus_attendant": false,
+            "leg_room": true,
+            "small_seat": false,
+            "average_seat": true,
+            "xl_seat": false,
+            "full_recline_seat": false
+        },
+        "arrival_timezone": "America/Halifax",
+        "available_seats": 50,
+        "bus": null,
+        "busbud_departure_id": "f3d081a1",
+        "class": "Economy",
+        "class_name": "",
+        "complete": false,
+        "fare_name": null,
+        "deeplink": null,
+        "departure_timezone": "America/Montreal",
+        "departure_type": null,
+        "destination_location_id": 20870,
+        "duration": 1190,
+        "has_search_details": true,
+        "has_bus_details": null,
+        "has_transfers": true,
+        "has_addons": null,
+        "id": "YjVmNTJjMjY6ZjNkMDgxYTE",
+        "links": {
+            "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/dxfvcr/YjVmNTJjMjY6ZjNkMDgxYTE?outbound_date=2019-07-25&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+        },
+        "num_transfers": 3,
+        "operator_id": "2d56d126-d3c1-4fe7-8bde-d4b811312d45",
+        "origin_location_id": 1938,
+        "passenger_questions": [],
+        "schedule_id": null,
+        "sellable": true,
+        "source_id": 275,
+        "ticket_types": [
+            "print"
+        ],
+        "departure_time": "2019-07-25T21:30:00",
+        "arrival_time": "2019-07-26T18:20:00",
+        "fetched_at": "2019-07-22T13:58:04.553Z",
+        "search_request_id": "2019072213582d93e6ae02f3f4f7ea7c700af9b02784c557f9eb365a916c9ce3870900c78ea2",
+        "unreliable_duration": null,
+        "has_unmapped_location": null,
+        "prices": {
+            "currency": "USD",
+            "total": 10192,
+            "categories": {
+                "adult": 10192
+            },
+            "discount": 0,
+            "roundtrip_min": null,
+            "roundtrip_total": null,
+            "discounted": null,
+            "breakdown": {
+                "base": 10192,
+                "fees": 0,
+                "taxes": 0,
+                "discount": 0
+            }
+        },
+        "trip_stops": [
+            {
+                "arrival_time": null,
+                "departure_time": "2019-07-25T21:30:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Montreal Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T21:50:00",
+                "departure_time": "2019-07-25T21:50:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Longueuil (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T00:20:00",
+                "departure_time": "2019-07-26T00:30:00",
+                "duration": 1450,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Ste Foy Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T02:30:00",
+                "departure_time": "2019-07-26T04:30:00",
+                "duration": 120,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Riviere Du Loup (PRINT TICKET)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T07:00:00",
+                "departure_time": "2019-07-26T07:10:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Edmundston",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T07:40:00",
+                "departure_time": "2019-07-26T07:40:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "St Leonard",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:00:00",
+                "departure_time": "2019-07-26T08:00:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Grand Falls",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:30:00",
+                "departure_time": "2019-07-26T08:35:00",
+                "duration": 5,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Perth Andover",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:05:00",
+                "departure_time": "2019-07-26T09:05:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Florenceville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:30:00",
+                "departure_time": "2019-07-26T09:40:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Woodstock",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T10:40:00",
+                "departure_time": "2019-07-26T11:00:00",
+                "duration": 20,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:20:00",
+                "departure_time": "2019-07-26T11:20:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:25:00",
+                "departure_time": "2019-07-26T11:25:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oromocto (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T12:55:00",
+                "departure_time": "2019-07-26T12:55:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Salisbury (3 hr advance booking)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T13:25:00",
+                "departure_time": "2019-07-26T14:00:00",
+                "duration": 35,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T14:10:00",
+                "departure_time": "2019-07-26T14:10:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T14:45:00",
+                "departure_time": "2019-07-26T14:45:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Sackville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T15:00:00",
+                "departure_time": "2019-07-26T15:15:00",
+                "duration": 15,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Amherst",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T15:35:00",
+                "departure_time": "2019-07-26T15:35:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oxford (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T16:30:00",
+                "departure_time": "2019-07-26T16:45:00",
+                "duration": 15,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Truro",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T17:30:00",
+                "departure_time": "2019-07-26T17:30:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Halifax Airport",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T17:55:00",
+                "departure_time": "2019-07-26T17:55:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": 20869,
+                "name": "Dartmouth (Maritime Bus Terminal)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T18:20:00",
+                "departure_time": null,
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": 20870,
+                "name": "Halifax (Bus Station - Westin Hotel)",
+                "transfer": false
+            }
+        ],
+        "addons": [],
+        "details": {},
+        "terms": {
+            "type_of_id": "photo_and_full_name",
+            "ticket_requirements": {
+                "print": "printed_tkt"
+            },
+            "nb_carry_on": 1,
+            "kg_by_carry_on": 11,
+            "nb_checked_bags": 2,
+            "kg_by_bag": 23,
+            "checked_in_size_cm": null,
+            "extra_checked_in_fees": {
+                "type": "per_extra_checked_in",
+                "amount": 1000
+            },
+            "nb_extra_checked_in": null,
+            "oversized_luggage": {
+                "allowed": true,
+                "allowed_types": [
+                    "bicycle"
+                ],
+                "fees": {
+                    "type": "as_additional_luggage",
+                    "amount": 1000
+                },
+                "early_arrival_required": true,
+                "cover_required": true
+            },
+            "animals": {
+                "fees": {
+                    "type": "unknown",
+                    "amount": null,
+                    "percent": null
+                },
+                "main_compartment_allowed": false,
+                "hold_compartment_allowed": false,
+                "main_max_weight_kg": null,
+                "main_small_cage_required": null,
+                "hold_max_weight_kg": null,
+                "vaccination_required": true,
+                "special_animals_allowed": true,
+                "early_arrival_required": true,
+                "specific_hours": null
+            },
+            "refund_policies": [
+                {
+                    "type": "no-refund",
+                    "flat_fee": null,
+                    "flat_fee_currency": null,
+                    "percent_fee": null,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": null,
+                    "external_link": null
+                }
+            ],
+            "refund": false,
+            "refund_cutoff": null,
+            "exchange_policies": [
+                {
+                    "type": "station",
+                    "flat_fee": null,
+                    "flat_fee_currency": "CAD",
+                    "percent_fee": 0.15,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": 0,
+                    "external_link": null
+                }
+            ],
+            "exchange": true,
+            "exchange_cutoff": 0,
+            "exchange_cutoff_at": "2019-07-26T01:30:00.000Z",
+            "currency": "CAD",
+            "addons": {},
+            "piece_of_id": true,
+            "boarding_requirement": "printed_tkt",
+            "extra_bag_policy": true,
+            "extra_bag_cost": 1000,
+            "extra_bag_kg_cost": null,
+            "bag_allowed": true
+        }
+    },
+    "OGYwNmQ4NjU6ZDFiNmMxNjc": {
+        "amenities": {
+            "display_name": "",
+            "wifi": false,
+            "toilet": false,
+            "ac": true,
+            "refreshment": false,
+            "food": false,
+            "hot_meal": false,
+            "power_outlets": true,
+            "tv": false,
+            "bus_attendant": false,
+            "leg_room": true,
+            "small_seat": false,
+            "average_seat": true,
+            "xl_seat": false,
+            "full_recline_seat": false
+        },
+        "arrival_timezone": "America/Halifax",
+        "available_seats": 50,
+        "bus": null,
+        "busbud_departure_id": "d1b6c167",
+        "class": "Economy",
+        "class_name": "",
+        "complete": false,
+        "fare_name": null,
+        "deeplink": null,
+        "departure_timezone": "America/Montreal",
+        "departure_type": null,
+        "destination_location_id": 20878,
+        "duration": 1140,
+        "has_search_details": true,
+        "has_bus_details": null,
+        "has_transfers": true,
+        "has_addons": null,
+        "id": "OGYwNmQ4NjU6ZDFiNmMxNjc",
+        "links": {
+            "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/dxfvcr/OGYwNmQ4NjU6ZDFiNmMxNjc?outbound_date=2019-07-25&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+        },
+        "num_transfers": 3,
+        "operator_id": "2d56d126-d3c1-4fe7-8bde-d4b811312d45",
+        "origin_location_id": 1938,
+        "passenger_questions": [],
+        "schedule_id": null,
+        "sellable": true,
+        "source_id": 275,
+        "ticket_types": [
+            "print"
+        ],
+        "departure_time": "2019-07-25T21:30:00",
+        "arrival_time": "2019-07-26T17:30:00",
+        "fetched_at": "2019-07-22T13:58:05.052Z",
+        "search_request_id": "2019072213582d93e6ae02f3f4f7ea7c700af9b02784c557f9eb365a916c9ce3870900c78ea2",
+        "unreliable_duration": null,
+        "has_unmapped_location": null,
+        "prices": {
+            "currency": "USD",
+            "total": 10192,
+            "categories": {
+                "adult": 10192
+            },
+            "discount": 0,
+            "roundtrip_min": null,
+            "roundtrip_total": null,
+            "discounted": null,
+            "breakdown": {
+                "base": 10192,
+                "fees": 0,
+                "taxes": 0,
+                "discount": 0
+            }
+        },
+        "trip_stops": [
+            {
+                "arrival_time": null,
+                "departure_time": "2019-07-25T21:30:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Montreal Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T21:50:00",
+                "departure_time": "2019-07-25T21:50:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Longueuil (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T00:20:00",
+                "departure_time": "2019-07-26T00:30:00",
+                "duration": 1450,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Ste Foy Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T02:30:00",
+                "departure_time": "2019-07-26T04:30:00",
+                "duration": 120,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Riviere Du Loup (PRINT TICKET)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T07:00:00",
+                "departure_time": "2019-07-26T07:10:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Edmundston",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T07:40:00",
+                "departure_time": "2019-07-26T07:40:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "St Leonard",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:00:00",
+                "departure_time": "2019-07-26T08:00:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Grand Falls",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:30:00",
+                "departure_time": "2019-07-26T08:35:00",
+                "duration": 5,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Perth Andover",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:05:00",
+                "departure_time": "2019-07-26T09:05:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Florenceville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:30:00",
+                "departure_time": "2019-07-26T09:40:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Woodstock",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T10:40:00",
+                "departure_time": "2019-07-26T11:00:00",
+                "duration": 20,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:20:00",
+                "departure_time": "2019-07-26T11:20:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:25:00",
+                "departure_time": "2019-07-26T11:25:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oromocto (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T12:55:00",
+                "departure_time": "2019-07-26T12:55:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Salisbury (3 hr advance booking)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T13:25:00",
+                "departure_time": "2019-07-26T14:00:00",
+                "duration": 35,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T14:10:00",
+                "departure_time": "2019-07-26T14:10:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T14:45:00",
+                "departure_time": "2019-07-26T14:45:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Sackville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T15:00:00",
+                "departure_time": "2019-07-26T15:15:00",
+                "duration": 15,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Amherst",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T15:35:00",
+                "departure_time": "2019-07-26T15:35:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oxford (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T16:30:00",
+                "departure_time": "2019-07-26T16:45:00",
+                "duration": 15,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Truro",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T17:30:00",
+                "departure_time": null,
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Halifax Airport",
+                "transfer": false
+            }
+        ],
+        "addons": [],
+        "details": {},
+        "terms": {
+            "type_of_id": "photo_and_full_name",
+            "ticket_requirements": {
+                "print": "printed_tkt"
+            },
+            "nb_carry_on": 1,
+            "kg_by_carry_on": 11,
+            "nb_checked_bags": 2,
+            "kg_by_bag": 23,
+            "checked_in_size_cm": null,
+            "extra_checked_in_fees": {
+                "type": "per_extra_checked_in",
+                "amount": 1000
+            },
+            "nb_extra_checked_in": null,
+            "oversized_luggage": {
+                "allowed": true,
+                "allowed_types": [
+                    "bicycle"
+                ],
+                "fees": {
+                    "type": "as_additional_luggage",
+                    "amount": 1000
+                },
+                "early_arrival_required": true,
+                "cover_required": true
+            },
+            "animals": {
+                "fees": {
+                    "type": "unknown",
+                    "amount": null,
+                    "percent": null
+                },
+                "main_compartment_allowed": false,
+                "hold_compartment_allowed": false,
+                "main_max_weight_kg": null,
+                "main_small_cage_required": null,
+                "hold_max_weight_kg": null,
+                "vaccination_required": true,
+                "special_animals_allowed": true,
+                "early_arrival_required": true,
+                "specific_hours": null
+            },
+            "refund_policies": [
+                {
+                    "type": "no-refund",
+                    "flat_fee": null,
+                    "flat_fee_currency": null,
+                    "percent_fee": null,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": null,
+                    "external_link": null
+                }
+            ],
+            "refund": false,
+            "refund_cutoff": null,
+            "exchange_policies": [
+                {
+                    "type": "station",
+                    "flat_fee": null,
+                    "flat_fee_currency": "CAD",
+                    "percent_fee": 0.15,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": 0,
+                    "external_link": null
+                }
+            ],
+            "exchange": true,
+            "exchange_cutoff": 0,
+            "exchange_cutoff_at": "2019-07-26T01:30:00.000Z",
+            "currency": "CAD",
+            "addons": {},
+            "piece_of_id": true,
+            "boarding_requirement": "printed_tkt",
+            "extra_bag_policy": true,
+            "extra_bag_cost": 1000,
+            "extra_bag_kg_cost": null,
+            "bag_allowed": true
+        }
+    },
+    "ZGVhNWVlZjU6YjZkYzRkNjE": {
+        "amenities": {
+            "display_name": "",
+            "wifi": false,
+            "toilet": false,
+            "ac": true,
+            "refreshment": false,
+            "food": false,
+            "hot_meal": false,
+            "power_outlets": true,
+            "tv": false,
+            "bus_attendant": false,
+            "leg_room": true,
+            "small_seat": false,
+            "average_seat": true,
+            "xl_seat": false,
+            "full_recline_seat": false
+        },
+        "arrival_timezone": "America/Halifax",
+        "available_seats": 50,
+        "bus": null,
+        "busbud_departure_id": "b6dc4d61",
+        "class": "Economy",
+        "class_name": "",
+        "complete": false,
+        "fare_name": null,
+        "deeplink": null,
+        "departure_timezone": "America/Montreal",
+        "departure_type": null,
+        "destination_location_id": 20878,
+        "duration": 1405,
+        "has_search_details": true,
+        "has_bus_details": null,
+        "has_transfers": true,
+        "has_addons": null,
+        "id": "ZGVhNWVlZjU6YjZkYzRkNjE",
+        "links": {
+            "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/dxfvcr/ZGVhNWVlZjU6YjZkYzRkNjE?outbound_date=2019-07-25&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+        },
+        "num_transfers": 4,
+        "operator_id": "2d56d126-d3c1-4fe7-8bde-d4b811312d45",
+        "origin_location_id": 1938,
+        "passenger_questions": [],
+        "schedule_id": null,
+        "sellable": true,
+        "source_id": 275,
+        "ticket_types": [
+            "print"
+        ],
+        "departure_time": "2019-07-25T21:30:00",
+        "arrival_time": "2019-07-26T21:55:00",
+        "fetched_at": "2019-07-22T13:58:05.052Z",
+        "search_request_id": "2019072213582d93e6ae02f3f4f7ea7c700af9b02784c557f9eb365a916c9ce3870900c78ea2",
+        "unreliable_duration": null,
+        "has_unmapped_location": null,
+        "prices": {
+            "currency": "USD",
+            "total": 10192,
+            "categories": {
+                "adult": 10192
+            },
+            "discount": 0,
+            "roundtrip_min": null,
+            "roundtrip_total": null,
+            "discounted": null,
+            "breakdown": {
+                "base": 10192,
+                "fees": 0,
+                "taxes": 0,
+                "discount": 0
+            }
+        },
+        "trip_stops": [
+            {
+                "arrival_time": null,
+                "departure_time": "2019-07-25T21:30:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Montreal Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T21:50:00",
+                "departure_time": "2019-07-25T21:50:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Longueuil (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T00:20:00",
+                "departure_time": "2019-07-26T00:30:00",
+                "duration": 1450,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Ste Foy Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T02:30:00",
+                "departure_time": "2019-07-26T04:30:00",
+                "duration": 120,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Riviere Du Loup (PRINT TICKET)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T07:00:00",
+                "departure_time": "2019-07-26T07:10:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Edmundston",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T07:40:00",
+                "departure_time": "2019-07-26T07:40:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "St Leonard",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:00:00",
+                "departure_time": "2019-07-26T08:00:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Grand Falls",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:30:00",
+                "departure_time": "2019-07-26T08:35:00",
+                "duration": 5,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Perth Andover",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:05:00",
+                "departure_time": "2019-07-26T09:05:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Florenceville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:30:00",
+                "departure_time": "2019-07-26T09:40:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Woodstock",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T10:40:00",
+                "departure_time": "2019-07-26T11:00:00",
+                "duration": 20,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:20:00",
+                "departure_time": "2019-07-26T11:20:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:25:00",
+                "departure_time": "2019-07-26T11:25:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oromocto (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T12:55:00",
+                "departure_time": "2019-07-26T12:55:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Salisbury (3 hr advance booking)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T13:25:00",
+                "departure_time": "2019-07-26T18:00:00",
+                "duration": 275,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T18:15:00",
+                "departure_time": "2019-07-26T18:15:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T18:40:00",
+                "departure_time": "2019-07-26T18:40:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Sackville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T18:55:00",
+                "departure_time": "2019-07-26T19:05:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Amherst",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T19:25:00",
+                "departure_time": "2019-07-26T19:25:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oxford (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T20:10:00",
+                "departure_time": "2019-07-26T21:15:00",
+                "duration": 65,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Truro",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T21:55:00",
+                "departure_time": null,
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Halifax Airport",
+                "transfer": false
+            }
+        ],
+        "addons": [],
+        "details": {},
+        "terms": {
+            "type_of_id": "photo_and_full_name",
+            "ticket_requirements": {
+                "print": "printed_tkt"
+            },
+            "nb_carry_on": 1,
+            "kg_by_carry_on": 11,
+            "nb_checked_bags": 2,
+            "kg_by_bag": 23,
+            "checked_in_size_cm": null,
+            "extra_checked_in_fees": {
+                "type": "per_extra_checked_in",
+                "amount": 1000
+            },
+            "nb_extra_checked_in": null,
+            "oversized_luggage": {
+                "allowed": true,
+                "allowed_types": [
+                    "bicycle"
+                ],
+                "fees": {
+                    "type": "as_additional_luggage",
+                    "amount": 1000
+                },
+                "early_arrival_required": true,
+                "cover_required": true
+            },
+            "animals": {
+                "fees": {
+                    "type": "unknown",
+                    "amount": null,
+                    "percent": null
+                },
+                "main_compartment_allowed": false,
+                "hold_compartment_allowed": false,
+                "main_max_weight_kg": null,
+                "main_small_cage_required": null,
+                "hold_max_weight_kg": null,
+                "vaccination_required": true,
+                "special_animals_allowed": true,
+                "early_arrival_required": true,
+                "specific_hours": null
+            },
+            "refund_policies": [
+                {
+                    "type": "no-refund",
+                    "flat_fee": null,
+                    "flat_fee_currency": null,
+                    "percent_fee": null,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": null,
+                    "external_link": null
+                }
+            ],
+            "refund": false,
+            "refund_cutoff": null,
+            "exchange_policies": [
+                {
+                    "type": "station",
+                    "flat_fee": null,
+                    "flat_fee_currency": "CAD",
+                    "percent_fee": 0.15,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": 0,
+                    "external_link": null
+                }
+            ],
+            "exchange": true,
+            "exchange_cutoff": 0,
+            "exchange_cutoff_at": "2019-07-26T01:30:00.000Z",
+            "currency": "CAD",
+            "addons": {},
+            "piece_of_id": true,
+            "boarding_requirement": "printed_tkt",
+            "extra_bag_policy": true,
+            "extra_bag_cost": 1000,
+            "extra_bag_kg_cost": null,
+            "bag_allowed": true
+        }
+    },
+    "Y2M5NjYwNzE6YjZkYzRkNjE": {
+        "amenities": {
+            "display_name": "",
+            "wifi": false,
+            "toilet": false,
+            "ac": true,
+            "refreshment": false,
+            "food": false,
+            "hot_meal": false,
+            "power_outlets": true,
+            "tv": false,
+            "bus_attendant": false,
+            "leg_room": true,
+            "small_seat": false,
+            "average_seat": true,
+            "xl_seat": false,
+            "full_recline_seat": false
+        },
+        "arrival_timezone": "America/Halifax",
+        "available_seats": 50,
+        "bus": null,
+        "busbud_departure_id": "b6dc4d61",
+        "class": "Economy",
+        "class_name": "",
+        "complete": false,
+        "fare_name": null,
+        "deeplink": null,
+        "departure_timezone": "America/Montreal",
+        "departure_type": null,
+        "destination_location_id": 20878,
+        "duration": 1405,
+        "has_search_details": true,
+        "has_bus_details": null,
+        "has_transfers": true,
+        "has_addons": null,
+        "id": "Y2M5NjYwNzE6YjZkYzRkNjE",
+        "links": {
+            "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/dxfvcr/Y2M5NjYwNzE6YjZkYzRkNjE?outbound_date=2019-07-25&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+        },
+        "num_transfers": 4,
+        "operator_id": "2d56d126-d3c1-4fe7-8bde-d4b811312d45",
+        "origin_location_id": 1938,
+        "passenger_questions": [],
+        "schedule_id": null,
+        "sellable": true,
+        "source_id": 275,
+        "ticket_types": [
+            "print"
+        ],
+        "departure_time": "2019-07-25T21:30:00",
+        "arrival_time": "2019-07-26T21:55:00",
+        "fetched_at": "2019-07-22T13:58:05.052Z",
+        "search_request_id": "2019072213582d93e6ae02f3f4f7ea7c700af9b02784c557f9eb365a916c9ce3870900c78ea2",
+        "unreliable_duration": null,
+        "has_unmapped_location": null,
+        "prices": {
+            "currency": "USD",
+            "total": 10192,
+            "categories": {
+                "adult": 10192
+            },
+            "discount": 0,
+            "roundtrip_min": null,
+            "roundtrip_total": null,
+            "discounted": null,
+            "breakdown": {
+                "base": 10192,
+                "fees": 0,
+                "taxes": 0,
+                "discount": 0
+            }
+        },
+        "trip_stops": [
+            {
+                "arrival_time": null,
+                "departure_time": "2019-07-25T21:30:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Montreal Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T21:50:00",
+                "departure_time": "2019-07-25T21:50:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Longueuil (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T00:20:00",
+                "departure_time": "2019-07-26T00:30:00",
+                "duration": 1450,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Ste Foy Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T02:30:00",
+                "departure_time": "2019-07-26T04:30:00",
+                "duration": 120,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Riviere Du Loup (PRINT TICKET)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T07:00:00",
+                "departure_time": "2019-07-26T07:10:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Edmundston",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T07:40:00",
+                "departure_time": "2019-07-26T07:40:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "St Leonard",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:00:00",
+                "departure_time": "2019-07-26T08:00:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Grand Falls",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:30:00",
+                "departure_time": "2019-07-26T08:35:00",
+                "duration": 5,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Perth Andover",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:05:00",
+                "departure_time": "2019-07-26T09:05:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Florenceville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:30:00",
+                "departure_time": "2019-07-26T09:40:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Woodstock",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T10:40:00",
+                "departure_time": "2019-07-26T11:00:00",
+                "duration": 20,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:20:00",
+                "departure_time": "2019-07-26T11:20:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:25:00",
+                "departure_time": "2019-07-26T11:25:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oromocto (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T12:55:00",
+                "departure_time": "2019-07-26T12:55:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Salisbury (3 hr advance booking)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T13:25:00",
+                "departure_time": "2019-07-26T14:00:00",
+                "duration": 35,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T14:10:00",
+                "departure_time": "2019-07-26T14:10:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T14:45:00",
+                "departure_time": "2019-07-26T14:45:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Sackville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T15:00:00",
+                "departure_time": "2019-07-26T15:15:00",
+                "duration": 15,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Amherst",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T15:35:00",
+                "departure_time": "2019-07-26T15:35:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oxford (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T16:30:00",
+                "departure_time": "2019-07-26T21:15:00",
+                "duration": 285,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Truro",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T21:55:00",
+                "departure_time": null,
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Halifax Airport",
+                "transfer": false
+            }
+        ],
+        "addons": [],
+        "details": {},
+        "terms": {
+            "type_of_id": "photo_and_full_name",
+            "ticket_requirements": {
+                "print": "printed_tkt"
+            },
+            "nb_carry_on": 1,
+            "kg_by_carry_on": 11,
+            "nb_checked_bags": 2,
+            "kg_by_bag": 23,
+            "checked_in_size_cm": null,
+            "extra_checked_in_fees": {
+                "type": "per_extra_checked_in",
+                "amount": 1000
+            },
+            "nb_extra_checked_in": null,
+            "oversized_luggage": {
+                "allowed": true,
+                "allowed_types": [
+                    "bicycle"
+                ],
+                "fees": {
+                    "type": "as_additional_luggage",
+                    "amount": 1000
+                },
+                "early_arrival_required": true,
+                "cover_required": true
+            },
+            "animals": {
+                "fees": {
+                    "type": "unknown",
+                    "amount": null,
+                    "percent": null
+                },
+                "main_compartment_allowed": false,
+                "hold_compartment_allowed": false,
+                "main_max_weight_kg": null,
+                "main_small_cage_required": null,
+                "hold_max_weight_kg": null,
+                "vaccination_required": true,
+                "special_animals_allowed": true,
+                "early_arrival_required": true,
+                "specific_hours": null
+            },
+            "refund_policies": [
+                {
+                    "type": "no-refund",
+                    "flat_fee": null,
+                    "flat_fee_currency": null,
+                    "percent_fee": null,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": null,
+                    "external_link": null
+                }
+            ],
+            "refund": false,
+            "refund_cutoff": null,
+            "exchange_policies": [
+                {
+                    "type": "station",
+                    "flat_fee": null,
+                    "flat_fee_currency": "CAD",
+                    "percent_fee": 0.15,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": 0,
+                    "external_link": null
+                }
+            ],
+            "exchange": true,
+            "exchange_cutoff": 0,
+            "exchange_cutoff_at": "2019-07-26T01:30:00.000Z",
+            "currency": "CAD",
+            "addons": {},
+            "piece_of_id": true,
+            "boarding_requirement": "printed_tkt",
+            "extra_bag_policy": true,
+            "extra_bag_cost": 1000,
+            "extra_bag_kg_cost": null,
+            "bag_allowed": true
+        }
+    },
+    "YjhiODNiM2E6YjZkYzRkNjE": {
+        "amenities": {
+            "display_name": "",
+            "wifi": false,
+            "toilet": false,
+            "ac": true,
+            "refreshment": false,
+            "food": false,
+            "hot_meal": false,
+            "power_outlets": true,
+            "tv": false,
+            "bus_attendant": false,
+            "leg_room": true,
+            "small_seat": false,
+            "average_seat": true,
+            "xl_seat": false,
+            "full_recline_seat": false
+        },
+        "arrival_timezone": "America/Halifax",
+        "available_seats": 50,
+        "bus": null,
+        "busbud_departure_id": "b6dc4d61",
+        "class": "Economy",
+        "class_name": "",
+        "complete": false,
+        "fare_name": null,
+        "deeplink": null,
+        "departure_timezone": "America/Montreal",
+        "departure_type": null,
+        "destination_location_id": 20878,
+        "duration": 1405,
+        "has_search_details": true,
+        "has_bus_details": null,
+        "has_transfers": true,
+        "has_addons": null,
+        "id": "YjhiODNiM2E6YjZkYzRkNjE",
+        "links": {
+            "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/dxfvcr/YjhiODNiM2E6YjZkYzRkNjE?outbound_date=2019-07-25&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+        },
+        "num_transfers": 5,
+        "operator_id": "2d56d126-d3c1-4fe7-8bde-d4b811312d45",
+        "origin_location_id": 1938,
+        "passenger_questions": [],
+        "schedule_id": null,
+        "sellable": true,
+        "source_id": 275,
+        "ticket_types": [
+            "print"
+        ],
+        "departure_time": "2019-07-25T21:30:00",
+        "arrival_time": "2019-07-26T21:55:00",
+        "fetched_at": "2019-07-22T13:58:05.052Z",
+        "search_request_id": "2019072213582d93e6ae02f3f4f7ea7c700af9b02784c557f9eb365a916c9ce3870900c78ea2",
+        "unreliable_duration": null,
+        "has_unmapped_location": null,
+        "prices": {
+            "currency": "USD",
+            "total": 10192,
+            "categories": {
+                "adult": 10192
+            },
+            "discount": 0,
+            "roundtrip_min": null,
+            "roundtrip_total": null,
+            "discounted": null,
+            "breakdown": {
+                "base": 10192,
+                "fees": 0,
+                "taxes": 0,
+                "discount": 0
+            }
+        },
+        "trip_stops": [
+            {
+                "arrival_time": null,
+                "departure_time": "2019-07-25T21:30:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Montreal Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T21:50:00",
+                "departure_time": "2019-07-25T21:50:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Longueuil (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T00:20:00",
+                "departure_time": "2019-07-26T00:30:00",
+                "duration": 1450,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Ste Foy Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T02:30:00",
+                "departure_time": "2019-07-26T04:30:00",
+                "duration": 120,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Riviere Du Loup (PRINT TICKET)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T07:00:00",
+                "departure_time": "2019-07-26T07:10:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Edmundston",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T07:40:00",
+                "departure_time": "2019-07-26T07:40:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "St Leonard",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:00:00",
+                "departure_time": "2019-07-26T08:00:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Grand Falls",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:30:00",
+                "departure_time": "2019-07-26T08:35:00",
+                "duration": 5,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Perth Andover",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:05:00",
+                "departure_time": "2019-07-26T09:05:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Florenceville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:30:00",
+                "departure_time": "2019-07-26T09:40:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Woodstock",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T10:40:00",
+                "departure_time": "2019-07-26T11:00:00",
+                "duration": 20,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:20:00",
+                "departure_time": "2019-07-26T11:20:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:25:00",
+                "departure_time": "2019-07-26T11:25:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oromocto (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T12:55:00",
+                "departure_time": "2019-07-26T12:55:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Salisbury (3 hr advance booking)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T13:25:00",
+                "departure_time": "2019-07-26T14:00:00",
+                "duration": 35,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T14:10:00",
+                "departure_time": "2019-07-26T14:10:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T14:45:00",
+                "departure_time": "2019-07-26T14:45:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Sackville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T15:00:00",
+                "departure_time": "2019-07-26T19:05:00",
+                "duration": 245,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Amherst",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T19:25:00",
+                "departure_time": "2019-07-26T19:25:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oxford (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T20:10:00",
+                "departure_time": "2019-07-26T21:15:00",
+                "duration": 65,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Truro",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T21:55:00",
+                "departure_time": null,
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Halifax Airport",
+                "transfer": false
+            }
+        ],
+        "addons": [],
+        "details": {},
+        "terms": {
+            "type_of_id": "photo_and_full_name",
+            "ticket_requirements": {
+                "print": "printed_tkt"
+            },
+            "nb_carry_on": 1,
+            "kg_by_carry_on": 11,
+            "nb_checked_bags": 2,
+            "kg_by_bag": 23,
+            "checked_in_size_cm": null,
+            "extra_checked_in_fees": {
+                "type": "per_extra_checked_in",
+                "amount": 1000
+            },
+            "nb_extra_checked_in": null,
+            "oversized_luggage": {
+                "allowed": true,
+                "allowed_types": [
+                    "bicycle"
+                ],
+                "fees": {
+                    "type": "as_additional_luggage",
+                    "amount": 1000
+                },
+                "early_arrival_required": true,
+                "cover_required": true
+            },
+            "animals": {
+                "fees": {
+                    "type": "unknown",
+                    "amount": null,
+                    "percent": null
+                },
+                "main_compartment_allowed": false,
+                "hold_compartment_allowed": false,
+                "main_max_weight_kg": null,
+                "main_small_cage_required": null,
+                "hold_max_weight_kg": null,
+                "vaccination_required": true,
+                "special_animals_allowed": true,
+                "early_arrival_required": true,
+                "specific_hours": null
+            },
+            "refund_policies": [
+                {
+                    "type": "no-refund",
+                    "flat_fee": null,
+                    "flat_fee_currency": null,
+                    "percent_fee": null,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": null,
+                    "external_link": null
+                }
+            ],
+            "refund": false,
+            "refund_cutoff": null,
+            "exchange_policies": [
+                {
+                    "type": "station",
+                    "flat_fee": null,
+                    "flat_fee_currency": "CAD",
+                    "percent_fee": 0.15,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": 0,
+                    "external_link": null
+                }
+            ],
+            "exchange": true,
+            "exchange_cutoff": 0,
+            "exchange_cutoff_at": "2019-07-26T01:30:00.000Z",
+            "currency": "CAD",
+            "addons": {},
+            "piece_of_id": true,
+            "boarding_requirement": "printed_tkt",
+            "extra_bag_policy": true,
+            "extra_bag_cost": 1000,
+            "extra_bag_kg_cost": null,
+            "bag_allowed": true
+        }
+    },
+    "MThjMTQ3YWU6YjZkYzRkNjE": {
+        "amenities": {
+            "display_name": "",
+            "wifi": false,
+            "toilet": false,
+            "ac": true,
+            "refreshment": false,
+            "food": false,
+            "hot_meal": false,
+            "power_outlets": true,
+            "tv": false,
+            "bus_attendant": false,
+            "leg_room": true,
+            "small_seat": false,
+            "average_seat": true,
+            "xl_seat": false,
+            "full_recline_seat": false
+        },
+        "arrival_timezone": "America/Halifax",
+        "available_seats": 50,
+        "bus": null,
+        "busbud_departure_id": "b6dc4d61",
+        "class": "Economy",
+        "class_name": "",
+        "complete": false,
+        "fare_name": null,
+        "deeplink": null,
+        "departure_timezone": "America/Montreal",
+        "departure_type": null,
+        "destination_location_id": 20878,
+        "duration": 1405,
+        "has_search_details": true,
+        "has_bus_details": null,
+        "has_transfers": true,
+        "has_addons": null,
+        "id": "MThjMTQ3YWU6YjZkYzRkNjE",
+        "links": {
+            "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/dxfvcr/MThjMTQ3YWU6YjZkYzRkNjE?outbound_date=2019-07-25&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+        },
+        "num_transfers": 5,
+        "operator_id": "2d56d126-d3c1-4fe7-8bde-d4b811312d45",
+        "origin_location_id": 1938,
+        "passenger_questions": [],
+        "schedule_id": null,
+        "sellable": true,
+        "source_id": 275,
+        "ticket_types": [
+            "print"
+        ],
+        "departure_time": "2019-07-25T21:30:00",
+        "arrival_time": "2019-07-26T21:55:00",
+        "fetched_at": "2019-07-22T13:58:05.052Z",
+        "search_request_id": "2019072213582d93e6ae02f3f4f7ea7c700af9b02784c557f9eb365a916c9ce3870900c78ea2",
+        "unreliable_duration": null,
+        "has_unmapped_location": null,
+        "prices": {
+            "currency": "USD",
+            "total": 10192,
+            "categories": {
+                "adult": 10192
+            },
+            "discount": 0,
+            "roundtrip_min": null,
+            "roundtrip_total": null,
+            "discounted": null,
+            "breakdown": {
+                "base": 10192,
+                "fees": 0,
+                "taxes": 0,
+                "discount": 0
+            }
+        },
+        "trip_stops": [
+            {
+                "arrival_time": null,
+                "departure_time": "2019-07-25T21:30:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Montreal Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T21:50:00",
+                "departure_time": "2019-07-25T21:50:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Longueuil (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T00:20:00",
+                "departure_time": "2019-07-26T00:30:00",
+                "duration": 1450,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Ste Foy Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T02:30:00",
+                "departure_time": "2019-07-26T04:30:00",
+                "duration": 120,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Riviere Du Loup (PRINT TICKET)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T07:00:00",
+                "departure_time": "2019-07-26T07:10:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Edmundston",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T07:40:00",
+                "departure_time": "2019-07-26T07:40:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "St Leonard",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:00:00",
+                "departure_time": "2019-07-26T08:00:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Grand Falls",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:30:00",
+                "departure_time": "2019-07-26T08:35:00",
+                "duration": 5,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Perth Andover",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:05:00",
+                "departure_time": "2019-07-26T09:05:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Florenceville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:30:00",
+                "departure_time": "2019-07-26T09:40:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Woodstock",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T10:40:00",
+                "departure_time": "2019-07-26T11:00:00",
+                "duration": 20,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:20:00",
+                "departure_time": "2019-07-26T11:20:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T11:25:00",
+                "departure_time": "2019-07-26T11:25:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oromocto (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T12:55:00",
+                "departure_time": "2019-07-26T17:25:00",
+                "duration": 270,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Salisbury (3 hr advance booking)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T17:45:00",
+                "departure_time": "2019-07-26T18:00:00",
+                "duration": 15,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T18:15:00",
+                "departure_time": "2019-07-26T18:15:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T18:40:00",
+                "departure_time": "2019-07-26T18:40:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Sackville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T18:55:00",
+                "departure_time": "2019-07-26T19:05:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Amherst",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T19:25:00",
+                "departure_time": "2019-07-26T19:25:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oxford (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T20:10:00",
+                "departure_time": "2019-07-26T21:15:00",
+                "duration": 65,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Truro",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T21:55:00",
+                "departure_time": null,
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Halifax Airport",
+                "transfer": false
+            }
+        ],
+        "addons": [],
+        "details": {},
+        "terms": {
+            "type_of_id": "photo_and_full_name",
+            "ticket_requirements": {
+                "print": "printed_tkt"
+            },
+            "nb_carry_on": 1,
+            "kg_by_carry_on": 11,
+            "nb_checked_bags": 2,
+            "kg_by_bag": 23,
+            "checked_in_size_cm": null,
+            "extra_checked_in_fees": {
+                "type": "per_extra_checked_in",
+                "amount": 1000
+            },
+            "nb_extra_checked_in": null,
+            "oversized_luggage": {
+                "allowed": true,
+                "allowed_types": [
+                    "bicycle"
+                ],
+                "fees": {
+                    "type": "as_additional_luggage",
+                    "amount": 1000
+                },
+                "early_arrival_required": true,
+                "cover_required": true
+            },
+            "animals": {
+                "fees": {
+                    "type": "unknown",
+                    "amount": null,
+                    "percent": null
+                },
+                "main_compartment_allowed": false,
+                "hold_compartment_allowed": false,
+                "main_max_weight_kg": null,
+                "main_small_cage_required": null,
+                "hold_max_weight_kg": null,
+                "vaccination_required": true,
+                "special_animals_allowed": true,
+                "early_arrival_required": true,
+                "specific_hours": null
+            },
+            "refund_policies": [
+                {
+                    "type": "no-refund",
+                    "flat_fee": null,
+                    "flat_fee_currency": null,
+                    "percent_fee": null,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": null,
+                    "external_link": null
+                }
+            ],
+            "refund": false,
+            "refund_cutoff": null,
+            "exchange_policies": [
+                {
+                    "type": "station",
+                    "flat_fee": null,
+                    "flat_fee_currency": "CAD",
+                    "percent_fee": 0.15,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": 0,
+                    "external_link": null
+                }
+            ],
+            "exchange": true,
+            "exchange_cutoff": 0,
+            "exchange_cutoff_at": "2019-07-26T01:30:00.000Z",
+            "currency": "CAD",
+            "addons": {},
+            "piece_of_id": true,
+            "boarding_requirement": "printed_tkt",
+            "extra_bag_policy": true,
+            "extra_bag_cost": 1000,
+            "extra_bag_kg_cost": null,
+            "bag_allowed": true
+        }
+    },
+    "OTM3OGQwMTY6YjZkYzRkNjE": {
+        "amenities": {
+            "display_name": "",
+            "wifi": false,
+            "toilet": false,
+            "ac": true,
+            "refreshment": false,
+            "food": false,
+            "hot_meal": false,
+            "power_outlets": true,
+            "tv": false,
+            "bus_attendant": false,
+            "leg_room": true,
+            "small_seat": false,
+            "average_seat": true,
+            "xl_seat": false,
+            "full_recline_seat": false
+        },
+        "arrival_timezone": "America/Halifax",
+        "available_seats": 50,
+        "bus": null,
+        "busbud_departure_id": "b6dc4d61",
+        "class": "Economy",
+        "class_name": "",
+        "complete": false,
+        "fare_name": null,
+        "deeplink": null,
+        "departure_timezone": "America/Montreal",
+        "departure_type": null,
+        "destination_location_id": 20878,
+        "duration": 1405,
+        "has_search_details": true,
+        "has_bus_details": null,
+        "has_transfers": true,
+        "has_addons": null,
+        "id": "OTM3OGQwMTY6YjZkYzRkNjE",
+        "links": {
+            "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/dxfvcr/OTM3OGQwMTY6YjZkYzRkNjE?outbound_date=2019-07-25&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+        },
+        "num_transfers": 6,
+        "operator_id": "2d56d126-d3c1-4fe7-8bde-d4b811312d45",
+        "origin_location_id": 1938,
+        "passenger_questions": [],
+        "schedule_id": null,
+        "sellable": true,
+        "source_id": 275,
+        "ticket_types": [
+            "print"
+        ],
+        "departure_time": "2019-07-25T21:30:00",
+        "arrival_time": "2019-07-26T21:55:00",
+        "fetched_at": "2019-07-22T13:58:05.052Z",
+        "search_request_id": "2019072213582d93e6ae02f3f4f7ea7c700af9b02784c557f9eb365a916c9ce3870900c78ea2",
+        "unreliable_duration": null,
+        "has_unmapped_location": null,
+        "prices": {
+            "currency": "USD",
+            "total": 10192,
+            "categories": {
+                "adult": 10192
+            },
+            "discount": 0,
+            "roundtrip_min": null,
+            "roundtrip_total": null,
+            "discounted": null,
+            "breakdown": {
+                "base": 10192,
+                "fees": 0,
+                "taxes": 0,
+                "discount": 0
+            }
+        },
+        "trip_stops": [
+            {
+                "arrival_time": null,
+                "departure_time": "2019-07-25T21:30:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Montreal Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T21:50:00",
+                "departure_time": "2019-07-25T21:50:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Longueuil (TAKE TICKET TO OEXP AGENT)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-25T00:20:00",
+                "departure_time": "2019-07-26T00:30:00",
+                "duration": 1450,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Ste Foy Bus Station (TAKE TICKET TO OEXP AGENT)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T02:30:00",
+                "departure_time": "2019-07-26T04:30:00",
+                "duration": 120,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Riviere Du Loup (PRINT TICKET)",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T07:00:00",
+                "departure_time": "2019-07-26T07:10:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Edmundston",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T07:40:00",
+                "departure_time": "2019-07-26T07:40:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "St Leonard",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:00:00",
+                "departure_time": "2019-07-26T08:00:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Grand Falls",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T08:30:00",
+                "departure_time": "2019-07-26T08:35:00",
+                "duration": 5,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Perth Andover",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:05:00",
+                "departure_time": "2019-07-26T09:05:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Florenceville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T09:30:00",
+                "departure_time": "2019-07-26T09:40:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Woodstock",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T10:40:00",
+                "departure_time": "2019-07-26T14:15:00",
+                "duration": 215,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Fredericton",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T14:30:00",
+                "departure_time": "2019-07-26T14:30:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oromocto (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T15:30:00",
+                "departure_time": "2019-07-26T15:50:00",
+                "duration": 20,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Saint John Terminal",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T16:05:00",
+                "departure_time": "2019-07-26T16:05:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Quispamsis (Must book 3 hours in advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T16:20:00",
+                "departure_time": "2019-07-26T16:20:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Hampton NB",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T16:45:00",
+                "departure_time": "2019-07-26T16:50:00",
+                "duration": 5,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Sussex",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T17:25:00",
+                "departure_time": "2019-07-26T17:25:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Salisbury (3 hr advance booking)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T17:45:00",
+                "departure_time": "2019-07-26T18:00:00",
+                "duration": 15,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T18:15:00",
+                "departure_time": "2019-07-26T18:15:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Moncton Airport (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T18:40:00",
+                "departure_time": "2019-07-26T18:40:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Sackville",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T18:55:00",
+                "departure_time": "2019-07-26T19:05:00",
+                "duration": 10,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Amherst",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T19:25:00",
+                "departure_time": "2019-07-26T19:25:00",
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Oxford (Must Book 3-hrs In Advance)",
+                "transfer": false
+            },
+            {
+                "arrival_time": "2019-07-26T20:10:00",
+                "departure_time": "2019-07-26T21:15:00",
+                "duration": 65,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Truro",
+                "transfer": true
+            },
+            {
+                "arrival_time": "2019-07-26T21:55:00",
+                "departure_time": null,
+                "duration": 0,
+                "departure_operator_id": null,
+                "location_id": null,
+                "name": "Halifax Airport",
+                "transfer": false
+            }
+        ],
+        "addons": [],
+        "details": {},
+        "terms": {
+            "type_of_id": "photo_and_full_name",
+            "ticket_requirements": {
+                "print": "printed_tkt"
+            },
+            "nb_carry_on": 1,
+            "kg_by_carry_on": 11,
+            "nb_checked_bags": 2,
+            "kg_by_bag": 23,
+            "checked_in_size_cm": null,
+            "extra_checked_in_fees": {
+                "type": "per_extra_checked_in",
+                "amount": 1000
+            },
+            "nb_extra_checked_in": null,
+            "oversized_luggage": {
+                "allowed": true,
+                "allowed_types": [
+                    "bicycle"
+                ],
+                "fees": {
+                    "type": "as_additional_luggage",
+                    "amount": 1000
+                },
+                "early_arrival_required": true,
+                "cover_required": true
+            },
+            "animals": {
+                "fees": {
+                    "type": "unknown",
+                    "amount": null,
+                    "percent": null
+                },
+                "main_compartment_allowed": false,
+                "hold_compartment_allowed": false,
+                "main_max_weight_kg": null,
+                "main_small_cage_required": null,
+                "hold_max_weight_kg": null,
+                "vaccination_required": true,
+                "special_animals_allowed": true,
+                "early_arrival_required": true,
+                "specific_hours": null
+            },
+            "refund_policies": [
+                {
+                    "type": "no-refund",
+                    "flat_fee": null,
+                    "flat_fee_currency": null,
+                    "percent_fee": null,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": null,
+                    "external_link": null
+                }
+            ],
+            "refund": false,
+            "refund_cutoff": null,
+            "exchange_policies": [
+                {
+                    "type": "station",
+                    "flat_fee": null,
+                    "flat_fee_currency": "CAD",
+                    "percent_fee": 0.15,
+                    "cutoff_reference": "departure-date",
+                    "cutoff_from": null,
+                    "cutoff_to": 0,
+                    "external_link": null
+                }
+            ],
+            "exchange": true,
+            "exchange_cutoff": 0,
+            "exchange_cutoff_at": "2019-07-26T01:30:00.000Z",
+            "currency": "CAD",
+            "addons": {},
+            "piece_of_id": true,
+            "boarding_requirement": "printed_tkt",
+            "extra_bag_policy": true,
+            "extra_bag_cost": 1000,
+            "extra_bag_kg_cost": null,
+            "bag_allowed": true
+        }
+    }
+}

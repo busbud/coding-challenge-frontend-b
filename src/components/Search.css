@@ -1,0 +1,55 @@
+.Search{
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 5px rgba(206,206,206, 0.64);
+    padding:2rem;
+    margin:2rem;
+    max-width: 100%;
+    margin:2rem auto;
+    box-sizing: border-box;
+}
+.DayPickerInput{
+    display:block;
+
+}
+.DayPicker {
+    font-size: 16px;
+}
+.Search__input, .DayPickerInput input {
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 48px;
+    width: 100%;
+    padding: 0 12px;
+    border: 1px solid #f1f2f6;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: left;
+    letter-spacing: .3px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #f1f2f6;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    caret-color: #a1a9c3;
+    color: #132968;
+}
+
+.Search__button{
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    height: 48px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: 0;
+    font-weight: bold;
+    background-color: #f19020;
+    color:#fff;
+}

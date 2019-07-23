@@ -15,8 +15,18 @@ const initialState = {
     locations: {},
     cities: {},
     operators: {},
-    departures: [],
-    filters: [],
+    departures: {},
+    searchParams: {
+        from: {
+            geohash: null,
+            name: "",
+        },
+        to: {
+            geohash: null,
+            name: "",
+        },
+        date: ""
+    },
     complete: false,
 }
 const dataMerger = (data, state, field) => {
@@ -39,7 +49,23 @@ const reducer = (state, action) => {
                 complete: action.data.complete,
                 departures: dataMerger(action.data, state, "departures"),
             };
-
+        case 'RESET_RESULTS':
+            return {
+                ...state,
+                locations: {},
+                cities: {},
+                operators: {},
+                complete: false,
+                departures: {}
+            }
+        case 'SET_SEARCH_PARAM':
+            return {
+                ...state,
+                searchParams: {
+                    ...state.searchParams,
+                    [action.name]: action.value
+                }
+            }
         default:
             return state;
     }
@@ -55,13 +81,19 @@ export const StateProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const data = {
         ...state,
+        dispatch,
         fetchData: function fetchData(retries = INITIAL_RETRIES) {
             if (retries < 0) return;
             const isPoll = retries !== INITIAL_RETRIES;
-
+            if (!isPoll) {
+                dispatch({
+                    type: "RESET_RESULTS"
+                })
+            }
+            if (state.searchParams.from.geohash === null || state.searchParams.to.geohash === null || state.searchParams.date === "") return;
             console.log(state);
             //instance.get(`/dr5reg/f25dvk/2019-08-03/${isPoll ? 'poll' : ''}`)
-            instance.get(`/f25dvk/dxfvcr/2019-07-25/${isPoll ? 'poll' : ''}`)
+            instance.get(`/${state.searchParams.from.geohash}/${state.searchParams.to.geohash}/${state.searchParams.date}/${isPoll ? 'poll' : ''}`)
                 .then(function ({ data }) {
                     console.log({ data });
                     dispatch({
