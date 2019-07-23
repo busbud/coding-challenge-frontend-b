@@ -71,6 +71,12 @@ export default class DeparturesContainer extends React.Component {
 
       if (complete) {
         this.clearFetchingInterval();
+        if (_.isEmpty(departures)) {
+          this.setState({
+            ...this.state,
+            errorMessage: 'No departures available',
+          });
+        }
       }
     } catch (e) {
       this.clearFetchingInterval();
@@ -78,7 +84,7 @@ export default class DeparturesContainer extends React.Component {
     }
   };
 
-  handleError = () => {
+  handleError = async () => {
     this.setState({
       ...this.state,
       isFetching: false,

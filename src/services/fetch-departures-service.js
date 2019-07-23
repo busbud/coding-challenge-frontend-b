@@ -13,11 +13,18 @@ const headers = {
 const language = getCurrentLanguage();
 const { currency } = window.localStorage;
 
-export async function fetchDepartures(index) {
-  const response = await axios({
-    method: 'get',
-    url: `${URL}?index=${index}&lang=${language}&currency=${currency}`,
-    headers,
-  });
-  return response.data;
+export async function fetchDepartures(index, n = 2) {
+  try {
+    const response = await axios({
+      method: 'get',
+      url: `${URL}?index=${index}&lang=${language}&currency=${currency}`,
+      headers,
+    });
+    return response.data;
+  } catch (err) {
+    if (n === 1) {
+      throw err;
+    }
+    return await fetchDepartures(index, n - 1);
+  }
 }

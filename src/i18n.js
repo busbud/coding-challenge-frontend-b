@@ -19,6 +19,8 @@ const resources = {
       'Request complete': 'Request complete',
       'Request was interrupted':
         'Request was interrupted. Please refresh the page to try again',
+      'No departures available':
+        'No departures available. Please choose another day',
     },
   },
   [FRENCH]: {
@@ -34,6 +36,8 @@ const resources = {
       'Request complete': 'Demande terminée',
       'Request was interrupted':
         'La demande a été interrompue. Veuillez actualiser la page pour réessayer.',
+      'No departures available':
+        'Aucun départ disponible. Veuillez choisir un autre jour',
     },
   },
 };
