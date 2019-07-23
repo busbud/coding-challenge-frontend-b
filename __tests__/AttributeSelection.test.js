@@ -1,13 +1,22 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AttributeSelection from './AttributeSelection';
+import AttributeSelection from '../src/components/AttributeSelection';
 
-const props = {
-  getCurrentValue: () => 'CAD',
-  changeValue: () => {},
-};
+import lodash from 'lodash';
+
+global._ = lodash;
+
+jest.mock('lodash/map');
+
+delete window.location;
+window.location = { reload: jest.fn() };
 
 describe('Attribute selection component', function() {
+  const props = {
+    getCurrentValue: () => 'CAD',
+    changeValue: () => {},
+  };
+
   beforeEach(() => {
     this.wrapper = shallow(<AttributeSelection {...props} />);
   });
