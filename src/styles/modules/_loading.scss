@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgb(205, 92, 92);
 }
 
 .lds-facebook {
@@ -15,7 +16,7 @@
   position: absolute;
   left: 6px;
   width: 13px;
-  background: rgb(205, 92, 92);
+  background: #f6f6f6;
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 .lds-facebook div:nth-child(1) {

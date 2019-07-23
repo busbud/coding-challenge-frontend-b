@@ -38,11 +38,11 @@ class HeaderContainer extends React.Component {
     return (
       <div className="top-bar-container">
         {pathname !== '/' && (
-          <div onClick={this.onClick}>
+          <div onClick={this.onClick} className="top-bar__back">
             <i className="fa fa-angle-left" />
           </div>
         )}
-        <div className="top-bar-selection">
+        <div className="top-bar__selection">
           {_.map(selectAttributeMapper, (attributes, type) => {
             const { getCurrentValue, changeValue, listOfValues } = attributes;
             return (

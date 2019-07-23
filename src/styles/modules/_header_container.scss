@@ -7,7 +7,7 @@
   align-items: center;
   padding: 1rem;
 
-  .top-bar-selection {
+  .top-bar__selection {
     display: flex;
     flex-direction: row;
     margin-left: auto;
@@ -19,9 +19,11 @@
     }
   }
 
-  .fa-angle-left {
-    font-size: 24px;
-    color: white;
+  .top-bar__back {
+    .fa-angle-left {
+      font-size: 24px;
+      color: white;
+    }
   }
 }
 

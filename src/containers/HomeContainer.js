@@ -17,7 +17,7 @@ export default class HomeContainer extends React.Component {
             {t('Excited for an upcoming weekend at Osheaga?')}
           </div>
           <h1>{t('NYC to MTL')}</h1>
-          <div className="button" onClick={this.onClick}>
+          <div className="button button--blue" onClick={this.onClick}>
             {t('Search')}
           </div>
         </div>

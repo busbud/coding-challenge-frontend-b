@@ -23,7 +23,7 @@ export default class DepartureInfo extends React.Component {
     const { currency } = window.localStorage;
     return (
       <div className="departure-info-container">
-        <div className="schedule-time">
+        <div className="departure-info__left">
           <div className="row">
             <div className="time">
               {t('Departure')}: {formatTime(departure_time)}
@@ -41,7 +41,7 @@ export default class DepartureInfo extends React.Component {
             </div>
           </div>
         </div>
-        <div className="schedule-details">
+        <div className="departure-info__right">
           <div className="operator-logo">
             <img src={getOperatorLogo(source_id, operators)} />
           </div>

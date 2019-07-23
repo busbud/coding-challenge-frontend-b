@@ -12,7 +12,7 @@
     flex-direction: row;
     padding: 0.5rem 0.3rem;
 
-    .schedule-time {
+    .departure-info__left {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
@@ -25,7 +25,7 @@
       }
     }
 
-    .schedule-details {
+    .departure-info__right {
       display: flex;
       flex-direction: column;
       align-items: center;
