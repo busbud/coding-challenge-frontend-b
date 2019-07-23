@@ -14,9 +14,11 @@
     "react-dom": "^16.8.6",
     "react-i18next": "^10.11.4",
     "react-scripts": "3.0.1",
+    "source-map-explorer": "^2.0.1",
     "timezone-support": "^2.0.2"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
