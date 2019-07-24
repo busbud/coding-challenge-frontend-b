@@ -22,6 +22,7 @@ export default class DeparturesContainer extends React.Component {
   };
 
   scheduleFetchingDepartures = async () => {
+    this.numberOfFails = 0;
     this.fetchDepartures();
     this.pollingDepratureInterval = setInterval(() => {
       this.fetchDepartures();
@@ -55,19 +56,16 @@ export default class DeparturesContainer extends React.Component {
       } = fetchResponse;
       const { departures, locations, operators } = this.state.data;
 
+      const filteredLocations = filterOutDuplicateData(locations, newLocations);
+      const filteredOperators = filterOutDuplicateData(operators, newOperators);
+
       this.setState({
         ...this.state,
         isFetching: complete ? false : true,
         data: {
           departures: _.concat(departures, newDepartures),
-          locations: _.concat(
-            locations,
-            filterOutDuplicateData(locations, newLocations),
-          ),
-          operators: _.concat(
-            operators,
-            filterOutDuplicateData(operators, newOperators),
-          ),
+          locations: _.concat(locations, filteredLocations),
+          operators: _.concat(operators, filteredOperators),
         },
       });
 
@@ -81,6 +79,10 @@ export default class DeparturesContainer extends React.Component {
         }
       }
     } catch (e) {
+      this.numberOfFails += 1;
+      if (this.numberOfFails < 2) {
+        return;
+      }
       this.clearFetchingInterval();
       this.handleError();
     }
