@@ -14,18 +14,11 @@ function generateUrl(index, searchDay) {
   return `https://napi.busbud.com/x-departures/dr5reg/f25dvk/${searchDay}/poll?index=${index}&lang=${language}&currency=${currency}`;
 }
 
-export async function fetchDepartures(index, searchDay, n = 2) {
-  try {
-    const response = await axios({
-      method: 'get',
-      url: generateUrl(index, searchDay),
-      headers,
-    });
-    return response.data;
-  } catch (err) {
-    if (n === 1) {
-      throw err;
-    }
-    return await fetchDepartures(index, n - 1);
-  }
+export async function fetchDepartures(index, searchDay) {
+  const response = await axios({
+    method: 'get',
+    url: generateUrl(index, searchDay),
+    headers,
+  });
+  return response.data;
 }
