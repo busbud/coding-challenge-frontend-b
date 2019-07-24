@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 import { fetchDepartures } from '../services/fetch-departures-service';
 import { filterOutDuplicateData } from '../utils/format-departures-data-helper';
+import { parseDay } from '../services/parse-day';
 import DepartureInfo from '../components/DepartureInfo';
 import ErrorMessage from '../components/ErrorMessage';
 import Loading from '../components/Loading';
@@ -41,9 +42,10 @@ export default class DeparturesContainer extends React.Component {
 
   fetchDepartures = async () => {
     const index = this.state.data.departures.length;
-
+    const searchParams = this.props.location.search;
+    const searchDay = parseDay(searchParams);
     try {
-      const fetchResponse = await fetchDepartures(index);
+      const fetchResponse = await fetchDepartures(index, searchDay);
 
       const {
         complete,
