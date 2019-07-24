@@ -1,38 +1,25 @@
-The microsite was built in:
+# The microsite was built in:
 
-ReactJS
-React Router
-Webpack 4
-Babel 7
-SCSS, CSS Support
-Code Formatter (Prettier)
-Jest & Enzyme Configured
+## Heroku link:
 
-Commands:
+https://pacific-woodland-89733.herokuapp.com/
 
-In development environment:
+To view different dates, set the search params. For example:
 
-npm run dev
-yarn dev
+https://pacific-woodland-89733.herokuapp.com/departures?day=2019-08-04
 
-To build production (build to dist folder):
+## Overview technologies:
 
-npm run build
-yarn build
+- ReactJS
+- Webpack 4
+- Babel 7
+- SCSS, CSS Support
+- Code Formatter (Prettier)
+- Jest & Enzyme Configured
 
-To test:
+## Commands:
 
-npm run test
-yarn test
-
-To show test coverage of code
-npm run test:coverage
-yarn test:coverage
-
-Folder structures:
-
-tests - contain test files
-dist - contain build code
-src - render code
-webpack - webpack config for rendering
-package.json
+- To run dev frontend: `npm run dev`
+- To build: `npm run build`
+- To serve from server: `npm start`
+- To run test: `npm run test`
