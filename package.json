@@ -1,0 +1,22 @@
+{
+  "name": "busbux-x-lukeharvey",
+  "version": "1.0.0",
+  "description": "Busbud coding challenge by Luke Harvey",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukeharvey/coding-challenge-frontend-b.git"
+  },
+  "author": "Luke Harvey",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^9.0.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {}
+}
