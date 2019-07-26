@@ -28,3 +28,4 @@ node_modules
 
 # Additions
 .next
+next.config.js
