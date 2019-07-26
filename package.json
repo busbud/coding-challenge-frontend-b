@@ -11,7 +11,10 @@
     "react-redux-toastr": "^7.5.1",
     "react-scripts": "3.0.1",
     "redux": "^4.0.4",
-    "redux-form": "^8.2.4"
+    "redux-form": "^8.2.4",
+    "redux-multi": "^0.1.12",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
