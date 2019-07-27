@@ -10,15 +10,20 @@ class Index extends React.Component {
     super(props);
 
     this.state = {
-      data: null,
+      cities: [],
+      locations: [],
+      operators: [],
+      departures: [],
+      complete: false,
       origin: "dr5reg",
       destination: "f25dvk",
-      outbound_date: new Date()
+      outbound_date: new Date("August 1, 2019")
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchData = this.fetchData.bind(this);
   }
 
   handleInputChange(event) {
@@ -38,36 +43,69 @@ class Index extends React.Component {
   }
 
   formatDate(date) {
-    return format(date, "yyyy-MM-dd");
+    return format(date, "YYYY-MM-DD");
   }
 
-  handleSubmit(event) {
-    const { origin, destination, outbound_date } = this.state;
+  fetchData(polling = false) {
+    const { origin, destination, outbound_date, departures } = this.state;
     const formattedDate = this.formatDate(outbound_date);
+    const params =
+      polling && departures.length > 0
+        ? `/poll?adult=1&index=${departures.length}`
+        : `?adult=1`;
     const url = `${
       process.env.ENDPOINT
-    }x-departures/${origin}/${destination}/${formattedDate}`;
-
-    event.preventDefault();
+    }x-departures/${origin}/${destination}/${formattedDate}${params}`;
+    const headers = {
+      Accept:
+        "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
+      "X-Busbud-Token": process.env.TOKEN
+    };
 
     axios
-      .get(url, {
-        headers: {
-          Accept:
-            "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
-          "X-Busbud-Token": process.env.TOKEN
-        }
-      })
+      .get(url, { headers })
       .then(response => {
-        this.setState({ data: response.data });
+        if (polling) {
+          this.setState(prevState => ({
+            departures: [...prevState.departures, ...response.data.departures],
+            operators: [...prevState.operators, ...response.data.operators],
+            complete: response.data.complete
+          }));
+        } else {
+          this.setState(prevState => ({
+            cities: [...prevState.cities, ...response.data.cities],
+            locations: [...prevState.locations, ...response.data.locations],
+            departures: [...prevState.departures, ...response.data.departures],
+            operators: [...prevState.operators, ...response.data.operators],
+            complete: response.data.complete
+          }));
+        }
+        if (!response.data.complete) {
+          setTimeout(() => {
+            this.fetchData(true);
+          }, 2000);
+        }
       })
       .catch(error => {
         console.log(error);
       });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    this.fetchData();
+  }
+
   render() {
-    const { data, origin, destination, outbound_date } = this.state;
+    const {
+      cities,
+      locations,
+      operators,
+      departures,
+      origin,
+      destination,
+      outbound_date
+    } = this.state;
 
     return (
       <div>
@@ -87,7 +125,14 @@ class Index extends React.Component {
           destination={destination}
           outbound_date={outbound_date}
         />
-        {data ? <Results data={data} /> : null}
+        {departures.length > 0 ? (
+          <Results
+            cities={cities}
+            locations={locations}
+            departures={departures}
+            operators={operators}
+          />
+        ) : null}
       </div>
     );
   }

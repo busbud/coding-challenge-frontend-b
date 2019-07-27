@@ -1,24 +1,24 @@
 import Departure from "./Departure";
 
-const Results = ({ data }) => (
+const Results = ({ cities, locations, departures, operators }) => (
   <div>
     <p>Results:</p>
     <ul>
-      {data.departures.map(departure => {
+      {departures.map(departure => {
         const { departure_time, arrival_time, prices } = departure;
-        const origin_location = data.locations.filter(
+        const origin_location = locations.filter(
           location => location.id === departure.origin_location_id
         )[0];
-        const origin_city = data.cities.filter(
+        const origin_city = cities.filter(
           city => city.id === origin_location.city_id
         )[0];
-        const destination_location = data.locations.filter(
+        const destination_location = locations.filter(
           location => location.id === departure.destination_location_id
         )[0];
-        const destination_city = data.cities.filter(
+        const destination_city = cities.filter(
           city => city.id === destination_location.city_id
         )[0];
-        const operator = data.operators.filter(
+        const operator = operators.filter(
           operator => operator.id === departure.operator_id
         )[0];
 
