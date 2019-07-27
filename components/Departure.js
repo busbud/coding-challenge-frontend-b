@@ -1,14 +1,15 @@
-const Departure = props => {
-  const {
-    origin_city,
-    origin_location,
-    destination_city,
-    destination_location,
-    operator,
-    departure_time,
-    arrival_time,
-    prices
-  } = props;
+import PropTypes from "prop-types";
+
+const Departure = ({
+  origin_city,
+  origin_location,
+  destination_city,
+  destination_location,
+  operator,
+  departure_time,
+  arrival_time,
+  prices
+}) => {
   return (
     <li>
       <p>
@@ -23,6 +24,17 @@ const Departure = props => {
       <p>Price: {prices.total}</p>
     </li>
   );
+};
+
+Departure.propTypes = {
+  origin_city: PropTypes.object,
+  origin_location: PropTypes.object,
+  destination_city: PropTypes.object,
+  destination_location: PropTypes.object,
+  operator: PropTypes.object,
+  departure_time: PropTypes.string,
+  arrival_time: PropTypes.string,
+  prices: PropTypes.object
 };
 
 export default Departure;

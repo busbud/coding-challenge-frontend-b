@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Departure from "./Departure";
 
 const Results = ({ cities, locations, departures, operators }) => (
@@ -39,5 +40,12 @@ const Results = ({ cities, locations, departures, operators }) => (
     </ul>
   </div>
 );
+
+Results.propTypes = {
+  cities: PropTypes.array,
+  locations: PropTypes.array,
+  departures: PropTypes.array,
+  operators: PropTypes.array
+};
 
 export default Results;

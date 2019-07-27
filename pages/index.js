@@ -14,7 +14,7 @@ class Index extends React.Component {
       locations: [],
       operators: [],
       departures: [],
-      complete: false,
+      complete: null,
       origin: "dr5reg",
       destination: "f25dvk",
       outbound_date: new Date("August 1, 2019")
@@ -51,8 +51,8 @@ class Index extends React.Component {
     const formattedDate = this.formatDate(outbound_date);
     const params =
       polling && departures.length > 0
-        ? `/poll?adult=1&index=${departures.length}`
-        : `?adult=1`;
+        ? `/poll?adult=2&index=${departures.length}`
+        : `?adult=2`;
     const url = `${
       process.env.ENDPOINT
     }x-departures/${origin}/${destination}/${formattedDate}${params}`;
@@ -104,7 +104,8 @@ class Index extends React.Component {
       departures,
       origin,
       destination,
-      outbound_date
+      outbound_date,
+      complete
     } = this.state;
 
     return (
@@ -133,6 +134,7 @@ class Index extends React.Component {
             operators={operators}
           />
         ) : null}
+        {complete === false ? <p>Loading...</p> : null}
       </div>
     );
   }

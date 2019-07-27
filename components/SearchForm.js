@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -32,5 +33,14 @@ const SearchForm = props => (
     <input type="submit" value="Search" />
   </form>
 );
+
+SearchForm.propTypes = {
+  handleDateChange: PropTypes.func,
+  handleInputChange: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  destination: PropTypes.string,
+  origin: PropTypes.string,
+  outbound_date: PropTypes.string
+};
 
 export default SearchForm;
