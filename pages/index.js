@@ -1,5 +1,6 @@
 import Head from "next/head";
 import axios from "axios";
+import format from "date-fns/format";
 
 import SearchForm from "../components/SearchForm";
 import Results from "../components/Results";
@@ -12,10 +13,11 @@ class Index extends React.Component {
       data: null,
       origin: "dr5reg",
       destination: "f25dvk",
-      outbound_date: "2019-08-01"
+      outbound_date: new Date()
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -29,12 +31,25 @@ class Index extends React.Component {
     });
   }
 
+  handleDateChange(date) {
+    this.setState({
+      outbound_date: date
+    });
+  }
+
+  formatDate(date) {
+    return format(date, "yyyy-MM-dd");
+  }
+
   handleSubmit(event) {
-    event.preventDefault();
     const { origin, destination, outbound_date } = this.state;
+    const formattedDate = this.formatDate(outbound_date);
     const url = `${
       process.env.ENDPOINT
-    }x-departures/${origin}/${destination}/${outbound_date}`;
+    }x-departures/${origin}/${destination}/${formattedDate}`;
+
+    event.preventDefault();
+
     axios
       .get(url, {
         headers: {
@@ -66,6 +81,7 @@ class Index extends React.Component {
         <p>Osheaga Bus Search</p>
         <SearchForm
           handleInputChange={this.handleInputChange}
+          handleDateChange={this.handleDateChange}
           handleSubmit={this.handleSubmit}
           origin={origin}
           destination={destination}

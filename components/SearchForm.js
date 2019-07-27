@@ -1,28 +1,33 @@
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
 const SearchForm = props => (
   <form onSubmit={props.handleSubmit}>
     <label htmlFor="origin">Leaving from</label>
-    <input
+    <select
       id="origin"
       name="origin"
-      onChange={props.handleInputChange}
-      type="text"
       value={props.origin}
-    />
+      onChange={props.handleInputChange}
+    >
+      <option value="dr5reg">New York</option>
+      <option value="f25dvk">Montreal</option>
+    </select>
     <label htmlFor="destination">Going to</label>
-    <input
+    <select
       id="destination"
       name="destination"
-      onChange={props.handleInputChange}
-      type="text"
       value={props.destination}
-    />
-    <label htmlFor="outbound_date">Date</label>
-    <input
-      id="outbound_date"
-      name="outbound_date"
       onChange={props.handleInputChange}
-      type="text"
-      value={props.outbound_date}
+    >
+      <option value="f25dvk">Montreal</option>
+      <option value="dr5reg">New York</option>
+    </select>
+    <label htmlFor="outbound_date">Date</label>
+    <DatePicker
+      selected={props.outbound_date}
+      onChange={props.handleDateChange}
     />
     <input type="submit" value="Search" />
   </form>
