@@ -1,6 +1,6 @@
 import Departure from "./Departure";
 
-const Departures = ({ data }) => (
+const Results = ({ data }) => (
   <div>
     <p>Results:</p>
     <ul>
@@ -40,4 +40,4 @@ const Departures = ({ data }) => (
   </div>
 );
 
-export default Departures;
+export default Results;

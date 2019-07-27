@@ -1,7 +1,8 @@
 import Head from "next/head";
 import axios from "axios";
 
-import Departures from "../components/Departures";
+import SearchForm from "../components/SearchForm";
+import Results from "../components/Results";
 
 class Index extends React.Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class Index extends React.Component {
   }
 
   render() {
-    const { data } = this.state;
+    const { data, origin, destination, outbound_date } = this.state;
 
     return (
       <div>
@@ -63,34 +64,14 @@ class Index extends React.Component {
           />
         </Head>
         <p>Osheaga Bus Search</p>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="origin">Leaving from</label>
-          <input
-            id="origin"
-            name="origin"
-            onChange={this.handleInputChange}
-            type="text"
-            value={this.state.origin}
-          />
-          <label htmlFor="destination">Going to</label>
-          <input
-            id="destination"
-            name="destination"
-            onChange={this.handleInputChange}
-            type="text"
-            value={this.state.destination}
-          />
-          <label htmlFor="outbound_date">Date</label>
-          <input
-            id="outbound_date"
-            name="outbound_date"
-            onChange={this.handleInputChange}
-            type="text"
-            value={this.state.outbound_date}
-          />
-          <input type="submit" value="Search" />
-        </form>
-        {data ? <Departures data={data} /> : null}
+        <SearchForm
+          handleInputChange={this.handleInputChange}
+          handleSubmit={this.handleSubmit}
+          origin={origin}
+          destination={destination}
+          outbound_date={outbound_date}
+        />
+        {data ? <Results data={data} /> : null}
       </div>
     );
   }
