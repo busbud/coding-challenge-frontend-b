@@ -40,7 +40,7 @@ SearchForm.propTypes = {
   handleSubmit: PropTypes.func,
   destination: PropTypes.string,
   origin: PropTypes.string,
-  outbound_date: PropTypes.string
+  outbound_date: PropTypes.date
 };
 
 export default SearchForm;

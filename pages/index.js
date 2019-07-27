@@ -46,11 +46,11 @@ class Index extends React.Component {
     return format(date, "YYYY-MM-DD");
   }
 
-  fetchData(polling = false) {
+  fetchData() {
     const { origin, destination, outbound_date, departures } = this.state;
     const formattedDate = this.formatDate(outbound_date);
     const params =
-      polling && departures.length > 0
+      departures.length > 0
         ? `/poll?adult=2&index=${departures.length}`
         : `?adult=2`;
     const url = `${
@@ -65,21 +65,21 @@ class Index extends React.Component {
     axios
       .get(url, { headers })
       .then(response => {
-        if (polling) {
-          this.setState(prevState => ({
-            departures: [...prevState.departures, ...response.data.departures],
-            operators: [...prevState.operators, ...response.data.operators],
-            complete: response.data.complete
-          }));
-        } else {
-          this.setState(prevState => ({
-            cities: [...prevState.cities, ...response.data.cities],
-            locations: [...prevState.locations, ...response.data.locations],
-            departures: [...prevState.departures, ...response.data.departures],
-            operators: [...prevState.operators, ...response.data.operators],
-            complete: response.data.complete
-          }));
-        }
+        this.setState(prevState => ({
+          cities: response.data.cities
+            ? [...prevState.cities, ...response.data.cities]
+            : prevState.cities,
+          locations: response.data.locations
+            ? [...prevState.locations, ...response.data.locations]
+            : prevState.locations,
+          departures: response.data.departures
+            ? [...prevState.departures, ...response.data.departures]
+            : prevState.departures,
+          operators: response.data.operators
+            ? [...prevState.operators, ...response.data.operators]
+            : prevState.operators,
+          complete: response.data.complete
+        }));
         if (!response.data.complete) {
           setTimeout(() => {
             this.fetchData(true);
