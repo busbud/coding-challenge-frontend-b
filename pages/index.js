@@ -1,6 +1,8 @@
 import Head from "next/head";
 import axios from "axios";
 
+import Departures from "../components/Departures";
+
 class Index extends React.Component {
   constructor(props) {
     super(props);
@@ -88,8 +90,7 @@ class Index extends React.Component {
           />
           <input type="submit" value="Search" />
         </form>
-        <p>Results:</p>
-        {data ? <div>{JSON.stringify(data)}</div> : null}
+        {data ? <Departures data={data} /> : null}
       </div>
     );
   }
