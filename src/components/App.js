@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReduxToastr from 'react-redux-toastr';
 import Onboard from './Onboard';
 import Navbar from './Navbar';
-import ReduxToastr from 'react-redux-toastr';
+import Departures from './Departures';
 
-function App() {
+const App = () => {
+  const [page, setPage] = useState('onboard');
+
+  const showDepartures = () => {
+    setPage('departures');
+  };
+
   return (
     <div className="App h-100">
       <div className="body-bkg" />
@@ -18,9 +25,10 @@ function App() {
         progressBar
         closeOnToastrClick
       />
-      <Onboard />
+      {(page === 'onboard') && <Onboard showDepartures={showDepartures} />}
+      {(page === 'departures') && <Departures />}
     </div>
   );
-}
+};
 
 export default App;

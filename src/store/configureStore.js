@@ -5,11 +5,6 @@ import thunk from 'redux-thunk';
 
 import rootReducer from './rootReducer';
 
-let store; // eslint-disable-line import/no-mutable-exports
+const store = createStore(rootReducer, {}, applyMiddleware(thunk, multi, promise));
 
-const configureStore = (initialState) => {
-  store = createStore(rootReducer, initialState, applyMiddleware(thunk, multi, promise));
-  return store;
-};
-
-export { configureStore, store };
+export default store;
