@@ -4,7 +4,7 @@ require("dotenv").config();
 
 module.exports = withCSS({
   env: {
-    TOKEN: process.env.TOKEN,
-    ENDPOINT: process.env.ENDPOINT
+    BUSBUD_TOKEN: process.env.BUSBUD_TOKEN,
+    BUSBUD_ENDPOINT: process.env.BUSBUD_ENDPOINT
   }
 });
