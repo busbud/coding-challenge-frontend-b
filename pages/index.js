@@ -3,6 +3,7 @@ import format from "date-fns/format";
 
 import "sanitize.css";
 
+import { colours, fonts } from "../theme";
 import Meta from "../components/Meta";
 import Header from "../components/Header";
 import SearchForm from "../components/SearchForm";
@@ -24,7 +25,8 @@ class Index extends React.Component {
       complete: false,
       origin: "dr5reg",
       destination: "f25dvk",
-      outbound_date: new Date("August 1, 2019")
+      outbound_date: new Date("August 1, 2019"),
+      selected_date: new Date()
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -123,7 +125,8 @@ class Index extends React.Component {
       departures: [],
       operators: [],
       complete: false,
-      initialised: true
+      initialised: true,
+      selected_date: outbound_date
     });
 
     this.fetchData(origin, destination, outbound_date, false);
@@ -138,6 +141,7 @@ class Index extends React.Component {
       origin,
       destination,
       outbound_date,
+      selected_date,
       initialised,
       complete
     } = this.state;
@@ -163,6 +167,7 @@ class Index extends React.Component {
             locations={locations}
             departures={departures}
             operators={operators}
+            selected_date={selected_date}
           />
         ) : null}
 
@@ -181,11 +186,14 @@ class Index extends React.Component {
               #ec9c5f 81%,
               #e79d53
             );
-            font-family: "Poppins", sans-serif;
+            color: #243b52;
+            font-family: ${fonts.copy};
             margin: 0;
             padding: 0;
           }
-          *,
+          * {
+            box-sizing: border-box;
+          }
           *:before,
           *:after {
             box-sizing: inherit;
@@ -196,7 +204,7 @@ class Index extends React.Component {
           h4,
           h5,
           h6 {
-            font-family: "Changa One";
+            font-family: ${fonts.slab};
             font-weight: 400;
           }
         `}</style>

@@ -1,41 +1,15 @@
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 
+import { fonts } from "../theme";
+import Button from "./Button";
+import CustomDatePicker from "./CustomDatePicker";
+
 import "react-datepicker/dist/react-datepicker.css";
-
-class CustomDatePicker extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <input
-          className="datepicker"
-          type="text"
-          value={this.props.value}
-          onClick={this.props.onClick}
-          readOnly
-        />
-        <style jsx>{`
-          input {
-            border-radius: 8px;
-            font-size: 16px;
-            height: 48px;
-            padding: 10px;
-            width: 100%;
-          }
-        `}</style>
-      </React.Fragment>
-    );
-  }
-}
-
-CustomDatePicker.propTypes = {
-  value: PropTypes.string,
-  onClick: PropTypes.func
-};
 
 const SearchForm = props => (
   <form onSubmit={props.handleSubmit}>
-    <div className="wrapper">
+    <div className="grid">
       <div className="group">
         <label htmlFor="origin">Leaving from</label>
         <select
@@ -78,35 +52,45 @@ const SearchForm = props => (
         </div>
       </div>
       <div className="button-wrapper">
-        <input className="button" type="submit" value="Search" />
+        <Button block>Search</Button>
       </div>
     </div>
     <style jsx>{`
       form {
         margin-left: auto;
         margin-right: auto;
-        margin-top: 40px;
+        margin-top: 32px;
         max-width: 960px;
       }
-      .wrapper {
+      .grid {
         align-items: end;
         display: grid;
         grid-column-gap: 8px;
-        grid-template-columns: 1fr 1fr 1fr 160px;
+        grid-row-gap: 16px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 480px) {
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (min-width: 640px) {
+        .grid {
+          grid-template-columns: 1fr 1fr 1fr 160px;
+        }
       }
       .group {
         flex: 1;
       }
       label {
-        color: #fff;
+        color: white;
         display: block;
-        font-weight: bold;
-        text-transform: uppercase;
+        font-family: ${fonts.slab};
       }
       select {
         appearance: none;
         display: block;
-        font-size: 16px;
+        font-size: 1rem;
         height: 48px;
         margin-top: 8px;
         padding: 10px;
@@ -115,24 +99,11 @@ const SearchForm = props => (
       .datepicker-wrapper {
         margin-top: 8px;
       }
-      :global(.react-datepicker-wrapper,.react-datepicker__input-container {
-        width: 100%;
-      })
-      .button {
-        background-color: #ff5c60;
-        border: 1px solid #ff5c60;
-        border-radius: 40px;
-        color: white;
-        cursor: pointer;
-        font-family: "Changa One";
-        font-size: 18px;
-        padding: 14px 30px;
-        text-transform: uppercase;
+      :global(.react-datepicker-wrapper, .react-datepicker__input-container) {
         width: 100%;
       }
-      .button:hover {
-        background-color: #cc463c;
-        border-color: #cc463c;
+      .button-wrapper {
+        margin-top: 12px;
       }
     `}</style>
   </form>

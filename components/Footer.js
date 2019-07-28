@@ -1,13 +1,13 @@
 const Footer = () => (
   <React.Fragment>
-    <footer className="wrapper">
-      <img className="image" src="/static/footer.png" />
+    <footer>
+      <img src="/static/footer.png" />
     </footer>
     <style jsx>{`
-      .wrapper {
+      footer {
         margin-top: 120px;
       }
-      .image {
+      img {
         height: auto;
         max-width: 100%;
       }
