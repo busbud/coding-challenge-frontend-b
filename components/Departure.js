@@ -27,17 +27,26 @@ const Departure = ({
   return (
     <li>
       <div className="left">
-        <p>
-          <span>{t("departs")}</span> {formatTime(departure_time)} —{" "}
-          {origin_city.name}, {origin_location.name}
-        </p>
-        <p>
-          <span>{t("arrives")}</span> {formatTime(arrival_time)} —{" "}
-          {destination_city.name}, {destination_location.name}
-        </p>
-        <p>
-          <span>{t("operated-by")}</span> {operator.name}
-        </p>
+        <div className="row">
+          <p className="heading">{t("departs")}</p>
+          <p>
+            <strong>{formatTime(departure_time)}</strong> — {origin_city.name},{" "}
+            {origin_location.name}
+          </p>
+        </div>
+        <div className="row">
+          <p className="heading">{t("arrives")}</p>
+          <p>
+            <strong>{formatTime(arrival_time)}</strong> —{" "}
+            {destination_city.name}, {destination_location.name}
+          </p>
+        </div>
+        <div className="row">
+          <p className="heading">{t("operated-by")}</p> <p />
+          <p>
+            <strong>{operator.name}</strong>
+          </p>
+        </div>
       </div>
       <div className="right">
         <p className="price">{formatPrice(prices.total, prices.currency)}</p>
@@ -58,20 +67,37 @@ const Departure = ({
         }
         @media (min-width: 640px) {
           li {
-            grid-template-columns: 1fr 240px;
+            grid-template-columns: 1fr 220px;
           }
         }
-        span {
+        .row {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .row + .row {
+          margin-top: 16px;
+        }
+        @media (min-width: 800px) {
+          .row {
+            flex-wrap: nowrap;
+          }
+        }
+        .heading {
+          flex-basis: 100%;
+          min-width: 150px;
+          padding-top: 4px;
+        }
+        @media (min-width: 800px) {
+          .heading {
+            flex-basis: auto;
+          }
+        }
+        p {
+          margin: 0;
+        }
+        strong {
           font-family: ${fonts.slab};
           font-size: 1.25rem;
-        }
-        .left p:first-of-type {
-          margin-top: 0;
-        }
-        .left p:last-of-type {
-          margin-bottom: 0;
-        }
-        .right {
         }
         @media (min-width: 640px) {
           .right {

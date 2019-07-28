@@ -5,7 +5,7 @@ const Footer = () => (
     </footer>
     <style jsx>{`
       footer {
-        margin-top: 120px;
+        margin-top: 64px;
       }
       img {
         height: auto;

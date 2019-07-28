@@ -66,8 +66,8 @@ class Index extends React.Component {
     const formattedDate = format(outbound_date, "YYYY-MM-DD");
     const params =
       polling && departures.length > 0
-        ? `/poll?adult=1&index=${departures.length}`
-        : `?adult=1`;
+        ? `/poll?adult=1&&currency=CAD&index=${departures.length}`
+        : `?adult=1&currency=CAD`;
     const url = `${
       process.env.BUSBUD_ENDPOINT
     }x-departures/${origin}/${destination}/${formattedDate}${params}`;
