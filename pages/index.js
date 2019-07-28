@@ -199,10 +199,6 @@ class Index extends React.Component {
             font-family: "Changa One";
             font-weight: 400;
           }
-          .react-datepicker-wrapper,
-          .react-datepicker__input-container {
-            width: 100%;
-          }
         `}</style>
       </React.Fragment>
     );

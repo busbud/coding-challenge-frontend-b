@@ -115,6 +115,9 @@ const SearchForm = props => (
       .datepicker-wrapper {
         margin-top: 8px;
       }
+      :global(.react-datepicker-wrapper,.react-datepicker__input-container {
+        width: 100%;
+      })
       .button {
         background-color: #ff5c60;
         border: 1px solid #ff5c60;
