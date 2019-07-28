@@ -3,7 +3,7 @@ import format from "date-fns/format";
 
 import "sanitize.css";
 
-import { colours, fonts } from "../theme";
+import { fonts } from "../theme";
 import Meta from "../components/Meta";
 import Header from "../components/Header";
 import SearchForm from "../components/SearchForm";

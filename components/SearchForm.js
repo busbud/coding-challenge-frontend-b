@@ -19,7 +19,7 @@ const SearchForm = props => (
           onChange={props.handleInputChange}
         >
           <option value="dr5reg">New York</option>
-          <option value="f25dvk">Montreal</option>
+          <option value="f25dvk">Montréal</option>
         </select>
       </div>
       <div className="group">
@@ -30,7 +30,7 @@ const SearchForm = props => (
           value={props.destination}
           onChange={props.handleInputChange}
         >
-          <option value="f25dvk">Montreal</option>
+          <option value="f25dvk">Montréal</option>
           <option value="dr5reg">New York</option>
         </select>
       </div>
