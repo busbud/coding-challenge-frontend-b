@@ -1,26 +1,12 @@
 import PropTypes from "prop-types";
 
-import { i18n, withTranslation } from "../i18n";
-import { colours, fonts } from "../theme";
+import { withTranslation } from "../i18n";
+import { colours } from "../theme";
+import LanguageToggle from "./LanguageToggle";
 
 const Header = props => (
   <header>
-    <div className="locale-buttons-wrapper">
-      <button
-        className="locale-button"
-        type="button"
-        onClick={() => i18n.changeLanguage("en")}
-      >
-        en
-      </button>
-      <button
-        className="locale-button"
-        type="button"
-        onClick={() => i18n.changeLanguage("fr")}
-      >
-        fr
-      </button>
-    </div>
+    <LanguageToggle />
     <div className="background">
       <img className="background-image" src="/static/img/background.jpg" />
     </div>
@@ -42,22 +28,7 @@ const Header = props => (
         padding-top: 24px;
         position: relative;
       }
-      .locale-buttons-wrapper {
-        margin-bottom: 32px;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 960px;
-        text-align: right;
-      }
-      .locale-button {
-        background-color: ${colours.blueLight};
-        color: ${colours.blue};
-        cursor: pointer;
-        font-family: ${fonts.slab};
-        font-size: 1rem;
-        margin-left: 8px;
-        width: 48px;
-      }
+
       .background {
         height: 100%;
         left: 0;
