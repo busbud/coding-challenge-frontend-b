@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import format from "date-fns/format";
+import frLocale from "date-fns/locale/fr";
 
+import { withTranslation } from "../i18n";
 import { colours } from "../theme";
 import Departure from "./Departure";
 
@@ -9,10 +11,17 @@ const Results = ({
   locations,
   departures,
   operators,
-  selected_date
+  selected_date,
+  i18n,
+  t
 }) => (
   <section className="wrapper">
-    <h2>Results for {format(selected_date, "dddd Do MMMM YYYY")}</h2>
+    <h2>
+      {t("results-for")}{" "}
+      {format(selected_date, "dddd Do MMMM YYYY", {
+        locale: i18n.language === "fr" ? frLocale : ""
+      })}
+    </h2>
     <ul>
       {departures.map(departure => {
         const { departure_time, arrival_time, prices } = departure;
@@ -77,7 +86,9 @@ Results.propTypes = {
   locations: PropTypes.array,
   departures: PropTypes.array,
   operators: PropTypes.array,
-  selected_date: PropTypes.instanceOf(Date)
+  selected_date: PropTypes.instanceOf(Date),
+  i18n: PropTypes.object,
+  t: PropTypes.func.isRequired
 };
 
-export default Results;
+export default withTranslation("common")(Results);

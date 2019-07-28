@@ -1,20 +1,37 @@
 import PropTypes from "prop-types";
 
-import { colours } from "../theme";
+import { i18n, withTranslation } from "../i18n";
+import { colours, fonts } from "../theme";
 
 const Header = props => (
   <header>
+    <div className="locale-buttons-wrapper">
+      <button
+        className="locale-button"
+        type="button"
+        onClick={() => i18n.changeLanguage("en")}
+      >
+        en
+      </button>
+      <button
+        className="locale-button"
+        type="button"
+        onClick={() => i18n.changeLanguage("fr")}
+      >
+        fr
+      </button>
+    </div>
     <div className="background">
-      <img className="background-image" src="/static/background.jpg" />
+      <img className="background-image" src="/static/img/background.jpg" />
     </div>
     <div className="banner">
       <img
         className="banner-image"
-        src="/static/banner.png"
+        src="/static/img/banner.png"
         alt="Osheaga Festival Musique Et Arts"
       />
     </div>
-    <h1>Travel to Osheaga by Bus</h1>
+    <h1>{props.t("heading")}</h1>
     {props.children}
     <style jsx>{`
       header {
@@ -22,8 +39,24 @@ const Header = props => (
         padding-bottom: 64px;
         padding-left: 24px;
         padding-right: 24px;
-        padding-top: 64px;
+        padding-top: 24px;
         position: relative;
+      }
+      .locale-buttons-wrapper {
+        margin-bottom: 32px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 960px;
+        text-align: right;
+      }
+      .locale-button {
+        background-color: ${colours.blueLight};
+        color: ${colours.blue};
+        cursor: pointer;
+        font-family: ${fonts.slab};
+        font-size: 1rem;
+        margin-left: 8px;
+        width: 48px;
       }
       .background {
         height: 100%;
@@ -61,7 +94,8 @@ const Header = props => (
 );
 
 Header.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  t: PropTypes.func.isRequired
 };
 
-export default Header;
+export default withTranslation("common")(Header);

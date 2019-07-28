@@ -1,9 +1,11 @@
+import PropTypes from "prop-types";
 import axios from "axios";
 import format from "date-fns/format";
 
 import "sanitize.css";
-
+import { withTranslation } from "../i18n";
 import { fonts } from "../theme";
+
 import Meta from "../components/Meta";
 import Header from "../components/Header";
 import SearchForm from "../components/SearchForm";
@@ -213,4 +215,12 @@ class Index extends React.Component {
   }
 }
 
-export default Index;
+Index.getInitialProps = async () => ({
+  namespacesRequired: ["common"]
+});
+
+Index.propTypes = {
+  t: PropTypes.func.isRequired
+};
+
+export default withTranslation("common")(Index);

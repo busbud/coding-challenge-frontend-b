@@ -1,8 +1,11 @@
+import PropTypes from "prop-types";
+
+import { withTranslation } from "../i18n";
 import { colours } from "../theme";
 
-const NoResults = () => (
+const NoResults = props => (
   <React.Fragment>
-    <h2>Search for tickets above</h2>
+    <h2>{props.t("search-tip")}</h2>
     <style jsx>{`
       h2 {
         color: ${colours.blue};
@@ -16,4 +19,8 @@ const NoResults = () => (
   </React.Fragment>
 );
 
-export default NoResults;
+NoResults.propTypes = {
+  t: PropTypes.func.isRequired
+};
+
+export default withTranslation("common")(NoResults);

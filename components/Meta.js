@@ -1,6 +1,9 @@
+import PropTypes from "prop-types";
 import Head from "next/head";
 
-const Meta = () => (
+import { withTranslation } from "../i18n";
+
+const Meta = props => (
   <Head>
     <meta
       name="viewport"
@@ -12,8 +15,12 @@ const Meta = () => (
       href="https://fonts.googleapis.com/css?family=Changa+One|Poppins&display=swap"
       rel="stylesheet"
     />
-    <title>Osheaga | Bus Search</title>
+    <title>{props.t("title")}</title>
   </Head>
 );
 
-export default Meta;
+Meta.propTypes = {
+  t: PropTypes.func.isRequired
+};
+
+export default withTranslation("common")(Meta);

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 
+import { withTranslation } from "../i18n";
 import { fonts } from "../theme";
 import Button from "./Button";
 import CustomDatePicker from "./CustomDatePicker";
@@ -11,31 +12,31 @@ const SearchForm = props => (
   <form onSubmit={props.handleSubmit}>
     <div className="grid">
       <div className="group">
-        <label htmlFor="origin">Leaving from</label>
+        <label htmlFor="origin">{props.t("leaving-from")}</label>
         <select
           id="origin"
           name="origin"
           value={props.origin}
           onChange={props.handleInputChange}
         >
-          <option value="dr5reg">New York</option>
-          <option value="f25dvk">Montréal</option>
+          <option value="dr5reg">{props.t("new-york")}</option>
+          <option value="f25dvk">{props.t("montreal")}</option>
         </select>
       </div>
       <div className="group">
-        <label htmlFor="destination">Going to</label>
+        <label htmlFor="destination">{props.t("going-to")}</label>
         <select
           id="destination"
           name="destination"
           value={props.destination}
           onChange={props.handleInputChange}
         >
-          <option value="f25dvk">Montréal</option>
-          <option value="dr5reg">New York</option>
+          <option value="f25dvk">{props.t("montreal")}</option>
+          <option value="dr5reg">{props.t("new-york")}</option>
         </select>
       </div>
       <div className="group">
-        <label htmlFor="outbound_date">Date</label>
+        <label htmlFor="outbound_date">{props.t("date")}</label>
         <div className="datepicker-wrapper">
           <DatePicker
             id="outbound_date"
@@ -52,7 +53,7 @@ const SearchForm = props => (
         </div>
       </div>
       <div className="button-wrapper">
-        <Button block>Search</Button>
+        <Button block>{props.t("search")}</Button>
       </div>
     </div>
     <style jsx>{`
@@ -76,7 +77,7 @@ const SearchForm = props => (
       }
       @media (min-width: 640px) {
         .grid {
-          grid-template-columns: 1fr 1fr 1fr 160px;
+          grid-template-columns: 1fr 1fr 1fr 180px;
         }
       }
       .group {
@@ -116,7 +117,8 @@ SearchForm.propTypes = {
   handleSubmit: PropTypes.func,
   destination: PropTypes.string,
   origin: PropTypes.string,
-  outbound_date: PropTypes.instanceOf(Date)
+  outbound_date: PropTypes.instanceOf(Date),
+  t: PropTypes.func.isRequired
 };
 
-export default SearchForm;
+export default withTranslation("common")(SearchForm);

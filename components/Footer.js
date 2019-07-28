@@ -1,7 +1,7 @@
 const Footer = () => (
   <React.Fragment>
     <footer>
-      <img src="/static/footer.png" />
+      <img src="/static/img/footer.png" />
     </footer>
     <style jsx>{`
       footer {

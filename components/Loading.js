@@ -1,6 +1,9 @@
-const Loading = () => (
+import PropTypes from "prop-types";
+import { withTranslation } from "../i18n";
+
+const Loading = props => (
   <React.Fragment>
-    <h2>Loading...</h2>
+    <h2>{props.t("loading")}</h2>
     <style jsx>{`
       h2 {
         color: white;
@@ -14,4 +17,8 @@ const Loading = () => (
   </React.Fragment>
 );
 
-export default Loading;
+Loading.propTypes = {
+  t: PropTypes.func.isRequired
+};
+
+export default withTranslation("common")(Loading);

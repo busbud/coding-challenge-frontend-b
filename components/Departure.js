@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import format from "date-fns/format";
 
+import { withTranslation } from "../i18n";
 import { fonts } from "../theme";
 import Button from "./Button";
 
@@ -20,27 +21,28 @@ const Departure = ({
   operator,
   departure_time,
   arrival_time,
-  prices
+  prices,
+  t
 }) => {
   return (
     <li>
       <div className="left">
         <p>
-          <span>Departs:</span> {formatTime(departure_time)} —{" "}
+          <span>{t("departs")}</span> {formatTime(departure_time)} —{" "}
           {origin_city.name}, {origin_location.name}
         </p>
         <p>
-          <span>Arrives:</span> {formatTime(arrival_time)} —{" "}
+          <span>{t("arrives")}</span> {formatTime(arrival_time)} —{" "}
           {destination_city.name}, {destination_location.name}
         </p>
         <p>
-          <span>Operated by:</span> {operator.name}
+          <span>{t("operated-by")}</span> {operator.name}
         </p>
       </div>
       <div className="right">
         <p className="price">{formatPrice(prices.total, prices.currency)}</p>
         <div className="button-wrapper">
-          <Button>Buy now</Button>
+          <Button>{t("buy-now")}</Button>
         </div>
       </div>
       <style jsx>{`
@@ -100,7 +102,8 @@ Departure.propTypes = {
   operator: PropTypes.object,
   departure_time: PropTypes.string,
   arrival_time: PropTypes.string,
-  prices: PropTypes.object
+  prices: PropTypes.object,
+  t: PropTypes.func.isRequired
 };
 
-export default Departure;
+export default withTranslation("common")(Departure);
