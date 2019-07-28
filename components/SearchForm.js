@@ -89,6 +89,7 @@ const SearchForm = props => (
       }
       select {
         appearance: none;
+        border-radius: 8px;
         display: block;
         font-size: 1rem;
         height: 48px;
