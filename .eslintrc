@@ -21,7 +21,8 @@
     "React": "writable"
   },
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-no-undef": [2, { "allowGlobals": true }]
   },
   "settings": {
     "react": {

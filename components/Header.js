@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Header = props => (
   <header className="wrapper">
     <div className="background">
@@ -11,7 +13,6 @@ const Header = props => (
       />
     </div>
     <h1>Travel to Osheaga by Bus</h1>
-    <p>Search for tickets below</p>
     {props.children}
     <style jsx>{`
       .wrapper {
@@ -49,12 +50,12 @@ const Header = props => (
         margin-top: 32px;
         text-align: center;
       }
-      p {
-        margin-bottom: 0;
-        text-align: center;
-      }
     `}</style>
   </header>
 );
+
+Header.propTypes = {
+  children: PropTypes.node
+};
 
 export default Header;

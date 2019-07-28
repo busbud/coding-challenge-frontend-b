@@ -28,6 +28,11 @@ class CustomDatePicker extends React.Component {
   }
 }
 
+CustomDatePicker.propTypes = {
+  value: PropTypes.string,
+  onClick: PropTypes.func
+};
+
 const SearchForm = props => (
   <form onSubmit={props.handleSubmit}>
     <div className="wrapper">
@@ -60,6 +65,12 @@ const SearchForm = props => (
         <div className="datepicker-wrapper">
           <DatePicker
             id="outbound_date"
+            dateFormat="dd/MM/yyyy"
+            highlightDates={[
+              new Date("August 2, 2019"),
+              new Date("August 3, 2019"),
+              new Date("August 4, 2019")
+            ]}
             selected={props.outbound_date}
             onChange={props.handleDateChange}
             customInput={<CustomDatePicker />}
@@ -80,8 +91,8 @@ const SearchForm = props => (
       .wrapper {
         align-items: end;
         display: grid;
-        grid-column-gap: 16px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-column-gap: 8px;
+        grid-template-columns: 1fr 1fr 1fr 160px;
       }
       .group {
         flex: 1;
@@ -93,10 +104,12 @@ const SearchForm = props => (
         text-transform: uppercase;
       }
       select {
+        appearance: none;
         display: block;
         font-size: 16px;
         height: 48px;
         margin-top: 8px;
+        padding: 10px;
         width: 100%;
       }
       .datepicker-wrapper {

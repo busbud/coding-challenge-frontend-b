@@ -8,6 +8,7 @@ import Header from "../components/Header";
 import SearchForm from "../components/SearchForm";
 import Results from "../components/Results";
 import Loading from "../components/Loading";
+import NoResults from "../components/NoResults";
 import Footer from "../components/Footer";
 
 class Index extends React.Component {
@@ -17,9 +18,10 @@ class Index extends React.Component {
     this.state = {
       cities: [],
       locations: [],
-      operators: [],
       departures: [],
-      complete: null,
+      operators: [],
+      initialised: false,
+      complete: false,
       origin: "dr5reg",
       destination: "f25dvk",
       outbound_date: new Date("August 1, 2019")
@@ -29,6 +31,14 @@ class Index extends React.Component {
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchData = this.fetchData.bind(this);
+  }
+
+  componentWillUnmount() {
+    // clear any existing poll requests
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+      this.timeout = null;
+    }
   }
 
   handleInputChange(event) {
@@ -47,15 +57,11 @@ class Index extends React.Component {
     });
   }
 
-  formatDate(date) {
-    return format(date, "YYYY-MM-DD");
-  }
-
-  fetchData() {
-    const { origin, destination, outbound_date, departures } = this.state;
-    const formattedDate = this.formatDate(outbound_date);
+  fetchData(origin, destination, outbound_date, polling = false) {
+    const { departures } = this.state;
+    const formattedDate = format(outbound_date, "YYYY-MM-DD");
     const params =
-      departures.length > 0
+      polling && departures.length > 0
         ? `/poll?adult=1&index=${departures.length}`
         : `?adult=1`;
     const url = `${
@@ -70,35 +76,57 @@ class Index extends React.Component {
     axios
       .get(url, { headers })
       .then(response => {
+        const { data } = response;
+        // console.log(data);
         this.setState(prevState => ({
-          cities: response.data.cities
-            ? [...prevState.cities, ...response.data.cities]
+          cities: data.cities
+            ? [...prevState.cities, ...data.cities]
             : prevState.cities,
-          locations: response.data.locations
-            ? [...prevState.locations, ...response.data.locations]
+          locations: data.locations
+            ? [...prevState.locations, ...data.locations]
             : prevState.locations,
-          departures: response.data.departures
-            ? [...prevState.departures, ...response.data.departures]
+          departures: data.departures
+            ? [...prevState.departures, ...data.departures]
             : prevState.departures,
-          operators: response.data.operators
-            ? [...prevState.operators, ...response.data.operators]
+          operators: data.operators
+            ? [...prevState.operators, ...data.operators]
             : prevState.operators,
-          complete: response.data.complete
+          complete: data.complete
         }));
-        if (!response.data.complete) {
-          setTimeout(() => {
-            this.fetchData(true);
+
+        // poll API for further updates
+        if (!data.complete) {
+          this.timeout = setTimeout(() => {
+            this.fetchData(origin, destination, outbound_date, true);
+            this.timeout = null;
           }, 2000);
         }
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(error => console.log(error));
   }
 
   handleSubmit(event) {
+    const { origin, destination, outbound_date } = this.state;
+
     event.preventDefault();
-    this.fetchData();
+
+    // clear any existing poll requests
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+      this.timeout = null;
+    }
+
+    // reset search data and set initialised to true
+    this.setState({
+      cities: [],
+      locations: [],
+      departures: [],
+      operators: [],
+      complete: false,
+      initialised: true
+    });
+
+    this.fetchData(origin, destination, outbound_date, false);
   }
 
   render() {
@@ -110,6 +138,7 @@ class Index extends React.Component {
       origin,
       destination,
       outbound_date,
+      initialised,
       complete
     } = this.state;
 
@@ -126,7 +155,8 @@ class Index extends React.Component {
             outbound_date={outbound_date}
           />
         </Header>
-        {complete === false ? <Loading /> : null}
+        {!initialised ? <NoResults /> : null}
+        {initialised && !complete ? <Loading /> : null}
         {departures.length > 0 ? (
           <Results
             cities={cities}
@@ -135,6 +165,7 @@ class Index extends React.Component {
             operators={operators}
           />
         ) : null}
+
         <Footer />
         <style jsx global>{`
           html {
