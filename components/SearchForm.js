@@ -3,25 +3,30 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const CustomDatePicker = props => (
-  <React.Fragment>
-    <input
-      className="datepicker"
-      type="text"
-      value={props.value}
-      onClick={props.onClick}
-    />
-    <style jsx>{`
-      input {
-        border-radius: 8px;
-        font-size: 16px;
-        height: 48px;
-        padding: 10px;
-        width: 100%;
-      }
-    `}</style>
-  </React.Fragment>
-);
+class CustomDatePicker extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <input
+          className="datepicker"
+          type="text"
+          value={this.props.value}
+          onClick={this.props.onClick}
+          readOnly
+        />
+        <style jsx>{`
+          input {
+            border-radius: 8px;
+            font-size: 16px;
+            height: 48px;
+            padding: 10px;
+            width: 100%;
+          }
+        `}</style>
+      </React.Fragment>
+    );
+  }
+}
 
 const SearchForm = props => (
   <form onSubmit={props.handleSubmit}>
