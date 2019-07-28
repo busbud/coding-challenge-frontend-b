@@ -1,7 +1,7 @@
-import Head from "next/head";
 import axios from "axios";
 import format from "date-fns/format";
 
+import Meta from "../components/Meta";
 import SearchForm from "../components/SearchForm";
 import Results from "../components/Results";
 
@@ -51,15 +51,15 @@ class Index extends React.Component {
     const formattedDate = this.formatDate(outbound_date);
     const params =
       departures.length > 0
-        ? `/poll?adult=2&index=${departures.length}`
-        : `?adult=2`;
+        ? `/poll?adult=1&index=${departures.length}`
+        : `?adult=1`;
     const url = `${
-      process.env.ENDPOINT
-    }x-departures/${origin}/${destination}/${formattedDate}${params}`;
+      process.env.BUSBUD_ENDPOINT
+    }x-departures/${originGeohash}/${destinationGeohash}/${formattedDate}${params}`;
     const headers = {
       Accept:
         "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
-      "X-Busbud-Token": process.env.TOKEN
+      "X-Busbud-Token": process.env.BUSBUD_TOKEN
     };
 
     axios
@@ -110,13 +110,7 @@ class Index extends React.Component {
 
     return (
       <div>
-        <Head>
-          <title>Osheaga | Bus Search</title>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-        </Head>
+        <Meta />
         <p>Osheaga Bus Search</p>
         <SearchForm
           handleInputChange={this.handleInputChange}
