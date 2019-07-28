@@ -8,6 +8,10 @@ const Meta = () => (
       key="viewport"
     />
     <meta charSet="utf-8" key="charset" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Changa+One|Poppins&display=swap"
+      rel="stylesheet"
+    />
     <title>Osheaga | Bus Search</title>
   </Head>
 );

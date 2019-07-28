@@ -1,9 +1,14 @@
 import axios from "axios";
 import format from "date-fns/format";
 
+import "sanitize.css";
+
 import Meta from "../components/Meta";
+import Header from "../components/Header";
 import SearchForm from "../components/SearchForm";
 import Results from "../components/Results";
+import Loading from "../components/Loading";
+import Footer from "../components/Footer";
 
 class Index extends React.Component {
   constructor(props) {
@@ -55,7 +60,7 @@ class Index extends React.Component {
         : `?adult=1`;
     const url = `${
       process.env.BUSBUD_ENDPOINT
-    }x-departures/${originGeohash}/${destinationGeohash}/${formattedDate}${params}`;
+    }x-departures/${origin}/${destination}/${formattedDate}${params}`;
     const headers = {
       Accept:
         "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
@@ -109,17 +114,19 @@ class Index extends React.Component {
     } = this.state;
 
     return (
-      <div>
+      <React.Fragment>
         <Meta />
-        <p>Osheaga Bus Search</p>
-        <SearchForm
-          handleInputChange={this.handleInputChange}
-          handleDateChange={this.handleDateChange}
-          handleSubmit={this.handleSubmit}
-          origin={origin}
-          destination={destination}
-          outbound_date={outbound_date}
-        />
+        <Header>
+          <SearchForm
+            handleInputChange={this.handleInputChange}
+            handleDateChange={this.handleDateChange}
+            handleSubmit={this.handleSubmit}
+            origin={origin}
+            destination={destination}
+            outbound_date={outbound_date}
+          />
+        </Header>
+        {complete === false ? <Loading /> : null}
         {departures.length > 0 ? (
           <Results
             cities={cities}
@@ -128,8 +135,45 @@ class Index extends React.Component {
             operators={operators}
           />
         ) : null}
-        {complete === false ? <p>Loading...</p> : null}
-      </div>
+        <Footer />
+        <style jsx global>{`
+          html {
+            box-sizing: border-box;
+          }
+          body {
+            background-image: linear-gradient(
+              -180deg,
+              #50c4c9,
+              #7cc9d0 21%,
+              #c882a8 50%,
+              #dd7794 61%,
+              #ec9c5f 81%,
+              #e79d53
+            );
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+          }
+          *,
+          *:before,
+          *:after {
+            box-sizing: inherit;
+          }
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            font-family: "Changa One";
+            font-weight: 400;
+          }
+          .react-datepicker-wrapper,
+          .react-datepicker__input-container {
+            width: 100%;
+          }
+        `}</style>
+      </React.Fragment>
     );
   }
 }

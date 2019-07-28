@@ -2,8 +2,7 @@ import PropTypes from "prop-types";
 import Departure from "./Departure";
 
 const Results = ({ cities, locations, departures, operators }) => (
-  <div>
-    <p>Results:</p>
+  <section className="wrapper">
     <ul>
       {departures.map(departure => {
         const { departure_time, arrival_time, prices } = departure;
@@ -38,7 +37,19 @@ const Results = ({ cities, locations, departures, operators }) => (
         );
       })}
     </ul>
-  </div>
+    <style jsx>{`
+      ul {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-gap: 32px;
+        list-style: none;
+        margin: 0 auto;
+        max-width: 960px;
+        padding-left: 0;
+        padding-top: 48px;
+      }
+    `}</style>
+  </section>
 );
 
 Results.propTypes = {
