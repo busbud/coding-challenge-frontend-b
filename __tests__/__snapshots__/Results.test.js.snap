@@ -13,7 +13,140 @@ exports[`<Results /> renders and matches the snapshot 1`] = `
   </h2>
   <ul
     className="jsx-4199177593"
-  />
+  >
+    <Departure
+      arrival_time="2019-08-01T08:30:00"
+      departure_time="2019-08-01T01:30:00"
+      destination_city={
+        Object {
+          "id": 1,
+        }
+      }
+      destination_location={
+        Object {
+          "city_id": 1,
+          "id": 1,
+        }
+      }
+      i18n={
+        Object {
+          "language": "en",
+        }
+      }
+      key="1"
+      operator={
+        Object {
+          "id": 1,
+        }
+      }
+      origin_city={
+        Object {
+          "id": 1,
+        }
+      }
+      origin_location={
+        Object {
+          "city_id": 1,
+          "id": 1,
+        }
+      }
+      prices={
+        Object {
+          "currency": "CAD",
+          "total": 5200,
+        }
+      }
+      t={[Function]}
+    />
+    <Departure
+      arrival_time="2019-08-01T08:30:00"
+      departure_time="2019-08-01T01:30:00"
+      destination_city={
+        Object {
+          "id": 1,
+        }
+      }
+      destination_location={
+        Object {
+          "city_id": 1,
+          "id": 1,
+        }
+      }
+      i18n={
+        Object {
+          "language": "en",
+        }
+      }
+      key="2"
+      operator={
+        Object {
+          "id": 1,
+        }
+      }
+      origin_city={
+        Object {
+          "id": 1,
+        }
+      }
+      origin_location={
+        Object {
+          "city_id": 1,
+          "id": 1,
+        }
+      }
+      prices={
+        Object {
+          "currency": "CAD",
+          "total": 5200,
+        }
+      }
+      t={[Function]}
+    />
+    <Departure
+      arrival_time="2019-08-01T08:30:00"
+      departure_time="2019-08-01T01:30:00"
+      destination_city={
+        Object {
+          "id": 1,
+        }
+      }
+      destination_location={
+        Object {
+          "city_id": 1,
+          "id": 1,
+        }
+      }
+      i18n={
+        Object {
+          "language": "en",
+        }
+      }
+      key="3"
+      operator={
+        Object {
+          "id": 1,
+        }
+      }
+      origin_city={
+        Object {
+          "id": 1,
+        }
+      }
+      origin_location={
+        Object {
+          "city_id": 1,
+          "id": 1,
+        }
+      }
+      prices={
+        Object {
+          "currency": "CAD",
+          "total": 5200,
+        }
+      }
+      t={[Function]}
+    />
+  </ul>
   <JSXStyle
     dynamic={
       Array [

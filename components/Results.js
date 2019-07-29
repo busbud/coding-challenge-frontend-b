@@ -44,10 +44,10 @@ const Results = ({
         return (
           <Departure
             key={departure.id}
-            origin_location={origin_location}
             origin_city={origin_city}
-            destination_location={destination_location}
+            origin_location={origin_location}
             destination_city={destination_city}
+            destination_location={destination_location}
             operator={operator}
             departure_time={departure_time}
             arrival_time={arrival_time}

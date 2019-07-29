@@ -4,27 +4,18 @@ import toJSON from "enzyme-to-json";
 
 import Departure from "../components/Departure";
 
-const __origin_city__ = {
-  name: "New York"
-};
-const __origin_location__ = {
-  name: "Port Authority"
-};
-const __destination_city__ = {
-  name: "Montreal"
-};
-const __destination_location__ = {
-  name: "Gare d'autocars"
-};
-const __operator__ = {
-  name: "Greyhound"
-};
-const __departure_time__ = "2019-08-01T01:30:00";
-const __arrival_time__ = "2019-08-01T08:30:00";
-const __prices__ = {
-  total: 5200,
-  currency: "CAD"
-};
+import { departures } from "../lib/testData";
+
+const {
+  origin_city,
+  origin_location,
+  destination_city,
+  destination_location,
+  operator,
+  departure_time,
+  arrival_time,
+  prices
+} = departures[0];
 
 jest.mock("react-i18next", () => ({
   withTranslation: () => Component => {
@@ -41,14 +32,14 @@ describe("<Departure />", () => {
   it("renders and matches the snapshot", () => {
     const wrapper = shallow(
       <Departure
-        origin_location={__origin_location__}
-        origin_city={__origin_city__}
-        destination_location={__destination_location__}
-        destination_city={__destination_city__}
-        operator={__operator__}
-        departure_time={__departure_time__}
-        arrival_time={__arrival_time__}
-        prices={__prices__}
+        origin_location={origin_location}
+        origin_city={origin_city}
+        destination_location={destination_location}
+        destination_city={destination_city}
+        operator={operator}
+        departure_time={departure_time}
+        arrival_time={arrival_time}
+        prices={prices}
       />
     );
     expect(toJSON(wrapper)).toMatchSnapshot();
@@ -57,14 +48,14 @@ describe("<Departure />", () => {
   it("displays the departure info", () => {
     const wrapper = mount(
       <Departure
-        origin_location={__origin_location__}
-        origin_city={__origin_city__}
-        destination_location={__destination_location__}
-        destination_city={__destination_city__}
-        operator={__operator__}
-        departure_time={__departure_time__}
-        arrival_time={__arrival_time__}
-        prices={__prices__}
+        origin_location={origin_location}
+        origin_city={origin_city}
+        destination_location={destination_location}
+        destination_city={destination_city}
+        operator={operator}
+        departure_time={departure_time}
+        arrival_time={arrival_time}
+        prices={prices}
       />
     );
 
@@ -79,14 +70,14 @@ describe("<Departure />", () => {
   it("displays the origin city and location info", () => {
     const wrapper = mount(
       <Departure
-        origin_location={__origin_location__}
-        origin_city={__origin_city__}
-        destination_location={__destination_location__}
-        destination_city={__destination_city__}
-        operator={__operator__}
-        departure_time={__departure_time__}
-        arrival_time={__arrival_time__}
-        prices={__prices__}
+        origin_location={origin_location}
+        origin_city={origin_city}
+        destination_location={destination_location}
+        destination_city={destination_city}
+        operator={operator}
+        departure_time={departure_time}
+        arrival_time={arrival_time}
+        prices={prices}
       />
     );
 
@@ -99,14 +90,14 @@ describe("<Departure />", () => {
   it("displays the destination city and location info", () => {
     const wrapper = mount(
       <Departure
-        origin_location={__origin_location__}
-        origin_city={__origin_city__}
-        destination_location={__destination_location__}
-        destination_city={__destination_city__}
-        operator={__operator__}
-        departure_time={__departure_time__}
-        arrival_time={__arrival_time__}
-        prices={__prices__}
+        origin_location={origin_location}
+        origin_city={origin_city}
+        destination_location={destination_location}
+        destination_city={destination_city}
+        operator={operator}
+        departure_time={departure_time}
+        arrival_time={arrival_time}
+        prices={prices}
       />
     );
 
@@ -119,14 +110,14 @@ describe("<Departure />", () => {
   it("displays the operator info", () => {
     const wrapper = mount(
       <Departure
-        origin_location={__origin_location__}
-        origin_city={__origin_city__}
-        destination_location={__destination_location__}
-        destination_city={__destination_city__}
-        operator={__operator__}
-        departure_time={__departure_time__}
-        arrival_time={__arrival_time__}
-        prices={__prices__}
+        origin_location={origin_location}
+        origin_city={origin_city}
+        destination_location={destination_location}
+        destination_city={destination_city}
+        operator={operator}
+        departure_time={departure_time}
+        arrival_time={arrival_time}
+        prices={prices}
       />
     );
 

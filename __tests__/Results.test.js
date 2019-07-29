@@ -3,12 +3,15 @@ import { shallow } from "enzyme";
 import toJSON from "enzyme-to-json";
 
 import Results from "../components/Results";
+import Departure from "../components/Departure";
 
-const __cities__ = [];
-const __locations__ = [];
-const __departures__ = [];
-const __operators__ = [];
-const __selected_date__ = new Date("August 1, 2019");
+import {
+  cities,
+  departures,
+  locations,
+  operators,
+  selected_date
+} from "../lib/testData";
 
 jest.mock("react-i18next", () => ({
   withTranslation: () => Component => {
@@ -25,11 +28,11 @@ describe("<Results />", () => {
   it("renders and matches the snapshot", () => {
     const wrapper = shallow(
       <Results
-        cities={__cities__}
-        locations={__locations__}
-        departures={__departures__}
-        operators={__operators__}
-        selected_date={__selected_date__}
+        cities={cities}
+        locations={locations}
+        departures={departures}
+        operators={operators}
+        selected_date={selected_date}
       />
     );
     expect(toJSON(wrapper)).toMatchSnapshot();
@@ -38,11 +41,11 @@ describe("<Results />", () => {
   it("displays the selected date in English", () => {
     const wrapper = shallow(
       <Results
-        cities={__cities__}
-        locations={__locations__}
-        departures={__departures__}
-        operators={__operators__}
-        selected_date={__selected_date__}
+        cities={cities}
+        locations={locations}
+        departures={departures}
+        operators={operators}
+        selected_date={selected_date}
       />
     );
 
@@ -53,16 +56,29 @@ describe("<Results />", () => {
   it("displays the selected date in French", () => {
     const wrapper = shallow(
       <Results
-        cities={__cities__}
-        locations={__locations__}
-        departures={__departures__}
-        operators={__operators__}
-        selected_date={__selected_date__}
+        cities={cities}
+        locations={locations}
+        departures={departures}
+        operators={operators}
+        selected_date={selected_date}
         i18n={{ language: "fr" }}
       />
     );
 
     const selectedDate = wrapper.find("h2");
     expect(selectedDate.text()).toContain("jeudi 1er août 2019");
+  });
+
+  it("renders three <Departure /> components", () => {
+    const wrapper = shallow(
+      <Results
+        cities={cities}
+        locations={locations}
+        departures={departures}
+        operators={operators}
+        selected_date={selected_date}
+      />
+    );
+    expect(wrapper.find(Departure).length).toBe(3);
   });
 });
