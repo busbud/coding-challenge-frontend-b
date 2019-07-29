@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Styled from 'styled-components'
 import Loader from 'react-loader-spinner'
 import ResultsMenuItem from './ResultsMenuItem'
-import ResultsMenuItemNoResults from './ResultsMenuItemNoResults'
+import ResultsMenuNoResultsMsg from './ResultsMenuNoResultsMsg'
 import { AppContext } from '../contexts'
 
 const Container = Styled.div`
@@ -23,7 +23,7 @@ const ResultsMenu = () => {
       <ResultsMenuItem key={index} option={option} />
     ))
   ) : (
-    <ResultsMenuItemNoResults />
+    <ResultsMenuNoResultsMsg />
   )
 
   return <Container>{content}</Container>

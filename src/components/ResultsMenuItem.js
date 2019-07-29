@@ -91,7 +91,7 @@ const ResultsMenuItem = ({ option }) => {
         <ItemLabel>{operatorLabel}</ItemLabel>
         <ItemText>{operator}</ItemText>
         <ItemLabel>{priceLabel}</ItemLabel>
-        <ItemText>{`$ ${price} ${currency}`}</ItemText>
+        <ItemText>{`$${price} ${currency}`}</ItemText>
       </Item>
     </Container>
   )

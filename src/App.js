@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
 import { AppContext } from './contexts'
-import { Container, Header, Content, ContentBtn } from './components'
+import { Container, Header, Jumbotron, Content, ContentBtn } from './components'
 import { getUserLanguage } from './util'
 
 const App = () => {
@@ -27,6 +27,7 @@ const App = () => {
       }}>
       <Container>
         <Header />
+        {!busOptions && <Jumbotron />}
         <Content />
         <ContentBtn />
       </Container>

@@ -1,20 +1,19 @@
 import React, { useContext } from 'react'
 import Styled from 'styled-components'
-import SelectionMenuHeader from './SelectionMenuHeader'
 import SelectionMenuSelector from './SelectionMenuSelector'
 import { AppContext } from '../contexts'
 import constants from '../constants'
 
 const { translations } = constants
 
-const SelectionMenuContainer = Styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`
+// const SelectionMenuContainer = Styled.div`
+//   align-items: center;
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+// `
 
-const SelectionMenuSelectorContainer = Styled.div`
+const Container = Styled.div`
   align-items: center;
   display: flex;
   justify-content: space-around;
@@ -31,7 +30,6 @@ const SelectionMenu = () => {
   )
   const selectedLanguage = language === 'EN' ? translations.EN : translations.FR
   const {
-    header,
     on,
     day,
     outboundDate,
@@ -48,26 +46,23 @@ const SelectionMenu = () => {
   const destinationOptions = [{ label: mtl, value: destination }]
 
   return (
-    <SelectionMenuContainer>
-      <SelectionMenuHeader>{header}</SelectionMenuHeader>
-      <SelectionMenuSelectorContainer>
-        <SelectionMenuSelector
-          title={on}
-          options={dateOptions}
-          callback={setOutboundDate}
-        />
-        <SelectionMenuSelector
-          title={from}
-          options={originOptions}
-          callback={setOrigin}
-        />
-        <SelectionMenuSelector
-          title={to}
-          options={destinationOptions}
-          callback={setDestination}
-        />
-      </SelectionMenuSelectorContainer>
-    </SelectionMenuContainer>
+    <Container>
+      <SelectionMenuSelector
+        title={on}
+        options={dateOptions}
+        callback={setOutboundDate}
+      />
+      <SelectionMenuSelector
+        title={from}
+        options={originOptions}
+        callback={setOrigin}
+      />
+      <SelectionMenuSelector
+        title={to}
+        options={destinationOptions}
+        callback={setDestination}
+      />
+    </Container>
   )
 }
 

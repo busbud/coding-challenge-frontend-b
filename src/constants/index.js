@@ -1,5 +1,4 @@
 const EN = {
-  header: "Let's go to Osheaga!",
   on: 'departure date',
   day: 'August 2 2019',
   outboundDate: '2019-08-02',
@@ -10,16 +9,15 @@ const EN = {
   mtl: 'Montreal',
   destination: 'f25dvk',
   departureTimeLabel: 'Departure Time',
-  departureAddressLabel: 'Depature Address',
+  departureAddressLabel: 'Departure Place',
   arrivalTimeLabel: 'Arrival Time',
-  arrivalAddressLabel: 'Arrival Address',
+  arrivalAddressLabel: 'Arrival Place',
   travelTimeLabel: 'Travel Time',
   operatorLabel: 'Operator',
   priceLabel: 'Price',
 }
 
 const FR = {
-  header: "Allons au festival d'Osheaga!",
   on: 'date de départ',
   day: '2 août 2019',
   outboundDate: '2019-08-02',
@@ -30,9 +28,9 @@ const FR = {
   mtl: 'Montréal',
   destination: 'f25dvk',
   departureTimeLabel: 'Heure de départ',
-  departureAddressLabel: 'Adresse de départ',
-  arrivalTimeLabel: 'Arrival Time',
-  arrivalAddressLabel: 'Depature Address',
+  departureAddressLabel: 'Lieu de départ',
+  arrivalTimeLabel: "Heure d'arrivée",
+  arrivalAddressLabel: "Lieu d'arrivée",
   travelTimeLabel: 'Temps de voyage',
   operatorLabel: 'Affaires',
   priceLabel: 'Prix',
