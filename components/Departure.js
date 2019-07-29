@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import format from "date-fns/format";
 
-import { withTranslation } from "../i18n";
-import { fonts } from "../theme";
+import { withTranslation } from "../lib/i18n";
+import { fonts } from "../lib/theme";
 import Button from "./Button";
 
 const formatPrice = (price, currency) => {

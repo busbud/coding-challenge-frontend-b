@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
-import { withTranslation } from "../i18n";
-import { colours } from "../theme";
+import { withTranslation } from "../lib/i18n";
+import { colours } from "../lib/theme";
 
 const NoResults = props => (
   <React.Fragment>

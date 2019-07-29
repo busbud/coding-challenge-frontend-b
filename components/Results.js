@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import format from "date-fns/format";
 import frLocale from "date-fns/locale/fr";
 
-import { withTranslation } from "../i18n";
-import { colours } from "../theme";
+import { withTranslation } from "../lib/i18n";
+import { colours } from "../lib/theme";
 import Departure from "./Departure";
 
 const Results = ({

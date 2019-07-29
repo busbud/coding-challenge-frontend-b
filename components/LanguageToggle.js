@@ -1,5 +1,5 @@
-import { i18n } from "../i18n";
-import { colours, fonts } from "../theme";
+import { i18n } from "../lib/i18n";
+import { colours, fonts } from "../lib/theme";
 
 const LanguageToggle = () => (
   <div>

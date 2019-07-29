@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { colours, fonts } from "../theme";
+import { colours, fonts } from "../lib/theme";
 
 const Button = props => (
   <button className={"block" in props && "block"}>

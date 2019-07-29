@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Head from "next/head";
 
-import { withTranslation } from "../i18n";
+import { withTranslation } from "../lib/i18n";
 
 const Meta = props => (
   <Head>

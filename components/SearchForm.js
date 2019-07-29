@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 
-import { withTranslation } from "../i18n";
-import { fonts } from "../theme";
+import { withTranslation } from "../lib/i18n";
+import { fonts } from "../lib/theme";
 import Button from "./Button";
 import CustomDatePicker from "./CustomDatePicker";
 

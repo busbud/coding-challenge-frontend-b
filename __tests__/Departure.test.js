@@ -30,6 +30,7 @@ jest.mock("react-i18next", () => ({
   withTranslation: () => Component => {
     Component.defaultProps = {
       ...Component.defaultProps,
+      i18n: { language: "en" },
       t: key => key
     };
     return Component;
@@ -68,11 +69,11 @@ describe("<Departure />", () => {
     );
 
     const departureTime = wrapper.find(".departure-time");
-    expect(departureTime.text()).toEqual("01:30 AM");
+    expect(departureTime.text()).toBe("01:30 AM");
     const arrivalTime = wrapper.find(".arrival-time");
-    expect(arrivalTime.text()).toEqual("08:30 AM");
+    expect(arrivalTime.text()).toBe("08:30 AM");
     const price = wrapper.find(".price");
-    expect(price.text()).toEqual("$52.00 CAD");
+    expect(price.text()).toBe("$52.00 CAD");
   });
 
   it("displays the origin city and location info", () => {
@@ -90,9 +91,9 @@ describe("<Departure />", () => {
     );
 
     const originCityName = wrapper.find(".origin-city-name");
-    expect(originCityName.text()).toEqual("New York");
+    expect(originCityName.text()).toBe("New York");
     const originLocationName = wrapper.find(".origin-location-name");
-    expect(originLocationName.text()).toEqual("Port Authority");
+    expect(originLocationName.text()).toBe("Port Authority");
   });
 
   it("displays the destination city and location info", () => {
@@ -110,9 +111,9 @@ describe("<Departure />", () => {
     );
 
     const destinationCityName = wrapper.find(".destination-city-name");
-    expect(destinationCityName.text()).toEqual("Montreal");
+    expect(destinationCityName.text()).toBe("Montreal");
     const destinationLocationName = wrapper.find(".destination-location-name");
-    expect(destinationLocationName.text()).toEqual("Gare d'autocars");
+    expect(destinationLocationName.text()).toBe("Gare d'autocars");
   });
 
   it("displays the operator info", () => {
@@ -130,6 +131,6 @@ describe("<Departure />", () => {
     );
 
     const operatorName = wrapper.find(".operator-name");
-    expect(operatorName.text()).toEqual("Greyhound");
+    expect(operatorName.text()).toBe("Greyhound");
   });
 });

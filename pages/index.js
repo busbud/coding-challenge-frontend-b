@@ -3,8 +3,8 @@ import axios from "axios";
 import format from "date-fns/format";
 
 import "sanitize.css";
-import { withTranslation } from "../i18n";
-import { fonts } from "../theme";
+import { withTranslation } from "../lib/i18n";
+import { fonts } from "../lib/theme";
 
 import Meta from "../components/Meta";
 import Header from "../components/Header";
@@ -68,9 +68,7 @@ class Index extends React.Component {
       polling && departures.length > 0
         ? `/poll?adult=1&&currency=CAD&index=${departures.length}`
         : `?adult=1&currency=CAD`;
-    const url = `${
-      process.env.BUSBUD_ENDPOINT
-    }x-departures/${origin}/${destination}/${formattedDate}${params}`;
+    const url = `${process.env.BUSBUD_ENDPOINT}x-departures/${origin}/${destination}/${formattedDate}${params}`;
     const headers = {
       Accept:
         "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",

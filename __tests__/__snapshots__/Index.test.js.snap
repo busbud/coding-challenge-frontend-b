@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Index /> renders and matches the snapshot 1`] = `
+<Fragment>
+  <Meta
+    i18n={
+      Object {
+        "language": "en",
+      }
+    }
+    t={[Function]}
+  />
+  <Header
+    i18n={
+      Object {
+        "language": "en",
+      }
+    }
+    t={[Function]}
+  >
+    <SearchForm
+      destination="f25dvk"
+      handleDateChange={[Function]}
+      handleInputChange={[Function]}
+      handleSubmit={[Function]}
+      i18n={
+        Object {
+          "language": "en",
+        }
+      }
+      origin="dr5reg"
+      outbound_date={2019-08-01T04:00:00.000Z}
+      t={[Function]}
+    />
+  </Header>
+  <NoResults
+    i18n={
+      Object {
+        "language": "en",
+      }
+    }
+    t={[Function]}
+  />
+  <Footer />
+  <JSXStyle
+    dynamic={
+      Array [
+        "'Poppins', sans-serif",
+        "'Changa One', cursive",
+      ]
+    }
+    id="55963326"
+  >
+    html{box-sizing:border-box;}body{background-image:linear-gradient( -180deg, #50c4c9, #7cc9d0 21%, #c882a8 50%, #dd7794 61%, #ec9c5f 81%, #e79d53 );color:#243b52;font-family:'Poppins', sans-serif;margin:0;padding:0;}*{box-sizing:border-box;}*:before,*:after{box-sizing:inherit;}h1,h2,h3,h4,h5,h6{font-family:'Changa One', cursive;font-weight:400;}
+  </JSXStyle>
+</Fragment>
+`;

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { withTranslation } from "../i18n";
+import { withTranslation } from "../lib/i18n";
 
 const Loading = props => (
   <React.Fragment>
