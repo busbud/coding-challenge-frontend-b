@@ -10,7 +10,7 @@ const formatPrice = (price, currency) => {
 };
 
 const formatTime = time => {
-  return format(time, "HH:MM A");
+  return format(time, "HH:mm A");
 };
 
 const Departure = ({
@@ -30,21 +30,31 @@ const Departure = ({
         <div className="row">
           <p className="heading">{t("departs")}</p>
           <p>
-            <strong>{formatTime(departure_time)}</strong> — {origin_city.name},{" "}
-            {origin_location.name}
+            <strong className="departure-time">
+              {formatTime(departure_time)}
+            </strong>{" "}
+            — <span className="origin-city-name">{origin_city.name}</span>,{" "}
+            <span className="origin-location-name">{origin_location.name}</span>
           </p>
         </div>
         <div className="row">
           <p className="heading">{t("arrives")}</p>
           <p>
-            <strong>{formatTime(arrival_time)}</strong> —{" "}
-            {destination_city.name}, {destination_location.name}
+            <strong className="arrival-time">{formatTime(arrival_time)}</strong>{" "}
+            —{" "}
+            <span className="destination-city-name">
+              {destination_city.name}
+            </span>
+            ,{" "}
+            <span className="destination-location-name">
+              {destination_location.name}
+            </span>
           </p>
         </div>
         <div className="row">
           <p className="heading">{t("operated-by")}</p> <p />
           <p>
-            <strong>{operator.name}</strong>
+            <strong className="operator-name">{operator.name}</strong>
           </p>
         </div>
       </div>

@@ -131,6 +131,11 @@ class Index extends React.Component {
       selected_date: outbound_date
     });
 
+    /**
+     * we pass the params as arguments (rather than fetching them from state),
+     * to ensure the values used are those that were valid at the time the
+     * search button was clicked
+     */
     this.fetchData(origin, destination, outbound_date, false);
   }
 

@@ -31,7 +31,7 @@ class CustomDatePicker extends React.Component {
 
 CustomDatePicker.propTypes = {
   value: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func.isRequired
 };
 
 export default CustomDatePicker;

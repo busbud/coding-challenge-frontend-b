@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Departure /> renders and matches the snapshot 1`] = `
+<Departure
+  arrival_time="2019-08-01T08:30:00"
+  departure_time="2019-08-01T01:30:00"
+  destination_city={
+    Object {
+      "name": "Montreal",
+    }
+  }
+  destination_location={
+    Object {
+      "name": "Gare d'autocars",
+    }
+  }
+  i18n={Object {}}
+  operator={
+    Object {
+      "name": "Greyhound",
+    }
+  }
+  origin_city={
+    Object {
+      "name": "New York",
+    }
+  }
+  origin_location={
+    Object {
+      "name": "Port Authority",
+    }
+  }
+  prices={
+    Object {
+      "currency": "CAD",
+      "total": 5200,
+    }
+  }
+  t={[Function]}
+  tReady={true}
+/>
+`;

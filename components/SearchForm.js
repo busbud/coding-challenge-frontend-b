@@ -112,9 +112,9 @@ const SearchForm = props => (
 );
 
 SearchForm.propTypes = {
-  handleDateChange: PropTypes.func,
-  handleInputChange: PropTypes.func,
-  handleSubmit: PropTypes.func,
+  handleDateChange: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   destination: PropTypes.string,
   origin: PropTypes.string,
   outbound_date: PropTypes.instanceOf(Date),

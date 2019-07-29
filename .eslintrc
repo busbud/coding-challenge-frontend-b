@@ -3,7 +3,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:import/errors",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -13,14 +13,17 @@
       "jsx": true
     }
   },
+  "plugins": ["prettier", "jest"],
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest/globals": true
   },
   "globals": {
     "React": "writable"
   },
   "rules": {
+    "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",
     "react/jsx-no-undef": [2, { "allowGlobals": true }]
   },
