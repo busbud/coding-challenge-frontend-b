@@ -2,23 +2,54 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getDepartures } from '../store/modules/departures';
+import { createStructuredSelector } from 'reselect';
+// import InfiniteScroll from 'react-infinite-scroll-component';
+
+import InfiniteScroll from 'react-infinite-scroller';
 
 import Departure from './Departure';
+import Loader from './Loader';
 
+import {
+  initDepartures, pollDepartures, departuresSelector, isCompleteSelector, isLoadingSelector,
+} from '../store/modules/departures';
 
-const Departures = ({ departures, loading, getDeparturesConnect }) => {
+const Departures = ({
+  departures, isComplete, isLoading, initDeparturesConnect, pollDeparturesConnect,
+}) => {
   useEffect(() => {
-    getDeparturesConnect();
+    initDeparturesConnect();
   }, []);
 
+  const pollData = () => {
+    if (!isComplete && !isLoading) {
+      pollDeparturesConnect();
+    }
+  };
+
   return (
-    <div>
-      {departures && departures.map(departure => (
-        <Departure departure={departure} />
-      ))}
-      {loading && (
-        <p>Loading</p>
+    <div className="">
+
+      <InfiniteScroll
+        pageStart={0}
+        loadMore={pollData}
+        hasMore={!isComplete}
+        // initialLoad={false}
+        loader={(
+          <div style={{ textAlign: 'center', clear: 'both' }}>
+            <Loader />
+          </div>
+        )}
+        useWindow={false}
+      >
+        {departures.map(departure => (
+          <Departure departure={departure} />
+        ))}
+      </InfiniteScroll>
+      {isComplete && !isLoading && (
+        <p style={{ textAlign: 'center' }}>
+          <b>No more available departures</b>
+        </p>
       )}
     </div>
   );
@@ -26,25 +57,27 @@ const Departures = ({ departures, loading, getDeparturesConnect }) => {
 
 Departures.propTypes = {
   departures: PropTypes.array,
-  loading: PropTypes.bool.isRequired,
-  getDeparturesConnect: PropTypes.func.isRequired,
+  isComplete: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  initDeparturesConnect: PropTypes.func.isRequired,
+  pollDeparturesConnect: PropTypes.func.isRequired,
 };
 
 Departures.defaultProps = {
   departures: [],
 };
 
-function mapStateToProps(state) {
-  return {
-    departures: state.departures.list,
-    loading: state.departures.loading,
-  };
-}
+const mapStateToPropsSelector = createStructuredSelector({
+  departures: departuresSelector,
+  isComplete: isCompleteSelector,
+  isLoading: isLoadingSelector,
+});
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    getDeparturesConnect: getDepartures,
+    initDeparturesConnect: initDepartures,
+    pollDeparturesConnect: pollDepartures,
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Departures);
+export default connect(mapStateToPropsSelector, mapDispatchToProps)(Departures);
