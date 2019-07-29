@@ -4,7 +4,7 @@ import Styled from 'styled-components'
 import { AppContext } from '../contexts'
 
 const Container = Styled.div`
-  width: 15rem;
+  width: 12rem;
 `
 const Title = Styled.p`
   font-size: 10;

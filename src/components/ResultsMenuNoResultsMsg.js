@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Styled from 'styled-components'
 import { AppContext } from '../contexts'
 
-const ResultsMenuItemNoResults = Styled.p`
+const ResultsMenuNoResultsMsg = Styled.p`
   color: hotpink;
   font-size: 2rem;
 `
@@ -14,5 +14,5 @@ export default () => {
       ? 'It appears there is no results or there was a network error.  Please reset and try again.'
       : `Il semble qu'il n'y ait aucun résultat ou qu'il y ait une erreur de réseau. Veuillez réinitialiser et réessayer.`
 
-  return <ResultsMenuItemNoResults>{text}</ResultsMenuItemNoResults>
+  return <ResultsMenuNoResultsMsg>{text}</ResultsMenuNoResultsMsg>
 }
