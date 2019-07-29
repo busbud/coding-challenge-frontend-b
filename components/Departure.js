@@ -131,14 +131,14 @@ const Departure = ({
 };
 
 Departure.propTypes = {
-  origin_city: PropTypes.object,
-  origin_location: PropTypes.object,
-  destination_city: PropTypes.object,
-  destination_location: PropTypes.object,
-  operator: PropTypes.object,
-  departure_time: PropTypes.string,
-  arrival_time: PropTypes.string,
-  prices: PropTypes.object,
+  origin_city: PropTypes.object.isRequired,
+  origin_location: PropTypes.object.isRequired,
+  destination_city: PropTypes.object.isRequired,
+  destination_location: PropTypes.object.isRequired,
+  operator: PropTypes.object.isRequired,
+  departure_time: PropTypes.string.isRequired,
+  arrival_time: PropTypes.string.isRequired,
+  prices: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired
 };
 

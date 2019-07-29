@@ -115,9 +115,9 @@ SearchForm.propTypes = {
   handleDateChange: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  destination: PropTypes.string,
-  origin: PropTypes.string,
-  outbound_date: PropTypes.instanceOf(Date),
+  destination: PropTypes.string.isRequired,
+  origin: PropTypes.string.isRequired,
+  outbound_date: PropTypes.instanceOf(Date).isRequired,
   t: PropTypes.func.isRequired
 };
 

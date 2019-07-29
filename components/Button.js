@@ -29,7 +29,7 @@ const Button = props => (
 );
 
 Button.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   block: PropTypes.bool
 };
 

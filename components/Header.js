@@ -65,7 +65,7 @@ const Header = props => (
 );
 
 Header.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   t: PropTypes.func.isRequired
 };
 

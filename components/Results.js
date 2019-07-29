@@ -82,12 +82,12 @@ const Results = ({
 );
 
 Results.propTypes = {
-  cities: PropTypes.array,
-  locations: PropTypes.array,
-  departures: PropTypes.array,
-  operators: PropTypes.array,
-  selected_date: PropTypes.instanceOf(Date),
-  i18n: PropTypes.object,
+  cities: PropTypes.array.isRequired,
+  locations: PropTypes.array.isRequired,
+  departures: PropTypes.array.isRequired,
+  operators: PropTypes.array.isRequired,
+  selected_date: PropTypes.instanceOf(Date).isRequired,
+  i18n: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired
 };
 
