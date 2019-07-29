@@ -25,7 +25,16 @@ const __prices__ = {
   total: 5200,
   currency: "CAD"
 };
-const __t__ = key => key;
+
+jest.mock("react-i18next", () => ({
+  withTranslation: () => Component => {
+    Component.defaultProps = {
+      ...Component.defaultProps,
+      t: key => key
+    };
+    return Component;
+  }
+}));
 
 describe("<Departure />", () => {
   it("renders and matches the snapshot", () => {
@@ -39,7 +48,6 @@ describe("<Departure />", () => {
         departure_time={__departure_time__}
         arrival_time={__arrival_time__}
         prices={__prices__}
-        t={__t__}
       />
     );
     expect(toJSON(wrapper)).toMatchSnapshot();
@@ -56,7 +64,6 @@ describe("<Departure />", () => {
         departure_time={__departure_time__}
         arrival_time={__arrival_time__}
         prices={__prices__}
-        t={__t__}
       />
     );
 
@@ -79,7 +86,6 @@ describe("<Departure />", () => {
         departure_time={__departure_time__}
         arrival_time={__arrival_time__}
         prices={__prices__}
-        t={__t__}
       />
     );
 
@@ -100,7 +106,6 @@ describe("<Departure />", () => {
         departure_time={__departure_time__}
         arrival_time={__arrival_time__}
         prices={__prices__}
-        t={__t__}
       />
     );
 
@@ -121,7 +126,6 @@ describe("<Departure />", () => {
         departure_time={__departure_time__}
         arrival_time={__arrival_time__}
         prices={__prices__}
-        t={__t__}
       />
     );
 

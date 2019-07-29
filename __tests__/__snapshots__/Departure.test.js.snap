@@ -1,42 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Departure /> renders and matches the snapshot 1`] = `
-<Departure
-  arrival_time="2019-08-01T08:30:00"
-  departure_time="2019-08-01T01:30:00"
-  destination_city={
-    Object {
-      "name": "Montreal",
+<li
+  className="jsx-141613734"
+>
+  <div
+    className="jsx-141613734 left"
+  >
+    <div
+      className="jsx-141613734 row"
+    >
+      <p
+        className="jsx-141613734 heading"
+      >
+        departs
+      </p>
+      <p
+        className="jsx-141613734"
+      >
+        <strong
+          className="jsx-141613734 departure-time"
+        >
+          01:30 AM
+        </strong>
+         
+        — 
+        <span
+          className="jsx-141613734 origin-city-name"
+        >
+          New York
+        </span>
+        ,
+         
+        <span
+          className="jsx-141613734 origin-location-name"
+        >
+          Port Authority
+        </span>
+      </p>
+    </div>
+    <div
+      className="jsx-141613734 row"
+    >
+      <p
+        className="jsx-141613734 heading"
+      >
+        arrives
+      </p>
+      <p
+        className="jsx-141613734"
+      >
+        <strong
+          className="jsx-141613734 arrival-time"
+        >
+          08:30 AM
+        </strong>
+         
+        —
+         
+        <span
+          className="jsx-141613734 destination-city-name"
+        >
+          Montreal
+        </span>
+        ,
+         
+        <span
+          className="jsx-141613734 destination-location-name"
+        >
+          Gare d'autocars
+        </span>
+      </p>
+    </div>
+    <div
+      className="jsx-141613734 row"
+    >
+      <p
+        className="jsx-141613734 heading"
+      >
+        operated-by
+      </p>
+       
+      <p
+        className="jsx-141613734"
+      />
+      <p
+        className="jsx-141613734"
+      >
+        <strong
+          className="jsx-141613734 operator-name"
+        >
+          Greyhound
+        </strong>
+      </p>
+    </div>
+  </div>
+  <div
+    className="jsx-141613734 right"
+  >
+    <p
+      className="jsx-141613734 price"
+    >
+      $52.00 CAD
+    </p>
+    <div
+      className="jsx-141613734 button-wrapper"
+    >
+      <Button>
+        buy-now
+      </Button>
+    </div>
+  </div>
+  <JSXStyle
+    dynamic={
+      Array [
+        "'Changa One', cursive",
+        "'Changa One', cursive",
+      ]
     }
-  }
-  destination_location={
-    Object {
-      "name": "Gare d'autocars",
-    }
-  }
-  i18n={Object {}}
-  operator={
-    Object {
-      "name": "Greyhound",
-    }
-  }
-  origin_city={
-    Object {
-      "name": "New York",
-    }
-  }
-  origin_location={
-    Object {
-      "name": "Port Authority",
-    }
-  }
-  prices={
-    Object {
-      "currency": "CAD",
-      "total": 5200,
-    }
-  }
-  t={[Function]}
-  tReady={true}
-/>
+    id="3131558381"
+  >
+    li.__jsx-style-dynamic-selector{background-color:white;border-radius:8px;box-shadow:0 1px 3px 0 rgba(0,0,0,0.24);display:grid;grid-template-columns:1fr;grid-row-gap:16px;grid-column-gap:32px;padding:20px;}@media (min-width:640px){li.__jsx-style-dynamic-selector{grid-template-columns:1fr 220px;}}.row.__jsx-style-dynamic-selector{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}.row.__jsx-style-dynamic-selector+.row.__jsx-style-dynamic-selector{margin-top:16px;}@media (min-width:800px){.row.__jsx-style-dynamic-selector{-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;}}.heading.__jsx-style-dynamic-selector{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;min-width:150px;padding-top:4px;}@media (min-width:800px){.heading.__jsx-style-dynamic-selector{-webkit-flex-basis:auto;-ms-flex-preferred-size:auto;flex-basis:auto;}}p.__jsx-style-dynamic-selector{margin:0;}strong.__jsx-style-dynamic-selector{font-family:'Changa One', cursive;font-size:1.25rem;}@media (min-width:640px){.right.__jsx-style-dynamic-selector{-webkit-align-items:flex-end;-webkit-box-align:flex-end;-ms-flex-align:flex-end;align-items:flex-end;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}}.price.__jsx-style-dynamic-selector{font-family:'Changa One', cursive;font-size:2rem;margin:0;}.button-wrapper.__jsx-style-dynamic-selector{margin-top:12px;}
+  </JSXStyle>
+</li>
 `;
