@@ -54,6 +54,9 @@ describe("<Results />", () => {
   });
 
   it("displays the selected date in French", () => {
+    const i18n = {
+      language: "fr"
+    };
     const wrapper = shallow(
       <Results
         cities={cities}
@@ -61,7 +64,7 @@ describe("<Results />", () => {
         departures={departures}
         operators={operators}
         selected_date={selected_date}
-        i18n={{ language: "fr" }}
+        i18n={i18n}
       />
     );
 

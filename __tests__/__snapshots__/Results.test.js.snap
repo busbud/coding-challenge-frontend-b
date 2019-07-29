@@ -20,12 +20,14 @@ exports[`<Results /> renders and matches the snapshot 1`] = `
       destination_city={
         Object {
           "id": 1,
+          "name": "New York",
         }
       }
       destination_location={
         Object {
           "city_id": 1,
           "id": 1,
+          "name": "Port Authority",
         }
       }
       i18n={
@@ -37,17 +39,20 @@ exports[`<Results /> renders and matches the snapshot 1`] = `
       operator={
         Object {
           "id": 1,
+          "name": "Greyhound",
         }
       }
       origin_city={
         Object {
           "id": 1,
+          "name": "New York",
         }
       }
       origin_location={
         Object {
           "city_id": 1,
           "id": 1,
+          "name": "Port Authority",
         }
       }
       prices={
@@ -64,12 +69,14 @@ exports[`<Results /> renders and matches the snapshot 1`] = `
       destination_city={
         Object {
           "id": 1,
+          "name": "New York",
         }
       }
       destination_location={
         Object {
           "city_id": 1,
-          "id": 1,
+          "id": 2,
+          "name": "Grand Central Station",
         }
       }
       i18n={
@@ -81,17 +88,20 @@ exports[`<Results /> renders and matches the snapshot 1`] = `
       operator={
         Object {
           "id": 1,
+          "name": "Greyhound",
         }
       }
       origin_city={
         Object {
           "id": 1,
+          "name": "New York",
         }
       }
       origin_location={
         Object {
           "city_id": 1,
           "id": 1,
+          "name": "Port Authority",
         }
       }
       prices={
@@ -108,12 +118,14 @@ exports[`<Results /> renders and matches the snapshot 1`] = `
       destination_city={
         Object {
           "id": 1,
+          "name": "New York",
         }
       }
       destination_location={
         Object {
           "city_id": 1,
           "id": 1,
+          "name": "Port Authority",
         }
       }
       i18n={
@@ -125,17 +137,20 @@ exports[`<Results /> renders and matches the snapshot 1`] = `
       operator={
         Object {
           "id": 1,
+          "name": "Greyhound",
         }
       }
       origin_city={
         Object {
           "id": 1,
+          "name": "New York",
         }
       }
       origin_location={
         Object {
           "city_id": 1,
-          "id": 1,
+          "id": 2,
+          "name": "Grand Central Station",
         }
       }
       prices={

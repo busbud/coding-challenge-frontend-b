@@ -4,7 +4,7 @@ import toJSON from "enzyme-to-json";
 
 import Departure from "../components/Departure";
 
-import { departures } from "../lib/testData";
+import { departure } from "../lib/testData";
 
 const {
   origin_city,
@@ -15,7 +15,7 @@ const {
   departure_time,
   arrival_time,
   prices
-} = departures[0];
+} = departure;
 
 jest.mock("react-i18next", () => ({
   withTranslation: () => Component => {
