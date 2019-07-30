@@ -44,6 +44,7 @@ const Results = ({
         return (
           <Departure
             key={departure.id}
+            id={departure.id}
             origin_city={origin_city}
             origin_location={origin_location}
             destination_city={destination_city}

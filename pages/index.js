@@ -75,7 +75,7 @@ class Index extends React.Component {
       "X-Busbud-Token": process.env.BUSBUD_TOKEN
     };
 
-    axios
+    return axios
       .get(url, { headers })
       .then(response => {
         const { data } = response;

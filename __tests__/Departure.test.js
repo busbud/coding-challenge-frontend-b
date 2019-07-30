@@ -1,5 +1,5 @@
 import React from "react";
-import { mount, shallow } from "enzyme";
+import { shallow } from "enzyme";
 import toJSON from "enzyme-to-json";
 
 import Departure from "../components/Departure";
@@ -7,6 +7,7 @@ import Departure from "../components/Departure";
 import { departure } from "../lib/testData";
 
 const {
+  id,
   origin_city,
   origin_location,
   destination_city,
@@ -32,6 +33,7 @@ describe("<Departure />", () => {
   it("renders and matches the snapshot", () => {
     const wrapper = shallow(
       <Departure
+        id={id}
         origin_location={origin_location}
         origin_city={origin_city}
         destination_location={destination_location}
@@ -45,9 +47,10 @@ describe("<Departure />", () => {
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 
-  it("displays the departure info", () => {
-    const wrapper = mount(
+  it("displays the departure info and price", () => {
+    const wrapper = shallow(
       <Departure
+        id={id}
         origin_location={origin_location}
         origin_city={origin_city}
         destination_location={destination_location}
@@ -68,8 +71,9 @@ describe("<Departure />", () => {
   });
 
   it("displays the origin city and location info", () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <Departure
+        id={id}
         origin_location={origin_location}
         origin_city={origin_city}
         destination_location={destination_location}
@@ -88,8 +92,9 @@ describe("<Departure />", () => {
   });
 
   it("displays the destination city and location info", () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <Departure
+        id={id}
         origin_location={origin_location}
         origin_city={origin_city}
         destination_location={destination_location}
@@ -108,8 +113,9 @@ describe("<Departure />", () => {
   });
 
   it("displays the operator info", () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <Departure
+        id={id}
         origin_location={origin_location}
         origin_city={origin_city}
         destination_location={destination_location}

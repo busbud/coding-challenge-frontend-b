@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { withTranslation } from "../i18n";
+import { withTranslation } from "../lib/i18n";
 
 class Error extends React.Component {
   static getInitialProps({ res, err }) {

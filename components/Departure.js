@@ -131,6 +131,7 @@ const Departure = ({
 };
 
 Departure.propTypes = {
+  id: PropTypes.string.isRequired,
   origin_city: PropTypes.object.isRequired,
   origin_location: PropTypes.object.isRequired,
   destination_city: PropTypes.object.isRequired,

@@ -53,23 +53,25 @@ describe("<Results />", () => {
     expect(selectedDate.text()).toContain("Thursday 1st August 2019");
   });
 
-  it("displays the selected date in French", () => {
-    const i18n = {
-      language: "fr"
-    };
-    const wrapper = shallow(
-      <Results
-        cities={cities}
-        locations={locations}
-        departures={departures}
-        operators={operators}
-        selected_date={selected_date}
-        i18n={i18n}
-      />
-    );
+  describe("when the language is set to FR", () => {
+    it("displays the selected date in French", () => {
+      const i18n = {
+        language: "fr"
+      };
+      const wrapper = shallow(
+        <Results
+          cities={cities}
+          locations={locations}
+          departures={departures}
+          operators={operators}
+          selected_date={selected_date}
+          i18n={i18n}
+        />
+      );
 
-    const selectedDate = wrapper.find("h2");
-    expect(selectedDate.text()).toContain("jeudi 1er août 2019");
+      const selectedDate = wrapper.find("h2");
+      expect(selectedDate.text()).toContain("jeudi 1er août 2019");
+    });
   });
 
   it("renders three <Departure /> components", () => {
@@ -83,5 +85,14 @@ describe("<Results />", () => {
       />
     );
     expect(wrapper.find(Departure).length).toBe(3);
+    wrapper.find(Departure).forEach(departure => {
+      const departureProps = departure.props();
+      const matchingDeparture = departures.find(
+        departure => departure.id === departureProps.id
+      );
+      expect(departureProps.departure_time).toBe(
+        matchingDeparture.departure_time
+      );
+    });
   });
 });
