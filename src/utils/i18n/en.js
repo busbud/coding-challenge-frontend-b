@@ -12,6 +12,10 @@ export default {
     text: 'Plan your trip to the Osheaga Festival',
     callToAction: 'Check Dates',
   },
+  departure: {
+    departure: 'Departure',
+    arrival: 'Arrival',
+  },
   api: {
     errorMessage: 'Error loading departures.',
   },

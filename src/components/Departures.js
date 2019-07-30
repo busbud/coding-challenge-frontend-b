@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
+import Container from 'react-bootstrap/Container';
+
 // import InfiniteScroll from 'react-infinite-scroll-component';
 
 import InfiniteScroll from 'react-infinite-scroller';
@@ -42,9 +44,11 @@ const Departures = ({
         )}
         useWindow={false}
       >
-        {departures.map(departure => (
-          <Departure departure={departure} />
-        ))}
+        <Container>
+          {departures.map(departure => (
+            <Departure departure={departure} />
+          ))}
+        </Container>
       </InfiniteScroll>
       {isComplete && !isLoading && (
         <p style={{ textAlign: 'center' }}>
