@@ -1,11 +1,12 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import Alert from 'react-bootstrap/Alert';
 import { Translate, Localize } from 'react-redux-i18n';
 
 const Departure = ({ departure }) => (
   <Card className="my-4">
     <Card.Body>
-      <div className="departure-info d-flex justify-content-between">
+      <div className="departure-info d-flex justify-content-between align-items-stretch">
         <div>
           <h4 className="departure-subtitle mb-4"><Translate value="departure.departure" /></h4>
           <p className="departure-time font-weight-bold mb-0"><Localize value={departure.departure_time} dateFormat="llll" /></p>
@@ -20,14 +21,19 @@ const Departure = ({ departure }) => (
           <p className="text-black-50 font-weight-bold">{`${departure.destinationLocationName} - ${departure.destinationCityName}`}</p>
         </div>
 
-        <div>
-
-          <h2>
-            <Localize value={departure.prices.total / 100} options={{
- style: 'currency', currency: 'CAD', minimumFractionDigits: 2, maximumFractionDigits: 2
- }} />
-          </h2>
-        </div>
+        <Alert className="d-flex px-5 justifiy-content-center align-items-center" variant="info">
+          <p>
+            <Translate value="departure.price" />
+            <br />
+            <Localize
+              value={departure.prices.total / 100}
+              options={{
+                style: 'currency', currency: 'CAD', minimumFractionDigits: 2, maximumFractionDigits: 2,
+              }}
+              className="departure-price font-weight-bold"
+            />
+          </p>
+        </Alert>
       </div>
     </Card.Body>
   </Card>

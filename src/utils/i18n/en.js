@@ -15,6 +15,7 @@ export default {
   departure: {
     departure: 'Departure',
     arrival: 'Arrival',
+    price: 'Price',
   },
   departures: {
     noMoreAvailable: 'No more available departures',
