@@ -7,6 +7,7 @@ import { Translate, setLocale } from 'react-redux-i18n';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
+import localeSelector from '../store/modules/i18nSelectors';
 
 const locales = ['en', 'pt', 'fr'];
 
@@ -39,8 +40,6 @@ CustomNavbar.propTypes = {
   locale: PropTypes.string.isRequired,
   setLocaleConnect: PropTypes.func.isRequired,
 };
-
-const localeSelector = state => state.i18n.locale;
 
 const mapStateToPropsSelector = createStructuredSelector({
   locale: localeSelector,

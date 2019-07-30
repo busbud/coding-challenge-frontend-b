@@ -8,6 +8,7 @@ import store from './store/configureStore';
 import translationsObject from './utils/translationObject';
 
 import './stylesheets/main.scss';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
 console.log(translationsObject);
 

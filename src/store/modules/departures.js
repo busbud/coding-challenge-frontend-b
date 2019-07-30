@@ -1,98 +1,127 @@
-// import { toastr } from 'react-redux-toastr';
+import { toastr } from 'react-redux-toastr';
+import { I18n } from 'react-redux-i18n';
+
+import localeSelector from './i18nSelectors';
+import { getDeparturesSearchRequest } from '../../utils/apiUtilities';
 
 // Action Types
 const LOADING = 'departure/LOADING';
 const DEPARTURES = 'departure/DEPARTURES';
 const COMPLETE = 'departure/COMPLETE';
 
-const INITIAL_STATE = {
-  isLoading: false,
-  list: [],
-  isComplete: false,
-};
-
-
 // Selectors
 export const departuresSelector = state => state.departures.list;
+export const indexSelector = state => state.departures.list.length;
 export const isLoadingSelector = state => state.departures.isLoading;
 export const isCompleteSelector = state => state.departures.isComplete;
+export const filtersSelector = state => state.departures.filters;
 
-export function loading(isLoading) {
+// Actions
+export function isLoadingAction(isLoading) {
   return {
     type: LOADING,
-    payload: isLoading,
+    payload: (typeof isLoading === 'undefined') ? false : isLoading,
   };
 }
 
+export function isCompleteAction(isComplete) {
+  return {
+    type: COMPLETE,
+    payload: (typeof isComplete === 'undefined') ? false : isComplete,
+  };
+}
+
+export function setDeparturesAction(departures) {
+  return {
+    type: DEPARTURES,
+    payload: departures,
+  };
+}
+
+const errorLoadingDepartures = (error, dispatch) => {
+  const errorMessage = I18n.t('api.errorMessage');
+  toastr.error('Error', errorMessage);
+  console.log(errorMessage, error);
+  dispatch([
+    setDeparturesAction([]),
+    isCompleteAction(true),
+    isLoadingAction(false),
+  ]);
+};
+
 export function pollDepartures() {
   return (dispatch, getState) => {
-    dispatch(loading(true));
+    dispatch(isLoadingAction(true));
+    const store = getState();
+    const locale = localeSelector(store);
+    const filters = filtersSelector(store);
+    const index = indexSelector(store);
 
-    let departures = departuresSelector(getState());
-    departures = departures.concat([departures.length, departures.length + 1, departures.length + 2]);
+    console.log('will poll departures');
 
-    setTimeout(() => {
+    getDeparturesSearchRequest({
+      filters,
+      poll: true,
+      locale,
+      index,
+    }).then((response) => {
+      console.log('did poll departures', response.data);
+
+      const departures = departuresSelector(store);
       dispatch([
-        {
-          type: DEPARTURES,
-          payload: departures,
-        },
-        loading(false),
-        {
-          type: COMPLETE,
-          payload: departures.length > 10,
-        },
+        setDeparturesAction(departures.concat(response.data.departures)),
+        isCompleteAction(response.data.complete),
+        isLoadingAction(false),
       ]);
-    }, 2000);
+    }).catch((error) => {
+      errorLoadingDepartures(error, dispatch);
+    });
   };
 }
 
 export function initDepartures() {
-  return (dispatch) => {
-    dispatch(loading(true));
+  return (dispatch, getState) => {
+    dispatch(isLoadingAction(true));
+    const store = getState();
+    const locale = localeSelector(store);
+    const filters = filtersSelector(store);
 
-    // let response = await fetchFromServer();
-    // let departures = response.departures;
+    console.log('will load departures');
 
-    // dispatch([
-    //   { type: DEPARTURES, payload: departures },
-    // ]);
 
-    setTimeout(() => {
+    getDeparturesSearchRequest({
+      filters,
+      poll: false,
+      locale,
+    }).then((response) => {
+      console.log('did load departures', response.data);
+
       dispatch([
-        {
-          type: DEPARTURES,
-          payload: [0, 1, 2],
-        },
-        loading(false),
+        setDeparturesAction(response.data.departures),
+        isCompleteAction(response.data.complete),
+        isLoadingAction(false),
       ]);
-    }, 1000);
-
-    // apiRequest({
-    //   method: 'get',
-    //   url: `${baseUrl}/browse/featured-playlists`,
-    //   params: getState().filters.filters_query,
-    // }).then((resp) => {
-    //   dispatch([
-    //     {
-    //       type: 'PLAYLISTS',
-    //       payload: resp.data.playlists,
-    //     },
-    //     loading(),
-    //   ]);
-    // }).catch((error) => {
-    //   const errorMsg = getErrorMessage(error, 'Erro ao carregar lista de playlists');
-    //   console.error(errorMsg, error);
-    //   toastr.error('Error', errorMsg);
-    //   dispatch([
-    //     { type: 'PLAYLISTS', payload: {} },
-    //     loading(),
-    //   ]);
-    // });
+    }).catch((error) => {
+      errorLoadingDepartures(error, dispatch);
+    });
   };
 }
 
 // Reducers
+const INITIAL_STATE = {
+  isLoading: false,
+  list: [],
+  isComplete: false,
+  filters: {
+    origin: 'dr5reg',
+    destination: 'f25dvk',
+    outboundDate: '2019-08-02',
+    adult: 1,
+    child: 0,
+    senior: 0,
+  },
+};
+
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case DEPARTURES:

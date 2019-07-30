@@ -34,7 +34,7 @@ const Departures = ({
         pageStart={0}
         loadMore={pollData}
         hasMore={!isComplete}
-        // initialLoad={false}
+        initialLoad={false}
         loader={(
           <div style={{ textAlign: 'center', clear: 'both' }}>
             <Loader />

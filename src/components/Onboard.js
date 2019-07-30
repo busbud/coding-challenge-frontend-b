@@ -9,7 +9,7 @@ const Onboard = ({ showDepartures }) => (
     <Jumbotron variant="dark" className="loginWrapper" role="main" aria-labelledby="loginJTTitle">
       <h1 id="loginJTTitle">Welcome to Osheaga Planner</h1>
       <p>
-        Plan your trip to the Osheaga Festival
+        Plan your trip to the Osheaga Festival env:
       </p>
       <p>
         <Button size="lg" variant="success" onClick={showDepartures}>Check dates</Button>

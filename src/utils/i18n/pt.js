@@ -1,10 +1,13 @@
 export default {
   application: {
-    title: 'Oshaega Planner',
+    title: 'Planejador Oshaega',
     languages: {
       en: 'English',
       pt: 'Português',
       fr: 'Français',
     },
+  },
+  api: {
+    errorMessage: 'Error loading departures.',
   },
 };

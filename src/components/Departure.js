@@ -4,11 +4,30 @@ import Card from 'react-bootstrap/Card';
 const Departure = ({ departure }) => (
   <Card>
     <Card.Body>
-      <h2>{departure}</h2>
-      <p>Departure time: xx</p>
-      <p>Arrival time: xx</p>
-      <p>Location name: xx</p>
-      <p>Price: xx</p>
+      <p>
+        Departure time:
+        {' '}
+        {departure.departure_time}
+        {' '}
+        (
+        {departure.departure_timezone}
+        )
+      </p>
+      <p>
+        Arrival time:
+        {' '}
+        {departure.arrival_time}
+        {' '}
+        (
+        {departure.arrival_timezone}
+        )
+      </p>
+      <p>Location name: n/a</p>
+      <p>
+        Price:
+        {' '}
+        {departure.prices.total}
+      </p>
     </Card.Body>
   </Card>
 );
