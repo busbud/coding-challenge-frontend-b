@@ -7,7 +7,12 @@ export default {
       fr: 'Français',
     },
   },
+  onboard: {
+    title: 'Bem Vindo ao Planejador Osheaga',
+    text: 'Planeje sua viagem ao Festival Osheaga',
+    callToAction: 'Verificar Datas',
+  },
   api: {
-    errorMessage: 'Error loading departures.',
+    errorMessage: 'Erro ao carregar embarques.',
   },
 };
