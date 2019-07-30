@@ -12,6 +12,7 @@ const INITIAL_STATE = {
     adult: 1,
     child: 0,
     senior: 0,
+    currency: 'CAD',
   },
 };
 

@@ -16,6 +16,9 @@ export default {
     departure: 'Departure',
     arrival: 'Arrival',
   },
+  departures: {
+    noMoreAvailable: 'No more available departures',
+  },
   api: {
     errorMessage: 'Error loading departures.',
   },

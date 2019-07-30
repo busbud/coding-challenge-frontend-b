@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import Container from 'react-bootstrap/Container';
+import { Translate } from 'react-redux-i18n';
 
 // import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -52,7 +53,7 @@ const Departures = ({
       </InfiniteScroll>
       {isComplete && !isLoading && (
         <p style={{ textAlign: 'center' }}>
-          <b>No more available departures</b>
+          <b><Translate value="departures.noMoreAvailable" /></b>
         </p>
       )}
     </div>

@@ -21,7 +21,12 @@ const Departure = ({ departure }) => (
         </div>
 
         <div>
-          <h2>{departure.prices.total}</h2>
+
+          <h2>
+            <Localize value={departure.prices.total / 100} options={{
+ style: 'currency', currency: 'CAD', minimumFractionDigits: 2, maximumFractionDigits: 2
+ }} />
+          </h2>
         </div>
       </div>
     </Card.Body>

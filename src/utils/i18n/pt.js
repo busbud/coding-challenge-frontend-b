@@ -12,7 +12,14 @@ export default {
     text: 'Planeje sua viagem ao Festival Osheaga',
     callToAction: 'Verificar Datas',
   },
+  departure: {
+    departure: 'Saída',
+    arrival: 'Chegada',
+  },
+  departures: {
+    noMoreAvailable: 'Não há mais partidas disponíveis',
+  },
   api: {
-    errorMessage: 'Erro ao carregar embarques.',
+    errorMessage: 'Erro ao carregar saídas.',
   },
 };
