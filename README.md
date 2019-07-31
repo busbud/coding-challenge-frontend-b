@@ -2,7 +2,7 @@
 
 Osheaga Planner is a React Application that can display a list of one-way departure shedules for the Osheaga Festival.
 
-<!-- It's currently live and can be accessed [here](). -->
+It's currently live and can be accessed [here](https://powerful-ocean-56732.herokuapp.com).
 
 ### Architecture
 
