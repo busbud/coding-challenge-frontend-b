@@ -32,7 +32,3 @@ The page is fully responsive.
 
 #### Acessible
 With accessibility in mind, the website was built using bootstrap, and verified using [aXe's chrome extension](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd).
-
-### Known Issues and Improvements
-
-- After the user logs out, the access_token is removed, but the routine that refreshs the playlists keeps running, causing a "Session expired" alert.
