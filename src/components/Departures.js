@@ -5,9 +5,6 @@ import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import Container from 'react-bootstrap/Container';
 import { Translate } from 'react-redux-i18n';
-
-// import InfiniteScroll from 'react-infinite-scroll-component';
-
 import InfiniteScroll from 'react-infinite-scroller';
 
 import Departure from './Departure';
@@ -38,7 +35,7 @@ const Departures = ({
         hasMore={!isComplete}
         initialLoad={false}
         loader={(
-          <div style={{ textAlign: 'center', clear: 'both' }}>
+          <div key="departureLoader" style={{ textAlign: 'center', clear: 'both' }}>
             <Loader />
           </div>
         )}
@@ -47,7 +44,7 @@ const Departures = ({
         <Container>
           <h1 className="mt-3 mb-4" id="departuresTitle"><Translate value="departures.title" /></h1>
           {departures.map(departure => (
-            <Departure departure={departure} />
+            <Departure key={`departure_${departure.id}`} departure={departure} />
           ))}
           {isComplete && !isLoading && (
           <p style={{ textAlign: 'center' }}>

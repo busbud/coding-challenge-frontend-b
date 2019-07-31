@@ -13,9 +13,9 @@ Environment variables were use to store URLs and the API Token.
 The main libraries used were:
  - [react-boostrap](https://react-bootstrap.github.io): an accessible front-end framework
  - [redux](https://redux.js.org)
- - [redux-form](https://redux-form.com/8.2.2/) form state management
+ - [react-redux-i18n](https://github.com/artisavotins/react-redux-i18n) localization
  - [axios](https://github.com/axios/axios) API Calls
- - [gh-pages](https://github.com/tschaub/gh-pages) deployment
+ - [react-infinite-scroller](https://github.com/CassetteRocks/react-infinite-scroller) infinite scrolling component
  - [aXe](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd) extension to test accessibility
 
 Sass with SCSS syntax was used for styling.

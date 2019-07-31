@@ -19,7 +19,8 @@ export default {
     price: 'Preço',
   },
   departures: {
-    noMoreAvailable: 'Não há mais partidas disponíveis',
+    title: 'Saídas',
+    noMoreAvailable: 'Não há mais saídas disponíveis',
   },
   api: {
     errorMessage: 'Erro ao carregar saídas.',

@@ -10,8 +10,6 @@ import translationsObject from './utils/translationObject';
 import './stylesheets/main.scss';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
-console.log(translationsObject);
-
 syncTranslationWithStore(store);
 store.dispatch(loadTranslations(translationsObject));
 store.dispatch(setLocale('en'));
