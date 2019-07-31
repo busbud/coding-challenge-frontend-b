@@ -15,6 +15,8 @@ const EN = {
   travelTimeLabel: 'Travel Time',
   operatorLabel: 'Operator',
   priceLabel: 'Price',
+  minutesLabel: 'minutes',
+  hoursLabel: 'hours',
 }
 
 const FR = {
@@ -34,6 +36,8 @@ const FR = {
   travelTimeLabel: 'Temps de voyage',
   operatorLabel: 'Affaires',
   priceLabel: 'Prix',
+  minutesLabel: 'minutes',
+  hoursLabel: 'heures',
 }
 
 export default { translations: { EN, FR } }

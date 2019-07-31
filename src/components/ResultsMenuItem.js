@@ -18,19 +18,18 @@ const Container = Styled.div`
 
   @media screen and (max-width: 599px) {
     flex-direction: column;
+    height: 30rem;
     justify-content: center;
   }
 `
 const Item = Styled.div`
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 5%;
   width: 33%;
 
   @media screen and (max-width: 599px) {
-    flex-direction: column;
     width: 100%;
   }
 `
@@ -53,6 +52,8 @@ const ResultsMenuItem = ({ option }) => {
     travelTimeLabel,
     operatorLabel,
     priceLabel,
+    minutesLabel,
+    hoursLabel,
   } = currentLanguage
   const {
     departureTime,
@@ -85,9 +86,9 @@ const ResultsMenuItem = ({ option }) => {
       </Item>
       <Item>
         <ItemLabel>{travelTimeLabel}</ItemLabel>
-        <ItemText>{`Hours: ${travelTime.hours} Minutes: ${
+        <ItemText>{`${travelTime.hours} ${hoursLabel} ${
           travelTime.minutes
-        }`}</ItemText>
+        } ${minutesLabel}`}</ItemText>
         <ItemLabel>{operatorLabel}</ItemLabel>
         <ItemText>{operator}</ItemText>
         <ItemLabel>{priceLabel}</ItemLabel>
