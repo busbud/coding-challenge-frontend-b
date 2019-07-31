@@ -4,10 +4,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Flag from 'react-flagkit';
-import { Translate, setLocale } from 'react-redux-i18n';
+import { Translate, setLocale, I18n } from 'react-redux-i18n';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
+
 import localeSelector from '../store/modules/i18nSelectors';
 
 const locales = ['en', 'pt', 'fr'];
@@ -32,6 +33,7 @@ const CustomNavbar = ({ locale, setLocaleConnect }) => (
               as="button"
               onClick={() => {
                 setLocaleConnect(localeCode);
+                document.title = I18n.t('application.title');
               }}
             >
               <Flag className="mr-2" country={countryFlags[localeCode]} />
