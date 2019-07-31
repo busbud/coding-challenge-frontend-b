@@ -71,6 +71,7 @@ function setDeparturesAction(departures) {
 const errorLoadingDepartures = (error, dispatch) => {
   const errorMessage = I18n.t('api.errorMessage');
   toastr.error('Error', errorMessage);
+  // eslint-disable-next-line no-console
   console.error(errorMessage, error);
   dispatch([
     setDeparturesAction([]),
