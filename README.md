@@ -6,26 +6,27 @@ It's currently live and can be accessed [here](https://powerful-ocean-56732.hero
 
 ### Architecture
 
-The application was built on top of react and redux. It uses one main reducer to control loading departures from Busbud's API; it includes filtering and parsing.
+The application was built using React & Redux with responsiveness, localization and accessibility in mind. It uses one main reducer to control departures - searching and polling from Busbud's API.
     
-Environment variables were use to store URLs and the API Token.
-
 The main libraries used were:
  - [react-boostrap](https://react-bootstrap.github.io): an accessible front-end framework
  - [redux](https://redux.js.org)
+ - [reselect](https://github.com/reduxjs/reselect) efficient selectors
  - [react-redux-i18n](https://github.com/artisavotins/react-redux-i18n) localization
  - [axios](https://github.com/axios/axios) API Calls
  - [react-infinite-scroller](https://github.com/CassetteRocks/react-infinite-scroller) infinite scrolling component
  - [aXe](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd) extension to test accessibility
 
-Sass with SCSS syntax was used for styling.
-
-Airbnb JavaScript code style was used.
+Other highlights:
+- Sass with SCSS syntax was used for styling
+- Airbnb JavaScript code style was used
+- Environment variables were use to store URLs and the API Token
+- Selectors were used to ensure efficiency 
 
 ### Features
 
 #### Error handling
-All API requests that comes with an error will result in a custom toastr message.
+All failed API requests will result in a custom toastr message.
 
 #### Mobile friendly
 The page is fully responsive.
