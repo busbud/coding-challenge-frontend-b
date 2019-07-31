@@ -19,6 +19,7 @@ export default {
     price: 'Price',
   },
   departures: {
+    title: 'Departures',
     noMoreAvailable: 'No more available departures',
   },
   api: {

@@ -31,8 +31,7 @@ const Departures = ({
   };
 
   return (
-    <div className="">
-
+    <div role="main" aria-labelledby="departuresTitle">
       <InfiniteScroll
         pageStart={0}
         loadMore={pollData}
@@ -46,16 +45,17 @@ const Departures = ({
         useWindow={false}
       >
         <Container>
+          <h1 className="mt-3 mb-4" id="departuresTitle"><Translate value="departures.title" /></h1>
           {departures.map(departure => (
             <Departure departure={departure} />
           ))}
+          {isComplete && !isLoading && (
+          <p style={{ textAlign: 'center' }}>
+            <b><Translate value="departures.noMoreAvailable" /></b>
+          </p>
+          )}
         </Container>
       </InfiniteScroll>
-      {isComplete && !isLoading && (
-        <p style={{ textAlign: 'center' }}>
-          <b><Translate value="departures.noMoreAvailable" /></b>
-        </p>
-      )}
     </div>
   );
 };

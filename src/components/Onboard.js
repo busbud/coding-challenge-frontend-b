@@ -14,7 +14,7 @@ const Onboard = ({ showDepartures }) => (
         <Translate value="onboard.text" />
       </p>
       <p>
-        <Button size="lg" variant="primary" onClick={showDepartures}><Translate value="onboard.callToAction" /></Button>
+        <Button size="lg" variant="primary" className="btn-onboard" onClick={showDepartures}><Translate value="onboard.callToAction" /></Button>
       </p>
     </Jumbotron>
   </Container>
