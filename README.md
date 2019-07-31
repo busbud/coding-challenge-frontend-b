@@ -6,7 +6,7 @@ It's currently live and can be accessed [here](https://powerful-ocean-56732.hero
 
 ### Architecture
 
-The application was built on top of react and redux. It uses one main reducer to control loading departures from BusBud's API; it includes filtering parsing.
+The application was built on top of react and redux. It uses one main reducer to control loading departures from Busbud's API; it includes filtering and parsing.
     
 Environment variables were use to store URLs and the API Token.
 
