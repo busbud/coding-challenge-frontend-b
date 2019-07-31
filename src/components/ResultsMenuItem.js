@@ -30,6 +30,7 @@ const Item = Styled.div`
   width: 33%;
 
   @media screen and (max-width: 599px) {
+    height: 33%
     width: 100%;
   }
 `
