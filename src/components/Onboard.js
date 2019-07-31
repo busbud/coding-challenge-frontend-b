@@ -1,22 +1,23 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
 import { Translate } from 'react-redux-i18n';
 
 const Onboard = ({ showDepartures }) => (
-  <div className="contentLogin h-100 align-items-center justify-content-center">
-    <Jumbotron variant="dark" className="loginWrapper" role="main" aria-labelledby="loginJTTitle">
-      <h1 id="loginJTTitle"><Translate value="onboard.title" /></h1>
-      <p>
+  <Container className="mt-5">
+    <Jumbotron variant="dark" role="main" aria-labelledby="onboardTitle">
+      <h1 className="display-4" id="onboardTitle"><Translate value="onboard.title" /></h1>
+      <p className="lead">
         <Translate value="onboard.text" />
       </p>
       <p>
-        <Button size="lg" variant="success" onClick={showDepartures}><Translate value="onboard.callToAction" /></Button>
+        <Button size="lg" variant="primary" onClick={showDepartures}><Translate value="onboard.callToAction" /></Button>
       </p>
     </Jumbotron>
-  </div>
+  </Container>
 );
 
 Onboard.propTypes = {

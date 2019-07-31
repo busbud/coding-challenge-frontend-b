@@ -6,6 +6,7 @@ export default {
       pt: 'Português',
       fr: 'Français',
     },
+    loading: 'Chargement',
   },
   onboard: {
     title: 'Bienvenue chez Planificateur Osheaga',

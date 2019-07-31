@@ -6,6 +6,7 @@ export default {
       pt: 'Português',
       fr: 'Français',
     },
+    loading: 'Carregando',
   },
   onboard: {
     title: 'Bem Vindo ao Planejador Osheaga',

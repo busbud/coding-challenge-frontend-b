@@ -6,6 +6,7 @@ export default {
       pt: 'Português',
       fr: 'Français',
     },
+    loading: 'Loading',
   },
   onboard: {
     title: 'Welcome to Osheaga Planner',
