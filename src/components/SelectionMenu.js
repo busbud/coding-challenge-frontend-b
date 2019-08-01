@@ -6,13 +6,6 @@ import constants from '../constants'
 
 const { translations } = constants
 
-// const SelectionMenuContainer = Styled.div`
-//   align-items: center;
-//   display: flex;
-//   flex-direction: column;
-//   width: 100%;
-// `
-
 const Container = Styled.div`
   align-items: center;
   display: flex;

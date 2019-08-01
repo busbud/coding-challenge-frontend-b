@@ -1,9 +1,13 @@
 import timediff from 'timediff'
 
 async function fetchData(request) {
-  const response = await fetch(request)
-  const data = await response.json()
-  return data
+  try {
+    const response = await fetch(request)
+    const data = await response.json()
+    return data
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 function mapDepaturesToOptions({
@@ -100,8 +104,12 @@ export async function fetchBusOptions({
     setBusOptions({ isLoading: true })
 
     while (!data || (!data.complete && stopFetch - startFetch < 10000)) {
-      data = await fetchData(request)
-      stopFetch = new Date().getTime()
+      try {
+        data = await fetchData(request)
+        stopFetch = new Date().getTime()
+      } catch (e) {
+        console.error(e)
+      }
     }
 
     if (data && data.complete && data.departures.length) {

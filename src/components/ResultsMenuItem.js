@@ -6,19 +6,18 @@ import { AppContext } from '../contexts'
 const { translations } = constants
 
 const Container = Styled.div`
-  align-items: center;
+  align-items: 'flex-start';
   background-color: white;
   border: 2px solid hotpink;
   border-radius: 3px;
   display: flex;
-  justify-content: space-between;
-  padding: 2%;
+  justify-content: center;
+  padding: 1%;
   margin: 1%;
   width: 100%;
 
   @media screen and (max-width: 599px) {
     flex-direction: column;
-    height: 30rem;
     justify-content: center;
   }
 `
@@ -26,11 +25,10 @@ const Item = Styled.div`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  padding: 5%;
+  padding: 1%;
   width: 33%;
 
   @media screen and (max-width: 599px) {
-    height: 33%
     width: 100%;
   }
 `
@@ -90,9 +88,8 @@ const ResultsMenuItem = ({ option }) => {
         <ItemText>{`${travelTime.hours} ${hoursLabel} ${
           travelTime.minutes
         } ${minutesLabel}`}</ItemText>
-        <ItemLabel>{operatorLabel}</ItemLabel>
+        <ItemLabel>{`${operatorLabel} & ${priceLabel}`}</ItemLabel>
         <ItemText>{operator}</ItemText>
-        <ItemLabel>{priceLabel}</ItemLabel>
         <ItemText>{`$${price} ${currency}`}</ItemText>
       </Item>
     </Container>

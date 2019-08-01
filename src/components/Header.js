@@ -8,6 +8,7 @@ const Header = Styled.div`
   display: flex;
   justify-content: space-around;
   padding: 5%;
+  padding-bottom: 0;
   width: 100%;
 `
 export default () => {
