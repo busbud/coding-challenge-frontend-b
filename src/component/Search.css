@@ -1,0 +1,14 @@
+.search-panel {
+  background-color: #0000FF;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 1 0 auto;
+}
+
+.search-panel > div {
+  width: 100%;
+  margin-bottom: 1px;
+  flex: 1 0 auto;
+  display: flex;
+}
