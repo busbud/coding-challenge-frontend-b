@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import i18n from "../i18n";
 
 export default class Results extends React.Component {
   constructor(props) {
@@ -71,7 +72,7 @@ export default class Results extends React.Component {
 
   render() {
     if (!this.state.complete) {
-      return <div>Loading...</div>;
+      return <div>{i18n.t('Loading')}...</div>;
     }
     else {
       return (

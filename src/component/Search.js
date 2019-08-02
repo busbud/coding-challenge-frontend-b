@@ -1,5 +1,6 @@
 import React from "react";
 import Results from "./Results";
+import i18n from "../i18n";
 
 import "./Search.css";
 
@@ -40,14 +41,14 @@ export default class Search extends React.Component {
           <table>
             <tr>
               <td>
-                Origin:
+                {i18n.t('Origin')}:
                 <select name="origin" value={this.state.origin}
                   onChange={this.handleChangeCity}>
                   <option value="dr5reg">New York</option>
                   </select>
               </td>
               <td>
-                Destination:
+                {i18n.t('Destination')}:
                 <select name="destination" value={this.state.destination}
                   onChange={this.handleChangeCity}>
                   <option value="f25dvk">Montreal</option>
@@ -56,18 +57,18 @@ export default class Search extends React.Component {
             </tr>
             <tr>
               <td>
-                Travel Date:
+                {i18n.t('Travel Date')}:
                 <input type="text" name="outboundDate" value="Fri, Aug 9" />
                 <input type="hidden" name="outboundDateVal" value={this.state.outBoundDate} />
               </td>
               <td>
-                Adults:
+                {i18n.t('Adults')}:
                 <input type="text" name="numPassengers" value={this.state.numAdults} />
                 <input type="hidden" name="numAdults" value={this.state.numAdults} />
               </td>
             </tr>
             <tr rowspan="2">
-              <input type="button" onClick={this.handleSearch} value="Search" />
+              <input type="button" onClick={this.handleSearch} value={i18n.t('Search')} />
             </tr>
           </table>
         </div>
