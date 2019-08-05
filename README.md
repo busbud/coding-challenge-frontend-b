@@ -1,3 +1,22 @@
+# coding-challenge-frontend-b Solution Documentation
+
+##Features
+The solution:
+1. Contains a Search panel (onboarding page) with hard-coded search criteria.
+2. On click of Search, the app:
+	2.1. Fetches the results from the Busbud Production API.
+	2.2. Polls the API every 3 seconds until all results are retrieved.
+  2.3. Displays the results as Material-UI Cards.
+3. Allows for localization to English and French.
+	3.1. To test for English, please append the URL with querystring:  ?lng=en
+	3.2. To test for French:  ?lng=fr
+4. Borrows styles heavily from the Busbud website.
+
+##Please note:
+- On click of Search, if the rows do not load up in 5 seconds or so, please refresh the browser window, and click Search again.
+- The code challenge asked for the travel date to be Fri, Aug 2, 2019.  Since I'm submitting the solution after that date, I have hard-coded the travel date to Fri, Aug 9.
+
+
 # coding-challenge-frontend-b
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 
