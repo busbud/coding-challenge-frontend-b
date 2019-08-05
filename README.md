@@ -1,21 +1,21 @@
 # coding-challenge-frontend-b Solution Documentation
 
-##Features
+## Features
 The solution:
 1. Contains a Search panel (onboarding page) with hard-coded search criteria.
 2. On click of Search, the app:
-	2.1. Fetches the results from the Busbud Production API.
-	2.2. Polls the API every 3 seconds until all results are retrieved.
-  2.3. Displays the results as Material-UI Cards.
+* Fetches the results from the Busbud Production API.
+* Polls the API every 3 seconds until all results are retrieved.
+* Displays the results as Material-UI Cards.
 3. Allows for localization to English and French.
-	3.1. To test for English, please append the URL with querystring:  ?lng=en
-	3.2. To test for French:  ?lng=fr
+* To test for English, please append the URL with querystring:  ?lng=en
+* To test for French:  ?lng=fr
 4. Borrows styles heavily from the Busbud website.
 
-##URL
+## URL
 The microsite is deployed to:  https://busbud-frontend.herokuapp.com/
 
-##Please note:
+## Please note:
 - On click of Search, if the rows do not load up in 5 seconds or so, please refresh the browser window, and click Search again.
 - The code challenge asked for the travel date to be Fri, Aug 2, 2019.  Since I'm submitting the solution after that date, I have hard-coded the travel date to Fri, Aug 9.
 
