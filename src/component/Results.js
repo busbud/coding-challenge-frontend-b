@@ -1,6 +1,6 @@
 import React from 'react';
-import moment from 'moment';
 import i18n from "../i18n";
+import ResultItem from "./ResultItem";
 
 export default class Results extends React.Component {
   constructor(props) {
@@ -10,6 +10,8 @@ export default class Results extends React.Component {
       destination: props.search.destination,
       outboundDate: props.search.outboundDate,
       numAdults: props.search.numAdults,
+      currency: "USD",
+      currencySymbol: "$",
       isLoaded: false,
       items: [],
       complete: false,
@@ -28,9 +30,9 @@ export default class Results extends React.Component {
         };
 
         var url = (this.state.numRows === 0) ?
-            `https://napi.busbud.com/x-departures/${this.state.origin}/${this.state.destination}/${this.state.outboundDate}?adult=${this.state.numAdults}&currency=USD`
+            `https://napi.busbud.com/x-departures/${this.state.origin}/${this.state.destination}/${this.state.outboundDate}?adult=${this.state.numAdults}&currency=${this.state.currency}`
             :
-            `https://napi.busbud.com/x-departures/${this.state.origin}/${this.state.destination}/${this.state.outboundDate}/poll?adult=${this.state.numAdults}&currency=USD&index=${this.state.numRows}`;
+            `https://napi.busbud.com/x-departures/${this.state.origin}/${this.state.destination}/${this.state.outboundDate}/poll?adult=${this.state.numAdults}&currency=${this.state.currency}&index=${this.state.numRows}`;
 
         fetch(url, requestOptions)
         .then(res => res.json())
@@ -39,17 +41,18 @@ export default class Results extends React.Component {
             var incrRowsHtml = [];
             for (var i=0; i < result.departures.length; i++)
             {
+              const resultItem = {
+                departure_time: result.departures[i].departure_time,
+                arrival_time: result.departures[i].arrival_time,
+                location: result.locations[i].name,
+                price: result.departures[i].prices.total,
+                currency: this.state.currency,
+                currencySymbol: this.state.currencySymbol
+              };
+
               incrRowsHtml.push(
-                <div>
-                  <div>
-                    <p>{result.complete ? "true" : "false"}</p>
-                    <p>{this.state.numRows + result.departures.length}</p>
-                    <p>{moment(result.departures[i].departure_time).format('h:mm a')}</p>
-                    <p>{moment(result.departures[i].arrival_time).format('h:mm a')}</p>
-                    <p>{result.locations[i].name}</p>
-                    <p>{result.departures[i].prices.total/100} USD</p>
-                  </div>
-                </div>)
+                <ResultItem item={resultItem}/>
+              )
             }
 
             // set state
@@ -75,12 +78,19 @@ export default class Results extends React.Component {
       return <div>{i18n.t('Loading')}...</div>;
     }
     else {
+      var rowsHtml;
+      if (this.state.rowsHtml.length === 0) {
+        rowsHtml = (
+          <strong>{i18n.t('No departures found')}.</strong>
+        );
+      }
+      else {
+        rowsHtml =  this.state.rowsHtml;
+      }
       return (
-          <div>
-              <table>
-                  {this.state.rowsHtml}
-              </table>
-          </div>
+        <div class="departure-list">
+          {rowsHtml}
+        </div>
       );
     }
   }

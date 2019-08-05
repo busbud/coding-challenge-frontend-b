@@ -16,7 +16,8 @@ i18n
                 "Travel Date": "Travel Date",
                 "Adults": "Adults",
                 "Search": "Search",
-                "Loading": "Loading"
+                "Loading": "Loading",
+                "No departures found": "No departures found"
             }
         },
         fr: {
@@ -28,7 +29,8 @@ i18n
                 "Travel Date": "Date de voyage",
                 "Adults": "Adultes",
                 "Search": "Chercher",
-                "Loading": "Chargement"
+                "Loading": "Chargement",
+                "No departures found": "Aucun départ trouvé"
             }
         }
     },
