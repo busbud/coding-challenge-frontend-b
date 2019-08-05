@@ -1,7 +1,9 @@
 {
   "name": "coding-challenge-frontend-b",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Busbud Front-end Coding Challenge.",
+  "main": "index.js",
+  "private": false,
   "dependencies": {
     "@material-ui/core": "^4.3.0",
     "i18next": "^17.0.8",
@@ -21,6 +23,9 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "engines": {
+    "node": "10.16.0"
   },
   "browserslist": {
     "production": [

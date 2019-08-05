@@ -7,7 +7,6 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <img src='../images/osheaga.png' />
         <Search />
       </div>
     );

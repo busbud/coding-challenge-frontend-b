@@ -35,7 +35,7 @@ i18n
         }
     },
     fallbackLng: "en",
-    debug: true,
+    debug: false,
 
     // common namespace used around the full app
     ns: ["translations"],
