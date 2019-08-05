@@ -17,7 +17,8 @@ The microsite is deployed to:  https://busbud-frontend.herokuapp.com/
 
 ## Please note:
 - On click of Search, if the rows do not load up in 5 seconds or so, please refresh the browser window, and click Search again.
-- The code challenge asked for the travel date to be Fri, Aug 2, 2019.  Since I'm submitting the solution after that date, I have hard-coded the travel date to Fri, Aug 9.
+- The code challenge asked for the travel date to be Fri, Aug 2, 2019.  Since I'm submitting the solution after that date, I have hard-coded the travel date to Fri, Aug 9, 2019.
+- For better state management, Redux can be used.
 
 
 # coding-challenge-frontend-b
