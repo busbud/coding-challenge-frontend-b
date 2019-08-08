@@ -1,0 +1,16 @@
+.header {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0rem;
+    background-color: rgba(0, 0, 0, 0);
+  
+    .logo-container {
+      height: 100%;
+      width: 150px;
+      padding: 25px;
+    }
+  }
+  

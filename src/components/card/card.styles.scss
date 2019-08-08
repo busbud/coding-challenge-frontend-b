@@ -1,0 +1,28 @@
+.card-product {
+    overflow: hidden;
+    height: 175px;
+    display: flex;
+    align-items: flex-start;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+    @media only screen and (max-width: 768px) {
+        display: block;
+        height: 375px;
+        padding-left: 50px;
+    }
+  }   
+
+  .card-info {
+      margin-top: 20px;
+    }
+
+    div {
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    h4 {
+      margin: 0;
+      padding: 5px 0;
+    }
