@@ -1,0 +1,7 @@
+export const SEARCH_DEPARTURES = 'SEARCH_DEPARTURES';
+export const CLEAR_DEPARTURES = 'CLEAR_DEPARTURES';
+export const SET_LOADING = 'SET_LOADING';
+export const SET_CITIES = 'SET_CITIES';
+export const SET_LOCATIONS = 'SET_LOCATIONS';
+export const SET_LANGUAGE = 'SET_LANGUAGE';
+
