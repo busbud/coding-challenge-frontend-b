@@ -1,0 +1,22 @@
+body {
+  background-image: url("https://thelinknewspaper.ca/images/articles/Volume_37/Fringe/_resized/summer17-osh-muse(miriam_lafontaine).jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #cccccc;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  color: whitesmoke;
+  font-size: large;
+  font-family: monospace;
+}
+
+input {
+  background-color: lightblue;
+  margin: 5px;
+}
+
+.div-form {
+  box-shadow: 0 4px 8px 0 rgba(131, 80, 155, 0.911);
+  border: solid rgba(131, 80, 155, 0.911);
+}
