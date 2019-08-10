@@ -44,7 +44,6 @@ export default class Search extends React.Component {
           <Box display="flex" flexDirection="row" justifyContent="flexStart center"
                alignItems="flex-start"
                flexWrap="wrap"
-               maxWidth
                m={2} // margin: 16px;
                pb={1} // padding-bottom: 8px;
                >
