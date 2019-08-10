@@ -12,7 +12,7 @@ export default class Search extends React.Component {
     this.state = {
       origin: "dr5reg",  //New York
       destination: "f25dvk",  //Montreal
-      outboundDate: "2019-08-09",
+      outboundDate: "2020-08-02",
       numAdults: 1,
       showResults: false
     };
@@ -67,7 +67,7 @@ export default class Search extends React.Component {
               </Grid>
               <Grid item xs={6}>
                 {i18n.t('Travel Date')}:
-                <input type="text" name="outboundDateField" class="form-input" disabled="true" value="Fri, Aug 9" />
+                <input type="text" name="outboundDateField" class="form-input" disabled="true" value="Fri, Aug 2, 2020" />
                 <input type="hidden" name="outboundDate" value={this.state.outBoundDate} />
               </Grid>
               <Grid item xs={6}>
