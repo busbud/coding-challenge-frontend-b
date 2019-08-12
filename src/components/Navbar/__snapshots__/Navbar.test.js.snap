@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render Navbar component 1`] = `
+"<div className=\\"navbar\\">
+  <button className=\\"button\\" onClick={[Function: onClick]}>
+    En
+  </button>
+  <button className=\\"button\\" onClick={[Function: onClick]}>
+    Fr
+  </button>
+</div>"
+`;

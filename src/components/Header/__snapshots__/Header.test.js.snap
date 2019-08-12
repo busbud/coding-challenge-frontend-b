@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render Header component 1`] = `
+"<div className=\\"header\\">
+  <div className=\\"header-container\\">
+    <img src=\\"OsheagaLogo.png\\" className=\\"osheaga-logo\\" alt=\\"logo\\" />
+    <h3 className=\\"header-title\\">
+      Book your bus ticket to Montreal&#39;s biggest (and hottest) concert of the summer!
+    </h3>
+    <div className=\\"mascots\\">
+      <img src=\\"Oshee.png\\" className=\\"oshee\\" alt=\\"oshee\\" />
+      <img src=\\"Aga.png\\" className=\\"aga\\" alt=\\"aga\\" />
+    </div>
+  </div>
+</div>"
+`;

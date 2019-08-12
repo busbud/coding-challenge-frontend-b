@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render App component 1`] = `
+"<div className=\\"App\\">
+  <div className=\\"App-wrapper\\">
+    <Navbar />
+    <Header />
+    <Form handleSubmit={[Function]} startDate={{...}} handleChange={[Function]} />
+    <Spinner />
+  </div>
+  <Footer />
+</div>"
+`;

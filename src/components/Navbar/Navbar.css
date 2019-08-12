@@ -1,0 +1,23 @@
+.navbar {
+  background: #1b0e2f;
+  margin: 15px 15px 0 15px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  top: 1px;
+}
+
+.button {
+  padding: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 0;
+  background: #ca3774;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+}
+
+.button:hover {
+  cursor: pointer;
+}

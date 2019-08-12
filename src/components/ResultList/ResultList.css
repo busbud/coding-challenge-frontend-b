@@ -1,0 +1,5 @@
+@media only screen and (max-width: 414px) {
+  .result-header {
+    font-size: 4vw;
+  }
+}

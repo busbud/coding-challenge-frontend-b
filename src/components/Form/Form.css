@@ -1,0 +1,67 @@
+.form-wrapper {
+  background-color: white;
+  margin: 0 15px 15px 15px;
+  padding: 50px;
+}
+
+.form-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.label {
+  color: #db4d9a;
+  font-size: 30px;
+  vertical-align: -4px;
+  font-weight: 500;
+}
+
+.dropdown,
+.calendar {
+  height: 30px;
+  width: 120px;
+  outline: none;
+  color: #74646e;
+  border: 1px solid #c8bfc4;
+  border-radius: 4px;
+  box-shadow: inset 1px 1px 2px #ddd8dc;
+  background: #fff;
+}
+
+select,
+.calendar {
+  text-align-last: center;
+}
+
+.submit {
+  background: #db4d9a;
+  color: white;
+  padding: 10px 30px;
+  font-size: 20px;
+  border-radius: 15px;
+  outline: none;
+}
+
+.submit:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .form-items {
+    flex-direction: column;
+  }
+
+  .input,
+  .date-picker {
+    display: flex;
+    padding-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .submit {
+    margin-top: 20px;
+  }
+}

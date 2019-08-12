@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render ResultList component 1`] = `
+"<div className=\\"result-list\\">
+  <h2 className=\\"result-header\\">
+    Here are all the results for
+     
+    August 12th 2019
+  </h2>
+  <Result id={1} departureTime=\\"12:01 AM\\" arrivalTime=\\"7:55 AM\\" tripPrice=\\"52.00\\" destinationLocationName=\\"Métro Bonaventure Bus Station\\" originLocationName=\\"Métro Guy Bus Station\\" />
+</div>"
+`;

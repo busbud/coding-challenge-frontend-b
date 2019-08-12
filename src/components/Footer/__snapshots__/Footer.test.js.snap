@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render Footer component 1`] = `
+"<div className=\\"footer-container\\">
+  Designed by
+   
+  <a className=\\"author\\" href=\\"https://scramblelock.github.io\\">
+    Marc Sakalauskas
+  </a>
+   
+  © 2019
+</div>"
+`;

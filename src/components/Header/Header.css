@@ -1,0 +1,48 @@
+.header {
+  background: linear-gradient(to bottom, #1b0e2f 0, #db4d9a 100%);
+  margin: 0 15px;
+  padding-top: 2em;
+}
+
+.header-title {
+  color: white;
+  padding: 30px 20px 0 20px;
+  margin: 0;
+}
+
+.osheaga-logo,
+.oshee,
+.aga {
+  max-width: 100%;
+  height: auto;
+}
+
+.oshee {
+  position: relative;
+  left: -308px;
+  top: 31px;
+}
+
+.aga {
+  position: relative;
+  top: 3px;
+  left: -125px;
+}
+
+@media only screen and (max-width: 1116px) {
+  .oshee,
+  .aga {
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .oshee,
+  .aga {
+    display: none;
+  }
+
+  .header-title {
+    padding-bottom: 50px;
+  }
+}

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render Form component 1`] = `
+"<div className=\\"form-wrapper\\">
+  <form className=\\"form\\" onSubmit={[undefined]}>
+    <div className=\\"form-items\\">
+      <div className=\\"input\\">
+        <label className=\\"label\\">
+          Leaving From
+          : 
+        </label>
+        <select className=\\"dropdown\\">
+          <option>
+            New York
+          </option>
+        </select>
+      </div>
+      <div className=\\"input\\">
+        <label className=\\"label\\">
+          Arriving At
+          : 
+        </label>
+        <select className=\\"dropdown\\">
+          <option>
+            Montreal
+          </option>
+        </select>
+      </div>
+      <div className=\\"date-picker\\">
+        <label className=\\"label\\">
+          Date: 
+        </label>
+        <DatePicker className=\\"calendar\\" selected={[undefined]} onChange={[Function: onChange]} allowSameDay={false} dateFormat=\\"MM/dd/yyyy\\" dateFormatCalendar=\\"LLLL yyyy\\" disabled={false} disabledKeyboardNavigation={false} dropdownMode=\\"scroll\\" onFocus={[Function: onFocus]} onBlur={[Function: onBlur]} onKeyDown={[Function: onKeyDown]} onInputClick={[Function: onInputClick]} onSelect={[Function: onSelect]} onClickOutside={[Function: onClickOutside$$1]} onMonthChange={[Function: onMonthChange]} preventOpenOnFocus={false} onYearChange={[Function: onYearChange]} onInputError={[Function: onInputError]} monthsShown={1} readOnly={false} withPortal={false} shouldCloseOnSelect={true} showTimeSelect={false} showTimeInput={false} showMonthYearPicker={false} strictParsing={false} timeIntervals={30} timeCaption=\\"Time\\" previousMonthButtonLabel=\\"Previous Month\\" nextMonthButtonLabel=\\"Next month\\" timeInputLabel=\\"Time\\" renderDayContents={[Function: renderDayContents]} inlineFocusSelectedMonth={false} />
+      </div>
+      <input className=\\"submit\\" type=\\"submit\\" value=\\"Submit\\" />
+    </div>
+  </form>
+</div>"
+`;

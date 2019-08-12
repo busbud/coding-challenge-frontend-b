@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render Result component 1`] = `
+"<div className=\\"result-wrapper\\">
+  <div className=\\"departure-result\\">
+    <h2>
+      Departs
+    </h2>
+    <h4>
+      New York
+    </h4>
+    <p />
+    <h5 className=\\"location\\" />
+  </div>
+  <div className=\\"arrival-result\\">
+    <h2>
+      Arrives
+    </h2>
+    <h4>
+      Montreal
+    </h4>
+    <p />
+    <h5 className=\\"location\\" />
+  </div>
+  <div className=\\"price-result\\">
+    <h2>
+      $
+       CAD
+    </h2>
+    <button className=\\"buy-button\\">
+      <h2>
+        Buy Now
+      </h2>
+    </button>
+  </div>
+</div>"
+`;
