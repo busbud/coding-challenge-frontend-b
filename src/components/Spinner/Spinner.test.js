@@ -1,7 +1,8 @@
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
 import React from "react";
 import Spinner from "./Spinner";
 
 it("expect to render Spinner component", () => {
-  expect(shallow(<Spinner />).debug()).toMatchSnapshot();
+  const SpinnerComponent = mount(<Spinner />).debug();
+  expect(SpinnerComponent).toMatchSnapshot();
 });
