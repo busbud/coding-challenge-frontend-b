@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export function formatMoney(amount) {
   const options = {
     style: 'currency',
@@ -11,8 +13,16 @@ export function formatMoney(amount) {
 }
 
 export function formatDate(date) {
-  const fullDate = new Date(date);
-  const hours = fullDate.getUTCHours();
-  const minutes = fullDate.getUTCMinutes();
-  return `${hours}:${minutes}`;
+  const day = new Date(date);
+  return moment(day).format('HH:MM');
+}
+
+export function sortByDate(a, b) {
+  if (a.departure_time < b.departure_time) {
+    return -1;
+  }
+  if (a.departure_time > b.departure_time) {
+    return 1;
+  }
+  return 0;
 }

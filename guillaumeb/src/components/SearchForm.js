@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { sortByDate } from '../helpers/format';
 import Results from './Results';
 
 class SearchForm extends Component {
@@ -33,17 +34,19 @@ class SearchForm extends Component {
             name: location.name || '',
           }));
 
-          const departures = data.departures.map(departure => ({
-            departure_time: departure.departure_time || '',
-            arrival_time: departure.arrival_time || '',
-            price: departure.prices.total,
-            origin_location: locations.find(
-              location => location.id === departure.origin_location_id
-            ),
-            destination_location: locations.find(
-              location => location.id === departure.destination_location_id
-            ),
-          }));
+          const departures = data.departures
+            .map(departure => ({
+              departure_time: departure.departure_time || '',
+              arrival_time: departure.arrival_time || '',
+              price: departure.prices.total,
+              origin_location: locations.find(
+                location => location.id === departure.origin_location_id
+              ),
+              destination_location: locations.find(
+                location => location.id === departure.destination_location_id
+              ),
+            }))
+            .sort(sortByDate);
 
           this.setState({
             isLoading: false,

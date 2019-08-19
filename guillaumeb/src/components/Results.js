@@ -16,7 +16,7 @@ class Results extends React.Component {
         {formatDate(departure.departure_time)} {departure.origin_location.name}
       </div>
       <div className="arrival">
-        {formatDate(departure.arrival_time)}
+        {formatDate(departure.arrival_time)}{' '}
         {departure.destination_location.name}
       </div>
     </div>
