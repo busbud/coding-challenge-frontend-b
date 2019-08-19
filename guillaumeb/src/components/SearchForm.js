@@ -13,7 +13,7 @@ class SearchForm extends Component {
   searchResults = () => {
     this.setState({ isLoading: true }, () => {
       const apiUrl =
-        'https://napi.busbud.com/x-departures/f25dvk/dr5reg/2020-08-02';
+        'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02';
 
       const requestOptions = {
         method: 'GET',
