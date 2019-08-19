@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import { formatMoney, formatDate } from '../helpers/format';
 
