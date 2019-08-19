@@ -11,7 +11,7 @@ class Results extends React.Component {
 
   renderDeparture = (departure, i) => (
     <div className="results-item" key={i} i={i}>
-      <div className="logo">
+      <div className="operator">
         <img src={departure.operator.logo} alt={departure.operator.name} />
       </div>
       <div className="price">{formatMoney(departure.price)}</div>
@@ -29,7 +29,7 @@ class Results extends React.Component {
     const list = this.props.results;
 
     return (
-      <div className="results">
+      <div>
         {Object.keys(list).map((key, i) => this.renderDeparture(list[key], i))}
       </div>
     );

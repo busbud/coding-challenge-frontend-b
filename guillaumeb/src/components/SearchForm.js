@@ -79,11 +79,13 @@ class SearchForm extends Component {
     const { isLoading, departures } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <p>Search Form {isLoading && <span>Loading...</span>}</p>
-        <input type="submit" value="Submit" />
+      <div className="results">
+        <button type="button" onClick={this.handleSubmit} className="button">
+          Click to see our departures !
+        </button>
+        <p>{isLoading && <span>Loading...</span>}</p>
         <Results results={departures} />
-      </form>
+      </div>
     );
   }
 }

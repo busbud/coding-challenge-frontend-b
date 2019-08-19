@@ -7,7 +7,7 @@
 .results-item {
   display: grid;
   margin-bottom: 20px;
-  border: 1px solid;
+  border: 2px solid #005584;
   padding: 1rem;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
@@ -15,6 +15,8 @@
     "logo price"
     "departure price"
     "arrival price";
+  text-align: left;
+  box-shadow: 5px 5px 0px #FF5862;
 }
 
 .departure {
@@ -26,11 +28,36 @@
   grid-area: arrival;
 }
 
+.header {
+  text-align: center;
+  color: #005584;
+}
+
 .logo {
+  max-width: 300px;
+}
+
+.operator {
   grid-area: logo;
 }
 
 .price {
   grid-area: price;
   text-align: right;
+}
+
+.button {
+  font-size: 15px;
+  display: inline-block;
+  background: #FF5862;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.results {
+  text-align: center;
 }
