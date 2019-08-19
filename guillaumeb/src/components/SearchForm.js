@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Results from './Results';
 
 class SearchForm extends Component {
   constructor(props) {
@@ -36,7 +37,10 @@ class SearchForm extends Component {
             departure_time: departure.departure_time || '',
             arrival_time: departure.arrival_time || '',
             price: departure.prices.total,
-            location: locations.find(
+            origin_location: locations.find(
+              location => location.id === departure.origin_location_id
+            ),
+            destination_location: locations.find(
               location => location.id === departure.destination_location_id
             ),
           }));
@@ -60,12 +64,13 @@ class SearchForm extends Component {
   }
 
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, departures } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
         <p>Search Form {isLoading && <span>Loading...</span>}</p>
         <input type="submit" value="Submit" />
+        <Results results={departures} />
       </form>
     );
   }

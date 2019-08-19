@@ -3,3 +3,29 @@
   max-width: 800px;
   padding: 20px;
 }
+
+.results-item {
+  display: grid;
+  margin-bottom: 20px;
+  border: 1px solid;
+  padding: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "departure price"
+    "arrival price";
+}
+
+.departure {
+  grid-area: departure;
+  font-weight: bold;
+}
+
+.arrival {
+  grid-area: arrival;
+}
+
+.price {
+  grid-area: price;
+  text-align: right;
+}
