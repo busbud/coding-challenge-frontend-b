@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { sortByDate } from '../helpers/format';
+import { departureCity, arrivalCity, departureDate } from '../settings';
 import Results from './Results';
 
 class SearchForm extends Component {
@@ -14,8 +15,7 @@ class SearchForm extends Component {
 
   searchResults = () => {
     this.setState({ isLoading: true }, () => {
-      const apiUrl =
-        'https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02';
+      const apiUrl = `https://napi.busbud.com/x-departures/${departureCity.geohash}/${arrivalCity.geohash}/${departureDate}`;
 
       const requestOptions = {
         method: 'GET',
