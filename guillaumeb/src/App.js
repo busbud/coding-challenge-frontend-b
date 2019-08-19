@@ -1,12 +1,11 @@
 import React from 'react';
+import SearchForm from './components/SearchForm';
 import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <p>
-        Let's take a bus ride
-      </p>
+    <div className="wrapper">
+      <SearchForm />
     </div>
   );
 }
