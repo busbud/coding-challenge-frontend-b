@@ -34,6 +34,12 @@ class SearchForm extends Component {
             name: location.name || '',
           }));
 
+          const operators = data.operators.map(operator => ({
+            id: operator.id || '',
+            logo: operator.logo_url || '',
+            name: operator.name || '',
+          }));
+
           const departures = data.departures
             .map(departure => ({
               departure_time: departure.departure_time || '',
@@ -45,6 +51,9 @@ class SearchForm extends Component {
               destination_location: locations.find(
                 location => location.id === departure.destination_location_id
               ),
+              operator: operators.find(
+                operator => operator.id === departure.operator_id
+              ),
             }))
             .sort(sortByDate);
 
@@ -53,7 +62,7 @@ class SearchForm extends Component {
             departures: [...departures],
           });
 
-          console.log(departures);
+          console.log(data, departures);
         })
         .catch(err => {
           console.log(err);

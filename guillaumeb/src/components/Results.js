@@ -11,6 +11,9 @@ class Results extends React.Component {
 
   renderDeparture = (departure, i) => (
     <div className="results-item" key={i} i={i}>
+      <div className="logo">
+        <img src={departure.operator.logo} alt={departure.operator.name} />
+      </div>
       <div className="price">{formatMoney(departure.price)}</div>
       <div className="departure">
         {formatDate(departure.departure_time)} {departure.origin_location.name}

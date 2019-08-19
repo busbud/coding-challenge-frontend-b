@@ -12,6 +12,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
+    "logo price"
     "departure price"
     "arrival price";
 }
@@ -23,6 +24,10 @@
 
 .arrival {
   grid-area: arrival;
+}
+
+.logo {
+  grid-area: logo;
 }
 
 .price {
