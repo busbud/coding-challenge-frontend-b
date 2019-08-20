@@ -47,6 +47,7 @@
 }
 
 .button {
+  cursor: pointer;
   font-size: 15px;
   display: inline-block;
   background: #FF5862;
@@ -60,4 +61,11 @@
 
 .results {
   text-align: center;
+}
+
+.loading{
+  font-size: 20px;
+  color: #FF5862;
+  padding: 20px;
+  font-style: italic;
 }

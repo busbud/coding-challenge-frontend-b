@@ -65,7 +65,10 @@
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
-    "extends": "wesbos"
+    "extends": "wesbos",
+    "rules": {
+      "react/destructuring-assignment": "never"
+    }
   },
   "browserslist": {
     "production": [

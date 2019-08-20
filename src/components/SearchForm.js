@@ -97,7 +97,9 @@ class SearchForm extends Component {
         <button type="button" onClick={this.handleSubmit} className="button">
           Click to see our departures !
         </button>
-        <p>{isLoading && <span>Loading...</span>}</p>
+        <div className="loading">
+          {isLoading && <div>Loading more rides...</div>}
+        </div>
         <Results results={departures} />
       </div>
     );
