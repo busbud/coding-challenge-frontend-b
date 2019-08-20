@@ -1,3 +1,5 @@
+export const apiUrl = 'https://napi.busbud.com/x-departures';
+
 export const arrivalCity = {
   name: 'Montréal',
   geohash: 'f25dvk',

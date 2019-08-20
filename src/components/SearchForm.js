@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { sortByDate } from '../helpers/format';
-import { departureCity, arrivalCity, departureDate } from '../settings';
+import { apiUrl, departureCity, arrivalCity, departureDate } from '../settings';
 import Results from './Results';
 
 class SearchForm extends Component {
@@ -13,10 +13,11 @@ class SearchForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  searchResults = () => {
+  searchResults = (
+    url = `${apiUrl}/${departureCity.geohash}/${arrivalCity.geohash}/${departureDate}`,
+    fromPoll = false
+  ) => {
     this.setState({ isLoading: true }, () => {
-      const apiUrl = `https://napi.busbud.com/x-departures/${departureCity.geohash}/${arrivalCity.geohash}/${departureDate}`;
-
       const requestOptions = {
         method: 'GET',
         headers: {
@@ -26,7 +27,7 @@ class SearchForm extends Component {
         },
       };
 
-      fetch(apiUrl, requestOptions)
+      fetch(url, requestOptions)
         .then(results => results.json())
         .then(data => {
           const locations = data.locations.map(location => ({
@@ -40,29 +41,42 @@ class SearchForm extends Component {
             name: operator.name || '',
           }));
 
-          const departures = data.departures
-            .map(departure => ({
-              departure_time: departure.departure_time || '',
-              arrival_time: departure.arrival_time || '',
-              price: departure.prices.total,
-              origin_location: locations.find(
-                location => location.id === departure.origin_location_id
-              ),
-              destination_location: locations.find(
-                location => location.id === departure.destination_location_id
-              ),
-              operator: operators.find(
-                operator => operator.id === departure.operator_id
-              ),
-            }))
-            .sort(sortByDate);
+          const departures = data.departures.map(departure => ({
+            departure_time: departure.departure_time || '',
+            arrival_time: departure.arrival_time || '',
+            price: departure.prices.total,
+            origin_location: locations.find(
+              location => location.id === departure.origin_location_id
+            ),
+            destination_location: locations.find(
+              location => location.id === departure.destination_location_id
+            ),
+            operator: operators.find(
+              operator => operator.id === departure.operator_id
+            ),
+          }));
 
-          this.setState({
-            isLoading: false,
-            departures: [...departures],
-          });
+          let totalDepartures = [];
 
-          console.log(data, departures);
+          if (data.complete && fromPoll) {
+            totalDepartures = [...this.state.departures, ...departures];
+            this.setState({ isLoading: false });
+            console.log(`From poll: ${totalDepartures.length}`);
+          } else if (data.complete && !fromPoll) {
+            totalDepartures = [...departures];
+            this.setState({ isLoading: false });
+            console.log(`From complete: ${totalDepartures.length}`);
+          } else {
+            totalDepartures = [...this.state.departures, ...departures];
+
+            const newUrl = `${apiUrl}/${departureCity.geohash}/${arrivalCity.geohash}/${departureDate}/poll?index=${departures.length}`;
+            setTimeout(() => {
+              this.searchResults(newUrl, true);
+            }, 2000);
+            console.log(`NOT Complete: + ${totalDepartures.length}`);
+          }
+
+          this.setState({ departures: totalDepartures.sort(sortByDate) });
         })
         .catch(err => {
           console.log(err);
