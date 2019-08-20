@@ -1,62 +1,36 @@
+$blue: #005584;
+$pink: #FF5862;
+
 .wrapper {
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
 }
 
-.results-item {
-  display: grid;
-  margin-bottom: 20px;
-  border: 2px solid #005584;
-  padding: 1rem;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "logo price"
-    "departure price"
-    "arrival price";
-  text-align: left;
-  box-shadow: 5px 5px 0px #FF5862;
-}
-
-.departure {
-  grid-area: departure;
-  font-weight: bold;
-}
-
-.arrival {
-  grid-area: arrival;
-}
-
 .header {
   text-align: center;
-  color: #005584;
+  color: $blue;
 }
 
-.logo {
+.header-logo {
   max-width: 300px;
-}
-
-.operator {
-  grid-area: logo;
-}
-
-.price {
-  grid-area: price;
-  text-align: right;
 }
 
 .button {
   cursor: pointer;
   font-size: 15px;
   display: inline-block;
-  background: #FF5862;
+  background: $pink;
   color: white;
   border-radius: 10px;
   border: none;
   padding: 10px 20px;
   text-transform: uppercase;
   font-weight: bold;
+  &[disabled]{
+    opacity: 0.5;
+    cursor: progress;
+  }
 }
 
 .results {
@@ -65,7 +39,43 @@
 
 .loading{
   font-size: 20px;
-  color: #FF5862;
+  color: $pink;
   padding: 20px;
   font-style: italic;
+}
+
+.results-item {
+  display: grid;
+  margin-bottom: 20px;
+  border: 2px solid $blue;
+  padding: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "logo price"
+    "departure price"
+    "arrival price";
+  text-align: left;
+  box-shadow: 5px 5px 0px $pink;
+}
+
+.results-departure {
+  grid-area: departure;
+  font-weight: bold;
+}
+
+.results-arrival {
+  grid-area: arrival;
+}
+
+.results-operator {
+  grid-area: logo;
+}
+
+.results-price {
+  grid-area: price;
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+  color: $blue;
 }

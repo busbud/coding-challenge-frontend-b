@@ -96,7 +96,12 @@ class SearchForm extends Component {
 
     return (
       <div className="results">
-        <button type="button" onClick={this.handleSubmit} className="button">
+        <button
+          type="button"
+          onClick={this.handleSubmit}
+          className="button"
+          disabled={isLoading}
+        >
           Click to see our departures !
         </button>
         <div className="loading">

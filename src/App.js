@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="wrapper">
       <div className="header">
-        <img className="logo" src={Logo} alt="Osheaga logo" />
+        <img className="header-logo" src={Logo} alt="Osheaga logo" />
         <p>
           SEE YOU NEXT YEAR!
           <br />

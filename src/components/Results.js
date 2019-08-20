@@ -13,14 +13,14 @@ class Results extends React.Component {
 
   renderDeparture = (departure, i) => (
     <div className="results-item" key={i} i={i}>
-      <div className="operator">
+      <div className="results-operator">
         <img src={departure.operator.logo} alt={departure.operator.name} />
       </div>
-      <div className="price">{formatMoney(departure.price)}</div>
-      <div className="departure">
+      <div className="results-price">{formatMoney(departure.price)}</div>
+      <div className="results-departure">
         {formatDate(departure.departure_time)} {departure.origin_location.name}
       </div>
-      <div className="arrival">
+      <div className="results-arrival">
         {formatDate(departure.arrival_time)}{' '}
         {departure.destination_location.name}
       </div>
