@@ -67,7 +67,8 @@
   "eslintConfig": {
     "extends": "wesbos",
     "rules": {
-      "react/destructuring-assignment": "never"
+      "react/destructuring-assignment": "never",
+      "react/no-access-state-in-setstate": false
     }
   },
   "browserslist": {

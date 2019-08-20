@@ -56,24 +56,26 @@ class SearchForm extends Component {
             ),
           }));
 
-          let totalDepartures = [];
+          // keep loading state until complete is true
+          this.setState({ isLoading: !data.complete });
 
-          if (data.complete && fromPoll) {
-            totalDepartures = [...this.state.departures, ...departures];
-            this.setState({ isLoading: false });
-            console.log(`From poll: ${totalDepartures.length}`);
-          } else if (data.complete && !fromPoll) {
-            totalDepartures = [...departures];
-            this.setState({ isLoading: false });
-            console.log(`From complete: ${totalDepartures.length}`);
-          } else {
-            totalDepartures = [...this.state.departures, ...departures];
+          // id data is complete and url searchResults is not coming fromPoll
+          // that means we are hitting the cache APi, and we want all the departures
+          // the opposite means we need to merge what's in state and new departures returned
+          const totalDepartures =
+            data.complete && !fromPoll
+              ? [...departures]
+              : [...this.state.departures, ...departures];
 
+          // if not complete, let's use the /poll url to reach new content
+          if (!data.complete) {
             const newUrl = `${apiUrl}/${departureCity.geohash}/${arrivalCity.geohash}/${departureDate}/poll?index=${departures.length}`;
             setTimeout(() => {
               this.searchResults(newUrl, true);
             }, 2000);
-            console.log(`NOT Complete: + ${totalDepartures.length}`);
+            console.log(`NOT Complete: + ${totalDepartures.length} new rides`);
+          } else {
+            console.log(`Complete: ${totalDepartures.length} rides`);
           }
 
           this.setState({ departures: totalDepartures.sort(sortByDate) });
