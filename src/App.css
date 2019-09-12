@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Changa+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Changa:300,400&display=swap");
+
+.app {
+  font-family: "Changa One", impact, sans-serif;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem;
+}
+.hero-subtitle {
+  font-family: "Changa", impact, sans-serif;
+  margin-top: 0;
+}
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Changa", impact, sans-serif;
+  margin: 1rem;
+}
+.content-introduction {
+  width: 20rem;
+  text-align: center;
+}
+.footer {
+  font-family: "Changa", impact, sans-serif;
+  text-align: center;
+  width: 100%;
+}
+.bus-list-card {
+  width: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.bus-list-title {
+  margin: 0;
+  color: #127ccb;
+}
+.bus-list-find-button {
+  margin: 2rem 0 0;
+}
+
+@media screen and (min-width: 760px) {
+  .hero {
+    margin: 0;
+  }
+  .content-introduction {
+    width: 30rem;
+  }
+}

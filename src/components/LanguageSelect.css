@@ -1,0 +1,17 @@
+.language-select-container {
+  margin: 1rem 1rem 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.language-select {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+}
+.language-select:hover {
+  cursor: pointer;
+}
+.language-select--selected {
+  background-color: black;
+  color: white;
+}

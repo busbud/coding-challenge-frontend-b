@@ -1,0 +1,26 @@
+.shaky-letters-container {
+  margin: 3rem 0 0;
+}
+.shaky-letter {
+  opacity: 1;
+  transition: opacity 1s;
+  text-shadow: 2px 2px #ff0000;
+}
+.shaky-letter--space {
+  margin-right: 1rem;
+}
+.shaky-letter--hidden {
+  opacity: 0;
+}
+
+@keyframes shaky-letter {
+  0% {
+    transform: translateY(0rem);
+  }
+  50% {
+    transform: translateY(0.25rem);
+  }
+  100% {
+    transform: translateY(0rem);
+  }
+}
