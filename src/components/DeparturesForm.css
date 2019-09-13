@@ -1,13 +1,35 @@
-.bus-list-card {
+.bus-form-card {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.bus-list-title {
+.bus-form-title {
   margin: 0;
   color: #127ccb;
 }
-.bus-list-find-button {
+.bus-form__input {
+  background-color: white;
+  box-shadow: none;
+  border: 1px solid rgba(10, 59, 95, 0.54);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem;
+  width: 18rem;
+  color: rgba(10, 59, 95, 0.54);
+}
+.bus-form__input--long {
+  width: 18rem;
+}
+.bus-form__submit {
   margin: 2rem 0 0;
+}
+
+@media screen and (min-width: 760px) {
+  .bus-form__input {
+    width: auto;
+  }
+  .bus-form__input--long {
+    width: 32.5rem;
+  }
 }
