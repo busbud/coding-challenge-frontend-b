@@ -18,7 +18,7 @@
   opacity: 0.5;
   display: flex;
   flex-direction: center;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   border-radius: 1rem;
 }

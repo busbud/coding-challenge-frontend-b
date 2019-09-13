@@ -28,6 +28,13 @@
   width: 20rem;
   text-align: center;
 }
+.sorting-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 22rem;
+  margin: 2rem 0 0;
+}
 .footer {
   font-family: "Changa", impact, sans-serif;
   text-align: center;
@@ -35,6 +42,9 @@
 }
 
 @media screen and (min-width: 760px) {
+  .sorting-controls {
+    width: 32rem;
+  }
   .hero {
     margin: 0;
   }

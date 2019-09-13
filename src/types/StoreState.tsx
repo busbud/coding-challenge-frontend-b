@@ -8,4 +8,5 @@ export interface StoreState {
   locations: Array<any>;
   operators: Array<IOperator>;
   cities: Array<any>;
+  error: string;
 }

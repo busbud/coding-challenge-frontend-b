@@ -11,6 +11,7 @@ import LanguageSelect from "./components/LanguageSelect";
 import BusAnimation from "./components/ui/BusAnimation";
 import DeparturesForm from "./components/DeparturesForm";
 import DeparturesList from "./components/DeparturesList";
+import Button from "./components/ui/Button";
 
 interface AppProps {
   language: string;
@@ -31,7 +32,6 @@ class App extends React.Component<AppProps, any> {
   };
   render() {
     const { language } = this.props;
-    console.log(language);
     i18n.changeLanguage(language);
     return (
       <I18nextProvider i18n={i18n}>

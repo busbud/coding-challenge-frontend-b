@@ -26,7 +26,7 @@ export default interface IDeparture {
       base: number;
     };
     categories: {};
-    discounted: number;
+    discounted: boolean;
   };
   ticket_types: Array<string>;
   departure_timezone: string;

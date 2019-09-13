@@ -15,6 +15,26 @@ interface loadDeparturesAction {
   cities: Array<ICity>;
   polling: boolean;
 }
+interface StartSearchingAction {
+  type: "START_SEARCHING";
+}
+interface DoneSearchingAction {
+  type: "DONE_SEARCHING";
+}
+interface SetErrorAction {
+  type: "SET_ERROR";
+  message: string;
+}
+interface ClearErrorAction {
+  type: "CLEAR_ERROR";
+}
+interface SortByPriceAction {
+  type: "SORT_BY_PRICE";
+}
+interface SortByTimeAction {
+  type: "SORT_BY_TIME";
+}
+
 export function updateLanguage(language: string): UpdateLanguageAction {
   return { type: "UPDATE_LANGUAGE", language };
 }
@@ -36,15 +56,40 @@ export function loadDepartures(
   };
 }
 
-function startSearching() {
+export function startSearching(): StartSearchingAction {
   return {
     type: "START_SEARCHING"
   };
 }
 
-function doneSearching() {
+export function doneSearching(): DoneSearchingAction {
   return {
     type: "DONE_SEARCHING"
+  };
+}
+
+export function setError(message: string): SetErrorAction {
+  return {
+    type: "SET_ERROR",
+    message
+  };
+}
+
+export function clearError(): ClearErrorAction {
+  return {
+    type: "CLEAR_ERROR"
+  };
+}
+
+export function sortByPrice(): SortByPriceAction {
+  return {
+    type: "SORT_BY_PRICE"
+  };
+}
+
+export function sortByTime(): SortByTimeAction {
+  return {
+    type: "SORT_BY_TIME"
   };
 }
 
@@ -82,7 +127,17 @@ export function fetchDepartures(
         )
         .then(json => {
           if (!json.errors) {
-            if (json.departures && json.departures.length > 0) {
+            dispatch(clearError());
+            if (
+              json.departures &&
+              json.departures.length > 0 &&
+              json.locations &&
+              json.locations.length > 0 &&
+              json.operators &&
+              json.operators.length > 0 &&
+              json.cities &&
+              json.cities.length > 0
+            ) {
               dispatch(
                 loadDepartures(
                   json.departures,
@@ -91,6 +146,10 @@ export function fetchDepartures(
                   json.cities,
                   polling
                 )
+              );
+            } else {
+              dispatch(
+                setError("Something went wrong! Could you please try again?")
               );
             }
             if (json.complete) {
