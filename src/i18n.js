@@ -9,7 +9,9 @@ i18next.init({
         destination: "From New York to Montreal",
         find: "Find tickets!",
         footer: "Made with ❤️ by Valentijn Nieman for Busbud",
-        select: "Select"
+        select: "Select",
+        sort_by_price: "Sort by price",
+        sort_by_time: "Sort by departure time"
       }
     },
     fr: {
@@ -19,7 +21,9 @@ i18next.init({
         destination: "De New York à Montréal",
         find: "Trouvez des billets!",
         footer: "Fabriqué avec ❤️ par Valentijn Nieman pour Busbud",
-        select: "Choisir"
+        select: "Choisir",
+        sort_by_price: "Trier par prix",
+        sort_by_time: "Trier par heure de départ"
       }
     }
   },

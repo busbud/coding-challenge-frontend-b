@@ -69,7 +69,11 @@ class App extends React.Component<AppProps, any> {
             />
           </section>
           <section className="content content--departures">
-            <DeparturesList selectText={i18n.t("select")} />
+            <DeparturesList
+              selectText={i18n.t("select")}
+              priceSortText={i18n.t("sort_by_price")}
+              timeSortText={i18n.t("sort_by_time")}
+            />
           </section>
           <p className="footer">{i18n.t("footer")}</p>
         </div>

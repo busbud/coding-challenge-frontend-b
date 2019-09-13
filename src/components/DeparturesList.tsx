@@ -20,11 +20,12 @@ interface DeparturesListProps {
   error: string;
   sortByPrice: () => void;
   sortByTime: () => void;
+  priceSortText: string;
+  timeSortText: string;
 }
 
 class DeparturesList extends React.Component<DeparturesListProps, any> {
   render() {
-    console.log("Render");
     let listElement;
     let sortControls;
     if (this.props.error) {
@@ -42,14 +43,14 @@ class DeparturesList extends React.Component<DeparturesListProps, any> {
               size="medium"
               onClick={this.props.sortByTime}
             >
-              Sort by departure time
+              {this.props.timeSortText}
             </Button>
             <Button
               type="secondary"
               size="medium"
               onClick={this.props.sortByPrice}
             >
-              Sort by price
+              {this.props.priceSortText}
             </Button>
           </div>
         );
