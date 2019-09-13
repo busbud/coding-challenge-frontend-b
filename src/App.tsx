@@ -1,23 +1,34 @@
 import React from "react";
 import "./App.css";
-import BouncingText from "./components/BouncingText";
+import BouncingText from "./components/ui/BouncingText";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
 
 import { connect } from "react-redux";
 import { StoreState } from "./types/StoreState";
-import { updateLanguage } from "./actions";
+import { updateLanguage, fetchDepartures } from "./actions";
 import LanguageSelect from "./components/LanguageSelect";
-import Card from "./components/Card";
-import BusAnimation from "./components/BusAnimation";
-import Button from "./components/Button";
+import BusAnimation from "./components/ui/BusAnimation";
+import DeparturesForm from "./components/DeparturesForm";
+import DeparturesList from "./components/DeparturesList";
 
 interface AppProps {
   language: string;
   updateLanguage: (language: string) => void;
+  fetchDepartures: (
+    origin: string,
+    destination: string,
+    outboundDate: string
+  ) => void;
 }
 
 class App extends React.Component<AppProps, any> {
+  searchDepartures = () => {
+    const newYorkGeohash = "dr5reg";
+    const mtlGeohash = "f25dvk";
+    const outboundDate = "2020-08-02";
+    this.props.fetchDepartures(newYorkGeohash, mtlGeohash, outboundDate);
+  };
   render() {
     const { language } = this.props;
     console.log(language);
@@ -51,12 +62,14 @@ class App extends React.Component<AppProps, any> {
           </section>
           <section className="content content--onboarding">
             <BusAnimation />
-            <Card className="bus-list-card">
-              <h1 className="bus-list-title">{i18n.t("destination")}</h1>
-              <Button className="bus-list-find-button" type="primary">
-                {i18n.t("find")}
-              </Button>
-            </Card>
+            <DeparturesForm
+              searchDepartures={this.searchDepartures}
+              title={i18n.t("destination")}
+              submitText={i18n.t("find")}
+            />
+          </section>
+          <section className="content content--departures">
+            <DeparturesList selectText={i18n.t("select")} />
           </section>
           <p className="footer">{i18n.t("footer")}</p>
         </div>
@@ -73,7 +86,13 @@ export default connect(
   },
   (dispatch: any) => {
     return {
-      updateLanguage: (language: string) => dispatch(updateLanguage(language))
+      updateLanguage: (language: string) => dispatch(updateLanguage(language)),
+      fetchDepartures: (
+        origin: string,
+        destination: string,
+        outboundDate: string
+      ) =>
+        dispatch(fetchDepartures(origin, destination, outboundDate, false, 0))
     };
   }
 )(App);

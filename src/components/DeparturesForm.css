@@ -1,0 +1,13 @@
+.bus-list-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.bus-list-title {
+  margin: 0;
+  color: #127ccb;
+}
+.bus-list-find-button {
+  margin: 2rem 0 0;
+}

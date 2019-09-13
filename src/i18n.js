@@ -8,7 +8,8 @@ i18next.init({
           "New Yorkers! Are you planning on going to Osheaga this year? Busbud has got you covered! Find the cheapest bus tickets from New York to Montreal right here!",
         destination: "From New York to Montreal",
         find: "Find tickets!",
-        footer: "Made with ❤️ by Valentijn Nieman for Busbud"
+        footer: "Made with ❤️ by Valentijn Nieman for Busbud",
+        select: "Select"
       }
     },
     fr: {
@@ -17,7 +18,8 @@ i18next.init({
           "New yorkais! Envisagez-vous d'aller à Osheaga cette année? Busbud vous a couvert! Trouvez les billets de bus les moins chers depuis New York vers Montréal ici!",
         destination: "De New York à Montréal",
         find: "Trouvez des billets!",
-        footer: "Fabriqué avec ❤️ par Valentijn Nieman pour Busbud"
+        footer: "Fabriqué avec ❤️ par Valentijn Nieman pour Busbud",
+        select: "Choisir"
       }
     }
   },

@@ -1,0 +1,45 @@
+.departures-list {
+  list-style-type: none;
+  padding: 0;
+}
+.departures-list-item {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  animation: pop-in 0.5s;
+}
+.departures-list-item:nth-child(even) {
+  animation: pop-in-inverse 0.5s;
+}
+.departures-list-item__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.departures-list-item__departure-time {
+  color: #199ceb;
+}
+.departures-list-item__arrival-time {
+  color: rgba(10, 59, 95, 0.54);
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes pop-in-inverse {
+  0% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

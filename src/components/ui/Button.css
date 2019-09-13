@@ -1,7 +1,6 @@
 .button {
   padding: 0.25rem 1rem;
   color: white;
-  font-size: 2rem;
   border-radius: 8px;
   display: inline-block;
   text-align: center;
@@ -18,4 +17,10 @@
 }
 .button--secondary {
   background-color: skyblue;
+}
+.button--medium {
+  font-size: 1rem;
+}
+.button--big {
+  font-size: 2rem;
 }
