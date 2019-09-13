@@ -2,6 +2,10 @@
 
 Hey, thanks so much for looking at my code! Couple of things: to run this locally, set your Busbud token as `export REACT_APP_BUSBUD_TOKEN=XXXXX` where `XXXXX` is your token.
 
+I built this little app with React, Redux, TypeScript, i18next for translations, Jest for unit testing. There's always room for improvement of course! For example, there are no real component tests, visual tests, or other sort of integration and/or E2E testing.
+
+It's hosted on [heroku!](https://busbud-valentijnnieman.herokuapp.com)
+
 # coding-challenge-frontend-b
 
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
