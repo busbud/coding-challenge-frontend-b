@@ -39,7 +39,7 @@
     justify-content: space-between;
   }
   .bus-form__input {
-    width: auto;
+    width: 42%;
     margin: 1rem 0;
   }
   .bus-form__input--long {
