@@ -123,7 +123,6 @@ export function fetchDepartures(
           }
         ).then(response => response.json());
         try {
-          dispatch(clearError());
           if (
             json.departures &&
             json.departures.length > 0 &&
@@ -134,6 +133,7 @@ export function fetchDepartures(
             json.cities &&
             json.cities.length > 0
           ) {
+            dispatch(clearError());
             dispatch(
               loadDepartures(
                 json.departures,
@@ -167,7 +167,10 @@ export function fetchDepartures(
             // Because we're relying on all the data being available when we're filtering
             // Operators, Cities, etc, in the DeparturesList component,
             // it's important that all data is in the response. If not, we'll just
-            // try again! :-)
+            // display a helpful message, and try again! :-)
+            dispatch(
+              setError("It's taking a bit longer than usual. Please wait!")
+            );
             dispatch(fetchDepartures(origin, destination, outboundDate, false));
           }
         } catch {
