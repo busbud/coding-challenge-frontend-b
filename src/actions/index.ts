@@ -100,32 +100,29 @@ export function fetchDepartures(
   polling: boolean,
   index?: number
 ) {
-  return function(dispatch: any) {
-    const token = process.env.REACT_APP_BUSBUD_TOKEN;
-    if (!token) {
-      console.log("No BUSBUD_TOKEN found");
-    } else {
-      if (!polling) {
-        dispatch(startSearching());
-      }
-      return fetch(
-        `https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}${
-          polling ? `/poll?index=${index}` : ""
-        }`,
-        {
-          method: "GET",
-          headers: {
-            Accept:
-              "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
-            "X-Busbud-Token": token
-          }
+  return async (dispatch: any) => {
+    try {
+      const token = process.env.REACT_APP_BUSBUD_TOKEN;
+      if (!token) {
+        dispatch(setError("No REACT_APP_BUSBUD_TOKEN found"));
+      } else {
+        if (!polling) {
+          dispatch(startSearching());
         }
-      )
-        .then(response => response.json())
-        .catch(() =>
-          dispatch(setError("Something went wrong! Please try again."))
-        )
-        .then(json => {
+        const json = await fetch(
+          `https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}${
+            polling ? `/poll?index=${index}` : ""
+          }`,
+          {
+            method: "GET",
+            headers: {
+              Accept:
+                "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
+              "X-Busbud-Token": token
+            }
+          }
+        ).then(response => response.json());
+        try {
           dispatch(clearError());
           if (
             json.departures &&
@@ -173,13 +170,15 @@ export function fetchDepartures(
             // try again! :-)
             dispatch(fetchDepartures(origin, destination, outboundDate, false));
           }
-        })
-        .catch(() => {
+        } catch {
           dispatch(
             setError("It's taking slightly longer than usual, please hang on.")
           );
           dispatch(fetchDepartures(origin, destination, outboundDate, false));
-        });
+        }
+      }
+    } catch {
+      dispatch(setError("Oops! Something went wrong. Sorry about that!"));
     }
   };
 }
