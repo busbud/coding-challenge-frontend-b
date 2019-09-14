@@ -12,8 +12,8 @@ const DeparturesForm: React.FunctionComponent<DeparturesFormProps> = props => {
   return (
     <div className="bus-form-card">
       <h1 className="bus-form-title">{props.title}</h1>
-      <div className="bus-form">
-        <div>
+      <div className="bus-form-container">
+        <div className="bus-form">
           <input
             className="bus-form__input"
             value="New York"

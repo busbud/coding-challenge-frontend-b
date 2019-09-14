@@ -13,14 +13,17 @@
   background-color: orange;
 }
 .button--primary:hover {
-  background-color: #d28a06;
+  background-color: #db8f04;
 }
 .button--secondary {
   background-color: skyblue;
+}
+.button--secondary:hover {
+  background-color: #6dadc8;
 }
 .button--medium {
   font-size: 1rem;
 }
 .button--big {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }

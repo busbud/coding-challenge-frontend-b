@@ -32,8 +32,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 22rem;
-  margin: 2rem 0 0;
+  margin: 3rem 0 0;
+  padding-top: 4rem;
+  border-top: 1px solid rgb(205, 213, 219);
 }
 .footer {
   font-family: "Changa", impact, sans-serif;
@@ -42,9 +43,6 @@
 }
 
 @media screen and (min-width: 760px) {
-  .sorting-controls {
-    width: 32rem;
-  }
   .hero {
     margin: 0;
   }
