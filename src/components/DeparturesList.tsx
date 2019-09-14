@@ -28,8 +28,9 @@ class DeparturesList extends React.Component<DeparturesListProps, any> {
   render() {
     let listElement;
     let sortControls;
-    if (this.props.error) {
-      listElement = <div>{this.props.error}</div>;
+    if (this.props.error.length > 0) {
+      console.log(this.props.error);
+      return <div>{this.props.error}</div>;
     }
     if (this.props.searching) {
       listElement = <div>Searching...</div>;

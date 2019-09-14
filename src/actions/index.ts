@@ -121,37 +121,31 @@ export function fetchDepartures(
           }
         }
       )
-        .then(
-          response => response.json(),
-          error => window.console.log("error: ", error)
+        .then(response => response.json())
+        .catch(() =>
+          dispatch(setError("Something went wrong! Please try again."))
         )
         .then(json => {
-          if (!json.errors) {
-            dispatch(clearError());
-            if (
-              json.departures &&
-              json.departures.length > 0 &&
-              json.locations &&
-              json.locations.length > 0 &&
-              json.operators &&
-              json.operators.length > 0 &&
-              json.cities &&
-              json.cities.length > 0
-            ) {
-              dispatch(
-                loadDepartures(
-                  json.departures,
-                  json.locations,
-                  json.operators,
-                  json.cities,
-                  polling
-                )
-              );
-            } else {
-              dispatch(
-                setError("Something went wrong! Could you please try again?")
-              );
-            }
+          dispatch(clearError());
+          if (
+            json.departures &&
+            json.departures.length > 0 &&
+            json.locations &&
+            json.locations.length > 0 &&
+            json.operators &&
+            json.operators.length > 0 &&
+            json.cities &&
+            json.cities.length > 0
+          ) {
+            dispatch(
+              loadDepartures(
+                json.departures,
+                json.locations,
+                json.operators,
+                json.cities,
+                polling
+              )
+            );
             if (json.complete) {
               dispatch(doneSearching());
             } else {
@@ -171,7 +165,20 @@ export function fetchDepartures(
                 2000
               );
             }
+          } else {
+            // Sometimes a response doesn't have all the data we want, it seems.
+            // Because we're relying on all the data being available when we're filtering
+            // Operators, Cities, etc, in the DeparturesList component,
+            // it's important that all data is in the response. If not, we'll just
+            // try again! :-)
+            dispatch(fetchDepartures(origin, destination, outboundDate, false));
           }
+        })
+        .catch(() => {
+          dispatch(
+            setError("It's taking slightly longer than usual, please hang on.")
+          );
+          dispatch(fetchDepartures(origin, destination, outboundDate, false));
         });
     }
   };
