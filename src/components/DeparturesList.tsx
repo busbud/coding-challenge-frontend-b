@@ -93,7 +93,7 @@ const DeparturesList: React.FunctionComponent<DeparturesListProps> = props => {
             duration={duration}
             selectText={props.selectText}
             index={index}
-            key={index}
+            key={`dli-${index}-${origin.name}-${destination.name}-${departure.arrival_time}`}
           />
         );
       });
