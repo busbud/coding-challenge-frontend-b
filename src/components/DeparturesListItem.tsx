@@ -41,7 +41,11 @@ export const DeparturesListItem: React.FunctionComponent<
     >
       <Card>
         <div className="departures-list-item__row">
-          <img src={operator.logo_url} alt={operator.name} />
+          <img
+            className="departures-list-item__img"
+            src={operator.logo_url}
+            alt={operator.name}
+          />
           <div>${(departure.prices.total / 100).toFixed(2)}</div>
         </div>
         <div className="departures-list-item__row">

@@ -98,7 +98,7 @@ export function fetchDepartures(
   destination: string,
   outboundDate: string,
   polling: boolean,
-  index?: number
+  index: number
 ) {
   return async (dispatch: any) => {
     try {
@@ -147,7 +147,6 @@ export function fetchDepartures(
               dispatch(doneSearching());
             } else {
               // We only want to keep polling if !complete
-              // If we would want to poll continously, we could remove the else {}
               window.setTimeout(
                 () =>
                   dispatch(
@@ -162,22 +161,21 @@ export function fetchDepartures(
                 2000
               );
             }
-          } else {
-            // Sometimes a response doesn't have all the data we want, it seems.
+          } else if (!polling) {
+            // Sometimes a response doesn't have all the data we want.
             // Because we're relying on all the data being available when we're filtering
             // Operators, Cities, etc, in the DeparturesList component,
             // it's important that all data is in the response. If not, we'll just
             // display a helpful message, and try again! :-)
-            dispatch(
-              setError("It's taking a bit longer than usual. Please wait!")
-            );
-            dispatch(fetchDepartures(origin, destination, outboundDate, false));
+            throw "Incomplete response";
           }
         } catch {
           dispatch(
             setError("It's taking slightly longer than usual, please hang on.")
           );
-          dispatch(fetchDepartures(origin, destination, outboundDate, false));
+          dispatch(
+            fetchDepartures(origin, destination, outboundDate, false, 0)
+          );
         }
       }
     } catch {

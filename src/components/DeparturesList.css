@@ -10,6 +10,9 @@
 .departures-list-item:nth-child(even) {
   animation: pop-in-inverse 0.5s;
 }
+.departures-list-item__img {
+  width: 8rem;
+}
 .departures-list-item__row {
   display: flex;
   flex-direction: row;
