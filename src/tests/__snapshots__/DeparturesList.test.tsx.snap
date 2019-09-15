@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Does not try to render list if departures are loaded, but other data such as locations isn't 1`] = `
+<div>
+  <ul
+    className="departures-list"
+  />
+</div>
+`;
+
+exports[`renders 'Searching...' when searching=true 1`] = `
+<div>
+  <ul
+    className="departures-list"
+  >
+    <div>
+      Searching...
+    </div>
+  </ul>
+</div>
+`;
+
+exports[`renders 'Searching...' when searching=true, despite departures being loaded 1`] = `
+<div>
+  <ul
+    className="departures-list"
+  >
+    <div>
+      Searching...
+    </div>
+  </ul>
+</div>
+`;
+
+exports[`renders a list when loadDepartures() is fired 1`] = `
+<div>
+  <div
+    className="sorting-controls"
+  >
+    <div
+      className="undefined button button--secondary button--medium"
+      onClick={[Function]}
+    >
+      Sort by time
+    </div>
+    <div
+      className="undefined button button--secondary button--medium"
+      onClick={[Function]}
+    >
+      Sort by price
+    </div>
+  </div>
+  <ul
+    className="departures-list"
+  >
+    <li
+      className="departures-list-item"
+      id="dli-0-Métro Bonaventure Bus Station-Métro Bonaventure Bus Station-2016-01-14T07:55:00"
+    >
+      <div
+        className="card undefined"
+      >
+        <div
+          className="departures-list-item__row"
+        >
+          <img
+            alt="Greyhound"
+            className="departures-list-item__img"
+            src="https://busbud-pubweb-assets-staging.global.ssl.fastly.net/images-service/operator-logos/greyhound.png?hash=1{&height,width}"
+          />
+          <div>
+            $
+            52.00
+          </div>
+        </div>
+        <div
+          className="departures-list-item__row"
+        >
+          <div>
+            <span
+              className="departures-list-item__departure-time"
+            >
+              <b>
+                00:01:00
+              </b>
+            </span>
+             
+            <span>
+              New York
+               - 
+              Métro Bonaventure Bus Station
+            </span>
+          </div>
+        </div>
+        <div
+          className="departures-list-item__row"
+        >
+          <div
+            className="departures-list-item__arrival-time"
+          >
+            <span>
+              <b>
+                07:55:00
+              </b>
+            </span>
+             
+            <span>
+              New York
+               - 
+              Métro Bonaventure Bus Station
+            </span>
+          </div>
+        </div>
+        <div
+          className="departures-list-item__row"
+        >
+          <div>
+            7
+            h 
+            54
+            m
+          </div>
+          <div
+            className="undefined button button--primary button--medium"
+          >
+            Search
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`renders error message when there's an error 1`] = `
+<div>
+  Test error message
+</div>
+`;

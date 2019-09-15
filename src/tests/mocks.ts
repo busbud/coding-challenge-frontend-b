@@ -10,8 +10,8 @@ export const mockDeparture: IDeparture = {
   source_id: 155,
   checkout_type: "new",
   operator_id: "bfc27cd544ca49c18d000f2bc00c58c0",
-  origin_location_id: 1942,
-  destination_location_id: 1938,
+  origin_location_id: 3970,
+  destination_location_id: 3970,
   class: "Economy",
   class_name: "Economy",
   amenities: {
@@ -44,7 +44,7 @@ export const mockDeparture: IDeparture = {
 
 export const mockLocation: ILocation = {
   id: 3970,
-  city_id: "375dd5879001acbd84a4683dedfb933e",
+  city_id: "375dd5879001acbd84a4683deda84183",
   name: "Métro Bonaventure Bus Station",
   address: ["997 Rue St-Antoine Ouest", "Montreal, QC H3C 1A6"],
   type: "transit_station",

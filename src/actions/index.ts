@@ -123,53 +123,37 @@ export function fetchDepartures(
           }
         ).then(response => response.json());
         try {
-          if (
-            json.departures &&
-            json.departures.length > 0 &&
-            json.locations &&
-            json.locations.length > 0 &&
-            json.operators &&
-            json.operators.length > 0 &&
-            json.cities &&
-            json.cities.length > 0
-          ) {
-            dispatch(clearError());
-            dispatch(
-              loadDepartures(
-                json.departures,
-                json.locations,
-                json.operators,
-                json.cities,
-                polling
-              )
+          dispatch(clearError());
+          dispatch(
+            loadDepartures(
+              json.departures,
+              json.locations,
+              json.operators,
+              json.cities,
+              polling
+            )
+          );
+          if (json.complete) {
+            dispatch(doneSearching());
+          } else {
+            // We only want to keep polling if !complete
+            window.setTimeout(
+              () =>
+                dispatch(
+                  fetchDepartures(
+                    origin,
+                    destination,
+                    outboundDate,
+                    true,
+                    index + json.departures.length
+                  )
+                ),
+              2000
             );
-            if (json.complete) {
-              dispatch(doneSearching());
-            } else {
-              // We only want to keep polling if !complete
-              window.setTimeout(
-                () =>
-                  dispatch(
-                    fetchDepartures(
-                      origin,
-                      destination,
-                      outboundDate,
-                      true,
-                      index + json.departures.length
-                    )
-                  ),
-                2000
-              );
-            }
-          } else if (!polling) {
-            // Sometimes a response doesn't have all the data we want.
-            // Because we're relying on all the data being available when we're filtering
-            // Operators, Cities, etc, in the DeparturesList component,
-            // it's important that all data is in the response. If not, we'll just
-            // display a helpful message, and try again! :-)
-            throw "Incomplete response";
           }
         } catch {
+          // If something goes wrong, our best bet is probably to try again,
+          // and display a helpful message to the user.
           dispatch(
             setError("It's taking slightly longer than usual, please hang on.")
           );
