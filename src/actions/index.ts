@@ -133,10 +133,7 @@ export function fetchDepartures(
               polling
             )
           );
-          if (json.complete) {
-            dispatch(doneSearching());
-          } else {
-            // We only want to keep polling if !complete
+          if (!json.complete) {
             window.setTimeout(
               () =>
                 dispatch(
@@ -160,6 +157,13 @@ export function fetchDepartures(
           dispatch(
             fetchDepartures(origin, destination, outboundDate, false, 0)
           );
+        } finally {
+          if (
+            json.complete ||
+            (json.departures && json.departures.length > 0)
+          ) {
+            dispatch(doneSearching());
+          }
         }
       }
     } catch {
