@@ -104,8 +104,19 @@ describe("it should have a reducer", () => {
           language: "en",
           searching: false,
           departures: [
-            mockDeparture,
-            // Adding a mockDeparture with a price of 0 - sorting should put that departure first
+            // Adding some more mocks, with different prices
+            {
+              ...mockDeparture,
+              prices: { ...mockDeparture.prices, total: 500 }
+            },
+            {
+              ...mockDeparture,
+              prices: { ...mockDeparture.prices, total: 300 }
+            },
+            {
+              ...mockDeparture,
+              prices: { ...mockDeparture.prices, total: 100 }
+            },
             { ...mockDeparture, prices: { ...mockDeparture.prices, total: 0 } }
           ],
           locations: [mockLocation],
@@ -122,7 +133,9 @@ describe("it should have a reducer", () => {
       searching: false,
       departures: [
         { ...mockDeparture, prices: { ...mockDeparture.prices, total: 0 } },
-        mockDeparture
+        { ...mockDeparture, prices: { ...mockDeparture.prices, total: 100 } },
+        { ...mockDeparture, prices: { ...mockDeparture.prices, total: 300 } },
+        { ...mockDeparture, prices: { ...mockDeparture.prices, total: 500 } }
       ],
       locations: [mockLocation],
       operators: [mockOperator],
@@ -137,8 +150,19 @@ describe("it should have a reducer", () => {
           language: "en",
           searching: false,
           departures: [
-            mockDeparture,
-            // Adding a mockDeparture with a departure time of 12:00 am - sorting should put that departure first
+            // Adding some more mocks, with different times
+            {
+              ...mockDeparture,
+              departure_time: new Date("2 August, 01:00 am").toISOString()
+            },
+            {
+              ...mockDeparture,
+              departure_time: new Date("2 August, 06:00 am").toISOString()
+            },
+            {
+              ...mockDeparture,
+              departure_time: new Date("2 August, 04:00 am").toISOString()
+            },
             {
               ...mockDeparture,
               departure_time: new Date("2 August, 12:00 am").toISOString()
@@ -161,7 +185,18 @@ describe("it should have a reducer", () => {
           ...mockDeparture,
           departure_time: new Date("2 August, 12:00 am").toISOString()
         },
-        mockDeparture
+        {
+          ...mockDeparture,
+          departure_time: new Date("2 August, 01:00 am").toISOString()
+        },
+        {
+          ...mockDeparture,
+          departure_time: new Date("2 August, 04:00 am").toISOString()
+        },
+        {
+          ...mockDeparture,
+          departure_time: new Date("2 August, 06:00 am").toISOString()
+        }
       ],
       locations: [mockLocation],
       operators: [mockOperator],
