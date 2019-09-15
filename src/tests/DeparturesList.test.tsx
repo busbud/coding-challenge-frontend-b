@@ -72,7 +72,7 @@ it("renders 'Searching...' when searching=true", () => {
   expect(result).toMatchSnapshot();
 });
 
-it("renders 'Searching...' when searching=true, despite departures being loaded", () => {
+it("renders list when searching=true, even when there's data", () => {
   const store = mockStore({
     language: "en",
     searching: true,

@@ -20,18 +20,6 @@ exports[`renders 'Searching...' when searching=true 1`] = `
 </div>
 `;
 
-exports[`renders 'Searching...' when searching=true, despite departures being loaded 1`] = `
-<div>
-  <ul
-    className="departures-list"
-  >
-    <div>
-      Searching...
-    </div>
-  </ul>
-</div>
-`;
-
 exports[`renders a list when loadDepartures() is fired 1`] = `
 <div>
   <div
@@ -55,7 +43,6 @@ exports[`renders a list when loadDepartures() is fired 1`] = `
   >
     <li
       className="departures-list-item"
-      id="dli-0-Métro Bonaventure Bus Station-Métro Bonaventure Bus Station-2016-01-14T07:55:00"
     >
       <div
         className="card undefined"
@@ -135,5 +122,17 @@ exports[`renders a list when loadDepartures() is fired 1`] = `
 exports[`renders error message when there's an error 1`] = `
 <div>
   Test error message
+</div>
+`;
+
+exports[`renders list when searching=true, even when there's data 1`] = `
+<div>
+  <ul
+    className="departures-list"
+  >
+    <div>
+      Searching...
+    </div>
+  </ul>
 </div>
 `;

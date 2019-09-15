@@ -34,11 +34,7 @@ export const DeparturesListItem: React.FunctionComponent<
     index
   } = props;
   return (
-    <li
-      key={`dli-${index}-${origin.name}-${destination.name}-${departure.arrival_time}`}
-      id={`dli-${index}-${origin.name}-${destination.name}-${departure.arrival_time}`}
-      className="departures-list-item"
-    >
+    <li className="departures-list-item">
       <Card>
         <div className="departures-list-item__row">
           <img

@@ -126,10 +126,10 @@ export function fetchDepartures(
           dispatch(clearError());
           dispatch(
             loadDepartures(
-              json.departures,
-              json.locations,
-              json.operators,
-              json.cities,
+              json.departures || [],
+              json.locations || [],
+              json.operators || [],
+              json.cities || [],
               polling
             )
           );
