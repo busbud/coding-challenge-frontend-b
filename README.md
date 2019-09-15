@@ -2,7 +2,7 @@
 
 Hey, thanks so much for looking at my code!
 
-I built this little app with React, Redux, TypeScript, i18next for translations, and Jest and Enzyme for testing. There's always room for improvement of course! For example, there could be more component tests, visual tests, or other sort of integration and/or E2E testing. I had a lot of fun with this! Thanks again.
+I built this little app with React, Redux, TypeScript, i18next for translations, and Jest for testing. There's always room for improvement of course! For example, there could be more component tests, visual tests, or other sort of integration and/or E2E testing. I had a lot of fun with this! Thanks again.
 
 It's hosted on [heroku!](https://busbud-valentijnnieman.herokuapp.com)
 
