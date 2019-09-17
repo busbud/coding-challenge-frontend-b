@@ -1,7 +1,7 @@
 
 ## Run locally
 ```
-export REACT_APP_X_TOKEN_API='your_secret_busbud_api_access_code'
+export REACT_APP_API_TOKEN='your_secret_busbud_api_access_code'
 git clone git@github.com:iamseye/coding-challenge-frontend-b.git
 cd coding-challenge-frontend-b
 npm install
