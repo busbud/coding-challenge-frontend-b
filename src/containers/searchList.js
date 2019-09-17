@@ -79,7 +79,7 @@ class Search extends Component {
         />
         { this.state.searchResult.departures.map((item, i) => (
           <ListCard key={i}
-            price={Utils.priceFormatter('USD', item.prices.total)}
+            price={Utils.priceFormatter('USD', item.prices ? item.prices.total : 0)}
             departureTime={Utils.getLocalTime(item.departure_time, item.departure_timezone)}
             arrivalTime={Utils.getLocalTime(item.arrival_time, item.arrival_timezone)}
             departureStation={this.getLocationData(item.origin_location_id)}
