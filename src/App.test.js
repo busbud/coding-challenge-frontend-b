@@ -1,9 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
+import Header from './components/header.js';
+import SearchList from './containers/searchList.js';
+import { shallow } from '../setupTests';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+test('renders without crashing', () => {
+	const app = shallow(<App/>);
+	expect(app.containsAnyMatchingElements([
+    <div className="App">
+      <Header />
+      <SearchList />
+    </div>
+    ])
+  ).toBeTruthy();
 });
