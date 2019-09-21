@@ -32,9 +32,7 @@ class Search extends Component {
         return res.data;
       }).then(res => {
           if (!res.complete) {
-            setInterval(
-              this.getMoreData(this.state.searchResult.departures.length)
-            , 2000)
+            this.getMoreData(this.state.searchResult.departures.length)
           }
       })
   }
