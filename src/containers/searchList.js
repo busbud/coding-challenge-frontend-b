@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import SearchBox from '../components/searchBox.js'
 import ListCard from '../components/listCard.js'
 import Api from '../utils/api.js'
-import Utils from '../utils/utils.js'
+import FormatHelper from '../utils/formatHelper.js'
 import '../styles/search.scss'
+import MergeDeep from '../utils/mergeHelper.js'
 
 class Search extends Component {
   constructor(props) {
@@ -45,10 +46,7 @@ class Search extends Component {
     Api.searchPoll(this.state.searchAttribute, this.state.searchParams)
       .then(res => {
         this.setState( prevState => ({
-           searchResult: {...prevState.searchResult,
-             departures: [...prevState.searchResult.departures, res.data.departures],
-             locations: [...prevState.searchResult.locations, res.data.locations],
-             operators: [...prevState.searchResult.operators, res.data.operators] }
+           searchResult: MergeDeep(prevState, res.data)
         }))
 
         if (res.complete) {
@@ -77,9 +75,9 @@ class Search extends Component {
         />
         { this.state.searchResult.departures.map((item, i) => (
           <ListCard key={i}
-            price={Utils.priceFormatter('USD', item.prices ? item.prices.total : 0)}
-            departureTime={Utils.getLocalTime(item.departure_time, item.departure_timezone)}
-            arrivalTime={Utils.getLocalTime(item.arrival_time, item.arrival_timezone)}
+            price={FormatHelper.priceFormatter('USD', item.prices.total)}
+            departureTime={FormatHelper.getLocalTime(item.departure_time, item.departure_timezone)}
+            arrivalTime={FormatHelper.getLocalTime(item.arrival_time, item.arrival_timezone)}
             departureStation={this.getLocationData(item.origin_location_id)}
             arrivalStation={this.getLocationData(item.destination_location_id)}
             operator={this.getOperatorData(item.operator_id)}

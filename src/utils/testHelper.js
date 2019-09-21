@@ -34,6 +34,24 @@ export const moreTestTripInfo = {
   complete: true
 };
 
+export const moreTestTripInfoNotCompleted = {
+  locations: [
+    { id: 5, name: 'park', address: ['street', 'the city'] },
+    { id: 6, name: 'pool', address: ['road', 'the town'] },
+  ],
+  departures: [{
+    prices: { total: 4600 },
+    arrivalTime: '2018-04-27T18:55:00',
+    departureTime: '2018-04-27T14:55:00',
+    originLocationId: 1,
+    destinationLocationId: 2,
+    operatorId: 'x',
+    id: 'c',
+  }],
+  operators: [{ id: 'z', displayName: 'Coach Operator' }],
+  complete: false
+};
+
 export const testTripInfoNotCompleted = {
   locations: [
     { id: 1, name: 'park', address: ['street', 'the city'] },
