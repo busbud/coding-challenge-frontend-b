@@ -3,8 +3,8 @@ import SearchBox from '../components/searchBox.js'
 import ListCard from '../components/listCard.js'
 import Api from '../utils/api.js'
 import FormatHelper from '../utils/formatHelper.js'
-import '../styles/search.scss'
 import MergeDeep from '../utils/mergeHelper.js'
+import '../styles/search.scss'
 
 class Search extends Component {
   constructor(props) {
@@ -32,27 +32,27 @@ class Search extends Component {
         this.setState({ searchResult: res.data })
         return res.data;
       }).then(res => {
-          if (!res.complete) {
-            this.getMoreData(this.state.searchResult.departures.length)
-          }
+        if (!res.complete) {
+          setInterval(this.getMoreData(), 2000);
+        }
       })
   }
 
-  getMoreData = (index) => {
+  getMoreData = () => {
     this.setState({
-       searchParams: {...this.state.searchParams, ...{ index: index }}
-    })
-
-    Api.searchPoll(this.state.searchAttribute, this.state.searchParams)
-      .then(res => {
-        this.setState( prevState => ({
-           searchResult: MergeDeep(prevState, res.data)
+       searchParams: {...this.state.searchParams, ...{ index: this.state.searchResult.departures.length }}
+    }, () => {
+      Api.searchPoll(this.state.searchAttribute, this.state.searchParams)
+        .then(res => {
+          this.setState( prevState => ({
+            searchResult: MergeDeep(prevState, res.data)
         }))
 
         if (res.complete) {
           clearInterval()
         }
       })
+    })
   }
 
   getLocationData = (locatoinId) => {

@@ -53,7 +53,7 @@ describe('<SearchList /> container', () => {
     expect(spy).toBeCalled();
   });
 
-  test('should update state searchResult when call getMoreData()', async () => {
+  test('should update state searchResult when call clickSearch() and data reading not completed ', async () => {
     const wrapper = shallow(<SearchList />);
     Api.searchBus.mockImplementation(() => Promise.resolve({ data: testTripInfoNotCompleted }));
     Api.searchPoll.mockImplementation(() => Promise.resolve({ data: moreTestTripInfo }));
@@ -63,6 +63,23 @@ describe('<SearchList /> container', () => {
     await wrapper.update();
 
     expect(Api.searchPoll).toBeCalled();
-    expect(wrapper.state().searchResult).toEqual(expected)
+    expect(wrapper.state().searchResult).toEqual(expected);
+  });
+
+  test('should loop searchPoll api and update state searchResult when data reading not completed', async () => {
+    const wrapper = shallow(<SearchList />);
+
+    Api.searchBus.mockImplementation(() => Promise.resolve({ data: testTripInfoNotCompleted }));
+    Api.searchPoll
+      .mockImplementationOnce(() => Promise.resolve({ data: moreTestTripInfoNotCompleted }))
+      .mockImplementationOnce(() => Promise.resolve({ data: moreTestTripInfo }));
+
+    const expected = MergeDeep(testTripInfoNotCompleted, moreTestTripInfoNotCompleted, moreTestTripInfo);
+
+    await wrapper.instance().clickSearch();
+    await wrapper.update();
+
+    expect(Api.searchPoll).toBeCalledTimes(2);
+    expect(wrapper.state().searchResult).toEqual(expected);
   });
 });
