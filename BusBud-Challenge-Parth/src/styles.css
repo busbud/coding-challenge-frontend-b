@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+.container {
+  padding-right: 50px;
+  padding-left: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.button {
+    padding: 0.25rem 1rem;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    background-color: orange;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
