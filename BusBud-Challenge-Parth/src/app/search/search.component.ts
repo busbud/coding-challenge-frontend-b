@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeparturesService } from '../departures.service';
 import { IHash } from './ihash';
 
 
@@ -18,7 +19,10 @@ export class SearchComponent implements OnInit {
     this.cityGeo[this.destination] = 'f25dvk';
   }
 
+  constructor(private departuresService: DeparturesService) {}
+
   onSubmit() {
     console.log(this.origin + ' ' + this.destination + ' ' + this.dateAndTime);
+    this.departuresService.fetchResults(this.cityGeo[this.origin], this.cityGeo[this.destination], this.dateAndTime);
   }
 }
