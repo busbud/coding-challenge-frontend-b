@@ -1,0 +1,33 @@
+.card {
+  display: inline-block;
+  width: 60%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin-bottom: 1rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.display-list {
+  padding-right: 50px;
+  padding-left: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.times {
+  padding-left: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  float: left;
+}
+
+.price {
+ padding-right: 3rem;
+ padding-top: 2rem;
+ padding-bottom: 2rem;
+float: right;
+}
