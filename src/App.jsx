@@ -30,6 +30,10 @@ class UnconnectedNavigation extends Component {
 let renderDeparturesDetails = routerData => {
   return (
     <div>
+      {console.log(
+        "routerData.match.params.origin",
+        routerData.match.params.origin
+      )}
       <Departures
         origin={routerData.match.params.origin}
         destination={routerData.match.params.destination}
@@ -48,6 +52,7 @@ class UnconnectedApp extends Component {
         <Router>
           <Navigation />
           <Route exact={true} path="/" component={Departures} />
+         
           <Route
             exact={true}
             path="/x-departures/:origin/:destination/:outbound_date"

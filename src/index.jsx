@@ -12,7 +12,7 @@ let reducer = (state, action) => {
 
 const store = createStore(
   reducer,
-  {},
+  { origin: "New York" },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
