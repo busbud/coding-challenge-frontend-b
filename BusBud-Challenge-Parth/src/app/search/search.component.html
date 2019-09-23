@@ -1,0 +1,23 @@
+<div class="search-form">
+    <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+      <div class="form-group">
+        <label for="Origin">Origin</label>
+        <input type="text" class="form-control" disabled="true" name="origin" [(ngModel)]="origin" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Destination">Destination</label>
+        <input type="text" class="form-control" disabled="true" name="destination" [(ngModel)]="destination" required>
+
+      </div>
+
+      <div class="form-group">
+        <label for="Date">Date</label>
+        <input type="date" class="form-control" name="dateAndTime" [(ngModel)]="dateAndTime" required>
+      </div>
+
+      <button type="submit" class="button">Search</button>
+
+    </form>
+</div>
+
