@@ -7,6 +7,7 @@ cd coding-challenge-frontend-b
 npm install
 ```
 To boot the server: `npm start`.
+To run test: `npm test`.
 
 ## Hosting
 on [Heroku] (https://bus-search.herokuapp.com/)
@@ -15,4 +16,4 @@ on [Heroku] (https://bus-search.herokuapp.com/)
 (https://github.com/iamseye/bus_search)
 
 ## Improvement
-Localization, currency support and testing.
+Localization, currency support.
