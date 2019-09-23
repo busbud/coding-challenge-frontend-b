@@ -1,11 +1,14 @@
 import React from 'react';
 import '../styles/header.scss';
+import logo from '../images/logo.png';
+import osheaga from '../images/osheaga.png';
+
 
 const Header = () => (
   <header className="header">
-    <h3>
-      Osheaga festival! 
-    </h3>
+    <img className="osheaga" src={osheaga} alt="osheaga" />
+    <p>avec</p>
+    <img className="logo" src={logo} alt="Logo" />
   </header>
 );
 

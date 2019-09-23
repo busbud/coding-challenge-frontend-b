@@ -1,4 +1,3 @@
-
 @import '_mixins';
 @import '_variables';
 
@@ -6,9 +5,17 @@
   margin: 15px;
 
   &__upper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--operator {
+      color: $color-dark-grey;
+    }
+
+    &--price {
+      color: $color-dark-grey;
+    }
   }
 
   &__lower {

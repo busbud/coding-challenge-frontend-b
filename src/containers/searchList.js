@@ -1,22 +1,25 @@
-import React, { Component } from 'react'
-import SearchBox from '../components/searchBox.js'
-import ListCard from '../components/listCard.js'
-import Api from '../utils/api.js'
-import FormatHelper from '../utils/formatHelper.js'
-import MergeDeep from '../utils/mergeHelper.js'
-import '../styles/search.scss'
+import React, { Component } from 'react';
+import SearchBox from '../components/searchBox.js';
+import ListCard from '../components/listCard.js';
+import Api from '../utils/api.js';
+import FormatHelper from '../utils/formatHelper.js';
+import FunctionHelper from '../utils/functionHelper.js';
+import { defaultCurrency, defaultSearchAdult, defaultSearchDate,
+    defaultDepart, defaultArrive, loopApiTime } from '../config.js';
+
+import '../styles/search.scss';
 
 class Search extends Component {
   constructor(props) {
     super(props)
     this.state = {
       searchAttribute: {
-        departCity: 'dr5reg',
-        arriveCity: 'f25dvk',
-        searchDate: '2020-08-02'
+        departCity: defaultDepart,
+        arriveCity: defaultArrive,
+        searchDate: defaultSearchDate
       },
       searchParams: {
-        adult: 1
+        adult: defaultSearchAdult
       },
       searchResult: {
         locations: [],
@@ -33,7 +36,7 @@ class Search extends Component {
         return res.data;
       }).then(res => {
         if (!res.complete) {
-          setInterval(this.getMoreData(), 2000);
+          setInterval(this.getMoreData(), loopApiTime);
         }
       })
   }
@@ -45,7 +48,7 @@ class Search extends Component {
       Api.searchPoll(this.state.searchAttribute, this.state.searchParams)
         .then(res => {
           this.setState( prevState => ({
-            searchResult: MergeDeep(prevState, res.data)
+            searchResult: FunctionHelper.mergeDeep(prevState, res.data)
         }))
 
         if (res.complete) {
@@ -75,7 +78,7 @@ class Search extends Component {
         />
         { this.state.searchResult.departures.map((item, i) => (
           <ListCard key={i}
-            price={FormatHelper.priceFormatter('USD', item.prices.total)}
+            price={FormatHelper.priceFormatter(defaultCurrency, item.prices.total)}
             departureTime={FormatHelper.getLocalTime(item.departure_time, item.departure_timezone)}
             arrivalTime={FormatHelper.getLocalTime(item.arrival_time, item.arrival_timezone)}
             departureStation={this.getLocationData(item.origin_location_id)}

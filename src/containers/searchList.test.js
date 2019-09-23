@@ -5,7 +5,7 @@ import { testTripInfo, testTripInfoNotCompleted, moreTestTripInfo,
   moreTestTripInfoNotCompleted } from '../utils/testHelper.js';
 import { shallow } from '../../setupTests';
 import Api from '../utils/api.js';
-import MergeDeep from '../utils/mergeHelper.js';
+import FunctionHelper from '../utils/functionHelper.js';
 
 jest.mock('../utils/api.js', () => ({
   searchBus: jest.fn(),
@@ -57,7 +57,7 @@ describe('<SearchList /> container', () => {
     const wrapper = shallow(<SearchList />);
     Api.searchBus.mockImplementation(() => Promise.resolve({ data: testTripInfoNotCompleted }));
     Api.searchPoll.mockImplementation(() => Promise.resolve({ data: moreTestTripInfo }));
-    const expected = MergeDeep(testTripInfoNotCompleted, moreTestTripInfo);
+    const expected = FunctionHelper.mergeDeep(testTripInfoNotCompleted, moreTestTripInfo);
 
     await wrapper.instance().clickSearch();
     await wrapper.update();
@@ -74,7 +74,7 @@ describe('<SearchList /> container', () => {
       .mockImplementationOnce(() => Promise.resolve({ data: moreTestTripInfoNotCompleted }))
       .mockImplementationOnce(() => Promise.resolve({ data: moreTestTripInfo }));
 
-    const expected = MergeDeep(testTripInfoNotCompleted, moreTestTripInfoNotCompleted, moreTestTripInfo);
+    const expected = FunctionHelper.mergeDeep(testTripInfoNotCompleted, moreTestTripInfoNotCompleted, moreTestTripInfo);
 
     await wrapper.instance().clickSearch();
     await wrapper.update();
