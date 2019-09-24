@@ -10,6 +10,8 @@ body {
   /* min-width: 1824;
   max-width: 767; */
   font-size: 18px;
+  background-image: url("/background-departures-image.jpeg");
+  opacity: 0.95;
 }
 
 code {
