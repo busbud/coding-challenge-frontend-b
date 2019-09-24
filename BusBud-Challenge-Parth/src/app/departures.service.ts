@@ -42,19 +42,23 @@ export class DeparturesService {
   }
 
   updateDepartures(response: any) {
-    const fetchedPollDepartures = response['departures'];
-    fetchedPollDepartures.forEach(xDept => {
+    const fetchedlocations = response['locations'];
+    const fetchedDepartures = response['departures'];
+    console.log(fetchedlocations);
+    fetchedDepartures.forEach(xDept => {
         let modifiedPrice = xDept['prices']['total'];
         modifiedPrice = ((modifiedPrice * 1.0) / 100).toFixed(2);
         let modifiedArrivalTime = xDept['arrival_time'];
         modifiedArrivalTime = modifiedArrivalTime.substring(11, 16);
         let modifiedDepartureTime = xDept['departure_time'];
         modifiedDepartureTime = modifiedDepartureTime.substring(11, 16);
+        let modifiedOriginLocation = fetchedlocations.find(elem => elem['id'] === xDept['origin_location_id']);
+        modifiedOriginLocation = modifiedOriginLocation['name'];
 
         const depart = {
           departureTime: modifiedDepartureTime,
           arrivalTime: modifiedArrivalTime,
-          locationName: 'TODO',
+          locationName: modifiedOriginLocation,
           price: modifiedPrice
         };
         this.departures.push(depart);
