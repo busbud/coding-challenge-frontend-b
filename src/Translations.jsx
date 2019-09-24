@@ -5,6 +5,8 @@ let t = x => {
       return (y = "Tous les départs");
     case "Departure":
       return (y = "Départ");
+    case "Departures":
+      return (y = "Départs");
     case "Destination":
       return (y = "Destination");
     case "Passengers":
@@ -31,6 +33,10 @@ let t = x => {
       return (y = "Prix:");
     case "Clear search":
       return (y = "Effacer la recherche");
+    case "Travel the world & protect the environment":
+      return (y = "Voyage à travers le monde & protège l'environnement");
+    case "Search Bus":
+      return (y = "Trouver un bus");
   }
 
   return y;

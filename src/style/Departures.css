@@ -1,0 +1,128 @@
+.global-container {
+  /* border: 1px solid red; */
+  /* padding: 10px; */
+  margin: 30px;
+  padding-top: 0;
+  justify-content: center;
+  align-items: center;
+  float: center;
+}
+.search-bus-container {
+  /* border: 1px solid purple; */
+  /* background-color: #bcd2ee; */
+  background-color: #0065b8;
+  border-radius: 20px;
+  border: 2px solid #fc0;
+}
+
+.search-bus-header {
+  font-weight: bold;
+  color: white;
+}
+
+.search-bus-header,
+.all-departures-header {
+  /* border: 1px solid red; */
+  text-align: center;
+}
+
+.departure-destination-container,
+/* .date-passengers-container, */
+.departure-date-container,
+.passengers-container,
+.trip-type,
+.search-bus-btn-container {
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2px;
+}
+
+.passengers-container:hover,
+.trip-type:hover {
+  cursor: not-allowed;
+  transition: 0.1s;
+}
+
+select:hover {
+  cursor: not-allowed;
+}
+
+.label-input-container {
+  /* border: 1px solid blue; */
+  padding: 10px;
+}
+input {
+  border-radius: 20px;
+  border: 2px solid #fc0;
+  height: 25px;
+  width: 200px;
+  text-align: center;
+  color: #0065b8;
+  font-weight: 500;
+  font-size: 14px;
+}
+select:hover,
+input:hover {
+  background-color: #fc0;
+  color: #0065b8;
+  transition: 0.1s;
+}
+#submit-btn {
+  background-color: #fc0;
+  border-radius: 20px;
+  border: 2px solid #fc0;
+  color: #0065b8;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 10px;
+  height: 30px;
+}
+#submit-btn:hover {
+  border: 2px solid #fc0;
+  color: #fc0;
+  background-color: #0065b8;
+  transition: 0.1s;
+}
+#submit-btn:active {
+  cursor: wait;
+  border: 2px solid #0065b8;
+  color: #0065b8;
+  background-color: #fc0;
+}
+.label {
+  font-weight: 600;
+  font-size: 18px;
+  color: white;
+}
+select {
+  font-weight: 500;
+  font-size: 14px;
+  color: #0065b8;
+  border: 2px solid #fc0;
+}
+.departure-result-container {
+  margin-top: 10px;
+  border-bottom: 1px dotted #0065b8;
+}
+
+.pagination-btn {
+  margin-top: 10px;
+  border: 1px solid #0065b8;
+  border-radius: 20px;
+  color: #fc0;
+  background-color: #0065b8;
+  font-weight: 500;
+  font-size: 14px;
+  /* float: right; */
+}
+.operator-price {
+  display: flex;
+  justify-content: space-evenly;
+}
+.label-bus-results {
+  font-weight: 600;
+}
+.departure-arrival-result {
+  margin-left: 20px;
+}

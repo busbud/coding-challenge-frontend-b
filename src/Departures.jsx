@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { t, geohashCity } from "./Translations.jsx";
+import "./style/Departures.css";
 
 class UnconnectedDepartures extends Component {
   constructor(props) {
@@ -196,116 +197,171 @@ class UnconnectedDepartures extends Component {
     console.log("this.props.language", this.props.language);
     let lng = this.props.language;
     return (
-      <div>
-        <div>
-          <select name="travelType" onChange={this.handleTravelTypeChange}>
-            <option value="One way">
-              {lng === "Fr" ? t("One way") : "One way"}
-            </option>
-            <option value="Round Trip">
-              {lng === "Fr" ? t("Round Trip") : "Round Trip"}
-            </option>
-          </select>
-        </div>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              {lng === "Fr" ? t("Departure") : "Departure"}
-              <input
-                list="browsers"
-                name="mybrowser"
-                value={this.state.origin}
-                onChange={this.handleOriginChange}
-              />
-            </label>
-            <datalist id="browsers" onClick={this.handleOriginChange}>
-              <option value="New York" />
-              <option value={lng === "Fr" ? t("Montreal") : "Montreal"} />
-            </datalist>
-
-            <label>
-              {lng === "Fr" ? t("Destination") : "Destination"}
-              <input
-                list="browsers"
-                name="mybrowser"
-                value={this.state.destination}
-                onChange={this.handleDestinationChange}
-              />
-            </label>
-            <datalist id="browsers" onClick={this.handleDestinationChange}>
-              <option value="New York" />
-              <option value="Montreal" />
-            </datalist>
-
-            <label>
-              {lng === "Fr" ? t("Departure Date") : "Departure Date"}
-            </label>
-            <input
-              type="date"
-              value={this.state.outbound_date}
-              onChange={this.handleOutboundDateChange}
-            />
-            <label>{lng === "Fr" ? t("Passengers") : "Passengers"}</label>
-            {/* Add number of passengers */}
-            <select name="passengers" onClick={this.handlePassengerChange}>
-              <option value="adult">
-                {lng === "Fr" ? t("1 adult") : "1 adult"}
+      <div className="global-container">
+        <div className="search-bus-container">
+          <h3 className="search-bus-header">
+            {lng === "Fr" ? t("Search Bus") : "Search Bus"}
+          </h3>
+          <div className="trip-type">
+            <select name="travelType" onChange={this.handleTravelTypeChange}>
+              <option value="One way">
+                {lng === "Fr" ? t("One way") : "One way"}
               </option>
-              <option value="child">
-                {lng === "Fr" ? t("1 child") : "1 child"}
-              </option>
-              <option value="senior">
-                {lng === "Fr" ? t("1 senior") : "1 senior"}
+              <option value="Round Trip">
+                {lng === "Fr" ? t("Round Trip") : "Round Trip"}
               </option>
             </select>
-            <input
-              type="submit"
-              value={lng === "Fr" ? t("Search for buses") : "Search for buses"}
-            />
-            {this.props.busResults.departures !== undefined ? (
-              <button onClick={this.clearSearch}>
-                {lng === "Fr" ? t("Clear search") : "Clear search"}
-              </button>
-            ) : null}
-          </form>
+          </div>
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              <div className="departure-destination-container">
+                <div className="label-input-container">
+                  <div className="label">
+                    {lng === "Fr" ? t("Departure") : "Departure"}
+                  </div>
+                  <div>
+                    <input
+                      list="browsers"
+                      name="mybrowser"
+                      value={this.state.origin}
+                      onChange={this.handleOriginChange}
+                    />
+
+                    <datalist id="browsers" onClick={this.handleOriginChange}>
+                      <option value="New York" />
+                      <option
+                        value={lng === "Fr" ? t("Montreal") : "Montreal"}
+                      />
+                    </datalist>
+                  </div>
+                </div>
+                <div className="label-input-container">
+                  <div className="label">
+                    {lng === "Fr" ? t("Destination") : "Destination"}
+                  </div>
+                  <div>
+                    <input
+                      list="browsers"
+                      name="mybrowser"
+                      value={this.state.destination}
+                      onChange={this.handleDestinationChange}
+                    />
+                    <datalist
+                      id="browsers"
+                      onClick={this.handleDestinationChange}
+                    >
+                      <option value="New York" />
+                      <option value="Montreal" />
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+              <div className="departure-date-container">
+                <div className="label-input-container">
+                  <div className="label">
+                    {lng === "Fr" ? t("Departure Date") : "Departure Date"}
+                  </div>
+                  <input
+                    type="date"
+                    value={this.state.outbound_date}
+                    onChange={this.handleOutboundDateChange}
+                  />
+                </div>
+              </div>
+              <div className="passengers-container">
+                <div className="label-input-container">
+                  <div className="label">
+                    {lng === "Fr" ? t("Passengers") : "Passengers"}
+                  </div>
+                  {/* Add number of passengers */}
+                  <div>
+                    <select
+                      name="passengers"
+                      onClick={this.handlePassengerChange}
+                    >
+                      <option value="adult">
+                        {lng === "Fr" ? t("1 adult") : "1 adult"}
+                      </option>
+                      <option value="child">
+                        {lng === "Fr" ? t("1 child") : "1 child"}
+                      </option>
+                      <option value="senior">
+                        {lng === "Fr" ? t("1 senior") : "1 senior"}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="search-bus-btn-container">
+                <input
+                  type="submit"
+                  id="submit-btn"
+                  value={
+                    lng === "Fr" ? t("Search for buses") : "Search for buses"
+                  }
+                />
+
+                {this.props.busResults.departures !== undefined ? (
+                  <button id="submit-btn" onClick={this.clearSearch}>
+                    {lng === "Fr" ? t("Clear search") : "Clear search"}
+                  </button>
+                ) : null}
+              </div>
+            </form>
+          </div>
         </div>
         <div>
           {this.props.busResults.departures !== undefined &&
           this.props.busResults.operators !== undefined
             ? this.props.busResults.departures
-                .slice(this.state.page * 4, this.state.page * 4 + 4)
+                .slice(this.state.page * 3, this.state.page * 3 + 3)
                 .map(bus => {
                   return (
-                    <div>
+                    <div className="departure-result-container">
                       {this.props.busResults.operators.map(op => {
                         if (op.id === bus.operator_id) {
                           console.log("op.display_name", op.display_name);
                           return (
                             <div>
-                              <div>{op.display_name}</div>
-                              <div>
-                                {lng === "Fr"
-                                  ? t("Departure time:")
-                                  : "Departure time:"}{" "}
-                                {bus.departure_time
-                                  .split("T")
-                                  .join(" at ")
-                                  .slice(0, -3)}
-                                {" from " + this.state.origin}
+                              <div className="operator-price">
+                                <b>{op.display_name.toUpperCase()}</b>
+                                <br />
+                                <div className="label-bus-results">
+                                  {lng === "Fr" ? t("Price:") : "Price: "}
+                                  <a>
+                                    {bus.prices.total}
+                                    {" " + bus.prices.currency}
+                                  </a>
+                                </div>{" "}
                               </div>
                               <div>
-                                {lng === "Fr"
-                                  ? t("Arrival time:")
-                                  : "Arrival time:"}{" "}
-                                {bus.arrival_time
-                                  .split("T")
-                                  .join(" at ")
-                                  .slice(0, -3)}
+                                <div className="label-bus-results">
+                                  {lng === "Fr"
+                                    ? t("Departure time:")
+                                    : "Departure time:"}{" "}
+                                </div>
+                                <div className="departure-arrival-result">
+                                  {bus.departure_time
+                                    .split("T")
+                                    .join(" at ")
+                                    .slice(0, -3)}
+                                  {" from " + this.state.origin}
+                                </div>
                               </div>
-                              {lng === "Fr" ? t("Price:") : "Price:"}{" "}
-                              {bus.prices.total}
-                              {" " + bus.prices.currency}
-                              <br />
+                              <div>
+                                <div className="label-bus-results">
+                                  {lng === "Fr"
+                                    ? t("Arrival time:")
+                                    : "Arrival time:"}{" "}
+                                </div>
+                                <div className="departure-arrival-result">
+                                  {bus.arrival_time
+                                    .split("T")
+                                    .join(" at ")
+                                    .slice(0, -3)}
+                                </div>
+                              </div>
                             </div>
                           );
                         }
@@ -318,11 +374,18 @@ class UnconnectedDepartures extends Component {
         <div>
           {this.props.busResults.departures !== undefined &&
           this.state.page > 0 ? (
-            <button onClick={this.goBackToPreviousPage}>back</button>
+            <button
+              className="pagination-btn"
+              onClick={this.goBackToPreviousPage}
+            >
+              back
+            </button>
           ) : null}
           {this.props.busResults.departures !== undefined &&
-          this.props.busResults.departures.length > 5 ? (
-            <button onClick={this.goToNextPage}>next</button>
+          this.props.busResults.departures.length > 3 ? (
+            <button className="pagination-btn" onClick={this.goToNextPage}>
+              next
+            </button>
           ) : null}
         </div>
       </div>

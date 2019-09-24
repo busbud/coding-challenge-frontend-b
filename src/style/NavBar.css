@@ -1,0 +1,35 @@
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  display: flex;
+  background-color: #fc0;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fc0;
+  text-align: center;
+  font-weight: 500;
+}
+
+#lng-button {
+  border: none;
+  background-color: #fc0;
+  font-weight: 600;
+  font-size: 16px;
+  color: inherit;
+}
+#lng-button:hover {
+  background-color: #0065b8;
+  color: #fc0;
+  transition: 0.1s;
+}

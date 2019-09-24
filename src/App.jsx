@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
+import "./style/NavBar.css";
+import "./style/Departures.css";
 import { connect } from "react-redux";
 import { t } from "./Translations.jsx";
 import {
@@ -28,9 +30,22 @@ class UnconnectedNavigation extends Component {
     let lng = this.props.language;
     return (
       <div>
-        <h1>{lng === "Fr" ? t("All departures") : "All departures"}</h1>
-        <button onClick={this.changeLngFr}>Fr</button>
-        <button onClick={this.changeLngEn}>En</button>
+        <div className="header">
+          <h2>{lng === "Fr" ? t("Departures") : "Departures"}</h2>
+          <div>
+            <button id="lng-button" onClick={this.changeLngFr}>
+              Fr
+            </button>
+            <button id="lng-button" onClick={this.changeLngEn}>
+              En
+            </button>
+          </div>
+        </div>
+        <div className="footer">
+          {lng === "Fr"
+            ? t("Travel the world & protect the environment")
+            : "Travel the world & protect the environment"}
+        </div>
       </div>
     );
   };
