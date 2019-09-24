@@ -125,10 +125,10 @@ class UnconnectedDepartures extends Component {
         console.log("Error:", error);
       }
 
-      if (body.complete) {
-        clearInterval(setInterval(pollSearch, 5000));
-        console.log("clear interval");
-      }
+      // if (body.complete) {
+      //   clearInterval(setInterval(pollSearch, 5000));
+      //   console.log("clear interval");
+      // }
     };
 
     let headers = new Headers();
@@ -172,7 +172,8 @@ class UnconnectedDepartures extends Component {
       });
     }
     if (!body.complete) {
-      setInterval(pollSearch, 5000);
+      event.preventDefault();
+      setInterval(pollSearch, 2000);
     }
   };
 
@@ -327,12 +328,9 @@ class UnconnectedDepartures extends Component {
                               <div className="operator-price">
                                 <b>{op.display_name.toUpperCase()}</b>
                                 <br />
-                                <div className="label-bus-results">
-                                  {lng === "Fr" ? t("Price:") : "Price: "}
-                                  <a>
-                                    {bus.prices.total}
-                                    {" " + bus.prices.currency}
-                                  </a>
+                                <div className="label-bus-results" id="price">
+                                  {bus.prices.total}
+                                  {" $" + bus.prices.currency.slice(0, 2)}
                                 </div>{" "}
                               </div>
                               <div>
@@ -378,13 +376,14 @@ class UnconnectedDepartures extends Component {
               className="pagination-btn"
               onClick={this.goBackToPreviousPage}
             >
-              back
+              {lng === "Fr" ? t("back") : "back"}
             </button>
           ) : null}
           {this.props.busResults.departures !== undefined &&
-          this.props.busResults.departures.length > 3 ? (
+          this.props.busResults.departures.length / (this.state.page + 1) >
+            3 ? (
             <button className="pagination-btn" onClick={this.goToNextPage}>
-              next
+              {lng === "Fr" ? t("next") : "next"}
             </button>
           ) : null}
         </div>

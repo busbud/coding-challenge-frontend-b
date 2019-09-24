@@ -37,6 +37,10 @@ let t = x => {
       return (y = "Voyage à travers le monde & protège l'environnement");
     case "Search Bus":
       return (y = "Trouver un bus");
+    case "back":
+      return (y = "précédent");
+    case "next":
+      return (y = "suivant");
   }
 
   return y;

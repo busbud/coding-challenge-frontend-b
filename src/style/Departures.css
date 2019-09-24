@@ -107,6 +107,7 @@ select {
   border-radius: 20px;
   border: 2px solid #fc0;
   padding-left: 20px;
+  padding-top: 5px
 }
 .departure-result-container:hover {
   transition: 0.2s;
@@ -138,4 +139,7 @@ select {
 }
 .departure-arrival-result {
   margin-left: 20px;
+}
+#price {
+  font-size: 18px;
 }

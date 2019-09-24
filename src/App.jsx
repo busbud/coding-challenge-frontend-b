@@ -5,12 +5,7 @@ import "./style/NavBar.css";
 import "./style/Departures.css";
 import { connect } from "react-redux";
 import { t } from "./Translations.jsx";
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  withRouter
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import Departures from "./Departures.jsx";
 
 class UnconnectedNavigation extends Component {
