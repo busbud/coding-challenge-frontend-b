@@ -7,12 +7,15 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 
 let reducer = (state, action) => {
+  if (action.type === "fetch-departures-done") {
+    return { ...state, busResults: action.busResults };
+  }
   return state;
 };
 
 const store = createStore(
   reducer,
-  { origin: "New York" },
+  { origin: "", busResults: {} },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
