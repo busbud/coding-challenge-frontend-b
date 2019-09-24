@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { t, geohashCity } from "./Translations.jsx";
 
 class UnconnectedDepartures extends Component {
   constructor(props) {
@@ -50,9 +51,7 @@ class UnconnectedDepartures extends Component {
   handlePassengerChange = event => {
     event.preventDefault();
     let passengers = Array.from(event.target.selectedOptions)[0].value;
-    // .map(
-    //   option => option.value
-    // );
+
     this.setState({ passengers }, () => {
       console.log("this.state.passengers", this.state.passengers);
     });
@@ -69,42 +68,15 @@ class UnconnectedDepartures extends Component {
     event.preventDefault();
     let iteration = -1;
 
-    let origin;
-    let destination;
-    if (this.state.origin === "New York") {
-      origin = "dr5reg";
-    } else {
-      origin = "f25dvk";
-    }
-    if (this.state.destination.includes("New York")) {
-      destination = "dr5reg";
-    } else {
-      console.log("here");
-      destination = "f25dvk";
-    }
-
     let pollSearch = async () => {
       iteration += 1;
       console.log("iteration", iteration);
 
-      let origin;
-      let destination;
-      if (this.state.origin === "New York") {
-        origin = "dr5reg";
-      } else {
-        origin = "f25dvk";
-      }
-      if (this.state.destination.includes("New York")) {
-        destination = "dr5reg";
-      } else {
-        console.log("here");
-        destination = "f25dvk";
-      }
       let uri =
         "https://napi.busbud.com/x-departures/" +
-        origin +
+        geohashCity(this.state.origin) +
         "/" +
-        destination +
+        geohashCity(this.state.destination) +
         "/" +
         this.state.outbound_date +
         "/poll";
@@ -112,9 +84,9 @@ class UnconnectedDepartures extends Component {
       if (iteration > 1) {
         uri =
           "https://napi.busbud.com/x-departures/" +
-          origin +
+          geohashCity(this.state.origin) +
           "/" +
-          destination +
+          geohashCity(this.state.destination) +
           "/" +
           this.state.outbound_date +
           "/poll?index=10";
@@ -154,14 +126,14 @@ class UnconnectedDepartures extends Component {
 
     let uri =
       "https://napi.busbud.com/x-departures/" +
-      origin +
+      geohashCity(this.state.origin) +
       "/" +
-      destination +
+      geohashCity(this.state.destination) +
       "/" +
       this.state.outbound_date;
     // "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02";
     console.log("uri", uri);
-    
+
     let response = await fetch(uri, {
       method: "GET",
       headers: headers,
@@ -182,39 +154,50 @@ class UnconnectedDepartures extends Component {
     }
   };
 
-  render = () => {
-    console.log("this.state.busResults", this.state.busResults);
-    console.log("this.props.busResults", this.props.busResults);
+  clearSearch = event => {
+    event.preventDefault();
+    this.setState({ origin: "", destination: "", outbound_date: "" });
+    this.props.dispatch({ type: "clear-search" });
+  };
 
+  render = () => {
+    console.log("this.props.busResults", this.props.busResults);
+    console.log("this.props.language", this.props.language);
+    let lng = this.props.language;
     return (
       <div>
-        <div>All departures here</div>
         <div>
           <select name="travelType" onChange={this.handleTravelTypeChange}>
-            <option value="One way">One way</option>
-            <option value="Round Trip">Round Trip</option>
+            <option value="One way">
+              {lng === "Fr" ? t("One way") : "One way"}
+            </option>
+            <option value="Round Trip">
+              {lng === "Fr" ? t("Round Trip") : "Round Trip"}
+            </option>
           </select>
         </div>
         <div>
           <form onSubmit={this.handleSubmit}>
             <label>
-              Departure
+              {lng === "Fr" ? t("Departure") : "Departure"}
               <input
                 list="browsers"
                 name="mybrowser"
+                value={this.state.origin}
                 onChange={this.handleOriginChange}
               />
             </label>
             <datalist id="browsers" onClick={this.handleOriginChange}>
               <option value="New York" />
-              <option value="Montreal" />
+              <option value={lng === "Fr" ? t("Montreal") : "Montreal"} />
             </datalist>
 
             <label>
-              Destination
+              {lng === "Fr" ? t("Destination") : "Destination"}
               <input
                 list="browsers"
                 name="mybrowser"
+                value={this.state.destination}
                 onChange={this.handleDestinationChange}
               />
             </label>
@@ -223,20 +206,36 @@ class UnconnectedDepartures extends Component {
               <option value="Montreal" />
             </datalist>
 
-            <label>Departure Date</label>
+            <label>
+              {lng === "Fr" ? t("Departure Date") : "Departure Date"}
+            </label>
             <input
               type="date"
               value={this.state.outbound_date}
               onChange={this.handleOutboundDateChange}
             />
-            <label>Passengers</label>
+            <label>{lng === "Fr" ? t("Passengers") : "Passengers"}</label>
             {/* Add number of passengers */}
             <select name="passengers" onClick={this.handlePassengerChange}>
-              <option value="adult">adult</option>
-              <option value="child">child</option>
-              <option value="senior">senior</option>
+              <option value="adult">
+                {lng === "Fr" ? t("1 adult") : "1 adult"}
+              </option>
+              <option value="child">
+                {lng === "Fr" ? t("1 child") : "1 child"}
+              </option>
+              <option value="senior">
+                {lng === "Fr" ? t("1 senior") : "1 senior"}
+              </option>
             </select>
-            <input type="submit" value="Search for buses" />
+            <input
+              type="submit"
+              value={lng === "Fr" ? t("Search for buses") : "Search for buses"}
+            />
+            {this.props.busResults.departures !== undefined ? (
+              <button onClick={this.clearSearch}>
+                {lng === "Fr" ? t("Clear search") : "Clear search"}
+              </button>
+            ) : null}
           </form>
         </div>
         <div>
@@ -252,7 +251,9 @@ class UnconnectedDepartures extends Component {
                           <div>
                             <div>{op.display_name}</div>
                             <div>
-                              Departure time:{" "}
+                              {lng === "Fr"
+                                ? t("Departure time:")
+                                : "Departure time:"}{" "}
                               {bus.departure_time
                                 .split("T")
                                 .join(" at ")
@@ -260,13 +261,16 @@ class UnconnectedDepartures extends Component {
                               {" from " + this.state.origin}
                             </div>
                             <div>
-                              Arrival time:{" "}
+                              {lng === "Fr"
+                                ? t("Arrival time:")
+                                : "Arrival time:"}{" "}
                               {bus.arrival_time
                                 .split("T")
                                 .join(" at ")
                                 .slice(0, -3)}
                             </div>
-                            Price: {bus.prices.total}
+                            {lng === "Fr" ? t("Price:") : "Price:"}{" "}
+                            {bus.prices.total}
                             {" " + bus.prices.currency}
                             <br />
                           </div>
@@ -285,7 +289,8 @@ class UnconnectedDepartures extends Component {
 
 let mapStateToProps = state => {
   return {
-    busResults: state.busResults
+    busResults: state.busResults,
+    language: state.language
   };
 };
 

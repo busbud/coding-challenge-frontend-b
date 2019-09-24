@@ -10,12 +10,18 @@ let reducer = (state, action) => {
   if (action.type === "fetch-departures-done") {
     return { ...state, busResults: action.busResults };
   }
+  if (action.type === "change-lng") {
+    return { ...state, language: action.language };
+  }
+  if (action.type === "clear-search") {
+    return { ...state, busResults: {} };
+  }
   return state;
 };
 
 const store = createStore(
   reducer,
-  { origin: "", busResults: {} },
+  { busResults: {}, language: "En" },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
