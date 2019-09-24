@@ -1,17 +1,22 @@
 <div class="container">
     <div class="display-list">
-      <div *ngIf="departures.length<=0">
-        <p>No trips available</p>
+      <div *ngIf="isLoading===true">
+        <p>Loading...</p>
       </div>
-      <div class="card" *ngFor="let departure of departures">
-        <div class="times">
-            <p><strong>Departure </strong>{{departure.departureTime}}</p>
-            <p><strong>Arrival </strong>{{departure.arrivalTime}}</p>
-            <p><strong>Location </strong>{{departure.locationName}}</p>
+      <div *ngIf="isLoading===false">
+        <div *ngIf="departures.length<=0">
+          <p>No trips available</p>
         </div>
-        <div class="price">
-            <p>$ {{departure.price}}</p>
-            <button class="button">Purchase</button>
+        <div class="card" *ngFor="let departure of departures">
+          <div class="times">
+              <p><strong>Departure </strong>{{departure.departureTime}}</p>
+              <p><strong>Arrival </strong>{{departure.arrivalTime}}</p>
+              <p><strong>Location </strong>{{departure.locationName}}</p>
+          </div>
+          <div class="price">
+              <p>$ {{departure.price}}</p>
+              <button class="button">Purchase</button>
+          </div>
         </div>
       </div>
     </div>

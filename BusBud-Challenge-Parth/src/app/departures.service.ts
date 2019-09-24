@@ -10,12 +10,14 @@ import { httpOptions } from './HttpHeaders';
 })
 export class DeparturesService {
   private departuresUpdated = new Subject<Departure[]>();
+  private isLoadingUpdated = new Subject<boolean>();
+  isLoading = false;
   departures: Departure[];
 
   constructor(private http: HttpClient) {}
 
   fetchResults(origin: string, destination: string, dateAndTime: string) {
-
+    this.isLoadingUpdated.next(true);
     this.http.get(`https://napi.busbud.com/x-departures/${origin}/${destination}/${dateAndTime}`, httpOptions)
       .subscribe(initialResponse => {
         this.departures = [];
@@ -59,9 +61,15 @@ export class DeparturesService {
       });
       console.log(this.departures);
       this.departuresUpdated.next([...this.departures]);
+      this.isLoadingUpdated.next(false);
   }
 
   getDepartureUpdateListener() {
     return this.departuresUpdated.asObservable();
   }
+
+  getIsLoadingUpdateListener() {
+    return this.isLoadingUpdated.asObservable();
+  }
+
 }
