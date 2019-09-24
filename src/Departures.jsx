@@ -11,7 +11,8 @@ class UnconnectedDepartures extends Component {
       outbound_date: "",
       passengers: "",
       travelType: "",
-      busResults: {}
+      busResults: {},
+      page: 0
     };
   }
 
@@ -180,6 +181,16 @@ class UnconnectedDepartures extends Component {
     this.props.dispatch({ type: "clear-search" });
   };
 
+  goBackToPreviousPage = event => {
+    event.preventDefault();
+    this.setState({ page: this.state.page - 1 });
+  };
+
+  goToNextPage = event => {
+    event.preventDefault();
+    this.setState({ page: this.state.page + 1 });
+  };
+
   render = () => {
     console.log("this.props.busResults", this.props.busResults);
     console.log("this.props.language", this.props.language);
@@ -261,46 +272,58 @@ class UnconnectedDepartures extends Component {
         <div>
           {this.props.busResults.departures !== undefined &&
           this.props.busResults.operators !== undefined
-            ? this.props.busResults.departures.map(bus => {
-                return (
-                  <div>
-                    {this.props.busResults.operators.map(op => {
-                      if (op.id === bus.operator_id) {
-                        console.log("op.display_name", op.display_name);
-                        return (
-                          <div>
-                            <div>{op.display_name}</div>
+            ? this.props.busResults.departures
+                .slice(this.state.page * 4, this.state.page * 4 + 4)
+                .map(bus => {
+                  return (
+                    <div>
+                      {this.props.busResults.operators.map(op => {
+                        if (op.id === bus.operator_id) {
+                          console.log("op.display_name", op.display_name);
+                          return (
                             <div>
-                              {lng === "Fr"
-                                ? t("Departure time:")
-                                : "Departure time:"}{" "}
-                              {bus.departure_time
-                                .split("T")
-                                .join(" at ")
-                                .slice(0, -3)}
-                              {" from " + this.state.origin}
+                              <div>{op.display_name}</div>
+                              <div>
+                                {lng === "Fr"
+                                  ? t("Departure time:")
+                                  : "Departure time:"}{" "}
+                                {bus.departure_time
+                                  .split("T")
+                                  .join(" at ")
+                                  .slice(0, -3)}
+                                {" from " + this.state.origin}
+                              </div>
+                              <div>
+                                {lng === "Fr"
+                                  ? t("Arrival time:")
+                                  : "Arrival time:"}{" "}
+                                {bus.arrival_time
+                                  .split("T")
+                                  .join(" at ")
+                                  .slice(0, -3)}
+                              </div>
+                              {lng === "Fr" ? t("Price:") : "Price:"}{" "}
+                              {bus.prices.total}
+                              {" " + bus.prices.currency}
+                              <br />
                             </div>
-                            <div>
-                              {lng === "Fr"
-                                ? t("Arrival time:")
-                                : "Arrival time:"}{" "}
-                              {bus.arrival_time
-                                .split("T")
-                                .join(" at ")
-                                .slice(0, -3)}
-                            </div>
-                            {lng === "Fr" ? t("Price:") : "Price:"}{" "}
-                            {bus.prices.total}
-                            {" " + bus.prices.currency}
-                            <br />
-                          </div>
-                        );
-                      }
-                    })}
-                  </div>
-                );
-              })
+                          );
+                        }
+                      })}
+                    </div>
+                  );
+                })
             : null}
+        </div>
+        <div>
+          {this.props.busResults.departures !== undefined &&
+          this.state.page > 0 ? (
+            <button onClick={this.goBackToPreviousPage}>back</button>
+          ) : null}
+          {this.props.busResults.departures !== undefined &&
+          this.props.busResults.departures.length > 5 ? (
+            <button onClick={this.goToNextPage}>next</button>
+          ) : null}
         </div>
       </div>
     );
