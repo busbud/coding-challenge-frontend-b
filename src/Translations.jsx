@@ -7,6 +7,8 @@ let t = x => {
       return (y = "Départ");
     case "Departures":
       return (y = "Départs");
+    case "Departure Date":
+      return (y = "Date de départ");
     case "Destination":
       return (y = "Destination");
     case "Passengers":
@@ -17,12 +19,12 @@ let t = x => {
       return (y = "Aller simple");
     case "Round Trip":
       return (y = "Aller-retour");
-    case "adult":
-      return (y = "adulte");
-    case "child":
-      return (y = "enfant");
-    case "senior":
-      return (y = "60ans et plus");
+    case "1 adult":
+      return (y = "1 adulte");
+    case "1 child":
+      return (y = "1 enfant");
+    case "1 senior":
+      return (y = "1 60ans et plus");
     case "Montreal":
       return (y = "Montréal");
     case "Departure time:":
