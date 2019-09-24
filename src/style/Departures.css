@@ -60,7 +60,7 @@ input {
   text-align: center;
   color: #0065b8;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 18px;
 }
 select:hover,
 input:hover {
@@ -115,18 +115,19 @@ select {
 
 .pagination-btn {
   margin-top: 10px;
-  border: 2px solid #fc0;
+  border: 2px solid white;
   border-radius: 20px;
-  color: #0065b8;
-  background-color: white;
+  color: #fc0;
+  background-color: #0065b8;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
   /* float: right; */
 }
 .pagination-btn:hover {
-  color: #fc0;
-  background-color: #0065b8;
+  color: #0065b8;
+  background-color: white;
   transition: 0.1s;
+  border: 2px solid #0065b8;
 }
 .operator-price {
   display: flex;
