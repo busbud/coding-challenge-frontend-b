@@ -68,7 +68,8 @@ class UnconnectedDepartures extends Component {
     event.preventDefault();
     let iteration = -1;
 
-    let pollSearch = async () => {
+    let pollSearch = async event => {
+      // event.preventDefault();
       iteration += 1;
       console.log("iteration", iteration);
 
@@ -100,21 +101,32 @@ class UnconnectedDepartures extends Component {
         "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/"
       );
       headers.append("X-Busbud-Token", "PARTNER_AHm3M6clSAOoyJg4KyCg7w");
-      let response = await fetch(uri, {
-        method: "GET",
-        headers: headers,
-        mode: "cors"
-      });
-      let responseBody = await response.text();
+      let body;
 
-      let body = JSON.parse(responseBody);
-      console.log("body pollSearch", body);
+      try {
+        let response = await fetch(uri, {
+          method: "GET",
+          headers: headers,
+          mode: "cors"
+        });
+        let responseBody = await response.text();
+        body = JSON.parse(responseBody);
+        console.log("Success:", JSON.stringify(responseBody));
 
-      this.setState({ busResults: body });
-      this.props.dispatch({
-        type: "fetch-departures-done",
-        busResults: this.state.busResults
-      });
+        this.setState({ busResults: body });
+        this.props.dispatch({
+          type: "fetch-departures-done",
+          busResults: this.state.busResults
+        });
+        console.log("body pollSearch", body);
+      } catch (error) {
+        console.log("Error:", error);
+      }
+
+      if (body.complete) {
+        clearInterval(setInterval(pollSearch, 5000));
+        console.log("clear interval");
+      }
     };
 
     let headers = new Headers();
@@ -133,14 +145,21 @@ class UnconnectedDepartures extends Component {
       this.state.outbound_date;
     // "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02";
     console.log("uri", uri);
+    let body;
 
-    let response = await fetch(uri, {
-      method: "GET",
-      headers: headers,
-      mode: "cors"
-    });
-    let responseBody = await response.text();
-    let body = JSON.parse(responseBody);
+    try {
+      let response = await fetch(uri, {
+        method: "GET",
+        headers: headers,
+        mode: "cors"
+      });
+      let responseBody = await response.text();
+      body = JSON.parse(responseBody);
+      console.log("Success:", JSON.stringify(responseBody));
+    } catch (error) {
+      console.log("Error:", error);
+    }
+
     console.log("body.complete", body.complete);
 
     if (body.complete) {
@@ -149,7 +168,8 @@ class UnconnectedDepartures extends Component {
         type: "fetch-departures-done",
         busResults: this.state.busResults
       });
-    } else {
+    }
+    if (!body.complete) {
       setInterval(pollSearch, 5000);
     }
   };

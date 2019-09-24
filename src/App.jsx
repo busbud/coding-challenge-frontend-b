@@ -49,13 +49,12 @@ class UnconnectedApp extends Component {
   };
 }
 
-let Navigation = withRouter(UnconnectedNavigation);
-Navigation = connect()(UnconnectedNavigation);
-
 let mapStateToProps = state => {
   return {
     language: state.language
   };
 };
+let Navigation = withRouter(UnconnectedNavigation);
+Navigation = connect(mapStateToProps)(UnconnectedNavigation);
 let App = connect(mapStateToProps)(UnconnectedApp);
 export default App;
