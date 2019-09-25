@@ -17,6 +17,6 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 - Display results (English version)
 <img src="./images/code-challenge-display-results-en.png" height="600px" width="450px">
 
-- Display results (English version)
+- Display results (French version)
 <img src="./images/code-challenge-display-results-fr.png" height="600px" width="450px">
 
