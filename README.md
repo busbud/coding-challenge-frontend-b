@@ -6,7 +6,7 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 
 ## Meriem's microsite overview:
 
-<img src="./images/code-challenge-search-form.png" height="350px" width="600px">
+<img src="./images/code-challenge-search-form.png" height="100px" width="200px">
 
 ## Functional Requirements
 - Has a simple onboarding screen that will trigger the departure search
