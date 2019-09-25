@@ -97,7 +97,7 @@ class UnconnectedDepartures extends Component {
       );
       headers.append("X-Busbud-Token", "PARTNER_AHm3M6clSAOoyJg4KyCg7w");
       let body;
-
+      console.log("headers", headers);
       try {
         let response = await fetch(uri, {
           method: "GET",
@@ -381,24 +381,6 @@ class UnconnectedDepartures extends Component {
                 })
             : null}
         </div>
-        {/* <div>
-          {this.props.busResults.departures !== undefined &&
-          this.state.page > 0 ? (
-            <button
-              className="pagination-btn"
-              onClick={this.goBackToPreviousPage}
-            >
-              {lng === "Fr" ? t("back") : "back"}
-            </button>
-          ) : null}
-          {this.props.busResults.departures !== undefined &&
-          this.props.busResults.departures.length / (this.state.page + 1) >
-            3 ? (
-            <button className="pagination-btn" onClick={this.goToNextPage}>
-              {lng === "Fr" ? t("next") : "next"}
-            </button>
-          ) : null}
-        </div> */}
       </div>
     );
   };

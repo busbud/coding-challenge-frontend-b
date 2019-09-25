@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "deep-equal": "^1.1.0",
+    "fetch": "^1.1.0",
     "i18next": "^17.0.16",
     "mongodb": "^3.3.2",
     "multer": "^1.4.2",
