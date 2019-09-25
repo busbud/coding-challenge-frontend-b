@@ -12,9 +12,10 @@ class UnconnectedDepartures extends Component {
       outbound_date: "",
       passengers: "",
       travelType: "",
-      busResults: {},
-      page: 0
+      page: 0,
+      complete: false
     };
+    this.pollSearch = this.pollSearch.bind(this);
   }
 
   handleOriginChange = event => {
@@ -66,37 +67,28 @@ class UnconnectedDepartures extends Component {
     this.setState({ travelType: this.state.travelType });
   };
 
-  handleSubmit = async event => {
-    event.preventDefault();
+  pollSearch = async () => {
+    // polling function called every 2 sec until the initial search is completed
     let iteration = -1;
+    let uri;
 
-    let pollSearch = async event => {
-      // event.preventDefault();
-      iteration += 1;
-      console.log("iteration", iteration);
-
-      let uri =
-        "https://napi.busbud.com/x-departures/" +
-        geohashCity(this.state.origin) +
-        "/" +
-        geohashCity(this.state.destination) +
-        "/" +
-        this.state.outbound_date +
-        "/poll";
-      // "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02/poll";
-      if (iteration > 1) {
-        uri =
-          "https://napi.busbud.com/x-departures/" +
-          geohashCity(this.state.origin) +
-          "/" +
-          geohashCity(this.state.destination) +
-          "/" +
-          this.state.outbound_date +
-          "/poll?index=10";
-        // "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02/poll?index=10";
-      }
+    console.log("iteration", iteration);
+    if (!this.state.complete && iteration < 1) {
+      console.log("polling started => complete = false");
+      uri = `https://napi.busbud.com/x-departures/${geohashCity(
+        this.state.origin
+      )}/${geohashCity(this.state.destination)}/${
+        this.state.outbound_date
+      }/poll`;
       console.log("uri", uri);
-      console.log("pollSearch");
+      if (iteration > 1) {
+        uri = `https://napi.busbud.com/x-departures/${geohashCity(
+          this.state.origin
+        )}/${geohashCity(this.state.destination)}/${
+          this.state.outbound_date
+        }/poll?index=10"`;
+      }
+
       let headers = new Headers();
       headers.append(
         "Accept",
@@ -115,22 +107,23 @@ class UnconnectedDepartures extends Component {
         body = JSON.parse(responseBody);
         console.log("Success:", JSON.stringify(responseBody));
 
-        this.setState({ busResults: body });
+        this.setState({
+          complete: body.complete
+        });
         this.props.dispatch({
           type: "fetch-departures-done",
           busResults: this.state.busResults
         });
-        console.log("body pollSearch", body);
+        iteration += 1;
       } catch (error) {
         console.log("Error:", error);
       }
+    }
+  };
 
-      // if (body.complete) {
-      //   clearInterval(setInterval(pollSearch, 5000));
-      //   console.log("clear interval");
-      // }
-    };
-
+  handleSubmit = async event => {
+    event.preventDefault();
+    // search is initialized
     let headers = new Headers();
     headers.append(
       "Accept",
@@ -138,14 +131,10 @@ class UnconnectedDepartures extends Component {
     );
     headers.append("X-Busbud-Token", "PARTNER_AHm3M6clSAOoyJg4KyCg7w");
 
-    let uri =
-      "https://napi.busbud.com/x-departures/" +
-      geohashCity(this.state.origin) +
-      "/" +
-      geohashCity(this.state.destination) +
-      "/" +
-      this.state.outbound_date;
-    // "https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02";
+    let uri = `https://napi.busbud.com/x-departures/${geohashCity(
+      this.state.origin
+    )}/${geohashCity(this.state.destination)}/${this.state.outbound_date}`;
+
     console.log("uri", uri);
     let body;
 
@@ -158,22 +147,22 @@ class UnconnectedDepartures extends Component {
       let responseBody = await response.text();
       body = JSON.parse(responseBody);
       console.log("Success:", JSON.stringify(responseBody));
+
+      this.setState({ complete: body.complete });
+      this.props.dispatch({
+        type: "fetch-departures-done",
+        busResults: this.state.busResults
+      });
     } catch (error) {
       console.log("Error:", error);
     }
 
     console.log("body.complete", body.complete);
-
-    if (body.complete) {
-      this.setState({ busResults: body });
-      this.props.dispatch({
-        type: "fetch-departures-done",
-        busResults: this.state.busResults
-      });
-    }
+    // if the search initialized is incomplete => search is polled
     if (!body.complete) {
-      event.preventDefault();
-      setInterval(pollSearch, 2000);
+      console.log("uri", uri);
+      // The polling endpoints should be called every 2 seconds until complete is true
+      setInterval(() => this.pollSearch(), 2000);
     }
   };
 
