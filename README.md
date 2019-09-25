@@ -5,9 +5,13 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 
 ## Meriem's microsite:
 
+Technologies: JavaScript, React, Redux, Github, Postman
+
 > To start the server, run <npm start>
     
 > Server running on port 3000 : http://localhost:3000/
+
+> A test has been added, please look at: https://github.com/MeriemBan/coding-challenge-frontend-b/blob/master/test-translations.js
 
 > Please find below the overview of the microsite:
     
