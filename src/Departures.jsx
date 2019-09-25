@@ -204,7 +204,7 @@ class UnconnectedDepartures extends Component {
           </div>
           <div>
             <form onSubmit={this.handleSubmit}>
-              <div className="departure-destination-container">
+              <div className="departure-container">
                 <div className="label-input-container">
                   <div className="label">
                     {lng === "Fr" ? t("Departure") : "Departure"}
@@ -225,6 +225,8 @@ class UnconnectedDepartures extends Component {
                     </datalist>
                   </div>
                 </div>
+              </div>
+              <div className="destination-container">
                 <div className="label-input-container">
                   <div className="label">
                     {lng === "Fr" ? t("Destination") : "Destination"}

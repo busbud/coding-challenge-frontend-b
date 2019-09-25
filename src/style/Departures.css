@@ -1,15 +1,11 @@
 .global-container {
   /* border: 1px solid red; */
-  /* padding: 10px; */
-  margin: 30px;
   padding-top: 0;
-  justify-content: center;
-  align-items: center;
-  float: center;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .search-bus-container {
-  /* border: 1px solid purple; */
-  /* background-color: #bcd2ee; */
   background-color: #0065b8;
   border-radius: 20px;
   border: 2px solid #fc0;
@@ -26,15 +22,15 @@
   text-align: center;
 }
 
-.departure-destination-container,
-/* .date-passengers-container, */
+.departure-container,
+.destination-container,
 .departure-date-container,
 .passengers-container,
 .trip-type,
 .search-bus-btn-container {
   /* border: 1px solid green; */
   display: flex;
-  justify-content: center;
+
   padding-bottom: 2px;
 }
 
@@ -51,16 +47,20 @@ select:hover {
 .label-input-container {
   /* border: 1px solid blue; */
   padding: 10px;
+  display: flex;
 }
+
 input {
   border-radius: 20px;
   border: 2px solid #fc0;
   height: 25px;
-  width: 200px;
+  width: 250px;
   text-align: center;
   color: #0065b8;
   font-weight: 500;
   font-size: 18px;
+  margin-left: 10px;
+  float: left;
 }
 select:hover,
 input:hover {
@@ -75,8 +75,10 @@ input:hover {
   color: #0065b8;
   font-size: 18px;
   font-weight: 600;
-  margin: 10px;
+  margin-bottom: 10px;
   height: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #submit-btn:hover {
   border: 2px solid #fc0;
@@ -94,12 +96,14 @@ input:hover {
   font-weight: 600;
   font-size: 18px;
   color: white;
+  width: 160px;
 }
 select {
   font-weight: 500;
   font-size: 14px;
   color: #0065b8;
   border: 2px solid #fc0;
+  margin-left: 10px;
 }
 .departure-result-container {
   margin-top: 10px;
@@ -107,7 +111,7 @@ select {
   border-radius: 20px;
   border: 2px solid #fc0;
   padding-left: 20px;
-  padding-top: 5px
+  padding-top: 5px;
 }
 .departure-result-container:hover {
   transition: 0.2s;
