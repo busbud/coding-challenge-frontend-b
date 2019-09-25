@@ -107,7 +107,7 @@ class UnconnectedDepartures extends Component {
         let responseBody = await response.text();
         body = JSON.parse(responseBody);
         console.log("Success:", JSON.stringify(responseBody));
-
+        // window.confirm("Request successful! Please wait while loading...");
         this.setState({ busResults: body, complete: body.complete });
         this.props.dispatch({
           type: "fetch-departures-done",
@@ -146,7 +146,7 @@ class UnconnectedDepartures extends Component {
       let responseBody = await response.text();
       body = JSON.parse(responseBody);
       console.log("Success:", JSON.stringify(responseBody));
-
+      window.confirm("Request successful! Please wait while loading...");
       this.setState({ busResults: body, complete: body.complete });
       this.props.dispatch({
         type: "fetch-departures-done",
