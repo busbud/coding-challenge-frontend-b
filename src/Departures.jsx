@@ -13,7 +13,8 @@ class UnconnectedDepartures extends Component {
       passengers: "",
       travelType: "",
       page: 0,
-      complete: false
+      complete: false,
+      busResults: {}
     };
     this.pollSearch = this.pollSearch.bind(this);
   }
@@ -107,9 +108,7 @@ class UnconnectedDepartures extends Component {
         body = JSON.parse(responseBody);
         console.log("Success:", JSON.stringify(responseBody));
 
-        this.setState({
-          complete: body.complete
-        });
+        this.setState({ busResults: body, complete: body.complete });
         this.props.dispatch({
           type: "fetch-departures-done",
           busResults: this.state.busResults
@@ -148,7 +147,7 @@ class UnconnectedDepartures extends Component {
       body = JSON.parse(responseBody);
       console.log("Success:", JSON.stringify(responseBody));
 
-      this.setState({ complete: body.complete });
+      this.setState({ busResults: body, complete: body.complete });
       this.props.dispatch({
         type: "fetch-departures-done",
         busResults: this.state.busResults
