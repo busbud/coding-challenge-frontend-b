@@ -9,6 +9,8 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  z-index: 1;
+  height: 50px;
 }
 
 .footer {
@@ -19,6 +21,7 @@
   background-color: #fc0;
   text-align: center;
   font-weight: 500;
+  z-index: 1;
 }
 
 #lng-button {

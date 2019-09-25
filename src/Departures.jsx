@@ -288,16 +288,38 @@ class UnconnectedDepartures extends Component {
                 <input
                   type="submit"
                   id="submit-btn"
-                  value={
-                    lng === "Fr" ? t("Search for buses") : "Search for buses"
-                  }
+                  className="input-search"
+                  value={lng === "Fr" ? t("search") : "search"}
                 />
 
                 {this.props.busResults.departures !== undefined ? (
                   <button id="submit-btn" onClick={this.clearSearch}>
-                    {lng === "Fr" ? t("Clear search") : "Clear search"}
+                    {lng === "Fr" ? t("clear") : "clear"}
                   </button>
                 ) : null}
+
+                <div>
+                  {this.props.busResults.departures !== undefined &&
+                  this.state.page > 0 ? (
+                    <button
+                      className="pagination-btn"
+                      onClick={this.goBackToPreviousPage}
+                    >
+                      {lng === "Fr" ? t("< back") : "< back"}
+                    </button>
+                  ) : null}
+                  {this.props.busResults.departures !== undefined &&
+                  this.props.busResults.departures.length /
+                    (this.state.page + 1) >
+                    3 ? (
+                    <button
+                      className="pagination-btn"
+                      onClick={this.goToNextPage}
+                    >
+                      {lng === "Fr" ? t("next >") : "next >"}
+                    </button>
+                  ) : null}
+                </div>
               </div>
             </form>
           </div>
@@ -359,7 +381,7 @@ class UnconnectedDepartures extends Component {
                 })
             : null}
         </div>
-        <div>
+        {/* <div>
           {this.props.busResults.departures !== undefined &&
           this.state.page > 0 ? (
             <button
@@ -376,7 +398,7 @@ class UnconnectedDepartures extends Component {
               {lng === "Fr" ? t("next") : "next"}
             </button>
           ) : null}
-        </div>
+        </div> */}
       </div>
     );
   };
