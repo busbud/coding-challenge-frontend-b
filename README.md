@@ -5,8 +5,14 @@ It will be hot this summer in Montreal with the [Osheaga festival](http://www.os
 Your challenge is to build a microsite that allows a traveler from NYC to find one-way departure schedules for the festival's opening weekend.
 
 ## Meriem's microsite overview:
+- Search form
+<img src="./images/code-challenge-search-form.png" height="600px" width="400px">
 
-<img src="./images/code-challenge-search-form.png" height="100px" width="200px">
+- Display results (English version)
+<img src="./images/code-challenge-display-results-en.png" height="600px" width="400px">
+
+- Display results (English version)
+<img src="./images/code-challenge-display-results-fr.png" height="600px" width="400px">
 
 ## Functional Requirements
 - Has a simple onboarding screen that will trigger the departure search
