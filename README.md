@@ -6,9 +6,9 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 
 ## Meriem's microsite:
 
-# To start the server, run <npm start>
-# Server running on port 3000 : http://localhost:3000/
-# Please find a overview of the microsite below:
+> To start the server, run <npm start>
+> Server running on port 3000 : http://localhost:3000/
+> Please find a overview of the microsite below:
     
 - Search form
 <img src="./images/code-challenge-search-form.png" height="600px" width="400px">
