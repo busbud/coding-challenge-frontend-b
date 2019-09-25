@@ -7,7 +7,7 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 
 Technologies: JavaScript, React, Redux, Github, Postman
 
-> To start the server, run <npm start>
+> To start the server, run npm start
     
 > Server running on port 3000 : http://localhost:3000/
 
