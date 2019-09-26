@@ -43,6 +43,9 @@ let t = x => {
       return (y = "< précédent");
     case "next >":
       return (y = "suivant >");
+    case "Request successful! Please wait while loading...":
+      return (y =
+        "Requête réussie! Veuillez patienter le temps du chargement...");
   }
 
   return y;

@@ -146,7 +146,14 @@ class UnconnectedDepartures extends Component {
       let responseBody = await response.text();
       body = JSON.parse(responseBody);
       console.log("Success:", JSON.stringify(responseBody));
-      window.confirm("Request successful! Please wait while loading...");
+      let message
+      if(this.state.language === "En"){
+        message = "Request successful! Please wait while loading...";
+      } else {
+        message = t("Request successful! Please wait while loading...");
+      }
+      
+      window.confirm(message);
       this.setState({ busResults: body, complete: body.complete });
       this.props.dispatch({
         type: "fetch-departures-done",
@@ -354,7 +361,7 @@ class UnconnectedDepartures extends Component {
                                 <div className="departure-arrival-result">
                                   {bus.departure_time
                                     .split("T")
-                                    .join(" at ")
+                                    .join(" @ ")
                                     .slice(0, -3)}
                                   {" from " + this.state.origin}
                                 </div>
@@ -368,7 +375,7 @@ class UnconnectedDepartures extends Component {
                                 <div className="departure-arrival-result">
                                   {bus.arrival_time
                                     .split("T")
-                                    .join(" at ")
+                                    .join(" @ ")
                                     .slice(0, -3)}
                                 </div>
                               </div>
