@@ -22,5 +22,5 @@ Technologies: JavaScript, React, Redux, Github, Postman
 <img src="./images/code-challenge-display-results-en.png" height="600px" width="450px">
 
 - Display results (French version)
-<img src="./images/code-challenge-display-results-fr.png" height="600px" width="450px">
+<img src="./images/code-challenge-display-results-version-fr.png" height="600px" width="450px">
 
