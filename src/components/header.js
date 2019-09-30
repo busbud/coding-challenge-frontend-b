@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/header.scss';
-import logo from '../images/logo.png';
-import osheaga from '../images/osheaga.png';
+import logo from '../images/logo.webp';
+import osheaga from '../images/osheaga.webp';
 
 
 const Header = () => (
