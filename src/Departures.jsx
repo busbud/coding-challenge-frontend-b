@@ -22,7 +22,7 @@ class UnconnectedDepartures extends Component {
   handleOriginChange = event => {
     event.preventDefault();
     let origin;
-    console.log("origin", event.target.value);
+
     if (event.target.value !== undefined) {
       origin = event.target.value;
       this.setState({ origin });
@@ -35,7 +35,7 @@ class UnconnectedDepartures extends Component {
   handleDestinationChange = event => {
     event.preventDefault();
     let destination;
-    console.log("destination", event.target.value);
+
     if (event.target.value !== undefined) {
       destination = event.target.value;
       this.setState({ destination });
@@ -43,28 +43,23 @@ class UnconnectedDepartures extends Component {
     }
     destination = Array.from(event.target.selectedOptions)[0].value;
     this.setState({ destination });
-    console.log("this.state.destination", this.state.destination);
   };
 
   handleOutboundDateChange = event => {
     event.preventDefault();
     this.setState({ outbound_date: event.target.value });
-    console.log("outbound_date", this.state.outbound_date);
   };
 
   handlePassengerChange = event => {
     event.preventDefault();
     let passengers = Array.from(event.target.selectedOptions)[0].value;
-
-    this.setState({ passengers }, () => {
-      console.log("this.state.passengers", this.state.passengers);
-    });
+    this.setState({ passengers });
   };
 
   handleTravelTypeChange = event => {
     event.preventDefault();
     let travelType = Array.from(event.target.selectedOptions)[0].value;
-    console.log("travelType", travelType);
+
     this.setState({ travelType: this.state.travelType });
   };
 
@@ -73,15 +68,13 @@ class UnconnectedDepartures extends Component {
     let iteration = -1;
     let uri;
 
-    console.log("iteration", iteration);
     if (!this.state.complete && iteration < 1) {
-      console.log("polling started => complete = false");
       uri = `https://napi.busbud.com/x-departures/${geohashCity(
         this.state.origin
       )}/${geohashCity(this.state.destination)}/${
         this.state.outbound_date
       }/poll`;
-      console.log("uri", uri);
+
       if (iteration > 1) {
         uri = `https://napi.busbud.com/x-departures/${geohashCity(
           this.state.origin
@@ -97,7 +90,7 @@ class UnconnectedDepartures extends Component {
       );
       headers.append("X-Busbud-Token", "PARTNER_AHm3M6clSAOoyJg4KyCg7w");
       let body;
-      console.log("headers", headers);
+
       try {
         let response = await fetch(uri, {
           method: "GET",
@@ -107,7 +100,7 @@ class UnconnectedDepartures extends Component {
         let responseBody = await response.text();
         body = JSON.parse(responseBody);
         console.log("Success:", JSON.stringify(responseBody));
-        // window.confirm("Request successful! Please wait while loading...");
+
         this.setState({ busResults: body, complete: body.complete });
         this.props.dispatch({
           type: "fetch-departures-done",
@@ -134,7 +127,6 @@ class UnconnectedDepartures extends Component {
       this.state.origin
     )}/${geohashCity(this.state.destination)}/${this.state.outbound_date}`;
 
-    console.log("uri", uri);
     let body;
 
     try {
@@ -146,14 +138,13 @@ class UnconnectedDepartures extends Component {
       let responseBody = await response.text();
       body = JSON.parse(responseBody);
       console.log("Success:", JSON.stringify(responseBody));
-      let message
-      if(this.state.language === "En"){
+      let message;
+      if (this.state.language === "En") {
         message = "Request successful! Please wait while loading...";
       } else {
         message = t("Request successful! Please wait while loading...");
       }
-      
-      window.confirm(message);
+
       this.setState({ busResults: body, complete: body.complete });
       this.props.dispatch({
         type: "fetch-departures-done",
@@ -163,10 +154,8 @@ class UnconnectedDepartures extends Component {
       console.log("Error:", error);
     }
 
-    console.log("body.complete", body.complete);
     // if the search initialized is incomplete => search is polled
     if (!body.complete) {
-      console.log("uri", uri);
       // The polling endpoints should be called every 2 seconds until complete is true
       setInterval(() => this.pollSearch(), 2000);
     }
@@ -189,8 +178,6 @@ class UnconnectedDepartures extends Component {
   };
 
   render = () => {
-    console.log("this.props.busResults", this.props.busResults);
-    console.log("this.props.language", this.props.language);
     let lng = this.props.language;
     return (
       <div className="global-container">
@@ -341,7 +328,6 @@ class UnconnectedDepartures extends Component {
                     <div className="departure-result-container">
                       {this.props.busResults.operators.map(op => {
                         if (op.id === bus.operator_id) {
-                          console.log("op.display_name", op.display_name);
                           return (
                             <div>
                               <div className="operator-price">
