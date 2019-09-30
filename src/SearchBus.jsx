@@ -15,6 +15,7 @@ class UnconnectedSearchBus extends Component {
       travelType: ""
     };
     this.pollSearch = this.pollSearch.bind(this);
+    this.setFetchHeader = this.setFetchHeader.bind(this);
   }
 
   handleOriginChange = event => {
@@ -23,10 +24,9 @@ class UnconnectedSearchBus extends Component {
 
     if (event.target.value !== undefined) {
       origin = event.target.value;
-      this.setState({ origin });
-      return;
+    } else {
+      origin = Array.from(event.target.selectedOptions)[0].value;
     }
-    origin = Array.from(event.target.selectedOptions)[0].value;
     this.setState({ origin });
   };
 
@@ -36,10 +36,9 @@ class UnconnectedSearchBus extends Component {
 
     if (event.target.value !== undefined) {
       destination = event.target.value;
-      this.setState({ destination });
-      return;
+    } else {
+      destination = Array.from(event.target.selectedOptions)[0].value;
     }
-    destination = Array.from(event.target.selectedOptions)[0].value;
     this.setState({ destination });
   };
 
@@ -56,53 +55,62 @@ class UnconnectedSearchBus extends Component {
 
   handleTravelTypeChange = event => {
     event.preventDefault();
-    let travelType = Array.from(event.target.selectedOptions)[0].value;
 
-    this.setState({ travelType: this.state.travelType });
+    this.setState({
+      travelType: Array.from(event.target.selectedOptions)[0].value
+    });
+  };
+
+  setFetchHeader = (acceptValue, token, tokenValue) => {
+    let headers = new Headers();
+    headers.append("Accept", acceptValue);
+    headers.append(token, tokenValue);
+    return headers;
+  };
+  setFetchUri = child => {
+    let uri =
+      `https://napi.busbud.com/x-departures/${geohashCity(
+        this.state.origin
+      )}/${geohashCity(this.state.destination)}/${this.state.outbound_date}` +
+      child;
+    return uri;
   };
 
   pollSearch = async () => {
     // polling function called every 2 sec until the initial search is completed
-    let iteration = -1;
+    let iteration = 0;
     let uri;
 
-    if (!this.state.complete && iteration < 1) {
-      uri = `https://napi.busbud.com/x-departures/${geohashCity(
-        this.state.origin
-      )}/${geohashCity(this.state.destination)}/${
-        this.state.outbound_date
-      }/poll`;
-
-      if (iteration > 1) {
-        uri = `https://napi.busbud.com/x-departures/${geohashCity(
-          this.state.origin
-        )}/${geohashCity(this.state.destination)}/${
-          this.state.outbound_date
-        }/poll?index=10"`;
+    if (!this.state.complete) {
+      if (iteration === 0) {
+        uri = this.setFetchUri("/poll");
+      } else {
+        uri = this.setFetchUri("/poll?index=10");
       }
-
-      let headers = new Headers();
-      headers.append(
-        "Accept",
-        "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/"
-      );
-      headers.append("X-Busbud-Token", "PARTNER_AHm3M6clSAOoyJg4KyCg7w");
-      let body;
 
       try {
         let response = await fetch(uri, {
           method: "GET",
-          headers: headers,
+          headers: this.setFetchHeader(
+            "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
+            "X-Busbud-Token",
+            "PARTNER_AHm3M6clSAOoyJg4KyCg7w"
+          ),
           mode: "cors"
         });
         let responseBody = await response.text();
-        body = JSON.parse(responseBody);
+        let body = JSON.parse(responseBody);
         console.log("Success:", JSON.stringify(responseBody));
 
-        this.setState({ busResults: body, complete: body.complete });
+        this.setState({
+          departures: body.departures,
+          operators: body.operators,
+          complete: body.complete
+        });
         this.props.dispatch({
           type: "fetch-departures-done",
-          busResults: this.state.busResults
+          departures: this.state.departures,
+          operators: this.state.operators
         });
         iteration += 1;
       } catch (error) {
@@ -114,39 +122,32 @@ class UnconnectedSearchBus extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     // search is initialized
-    let headers = new Headers();
-    headers.append(
-      "Accept",
-      "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/"
-    );
-    headers.append("X-Busbud-Token", "PARTNER_AHm3M6clSAOoyJg4KyCg7w");
 
-    let uri = `https://napi.busbud.com/x-departures/${geohashCity(
-      this.state.origin
-    )}/${geohashCity(this.state.destination)}/${this.state.outbound_date}`;
-
+    let uri = this.setFetchUri("");
     let body;
-
     try {
       let response = await fetch(uri, {
         method: "GET",
-        headers: headers,
+        headers: this.setFetchHeader(
+          "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
+          "X-Busbud-Token",
+          "PARTNER_AHm3M6clSAOoyJg4KyCg7w"
+        ),
         mode: "cors"
       });
       let responseBody = await response.text();
       body = JSON.parse(responseBody);
       console.log("Success:", JSON.stringify(responseBody));
-      let message;
-      if (this.state.language === "En") {
-        message = "Request successful! Please wait while loading...";
-      } else {
-        message = t("Request successful! Please wait while loading...");
-      }
 
-      this.setState({ busResults: body, complete: body.complete });
+      this.setState({
+        departures: body.departures,
+        operators: body.operators,
+        complete: body.complete
+      });
       this.props.dispatch({
         type: "fetch-departures-done",
-        busResults: this.state.busResults
+        departures: this.state.departures,
+        operators: this.state.operators
       });
     } catch (error) {
       console.log("Error:", error);
@@ -274,7 +275,7 @@ class UnconnectedSearchBus extends Component {
                   value={lng === "Fr" ? t("search") : "search"}
                 />
 
-                {this.props.busResults.departures !== undefined ? (
+                {this.props.departures !== undefined ? (
                   <button id="submit-btn" onClick={this.clearSearch}>
                     {lng === "Fr" ? t("clear") : "clear"}
                   </button>
@@ -291,7 +292,8 @@ class UnconnectedSearchBus extends Component {
 
 let mapStateToProps = state => {
   return {
-    busResults: state.busResults,
+    departures: state.departures,
+    operators: state.operators,
     language: state.language
   };
 };

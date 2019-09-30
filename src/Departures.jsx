@@ -29,8 +29,7 @@ class UnconnectedDepartures extends Component {
       <div className="global-container">
         <div className="search-bus-container">
           <div>
-            {this.props.busResults.departures !== undefined &&
-            this.state.page > 0 ? (
+            {this.props.departures !== undefined && this.state.page > 0 ? (
               <button
                 className="pagination-btn"
                 onClick={this.goBackToPreviousPage}
@@ -38,9 +37,8 @@ class UnconnectedDepartures extends Component {
                 {lng === "Fr" ? t("< back") : "< back"}
               </button>
             ) : null}
-            {this.props.busResults.departures !== undefined &&
-            this.props.busResults.departures.length / (this.state.page + 1) >
-              3 ? (
+            {this.props.departures !== undefined &&
+            this.props.departures.length / (this.state.page + 1) > 3 ? (
               <button className="pagination-btn" onClick={this.goToNextPage}>
                 {lng === "Fr" ? t("next >") : "next >"}
               </button>
@@ -48,14 +46,14 @@ class UnconnectedDepartures extends Component {
           </div>
         </div>
         <div>
-          {this.props.busResults.departures !== undefined &&
-          this.props.busResults.operators !== undefined
-            ? this.props.busResults.departures
+          {this.props.departures !== undefined &&
+          this.props.operators !== undefined
+            ? this.props.departures
                 .slice(this.state.page * 3, this.state.page * 3 + 3)
                 .map(bus => {
                   return (
                     <div className="departure-result-container">
-                      {this.props.busResults.operators.map(op => {
+                      {this.props.operators.map(op => {
                         if (op.id === bus.operator_id) {
                           return (
                             <div>
@@ -110,7 +108,8 @@ class UnconnectedDepartures extends Component {
 
 let mapStateToProps = state => {
   return {
-    busResults: state.busResults,
+    departures: state.departures,
+    operators: state.operators,
     language: state.language
   };
 };

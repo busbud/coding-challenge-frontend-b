@@ -8,20 +8,24 @@ import { createStore } from "redux";
 
 let reducer = (state, action) => {
   if (action.type === "fetch-departures-done") {
-    return { ...state, busResults: action.busResults };
+    return {
+      ...state,
+      departures: action.departures,
+      operators: action.operators
+    };
   }
   if (action.type === "change-lng") {
     return { ...state, language: action.language };
   }
   if (action.type === "clear-search") {
-    return { ...state, busResults: {} };
+    return { ...state, departures: [], operators: [] };
   }
   return state;
 };
 
 const store = createStore(
   reducer,
-  { busResults: {}, language: "En" },
+  { departures: [], operators: [], language: "En" },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
