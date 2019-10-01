@@ -18,7 +18,16 @@ let reducer = (state, action) => {
     return { ...state, language: action.language };
   }
   if (action.type === "clear-search") {
-    return { ...state, departures: [], operators: [] };
+    return {
+      ...state,
+      departures: [],
+      operators: [],
+      origin: "",
+      destination: "",
+      outbound_date: "",
+      passengers: "",
+      travel_type: ""
+    };
   }
   if (action.type === "go-back-to-previous-page") {
     return { ...state, page: action.page };
@@ -27,14 +36,36 @@ let reducer = (state, action) => {
     return { ...state, page: action.page };
   }
   if (action.type === "selected-origin") {
-    return { ...state, origin: action.action };
+    return { ...state, origin: action.origin };
+  }
+  if (action.type === "selected-destination") {
+    return { ...state, destination: action.destination };
+  }
+  if (action.type === "selected-outbound_date") {
+    return { ...state, outbound_date: action.outbound_date };
+  }
+  if (action.type === "selected-passengers") {
+    return { ...state, passengers: action.passengers };
+  }
+  if (action.type === "selected-travel_type") {
+    return { ...state, travelType: action.travelType };
   }
   return state;
 };
 
 const store = createStore(
   reducer,
-  { departures: [], operators: [], language: "En", page: 0, origin: "" },
+  {
+    departures: [],
+    operators: [],
+    language: "En",
+    page: 0,
+    origin: "",
+    destination: "",
+    outbound_date: "",
+    passengers: "",
+    travelType: ""
+  },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

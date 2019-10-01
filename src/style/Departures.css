@@ -134,6 +134,7 @@ select {
   color: white;
   font-weight: 600;
   font-size: 18px;
+  border-radius: 20px;
   z-index: 10;
 }
 .pagination-btn:hover {
