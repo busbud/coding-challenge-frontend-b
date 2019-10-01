@@ -12,6 +12,7 @@ import '../styles/search.scss';
 class Search extends Component {
   constructor(props) {
     super(props)
+    this.interval = null;
     this.state = {
       searchAttribute: {
         departCity: defaultDepart,
@@ -36,12 +37,12 @@ class Search extends Component {
         return res.data;
       }).then(res => {
         if (!res.complete) {
-          setInterval(this.getMoreData(), loopApiTime);
+          this.interval = setInterval(this.getMoreData , loopApiTime);
         }
       })
   }
 
-  getMoreData = () => {
+  getMoreData() {
     this.setState({
        searchParams: {...this.state.searchParams, ...{ index: this.state.searchResult.departures.length }}
     }, () => {
@@ -49,11 +50,12 @@ class Search extends Component {
         .then(res => {
           this.setState( prevState => ({
             searchResult: FunctionHelper.mergeDeep(prevState, res.data)
-        }))
-
-        if (res.complete) {
-          clearInterval()
-        }
+          }))
+          return res.data;
+        }).then(res => {
+          if (res.complete) {
+            clearInterval(this.interval);
+          }
       })
     })
   }
