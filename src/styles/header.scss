@@ -1,3 +1,5 @@
+@import '_mixins';
+
 .header {
   text-align: center;
   display: flex;
@@ -5,15 +7,19 @@
   justify-content: center;
   margin: 2rem 0 2rem 0;
 
-  img.osheaga {
-    width: 40%;
-  }
-
-  img.logo {
-    width: 8%;
-  }
-
   p {
     margin: 1rem;
+  }
+
+  @include respond(phone)  {
+    flex-wrap: wrap;
+
+    img.osheaga {
+      width: 60%;
+    }
+
+    img.logo {
+      width: 50%;
+    }
   }
 }
