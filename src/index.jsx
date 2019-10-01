@@ -20,12 +20,21 @@ let reducer = (state, action) => {
   if (action.type === "clear-search") {
     return { ...state, departures: [], operators: [] };
   }
+  if (action.type === "go-back-to-previous-page") {
+    return { ...state, page: action.page };
+  }
+  if (action.type === "go-to-next-page") {
+    return { ...state, page: action.page };
+  }
+  if (action.type === "selected-origin") {
+    return { ...state, origin: action.action };
+  }
   return state;
 };
 
 const store = createStore(
   reducer,
-  { departures: [], operators: [], language: "En" },
+  { departures: [], operators: [], language: "En", page: 0, origin: "" },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

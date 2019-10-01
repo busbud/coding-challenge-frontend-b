@@ -28,6 +28,7 @@ class UnconnectedSearchBus extends Component {
       origin = Array.from(event.target.selectedOptions)[0].value;
     }
     this.setState({ origin });
+    this.props.dispatch({ type: "selected-origin", origin: this.state.origin });
   };
 
   handleDestinationChange = event => {

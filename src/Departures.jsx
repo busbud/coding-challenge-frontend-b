@@ -2,54 +2,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { t } from "./Translations.jsx";
 import "./style/Departures.css";
-import SearchBus from "./SearchBus.jsx";
+import PaginationButtons from "./PaginationButtons.jsx";
 
 class UnconnectedDepartures extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      page: 0,
-      busResults: {}
-    };
-  }
-
-  goBackToPreviousPage = event => {
-    event.preventDefault();
-    this.setState({ page: this.state.page - 1 });
-  };
-
-  goToNextPage = event => {
-    event.preventDefault();
-    this.setState({ page: this.state.page + 1 });
-  };
-
   render = () => {
     let lng = this.props.language;
     return (
       <div className="global-container">
         <div className="search-bus-container">
-          <div>
-            {this.props.departures !== undefined && this.state.page > 0 ? (
-              <button
-                className="pagination-btn"
-                onClick={this.goBackToPreviousPage}
-              >
-                {lng === "Fr" ? t("< back") : "< back"}
-              </button>
-            ) : null}
-            {this.props.departures !== undefined &&
-            this.props.departures.length / (this.state.page + 1) > 3 ? (
-              <button className="pagination-btn" onClick={this.goToNextPage}>
-                {lng === "Fr" ? t("next >") : "next >"}
-              </button>
-            ) : null}
-          </div>
+          <PaginationButtons />
         </div>
         <div>
           {this.props.departures !== undefined &&
           this.props.operators !== undefined
             ? this.props.departures
-                .slice(this.state.page * 3, this.state.page * 3 + 3)
+                .slice(this.props.page * 3, this.props.page * 3 + 3)
                 .map(bus => {
                   return (
                     <div className="departure-result-container">
@@ -76,7 +43,7 @@ class UnconnectedDepartures extends Component {
                                     .split("T")
                                     .join(" @ ")
                                     .slice(0, -3)}
-                                  {" from " + this.state.origin}
+                                  {" from " + this.props.origin}
                                 </div>
                               </div>
                               <div>
@@ -110,7 +77,9 @@ let mapStateToProps = state => {
   return {
     departures: state.departures,
     operators: state.operators,
-    language: state.language
+    language: state.language,
+    page: state.page,
+    origin: state.origin
   };
 };
 
