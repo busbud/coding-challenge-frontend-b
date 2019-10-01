@@ -1,14 +1,16 @@
 import React from 'react';
+import Img from "react-webp-image";
+import logo from '../images/logo.png';
+import osheaga from '../images/osheaga.png';
+import logoWebp from '../images/logo.webp';
+import osheagaWebp from '../images/osheaga.webp';
 import '../styles/header.scss';
-import logo from '../images/logo.webp';
-import osheaga from '../images/osheaga.webp';
-
 
 const Header = () => (
   <header className="header">
-    <img className="osheaga" src={osheaga} alt="osheaga" />
+    <Img className="osheaga" src={osheaga} webp={osheagaWebp} alt="osheaga" />
     <p>avec</p>
-    <img className="logo" src={logo} alt="Logo" />
+    <Img className="logo" src={logo} webp={logoWebp} alt="Logo" />
   </header>
 );
 

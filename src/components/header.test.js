@@ -9,27 +9,71 @@ describe("<Header /> component", () => {
       <header
         className="header"
       >
-        <img
-          alt="osheaga"
-          className="osheaga"
-          src={
-            Object {
-              "process": [Function],
+        <picture>
+          <source
+            srcSet={
+              Object {
+                "process": [Function],
+              }
             }
-          }
-        />
+            type="image/webp"
+          />
+          <source
+            srcSet={
+              Object {
+                "process": [Function],
+              }
+            }
+          />
+          <img
+            alt="osheaga"
+            className="osheaga"
+            src={
+              Object {
+                "process": [Function],
+              }
+            }
+            webp={
+              Object {
+                "process": [Function],
+              }
+            }
+          />
+        </picture>
         <p>
           avec
         </p>
-        <img
-          alt="Logo"
-          className="logo"
-          src={
-            Object {
-              "process": [Function],
+        <picture>
+          <source
+            srcSet={
+              Object {
+                "process": [Function],
+              }
             }
-          }
-        />
+            type="image/webp"
+          />
+          <source
+            srcSet={
+              Object {
+                "process": [Function],
+              }
+            }
+          />
+          <img
+            alt="Logo"
+            className="logo"
+            src={
+              Object {
+                "process": [Function],
+              }
+            }
+            webp={
+              Object {
+                "process": [Function],
+              }
+            }
+          />
+        </picture>
       </header>
     `);
   });
