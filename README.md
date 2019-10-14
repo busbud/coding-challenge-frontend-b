@@ -3,7 +3,7 @@
 This app utilizes the busbud API to search all departures for autust 2 2020 between new york and montreal.
 The search can be triggered from the top navigaton bar.
 
-## Functionality
+## Data Flow
 
 - Clicking on search initializes the FETCH_REQUEST action.
 - Once a request is successful the complete parameter is set in Redux state generating a GET_DEPARTURES_SUCCEEDED event.
@@ -12,7 +12,7 @@ The search can be triggered from the top navigaton bar.
 - This pattern is continued till polling is complete.
 - Clicking on search again reinitializes this pipeline.
 
-## Stack philosophy
+## Stack
 
 - Utilized Create React App to bootstrap the basic layout for the app utilizing redux as the store.
 - Reactive programming concept seemed the best way to design the polling mechanism
