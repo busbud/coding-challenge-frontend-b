@@ -12,6 +12,10 @@ The search can be triggered from the top navigaton bar.
 - This pattern is continued till polling is complete.
 - Clicking on search again reinitializes this pipeline.
 
+## Sorting
+
+- Data is sorted by departure date and time.
+
 ## Stack
 
 - Utilized Create React App to bootstrap the basic layout for the app utilizing redux as the store.
