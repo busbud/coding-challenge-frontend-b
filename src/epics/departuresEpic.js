@@ -36,5 +36,5 @@ export const successEpic = action$ =>
 export const pollEpic = action$ =>
   action$.ofType(POLL).pipe(
     map(action => action.index),
-    map(fetchDepartures),
+    map(index => fetchDepartures(index, false)),
   );

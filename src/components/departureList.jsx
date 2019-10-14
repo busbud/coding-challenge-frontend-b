@@ -1,4 +1,5 @@
 import React from 'react';
+import { sortBy } from 'lodash';
 import {
   makeStyles,
   ExpansionPanel,
@@ -19,9 +20,10 @@ const useStyles = makeStyles(() => ({
 const DepartureList = () => {
   const classes = useStyles();
   const departures = useSelector(state => state.departures.list);
+  const sortedDepartures = sortBy(departures, 'departureSort');
   return (
     <div className={classes.root}>
-      {departures.map(departure => (
+      {sortedDepartures.map(departure => (
         <ExpansionPanel key={departure.id}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <DepartureListSummary departure={departure} />
