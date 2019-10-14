@@ -13,6 +13,7 @@ export function register(config) {
     process.env.NODE_ENV === 'production' &&
     'serviceWorker' in navigator
   ) {
+    // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(
       process.env.PUBLIC_URL,
       window.location.href,
@@ -25,7 +26,9 @@ export function register(config) {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
       if (isLocalhost) {
+        // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
+
         navigator.serviceWorker.ready.then(() => {
           console.log(
             'This web app is being served cache-first by a service ' +
@@ -62,7 +65,6 @@ function registerValidSW(swUrl, config) {
                 config.onUpdate(registration);
               }
             } else {
-.
               console.log('Content is cached for offline use.');
 
               // Execute callback
