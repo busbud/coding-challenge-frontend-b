@@ -14,7 +14,8 @@
     "redux": "^4.0.4",
     "redux-observable": "^1.2.0",
     "rxjs": "^6.5.3",
-    "typeface-roboto": "0.0.75"
+    "typeface-roboto": "0.0.75",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,7 +39,6 @@
     ]
   },
   "devDependencies": {
-    "jest-cli": "^24.9.0",
-    "redux-devtools-extension": "^2.13.8"
+    "jest-cli": "^24.9.0"
   }
 }

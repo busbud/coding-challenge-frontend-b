@@ -37,7 +37,7 @@ const NavBar = props => {
           alt="logo"
         />
         <Typography variant="h6" className={classes.title}>
-          NYC to MTL
+          New York to Montreal - 2nd of August 2020
         </Typography>
         <Button
           color="inherit"
