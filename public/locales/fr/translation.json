@@ -1,0 +1,18 @@
+{
+  "landing_header": "Trouvez les meilleures aubaines parmi toutes les compagnies d'autobus entre New York et Montréal.",
+  "landing_credit": "Généré par",
+  "form_roundTrip": "Aller-retour",
+  "form_oneWay": "Aller simple",
+  "form_leaving": "Au départ de",
+  "form_going": "À destination de",
+  "form_depart": "Aller",
+  "form_return": "Retour",
+  "form_searchRoutes": "Rechercher un billet",
+  "passenger": "Passager",
+  "passengers": "Passagers",
+  "cheapest": "Le moins cher",
+  "fastest": "Le plus rapide",
+  "earliest": "Le plus tôt",
+  "latest": "Le plus tard",
+  "reset": "Réinitialiser"
+}

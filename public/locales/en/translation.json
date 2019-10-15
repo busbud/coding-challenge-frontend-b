@@ -1,0 +1,18 @@
+{
+  "landing_header": "Find the best deals on all bus providers between New York and Montreal.",
+  "landing_credit": "Powered by",
+  "form_roundTrip": "Round trip",
+  "form_oneWay": "One way",
+  "form_leaving": "Leaving from...",
+  "form_going": "Going to...",
+  "form_depart": "Depart",
+  "form_return": "Return",
+  "form_searchRoutes": "Search routes",
+  "passenger": "Passenger",
+  "passengers": "Passengers",
+  "cheapest": "Cheapest",
+  "fastest": "Fastest",
+  "earliest": "Earliest",
+  "latest": "Latest",
+  "reset": "Reset"
+}
