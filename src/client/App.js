@@ -8,12 +8,7 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        Hello World<input type="date" name="bday"></input>
-        <MainContainer />
-      </div>
-    );
+    return <MainContainer />;
   }
 }
 
