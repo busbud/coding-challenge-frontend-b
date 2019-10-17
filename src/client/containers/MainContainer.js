@@ -120,11 +120,7 @@ class MainContainer extends Component {
 
   render() {
     const { departures, pollingComplete, operators, departureDate } = this.state;
-    const departuresArr = departures.map(el => (
-      <Card key={`departure${el.id}`} data={el}>
-        {el.id} {el.departure_time}
-      </Card>
-    ));
+    const departuresArr = departures.map(el => <Card key={`departure${el.id}`} data={el} />);
     return (
       <div className="main-container">
         <div className="search-container">
