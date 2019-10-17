@@ -6,6 +6,7 @@ import URI from 'urijs';
 class MainContainer extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       originCode: 'dr5reg',
       destinationCode: 'f25dvk',
@@ -89,14 +90,15 @@ class MainContainer extends Component {
     fetch(url, fetchConfig)
       .then(res => res.json())
       .then(data => {
+        // destructure data from the response body
         let { departures, locations, operators, complete } = data;
         console.log(data);
 
         if (departures.length !== 0) {
+          // concatenate new departure data to the original state
           departures = [...this.state.departures].concat(departures);
-          // departuresCopy = departuresCopy.concat(departures);
 
-          this.setState({ departures });
+          this.setState({ departures, locations, operators });
         }
 
         // if complete is true, don't send additional requests
@@ -119,25 +121,32 @@ class MainContainer extends Component {
     ));
     return (
       <div className="main-container">
-        <img
-          src="https://www.osheaga.com/uploads/osheaga/Logos/Logo%20Bell%20Osheaga-En.png?v=7b63dcf0bd4659aea06ac80ac45b1b73"
-          className="logo-image"
-        ></img>
-        <input
-          type="date"
-          className="date-input"
-          // value={departureDate}
-          onChange={e => {
-            this.setState({ departureDate: e.target.value });
-          }}
-          style={{ height: '50px', width: '300px', fontSize: '20px' }}
-        ></input>
-        <br></br>
-        <button className="search-button" onClick={this.initialSearch}>
-          Find Bus Tickets!
-        </button>
-        {!pollingComplete && <LoadingCard />}
-        {departuresArr}
+        <div className="search-container">
+          <img
+            src="https://www.osheaga.com/uploads/osheaga/Logos/Logo%20Bell%20Osheaga-En.png?v=7b63dcf0bd4659aea06ac80ac45b1b73"
+            className="logo-image"
+          ></img>
+          <div className="search-input-container">
+            <div className="origin-input">New York</div>
+            <div className="destination-input">Montreal</div>
+            <div className="passenger-input">Adult: 1</div>
+            <input
+              type="date"
+              className="date-input"
+              value={departureDate}
+              onChange={e => {
+                this.setState({ departureDate: e.target.value });
+              }}
+            ></input>
+            <button type="submit" className="search-button" onClick={this.initialSearch}>
+              Search
+            </button>
+          </div>
+        </div>
+        <div className="result-container">
+          {!pollingComplete && <LoadingCard />}
+          {departuresArr}
+        </div>
       </div>
     );
   }

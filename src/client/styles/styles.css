@@ -1,11 +1,4 @@
-/* html {
-  height: 100%;
-} */
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: rgb(241, 241, 241);
+* {
   box-sizing: border-box;
 }
 
@@ -16,28 +9,113 @@ body,
   height: 100%;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .main-container {
-  /* display: flex; */
-  /* flex-flow: column nowrap; */
-  /* align-content: center; */
-  /* background-image: url(https://www.osheaga.com/uploads/osheaga/backgrounds/Osheaga-homecoming.jpb.jpg?v=67a753a108ff7d65f3d9355c44518fdf); */
+  display: flex;
+  flex-flow: column;
+}
+
+.search-container {
+  background-color: rgb(176, 201, 255);
+  padding: 40px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-image: url(https://www.osheaga.com/uploads/osheaga/backgrounds/Osheaga-homecoming.jpb.jpg?v=67a753a108ff7d65f3d9355c44518fdf);
+  background-position-x: center;
+  background-position-y: 45%;
+}
+
+.search-input-container {
+  display: flex;
+  flex-flow: row wrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.result-container {
+  padding: 20px 0;
+  background-color: #7cc9d0;
+  flex-grow: 1;
 }
 
 .logo-image {
-  margin: 50px;
+  margin: 30px;
   max-width: 400px;
+  display: block;
 }
 
-.card {
-  margin: 10px;
+.card,
+.loading-card {
+  margin: 15px 50px;
   padding: 10px;
   height: 100px;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 1px 1px 3px #b3b3b3;
 }
 
 .search-button {
-  width: 300px;
-  height: 30px;
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  background-color: #ff5c60;
+  border-style: none;
+  color: white;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* .search-button:active {
+  background-color: #443879;
+} */
+
+input:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #d14c4e;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+.date-input {
+  height: 50px;
+  width: 200px;
+  padding-left: 20px;
+  border-style: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.passenger-input,
+.origin-input,
+.destination-input {
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  background-color: white;
+  text-align: center;
+  /* border-right-style: solid; */
+  border-right: 1px solid rgb(180, 180, 180);
+}
+
+.search-input-container > *:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.search-input-container > *:last-child {
+  border-radius: 0 10px 10px 0;
 }
