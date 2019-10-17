@@ -72,16 +72,7 @@ body {
   font-size: inherit;
 }
 
-/* .search-button:active {
-  background-color: #443879;
-} */
-
-input:hover {
-  cursor: pointer;
-  text-decoration: none;
-}
-
-button:hover {
+.search-button:hover {
   background-color: #d14c4e;
   cursor: pointer;
   text-decoration: none;
@@ -91,25 +82,26 @@ button:focus {
   outline: none;
 }
 
-.date-input {
-  height: 50px;
-  width: 200px;
-  padding-left: 20px;
-  border-style: none;
-  font-family: inherit;
-  font-size: inherit;
+input:hover {
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.passenger-input,
-.origin-input,
-.destination-input {
+.form-input {
   width: 200px;
   height: 50px;
   line-height: 50px;
   background-color: white;
   text-align: center;
-  /* border-right-style: solid; */
   border-right: 1px solid rgb(180, 180, 180);
+  cursor: pointer;
+}
+
+#date-input {
+  padding-left: 20px;
+  border-style: none;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .search-input-container > *:first-child {

@@ -36,9 +36,12 @@ class MainContainer extends Component {
       .directory(`x-departures/${originCode}/${destinationCode}/${departureDate}/`)
       .addQuery({ adult: 1 });
 
-    // when a new search is initialized, empty the departures array and switch pollingComplete to false
+    // when a new search is initialized, empty the departures/locations/operators array and switch pollingComplete to false
     // once the state is updated, initialize the new fetch request
-    this.setState({ departures: [], pollingComplete: false }, initializeFetch);
+    this.setState(
+      { departures: [], locations: [], operators: [], pollingComplete: false },
+      initializeFetch
+    );
 
     // intializeFetch is a function that initializes the fetch request
     function initializeFetch() {
@@ -78,6 +81,7 @@ class MainContainer extends Component {
       .directory(`x-departures/${originCode}/${destinationCode}/${departureDate}/poll`)
       .addQuery({ adult: 1, index });
 
+    // declare the config obj for short polling fetch requests
     const fetchConfig = {
       mode: 'cors',
       headers: {
@@ -92,21 +96,23 @@ class MainContainer extends Component {
       .then(data => {
         // destructure data from the response body
         let { departures, locations, operators, complete } = data;
-        console.log(data);
 
         if (departures.length !== 0) {
-          // concatenate new departure data to the original state
+          // concatenate new departure/location/operator data to the original state
           departures = [...this.state.departures].concat(departures);
+          locations = [...this.state.locations].concat(locations);
+          operators = [...this.state.operators].concat(operators);
 
+          // update the state with newly fetched data
           this.setState({ departures, locations, operators });
         }
 
-        // if complete is true, don't send additional requests
+        // if complete property is true, stop sending additional fetch requests
+        // then update the pollingComplete state to true
         if (complete) {
-          // set state
-          this.setState({ pollingComplete: true });
+          this.setState({ pollingComplete: true }, () => console.log(this.state));
         } else {
-          // if complete is false, send short polling request after 2000 ms
+          // if complete property is false, recursively call the pollSearch function after 2000 ms
           setTimeout(() => this.pollSearch(this.state.departures.length), 2000);
         }
       });
@@ -127,12 +133,19 @@ class MainContainer extends Component {
             className="logo-image"
           ></img>
           <div className="search-input-container">
-            <div className="origin-input">New York</div>
-            <div className="destination-input">Montreal</div>
-            <div className="passenger-input">Adult: 1</div>
+            <div className="form-input" id="origin-input">
+              New York
+            </div>
+            <div className="form-input" id="destination-input">
+              Montreal
+            </div>
+            <div className="form-input" id="passenger-input">
+              1 Adult
+            </div>
             <input
+              className="form-input"
               type="date"
-              className="date-input"
+              id="date-input"
               value={departureDate}
               onChange={e => {
                 this.setState({ departureDate: e.target.value });
