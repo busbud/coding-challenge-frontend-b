@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../components/Card';
-import { configure, shallow, render } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
@@ -22,7 +22,7 @@ describe('testing Card component', () => {
 
   let wrapper = shallow(<Card {...props} />);
 
-  test("Card component should have a outer div with className equal to 'card'", () => {
+  test("Card component should have a outer div with className 'card'", () => {
     expect(wrapper.hasClass('card')).toEqual(true);
   });
 

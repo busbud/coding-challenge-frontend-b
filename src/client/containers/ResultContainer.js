@@ -41,7 +41,7 @@ class ResultContainer extends Component {
 
         {/* If polling is in progress, show the loading card to let users know that search is not complete yet */}
         {!isPollingComplete && isSearchInitialized && <LoadingCard />}
-        <LoadingCard />
+
         {/* Display all the departures card */}
         {departuresArr}
       </div>
