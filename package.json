@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --open",
     "build": "webpack",
     "test:jest": "jest --verbose --coverage",
-    "test:cypress": "./node_modules/.bin/cypress run"
+    "test:cypress": "cypress open"
   },
   "repository": {
     "type": "git",
