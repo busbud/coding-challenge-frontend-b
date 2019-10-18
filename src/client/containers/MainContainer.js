@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Card from '../components/Card';
-import LoadingCard from '../components/LoadingCard';
+import SearchContainer from './SearchContainer';
+import ResultContainer from './ResultContainer';
 import URI from 'urijs';
 
 class MainContainer extends Component {
@@ -10,7 +10,7 @@ class MainContainer extends Component {
     this.state = {
       originCode: 'dr5reg',
       destinationCode: 'f25dvk',
-      departureDate: '2019-12-02',
+      departureDate: '2020-08-02',
       baseUrl: 'https://napi.busbud.com/',
       queryString: '?adult=1',
       isSearchInitialized: false,
@@ -23,6 +23,7 @@ class MainContainer extends Component {
 
     this.initialSearch = this.initialSearch.bind(this);
     this.pollSearch = this.pollSearch.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
   }
 
   componentDidMount() {
@@ -132,6 +133,10 @@ class MainContainer extends Component {
       });
   }
 
+  handleDateChange(e) {
+    this.setState({ departureDate: e.target.value });
+  }
+
   render() {
     // destructure properties from state obj
     const {
@@ -144,58 +149,21 @@ class MainContainer extends Component {
       isSearchInitialized,
     } = this.state;
 
-    // map departure element to a Card component
-    const departuresArr = departures.map(el => (
-      <Card
-        key={`departure${el.id}`}
-        data={el}
-        cities={cities}
-        operators={operators}
-        locations={locations}
-      />
-    ));
-
     return (
       <div className="main-container">
-        <div className="search-container">
-          <img
-            src="https://www.osheaga.com/uploads/osheaga/Logos/Logo%20Bell%20Osheaga-En.png?v=7b63dcf0bd4659aea06ac80ac45b1b73"
-            className="logo-image"
-          ></img>
-          <div className="search-input-container">
-            <div className="form-input" id="origin-input">
-              New York
-            </div>
-            <div className="form-input" id="destination-input">
-              Montreal
-            </div>
-            <div className="form-input" id="passenger-input">
-              1 Adult
-            </div>
-            <input
-              className="form-input"
-              type="date"
-              id="date-input"
-              value={departureDate}
-              onChange={e => {
-                this.setState({ departureDate: e.target.value });
-              }}
-            ></input>
-            <button type="submit" className="search-button" onClick={this.initialSearch}>
-              Search
-            </button>
-          </div>
-        </div>
-        <div className="result-container">
-          {!isSearchInitialized && (
-            <img
-              id="osheaga-schedule"
-              src="https://www.osheaga.com/uploads/osheaga/Poster/OSHEAGA-2019-flyer6x9-190801-EN.jpg?v=981dd13bf2ebb3f2dfa029230e17a6f4"
-            ></img>
-          )}
-          {!isPollingComplete && isSearchInitialized && <LoadingCard />}
-          {departuresArr}
-        </div>
+        <SearchContainer
+          departureDate={departureDate}
+          handleDateChange={this.handleDateChange}
+          initialSearch={this.initialSearch}
+        />
+        <ResultContainer
+          cities={cities}
+          departures={departures}
+          operators={operators}
+          locations={locations}
+          isPollingComplete={isPollingComplete}
+          isSearchInitialized={isSearchInitialized}
+        ></ResultContainer>
       </div>
     );
   }
