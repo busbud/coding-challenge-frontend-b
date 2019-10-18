@@ -141,7 +141,9 @@ class MainContainer extends Component {
 
   handleDateChange(e) {
     // update the deaptureDate state when user changes the date in the search container
-    this.setState({ search: { ...this.state.search, departureDate: e.target.value } });
+    this.setState({ search: { ...this.state.search, departureDate: e.target.value } }, () =>
+      console.log(this.state.search.departureDate)
+    );
   }
 
   render() {

@@ -7,7 +7,8 @@
     "start": "nodemon src/server/server.js",
     "dev": "webpack-dev-server --open",
     "build": "webpack",
-    "test": "jest --verbose --coverage"
+    "test:jest": "jest --verbose --coverage",
+    "test:cypress": "./node_modules/.bin/cypress run"
   },
   "repository": {
     "type": "git",
