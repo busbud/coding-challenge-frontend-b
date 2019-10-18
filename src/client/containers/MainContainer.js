@@ -14,6 +14,7 @@ class MainContainer extends Component {
       baseUrl: 'https://napi.busbud.com/',
       queryString: '?adult=1',
       pollingComplete: false,
+      cities: [],
       departures: [],
       locations: [],
       operators: [],
@@ -57,8 +58,14 @@ class MainContainer extends Component {
       fetch(url, fetchConfig)
         .then(res => res.json())
         .then(data => {
+          // destructure cities and complete properties from the response body
+          const { cities, complete } = data;
+
+          // update state with cities data
+          this.setState({ cities });
+
           // If the complete property from the respons body is true, update the state and don't send additional polling requests
-          if (data.complete) {
+          if (complete) {
             // destructure the departures, locations, and operators properties from the response body
             const { departures, locations, operators } = data;
 
@@ -119,8 +126,20 @@ class MainContainer extends Component {
   }
 
   render() {
-    const { departures, pollingComplete, operators, departureDate } = this.state;
-    const departuresArr = departures.map(el => <Card key={`departure${el.id}`} data={el} />);
+    // destructure properties from state obj
+    const { cities, departures, pollingComplete, operators, locations, departureDate } = this.state;
+
+    // map departure element to a Card component
+    const departuresArr = departures.map(el => (
+      <Card
+        key={`departure${el.id}`}
+        data={el}
+        cities={cities}
+        operators={operators}
+        locations={locations}
+      />
+    ));
+
     return (
       <div className="main-container">
         <div className="search-container">

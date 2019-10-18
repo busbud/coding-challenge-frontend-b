@@ -1,4 +1,15 @@
-.card p {
-  margin: 0;
-  padding: 0;
+.card {
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.card-middle {
+  display: flex;
+  flex-flow: row;
+}
+
+.card-middle-icon {
+  width: 100px;
 }
