@@ -27,8 +27,8 @@ const Card = ({ data, operators, cities, locations }) => {
   return (
     <div className="card">
       <div className="card-top">
-        <img src={operator_url}></img>
-        <p>$ {total_price}</p>
+        <img className="card-operator-logo" src={operator_url}></img>
+        <p className="card-price">$ {total_price}</p>
       </div>
       <div className="card-middle">
         <div className="card-middle-icon">

@@ -1,9 +1,10 @@
 import React from 'react';
+import CardLoader from './CardLoader';
 
 const LoadingCard = props => {
   return (
-    <div className="loading-card">
-      <h5 style={{ padding: 0, margin: 0 }}>Polling in progress...</h5>
+    <div className="card" id="loading-card">
+      <CardLoader />
     </div>
   );
 };

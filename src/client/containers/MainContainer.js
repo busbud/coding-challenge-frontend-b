@@ -13,7 +13,8 @@ class MainContainer extends Component {
       departureDate: '2019-12-02',
       baseUrl: 'https://napi.busbud.com/',
       queryString: '?adult=1',
-      pollingComplete: false,
+      isSearchInitialized: false,
+      isPollingComplete: false,
       cities: [],
       departures: [],
       locations: [],
@@ -37,10 +38,16 @@ class MainContainer extends Component {
       .directory(`x-departures/${originCode}/${destinationCode}/${departureDate}/`)
       .addQuery({ adult: 1 });
 
-    // when a new search is initialized, empty the departures/locations/operators array and switch pollingComplete to false
+    // when a new search is initialized, empty the departures/locations/operators array and switch isPollingComplete to false
     // once the state is updated, initialize the new fetch request
     this.setState(
-      { departures: [], locations: [], operators: [], pollingComplete: false },
+      {
+        departures: [],
+        locations: [],
+        operators: [],
+        isPollingComplete: false,
+        isSearchInitialized: true,
+      },
       initializeFetch
     );
 
@@ -69,8 +76,8 @@ class MainContainer extends Component {
             // destructure the departures, locations, and operators properties from the response body
             const { departures, locations, operators } = data;
 
-            // Populate the state with the data received from the response body and toggle pollingComplete to true
-            this.setState({ departures, locations, operators, pollingComplete: true });
+            // Populate the state with the data received from the response body and toggle isPollingComplete to true
+            this.setState({ departures, locations, operators, isPollingComplete: true });
           } else {
             // if the complete property is false, invoke the pollSearch fcn which sends additional short polling requests
             this.pollSearch();
@@ -115,9 +122,9 @@ class MainContainer extends Component {
         }
 
         // if complete property is true, stop sending additional fetch requests
-        // then update the pollingComplete state to true
+        // then update the isPollingComplete state to true
         if (complete) {
-          this.setState({ pollingComplete: true }, () => console.log(this.state));
+          this.setState({ isPollingComplete: true }, () => console.log(this.state));
         } else {
           // if complete property is false, recursively call the pollSearch function after 2000 ms
           setTimeout(() => this.pollSearch(this.state.departures.length), 2000);
@@ -127,7 +134,15 @@ class MainContainer extends Component {
 
   render() {
     // destructure properties from state obj
-    const { cities, departures, pollingComplete, operators, locations, departureDate } = this.state;
+    const {
+      cities,
+      departures,
+      operators,
+      locations,
+      departureDate,
+      isPollingComplete,
+      isSearchInitialized,
+    } = this.state;
 
     // map departure element to a Card component
     const departuresArr = departures.map(el => (
@@ -172,7 +187,13 @@ class MainContainer extends Component {
           </div>
         </div>
         <div className="result-container">
-          {!pollingComplete && <LoadingCard />}
+          {!isSearchInitialized && (
+            <img
+              id="osheaga-schedule"
+              src="https://www.osheaga.com/uploads/osheaga/Poster/OSHEAGA-2019-flyer6x9-190801-EN.jpg?v=981dd13bf2ebb3f2dfa029230e17a6f4"
+            ></img>
+          )}
+          {!isPollingComplete && isSearchInitialized && <LoadingCard />}
           {departuresArr}
         </div>
       </div>

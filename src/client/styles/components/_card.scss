@@ -5,6 +5,10 @@
   }
 }
 
+.card-top {
+  // position: absolute;
+}
+
 .card-middle {
   display: flex;
   flex-flow: row;
@@ -12,4 +16,15 @@
 
 .card-middle-icon {
   width: 100px;
+}
+
+.card-price {
+  width: 40px;
+  top: 10px;
+  right: 10px;
+  display: inline-block;
+}
+
+.card#loading-card {
+  padding: 25px 30px 15px 30px;
 }

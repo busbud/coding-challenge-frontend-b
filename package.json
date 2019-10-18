@@ -25,6 +25,7 @@
     "moment": "^2.24.0",
     "path": "^0.12.7",
     "react": "^16.10.2",
+    "react-content-loader": "^4.3.2",
     "react-dom": "^16.10.2",
     "urijs": "^1.19.1"
   },
