@@ -31,7 +31,7 @@ body {
   background-position-y: 45%;
 }
 
-.search-input-container {
+.search-input-form {
   display: flex;
   flex-flow: row wrap;
   font-family: Arial, Helvetica, sans-serif;
@@ -107,11 +107,11 @@ input:hover {
   font-size: inherit;
 }
 
-.search-input-container > *:first-child {
+.search-input-form > *:first-child {
   border-radius: 10px 0 0 10px;
 }
 
-.search-input-container > *:last-child {
+.search-input-form > *:last-child {
   border-radius: 0 10px 10px 0;
 }
 

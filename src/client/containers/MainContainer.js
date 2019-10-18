@@ -8,21 +8,23 @@ class MainContainer extends Component {
     super(props);
 
     this.state = {
-      originCode: 'dr5reg',
-      destinationCode: 'f25dvk',
-      departureDate: '2020-08-02',
-      baseUrl: 'https://napi.busbud.com/',
-      queryString: '?adult=1',
-      isSearchInitialized: false,
-      isPollingComplete: false,
+      search: {
+        originCode: 'dr5reg',
+        destinationCode: 'f25dvk',
+        departureDate: '2020-08-02',
+        baseUrl: 'https://napi.busbud.com/',
+        adult: 1,
+      },
       cities: [],
       departures: [],
       locations: [],
       operators: [],
+      isSearchInitialized: false,
+      isPollingComplete: false,
     };
 
-    this.initialSearch = this.initialSearch.bind(this);
     this.pollSearch = this.pollSearch.bind(this);
+    this.initialSearch = this.initialSearch.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
   }
 
@@ -32,12 +34,14 @@ class MainContainer extends Component {
 
   initialSearch() {
     // destructure data that we need to construct the url
-    const { baseUrl, originCode, destinationCode, departureDate } = this.state;
+    const {
+      search: { baseUrl, originCode, destinationCode, departureDate, adult },
+    } = this.state;
 
     // construct the fetch url using originCode, destinationCode, and departureDate
     let url = URI(baseUrl)
       .directory(`x-departures/${originCode}/${destinationCode}/${departureDate}/`)
-      .addQuery({ adult: 1 });
+      .addQuery({ adult });
 
     // when a new search is initialized, empty the departures/locations/operators array and switch isPollingComplete to false
     // once the state is updated, initialize the new fetch request
@@ -89,12 +93,14 @@ class MainContainer extends Component {
 
   pollSearch(index = 0) {
     // destructure data that we need to construct the url
-    const { baseUrl, originCode, destinationCode, departureDate } = this.state;
+    const {
+      search: { baseUrl, originCode, destinationCode, departureDate, adult },
+    } = this.state;
 
     // construct the fetch url using originCode, destinationCode, and departureDate
     let url = URI(baseUrl)
       .directory(`x-departures/${originCode}/${destinationCode}/${departureDate}/poll`)
-      .addQuery({ adult: 1, index });
+      .addQuery({ adult, index });
 
     // declare the config obj for short polling fetch requests
     const fetchConfig = {
@@ -134,7 +140,8 @@ class MainContainer extends Component {
   }
 
   handleDateChange(e) {
-    this.setState({ departureDate: e.target.value });
+    // update the deaptureDate state when user changes the date in the search container
+    this.setState({ search: { ...this.state.search, departureDate: e.target.value } });
   }
 
   render() {
@@ -144,9 +151,9 @@ class MainContainer extends Component {
       departures,
       operators,
       locations,
-      departureDate,
       isPollingComplete,
       isSearchInitialized,
+      search: { departureDate },
     } = this.state;
 
     return (
