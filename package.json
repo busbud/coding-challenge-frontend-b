@@ -7,7 +7,7 @@
     "start": "nodemon src/server/server.js",
     "dev": "webpack-dev-server --open",
     "build": "webpack",
-    "test": "jest --verbose"
+    "test": "jest --verbose --coverage"
   },
   "repository": {
     "type": "git",

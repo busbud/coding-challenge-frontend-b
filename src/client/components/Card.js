@@ -37,16 +37,18 @@ const Card = ({ data, operators, cities, locations }) => {
           Departure <br></br>Arrival
         </div>
         <div className="card-middle-date">
-          <p>
+          <p className="card-departure">
             {departure_time} {origin_city_name} - {origin_location_name}
           </p>
-          <p>
+          <p className="card-arrival">
             {arrival_time} {destination_city_name} - {destination_location_name}
           </p>
         </div>
       </div>
       <div className="card-bottom">
-        {duration_hours}h {duration_minutes}m
+        <p className="card-duration">
+          {duration_hours}h {duration_minutes}m
+        </p>
       </div>
     </div>
   );
