@@ -53,17 +53,6 @@ body {
   display: block;
 }
 
-.card {
-  width: 70%;
-  margin: 10px 50px;
-  padding: 10px;
-  min-height: 150px;
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
-  box-shadow: 1px 1px 3px #b3b3b3;
-}
-
 .search-button {
   width: 200px;
   height: 50px;
@@ -116,9 +105,8 @@ input:hover {
 }
 
 #osheaga-schedule {
+  max-width: 1000px;
   width: 80%;
-  margin: auto;
   box-sizing: inherit;
   border: 10px solid white;
-  // object-position: 0px -250px;
 }

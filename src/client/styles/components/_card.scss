@@ -1,4 +1,15 @@
 .card {
+  margin: 10px 50px;
+  padding: 10px;
+  width: 70%;
+  height: 100px;
+  max-width: 850px;
+  min-height: 150px;
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px #b3b3b3;
+
   p {
     margin: 0;
     padding: 0;
@@ -26,5 +37,6 @@
 }
 
 .card#loading-card {
-  padding: 25px 30px 15px 30px;
+  // padding: 25px 30px 15px 30px;
+  padding-top: 25px;
 }
