@@ -1,0 +1,183 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.main-container {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.card {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  margin: 10px 50px;
+  padding: 15px 30px;
+  width: 70%;
+  max-width: 850px;
+  min-height: 180px;
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 2px 2px 3px #c9c9c9;
+}
+
+.card p {
+  margin: 7px 0;
+  padding: 0;
+  font-size: 18px;
+}
+.card-middle {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+}
+
+div.card-departure p,
+div.card-arrival p {
+  display: inline-block;
+}
+
+.card-departure {
+  color: rgb(56, 55, 66);
+  font-weight: 700;
+}
+
+.card-arrival {
+  color: rgb(85, 83, 99);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-operator-logo {
+  max-width: 100px;
+}
+
+p.card-price {
+  display: inline-block;
+  color: #127ccb;
+  font-size: 25px;
+  font-weight: bold;
+  top: 10px;
+  right: 10px;
+}
+
+p.card-duration {
+  color: rgb(117, 117, 117);
+}
+
+.fa-icon {
+  margin-right: 5px;
+}
+
+.card#loading-card {
+  padding-top: 25px;
+}
+
+.search-input-form {
+  display: flex;
+  flex-flow: row wrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+button:focus {
+  outline: none;
+}
+
+input:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.search-button {
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  background-color: #ff5c60;
+  border-style: none;
+  color: white;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.search-button:hover {
+  background-color: #d14c4e;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.form-input {
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  background-color: white;
+  text-align: center;
+  border-right: 1px solid rgb(180, 180, 180);
+  cursor: pointer;
+}
+
+#date-input {
+  padding-left: 20px;
+  border-style: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.search-input-form > *:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.search-input-form > *:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
+.main-container {
+  display: flex;
+  flex-flow: column;
+}
+
+.result-container {
+  padding: 20px 0;
+  background-color: #7cc9d0;
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+#osheaga-schedule {
+  max-width: 1000px;
+  width: 80%;
+  box-sizing: inherit;
+  border: 10px solid white;
+}
+
+.search-container {
+  background-color: rgb(176, 201, 255);
+  padding: 40px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-image: url(https://www.osheaga.com/uploads/osheaga/backgrounds/Osheaga-homecoming.jpb.jpg?v=67a753a108ff7d65f3d9355c44518fdf);
+  background-position-x: center;
+  background-position-y: 45%;
+}
+
+.logo-image {
+  margin: 30px;
+  max-width: 400px;
+  width: 50%;
+  display: block;
+}
