@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node src/server/server.js",
     "dev": "webpack-dev-server --open",
-    "build": "webpack --mode production",
+    "build": "webpack -p",
     "deploy": "git push heroku master",
     "cy:run": "cypress run --browser chrome",
     "cy:open": "./node_modules/.bin/cypress open",
