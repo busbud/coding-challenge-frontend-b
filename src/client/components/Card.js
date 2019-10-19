@@ -39,21 +39,17 @@ const Card = ({ data, operators, cities, locations }) => {
         <p className="card-price">${total_price}</p>
       </div>
       <div className="card-middle">
-        <div className="card-middle-icon">
+        <div className="card-departure">
+          <FontAwesomeIcon className="fa-icon" icon={fasArrowAltCircleRight} />
           <p>
-            <FontAwesomeIcon icon={fasArrowAltCircleRight} />
-          </p>
-          <p>
-            <FontAwesomeIcon icon={farArrowAltCircleRight} />
-          </p>
-        </div>
-        <div className="card-middle-date">
-          <p className="card-departure">
             {departure_time}
             {`   `}
             {origin_city_name} — {origin_location_name}
           </p>
-          <p className="card-arrival">
+        </div>
+        <div className="card-arrival">
+          <FontAwesomeIcon className="fa-icon" icon={farArrowAltCircleRight} />
+          <p>
             {arrival_time}
             {`   `}
             {destination_city_name} — {destination_location_name}
@@ -62,7 +58,7 @@ const Card = ({ data, operators, cities, locations }) => {
       </div>
       <div className="card-bottom">
         <p className="card-duration">
-          <FontAwesomeIcon icon={faBus} />
+          <FontAwesomeIcon className="fa-icon" icon={faBus} />
           {` `}
           {duration_hours}h {duration_minutes}m
         </p>

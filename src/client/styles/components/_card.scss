@@ -19,14 +19,31 @@
   }
 }
 
+.card-middle {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+}
+
+div.card-departure,
+div.card-arrival {
+  p {
+    display: inline-block;
+  }
+}
+
+.card-departure {
+  color: rgb(56, 55, 66);
+  font-weight: 700;
+}
+
+.card-arrival {
+  color: rgb(85, 83, 99);
+}
+
 .card-top {
   display: flex;
   justify-content: space-between;
-}
-
-.card-middle {
-  display: flex;
-  flex-flow: row;
 }
 
 .card-operator-logo {
@@ -43,24 +60,13 @@ p.card-price {
 }
 
 p.card-duration {
-  margin: 0;
   color: rgb(117, 117, 117);
 }
 
-.card-departure {
-  color: rgb(56, 55, 66);
-  font-weight: 700;
-}
-
-.card-arrival {
-  color: rgb(85, 83, 99);
-}
-
-.card-middle-icon {
-  width: 40px;
+.fa-icon {
+  margin-right: 5px;
 }
 
 .card#loading-card {
-  // padding: 25px 30px 15px 30px;
   padding-top: 25px;
 }
