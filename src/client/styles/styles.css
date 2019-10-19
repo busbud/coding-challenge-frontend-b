@@ -35,6 +35,7 @@ body {
   padding: 0;
   font-size: 18px;
 }
+
 .card-middle {
   display: flex;
   flex-flow: column nowrap;
@@ -180,4 +181,36 @@ input:hover {
   max-width: 400px;
   width: 50%;
   display: block;
+}
+
+@media screen and (max-width: 480px) {
+  .search-button,
+  .form-input,
+  #date-input {
+    margin: 0.1em;
+    font-size: 10px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    border-radius: 1em !important;
+  }
+
+  .searh-input-form {
+    display: flex;
+    flex-flow: column;
+  }
+
+  p.card-price,
+  .card p {
+    font-size: 10px;
+  }
+
+  .card-operator-logo {
+    max-width: 70px;
+  }
+
+  .card {
+    overflow-x: scroll;
+  }
 }
