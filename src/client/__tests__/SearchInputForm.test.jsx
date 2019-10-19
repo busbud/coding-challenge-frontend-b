@@ -5,7 +5,7 @@ import SearchInputForm from '../components/SearchInputForm';
 
 configure({ adapter: new Adapter() });
 
-describe('testing Card component', () => {
+describe('testing SearchInputForm component', () => {
   let wrapper;
   let props = {
     initialSearch: jest.fn(),

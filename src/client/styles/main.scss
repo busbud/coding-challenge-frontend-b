@@ -1,5 +1,7 @@
 @charset 'UTF-8';
 
-@import 'styles';
+@import 'components/Card', 'components/LoadingCard', 'components/SearchInputForm';
 
-@import 'components/Card', 'components/LoadingCard';
+@import 'base/base';
+
+@import 'layout/MainContainer', 'layout/SearchContainer', 'layout/ResultContainer';

@@ -37,7 +37,7 @@ describe('testing Card component', () => {
   });
 
   test("p element with className 'card-price' should display properly formatted bus price", () => {
-    expect(wrapper.find('.card-price').text()).toEqual('$ 50');
+    expect(wrapper.find('.card-price').text()).toEqual('$50');
   });
 
   test("p element with classname 'card-departure' should display correct departure info from props", () => {

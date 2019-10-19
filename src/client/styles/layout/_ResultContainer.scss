@@ -1,0 +1,15 @@
+.result-container {
+  padding: 20px 0;
+  background-color: #7cc9d0;
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+#osheaga-schedule {
+  max-width: 1000px;
+  width: 80%;
+  box-sizing: inherit;
+  border: 10px solid white;
+}

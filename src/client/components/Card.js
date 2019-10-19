@@ -30,18 +30,23 @@ const Card = ({ data, operators, cities, locations }) => {
     <div className="card">
       <div className="card-top">
         <img className="card-operator-logo" src={operator_url}></img>
-        <p className="card-price">$ {total_price}</p>
+        <p className="card-price">${total_price}</p>
       </div>
       <div className="card-middle">
         <div className="card-middle-icon">
-          Departure <br></br>Arrival
+          <p>Departure</p>
+          <p>Arrival</p>
         </div>
         <div className="card-middle-date">
           <p className="card-departure">
-            {departure_time} {origin_city_name} - {origin_location_name}
+            {departure_time}
+            {`   `}
+            {origin_city_name} — {origin_location_name}
           </p>
           <p className="card-arrival">
-            {arrival_time} {destination_city_name} - {destination_location_name}
+            {arrival_time}
+            {`   `}
+            {destination_city_name} — {destination_location_name}
           </p>
         </div>
       </div>
