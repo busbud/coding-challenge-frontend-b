@@ -2,6 +2,6 @@
 
 @import 'base/base';
 
-@import 'layout/mainContainer', 'layout/searchContainer', 'layout/resultContainer';
+@import './layout/mainContainer', './layout/searchContainer', './layout/resultContainer';
 
-@import 'components/card', 'components/searchInputForm';
+@import './components/card', './components/searchInputForm';
