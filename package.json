@@ -24,6 +24,10 @@
   },
   "homepage": "https://github.com/joshua0308/coding-challenge-frontend-b#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-regular-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.6",
     "express": "^4.17.1",
     "moment": "^2.24.0",
     "path": "^0.12.7",

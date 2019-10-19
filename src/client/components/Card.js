@@ -1,5 +1,11 @@
 import React from 'react';
 import moment from 'moment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBus,
+  faArrowAltCircleRight as fasArrowAltCircleRight,
+} from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleRight as farArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
 
 const Card = ({ data, operators, cities, locations }) => {
   // extract the logo url from the operators array
@@ -34,8 +40,12 @@ const Card = ({ data, operators, cities, locations }) => {
       </div>
       <div className="card-middle">
         <div className="card-middle-icon">
-          <p>Departure</p>
-          <p>Arrival</p>
+          <p>
+            <FontAwesomeIcon icon={fasArrowAltCircleRight} />
+          </p>
+          <p>
+            <FontAwesomeIcon icon={farArrowAltCircleRight} />
+          </p>
         </div>
         <div className="card-middle-date">
           <p className="card-departure">
@@ -52,6 +62,8 @@ const Card = ({ data, operators, cities, locations }) => {
       </div>
       <div className="card-bottom">
         <p className="card-duration">
+          <FontAwesomeIcon icon={faBus} />
+          {` `}
           {duration_hours}h {duration_minutes}m
         </p>
       </div>
