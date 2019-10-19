@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchInputForm from '../components/SearchInputForm';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import SearchInputForm from '../components/SearchInputForm';
 
 configure({ adapter: new Adapter() });
 
