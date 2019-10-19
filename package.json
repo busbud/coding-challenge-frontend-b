@@ -1,12 +1,17 @@
 {
   "name": "coding-challenge-frontend-b",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.x",
+    "npm": "6.x"
+  },
   "description": "![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)",
   "main": "index.js",
   "scripts": {
     "start": "node src/server/server.js",
     "dev": "webpack-dev-server --open",
     "build": "webpack --mode production",
+    "deploy": "git push heroku master",
     "cy:run": "cypress run --browser chrome",
     "cy:open": "./node_modules/.bin/cypress open",
     "test:jest": "jest --verbose --coverage",
