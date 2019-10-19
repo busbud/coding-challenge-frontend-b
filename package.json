@@ -12,7 +12,6 @@
     "dev": "webpack-dev-server --open",
     "build": "webpack -p",
     "deploy": "git push heroku master",
-    "postinstall": "npm rebuild node-sass",
     "heroku-postbuild": "npm rebuild node-sass",
     "cy:run": "cypress run --browser chrome",
     "cy:open": "./node_modules/.bin/cypress open",
