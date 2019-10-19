@@ -28,3 +28,5 @@ node_modules
 
 # Production build folder
 dist
+
+.DS_Store
