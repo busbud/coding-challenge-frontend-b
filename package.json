@@ -12,7 +12,7 @@
     "dev": "webpack-dev-server --open",
     "build": "webpack -p",
     "deploy": "git push heroku master",
-    "heroku-postbuild": "npm rebuild node-sass",
+    "heroku-postbuild": "npm rebuild node-sass && webpack -p",
     "cy:run": "cypress run --browser chrome",
     "cy:open": "./node_modules/.bin/cypress open",
     "test:jest": "jest --verbose --coverage",
