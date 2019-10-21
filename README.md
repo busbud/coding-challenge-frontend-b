@@ -1,10 +1,12 @@
-# coding-challenge-frontend-b
+# Busbud Front-End Coding Challenge
+
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 
 It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)! 
 Your challenge is to build a microsite that allows a traveler from NYC to find one-way departure schedules for the festival's opening weekend.
 
-## Functional Requirements
+## Functional requirements
+
 - Has a simple onboarding screen that will trigger the departure search
 - Lists all the departures for a given origin city (**New York - geohash: dr5reg**) and a given destination city (**Montréal - geohash: f25dvk**) for a given day (**the 2nd of August 2020**) for **1** adult.
 - For each departure, we want, at least, to see the **departure time**, the **arrival time**, the **location name** and the **price** (use `prices.total` of the `departure`).
@@ -15,6 +17,7 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 - The microsite should be deployed to [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
 ### Bonus
+
 * Localization: support for multiple languages (English, French, ...)
 * Responsive design
 
@@ -36,6 +39,7 @@ Your challenge is to build a microsite that allows a traveler from NYC to find o
 # Documentation
 
 ## Supporting API
+
 The following documentation describes the API you'll need to use to build out the challenge deliverable.
 
 The API you'll be using is hosted at https://napi.busbud.com. This is the Busbud production API.
@@ -48,6 +52,7 @@ Accept | `application/vnd.busbud+json; version=2; profile=https://schema.busbud.
 X-Busbud-Token | value provided in challenge invitation email (if not contact us)
 
 ### Search overview
+
 Search is performed in two steps
 
 1. A [search is initialized](#initialize-search), and may be `complete` if results are served from cache
@@ -55,7 +60,7 @@ Search is performed in two steps
 
 ### Initialize search
 
-Initiating kicks off a search against the various supplier systems if one has yet to be started. It also includes a wealth of related models (cities, locations, oeprators, etc) in its response to ensure a client has all the context necessary to present a compelling experience to the user. If the cache already holds departures for the requested search, the departures will be returned as part of the response.
+Initiating kicks off a search against the various supplier systems if one has yet to be started. It also includes a wealth of related models (cities, locations, operators, etc) in its response to ensure a client has all the context necessary to present a compelling experience to the user. If the cache already holds departures for the requested search, the departures will be returned as part of the response.
 
 To get departures, search is initialized via the following endpoint:
 
@@ -134,6 +139,7 @@ Where a City is like:
       }
     }
 ```
+
 Where a Location is like:
 ```
     {
@@ -150,6 +156,7 @@ Where a Location is like:
       "geohash": "f25dvfzcz"
     }
 ```
+
 Where an Operator is like:
 ```
     {
@@ -213,7 +220,8 @@ Where an Operator is like:
       }
     }
 ```
-And an XDeparture is :
+
+And an XDeparture is like:
 ```
     {
       "id": "7c5dd26a",
