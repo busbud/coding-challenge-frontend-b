@@ -1,0 +1,30 @@
+<div class="row search-results" 
+      *ngIf="!errorFlag"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()"
+      [scrollWindow]="false">
+    <div class="result-item" *ngFor="let journey of journeyDetailData">
+        <div class="duration">
+            <span data-placeholder="true" class="start-time">{{ journey.departureTime }}&nbsp;</span>
+            <span data-placeholder="true" class="total-time"></span>
+            <span data-placeholder="true" class="end-time">{{ journey.arrivalTime }}&nbsp;</span>
+        </div>
+        <div class="location">
+            <div> {{journey.originStation}}, {{journey.originAddress}}</div>
+            <div> {{journey.arrivalStation}}, {{journey.arrivalAddress}}</div>
+            </div>
+        <div class="operator">
+            <img src="{{journey.operatorUrl}}" alt="operator"/>
+        </div>
+        <div class="price-section">
+            <div>
+                <span class="price">{{ journey.price | currency:journey.currency }}</span>
+            </div>
+            <div>
+                <span class="seats">{{ journey.seats}} {{"seatsLeft" | translate}}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{
+    "destination": "Destination",
+    "fetchResponse": "Fetching search response ........",
+    "noResult": "No Results Found, Please verify the geohash code.",
+    "seatsLeft": "Seats Left",
+    "source": "Source",
+    "SearchNow": "Search Now",
+    "travelPlan": "Planning for a travel, here you go!!"
+
+}

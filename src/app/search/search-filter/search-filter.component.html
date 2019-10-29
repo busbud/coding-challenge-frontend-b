@@ -1,0 +1,56 @@
+<form (ngSubmit)="getSearchResult()" #f="ngForm">
+    <div class="row align-form">
+        <div class="form-group col-xs-3">
+            <label for="source" class="sr-only"></label>
+            <input id="source" class="form-control input-group-lg reg_name" 
+                    type="text" 
+                    name="source"
+                    title="Enter Source"
+                    placeholder='{{"source" | translate}}'
+                    [ngModel]="source"
+                    required/>
+        </div>
+        <div class="form-group col-xs-3">
+            <label for="destination" class="sr-only"></label>
+            <input id="destination" class="form-control input-group-lg reg_name"
+                    type="text" 
+                    name="destination"
+                    title="Enter destination"
+                    placeholder='{{"destination" | translate}}'
+                    [ngModel]="destination"
+                    required/>
+        </div>
+        <div class="form-group col-xs-3">
+            <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                    name="travelDate" [ngModel]="traveldate" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
+            </div>
+        </div>
+        <div class="form-group col-xs-3">
+            <label for="passenger" class="sr-only"></label>
+            <select
+                id="passenger"
+                class="form-control  input-group-lg reg_name"
+                [ngModel]="passengerNumber"
+                title="Enter Number of passenger"
+                name="passenger">
+                <option value="1">1 Adult</option>
+                <option value="2">2 Adult</option>
+                <option value="3">3 Adult</option>
+                <option value="4">4 Adult</option>
+                <option value="5">5 Adult</option>
+            </select>
+        </div>
+        <div class="form-group col-xs-3">
+            <button type="submit" 
+                [disabled]="!f.valid"
+                class="btn btn-primary search-btn">{{"SearchNow" | translate}}</button>  
+        </div>
+    </div>
+</form>
+
+
+
