@@ -1,0 +1,14 @@
+{
+  "presets": [
+    "@babel/env",
+    "@babel/react"
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-class-properties"
+  ],
+  "only": [
+    "./**/*.js",
+    "node_modules/jest-runtime"
+  ]
+}
