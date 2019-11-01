@@ -1,13 +1,9 @@
 import App from 'next/app'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { useRouter } from 'next/dist/client/router'
 
-const theme = {
-  colors: {
-    primary: '#0070f3'
-  }
-}
+import GlobalStyle from '../components/common-styled/GlobalStyle';
+import theme  from '../components/common-styled/Theme';
 
 export const IntlContext = React.createContext('en');
 
@@ -39,6 +35,7 @@ export default class MyApp extends App {
     return (
       <ThemeProvider theme={theme}>
         <IntlContext.Provider value={this.state}>
+          <GlobalStyle />
           <Component {...pageProps} />
         </IntlContext.Provider>
       </ThemeProvider>
