@@ -29,7 +29,8 @@ export class SearchFilterComponent implements OnInit {
 
     private getCurrentDate() {
         let today = new Date();
-        return `${today.getFullYear()}-${(today.getMonth()+1)}-${today.getDate()}`;
+        let day = (today.getMinutes() < 10) ? `0${today.getMinutes()}` : today.getMinutes();
+        return `${today.getFullYear()}-${(today.getMonth()+1)}-${day}`;
     }
 
     private formatDate(date) {
