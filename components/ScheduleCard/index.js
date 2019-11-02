@@ -3,13 +3,11 @@ import styled from "styled-components";
 
 import { IntlContext } from "../../pages/_app";
 import { getTransaltion } from "../../utils/translation";
+import { formatedDate, formatedTime, findDifference } from "../../utils/date";
 import Arrow from "../Arrow";
-import {
-  Row,
-  Column,
-  ColumnGrow
-} from "../../components/common-styled/Containers";
+import { Row, Column } from "../../components/common-styled/Containers";
 import { BoldText, NormalText } from "../../components/common-styled/Texts";
+import { media } from "../common-styled/device";
 
 const Wrapper = styled(Column)`
   border: 1px solid #ccc;
@@ -24,16 +22,18 @@ const Box = styled(Column)`
   padding: 20px 40px;
   border-radius: 10px;
   border: 1px solid #ccc;
-`;
-const ColumnBordered = styled(ColumnGrow)`
-  border-right: 1px solid #ccc;
-  margin-right: 20px;
+  ${media.mobile`
+    ${props => props.alignEnd && "align-self: flex-end;"}
+  `}
 `;
 const TopRow = styled(Row)`
-  align-items: center;
-  margin-bottom: 15px;
+  ${media.mobile`flex-direction: column;`}
 `;
 const BottomRow = styled(Row)`
+  ${media.mobile`
+    flex-direction: column;
+    align-items: flex-start;
+  `}
   align-items: center;
 `;
 const City = styled.div`
@@ -46,6 +46,7 @@ const OperatorName = styled.div`
 `;
 const Price = styled(BoldText)`
   margin: 0 10px 0 auto;
+  ${media.mobile`margin: 0;`}
 `;
 const Book = styled.button`
   background: #065af3;
@@ -56,14 +57,17 @@ const Book = styled.button`
   text-align: center;
   outline: none;
   cursor: pointer;
+  ${media.mobile`margin: 0 0 0 auto;`}
 `;
 const Date = styled.div`
   margin-left: 10px;
   border-left: 1px solid #9e9a9a;
   padding-left: 10px;
+  ${media.mobile`display: none;`}
 `;
 const ArrowSpaced = styled(Arrow)`
   margin: 15px 30px;
+  ${media.mobile`align-self: center;`}
 `;
 const DetailsArrow = styled(Arrow)`
   margin: -1px 0 0 10px;
@@ -74,6 +78,7 @@ const Details = styled.a`
   align-items: center;
   color: #1da1f2;
   cursor: pointer;
+  ${media.mobile`margin: 16px 0 0 auto;`}
 `;
 const Expandable = styled(Row)`
   ${props => (props.isOpen ? "max-height:1000px;" : "max-height:0;")}
@@ -87,32 +92,62 @@ const ExtrasWrap = styled(Row)`
   flex-grow: 1;
   border-radius: 5px;
 `;
-const GrayText = styled(NormalText)`
-  color: #ccc;
+const Amenities = styled(Row)`
+  margin: 15px 0 0 -10px;
+  flex-wrap: wrap;
+`;
+const Amenity = styled(Book)`
+  margin: 0 10px;
+  ${media.desktop`
+    margin: 0 0 10px 10px;
+  `}
+`;
+const MobileSection = styled.div`
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  margin-bottom: 16px;
 `;
 
 export default function ScheduleCard(props) {
-  const { toggleLanguage } = useContext(IntlContext);
-  const { schedule } = props;
+  const { language } = useContext(IntlContext);
+  const { schedule, operator = {}, origin = {}, destination = {} } = props;
   const [isOpen, setOpen] = useState(false);
+  const { mins, hrs } = findDifference(
+    schedule.departure_time,
+    schedule.arrival_time
+  );
   return (
     <Wrapper>
       <TopRow>
-        <OperatorLogo src="https://busbud.imgix.net/operator-logos/logo_trailways.png?h={height}&w={width}&auto=format&fit=fill&bg=0FFF"></OperatorLogo>
-        <OperatorName>Adirondack Trailways</OperatorName>
-        <Date>20th Nov 2019</Date>
-        <Price>$78.50</Price>
-        <Book>BOOK NOW</Book>
+        <MobileSection>
+          <OperatorLogo src="https://busbud.imgix.net/operator-logos/logo_trailways.png?h={height}&w={width}&auto=format&fit=fill&bg=0FFF"></OperatorLogo>
+          <OperatorName>{operator.display_name}</OperatorName>
+          <Date>{formatedDate(schedule.departure_time)}</Date>
+        </MobileSection>
+        <MobileSection>
+          <Price>
+            {schedule.prices.currency +
+              " " +
+              (schedule.prices.total / 100).toFixed(2)}
+          </Price>
+          <Book>BOOK NOW</Book>
+        </MobileSection>
       </TopRow>
       <BottomRow>
         <Box>
-          <BoldText>9.30</BoldText>
-          <City>Newyork</City>
+          <BoldText>{formatedTime(schedule.departure_time)}</BoldText>
+          <City>{origin.name}</City>
         </Box>
-        <ArrowSpaced dotted direction={"right"} text={"8hrs 55mins"} />
-        <Box>
-          <BoldText>11.30</BoldText>
-          <City>Montreal</City>
+        <ArrowSpaced
+          dotted
+          direction={"right"}
+          text={(hrs && hrs + "hrs ") + (mins && mins + "mins")}
+          bottomText={hrs > 24 && "+1 day"}
+        />
+        <Box alignEnd>
+          <BoldText>{formatedTime(schedule.arrival_time)}</BoldText>
+          <City>{destination.name}</City>
         </Box>
         <Details onClick={() => setOpen(!isOpen)}>
           Bus details
@@ -121,20 +156,21 @@ export default function ScheduleCard(props) {
       </BottomRow>
       <Expandable isOpen={isOpen}>
         <ExtrasWrap>
-          <ColumnBordered>
-            <BoldText>Amentiies</BoldText>
-            <GrayText>Air conditioning</GrayText>
-            <GrayText>Air conditioning</GrayText>
-            <GrayText>Air conditioning</GrayText>
-            <GrayText>Air conditioning</GrayText>
-          </ColumnBordered>
-          <ColumnGrow>
-            <BoldText>Terms</BoldText>
-            <GrayText>Air conditioning</GrayText>
-            <GrayText>Air conditioning</GrayText>
-            <GrayText>Air conditioning</GrayText>
-            <GrayText>Air conditioning</GrayText>
-          </ColumnGrow>
+          <Column>
+            <BoldText>Amenities</BoldText>
+            <Amenities>
+              {Object.keys(schedule.amenities).map(amenity => {
+                return (
+                  schedule.amenities[amenity] &&
+                  getTransaltion("amenities." + amenity, language) && (
+                    <Amenity>
+                      {getTransaltion("amenities." + amenity, language)}
+                    </Amenity>
+                  )
+                );
+              })}
+            </Amenities>
+          </Column>
         </ExtrasWrap>
       </Expandable>
     </Wrapper>
