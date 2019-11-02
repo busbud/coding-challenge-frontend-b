@@ -1,3 +1,7 @@
 export default {
-  title: "hi in french"
-}
+  siteName: `Réserver un tour Anglais`,
+  header: {
+    englishTitle: "Switch to English",
+    frenchTitle: "Switch to French"
+  }
+};

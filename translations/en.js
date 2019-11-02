@@ -1,3 +1,5 @@
 export default {
-  title: "hii"
-}
+  siteName: "Book a ride",
+  "header.enTitle": "Switch to English",
+  "header.frTitle": "Switch to English"
+};

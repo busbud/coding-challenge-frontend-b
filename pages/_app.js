@@ -1,18 +1,18 @@
-import App from 'next/app'
-import React from 'react'
-import { ThemeProvider } from 'styled-components'
+import App from "next/app";
+import React from "react";
+import { ThemeProvider } from "styled-components";
 
-import GlobalStyle from '../components/common-styled/GlobalStyle';
-import theme  from '../components/common-styled/Theme';
+import GlobalStyle from "../components/common-styled/GlobalStyle";
+import theme from "../components/common-styled/Theme";
 
-export const IntlContext = React.createContext('en');
+export const IntlContext = React.createContext("en");
 
 export default class MyApp extends App {
   constructor(props) {
     super(props);
 
-    this.toggleLanguage = (language) => {
-      window.localStorage.setItem('language', language)
+    this.toggleLanguage = language => {
+      window.localStorage.setItem("language", language);
       this.setState({
         language
       });
@@ -20,25 +20,25 @@ export default class MyApp extends App {
 
     this.state = {
       language: null,
-      toggleLanguage: this.toggleLanguage,
+      toggleLanguage: this.toggleLanguage
     };
   }
 
   componentDidMount() {
     this.setState({
-      language: window.localStorage.getItem('language') || 'en'
+      language: window.localStorage.getItem("language") || "en"
     });
   }
 
-  render () {
-    const { Component, pageProps } = this.props
+  render() {
+    const { Component, pageProps } = this.props;
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.default}>
         <IntlContext.Provider value={this.state}>
           <GlobalStyle />
           <Component {...pageProps} />
         </IntlContext.Provider>
       </ThemeProvider>
-    )
+    );
   }
 }

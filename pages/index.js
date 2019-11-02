@@ -1,26 +1,41 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import Head from 'next/head'
-import { getTransaltion } from '../utils/translation'
-import { IntlContext } from './_app'
+import React, { useContext } from "react";
+import styled from "styled-components";
+import { Facebook } from "react-content-loader";
+
+import HtmlHead from "../components/HtmlHead";
+import ScheduleCard from "../components/ScheduleCard";
+import Header from "../components/Header";
+import {
+  PageContainer,
+  SiteWidth
+} from "../components/common-styled/Containers";
+import { getTransaltion } from "../utils/translation";
+import { IntlContext } from "./_app";
+import useFetchSchedules from "../hooks/useFetchSchedules";
 
 const Title = styled.h1`
   font-size: 50px;
   color: ${({ theme }) => theme.colors.primary};
-`
+`;
 const Home = () => {
-  const { language, toggleLanguage } = useContext(IntlContext);
+  const { language } = useContext(IntlContext);
+  const { departures, isLoading } = useFetchSchedules(
+    "dr5reg",
+    "f25dvk",
+    "2020-08-15",
+    1
+  );
   return (
-    <div>
-      <div onClick={() => toggleLanguage('en')}>English</div>
-      <div onClick={() => toggleLanguage('fr')}>French</div>
-      <Title>{ getTransaltion('title', language) }</Title>
-      <Head>
-        <div className="title">Test</div>
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-    </div>
-  )
-}
+    <PageContainer>
+      <HtmlHead />
+      <Header title={getTransaltion("siteName", language)} />
+      <SiteWidth>
+        {isLoading && <Facebook />}
+        {departures &&
+          departures.map(schedule => <ScheduleCard schedule={schedule} />)}
+      </SiteWidth>
+    </PageContainer>
+  );
+};
 
-export default Home
+export default Home;
