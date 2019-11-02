@@ -34,7 +34,11 @@ const Home = () => {
       <Header title={getTransaltion("siteName", language)} />
       <SiteWidth>
         <Search>
-          {`New York to Montreal on ${formatedDate(date)} for 1 adult`}
+          {/* TODO write utility function for replacement based on params */}
+          {getTransaltion("search_header", language).replace(
+            "{0}",
+            formatedDate(date)
+          )}
         </Search>
         {isLoading && <Facebook style={{ width: "60%" }} />}
         {results &&

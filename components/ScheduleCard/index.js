@@ -138,7 +138,7 @@ export default function ScheduleCard(props) {
               " " +
               (schedule.prices.total / 100).toFixed(2)}
           </Price>
-          <Book>BOOK NOW</Book>
+          <Book>{getTransaltion("sc.book_now", language)}</Book>
         </MobileSection>
       </TopRow>
       <BottomRow>

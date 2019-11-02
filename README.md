@@ -1,5 +1,9 @@
 # Challenge Completed
 
+## Deployed on Heroku
+
+- https://busbud-microsite.herokuapp.com/
+
 ## Run on local development build
 
 - npm i
