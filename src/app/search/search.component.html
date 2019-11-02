@@ -1,16 +1,8 @@
 <div class="container-fluid banner">
-    <app-search-header></app-search-header>
-    <app-search-filter
-    (resultObj)="updateSearchResult($event)">
-    </app-search-filter>
-    <app-search-result [journeyDetailData]="journeyDetails" ></app-search-result>
-    <div class="row search-results no-result" *ngIf="errorFlag">
-      {{ "noResult" | translate }}
-    </div>
-    <div class="row search-results no-result" *ngIf="!journeyDetails.length">
-      {{ "fetchResponse" | translate }}
-    </div>
-  </div>
+  <app-search-header></app-search-header>
+  <app-search-filter></app-search-filter>
+  <app-search-result></app-search-result>
+</div>
   
   
   

@@ -5,7 +5,7 @@
       [infiniteScrollThrottle]="50"
       (scrolled)="onScroll()"
       [scrollWindow]="false">
-    <div class="result-item" *ngFor="let journey of journeyDetailData">
+    <div class="result-item" *ngFor="let journey of journeyDetails">
         <div class="duration">
             <span data-placeholder="true" class="start-time">{{ journey.departureTime }}&nbsp;</span>
             <span data-placeholder="true" class="total-time"></span>
@@ -26,5 +26,11 @@
                 <span class="seats">{{ journey.seats}} {{"seatsLeft" | translate}}</span>
             </div>
         </div>
+    </div>
+    <div class="row search-results no-result" *ngIf="errorFlag">
+        {{ "noResult" | translate }}
+    </div>
+    <div class="row search-results no-result" *ngIf="!journeyDetails.length">
+        {{ "fetchResponse" | translate }}
     </div>
 </div>
