@@ -2,32 +2,42 @@
 
 ## Thought process I followed
 
-- Created rough website design on paper
+- Created a rough website design on paper
 
 - Decided technology stack
 
-  - I chose next.js because it give most of the setup out of box for React and Server Side Rendering
-  - Only one page so did not use redux or other state manager
+  - I chose next.js because it gives most of the setup out of the box for React and Server Side Rendering
+  - Only one page so did not use redux or another state manager
   - Styled component for CSS because I love it!
-  - Unit tesing - Jest, React Testing Library
+  - Unit testing - Jest, React Testing Library
 
-- Created basic skeleton to support features like Multi language, theming and deployed to heroku
+- Created basic skeleton to support features like Multi-language, theming and deployed to Heroku
 
-- Created website skeleton and implemented polling api
+- Created website skeleton and implemented polling API
 
-- I used functional components with hooks. I find code clean compared to class based components (especially no need of lifecycle hooks)
+- I used functional components with hooks. I find code clean compared to class-based components (especially no need of lifecycle hooks)
 
 - Created components and added Unit tests
 
-- Responsive check - As I created design for desktop, I followed Desktop first rather than Mobile First approach
+- Responsive check - As I created the design for Desktop, I followed Desktop first rather than Mobile First approach
 
 - Final Bug fixes
+
+## Folder Structure
+
+- components ~ Common components used across the project
+- hooks ~ Common hooks used across the project
+- pages ~ These are container components
+- translations ~ static files containing translations for each language
+- utils ~ utility functions
+- **mock** ~ Keeps server mocks for unit testing and even development
+- **tests** ~ folders containing unit tests
 
 ## Deployed on Heroku
 
 - https://busbud-microsite.herokuapp.com/
 
-## Run on local development build
+## Run on a local development build
 
 - npm i
 - npm run dev
