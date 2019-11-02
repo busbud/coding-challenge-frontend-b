@@ -1,12 +1,11 @@
 export const formatedDate = (dateStr) => {
   const date = new Date(dateStr);
-  const locale = localStorage.getItem('locale');
-  return date.toLocaleString(locale || 'en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+  // need to pass local in url or save on server
+  return date.toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 export const formatedTime = (dateStr) => {
-  const locale = localStorage.getItem('locale');
   const date = new Date(dateStr);
-  return date.toLocaleString(locale || 'en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+  return date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 }
 export const findDifference = (start, end) => {
   const startDate = new Date(start);
