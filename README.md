@@ -31,7 +31,7 @@ https://gtmetrix.com/reports/busbud-microsite.herokuapp.com/WO3QvCgP
 ## Google Lighthouse Score (Out of 100)
 
 - Performance 89
-- Accessibility 80
+- Accessibility 93
 - Best Practices 93
 - SEO 82
 
