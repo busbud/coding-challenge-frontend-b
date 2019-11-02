@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "next": "9.1.2",
-    "placeholder-loading": "^0.2.2",
     "react": "16.11.0",
+    "react-content-loader": "^4.3.2",
     "react-dom": "16.11.0",
     "styled-components": "^4.4.1"
   },
