@@ -16,9 +16,9 @@
 
 ## Unit Test Result
 
-Test Suites: 4 passed, 4 total
-Tests: 10 passed, 10 total
-Snapshots: 1 passed, 1 total
+- Test Suites: 4 passed, 4 total
+- Tests: 10 passed, 10 total
+- Snapshots: 1 passed, 1 total
 
 ## GTMetrix Performace Result
 
