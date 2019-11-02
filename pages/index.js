@@ -9,14 +9,15 @@ import {
   PageContainer,
   SiteWidth
 } from "../components/common-styled/Containers";
+import { BoldText } from "../components/common-styled/Texts";
 import { getTransaltion } from "../utils/translation";
 import { IntlContext } from "./_app";
 import useFetchSchedules from "../hooks/useFetchSchedules";
 
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
+export const Search = styled(BoldText)`
+  padding: 20px 0;
 `;
+
 const Home = () => {
   const { language } = useContext(IntlContext);
   const { departures, isLoading } = useFetchSchedules(
@@ -30,6 +31,11 @@ const Home = () => {
       <HtmlHead />
       <Header title={getTransaltion("siteName", language)} />
       <SiteWidth>
+        <Search>
+          {"New York to Montreal on 2nd of August 2020 for 1 adult".toLocaleString(
+            "fr"
+          )}
+        </Search>
         {isLoading && <Facebook />}
         {departures &&
           departures.map(schedule => <ScheduleCard schedule={schedule} />)}

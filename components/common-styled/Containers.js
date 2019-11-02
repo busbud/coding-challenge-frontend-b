@@ -13,7 +13,18 @@ export const FullWidth = styled.section`
 export const SiteWidth = styled.div`
   max-width: 1400px;
   display: flex;
-  width: 100%;
   flex-direction: column;
   padding: 16px;
+  width: calc(100% - 32px);
+`;
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const ColumnGrow = styled(Column)`
+  flex-grow: 1;
 `;
