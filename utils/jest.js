@@ -8,7 +8,7 @@ import theme from "../components/common-styled/Theme";
 export const setupComponent = (
   component,
   toggleLanguage = jest.fn(),
-  language = null
+  language = "en"
 ) => {
   return render(
     <ThemeProvider theme={theme.default}>
