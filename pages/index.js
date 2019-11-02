@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Facebook } from "react-content-loader";
 
@@ -12,7 +12,9 @@ import {
 import { BoldText } from "../components/common-styled/Texts";
 import { getTransaltion } from "../utils/translation";
 import { IntlContext } from "./_app";
-import useFetchSchedules from "../hooks/useFetchSchedules";
+import usePollingApi from "../hooks/usePollingApi";
+import { bakeDepartureResults } from './bakeResults';
+import { formatedDate } from "../utils/date";
 
 export const Search = styled(BoldText)`
   padding: 20px 0;
@@ -20,11 +22,11 @@ export const Search = styled(BoldText)`
 
 const Home = () => {
   const { language } = useContext(IntlContext);
-  const { departures, isLoading } = useFetchSchedules(
-    "dr5reg",
-    "f25dvk",
-    "2020-08-15",
-    1
+  const date = '2020-08-29';
+  const { results, isLoading } = usePollingApi(
+    ["dr5reg", "f25dvk", date],
+    ["?adult=1"],
+    bakeDepartureResults
   );
   return (
     <PageContainer>
@@ -32,13 +34,27 @@ const Home = () => {
       <Header title={getTransaltion("siteName", language)} />
       <SiteWidth>
         <Search>
-          {"New York to Montreal on 2nd of August 2020 for 1 adult".toLocaleString(
-            "fr"
-          )}
+          {
+            `New York to Montreal on ${formatedDate(date)} for 1 adult`
+          }
         </Search>
-        {isLoading && <Facebook />}
-        {departures &&
-          departures.map(schedule => <ScheduleCard schedule={schedule} />)}
+        {isLoading && <Facebook style={{width: '60%'}} />}
+        {
+          results && results.departures &&
+            results.departures.map((schedule, index) => 
+            <ScheduleCard
+              key={index + 'schedulecard'}
+              schedule={schedule} 
+              operator={results.operators[schedule.operator_id]} 
+              origin={
+                  results.locations && 
+                    schedule.origin_location_id && 
+                      results.locations[schedule.origin_location_id]}  
+              destination={
+                  results.locations && 
+                    schedule.destination_location_id && 
+                      results.locations[schedule.destination_location_id]}  
+        />)}
       </SiteWidth>
     </PageContainer>
   );

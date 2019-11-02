@@ -1,12 +1,13 @@
 import * as React from "react";
-import { shallow } from "enzyme";
+
 import HomePage from "../index";
+import { setupComponent } from "../../utils/jest";
 
 describe("Pages", () => {
-  describe("Index", () => {
+  describe("HomePage", () => {
     it("should render without throwing an error", function() {
-      const wrap = shallow(<HomePage />);
-      expect(wrap).toMatchSnapshot();
+      const { asFragment } = setupComponent(<HomePage />);
+      expect(asFragment()).toMatchSnapshot();
     });
   });
 });

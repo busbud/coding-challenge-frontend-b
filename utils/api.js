@@ -7,8 +7,19 @@ export const getApi = async url => {
         "X-Busbud-Token": "PARTNER_AHm3M6clSAOoyJg4KyCg7w"
       }
     });
-    return await response.json();
+    // Error handling here! We can show give feedback to user
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    } else {
+      return await response.json();
+    }
   } catch (error) {
-    // Error handling here!
+    console.log(error);
   }
 };
+
+export const createUrl = (baseUrl, urlParams, queryParams) => {
+  baseUrl += urlParams.join('/');
+  let params = queryParams.join('&');
+  return baseUrl + params;
+}

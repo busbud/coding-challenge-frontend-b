@@ -36,11 +36,11 @@ const Point = styled.div`
 
 export default function Arrow(props) {
   return (
-    <Wrap class="arrow" {...props}>
+    <Wrap {...props}>
       <Text>{props.text}</Text>
       <ArrowWrap>
-        {props.dotted && <Line class="line"></Line>}
-        <Point class="point" direction={props.direction}></Point>
+        { props.dotted && <Line></Line> }
+        <Point direction={props.direction}></Point>
       </ArrowWrap>
     </Wrap>
   );

@@ -12,7 +12,7 @@ export default class MyApp extends App {
     super(props);
 
     this.toggleLanguage = language => {
-      window.localStorage.setItem("language", language);
+      window.localStorage.setItem("locale", language);
       this.setState({
         language
       });
@@ -26,7 +26,7 @@ export default class MyApp extends App {
 
   componentDidMount() {
     this.setState({
-      language: window.localStorage.getItem("language") || "en"
+      language: window.localStorage.getItem("locale") || "en"
     });
   }
 

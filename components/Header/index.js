@@ -14,7 +14,7 @@ const InnerWrapper = styled(SiteWidth)`
   flex-direction: row;
 `;
 const Title = styled.h1`
-  font-size: 50px;
+  font-size: 30px;
   margin: 0;
   color: ${({ theme }) => theme.text.white};
 `;

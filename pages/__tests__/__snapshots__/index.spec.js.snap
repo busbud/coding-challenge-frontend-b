@@ -1,3 +1,166 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pages Index should render without throwing an error 1`] = `ShallowWrapper {}`;
+exports[`Pages HomePage should render without throwing an error 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-EHOje iWdXXD"
+  >
+    <section
+      class="sc-bZQynM sc-hSdWYo edquLK"
+    >
+      <div
+        class="sc-gzVnrw sc-eHgmQL gtjzyz"
+      >
+        <h1
+          class="sc-cvbbAY iBPgjL"
+          data-testid="header-title"
+        >
+          Book a ride
+        </h1>
+        <div
+          class="sc-jWBwVP cEFXky"
+        >
+          <a
+            class="sc-brqgnP fYkzIq"
+            data-testid="header-english"
+            role="button"
+            title="Switch to English"
+          >
+            English
+          </a>
+          <a
+            class="sc-brqgnP fYkzIq"
+            data-testid="header-french"
+            role="button"
+            title="Switch to English"
+          >
+            French
+          </a>
+        </div>
+      </div>
+    </section>
+    <div
+      class="sc-gzVnrw jaqdWW"
+    >
+      <div
+        class="sc-gZMcBi sc-cMljjf dZFeUA"
+      >
+        New York to Montreal on August 29, 2020 for 1 adult
+      </div>
+      <svg
+        aria-label="Loading interface..."
+        preserveAspectRatio="none"
+        role="img"
+        style="width: 60%;"
+        viewBox="0 0 400 130"
+      >
+        <title>
+          Loading interface...
+        </title>
+        <rect
+          clip-path="url(#xkohehj21er)"
+          height="130"
+          style="fill: url(#u01xyyrbdla);"
+          width="400"
+          x="0"
+          y="0"
+        />
+        <defs>
+          <clippath
+            id="xkohehj21er"
+          >
+            <rect
+              height="6.4"
+              rx="4"
+              ry="4"
+              width="117"
+              x="70"
+              y="15"
+            />
+            <rect
+              height="6.4"
+              rx="3"
+              ry="3"
+              width="85"
+              x="70"
+              y="35"
+            />
+            <rect
+              height="6.4"
+              rx="3"
+              ry="3"
+              width="350"
+              x="0"
+              y="80"
+            />
+            <rect
+              height="6.4"
+              rx="3"
+              ry="3"
+              width="380"
+              x="0"
+              y="100"
+            />
+            <rect
+              height="6.4"
+              rx="3"
+              ry="3"
+              width="201"
+              x="0"
+              y="120"
+            />
+            <circle
+              cx="30"
+              cy="30"
+              r="30"
+            />
+          </clippath>
+          <lineargradient
+            id="u01xyyrbdla"
+          >
+            <stop
+              offset="0%"
+              stop-color="#f0f0f0"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-2; -2; 1"
+              />
+            </stop>
+            <stop
+              offset="50%"
+              stop-color="#e0e0e0"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-1; -1; 2"
+              />
+            </stop>
+            <stop
+              offset="100%"
+              stop-color="#f0f0f0"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="0; 0; 3"
+              />
+            </stop>
+          </lineargradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;

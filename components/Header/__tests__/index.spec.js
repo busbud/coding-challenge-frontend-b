@@ -2,7 +2,7 @@ import React from "react";
 import { fireEvent } from "@testing-library/react";
 
 import Header from "../index";
-import { setupComponent } from "../../../utils/jestUtils";
+import { setupComponent } from "../../../utils/jest";
 import en from "../../../translations/en";
 
 describe("Header component", () => {

@@ -3,33 +3,33 @@
 exports[`Header component should render without throwing an error 1`] = `
 <DocumentFragment>
   <section
-    class="sc-bwzfXH sc-bxivhb gCAUCy"
+    class="sc-bwzfXH sc-bZQynM dCVnaF"
   >
     <div
-      class="sc-htpNat sc-ifAKCX hxabGC"
+      class="sc-htpNat sc-gzVnrw efxpzR"
     >
       <h1
-        class="sc-EHOje gieLlh"
+        class="sc-htoDjs kVyOqj"
         data-testid="header-title"
       >
         Book a ride
       </h1>
       <div
-        class="sc-bZQynM gINrGK"
+        class="sc-dnqmqq kLCRhk"
       >
         <a
-          class="sc-gzVnrw bmBGcZ"
+          class="sc-iwsKbI jiLVkl"
           data-testid="header-english"
           role="button"
-          title=""
+          title="Switch to English"
         >
           English
         </a>
         <a
-          class="sc-gzVnrw bmBGcZ"
+          class="sc-iwsKbI jiLVkl"
           data-testid="header-french"
           role="button"
-          title=""
+          title="Switch to English"
         >
           French
         </a>
