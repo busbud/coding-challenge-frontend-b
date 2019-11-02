@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScheduleCard component should render without throwing an error 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-dnqmqq sc-VigVT kplqdz"
+  >
+    <div
+      class="sc-htoDjs sc-fjdhpX jUwZXC"
+    >
+      <div
+        class="sc-iAyFgw dMZbes"
+      >
+        <img
+          class="sc-kAzzGY jHprQs"
+          src="https://busbud.imgix.net/operator-logos/logo_trailways.png?h={height}&w={width}&auto=format&fit=fill&bg=0FFF"
+        />
+        <div
+          class="sc-chPdSV fVMEOF"
+          data-testid="scard-operator"
+        >
+          Adirondack Trailways
+        </div>
+        <div
+          class="sc-kpOJdX hMXPOi"
+          data-testid="scard-departure-date"
+        >
+          August 2, 2020
+        </div>
+      </div>
+      <div
+        class="sc-iAyFgw dMZbes"
+      >
+        <div
+          class="sc-gZMcBi sc-kgoBCf eJuSOi"
+          data-testid="scard-price"
+        >
+          USD 78.50
+        </div>
+        <button
+          class="sc-kGXeez bJStZD"
+        >
+          BOOK NOW
+        </button>
+      </div>
+    </div>
+    <div
+      class="sc-htoDjs sc-jzJRlG geYYoV"
+    >
+      <div
+        class="sc-dnqmqq sc-jTzLTM eCLnUn"
+      >
+        <div
+          class="sc-gZMcBi hmYReZ"
+          data-testid="scard-departure"
+        >
+          11:00 AM
+        </div>
+        <div
+          class="sc-cSHVUG ZOTVl"
+        >
+          New York City
+        </div>
+      </div>
+      <div
+        class="sc-bdVaJa bPGLpq sc-dxgOiQ kkhrFI"
+        direction="right"
+      >
+        <div
+          class="sc-bwzfXH kKwxuZ"
+        >
+          8hrs 55mins
+        </div>
+        <div
+          class="sc-htpNat kxRvrj"
+        >
+          <div
+            class="sc-bxivhb vBGNy"
+          />
+          <div
+            class="sc-ifAKCX bsLoLO"
+            direction="right"
+          />
+        </div>
+      </div>
+      <div
+        class="sc-dnqmqq sc-jTzLTM gtcKXT"
+      >
+        <div
+          class="sc-gZMcBi hmYReZ"
+        >
+          7:55 PM
+        </div>
+        <div
+          class="sc-cSHVUG ZOTVl"
+        >
+          31st St & 8th Ave
+        </div>
+      </div>
+      <a
+        class="sc-jKJlTe flLZUW"
+        data-testid="scard-show-details"
+      >
+        Bus details
+        <div
+          class="sc-bdVaJa bPGLpq sc-ckVGcZ eugcqh"
+          direction="down"
+        >
+          <div
+            class="sc-bwzfXH kKwxuZ"
+          />
+          <div
+            class="sc-htpNat kxRvrj"
+          >
+            <div
+              class="sc-ifAKCX xeDUD"
+              direction="down"
+            />
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</DocumentFragment>
+`;

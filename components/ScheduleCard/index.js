@@ -117,16 +117,21 @@ export default function ScheduleCard(props) {
     schedule.departure_time,
     schedule.arrival_time
   );
+  console.log(isOpen);
   return (
-    <Wrapper>
+    <Wrapper key={schedule.id}>
       <TopRow>
         <MobileSection>
-          <OperatorLogo src="https://busbud.imgix.net/operator-logos/logo_trailways.png?h={height}&w={width}&auto=format&fit=fill&bg=0FFF"></OperatorLogo>
-          <OperatorName>{operator.display_name}</OperatorName>
-          <Date>{formatedDate(schedule.departure_time)}</Date>
+          <OperatorLogo src={operator.logo_url}></OperatorLogo>
+          <OperatorName data-testid="scard-operator">
+            {operator.display_name}
+          </OperatorName>
+          <Date data-testid="scard-departure-date">
+            {formatedDate(schedule.departure_time)}
+          </Date>
         </MobileSection>
         <MobileSection>
-          <Price>
+          <Price data-testid="scard-price">
             {schedule.prices.currency +
               " " +
               (schedule.prices.total / 100).toFixed(2)}
@@ -136,7 +141,9 @@ export default function ScheduleCard(props) {
       </TopRow>
       <BottomRow>
         <Box>
-          <BoldText>{formatedTime(schedule.departure_time)}</BoldText>
+          <BoldText data-testid="scard-departure">
+            {formatedTime(schedule.departure_time)}
+          </BoldText>
           <City>{origin.name}</City>
         </Box>
         <ArrowSpaced
@@ -149,30 +156,38 @@ export default function ScheduleCard(props) {
           <BoldText>{formatedTime(schedule.arrival_time)}</BoldText>
           <City>{destination.name}</City>
         </Box>
-        <Details onClick={() => setOpen(!isOpen)}>
-          Bus details
+        <Details
+          data-testid="scard-show-details"
+          onClick={() => setOpen(!isOpen)}
+        >
+          {getTransaltion("sc.bus_details", language)}
           <DetailsArrow direction={"down"} />
         </Details>
       </BottomRow>
-      <Expandable isOpen={isOpen}>
-        <ExtrasWrap>
-          <Column>
-            <BoldText>Amenities</BoldText>
-            <Amenities>
-              {Object.keys(schedule.amenities).map(amenity => {
-                return (
-                  schedule.amenities[amenity] &&
-                  getTransaltion("amenities." + amenity, language) && (
-                    <Amenity>
-                      {getTransaltion("amenities." + amenity, language)}
-                    </Amenity>
-                  )
-                );
-              })}
-            </Amenities>
-          </Column>
-        </ExtrasWrap>
-      </Expandable>
+      {/* only render if isOpen true */}
+      {isOpen && (
+        <Expandable isOpen={isOpen}>
+          <ExtrasWrap>
+            <Column>
+              <BoldText data-testid="scard-amenities">
+                {getTransaltion("amenities", language)}
+              </BoldText>
+              <Amenities>
+                {Object.keys(schedule.amenities).map((amenity, index) => {
+                  return (
+                    schedule.amenities[amenity] &&
+                    getTransaltion("amenities." + amenity, language) && (
+                      <Amenity key={index + "amenity"}>
+                        {getTransaltion("amenities." + amenity, language)}
+                      </Amenity>
+                    )
+                  );
+                })}
+              </Amenities>
+            </Column>
+          </ExtrasWrap>
+        </Expandable>
+      )}
     </Wrapper>
   );
 }
