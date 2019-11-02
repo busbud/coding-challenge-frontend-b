@@ -1,5 +1,21 @@
 # Challenge Completed
 
+## Thought process I followed
+
+- Created rough website design on paper
+
+- Decided technology stack
+  I chose next.js because it give most of the setup out of box for React and Server Side Rendering
+  Only one page so did not use redux or other state manager
+  Styled component for CSS because I love it!
+  Unit tesing - Jest, React Testing Library
+- Created basic skeleton to support features like Multi language, theming and deployed to heroku
+- Created website skeleton and implemented polling api
+- I used functional components with hooks. I find code clean compared to class based components (especially no need of lifecycle hooks)
+- Created components and added Unit tests
+- Responsive check - As I created design for desktop, I followed Desktop first rather than Mobile First approach
+- Final Bug fixes
+
 ## Deployed on Heroku
 
 - https://busbud-microsite.herokuapp.com/
