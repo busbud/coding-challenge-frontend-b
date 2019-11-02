@@ -121,7 +121,10 @@ export default function ScheduleCard(props) {
     <Wrapper key={schedule.id}>
       <TopRow>
         <MobileSection>
-          <OperatorLogo src={operator.logo_url}></OperatorLogo>
+          <OperatorLogo
+            alt={operator.display_name}
+            src={operator.logo_url}
+          ></OperatorLogo>
           <OperatorName data-testid="scard-operator">
             {operator.display_name}
           </OperatorName>
