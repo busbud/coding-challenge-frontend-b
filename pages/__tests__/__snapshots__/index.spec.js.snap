@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pages HomePage should render without throwing an error 1`] = `
+exports[`Home Page should render without throwing an error 1`] = `
 <DocumentFragment>
   <div
     class="sc-EHOje iWdXXD"
@@ -58,16 +58,16 @@ exports[`Pages HomePage should render without throwing an error 1`] = `
           Loading interface...
         </title>
         <rect
-          clip-path="url(#mj370du8bzl)"
+          clip-path="url(#gfq92b35byq)"
           height="130"
-          style="fill: url(#pphw0g0i4vl);"
+          style="fill: url(#tyfc0lu3vx);"
           width="400"
           x="0"
           y="0"
         />
         <defs>
           <clippath
-            id="mj370du8bzl"
+            id="gfq92b35byq"
           >
             <rect
               height="6.4"
@@ -116,7 +116,7 @@ exports[`Pages HomePage should render without throwing an error 1`] = `
             />
           </clippath>
           <lineargradient
-            id="pphw0g0i4vl"
+            id="tyfc0lu3vx"
           >
             <stop
               offset="0%"

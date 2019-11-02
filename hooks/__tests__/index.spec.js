@@ -4,7 +4,7 @@ import { renderHook } from "@testing-library/react-hooks";
 import usePollingApi from "../usePollingApi";
 import mockSchedules from "../../__mocks__/schedules";
 import * as apiUtils from "../../utils/api";
-import { bakeDepartureResults } from "../../pages/bakeResults";
+import { bakeDepartureResults } from "../../utils/bakeResults";
 
 describe("usePollingApi custom hool", () => {
   it("should send initial hook state", async function() {

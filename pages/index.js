@@ -13,7 +13,7 @@ import { BoldText } from "../components/common-styled/Texts";
 import { getTransaltion } from "../utils/translation";
 import { IntlContext } from "./_app";
 import usePollingApi from "../hooks/usePollingApi";
-import { bakeDepartureResults } from './bakeResults';
+import { bakeDepartureResults } from "../utils/bakeResults";
 import { formatedDate } from "../utils/date";
 
 export const Search = styled(BoldText)`
@@ -22,7 +22,7 @@ export const Search = styled(BoldText)`
 
 const Home = () => {
   const { language } = useContext(IntlContext);
-  const date = '2020-08-29';
+  const date = "2020-08-29";
   const { results, isLoading } = usePollingApi(
     ["dr5reg", "f25dvk", date],
     ["?adult=1"],
@@ -34,27 +34,28 @@ const Home = () => {
       <Header title={getTransaltion("siteName", language)} />
       <SiteWidth>
         <Search>
-          {
-            `New York to Montreal on ${formatedDate(date)} for 1 adult`
-          }
+          {`New York to Montreal on ${formatedDate(date)} for 1 adult`}
         </Search>
-        {isLoading && <Facebook style={{width: '60%'}} />}
-        {
-          results && results.departures &&
-            results.departures.map((schedule, index) => 
+        {isLoading && <Facebook style={{ width: "60%" }} />}
+        {results &&
+          results.departures &&
+          results.departures.map((schedule, index) => (
             <ScheduleCard
-              key={index + 'schedulecard'}
-              schedule={schedule} 
-              operator={results.operators[schedule.operator_id]} 
+              key={index + "schedulecard"}
+              schedule={schedule}
+              operator={results.operators[schedule.operator_id]}
               origin={
-                  results.locations && 
-                    schedule.origin_location_id && 
-                      results.locations[schedule.origin_location_id]}  
+                results.locations &&
+                schedule.origin_location_id &&
+                results.locations[schedule.origin_location_id]
+              }
               destination={
-                  results.locations && 
-                    schedule.destination_location_id && 
-                      results.locations[schedule.destination_location_id]}  
-        />)}
+                results.locations &&
+                schedule.destination_location_id &&
+                results.locations[schedule.destination_location_id]
+              }
+            />
+          ))}
       </SiteWidth>
     </PageContainer>
   );

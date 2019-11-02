@@ -117,7 +117,6 @@ export default function ScheduleCard(props) {
     schedule.departure_time,
     schedule.arrival_time
   );
-  console.log(isOpen);
   return (
     <Wrapper key={schedule.id}>
       <TopRow>
