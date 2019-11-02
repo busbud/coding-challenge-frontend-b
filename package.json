@@ -22,11 +22,10 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.6.3",
     "@testing-library/jest-dom": "^4.2.3",
+    "@testing-library/react": "^9.3.1",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.6",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
@@ -34,8 +33,7 @@
   },
   "jest": {
     "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "enzyme.js"
+      "/node_modules/"
     ],
     "testRegex": "((\\.|/*.)(spec))\\.js?$",
     "setupFilesAfterEnv": [

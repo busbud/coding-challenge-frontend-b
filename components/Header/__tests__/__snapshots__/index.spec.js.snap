@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should render without throwing an error 1`] = `
+<DocumentFragment>
+  <section
+    class="sc-bwzfXH sc-bxivhb gCAUCy"
+  >
+    <div
+      class="sc-htpNat sc-ifAKCX hxabGC"
+    >
+      <h1
+        class="sc-EHOje gieLlh"
+        data-testid="header-title"
+      >
+        Book a ride
+      </h1>
+      <div
+        class="sc-bZQynM gINrGK"
+      >
+        <a
+          class="sc-gzVnrw bmBGcZ"
+          data-testid="header-english"
+          role="button"
+          title=""
+        >
+          English
+        </a>
+        <a
+          class="sc-gzVnrw bmBGcZ"
+          data-testid="header-french"
+          role="button"
+          title=""
+        >
+          French
+        </a>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;
