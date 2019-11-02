@@ -58,16 +58,16 @@ exports[`Pages HomePage should render without throwing an error 1`] = `
           Loading interface...
         </title>
         <rect
-          clip-path="url(#xkohehj21er)"
+          clip-path="url(#mj370du8bzl)"
           height="130"
-          style="fill: url(#u01xyyrbdla);"
+          style="fill: url(#pphw0g0i4vl);"
           width="400"
           x="0"
           y="0"
         />
         <defs>
           <clippath
-            id="xkohehj21er"
+            id="mj370du8bzl"
           >
             <rect
               height="6.4"
@@ -116,7 +116,7 @@ exports[`Pages HomePage should render without throwing an error 1`] = `
             />
           </clippath>
           <lineargradient
-            id="u01xyyrbdla"
+            id="pphw0g0i4vl"
           >
             <stop
               offset="0%"
