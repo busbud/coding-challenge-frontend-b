@@ -22,7 +22,7 @@ export const Search = styled(BoldText)`
 
 const Home = () => {
   const { language } = useContext(IntlContext);
-  const date = "2020-08-29";
+  const date = "2020-08-02";
   const { results, isLoading } = usePollingApi(
     ["dr5reg", "f25dvk", date],
     ["?adult=1"],
