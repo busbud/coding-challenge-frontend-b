@@ -57,6 +57,7 @@ const Book = styled.button`
   text-align: center;
   outline: none;
   cursor: pointer;
+  border: none;
   ${media.mobile`margin: 0 0 0 auto;`}
 `;
 const Date = styled.div`
