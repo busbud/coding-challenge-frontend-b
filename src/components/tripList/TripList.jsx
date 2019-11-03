@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import locationIcon from "../../assets/location.png";
-import stage from "../../assets/stage.svg";
 import { TripCard } from "../TripCard/TripCard";
 
 const ListContainer = styled.div`

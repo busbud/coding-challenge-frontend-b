@@ -15,10 +15,17 @@ const AmenitiesSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  box-shadow: 14px 20px 52px -2px rgba(213, 213, 213, 1);
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 2px solid #f7f7f7;
 `;
 
 const AmenitiesLabel = styled.span`
-  font-size: 12px;
+  font-size: 14px;
   padding: 0 5px;
 `;
 
@@ -27,7 +34,7 @@ const AmenitiesLogo = styled.img`
 `;
 
 const AvaliabilityLogo = styled.img`
-  width: 15px;
+  width: 25px;
 `;
 
 const AmenitiesContainer = styled.div`
@@ -35,10 +42,14 @@ const AmenitiesContainer = styled.div`
   display: flex;
   padding: 10px;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const Title = styled.span`
   text-align: center;
+  margin-bottom: 10px;
+  color: #50c4c9;
+  font-weight: bold;
 `;
 export const Amenities = ({ amenities }) => {
   const { t, i18n } = useTranslation();

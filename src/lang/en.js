@@ -13,6 +13,11 @@ export default {
     power: "Power outlets",
     wifi: "Wifi",
     food: "food",
-    passenger: "passenger"
+    passenger: "passenger",
+    duration: "Duration",
+    class: "Class",
+    avaliableSeat: "Avaliable Seat",
+    direct: "Direct Bus",
+    eTicket: "eTicket"
   }
 };

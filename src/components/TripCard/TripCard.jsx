@@ -5,12 +5,14 @@ import stage from "../../assets/stage.svg";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
 import { Amenities } from "./Amenities";
+import { AdditionalInformation } from "./Additional";
+import arrow from "../../assets/arrow-down.png";
 
 const Card = styled.div`
   border-radius: 4px;
   box-shadow: 2px 5px 4px #d5d5d5;
   background: #fdfdfd;
-  padding: 5px;
+  padding: 10px;
   margin: 10px;
   display: column;
   @media screen and (max-width: 800px) {
@@ -32,6 +34,7 @@ const CardHeader = styled.div`
   color: #50c4c9;
   font-weight: bold;
   font-size: 22px;
+  margin-bottom: 10px;
 `;
 
 const CardFooter = styled.div`
@@ -52,7 +55,7 @@ const Amount = styled.span``;
 
 const Icon = styled.img`
   padding: 0 5px;
-  width: 20px;
+  width: 25px;
   @media screen and (max-width: 800px) {
     height: 20px;
   }
@@ -84,15 +87,11 @@ const SelectButton = styled.button`
   border: 1px solid #f19020;
 `;
 
-const Title = styled.span`
-  text-align: center;
-`;
-const AdditionalData = styled.div``;
 const formatDate = date => moment(date).format("hh:mm A");
 
 const DetailsSection = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 15px;
   padding: 5px;
   @media screen and (max-width: 800px) {
@@ -100,6 +99,7 @@ const DetailsSection = styled.div`
   }
 `;
 export const TripCard = ({ trip, index }) => {
+  console.log(trip);
   const { t, i18n } = useTranslation();
   moment.locale(i18n.language);
   const [displayDetails, setDisplayDetails] = useState(false);
@@ -122,6 +122,9 @@ export const TripCard = ({ trip, index }) => {
           {" "}
           {trip.originLocation.address[1] + " - " + trip.originLocation.name}
         </Address>
+      </Section>
+      <Section>
+        <Icon src={arrow} />
       </Section>
       <Section>
         <Icon src={stage} />
@@ -157,10 +160,8 @@ export const TripCard = ({ trip, index }) => {
       </CardFooter>
       {displayDetails && (
         <DetailsSection>
+          <AdditionalInformation {...trip} classType={trip.class} />
           <Amenities amenities={trip.amenities} />
-          <AdditionalData>
-            <Title> {t("additionalInfo")}</Title>
-          </AdditionalData>
         </DetailsSection>
       )}
     </Card>

@@ -13,6 +13,11 @@ export default {
     power: "Branchements",
     wifi: "Internet",
     food: "Repas",
-    passenger: "voyageur"
+    passenger: "voyageur",
+    duration: "Duree du voyage",
+    class: "Classe",
+    avaliableSeat: "Place restantes",
+    direct: "Bus direct",
+    eTicket: "eTicket"
   }
 };
