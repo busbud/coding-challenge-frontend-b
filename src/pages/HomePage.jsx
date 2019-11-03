@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header } from "../components/header/Header";
 import { Footer } from "../components/footer/Footer";
 import { SearchBar } from "../components/searchBar/SearchBar";
 import { TripList } from "../components/tripList/TripList";
 import styled from "styled-components";
 import background from "../assets/background.jpg";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #f7f7f7;
 `;
 
 const TopSectionContainer = styled.div`
@@ -21,17 +23,29 @@ const TopSectionContainer = styled.div`
     width: 100%
     min-height: 50vh;
     align-items: center;
+    justify-content: center;
+    flex-direction: column
 `;
 
-export const HomePage = () => (
-  <>
-    <Header />
-    <Container>
-      <TopSectionContainer>
-        <SearchBar />
-      </TopSectionContainer>
-      <TripList />
-    </Container>
-    <Footer />
-  </>
-);
+const Title = styled.span`
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+`;
+
+export const HomePage = () => {
+  const [trips, setTrips] = useState([]);
+  return (
+    <>
+      <Header />
+      <Container>
+        <TopSectionContainer>
+          <Title> Find the perfect trip for Osheaga Festival </Title>
+          <SearchBar setTrips={setTrips} />
+        </TopSectionContainer>
+        <TripList trips={trips} />
+      </Container>
+      <Footer />
+    </>
+  );
+};
