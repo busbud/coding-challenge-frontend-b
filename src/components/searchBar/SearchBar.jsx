@@ -15,6 +15,14 @@ const Card = styled.div`
   display: flex;
   justify-content: space-between;
   width: 60%;
+    @media screen and (max-width: 1200px) {
+      width: 80%  
+    }
+    @media screen and (max-width: 800px) {
+      width: 100%  
+      padding: 5px;
+      flex-direction: column
+    }
 `;
 
 const SubContainer = styled.div`

@@ -15,10 +15,13 @@ import fork from "../../assets/fork.svg";
 const Card = styled.div`
   border-radius: 4px;
   box-shadow: 2px 5px 4px #d5d5d5;
-  background: white;
+  background: #fdfdfd;
   padding: 5px;
   margin: 10px;
   display: column;
+  @media screen and (max-width: 800px) {
+    margin: 5px 0px;
+  }
 `;
 
 const Section = styled.div`
@@ -34,12 +37,14 @@ const CardHeader = styled.div`
   justify-content: space-between;
   color: #50c4c9;
   font-weight: bold;
+  font-size: 22px;
 `;
 
 const CardFooter = styled.div`
   display: flex;
   padding: 5px;
   justify-content: space-between;
+  margin-top: 10px;
 `;
 
 const OperatorLogo = styled.img`
@@ -54,6 +59,9 @@ const Amount = styled.span``;
 const Icon = styled.img`
   padding: 0 5px;
   width: 20px;
+  @media screen and (max-width: 800px) {
+    height: 20px;
+  }
 `;
 const DateContainer = styled.span`
   padding: 0 5px;
@@ -119,6 +127,9 @@ const DetailsSection = styled.div`
   justify-content: space-between;
   margin-top: 15px;
   padding: 5px;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 export const TripCard = ({ trip, index }) => {
   const [displayDetails, setDisplayDetails] = useState(false);
@@ -128,7 +139,7 @@ export const TripCard = ({ trip, index }) => {
         <OperatorLogo src={trip.operator.logo_url} />
         <PriceContainer>
           <Currency> {trip.prices.currency}</Currency>
-          <Amount> {trip.prices.total}</Amount>
+          <Amount> {(trip.prices.total / 100).toFixed(2)}</Amount>
         </PriceContainer>
       </CardHeader>
       <Section>
