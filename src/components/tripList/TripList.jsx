@@ -19,11 +19,10 @@ const ListContainer = styled.div`
 `;
 
 export const TripList = props => {
-  console.log("trips", props.trips);
   return (
     <ListContainer>
       {props.trips.map((trip, index) => (
-        <TripCard trip={trip} index={index} />
+        <TripCard key={index} trip={trip} index={index} />
       ))}
     </ListContainer>
   );

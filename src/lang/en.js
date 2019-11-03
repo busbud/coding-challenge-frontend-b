@@ -1,5 +1,18 @@
 export default {
   translation: {
-    test: "en"
+    select: "Select",
+    showDetails: "See more details",
+    hideDetails: "Hide details",
+    title: "Find the perfect trip for Osheaga Festival",
+    additionalInfo: "Additional Informations",
+    amenities: "Amenities",
+    ac: "Air Conditioning",
+    tv: "Television",
+    toilet: "Toilet",
+    legRoom: "Leg Room",
+    power: "Power outlets",
+    wifi: "Wifi",
+    food: "food",
+    passenger: "passenger"
   }
 };

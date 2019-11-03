@@ -31,7 +31,6 @@ const LogoContainer = styled.div`
 
 export const Header = () => {
   const { t, i18n } = useTranslation();
-  console.log(i18n.language);
   return (
     <Container>
       <LogoContainer>

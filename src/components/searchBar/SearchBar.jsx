@@ -5,6 +5,7 @@ import stage from "../../assets/stage.svg";
 import calendar from "../../assets/calendar.svg";
 import user from "../../assets/user.svg";
 import search from "../../assets/search.svg";
+import { useTranslation } from "react-i18next";
 
 const Card = styled.div`
   border-radius: 4px;
@@ -71,6 +72,7 @@ const parseTrip = ({ departures, locations, operators }) => {
 
 export const SearchBar = props => {
   const [isSearching, setSearch] = useState(false);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     fetch(`https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02`, {
@@ -103,7 +105,7 @@ export const SearchBar = props => {
       </SubContainer>
       <SubContainer>
         <Icon src={user} />
-        <Label> 1 Passenger </Label>
+        <Label> 1 {t("passenger")} </Label>
       </SubContainer>
       <SearchButton onClick={() => setSearch(true)}>
         <Icon src={search} />

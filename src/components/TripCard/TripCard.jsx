@@ -2,15 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import locationIcon from "../../assets/location.png";
 import stage from "../../assets/stage.svg";
-import sucess from "../../assets/success.svg";
-import error from "../../assets/error.svg";
-import ac from "../../assets/air-conditioner.svg";
-import toilet from "../../assets/toilet.png";
-import plug from "../../assets/plug.png";
-import tv from "../../assets/tv.png";
-import seat from "../../assets/seat.svg";
-import wifi from "../../assets/wifi.png";
-import fork from "../../assets/fork.svg";
+import moment from "moment";
+import { useTranslation } from "react-i18next";
+import { Amenities } from "./Amenities";
 
 const Card = styled.div`
   border-radius: 4px;
@@ -90,37 +84,11 @@ const SelectButton = styled.button`
   border: 1px solid #f19020;
 `;
 
-const AmenitiesSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const AmenitiesLabel = styled.span`
-  font-size: 12px;
-  padding: 0 5px;
-`;
-
-const AmenitiesLogo = styled.img`
-  width: 25px;
-`;
-
-const AvaliabilityLogo = styled.img`
-  width: 15px;
-`;
-
-const Amenities = styled.div`
-  flex: 1;
-  display: flex;
-  padding: 10px;
-  align-items: center;
-`;
-
 const Title = styled.span`
   text-align: center;
 `;
 const AdditionalData = styled.div``;
-const formatDate = date => date.getHours() + ":" + date.getMinutes();
+const formatDate = date => moment(date).format("hh:mm A");
 
 const DetailsSection = styled.div`
   display: flex;
@@ -132,6 +100,8 @@ const DetailsSection = styled.div`
   }
 `;
 export const TripCard = ({ trip, index }) => {
+  const { t, i18n } = useTranslation();
+  moment.locale(i18n.language);
   const [displayDetails, setDisplayDetails] = useState(false);
   return (
     <Card key={index}>
@@ -167,7 +137,7 @@ export const TripCard = ({ trip, index }) => {
       <CardFooter>
         <DetailsButton onClick={() => setDisplayDetails(!displayDetails)}>
           {" "}
-          {displayDetails ? "Hide" : "See more"} details{" "}
+          {t(displayDetails ? "hideDetails" : "showDetails")}
         </DetailsButton>
         <SelectButton>
           <a
@@ -181,56 +151,15 @@ export const TripCard = ({ trip, index }) => {
             }}
           >
             {" "}
-            Select{" "}
+            {t("select")}{" "}
           </a>
         </SelectButton>
       </CardFooter>
       {displayDetails && (
         <DetailsSection>
-          <AmenitiesSection>
-            <Title> Amenities</Title>
-            <Amenities>
-              <AmenitiesLogo src={ac} />
-              <AmenitiesLabel> Air Conditioning</AmenitiesLabel>
-              <AvaliabilityLogo src={trip.amenities.ac ? sucess : error} />
-            </Amenities>
-            <Amenities>
-              <AmenitiesLogo src={tv} />
-              <AmenitiesLabel> Television </AmenitiesLabel>
-              <AvaliabilityLogo src={trip.amenities.tv ? sucess : error} />
-            </Amenities>
-            <Amenities>
-              <AmenitiesLogo src={toilet} />
-              <AmenitiesLabel>Toilet </AmenitiesLabel>
-              <AvaliabilityLogo src={trip.amenities.toilet ? sucess : error} />
-            </Amenities>
-            <Amenities>
-              <AmenitiesLogo src={seat} />
-              <AmenitiesLabel> Leg rooms</AmenitiesLabel>
-              <AvaliabilityLogo
-                src={trip.amenities.leg_room ? sucess : error}
-              />
-            </Amenities>
-            <Amenities>
-              <AmenitiesLogo src={plug} />
-              <AmenitiesLabel> Power outlets</AmenitiesLabel>
-              <AvaliabilityLogo
-                src={trip.amenities.power_outlets ? sucess : error}
-              />
-            </Amenities>
-            <Amenities>
-              <AmenitiesLogo src={wifi} />
-              <AmenitiesLabel> Wifi</AmenitiesLabel>
-              <AvaliabilityLogo src={trip.amenities.wifi ? sucess : error} />
-            </Amenities>
-            <Amenities>
-              <AmenitiesLogo src={fork} />
-              <AmenitiesLabel> Food</AmenitiesLabel>
-              <AvaliabilityLogo src={trip.amenities.food ? sucess : error} />
-            </Amenities>
-          </AmenitiesSection>
+          <Amenities amenities={trip.amenities} />
           <AdditionalData>
-            <Title>Additional Informations</Title>
+            <Title> {t("additionalInfo")}</Title>
           </AdditionalData>
         </DetailsSection>
       )}
