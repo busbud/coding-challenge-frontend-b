@@ -108,7 +108,7 @@ export const SearchBar = props => {
       </SubContainer>
       <SubContainer>
         <Icon src={calendar} />
-        <Label> 20 August 2020 </Label>
+        <Label> 2 August 2020 </Label>
       </SubContainer>
       <SubContainer>
         <Icon src={user} />
