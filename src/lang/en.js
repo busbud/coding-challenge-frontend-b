@@ -18,6 +18,7 @@ export default {
     class: "Class",
     avaliableSeat: "Avaliable Seat",
     direct: "Direct Bus",
-    eTicket: "eTicket"
+    eTicket: "eTicket",
+    tips: "If the research don't start automatically press"
   }
 };

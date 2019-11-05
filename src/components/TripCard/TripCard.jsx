@@ -99,7 +99,6 @@ const DetailsSection = styled.div`
   }
 `;
 export const TripCard = ({ trip, index }) => {
-  console.log(trip);
   const { t, i18n } = useTranslation();
   moment.locale(i18n.language);
   const [displayDetails, setDisplayDetails] = useState(false);

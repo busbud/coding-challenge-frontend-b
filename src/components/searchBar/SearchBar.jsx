@@ -75,7 +75,10 @@ export const SearchBar = props => {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    isSearching &&
+    if (isSearching) {
+      console.log("i pass here in deed");
+      props.setTrips([]);
+
       fetch(`https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02`, {
         method: "GET",
         headers: new Headers({
@@ -88,7 +91,10 @@ export const SearchBar = props => {
           setSearch(false);
           props.setTrips(parseTrip(response));
         })
-        .catch(error => console.log(error));
+        .catch(() => {
+          props.setTrips(null);
+        });
+    }
   }, [isSearching]);
   return (
     <Card>

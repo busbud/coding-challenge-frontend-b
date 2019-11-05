@@ -18,6 +18,7 @@ export default {
     class: "Classe",
     avaliableSeat: "Place restantes",
     direct: "Bus direct",
-    eTicket: "eTicket"
+    eTicket: "eTicket",
+    tips: "Si la recherche ne commence pas automatiquement, appuyez sur"
   }
 };
