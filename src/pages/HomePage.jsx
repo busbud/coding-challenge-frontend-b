@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Header } from "../components/header/Header";
-import { Footer } from "../components/footer/Footer";
 import { SearchBar } from "../components/searchBar/SearchBar";
 import { TripList } from "../components/tripList/TripList";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import background from "../assets/background.jpg";
 import { useTranslation } from "react-i18next";
 
@@ -12,6 +11,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background: #f7f7f7;
+  height: 100%;
 `;
 
 const TopSectionContainer = styled.div`
@@ -34,6 +34,31 @@ const Title = styled.span`
   font-weight: bold;
 `;
 
+const BounceAnimation = keyframes`
+  0% { margin-bottom: 0; }
+  50% { margin-bottom: 15px }
+  100% { margin-bottom: 0 }
+`;
+
+const DotWrapper = styled.div`
+  display: flex;
+  padding: 2vh 2vw;
+  align-items: flex-end;
+  height: 100%;
+  align-items: center;
+`;
+
+const Dot = styled.div`
+  background: #f19020;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px; /* Animation */
+  animation: ${BounceAnimation} 0.5s linear infinite;
+  animation-delay: ${props => props.delay};
+  box-shadow: 2px 5px 4px #d5d5d5;
+`;
+
 export const HomePage = () => {
   const [trips, setTrips] = useState([]);
   const { t, i18n } = useTranslation();
@@ -45,9 +70,16 @@ export const HomePage = () => {
           <Title> {t("title")}</Title>
           <SearchBar setTrips={setTrips} />
         </TopSectionContainer>
-        <TripList trips={trips} />
+        {trips.length > 0 ? (
+          <TripList trips={trips} />
+        ) : (
+          <DotWrapper>
+            <Dot delay="0s" />
+            <Dot delay=".1s" />
+            <Dot delay=".2s" />
+          </DotWrapper>
+        )}
       </Container>
-      <Footer />
     </>
   );
 };
