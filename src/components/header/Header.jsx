@@ -15,7 +15,9 @@ const Container = styled.div`
 const Logo = styled.img`
   width: 100px;
   margin: 0px 10px;
-  max-width: 100px;
+  @media screen and (max-width: 800px) {
+    max-height: 60px;
+  }
 `;
 
 const SwitchLanguageButton = styled.button`
