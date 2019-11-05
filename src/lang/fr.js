@@ -19,6 +19,7 @@ export default {
     avaliableSeat: "Place restantes",
     direct: "Bus direct",
     eTicket: "eTicket",
-    tips: "Si la recherche ne commence pas automatiquement, appuyez sur"
+    tips: "Si la recherche ne commence pas automatiquement, appuyez sur",
+    date: '2 Aout 2020'
   }
 };

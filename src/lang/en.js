@@ -19,6 +19,7 @@ export default {
     avaliableSeat: "Avaliable Seat",
     direct: "Direct Bus",
     eTicket: "eTicket",
-    tips: "If the research don't start automatically press"
+    tips: "If the research don't start automatically press",
+    date: '2 August 2020'
   }
 };
