@@ -27,12 +27,17 @@ const TopSectionContainer = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column
+  @media screen and (max-height: 400px) {
+    min-height: 100vh;
+  }
 `;
 
 const Title = styled.span`
   color: white;
   font-size: 32px;
   font-weight: bold;
+  padding: 10px;
+  text-align: center;
 `;
 
 const BounceAnimation = keyframes`

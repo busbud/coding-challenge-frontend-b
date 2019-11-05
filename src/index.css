@@ -21,3 +21,9 @@ html {
 #root {
   height: 100%;
 }
+
+img {
+  @media screen and (max-width: 1200px) {
+    max-height: 60px;
+  }
+}
