@@ -60,7 +60,7 @@ const Dot = styled.div`
 `;
 
 export const HomePage = () => {
-  const [trips, setTrips] = useState([]);
+  const [trips, setTrips] = useState(null);
   const { t, i18n } = useTranslation();
   return (
     <>
@@ -70,15 +70,16 @@ export const HomePage = () => {
           <Title> {t("title")}</Title>
           <SearchBar setTrips={setTrips} />
         </TopSectionContainer>
-        {trips.length > 0 ? (
-          <TripList trips={trips} />
-        ) : (
-          <DotWrapper>
-            <Dot delay="0s" />
-            <Dot delay=".1s" />
-            <Dot delay=".2s" />
-          </DotWrapper>
-        )}
+        {trips &&
+          (trips.length > 0 ? (
+            <TripList trips={trips} />
+          ) : (
+            <DotWrapper>
+              <Dot delay="0s" />
+              <Dot delay=".1s" />
+              <Dot delay=".2s" />
+            </DotWrapper>
+          ))}
       </Container>
     </>
   );

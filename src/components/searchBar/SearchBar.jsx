@@ -4,6 +4,7 @@ import locationIcon from "../../assets/location.png";
 import stage from "../../assets/stage.svg";
 import calendar from "../../assets/calendar.svg";
 import user from "../../assets/user.svg";
+import search from "../../assets/search.svg";
 import { useTranslation } from "react-i18next";
 
 const Card = styled.div`
@@ -30,6 +31,16 @@ const SubContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex: 9;
+`;
+
+const SearchButton = styled.button`
+  padding: 5px;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
 `;
 
 const Icon = styled.img`
@@ -60,23 +71,24 @@ const parseTrip = ({ departures, locations, operators }) => {
 };
 
 export const SearchBar = props => {
-  const [isSearching, setSearch] = useState(false);
+  const [isSearching, setSearch] = useState();
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    fetch(`https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02`, {
-      method: "GET",
-      headers: new Headers({
-        Accept: "application/vnd.github.cloak-preview",
-        "X-Busbud-Token": "PARTNER_AHm3M6clSAOoyJg4KyCg7w"
+    isSearching &&
+      fetch(`https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02`, {
+        method: "GET",
+        headers: new Headers({
+          Accept: "application/vnd.github.cloak-preview",
+          "X-Busbud-Token": "PARTNER_AHm3M6clSAOoyJg4KyCg7w"
+        })
       })
-    })
-      .then(res => res.json())
-      .then(response => {
-        setSearch(false);
-        props.setTrips(parseTrip(response));
-      })
-      .catch(error => console.log(error));
+        .then(res => res.json())
+        .then(response => {
+          setSearch(false);
+          props.setTrips(parseTrip(response));
+        })
+        .catch(error => console.log(error));
   }, [isSearching]);
   return (
     <Card>
@@ -96,6 +108,9 @@ export const SearchBar = props => {
         <Icon src={user} />
         <Label> 1 {t("passenger")} </Label>
       </SubContainer>
+      <SearchButton onClick={() => setSearch(true)}>
+        <Icon src={search} />
+      </SearchButton>
     </Card>
   );
 };
