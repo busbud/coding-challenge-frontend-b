@@ -72,11 +72,10 @@ const parseTrip = ({ departures, locations, operators }) => {
 
 export const SearchBar = props => {
   const [isSearching, setSearch] = useState();
-  const { t, i18n } = useTranslation();
+  const { t, _ } = useTranslation();
 
   useEffect(() => {
     if (isSearching) {
-      console.log("i pass here in deed");
       props.setTrips([]);
 
       fetch(`https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02`, {
@@ -100,7 +99,7 @@ export const SearchBar = props => {
     <Card>
       <SubContainer>
         <Icon src={locationIcon} />
-        <Label> NYC </Label>
+        <Label> New York </Label>
       </SubContainer>
       <SubContainer>
         <Icon src={stage} />

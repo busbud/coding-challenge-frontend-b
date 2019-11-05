@@ -50,7 +50,7 @@ const SubContainer = styled.div`
 
 export const AdditionalInformation = props => {
   const { available_seats, duration, has_transfers, ticket_types } = props;
-  const { t, i18n } = useTranslation();
+  const { t, _ } = useTranslation();
   console.log(ticket_types);
   return (
     <AdditionalContainer>

@@ -12,7 +12,7 @@ export default {
     legRoom: "Leg Room",
     power: "Power outlets",
     wifi: "Wifi",
-    food: "food",
+    food: "Food",
     passenger: "passenger",
     duration: "Duration",
     class: "Class",

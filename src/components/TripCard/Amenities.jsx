@@ -51,47 +51,57 @@ const Title = styled.span`
   color: #50c4c9;
   font-weight: bold;
 `;
+
+const amenitiesList = [
+  {
+    name: "ac",
+    logo: ac,
+    translation: "ac"
+  },
+  {
+    name: "tv",
+    logo: tv,
+    translation: "tv"
+  },
+  {
+    name: "toilet",
+    logo: toilet,
+    translation: "toilet"
+  },
+  {
+    name: "leg_room",
+    logo: seat,
+    translation: "legRoom"
+  },
+  {
+    name: "power_outlets",
+    logo: plug,
+    translation: "power"
+  },
+  {
+    name: "wifi",
+    logo: wifi,
+    translation: "wifi"
+  },
+  {
+    name: "food",
+    logo: fork,
+    translation: "food"
+  }
+];
+
 export const Amenities = ({ amenities }) => {
-  const { t, i18n } = useTranslation();
-  console.log("amenities", amenities);
+  const { t, _ } = useTranslation();
   return (
     <AmenitiesSection>
       <Title> {t("amenities")}</Title>
-      <AmenitiesContainer>
-        <AmenitiesLogo src={ac} />
-        <AmenitiesLabel> {t("ac")} </AmenitiesLabel>
-        <AvaliabilityLogo src={amenities.ac ? sucess : error} />
-      </AmenitiesContainer>
-      <AmenitiesContainer>
-        <AmenitiesLogo src={tv} />
-        <AmenitiesLabel> {t("tv")} </AmenitiesLabel>
-        <AvaliabilityLogo src={amenities.tv ? sucess : error} />
-      </AmenitiesContainer>
-      <AmenitiesContainer>
-        <AmenitiesLogo src={toilet} />
-        <AmenitiesLabel>{t("toilet")} </AmenitiesLabel>
-        <AvaliabilityLogo src={amenities.toilet ? sucess : error} />
-      </AmenitiesContainer>
-      <AmenitiesContainer>
-        <AmenitiesLogo src={seat} />
-        <AmenitiesLabel> {t("legRoom")} </AmenitiesLabel>
-        <AvaliabilityLogo src={amenities.leg_room ? sucess : error} />
-      </AmenitiesContainer>
-      <AmenitiesContainer>
-        <AmenitiesLogo src={plug} />
-        <AmenitiesLabel> {t("power")} </AmenitiesLabel>
-        <AvaliabilityLogo src={amenities.power_outlets ? sucess : error} />
-      </AmenitiesContainer>
-      <AmenitiesContainer>
-        <AmenitiesLogo src={wifi} />
-        <AmenitiesLabel> {t("wifi")} </AmenitiesLabel>
-        <AvaliabilityLogo src={amenities.wifi ? sucess : error} />
-      </AmenitiesContainer>
-      <AmenitiesContainer>
-        <AmenitiesLogo src={fork} />
-        <AmenitiesLabel> {t("food")}</AmenitiesLabel>
-        <AvaliabilityLogo src={amenities.food ? sucess : error} />
-      </AmenitiesContainer>
+      {amenitiesList.map(amenitie => (
+        <AmenitiesContainer>
+          <AmenitiesLogo src={amenitie.logo} />
+          <AmenitiesLabel> {t(amenitie.translation)} </AmenitiesLabel>
+          <AvaliabilityLogo src={amenities[amenitie.name] ? sucess : error} />
+        </AmenitiesContainer>
+      ))}
     </AmenitiesSection>
   );
 };

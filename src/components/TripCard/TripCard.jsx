@@ -98,10 +98,12 @@ const DetailsSection = styled.div`
     flex-direction: column;
   }
 `;
+
 export const TripCard = ({ trip, index }) => {
   const { t, i18n } = useTranslation();
-  moment.locale(i18n.language);
   const [displayDetails, setDisplayDetails] = useState(false);
+
+  moment.locale(i18n.language);
   return (
     <Card key={index}>
       <CardHeader>
