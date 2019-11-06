@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="fr" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="3f697d568eab3702a7a136ef2192d9fd9ca5b1eb" datatype="html">
+        <source>Header</source>
+        <target>Header in FR</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/nav/nav.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

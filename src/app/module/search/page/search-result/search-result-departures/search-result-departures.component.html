@@ -1,0 +1,44 @@
+<table mat-table
+       [dataSource]="departures" multiTemplateDataRows
+       class="mat-elevation-z8">
+    <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+        <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+        <td mat-cell *matCellDef="let departure"> {{departure[column]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let departure" [attr.colspan]="columnsToDisplay.length">
+            <div class="departure-detail"
+                 [@detailExpand]="departure == expandedDeparture ? 'expanded' : 'collapsed'">
+                <div class="departure-description">
+                    <mat-label>Amenities:</mat-label>
+                    <ul>
+                        <li>WiFi:</li>
+                        <li>Toilet:</li>
+                        <li>AC:</li>
+                        <li>Food:</li>
+                        <li>Refreshment:</li>
+                        <li>TV:</li>
+                    </ul>
+                    <mat-label>Terms:</mat-label>
+                    <ul>
+                        <li>Refund:</li>
+                        <li>Exchange:</li>
+                        <li>Bag allowed:</li>
+                        <li>Piece of ID:</li>
+                        <li>Extra bag policy:</li>
+                        <li>Extra bag cost:</li>
+                    </ul>
+                </div>
+            </div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let departure; columns: columnsToDisplay;"
+        class="departure-row"
+        [class.expanded-row]="expandedDeparture === departure"
+        (click)="expandedDeparture = expandedDeparture === departure ? null : departure">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+</table>

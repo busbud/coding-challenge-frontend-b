@@ -1,0 +1,12 @@
+:host {
+    z-index: 2;
+}
+
+mat-toolbar {
+    display: flex;
+    justify-content: center;
+
+    img {
+        height: 70%;
+    }
+}

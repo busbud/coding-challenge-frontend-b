@@ -1,0 +1,28 @@
+table {
+    width: 100%;
+}
+
+tr.detail-row {
+    height: 0;
+}
+
+tr.departure-row:not(.expanded-row):hover {
+    background: #fedada;
+}
+
+tr.departure-row:not(.expanded-row):active {
+    background: #efefef;
+}
+
+.departure-row td {
+    border-bottom-width: 0;
+}
+
+.departure-detail {
+    overflow: hidden;
+    display: flex;
+}
+
+.departure-description {
+    padding: 16px;
+}

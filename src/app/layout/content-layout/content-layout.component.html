@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <app-header class="mat-elevation-z4"></app-header>
+
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+
+    <app-footer class="mat-elevation-z8" (locale)="onLocaleChange($event)"></app-footer>
+</div>

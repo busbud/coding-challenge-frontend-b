@@ -1,0 +1,16 @@
+{
+    "departures": [
+        {
+            "id": "1",
+            "name": "New York",
+            "geohash": "dr5reg"
+        }
+    ],
+    "arrivals": [
+        {
+            "id": "2",
+            "name": "Montréal",
+            "geohash": "f25dvk"
+        }
+    ]
+}

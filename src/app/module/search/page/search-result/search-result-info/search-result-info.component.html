@@ -1,0 +1,22 @@
+<div class="departure">
+    <mat-icon aria-hidden="false" aria-label="Departure City">directions_bus</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Departure City direction">keyboard_arrow_left</mat-icon>
+    <mat-label>{{ departure.name }}</mat-label>
+</div>
+
+<div class="arrival">
+    <mat-icon aria-hidden="false" aria-label="Arrival City">directions_bus</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Arrival City direction">keyboard_arrow_right</mat-icon>
+    <mat-label>{{ arrival.name }}</mat-label>
+</div>
+
+<div class="departure-date">
+    <mat-icon aria-hidden="false" aria-label="Departure Date">update</mat-icon>
+    <mat-label>{{ outboundDate }}</mat-label>
+</div>
+
+<mat-chip-list aria-label="Persons">
+    <mat-chip color="primary" selected><mat-icon aria-hidden="false" aria-label="Adults">person</mat-icon> <span>{{ adults }}</span></mat-chip>
+    <mat-chip color="accent" selected><mat-icon aria-hidden="false" aria-label="Seniors">emoji_people</mat-icon> <span>{{ seniors }}</span></mat-chip>
+    <mat-chip><mat-icon aria-hidden="false" aria-label="Children">child_care</mat-icon><span> {{ children }}</span></mat-chip>
+</mat-chip-list>

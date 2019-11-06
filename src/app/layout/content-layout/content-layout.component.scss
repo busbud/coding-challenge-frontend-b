@@ -1,0 +1,32 @@
+.wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        height: 100px;
+    }
+
+    &::after {
+        background: url('../../../assets/buses.jpg') repeat;
+        background-size: 200px;
+        content: "";
+        opacity: 0.2;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+    }
+}
+
+

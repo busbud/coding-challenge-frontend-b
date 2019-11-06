@@ -1,0 +1,22 @@
+<div class="search-container">
+    <mat-toolbar class="mat-elevation-z1">
+        <app-search-result-info
+            [departure]="departure"
+            [arrival]="arrival"
+            [outboundDate]="outboundDate"
+            [adults]="adults"
+            [seniors]="seniors"
+            [children]="children">
+        </app-search-result-info>
+
+        <button mat-stroked-button color="warn" (click)="onResetClick()">Reset</button>
+
+    </mat-toolbar>
+
+    <mat-progress-bar class="search-progress" color="accent" mode="indeterminate" *ngIf="inProgress$ | async"></mat-progress-bar>
+
+    <div class="search-result">
+        <app-search-result-departures [departures]="departures"></app-search-result-departures>
+    </div>
+</div>
+<div class="empty"></div>

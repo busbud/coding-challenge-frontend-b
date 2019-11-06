@@ -1,0 +1,48 @@
+:host {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    > * {
+        width: 100%;
+    }
+
+    .search-card {
+        max-width: 400px;
+
+        form {
+            margin-bottom: 20px;
+
+            > * {
+                margin: 5px 0;
+            }
+
+            mat-form-field {
+                display: block;
+            }
+
+            input {
+                cursor: pointer;
+            }
+
+            .full-width {
+                width: 100%;
+            }
+        }
+
+        .search-actions {
+            float: right;
+        }
+    }
+}
+
+
+
