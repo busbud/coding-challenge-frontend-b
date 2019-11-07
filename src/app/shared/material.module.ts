@@ -10,9 +10,11 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatChipsModule,
     MatProgressBarModule,
     MatTableModule,
+    MatTooltipModule,
+    MatSortModule,
   ],
   exports: [
     MatToolbarModule,
@@ -44,6 +48,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatChipsModule,
     MatProgressBarModule,
     MatTableModule,
+    MatTooltipModule,
+    MatSortModule,
   ],
   providers: []
 })

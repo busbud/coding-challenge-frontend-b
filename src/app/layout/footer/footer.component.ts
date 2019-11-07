@@ -20,16 +20,19 @@ export class FooterComponent implements OnInit {
     { code: 'fr', title: 'Français'}
   ];
 
-  constructor(@Inject(LOCALE_ID) protected localeId: string) { }
+  constructor(@Inject(LOCALE_ID) public localeId: string) { }
 
   ngOnInit() {
     if (this.localeId && this.localeId.length && this.localeId.indexOf('-') !== -1) {
       this.localeId = this.localeId.split('-')[0];
+
+      if (this.localeId === 'en') {
+        this.localeId = '';
+      }
     }
   }
 
   onLocaleChange(newLocaleCode: string) {
-    console.log(newLocaleCode, this.localeId);
     if (newLocaleCode === this.localeId) {
       return;
     }

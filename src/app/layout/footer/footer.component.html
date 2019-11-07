@@ -1,8 +1,8 @@
 <mat-toolbar>
     <span>BusBud &copy; 2019</span>
     <span class="spacer"></span>
-    <mat-select class="locale-picker" (selectionChange)="onLocaleChange($event.value)" [value]="locales[0].code">
-        <mat-option *ngFor="let locale of locales" [value]="locale.code">
+    <mat-select class="locale-picker" (selectionChange)="onLocaleChange($event.value)" [value]="localeId">
+        <mat-option *ngFor="let locale of locales" [value]="locale.code" >
             {{ locale.title }}
         </mat-option>
     </mat-select>

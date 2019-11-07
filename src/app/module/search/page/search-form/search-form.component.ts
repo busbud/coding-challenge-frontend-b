@@ -40,9 +40,7 @@ export class SearchFormComponent implements OnInit {
       departure: new FormControl('', { validators: Validators.required }),
       arrival: new FormControl('', { validators: Validators.required }),
       outboundDate: new FormControl('', { validators: Validators.required }),
-      adults: new FormControl(0, { validators: [Validators.required, Validators.max(5)] }),
-      children: new FormControl(0, { validators: [Validators.required, Validators.max(5)]}),
-      seniors: new FormControl(0, { validators: [Validators.required, Validators.max(5)] }),
+      adults: new FormControl(0, { validators: [Validators.required, Validators.max(5)] })
     });
   }
 
@@ -51,19 +49,10 @@ export class SearchFormComponent implements OnInit {
   }
 
   get hasIncorrectPeopleSelected(): boolean {
-    const seniors = this.searchFormGroup.get('seniors').value || 0;
-    const children = this.searchFormGroup.get('children').value || 0;
     const adults = this.searchFormGroup.get('adults').value || 0;
 
-    const total = seniors + children + adults;
-
-    return (!total &&
-        (
-            (!this.searchFormGroup.get('seniors').pristine) ||
-            (!this.searchFormGroup.get('children').pristine) ||
-            (!this.searchFormGroup.get('adults').pristine)
-        ))  ||
-        (!total && this.isValidForm);
+    return (!adults && !this.searchFormGroup.get('adults').pristine)  ||
+        (!adults && this.isValidForm);
   }
 
   ngOnInit() {
@@ -78,9 +67,7 @@ export class SearchFormComponent implements OnInit {
         departure: this.searchFormGroup.get('departure').value,
         arrival: this.searchFormGroup.get('arrival').value,
         outboundDate: this.searchFormGroup.get('outboundDate').value.toISOString(),
-        adults: this.searchFormGroup.get('adults').value,
-        seniors: this.searchFormGroup.get('seniors').value,
-        children: this.searchFormGroup.get('children').value,
+        adults: this.searchFormGroup.get('adults').value
       }
     }));
   }

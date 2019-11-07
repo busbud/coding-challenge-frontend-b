@@ -10,6 +10,7 @@ import {
 } from '@ngrx/store';
 import {
     DeparturesApiActions,
+    SearchFormApiActions,
     SearchResultActions
 } from '../actions';
 
@@ -34,16 +35,24 @@ export const initialState: State = adapter.getInitialState({
 
 export const selectId = (state: State) => state.selectedDepartureId;
 export const selectLoading = (state: State) => state.loading;
+export const selectError = (state: State) => state.error;
 
 export const reducer = createReducer(
     initialState,
-    on(
-        DeparturesApiActions.searchSuccess,
-        (state, { departures }) => adapter.addMany(departures, {
-            ...state,
-            loading: false
-        })
-    ),
+    on(DeparturesApiActions.searchSuccess,
+    (state, { departures }) => adapter.addMany(departures, {
+        ...state,
+        loading: false
+    })),
+    on(DeparturesApiActions.partialUpdate,
+    (state, { departures }) => adapter.addMany(departures, {
+        ...state
+    })),
+    on(SearchFormApiActions.formReset,
+    (state) => adapter.removeAll( {
+        ...state,
+        loading: false
+    })),
     on(SearchResultActions.selectDeparture, (state, { id }) => ({
         ...state,
         selectedDepartureId: id,

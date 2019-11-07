@@ -75,3 +75,7 @@ export const getSearchLoadingState = createSelector(
     selectDepartureEntitiesState,
     fromDepartures.selectLoading
 );
+export const getSearchLoadingErrorState = createSelector(
+    selectDepartureEntitiesState,
+    fromDepartures.selectError
+);

@@ -5,4 +5,5 @@ export class DeparturePrices {
     breakdown: Breakdown;
     categories: object;
     discounted: boolean;
+    currency: string;
 }

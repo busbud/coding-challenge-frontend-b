@@ -1,6 +1,7 @@
 import { City } from './city';
 import { Departure } from './departure';
 import { Operator } from './operator';
+import { Location } from './location';
 
 export interface SearchResult {
     origin_city_id: string;

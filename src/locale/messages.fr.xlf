@@ -2,12 +2,108 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="fr" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="3f697d568eab3702a7a136ef2192d9fd9ca5b1eb" datatype="html">
-        <source>Header</source>
-        <target>Header in FR</target>
+      <trans-unit id="7d765167c01b298c6b4a32e0815cb54789b75ecd" datatype="html">
+        <source>Let&apos;s search for Departures!</source>
+        <target>Recherchons les départs!</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/layout/nav/nav.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="sourcefile">src/app/module/search/page/search-form/search-form.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9ceecbab96a6ac100eece8e29b349c11687e7331" datatype="html">
+        <source>Departure city</source>
+        <target>Ville de départ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-form/search-form.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e8763300c0e0b4b9d90b079aa1d5000a53be7e53" datatype="html">
+        <source>Please choose a departure city</source>
+        <target>Veuillez choisir une ville de départ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-form/search-form.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5939722f40d1dc3ce4496c05d3bf9782683b276f" datatype="html">
+        <source>Arrival city</source>
+        <target>Ville d&apos;arrivée</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-form/search-form.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ad5c702e57ccab9c7b47d4871bcd1837f5745c35" datatype="html">
+        <source>Please choose an arrival city</source>
+        <target>Veuillez choisir une ville d&apos;arrivée</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-form/search-form.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b1aeb5201ac08da603e222d5a0f0c16c3b0c1dfa" datatype="html">
+        <source>Departure date *</source>
+        <target>Date de départ *</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-form/search-form.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="88ecf69ef2433acf1ff6c9457f97abadab6f5917" datatype="html">
+        <source>Please choose a departure date</source>
+        <target>Veuillez choisir une date de départ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-form/search-form.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a04679bdfc3834277b3d63ebb4fc2d0c8a256be6" datatype="html">
+        <source>Adults</source>
+        <target>Adultes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-form/search-form.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aff14b5be861611a5170ef80d0a5a3b4b517b453" datatype="html">
+        <source>Please choose a number of adults between 0 and 5 people</source>
+        <target>Veuillez choisir un nombre d&apos;adultes compris entre 0 et 5 personnes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-form/search-form.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5182b90fa36d840cf7c262f71d76047aed414974" datatype="html">
+        <source>Please choose at least 1 person of any group: Adults</source>
+        <target>Veuillez choisir au moins 1 personne de n&apos;importe quel groupe: Adultes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-form/search-form.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7b6494fa44035831e1215cd4a0284aec00f8cbbd" datatype="html">
+        <source>SEARCH</source>
+        <target>CHERCHER</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-form/search-form.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="afc3a431177ba00fdeb2d19400d6746d6730a8df" datatype="html">
+        <source>From: </source>
+        <target>De: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-result/search-result-departures/search-result-departures.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f96ee934e0b44706cb6d27afe47e0b18aea78644" datatype="html">
+        <source>To: </source>
+        <target>À: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/module/search/page/search-result/search-result-departures/search-result-departures.component.html</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
     </body>

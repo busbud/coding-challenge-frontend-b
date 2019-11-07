@@ -7,13 +7,14 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   exports: [
     CommonModule,

@@ -1,3 +1,5 @@
+import { City } from '@data/schema/city';
+
 export interface Location {
     id: number;
     city_id?: string;
@@ -7,4 +9,5 @@ export interface Location {
     lat?: number;
     lon?: number;
     geohash: string;
+    city?: City;
 }

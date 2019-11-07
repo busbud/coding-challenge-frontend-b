@@ -1,3 +1,6 @@
+import { City } from '@data/schema/city';
+import { Location } from '@data/schema/location';
+import { Operator } from '@data/schema/operator';
 import { DeparturePrices } from './departure-prices';
 import { Normal } from './normal';
 
@@ -18,4 +21,23 @@ export interface Departure {
     arrival_timezone: string;
     departure_time: string;
     arrival_time: string;
+    viewData?: NormalizedDeparture;
+}
+
+export interface DepartureDateTime {
+    date: string;
+    time: string;
+}
+
+export interface NormalizedDeparture {
+    operator: Operator;
+    destinationLocation: Location;
+    originLocation: Location;
+    price: string;
+    currency: string;
+    departureDateTime: DepartureDateTime;
+    arrivalDateTime: DepartureDateTime;
+    amenities: string[];
+    operatorTerms: string[];
+    amenitiesType: string;
 }

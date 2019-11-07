@@ -6,6 +6,11 @@ export const searchSuccess = createAction(
     props<{ departures: Departure[] }>()
 );
 
+export const partialUpdate = createAction(
+    '[Departures/API] Partial Update',
+    props<{ departures: Departure[] }>()
+);
+
 export const searchFailure = createAction(
     '[Departures/API] Search Failure',
     props<{ error: string }>()

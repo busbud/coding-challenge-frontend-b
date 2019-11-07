@@ -1,4 +1,4 @@
-table {
+table, .no-departures-message {
     width: 100%;
 }
 
@@ -25,4 +25,22 @@ tr.departure-row:not(.expanded-row):active {
 
 .departure-description {
     padding: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+}
+
+.departure-description > * {
+    margin: 10px;
+}
+
+.no-departures-message {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #eaeaea;
+    height: 64px;
+    justify-content: center;
 }

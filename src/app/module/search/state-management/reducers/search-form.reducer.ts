@@ -18,9 +18,7 @@ const initialState: State = {
         departure: null,
         arrival: null,
         outboundDate: null,
-        seniors: 0,
-        adults: 0,
-        children: 0
+        adults: 0
     }
 };
 

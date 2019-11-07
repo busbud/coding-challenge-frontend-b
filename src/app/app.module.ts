@@ -17,7 +17,6 @@ import { SharedModule } from '@shared/shared.module';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 
-import './app.locales';
 import {
   metaReducers,
   ROOT_REDUCERS
@@ -48,7 +47,7 @@ import {
       routerState: RouterState.Minimal,
     }),
     StoreDevtoolsModule.instrument({
-      name: 'BusBus Osheaga',
+      name: 'BusBud Osheaga',
     }),
     EffectsModule.forRoot([]),
 

@@ -1,7 +1,6 @@
 import {
   Component,
-  Input,
-  OnInit
+  Input
 } from '@angular/core';
 import { City } from '@data/schema/city';
 
@@ -10,18 +9,11 @@ import { City } from '@data/schema/city';
   templateUrl: './search-result-info.component.html',
   styleUrls: ['./search-result-info.component.scss']
 })
-export class SearchResultInfoComponent implements OnInit {
+export class SearchResultInfoComponent {
 
   @Input() departure: City;
   @Input() arrival: City;
   @Input() outboundDate: string;
   @Input() adults: number;
-  @Input() seniors: number;
-  @Input() children: number;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
