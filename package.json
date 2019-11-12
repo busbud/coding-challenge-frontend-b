@@ -17,8 +17,8 @@
     "prettier": "prettier --write \"./{src,e2e}/**/*.{ts,js,html,scss}\"",
     "prettier:check": "prettier --list-different \"./{src,e2e}/**/*.{ts,js,html,scss}\"",
     "generate": "ng generate",
-    "postinstall": "ng build --aot -prod",
-    "heroku-postbuild": "ng build --prod"
+    "postinstall": "ng build --aot",
+    "heroku-postbuild": "ng build --aot"
   },
   "dependencies": {
     "@angular/animations": "^8.1.0",
