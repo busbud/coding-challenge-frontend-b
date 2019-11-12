@@ -1,0 +1,21 @@
+<header>
+  <nav class="navbar fixed">
+    <a class="navbar-brand" href="https://busbud.com" translate>
+    <img class="logo" src="assets/busbud_full.png" alt="BusBud logo"/></a>
+
+    <div class="navbar-nav ml-auto">
+      <div class="text-white text-center">BusBud Coding Challenge</div>
+    </div>
+
+    <div class="navbar-nav ml-auto">
+        <div class="nav-item" ngbDropdown display="dynamic" placement="bottom-right">
+          <a id="language-dropdown" class="nav-link text-white" ngbDropdownToggle>{{currentLanguage}}</a>
+          <div ngbDropdownMenu aria-labelledby="language-dropdown">
+            <button class="dropdown-item" *ngFor="let language of languages" (click)="setLanguage(language)">
+              {{language}}
+            </button>
+          </div>
+        </div>
+    </div>
+  </nav>
+</header>

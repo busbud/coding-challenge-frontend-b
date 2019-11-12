@@ -1,0 +1,16 @@
+.travels{
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.card-title{
+  min-width: 200px;
+}
+
+.row{
+  @media screen and (max-width: 500px){
+    min-width: 80%;
+    margin: auto;
+  }
+}

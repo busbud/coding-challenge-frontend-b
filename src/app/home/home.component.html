@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="jumbotron text-center">
+    <h1>
+      <img class="oshega" src="assets/oshega.png" alt="Oshega logo"/>
+    </h1>
+    <app-loader [isLoading]="isLoading"></app-loader>
+    <app-search-bar [hidden]='isLoading'></app-search-bar>
+    <!-- <q [hidden]="isLoading">{{quote}}</q> -->
+  </div>
+</div>
+
+<div class="content">
+  <app-search-result></app-search-result>
+</div>
