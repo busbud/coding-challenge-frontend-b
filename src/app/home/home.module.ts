@@ -10,17 +10,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    TranslateModule,
-    CoreModule,
-    SharedModule,
-    HomeRoutingModule
-  ],
-  declarations: [
-    HomeComponent,
-    SearchBarComponent,
-    SearchResultComponent
-  ]
+  imports: [CommonModule, TranslateModule, CoreModule, SharedModule, HomeRoutingModule],
+  declarations: [HomeComponent, SearchBarComponent, SearchResultComponent]
 })
-export class HomeModule { }
+export class HomeModule {}

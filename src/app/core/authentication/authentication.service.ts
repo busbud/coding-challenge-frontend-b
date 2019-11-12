@@ -17,8 +17,7 @@ export interface LoginContext {
   providedIn: 'root'
 })
 export class AuthenticationService {
-
-  constructor(private credentialsService: CredentialsService) { }
+  constructor(private credentialsService: CredentialsService) {}
 
   /**
    * Authenticates the user.
@@ -44,5 +43,4 @@ export class AuthenticationService {
     this.credentialsService.setCredentials();
     return of(true);
   }
-
 }

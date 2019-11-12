@@ -1,33 +1,36 @@
 <div class="container">
-    <div class="row text-center">
-      <div *ngIf="departures.length <= 0">
-        <p>Let's go to Oshega Festival!</p>
-      </div>
-      <div class="row" v-if="departures">
-          <div class="col-6 col-md-6 col-sm-12 card mb-4 box-shadow" *ngFor="let result of departures">
-            <div class="card-body ml-2 mr-2">
-                <div class="card-title">
-                  <div class="travels">Operator: {{result.operator.name}} Travels</div>
-                  <div class="price">Price: {{result.price | currency }}</div>
-                </div>
-              <div class="card-text">
-                  <div class="origin">Origin: {{result.locationName}}</div>
-                  <div class="destiny">Destination: Montreal(Oshega)</div>
+  <div class="row text-center">
+    <div *ngIf="departures.length <= 0">
+      <p>Let's go to Oshega Festival!</p>
+    </div>
+    <div class="row" v-if="departures">
+      <div class="col-6 col-md-6 col-sm-12 card mb-4 box-shadow" *ngFor="let result of departures">
+        <div class="card-body ml-2 mr-2">
+          <div class="card-title">
+            <div class="travels">Operator: {{ result.operator.name }} Travels</div>
+            <div class="price">Price: {{ result.price | currency }}</div>
+          </div>
+          <div class="card-text">
+            <div class="origin">Origin: {{ result.locationName }}</div>
+            <div class="destiny">Destination: Montreal(Oshega)</div>
 
-                  <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Departure: {{result.departureTime}}</button>
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Arrival: {{result.arrivalTime}}</button>
-                      </div>
-                  </div>
-
-                  <!-- <div *ngFor="let amenity of result.amenities" class="amenities">
-                      <small class="text-muted">{{amenity}}</small>
-                  </div> -->
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Departure: {{ result.departureTime }}
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Arrival: {{ result.arrivalTime }}
+                </button>
               </div>
             </div>
-          </div>
-      </div>
 
+            <!-- <div *ngFor="let amenity of result.amenities" class="amenities">
+                      <small class="text-muted">{{amenity}}</small>
+                  </div> -->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</div>

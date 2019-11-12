@@ -16,22 +16,13 @@ describe('ShellComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        TranslateModule.forRoot(),
-        NgbModule,
-        CoreModule
-      ],
+      imports: [RouterTestingModule, TranslateModule.forRoot(), NgbModule, CoreModule],
       providers: [
         { provide: AuthenticationService, useClass: MockAuthenticationService },
         { provide: CredentialsService, useClass: MockCredentialsService }
       ],
-      declarations: [
-        HeaderComponent,
-        ShellComponent
-      ]
-  })
-    .compileComponents();
+      declarations: [HeaderComponent, ShellComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

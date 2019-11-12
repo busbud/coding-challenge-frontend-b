@@ -6,9 +6,7 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 exports.config = {
   SELENIUM_PROMISE_MANAGER: false,
   allScriptsTimeout: 11000,
-  specs: [
-    './src/**/*.e2e-spec.ts'
-  ],
+  specs: ['./src/**/*.e2e-spec.ts'],
   capabilities: {
     browserName: process.env.PROTRACTOR_BROWSER || 'chrome',
     chromeOptions: {

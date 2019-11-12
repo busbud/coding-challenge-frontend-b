@@ -12,8 +12,5 @@ export const environment = {
   version: env.npm_package_version,
   serverUrl: 'https://napi.busbud.com/x-departures/',
   defaultLanguage: 'en-US',
-  supportedLanguages: [
-    'en-US',
-    'fr-FR'
-  ]
+  supportedLanguages: ['en-US', 'fr-FR']
 };

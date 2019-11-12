@@ -1,14 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { BusbudService } from "../search-bar/busbud.service";
+import { BusbudService } from '../search-bar/busbud.service';
 
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.scss']
 })
-export class SearchResultComponent implements OnInit, OnDestroy{
-
+export class SearchResultComponent implements OnInit, OnDestroy {
   departures: any[] = [];
 
   private results: Subscription;
@@ -20,15 +19,13 @@ export class SearchResultComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.isLoading = true;
-    this.results = this.busbudService.getDepartureUpdateListener()
-      .subscribe((departures: any[]) => {
-        this.departures = departures;
-        this.isLoading = false;
-      });
+    this.results = this.busbudService.getDepartureUpdateListener().subscribe((departures: any[]) => {
+      this.departures = departures;
+      this.isLoading = false;
+    });
   }
 
   ngOnDestroy() {
     this.results.unsubscribe();
   }
-
 }

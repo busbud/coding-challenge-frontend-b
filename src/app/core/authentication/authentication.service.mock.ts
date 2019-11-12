@@ -4,7 +4,6 @@ import { LoginContext } from './authentication.service';
 import { Credentials } from './credentials.service';
 
 export class MockAuthenticationService {
-
   credentials: Credentials | null = {
     username: 'test',
     token: '123'
@@ -21,5 +20,4 @@ export class MockAuthenticationService {
     this.credentials = null;
     return of(true);
   }
-
 }

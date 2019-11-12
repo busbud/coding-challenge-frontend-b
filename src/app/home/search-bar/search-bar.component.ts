@@ -7,20 +7,17 @@ import { BusbudService } from './busbud.service';
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent implements OnInit {
-
   sourceGeoHash: String = 'dr5reg'; // New York
   destinationGeoHash: String = 'f25dvk'; // Montreal
-  noOfPersons: Number = 1 // 1 adult
+  noOfPersons: Number = 1; // 1 adult
   dateOfJourney: Date = new Date();
 
-  constructor(private busBudService: BusbudService) { }
+  constructor(private busBudService: BusbudService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  search(){
+  search() {
     console.log('search clicked');
     this.busBudService.fetchResults();
   }
-
 }
