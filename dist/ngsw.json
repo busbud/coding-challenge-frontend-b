@@ -1,0 +1,100 @@
+{
+  "configVersion": 1,
+  "timestamp": 1573548984627,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main-es2015.4760a8b19e88575d0d24.js",
+        "/main-es5.faaa376ca5d55de2dadb.js",
+        "/manifest.json",
+        "/polyfills-es2015.75bf482ee2a1689db99e.js",
+        "/polyfills-es5.54841ab5d28a01d4fe1d.js",
+        "/runtime-es2015.aa36e2789a7b6e5e7675.js",
+        "/runtime-es5.d3647fbfa3de00cd0bdf.js",
+        "/styles.aa470929d8d2a97e71fa.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/banner.jpg",
+        "/assets/busbud_full.png",
+        "/assets/busbud_logo.jpeg",
+        "/assets/ngx-rocket-logo.png",
+        "/assets/ngx-rocket-logo@192.png",
+        "/assets/oshega.png",
+        "/fa-brands-400.06147b6cd88c7346cecd.ttf",
+        "/fa-brands-400.5063b105c7646c8043d5.eot",
+        "/fa-brands-400.c5e0f14f88a828261ba0.woff",
+        "/fa-brands-400.cccc9d29470e879e40eb.woff2",
+        "/fa-regular-400.65b286af947c0d982ca0.ttf",
+        "/fa-regular-400.c1a866ec0e04a5e1915b.eot",
+        "/fa-regular-400.c4f508e7c4f01a9eeba7.woff",
+        "/fa-regular-400.f5f2566b93e89391da4d.woff2",
+        "/fa-solid-900.0bff33a5fd7ec3902354.ttf",
+        "/fa-solid-900.333bae208dc363746961.woff",
+        "/fa-solid-900.44d537ab79f921fde5a2.woff2",
+        "/fa-solid-900.8e4a6dcc692b3887f9f5.eot"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/banner.jpg": "4b2b97e06e210a786305235b6e27abe9e5d4b69d",
+    "/assets/busbud_full.png": "cc5287a8dcb3f64eb73d57e9f10a9e525966061c",
+    "/assets/busbud_logo.jpeg": "58c6e2616ec3d4be9bec1da60ea51fbb41bb08b8",
+    "/assets/ngx-rocket-logo.png": "0ac53fd27406fe5a36e68285315fb0012e54058e",
+    "/assets/ngx-rocket-logo@192.png": "461b730f9c6dc818f8af9acbe62dfde24dc02d7a",
+    "/assets/oshega.png": "d3f535b026928fd2853b52af86d3f43a1b111e00",
+    "/fa-brands-400.06147b6cd88c7346cecd.ttf": "c5a1a93f668d15f55deac38b4728f8d901bd4748",
+    "/fa-brands-400.5063b105c7646c8043d5.eot": "7ed86fe71d4dc31d5edf492f7472d6fb88c3c3c9",
+    "/fa-brands-400.c5e0f14f88a828261ba0.woff": "6900998c1d878e73b2f9ac3a9a9746365d49a54f",
+    "/fa-brands-400.cccc9d29470e879e40eb.woff2": "5fe986cda635681b4b6bbd6111df2f26d7fca286",
+    "/fa-regular-400.65b286af947c0d982ca0.ttf": "5d5375ce3ae5b500df039da009ccdaca29d52fc0",
+    "/fa-regular-400.c1a866ec0e04a5e1915b.eot": "1115185386ada5846eecc4e2e1f076ca7617e0cd",
+    "/fa-regular-400.c4f508e7c4f01a9eeba7.woff": "7626840dab0e2ae37b2d16572a6f183a71a0dd73",
+    "/fa-regular-400.f5f2566b93e89391da4d.woff2": "be142af0f56062f6e864de121b98054c7b5954fd",
+    "/fa-solid-900.0bff33a5fd7ec3902354.ttf": "40d9789010f6137e543e4d97025b867707d2f425",
+    "/fa-solid-900.333bae208dc363746961.woff": "43dae5c2482bfb5d04d896529600eb621181103a",
+    "/fa-solid-900.44d537ab79f921fde5a2.woff2": "b2879f9e1d0985a96842bf7f55a2b2cc4c636d04",
+    "/fa-solid-900.8e4a6dcc692b3887f9f5.eot": "340ee70e87850176047733192ea8109dd6380082",
+    "/favicon.ico": "58c6e2616ec3d4be9bec1da60ea51fbb41bb08b8",
+    "/index.html": "b75801354b90fc514677d17d9d040352c8f3f975",
+    "/main-es2015.4760a8b19e88575d0d24.js": "d103aadc50f0adb288e27dad3e9722f8f7f04a48",
+    "/main-es5.faaa376ca5d55de2dadb.js": "315f46603f138c6f83010b5f3857e1529f5c6129",
+    "/manifest.json": "f79b6b6fa61b601a736ba2e5d0e87e02f9c2c785",
+    "/polyfills-es2015.75bf482ee2a1689db99e.js": "ffe5f8cfa6eae51a7a95e8363b303b0c44ade852",
+    "/polyfills-es5.54841ab5d28a01d4fe1d.js": "3ea1e29746459f5b3ea1cf720189326d06127910",
+    "/runtime-es2015.aa36e2789a7b6e5e7675.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
+    "/runtime-es5.d3647fbfa3de00cd0bdf.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
+    "/styles.aa470929d8d2a97e71fa.css": "64c9e7b4563dddce4183f0753a02c51503773d30"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
