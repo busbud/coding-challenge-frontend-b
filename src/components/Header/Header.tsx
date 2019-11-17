@@ -3,11 +3,11 @@ import styled from 'styled-components';
 
 const StyledHeader = styled.header`
   align-items: center;
-  background-color: #161616;
-  color: white;
+  background-color: ${props => props.theme.busbud.header.backgroundColor};
+  color: ${props => props.theme.busbud.header.color};
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: ${props => props.theme.busbud.header.padding};
 `;
 
 export default function Header() {
