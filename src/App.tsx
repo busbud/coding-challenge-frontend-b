@@ -9,9 +9,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    font-family: sans-serif;
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
   }
 `;
 
