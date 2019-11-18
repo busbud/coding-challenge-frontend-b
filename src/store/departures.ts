@@ -140,6 +140,7 @@ export function departuresReducer(
 // Selectors
 const getDeparturesSelector = (state: AppState) => {
   const { departures, locations } = state.departures.data;
+  if (!departures) return [];
   return departures.map(
     (departure: Departure): AugmentedDeparture => {
       return {
