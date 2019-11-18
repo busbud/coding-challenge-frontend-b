@@ -28,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${colorPalette.lightGrey};
     font-family: sans-serif;
     margin: 0;
+    min-width: 460px;
     padding: 0;
   }
 `;
