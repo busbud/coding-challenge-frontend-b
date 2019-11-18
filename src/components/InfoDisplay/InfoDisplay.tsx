@@ -16,7 +16,8 @@ const StyldInfoDisplay = styled.div`
   font-size: 2rem;
   justify-content: center;
   margin-bottom: ${props => props.theme.busbud.card.margin};
-  padding: ${props => props.theme.busbud.card.padding};
+  padding-bottom: ${props => props.theme.busbud.card.padding};
+  padding-top: ${props => props.theme.busbud.card.padding};
   position: relative;
 `;
 

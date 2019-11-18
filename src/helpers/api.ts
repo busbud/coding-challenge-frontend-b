@@ -9,6 +9,7 @@ export interface LoadDataParams {
   senior?: number;
   lang?: string;
   currency?: string;
+  index?: number;
 }
 
 export default (params: LoadDataParams) => {
@@ -20,7 +21,8 @@ export default (params: LoadDataParams) => {
     child = 0,
     senior = 0,
     lang = 'en',
-    currency = 'USD'
+    currency = 'USD',
+    index = 0
   } = params;
 
   return axios({
@@ -36,7 +38,8 @@ export default (params: LoadDataParams) => {
       child,
       senior,
       lang,
-      currency
+      currency,
+      index
     }
   }).then(res => {
     return res.data;
