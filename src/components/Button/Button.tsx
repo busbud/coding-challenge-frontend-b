@@ -13,6 +13,7 @@ const StyledButton = styled.button`
   box-shadow: ${props => props.theme.busbud.button.boxShadow};
   color: ${props => props.theme.busbud.button.color};
   font-size: ${props => props.theme.busbud.button.fontSize};
+  font-weight: ${props => props.theme.busbud.button.fontWeight};
   padding: ${props => props.theme.busbud.button.padding};
 
   &:hover {

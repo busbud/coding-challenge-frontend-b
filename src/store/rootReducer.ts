@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import { todoReducer } from './todo';
+import { departuresReducer } from './departures';
+import { langReducer } from './lang';
 
 export default combineReducers({
-  todos: todoReducer
+  lang: langReducer,
+  departures: departuresReducer
 });

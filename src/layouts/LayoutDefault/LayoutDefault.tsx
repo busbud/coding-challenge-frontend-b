@@ -8,15 +8,11 @@ interface Props {
 
 const LayoutWrapper = styled.div``;
 
-const ContentWrapper = styled.section`
-  padding: 20px;
-`;
-
 export default function LayoutDefault({ children }: Props) {
   return (
     <LayoutWrapper>
       <Header />
-      <ContentWrapper>{children}</ContentWrapper>
+      {children}
     </LayoutWrapper>
   );
 }
