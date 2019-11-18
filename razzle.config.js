@@ -1,4 +1,11 @@
+const razzleHeroku = require('razzle-heroku');
+
 module.exports = {
+  modify(config, { target, dev }, webpack) {
+    const herokuConfig = razzleHeroku(config, { target, dev }, webpack);
+
+    return herokuConfig;
+  },
   plugins: [
     {
       name: 'typescript',
