@@ -18,7 +18,6 @@ const StyledHeader = styled.header`
   background-color: ${props => props.theme.busbud.header.backgroundColor};
   color: ${props => props.theme.busbud.header.color};
   display: flex;
-  padding: ${props => props.theme.busbud.header.padding};
 `;
 
 const StyledContainer = styled(Container)`

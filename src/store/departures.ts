@@ -1,22 +1,27 @@
 /* eslint-disable camelcase */
 import { createSelector } from 'reselect';
+import { merge } from 'lodash';
+import { LoadDataParams } from '../helpers/api';
 import { AppState } from '.';
 
 // Constants
 export const GET_DEPARTURES = 'GET_DEPARTURES';
-export const GET_DEPARTURES_SUCCESS = 'GET_DEPARTURES_SUCCESS';
-export const GET_DEPARTURES_ERROR = 'GET_DEPARTURES_ERROR';
+export const GET_DEPARTURES_SUCCEEDED = 'GET_DEPARTURES_SUCCEEDED';
+export const GET_DEPARTURES_FAILED = 'GET_DEPARTURES_FAILED';
 
-// Typings
-interface GetDeparturesAction {
+// Typings, FYI I only partially typed what I needed.
+export interface GetDeparturesAction {
   type: typeof GET_DEPARTURES;
+  payload: LoadDataParams;
 }
-interface GetDeparturesActionSuccess {
-  type: typeof GET_DEPARTURES_SUCCESS;
+
+export interface GetDeparturesActionSucceeded {
+  type: typeof GET_DEPARTURES_SUCCEEDED;
   payload: any;
 }
-interface GetDeparturesActionError {
-  type: typeof GET_DEPARTURES_ERROR;
+
+export interface GetDeparturesActionFailed {
+  type: typeof GET_DEPARTURES_FAILED;
   payload: string;
 }
 
@@ -38,6 +43,8 @@ interface City {
 export interface DepartureInformation {
   originCity: City;
   destinationCity: City;
+  complete: boolean;
+  isFetching: boolean;
 }
 
 export interface Departure {
@@ -68,25 +75,28 @@ interface InitialTodoState {
 // Actions
 type DeparturesActionTypes =
   | GetDeparturesAction
-  | GetDeparturesActionSuccess
-  | GetDeparturesActionError;
+  | GetDeparturesActionSucceeded
+  | GetDeparturesActionFailed;
 
-export function getDepartures(): GetDeparturesAction {
+export function getDepartures(params: LoadDataParams): GetDeparturesAction {
   return {
-    type: GET_DEPARTURES
+    type: GET_DEPARTURES,
+    payload: params
   };
 }
 
-export function getDeparturesSuccess(payload: any): GetDeparturesActionSuccess {
+export function getDeparturesSuccess(
+  payload: any
+): GetDeparturesActionSucceeded {
   return {
-    type: GET_DEPARTURES_SUCCESS,
+    type: GET_DEPARTURES_SUCCEEDED,
     payload
   };
 }
 
-export function getDeparturesError(payload: string): GetDeparturesActionError {
+export function getDeparturesError(payload: string): GetDeparturesActionFailed {
   return {
-    type: GET_DEPARTURES_ERROR,
+    type: GET_DEPARTURES_FAILED,
     payload
   };
 }
@@ -108,13 +118,15 @@ export function departuresReducer(
         ...state,
         isFetching: true
       };
-    case GET_DEPARTURES_SUCCESS:
+    case GET_DEPARTURES_SUCCEEDED:
       return {
         ...state,
         isFetching: false,
-        data: action.payload // This data would normally be normalized
+        data: {
+          ...merge(state.data, action.payload) // This data would normally be normalized
+        }
       };
-    case GET_DEPARTURES_ERROR:
+    case GET_DEPARTURES_FAILED:
       return {
         ...state,
         isFetching: false,
@@ -154,6 +166,11 @@ const getDestinationCitySelector = (state: AppState) => {
   return cities.find((c: any) => c.id === originCityId);
 };
 
+const getIsCompleteSelector = (state: AppState) =>
+  state.departures.data.complete;
+
+const getIsFetchingSelector = (state: AppState) => state.departures.isFetching;
+
 export const departuresSelector = createSelector(
   getDeparturesSelector,
   departures => departures
@@ -162,8 +179,12 @@ export const departuresSelector = createSelector(
 export const departuresInfoSelector = createSelector(
   getOriginCitySelector,
   getDestinationCitySelector,
-  (originCity, destinationCity) => ({
+  getIsCompleteSelector,
+  getIsFetchingSelector,
+  (originCity, destinationCity, complete, isFetching) => ({
     originCity,
-    destinationCity
+    destinationCity,
+    complete,
+    isFetching
   })
 );

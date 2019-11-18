@@ -36,7 +36,7 @@
     "prettier/prettier": ["error"],
     "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
     "import/order": ["error", { "newlines-between": "never" }],
-    "no-console": ["error", { "allow": ["info", "warn", "error"] }]
+    "no-console": ["error", { "allow": ["info", "warn", "error", "time"] }]
   },
   "overrides": [
     {

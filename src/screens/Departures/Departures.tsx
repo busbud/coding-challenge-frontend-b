@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { AppState } from '../../store';
@@ -12,20 +12,44 @@ import {
 import InfoDisplay from '../../components/InfoDisplay';
 import DeparturesList from '../../components/DeparturesList';
 import LayoutDefault from '../../layouts/LayoutDefault';
+import { LoadDataParams } from '../../helpers/api';
 
 interface Props {
-  onClickAction: (payload: string) => void;
+  startPolling: (params: LoadDataParams) => void;
   departures: AugmentedDeparture[];
   information: DepartureInformation;
+  match?: {
+    params: LoadDataParams;
+  };
 }
 
-function Departures({ departures, information }: Props) {
-  return (
-    <LayoutDefault>
-      <InfoDisplay information={information} />
-      <DeparturesList information={information} departures={departures} />
-    </LayoutDefault>
-  );
+class Departures extends Component<Props> {
+  componentDidMount() {
+    this.startPolling();
+  }
+
+  startPolling = () => {
+    const {
+      information: { complete },
+      startPolling,
+      match
+    } = this.props;
+    // If SSR fetching was not complete we need
+    // to start polling
+    if (!complete && match) {
+      startPolling(match.params || null);
+    }
+  };
+
+  render() {
+    const { departures, information } = this.props;
+    return (
+      <LayoutDefault>
+        <InfoDisplay information={information} />
+        <DeparturesList information={information} departures={departures} />
+      </LayoutDefault>
+    );
+  }
 }
 
 const mapStateToProps = (state: AppState) => ({
@@ -34,7 +58,7 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  onClickAction: () => dispatch(getDepartures())
+  startPolling: (params: LoadDataParams) => dispatch(getDepartures(params))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Departures);

@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
+import Loader from 'react-loader-spinner';
+import { Container } from '@material-ui/core';
+import { DepartureInformation } from '../../store/departures';
 
 interface Props {
-  information: any;
+  information: DepartureInformation;
 }
 
 const StyldInfoDisplay = styled.div`
@@ -14,14 +17,33 @@ const StyldInfoDisplay = styled.div`
   justify-content: center;
   margin-bottom: ${props => props.theme.busbud.card.margin};
   padding: ${props => props.theme.busbud.card.padding};
+  position: relative;
+`;
+
+const LoaderWrapper = styled.div`
+  position: absolute;
+  right: 30px;
+  top: 25px;
 `;
 
 export default function InfoDisplay({ information }: Props) {
-  const { originCity, destinationCity } = information;
+  const { originCity, destinationCity, isFetching } = information;
   return (
     <StyldInfoDisplay>
-      {originCity.short_name} <FormattedMessage id="to" />{' '}
-      {destinationCity.short_name}
+      <Container>
+        {originCity.name} <FormattedMessage id="to" /> {destinationCity.name}{' '}
+        {isFetching && (
+          <LoaderWrapper>
+            <Loader
+              type="Rings"
+              color="#127ccb"
+              height={40}
+              width={40}
+              visible
+            />
+          </LoaderWrapper>
+        )}
+      </Container>
     </StyldInfoDisplay>
   );
 }

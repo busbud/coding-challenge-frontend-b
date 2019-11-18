@@ -11,7 +11,7 @@ import { IntlProvider } from 'react-intl';
 import App from './App';
 import configureStore from './store';
 import routes from './routes';
-import { GET_DEPARTURES_SUCCESS } from './store/departures';
+import { GET_DEPARTURES_SUCCEEDED } from './store/departures';
 import messages from './i18n/messages';
 
 let assets: any;
@@ -50,7 +50,7 @@ server
         const materialSheet = new MaterialServerStyleSheets();
         const store = configureStore();
         store.dispatch({
-          type: GET_DEPARTURES_SUCCESS,
+          type: GET_DEPARTURES_SUCCEEDED,
           payload: data
         });
         const preloadedState = store.getState();
