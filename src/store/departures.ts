@@ -143,15 +143,17 @@ const getDeparturesSelector = (state: AppState) => {
   if (!departures) return [];
   return departures.map(
     (departure: Departure): AugmentedDeparture => {
+      const origin = locations.find(
+        (location: Location) => location.id === departure.origin_location_id
+      );
+      const destination = locations.find(
+        (location: Location) =>
+          location.id === departure.destination_location_id
+      );
       return {
         ...departure,
-        originLocationName: locations.find(
-          (location: Location) => location.id === departure.origin_location_id
-        ).name,
-        destinationLocationName: locations.find(
-          (location: Location) =>
-            location.id === departure.destination_location_id
-        ).name
+        originLocationName: origin ? origin.name : '',
+        destinationLocationName: destination ? destination.name : ''
       };
     }
   );

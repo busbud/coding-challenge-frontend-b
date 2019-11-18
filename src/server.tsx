@@ -105,6 +105,7 @@ server
         );
       })
       .catch((e: Error) => {
+        console.error(e);
         res.status(500).send(`ERROR: ${e}`);
       });
   });
