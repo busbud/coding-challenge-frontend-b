@@ -31,9 +31,11 @@ const StyledArrow = styled.div`
 `;
 
 const Location = styled.div`
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  @media (min-width: 768px) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `;
 
 const Price = styled.div`

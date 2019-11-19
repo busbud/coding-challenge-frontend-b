@@ -29,6 +29,7 @@ const LoaderWrapper = styled.div`
 
 export default function InfoDisplay({ information }: Props) {
   const { originCity, destinationCity, isFetching } = information;
+  if (!originCity || !destinationCity) return null;
   return (
     <StyldInfoDisplay>
       <Container>

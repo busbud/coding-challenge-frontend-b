@@ -7,14 +7,14 @@ interface Props {
 }
 
 const StyledButton = styled.button`
-  background-color: ${props => props.theme.busbud.button.backgroundColor};
-  border-color: ${props => props.theme.busbud.button.backgroundColor};
+  background-color: transparent;
+  border-color: transparent;
   border-radius: ${props => props.theme.busbud.button.borderRadius};
   box-shadow: ${props => props.theme.busbud.button.boxShadow};
   color: ${props => props.theme.busbud.button.color};
   font-size: ${props => props.theme.busbud.button.fontSize};
   font-weight: ${props => props.theme.busbud.button.fontWeight};
-  padding: ${props => props.theme.busbud.button.padding};
+  padding: 0;
 
   &:hover {
     background-color: ${props =>

@@ -161,11 +161,13 @@ const getDeparturesSelector = (state: AppState) => {
 
 const getOriginCitySelector = (state: AppState) => {
   const { origin_city_id: originCityId, cities } = state.departures.data;
+  if (!cities) return null;
   return cities.find((c: any) => c.id === originCityId);
 };
 
 const getDestinationCitySelector = (state: AppState) => {
   const { destination_city_id: originCityId, cities } = state.departures.data;
+  if (!cities) return null;
   return cities.find((c: any) => c.id === originCityId);
 };
 
