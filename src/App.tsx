@@ -47,7 +47,7 @@ const theme = {
       borderRadius: '0.2857142857rem',
       color: colorPalette.white,
       boxShadow: 'none',
-      padding: '10px',
+      padding: '5px',
       transition: 'all .2s',
       fontSize: '0.8rem',
       fontWeight: 'bold'

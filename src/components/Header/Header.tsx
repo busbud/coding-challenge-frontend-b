@@ -29,7 +29,13 @@ const StyledContainer = styled(Container)`
 const UnordoredList = styled.ul``;
 const ListItem = styled.li`
   display: inline;
-  margin-left: 10px;
+  margin-left: 5px;
+`;
+
+const TitleWrapper = styled.div`
+  @media (max-width: 360px) {
+    font-size: 0.6rem;
+  }
 `;
 
 function Header({ onClickAction }: Props) {
@@ -39,7 +45,9 @@ function Header({ onClickAction }: Props) {
   return (
     <StyledHeader>
       <StyledContainer>
-        <FormattedMessage id="title" />
+        <TitleWrapper>
+          <FormattedMessage id="title" />
+        </TitleWrapper>
         <UnordoredList>
           <ListItem>
             <Button onClickAction={() => handleChangeLang('en')}>

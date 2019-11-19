@@ -24,7 +24,11 @@ const StyldInfoDisplay = styled.div`
 const LoaderWrapper = styled.div`
   position: absolute;
   right: 30px;
-  top: 25px;
+  top: 5px;
+`;
+
+const StyledContainer = styled(Container)`
+  position: relative;
 `;
 
 export default function InfoDisplay({ information }: Props) {
@@ -32,7 +36,7 @@ export default function InfoDisplay({ information }: Props) {
   if (!originCity || !destinationCity) return null;
   return (
     <StyldInfoDisplay>
-      <Container>
+      <StyledContainer>
         {originCity.name} <FormattedMessage id="to" /> {destinationCity.name}{' '}
         {isFetching && (
           <LoaderWrapper>
@@ -45,7 +49,7 @@ export default function InfoDisplay({ information }: Props) {
             />
           </LoaderWrapper>
         )}
-      </Container>
+      </StyledContainer>
     </StyldInfoDisplay>
   );
 }

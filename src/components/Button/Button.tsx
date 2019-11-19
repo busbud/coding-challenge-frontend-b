@@ -14,11 +14,10 @@ const StyledButton = styled.button`
   color: ${props => props.theme.busbud.button.color};
   font-size: ${props => props.theme.busbud.button.fontSize};
   font-weight: ${props => props.theme.busbud.button.fontWeight};
-  padding: 0;
+  padding: ${props => props.theme.busbud.button.padding};
 
   &:hover {
-    background-color: ${props =>
-      props.theme.busbud.button.backgroundColorHover};
+    background-color: ${props => props.theme.busbud.color.darkBlue};
   }
 `;
 

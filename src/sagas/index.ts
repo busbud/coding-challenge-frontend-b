@@ -1,4 +1,5 @@
 import { call, put, takeEvery, delay, select } from 'redux-saga/effects';
+import { get } from 'lodash';
 import {
   GET_DEPARTURES,
   GET_DEPARTURES_SUCCEEDED,
@@ -10,8 +11,8 @@ import loadData from '../helpers/api';
 function* getDepartures(action: GetDeparturesAction) {
   try {
     yield delay(2000);
-    const index = yield select(
-      state => state.departures.data.departures.length
+    const index = yield select(state =>
+      get(state, 'departures.data.departures.length', 0)
     );
     const data = yield call(loadData, { ...action.payload, index });
     yield put({ type: GET_DEPARTURES_SUCCEEDED, payload: data });
