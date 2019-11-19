@@ -33,7 +33,7 @@ const ListItem = styled.li`
 `;
 
 const TitleWrapper = styled.div`
-  @media (max-width: 360px) {
+  @media (max-width: 375px) {
     font-size: 0.6rem;
   }
 `;
