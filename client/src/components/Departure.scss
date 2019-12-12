@@ -1,0 +1,52 @@
+@import "./variables.scss";
+
+.departure {
+  background-color: $lightGrey;
+  color: $grey;
+  width: 100%;
+  box-shadow: 0 0 5px lighten($blue, 10%);
+  border-radius: 5px;
+
+  &__content {
+    &__label {
+      margin: 0.5rem 0;
+      padding: 0.5rem 0;
+      border-top: 2px solid $lightGrey;
+      border-bottom: 2px solid $lightGrey;
+      font-weight: bold;
+      &:first-child {
+        border-radius: 5px 5px 0 0;
+        border-top: none;
+      }
+    }
+    &__location {
+      p {
+        margin: 0.5em;
+      }
+    }
+    &__duration {
+      margin-top: 1em;
+      padding-top: 0.5rem;
+      border-top: 2px solid $lightGrey;
+    }
+  }
+
+  &__reservation {
+    button {
+      padding: 0.5rem 2rem;
+      width: 100%;
+      margin-top: 1rem;
+      font-size: 1.4rem;
+      border: none;
+      background-color: $blue;
+      box-shadow: 0 0 5px lighten($blue, 10%);
+      border-radius: 0 0 5px 5px;
+      color: $lightGrey;
+    }
+  }
+
+  &__footer,
+  &__reservation__availability {
+    display: none;
+  }
+}
