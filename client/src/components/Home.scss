@@ -51,6 +51,7 @@
   }
   &__departures {
     width: 90%;
+    margin: 1rem 0;
   }
 }
 
@@ -70,6 +71,14 @@
         width: auto;
         min-width: 30%;
       }
+    }
+  }
+}
+
+@media (min-width: 1220px) {
+  .home {
+    &__departures {
+      max-width: 60%;
     }
   }
 }

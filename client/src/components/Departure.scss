@@ -8,11 +8,14 @@
   border-radius: 5px;
 
   &__content {
+    &__arrow {
+      display: none;
+    }
     &__label {
       margin: 0.5rem 0;
       padding: 0.5rem 0;
-      border-top: 2px solid $lightGrey;
-      border-bottom: 2px solid $lightGrey;
+      border-top: 2px solid darken($lightGrey, 5%);
+      border-bottom: 2px solid darken($lightGrey, 5%);
       font-weight: bold;
       &:first-child {
         border-radius: 5px 5px 0 0;
@@ -27,7 +30,7 @@
     &__duration {
       margin-top: 1em;
       padding-top: 0.5rem;
-      border-top: 2px solid $lightGrey;
+      border-top: 2px solid darken($lightGrey, 5%);
     }
   }
 
@@ -45,8 +48,62 @@
     }
   }
 
-  &__footer,
   &__reservation__availability {
     display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .departure {
+    display: flex;
+    & {
+      margin-top: 1em;
+    }
+    &__content {
+      flex: 3;
+      display: flex;
+      align-items: center;
+      > * {
+        flex: 2;
+      }
+      &__arrow {
+        display: block;
+        font-size: 2rem;
+        flex: 0.5;
+      }
+      &__label {
+        display: none;
+      }
+      &__duration {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+        padding: 0;
+        border: none;
+      }
+    }
+    &__reservation {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-left: 1px solid darken($lightGrey, 10%);
+      &__price {
+        padding: 1rem;
+        color: darken($green, 10%);
+        font-size: 1.5rem;
+      }
+      button {
+        margin-top: 0;
+        border-radius: 0 0 5px 0;
+      }
+    }
+    &__reservation__availability {
+      display: block;
+      margin-top: 0.5rem;
+      p {
+        margin: 0.5rem;
+      }
+    }
   }
 }

@@ -20,21 +20,23 @@ const Departure = ({
           <p>{from}</p>
           <p>{new Date(departure_time).toLocaleString()}</p>
         </div>
+        <p className="departure__content__arrow">&rarr;</p>
         <p className="departure__content__label">To</p>
         <div className="departure__content__location">
           <p>{to}</p>
           <p>{new Date(arrival_time).toLocaleString()}</p>
         </div>
-        <div className="departure__content__duration">Duration: {duration}</div>
-        <div className="departure__footer">
-          <div>{seatClass}</div>
+        <div className="departure__content__duration">
+          <span>Duration: </span>
+          {duration}
         </div>
       </div>
       <div className="departure__reservation">
         <div className="departure__reservation__availability">
-          {complete ? "Complete" : `Available seats: ${available_seats}`}
+          <div>{seatClass}</div>
+          <p>{complete ? "Complete" : `Available seats: ${available_seats}`}</p>
         </div>
-        <div>
+        <div className="departure__reservation__price">
           {prices.total} {prices.currency}
         </div>
         <button>Book</button>
