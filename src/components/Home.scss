@@ -50,9 +50,13 @@
       font-size: 1.4rem;
       border: none;
       background-color: $blue;
-      box-shadow: 0 0 5px lighten($blue, 10%);
+      box-shadow: $lightShadow;
       border-radius: 5px;
       color: $lightGrey;
+      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      &:hover {
+        box-shadow: $mediumShadow;
+      }
     }
   }
   &__departures {

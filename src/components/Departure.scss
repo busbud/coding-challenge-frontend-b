@@ -4,9 +4,15 @@
   background-color: $lightGrey;
   color: $grey;
   width: 100%;
-  box-shadow: 0 0 5px lighten($blue, 10%);
+  box-shadow: $lightShadow;
   border-radius: 5px;
-
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  &:hover {
+    box-shadow: $wideShadow;
+  }
+  * {
+    cursor: default;
+  }
   &__content {
     &__arrow {
       display: none;
@@ -42,7 +48,6 @@
       font-size: 1.4rem;
       border: none;
       background-color: $blue;
-      box-shadow: 0 0 5px lighten($blue, 10%);
       border-radius: 0 0 5px 5px;
       color: $lightGrey;
     }
