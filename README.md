@@ -13,11 +13,13 @@ ____
 
 `yarn add`
 
-2. Then start the application
+2. Create a `.env.local` file and copy comtent of `.env.sample` to it and provide the appropraite values
+
+3. Then start the application
 
 `yarn start`
 
-6. Navigate to your browser to view the app on `http://localhost:8080`
+4. Navigate to your browser to view the app on `http://localhost:8080`
 
 
 ## Test
