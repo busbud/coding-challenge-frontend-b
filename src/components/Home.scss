@@ -43,21 +43,6 @@
         }
       }
     }
-    &__submit {
-      padding: 0.5rem 2rem;
-      width: 100%;
-      margin-top: 1rem;
-      font-size: 1.4rem;
-      border: none;
-      background-color: $blue;
-      box-shadow: $lightShadow;
-      border-radius: 5px;
-      color: $lightGrey;
-      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-      &:hover {
-        box-shadow: $mediumShadow;
-      }
-    }
   }
   &__departures {
     width: 90%;
@@ -83,7 +68,7 @@
           }
         }
       }
-      &__submit {
+      .submit-button {
         width: auto;
         min-width: 30%;
       }
@@ -93,7 +78,7 @@
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        &__submit {
+        .submit-button {
           margin-top: 0;
           margin-left: 1rem;
           min-width: auto;

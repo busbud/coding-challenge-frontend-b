@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import LocalizedStrings from "react-localization";
 import Departure from "./Departure";
+import SubmitButton from "./SubmitButton";
 import "./Home.scss";
 
 let strings = new LocalizedStrings({
@@ -48,14 +49,6 @@ const formatDeparture = ({ cities, departures }) => {
     })
   );
 };
-
-const DeparturesList = ({ departures, lang }) => (
-  <div className="home__departures">
-    {departures.map(departure => (
-      <Departure key={departure.id} lang={lang} {...departure} />
-    ))}
-  </div>
-);
 
 const Home = () => {
   const [departures, setDepartures] = useState(null);
@@ -151,12 +144,16 @@ const Home = () => {
             />
           </div>
         </div>
-        <button className="home__search__submit" type="submit">
+        <SubmitButton loading={status.name === "polling"}>
           {departures ? <span>&#128269;</span> : strings.submit}
-        </button>
+        </SubmitButton>
       </form>
       {departures && !!departures.length && (
-        <DeparturesList departures={departures} lang={lang} />
+        <div className="home__departures">
+          {departures.map(departure => (
+            <Departure key={departure.id} lang={lang} {...departure} />
+          ))}
+        </div>
       )}
     </div>
   );
