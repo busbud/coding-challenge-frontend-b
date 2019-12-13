@@ -1,33 +1,40 @@
 // thired part libraries
-import React from 'react';
+import React, { useState } from 'react';
+import { withTranslation } from "react-i18next";
 
 // styles
-import {
-  Header,
-  Nav,
-  Brand,
-  DropdownButton,
-  DropdownContent,
-  DropdownContainer
+import './Navbar.scss'
+
+const Navbar = ({ t, i18n }) => {
+  const [lang, setLang] = useState(['en'])
+
+  const handleClick = event => {
+    console.log("selected val is ", event.target.value);
+    let newlang = event.currentTarget.innerText;
+    setLang({ value: newlang })
+    console.log("state value is", newlang);
+    i18n.changeLanguage(newlang);
+  };
+
+  return (
+    <header className="navbar-container">
+      <div className="navbar-container__content">
+        <div className="navbar-container__content__brand">
+          <a href="/">BusBud Coding Challenge</a>
+        </div>
+        <nav>
+          <ul className="navbar-container__content__items">
+            <li onClick={handleClick}>
+              <a href='#' className="active">{t("English")}</a>
+            </li>
+            <li onClick={handleClick}>
+              <a href="#">{t("French")}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  )
 }
-  from './styled'
 
-const NavBar = () => (
-  <Header>
-    <Nav>
-      <Brand href="/">
-        Busbud
-      </Brand>
-      <DropdownContainer>
-        <DropdownButton>English
-          <i className="fa fa-caret-down"></i>
-        </DropdownButton>
-        <DropdownContent>
-          <a href="#">French</a>
-        </DropdownContent>
-      </DropdownContainer>
-    </Nav>
-  </Header>
-)
-
-export default NavBar;
+export default withTranslation("translations")(Navbar);

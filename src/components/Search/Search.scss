@@ -1,0 +1,23 @@
+.search-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin: 2rem;
+}
+
+label {
+  font-size: 1.5rem;
+}
+
+.form-input {
+    box-sizing: border-box;
+  background: #ffffff;
+  padding: 0.35rem 0.75rem;
+  border: none;
+  font-size: 1rem;
+  text-decoration: none;
+  line-height: normal;
+  height: 3rem;
+  outline: none;
+  width: 200px;
+}

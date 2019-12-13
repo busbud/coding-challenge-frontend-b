@@ -21,7 +21,7 @@ export const getDepartureFailure = (error) => (
   }
 );
 
-const timeouPromise = (pr) => {
+const timeoutPromise = (pr) => {
   const seconds = Math.floor(Math.random() * 4) + 2
 
   return new Promise((resolve, reject) => {
@@ -41,7 +41,7 @@ export const getDepartures = (origin, destination, outbound_date) => (dispatch) 
         index: `${index}/poll`
       }
     }
-    return timeouPromise(() => http({
+    return timeoutPromise(() => http({
       method: 'GET',
       url: path,
       params: parmeters
@@ -64,11 +64,9 @@ export const getDepartures = (origin, destination, outbound_date) => (dispatch) 
   }
   return recursiveCalls(`/x-departures/${origin}/${destination}/${outbound_date}`, param)
     .then((response) => {
-      console.log(response.data)
       dispatch(getDeparturesSuccess(response.data));
       dispatch(unsetFetching());
     }).catch((error) => {
-      console.log(error)
       dispatch(getDepartureFailure(error));
       dispatch(unsetFetching());
     })

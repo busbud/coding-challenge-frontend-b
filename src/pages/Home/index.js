@@ -2,12 +2,10 @@
 import React from 'react';
 
 // components
-import CardContainer from '../../components/CardContainer'
+import Content from '../../components/Content'
 
 const Home = () => (
-  <div className="app-container">
-    <CardContainer />
-  </div>
+  <Content />
 )
 
 export default Home;

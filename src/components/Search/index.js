@@ -1,21 +1,25 @@
 // thired part libraries
 import React from 'react';
+import { withTranslation } from "react-i18next";
 
-const Search = () => (
-  < div className='group' >
+// styles
+import './Search.scss'
+
+const Search = ({ t }) => (
+  <div className='search-container'>
     <div className='form-item'>
-      <label htmlFor='depart'>From</label>
-      <input className='form-input' defaultValue='New York' />
+      <label htmlFor='depart'>{t("From")}</label>
+      <input className='form-input' defaultValue='New York' disabled />
     </div>
     <div className='form-item'>
-      <label htmlFor='arrive'>To</label>
-      <input className='form-input' defaultValue='Montréal' />
+      <label htmlFor='arrive'>{t("To")}</label>
+      <input className='form-input' defaultValue='Montréal' disabled />
     </div>
     <div className='form-item'>
-      <label htmlFor='date'>On</label>
-      <input className='form-input' defaultValue='2nd of August 2020' />
+      <label htmlFor='date'>{t("On")}</label>
+      <input className='form-input' defaultValue='2nd of August 2020' disabled />
     </div>
-  </div >
+  </div>
 )
 
-export default Search;
+export default withTranslation("translations")(Search);

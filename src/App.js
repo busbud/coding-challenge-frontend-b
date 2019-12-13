@@ -5,11 +5,15 @@ import React from 'react';
 import Navbar from './components/Navbar'
 import Routes from './Routes'
 
-const App = () => (
-  <div className="app-container">
-    <Navbar />
-    <Routes />
-  </div>
-)
+const App = (props) => {
+  console.log(props, 'appaploskokdo')
+  return (
+
+    <>
+      <Navbar />
+      <Routes />
+    </>
+  )
+}
 
 export default App;
