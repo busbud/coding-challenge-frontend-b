@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import LocalizedStrings from "react-localization";
 import Departure from "./Departure";
 import "./Home.scss";
@@ -59,15 +59,25 @@ const DeparturesList = ({ departures, lang }) => (
 
 const Home = () => {
   const [departures, setDepartures] = useState(null);
-  const [error, setError] = useState(null);
+  const [status, setStatus] = useState({});
   const [lang, setLang] = useState("en");
+  const isInitialMount = useRef(true);
 
-  strings.setLanguage(lang);
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      strings.setLanguage(lang);
+      getDepartures();
+    }
+  }, [lang]);
 
   const getDepartures = e => {
-    e.preventDefault();
+    e && e.preventDefault();
     fetch(
-      `https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02?adult=1&lang=${lang}`,
+      `https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02${
+        status.name === "polling" ? "/poll" : ""
+      }?adult=1&lang=${lang}${departures ? `&index=${departures.length}` : ""}`,
       {
         headers: {
           Accept:
@@ -79,11 +89,17 @@ const Home = () => {
       .then(res => res.json())
       .then(
         result => {
-          const departures = formatDeparture(result);
-          setDepartures(departures);
+          if (result.complete) {
+            setStatus({ name: "completed" });
+            setDepartures(formatDeparture(result));
+          } else {
+            setStatus({ name: "polling" });
+            setDepartures(departures);
+            getDepartures();
+          }
         },
         error => {
-          setError(error);
+          setStatus({ name: "error", message: error });
         }
       );
   };
@@ -108,7 +124,7 @@ const Home = () => {
       </select>
       <h1>{strings.title}</h1>
       <form className="home__search" onSubmit={getDepartures}>
-        {error && `Error! ${error.message}`}
+        {status.name === "error" && `Error! ${status.message}`}
         <div className="home__search__fields">
           <div className="home__search__fields__input">
             <label htmlFor="from">{strings.from}</label>
