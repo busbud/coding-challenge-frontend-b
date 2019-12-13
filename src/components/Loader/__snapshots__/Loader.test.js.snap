@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar Component should be rendered properly 1`] = `ShallowWrapper {}`;

@@ -7,10 +7,11 @@
 
 label {
   font-size: 1.5rem;
+  margin: 1rem;
 }
 
 .form-input {
-    box-sizing: border-box;
+  box-sizing: border-box;
   background: #ffffff;
   padding: 0.35rem 0.75rem;
   border: none;
@@ -20,4 +21,16 @@ label {
   height: 3rem;
   outline: none;
   width: 200px;
+}
+
+@media (max-width: 600px) {
+  .form-input { 
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .form-input { 
+    margin-bottom: 1rem;
+  }
 }

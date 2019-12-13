@@ -6,6 +6,7 @@ import { withTranslation } from "react-i18next";
 import './Navbar.scss'
 
 const Navbar = ({ t, i18n }) => {
+  // eslint-disable-next-line no-unused-vars
   const [lang, setLang] = useState(['en'])
 
   const handleClick = event => {
@@ -20,14 +21,16 @@ const Navbar = ({ t, i18n }) => {
     <header className="navbar-container">
       <div className="navbar-container__content">
         <div className="navbar-container__content__brand">
-          <a href="/">BusBud Coding Challenge</a>
+          <a href="/">Busbud</a>
         </div>
         <nav>
           <ul className="navbar-container__content__items">
             <li onClick={handleClick}>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a href='#' className="active">{t("English")}</a>
             </li>
             <li onClick={handleClick}>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a href="#">{t("French")}</a>
             </li>
           </ul>
