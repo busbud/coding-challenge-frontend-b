@@ -94,7 +94,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
+    <div className={`home ${departures ? "home--has-departures" : ""}`}>
       <select
         className="home__languages"
         onChange={changeLanguage}
@@ -107,43 +107,40 @@ const Home = () => {
         ))}
       </select>
       <h1>{strings.title}</h1>
-      {departures && !!departures.length ? (
-        <DeparturesList departures={departures} lang={lang} />
-      ) : (
-        <form className="home__search" onSubmit={getDepartures}>
-          {error && `Error! ${error.message}`}
-          <div className="home__search__fields">
-            <div className="home__search__fields__input">
-              <label htmlFor="from">{strings.from}</label>
-              <input
-                readOnly
-                id="from"
-                type="text"
-                name="from"
-                value="New-York"
-              />
-            </div>
-            <div className="home__search__fields__input">
-              <label htmlFor="to">{strings.to}</label>
-              <input readOnly id="to" type="text" name="to" value="Montreal" />
-            </div>
-            <div className="home__search__fields__input">
-              <label htmlFor="date">{strings.when}</label>
-              <input
-                readOnly
-                id="when"
-                type="text"
-                name="when"
-                value="08/02/2020"
-              />
-            </div>
+      <form className="home__search" onSubmit={getDepartures}>
+        {error && `Error! ${error.message}`}
+        <div className="home__search__fields">
+          <div className="home__search__fields__input">
+            <label htmlFor="from">{strings.from}</label>
+            <input
+              readOnly
+              id="from"
+              type="text"
+              name="from"
+              value="New-York"
+            />
           </div>
-          <input
-            className="home__search__submit"
-            type="submit"
-            value={strings.submit}
-          />
-        </form>
+          <div className="home__search__fields__input">
+            <label htmlFor="to">{strings.to}</label>
+            <input readOnly id="to" type="text" name="to" value="Montreal" />
+          </div>
+          <div className="home__search__fields__input">
+            <label htmlFor="date">{strings.when}</label>
+            <input
+              readOnly
+              id="when"
+              type="text"
+              name="when"
+              value="08/02/2020"
+            />
+          </div>
+        </div>
+        <button className="home__search__submit" type="submit">
+          {departures ? <span>&#128269;</span> : strings.submit}
+        </button>
+      </form>
+      {departures && !!departures.length && (
+        <DeparturesList departures={departures} lang={lang} />
       )}
     </div>
   );
