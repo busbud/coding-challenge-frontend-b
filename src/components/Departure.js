@@ -5,7 +5,7 @@ import { DATE } from "../constants";
 
 const resolveTime = isoDate => {
   return {
-    value: `${moment(isoDate).format("HH")}:${moment(isoDate).format("MM")}`,
+    value: `${moment(isoDate).format("HH")}:${moment(isoDate).format("mm")}`,
     isNextDay: !moment(DATE).isSame(isoDate, "day")
   };
 };

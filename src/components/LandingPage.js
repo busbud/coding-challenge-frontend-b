@@ -1,36 +1,29 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import DepartureList from "./DeparturesList";
-import { DATE, DESTINATION, ORIGIN } from "../constants";
+import React from "react";
+import styled from "styled-components";
 
-//TODO How I treat the date ? timezonewise ?
-
-const LandingPage = () => {
-  const [searchResult, setSearchResult] = useState([]);
-
-  //TODO make the API key an env variable not committed
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios({
-        method: "GET",
-        url: `https://napi.busbud.com/x-departures/${ORIGIN}/${DESTINATION}/${DATE}`,
-        headers: {
-          Accept: "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
-          "X-Busbud-Token": "PARTNER_AHm3M6clSAOoyJg4KyCg7w"
-        },
-        params: {
-          adult: 1,
-          child: 0,
-          senior: 0,
-          lang: "en",
-          currency: "USD"
-        }
-      });
-      setSearchResult(response.data);
-    };
-    fetchData();
-  }, []);
-  return <div>{searchResult.length !== 0 && <DepartureList searchResult={searchResult} />}</div>;
+const LandingPage = ({ setShowDeparturesResult }) => {
+  return (
+    <LandingWrapper>
+      <h4 className="center">Find your way to Osheaga with BusBud</h4>
+      <button
+        onClick={() => setShowDeparturesResult(true)}
+        className="btn waves-effect waves-light"
+      >
+        SEARCH
+        <i className="material-icons right">search</i>
+      </button>
+      <p>NY to MTL - 2nd of August 2020</p>
+    </LandingWrapper>
+  );
 };
+
+const LandingWrapper = styled.div`
+  align-text: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+`;
 
 export default LandingPage;

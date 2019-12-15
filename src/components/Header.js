@@ -4,7 +4,7 @@ import moment from "moment";
 import styled from "styled-components";
 
 const Header = () => (
-  <NavWrapper className="nav-wrapper">
+  <NavWrapper className="nav-wrapper teal">
     <span> New York </span>
     <span> > </span>
     <span> Montreal </span>
