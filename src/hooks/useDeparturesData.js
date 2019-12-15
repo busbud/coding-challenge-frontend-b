@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { DATE, DESTINATION, ORIGIN } from "../constants";
+import { busbudToken } from "../keys";
 
 export const useDeparturesData = () => {
   const [searchResult, setSearchResult] = useState(null);
@@ -13,7 +14,7 @@ export const useDeparturesData = () => {
           url: `https://napi.busbud.com/x-departures/${ORIGIN}/${DESTINATION}/${DATE}`,
           headers: {
             Accept: "application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/",
-            "X-Busbud-Token": "PARTNER_AHm3M6clSAOoyJg4KyCg7w"
+            "X-Busbud-Token": busbudToken
           },
           params: {
             adult: 1,

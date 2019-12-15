@@ -5,10 +5,7 @@ const LandingPage = ({ setShowDeparturesResult }) => {
   return (
     <LandingWrapper>
       <h4 className="center">Find your way to Osheaga with BusBud</h4>
-      <button
-        onClick={() => setShowDeparturesResult(true)}
-        className="btn waves-effect waves-light"
-      >
+      <button onClick={() => setShowDeparturesResult(true)} className="btn waves-effect waves-light">
         SEARCH
         <i className="material-icons right">search</i>
       </button>
