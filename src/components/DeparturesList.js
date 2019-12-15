@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import moment from "moment";
 import { Departure } from "./Departure";
+import _ from "lodash";
 
 const sortDepartures = departures => {
   return departures.sort((a, b) => moment(a.departure_time) - moment(b.departure_time));
@@ -14,13 +15,15 @@ const computePrice = price => {
 const resolveValue = (collection, targetId) => {
   return collection.filter(item => item.id === targetId)[0];
 };
+//hack to prevent duplicate results - likely a bug with my polling.
+const uniqueDepartures = departures => _.uniqBy(departures, "busbud_departure_id");
 
 const DepartureList = ({ searchResult }) => {
   const { departures, locations, operators } = searchResult;
 
   return (
     <DeparturesWrapper>
-      {sortDepartures(departures).map(departure => {
+      {sortDepartures(uniqueDepartures(departures)).map(departure => {
         const {
           busbud_departure_id,
           arrival_time,
