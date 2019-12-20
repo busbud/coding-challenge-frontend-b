@@ -1,0 +1,16 @@
+{
+  "message": {
+    "date": "date",
+    "search": "search",
+    "duration": "duration",
+    "cheapest": "cheapest",
+    "fastest": "fastest",
+    "earliest": "earliest",
+    "latest": "latest",
+    "cancel": "cancel",
+    "ok": "ok",
+    "passengers": "passengers",
+    "destination": "destination",
+    "origin": "origin"
+  }
+}
