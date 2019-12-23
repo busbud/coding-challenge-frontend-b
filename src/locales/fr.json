@@ -9,8 +9,11 @@
     "latest": "plus tard",
     "cancel": "annuler",
     "ok": "ok",
-    "passengers": "passagers",
+    "passengers": "passager",
     "destination": "destination",
-    "origin": "origine"
+    "origin": "origine",
+    "headline": "Trouvez des billets de bus à petits prix pour votre prochain voyage",
+    "departure": "depart",
+    "arrival": "arriver"
   }
 }

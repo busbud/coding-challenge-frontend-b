@@ -11,6 +11,9 @@
     "ok": "ok",
     "passengers": "passengers",
     "destination": "destination",
-    "origin": "origin"
+    "origin": "origin",
+    "headline": "Find cheap bus tickets for your next trip",
+    "departure": "departure",
+    "arrival": "arrival"
   }
 }
