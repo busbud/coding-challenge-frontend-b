@@ -1,5 +1,5 @@
 /* Json data */
-interface IJsonDeparture {
+export interface IJsonDeparture {
   id: string;
   prices: IPrice;
   operator_id: string;
@@ -7,7 +7,7 @@ interface IJsonDeparture {
   arrival_time: string;
 }
 
-interface IJsonOperator {
+export interface IJsonOperator {
   id: string;
   display_name: string;
   logo_url: string;
@@ -20,7 +20,12 @@ export interface IJsonTicket {
   cities: ReadonlyArray<ICity>;
   operators: ReadonlyArray<IJsonOperator>;
   departures: ReadonlyArray<IJsonDeparture>;
-  search_request_ids: ReadonlyArray<string>;
+  complete: boolean;
+}
+
+export interface IJsonFetchMoreTicket {
+  operators: ReadonlyArray<IJsonOperator>;
+  departures: ReadonlyArray<IJsonDeparture>;
   complete: boolean;
 }
 
@@ -50,10 +55,12 @@ interface IPrice {
   total: number;
 }
 
-export interface ITicketSearchResults {
+export interface IDeparturesResults {
+  departures: ReadonlyArray<IDeparture>;
+  complete: boolean;
+}
+
+export interface ITicketSearchResults extends IDeparturesResults {
   originCity: ICity;
   destinationCity: ICity;
-  departures: ReadonlyArray<IDeparture>;
-  searchRequestIds: ReadonlyArray<string>;
-  complete: boolean;
 }

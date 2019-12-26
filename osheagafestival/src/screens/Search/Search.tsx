@@ -4,13 +4,14 @@ import styled from "styled-components";
 
 import * as S from "./../../styledComponents";
 import { reg } from "./../../assets/Spacing";
+import { primary } from "./../../assets/Colors";
 
 const Search: React.FC<RouteComponentProps> = () => {
   return (
     <Background>
       <S.Card>
         Going to Montréal from NYC ? Check out the departures !
-        <Button className="pure-button pure-button-primary" href="#">
+        <Button className="pure-button pure-button-primary">
           <S.WhiteLink to="search">search departures</S.WhiteLink>
         </Button>
       </S.Card>
@@ -31,9 +32,10 @@ const Background = styled.div`
   align-items: center;
 `;
 
-const Button = styled.a`
+const Button = styled.span`
   margin-top: ${reg};
   align-self: center;
+  background-color: ${primary};
 `;
 
 export default Search;
