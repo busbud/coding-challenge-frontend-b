@@ -6,27 +6,24 @@ import Summary from "./Summary";
 import Loader from "./../../components/Loader";
 import Nav from "./../../components/Nav";
 
-import {
-  ITicketSearchResults,
-  IDeparturesResults,
-  ICity,
-  IDeparture
-} from "./../../api/ITicket";
-import { getFirstTickets, getMoreTickets } from "./../../api/fetchTickets";
+import { IDeparturesResults } from "./../../api/ITicket";
+import { getFirstTickets } from "./../../api/fetchTickets";
 
 type Action =
-  | { type: "initSearchSuccess"; results: ITicketSearchResults }
+  | { type: "initSearchSuccess"; results: IDeparturesResults }
   | { type: "fetchMoreSuccess"; results: IDeparturesResults }
   | { type: "fetchMore" }
   | { type: "error" };
 
 type State = {
-  originCity?: ICity;
-  destinationCity?: ICity;
-  departures: ReadonlyArray<IDeparture>;
-  isComplete: boolean;
+  data: IDeparturesResults | null;
+  /* departures: ReadonlyArray<IDeparture>;
+  operators: IOperators | null;
+  locations: ILocations | null;
+  originCity: ICity | null;
+  arrivalCity: ICity | null;*/
   isLoading: boolean;
-  hasError?: boolean;
+  hasError: boolean;
 };
 
 const reducer = (state: State, action: Action): State => {
@@ -35,15 +32,17 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         isLoading: false,
-        ...action.results
+        data: action.results
       };
     case "fetchMoreSuccess": {
-      const { departures, complete } = action.results;
+      const { departures } = action.results;
       return {
         ...state,
         isLoading: false,
-        departures: [...state.departures, ...departures],
-        isComplete: complete
+        data: {
+          ...state.data!, // ??
+          departures: [...state.data!.departures, ...departures]
+        }
       };
     }
     case "fetchMore":
@@ -55,9 +54,8 @@ const reducer = (state: State, action: Action): State => {
 
 const SearchResults: React.FC<RouteComponentProps> = () => {
   const [state, dispatch] = React.useReducer(reducer, {
-    departures: [],
+    data: null,
     hasError: false,
-    isComplete: false,
     isLoading: true
   });
 
@@ -67,6 +65,7 @@ const SearchResults: React.FC<RouteComponentProps> = () => {
       .catch(_err => dispatch({ type: "error" }));
   }, []);
 
+  /*
   React.useEffect(() => {
     const loadMore = () => {
       dispatch({ type: "fetchMore" });
@@ -79,23 +78,24 @@ const SearchResults: React.FC<RouteComponentProps> = () => {
       setTimeout(loadMore, 2000);
     }
   }, [state.departures.length, state.isLoading, state.isComplete]);
+*/
 
   return (
     <>
       <Nav />
       <Summary />
-      {state.isLoading && state.departures.length === 0 ? (
+      {state.isLoading && state.data === null ? (
         <Loader />
       ) : state.hasError ? (
         <div> Error </div>
-      ) : state.destinationCity && state.originCity ? (
-        <Trips
-          destinationCity={state.destinationCity}
-          originCity={state.originCity}
-          departures={state.departures}
-        />
       ) : (
-        <div>Error</div>
+        <Trips
+          departures={state.data!.departures}
+          operators={state.data!.operators}
+          locations={state.data!.locations}
+          originCity={state.data!.originCity}
+          arrivalCity={state.data!.arrivalCity}
+        />
       )}
     </>
   );

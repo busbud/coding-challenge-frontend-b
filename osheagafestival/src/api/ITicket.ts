@@ -4,6 +4,9 @@ export interface IJsonDeparture {
   prices: IPrice;
   operator_id: string;
   departure_time: string;
+  origin_location_id: string;
+  destination_location_id: string;
+  city_id: string;
   arrival_time: string;
 }
 
@@ -14,12 +17,19 @@ export interface IJsonOperator {
   name: string;
 }
 
+export interface IJsonLocations {
+  id: string;
+  name: string;
+  address: ReadonlyArray<string>;
+}
+
 export interface IJsonTicket {
   origin_city_id: string;
   destination_city_id: string;
   cities: ReadonlyArray<ICity>;
   operators: ReadonlyArray<IJsonOperator>;
   departures: ReadonlyArray<IJsonDeparture>;
+  locations: ReadonlyArray<IJsonLocations>;
   complete: boolean;
 }
 
@@ -30,6 +40,11 @@ export interface IJsonFetchMoreTicket {
 }
 
 /* TS data */
+export interface ILocation {
+  id: string;
+  name: string;
+}
+
 export interface ICity {
   id: string;
   name?: string;
@@ -46,7 +61,10 @@ export interface IDeparture {
   id: string;
   arrivalTime: Date;
   departureTime: Date;
-  operator?: IOperator;
+  operatorId: string;
+  arrivalLocationId: string;
+  departureLocationId: string;
+  cityId: string;
   prices: IPrice;
 }
 
@@ -57,10 +75,9 @@ interface IPrice {
 
 export interface IDeparturesResults {
   departures: ReadonlyArray<IDeparture>;
-  complete: boolean;
-}
-
-export interface ITicketSearchResults extends IDeparturesResults {
+  operators: ReadonlyMap<string, IOperator>;
   originCity: ICity;
-  destinationCity: ICity;
+  arrivalCity: ICity;
+  locations: ReadonlyMap<string, ILocation>;
+  isComplete: boolean;
 }

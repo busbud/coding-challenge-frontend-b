@@ -1,18 +1,22 @@
 import React from "react";
 
-import { ICity, IDeparture } from "./../../api/ITicket";
+import { IOperator, ILocation, ICity, IDeparture } from "./../../api/ITicket";
 import Trip from "./Trip";
 
 interface ITipsProps {
   departures: ReadonlyArray<IDeparture>;
-  destinationCity: ICity;
+  operators: ReadonlyMap<string, IOperator>;
+  locations: ReadonlyMap<string, ILocation>;
   originCity: ICity;
+  arrivalCity: ICity;
 }
 
 const Trips: React.FC<ITipsProps> = ({
   departures,
-  destinationCity,
-  originCity
+  operators,
+  locations,
+  originCity,
+  arrivalCity
 }) => {
   return (
     <div>
@@ -23,8 +27,10 @@ const Trips: React.FC<ITipsProps> = ({
           <div key={departure.id}>
             <Trip
               departure={departure}
-              destinationCity={destinationCity}
+              operators={operators}
+              locations={locations}
               originCity={originCity}
+              arrivalCity={arrivalCity}
             />
           </div>
         ))

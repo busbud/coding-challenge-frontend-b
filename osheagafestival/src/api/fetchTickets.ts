@@ -1,6 +1,6 @@
-import { IDeparturesResults, ITicketSearchResults } from "./ITicket";
+import { IDeparturesResults } from "./ITicket";
 
-import { decodeTrips, decodeDepartures } from "./decodeTickets";
+import { decodeTrips } from "./decodeTickets";
 
 const getHeaders = () => {
   const requestHeaders: HeadersInit = new Headers();
@@ -13,7 +13,7 @@ const getHeaders = () => {
   return requestHeaders;
 };
 
-export const getFirstTickets = (): Promise<ITicketSearchResults> =>
+export const getFirstTickets = (): Promise<IDeparturesResults> =>
   fetch(
     //"https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-06-07"
     "./__mocks__/20200708init.json",
@@ -24,6 +24,8 @@ export const getFirstTickets = (): Promise<ITicketSearchResults> =>
     .then(response => response.json())
     .then(decodeTrips);
 
+/*
+todo check fetchmore data structure
 export const getMoreTickets = (index: number): Promise<IDeparturesResults> =>
   fetch(
     //`https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-06-07/poll?index=${index}`,
@@ -34,3 +36,5 @@ export const getMoreTickets = (index: number): Promise<IDeparturesResults> =>
   )
     .then(response => response.json())
     .then(decodeDepartures);
+*/
+export const getMoreTickets = (index: number) => {};

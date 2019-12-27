@@ -2,43 +2,57 @@ import React from "react";
 import styled from "styled-components";
 
 import * as S from "./../../styledComponents";
-import { ICity, IDeparture } from "./../../api/ITicket";
+import { IOperator, ILocation, ICity, IDeparture } from "./../../api/ITicket";
 import { greyDark, primary, secondary } from "../../assets/Colors";
 import { reg, sm } from "../../assets/Spacing";
 
-interface ITipsProps {
+interface ITripProps {
   departure: IDeparture;
-  destinationCity: ICity;
+  operators: ReadonlyMap<string, IOperator>;
+  locations: ReadonlyMap<string, ILocation>;
+  arrivalCity: ICity;
   originCity: ICity;
 }
 
-const Trip: React.FC<ITipsProps> = ({
+const Trip: React.FC<ITripProps> = ({
+  arrivalCity,
   departure,
-  destinationCity,
+  locations,
+  operators,
   originCity
 }) => {
-  const { operator, departureTime, arrivalTime, prices } = departure;
+  const {
+    arrivalLocationId,
+    arrivalTime,
+    departureLocationId,
+    departureTime,
+    prices,
+    operatorId
+  } = departure;
   return (
     <Card>
       <Time>{departureTime.toLocaleTimeString()}</Time>
       <LocationPin />
       <div>
         <City> {originCity.name}</City>
-        <Location> {originCity.name}</Location>
+        <Location> {locations.get(departureLocationId)!.name}</Location>
       </div>
 
       <Time>{arrivalTime.toLocaleTimeString()}</Time>
       <LocationPin />
       <div>
-        <City> {destinationCity.name}</City>
-        <Location> {originCity.name}</Location>
+        <City> {arrivalCity.name}</City>
+        <Location> {locations.get(arrivalLocationId)!.name}</Location>
       </div>
 
       <Price>{`${(prices.total / 100).toLocaleString(undefined, {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
       })} ${prices.currency}`}</Price>
-      <OperatorLogo alt={operator?.name} src={operator?.logoUrl} />
+      <OperatorLogo
+        alt={operators.get(operatorId)!.name}
+        src={operators.get(operatorId)!.logoUrl}
+      />
 
       <Button className="pure-button pure-button-primary">
         <S.WhiteLink to="/purchase">Buy now</S.WhiteLink>
