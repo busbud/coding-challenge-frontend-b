@@ -68,16 +68,19 @@ export interface IDeparture {
   prices: IPrice;
 }
 
+export interface IDepartures {
+  departures: ReadonlyArray<IDeparture>;
+  operators: ReadonlyMap<string, IOperator>;
+  locations: ReadonlyMap<string, ILocation>;
+  isComplete: boolean;
+}
+
 interface IPrice {
   currency: string;
   total: number;
 }
 
-export interface IDeparturesResults {
-  departures: ReadonlyArray<IDeparture>;
-  operators: ReadonlyMap<string, IOperator>;
+export interface ITrips extends IDepartures {
   originCity: ICity;
   arrivalCity: ICity;
-  locations: ReadonlyMap<string, ILocation>;
-  isComplete: boolean;
 }

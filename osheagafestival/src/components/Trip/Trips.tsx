@@ -1,14 +1,14 @@
 import React from "react";
 
-import { IOperator, ILocation, ICity, IDeparture } from "./../../api/ITicket";
+import { IOperator, ILocation, ICity, IDeparture } from "../../api/ITicket";
 import Trip from "./Trip";
 
 interface ITipsProps {
-  departures: ReadonlyArray<IDeparture>;
-  operators: ReadonlyMap<string, IOperator>;
-  locations: ReadonlyMap<string, ILocation>;
-  originCity: ICity;
   arrivalCity: ICity;
+  departures: ReadonlyArray<IDeparture>;
+  locations: ReadonlyMap<string, ILocation>;
+  operators: ReadonlyMap<string, IOperator>;
+  originCity: ICity;
 }
 
 const Trips: React.FC<ITipsProps> = ({

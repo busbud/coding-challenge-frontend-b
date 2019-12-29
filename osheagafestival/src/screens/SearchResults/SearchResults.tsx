@@ -1,27 +1,22 @@
 import React from "react";
 import { RouteComponentProps } from "@reach/router";
 
-import Trips from "./Trips";
+import Trips from "../../components/Trip/Trips";
 import Summary from "./Summary";
 import Loader from "./../../components/Loader";
 import Nav from "./../../components/Nav";
 
-import { IDeparturesResults } from "./../../api/ITicket";
-import { getFirstTickets } from "./../../api/fetchTickets";
+import { ITrips, IDepartures } from "./../../api/ITicket";
+import { getFirstTickets, getMoreTickets } from "./../../api/fetchTickets";
 
 type Action =
-  | { type: "initSearchSuccess"; results: IDeparturesResults }
-  | { type: "fetchMoreSuccess"; results: IDeparturesResults }
+  | { type: "initSearchSuccess"; results: ITrips }
+  | { type: "fetchMoreSuccess"; results: IDepartures }
   | { type: "fetchMore" }
   | { type: "error" };
 
 type State = {
-  data: IDeparturesResults | null;
-  /* departures: ReadonlyArray<IDeparture>;
-  operators: IOperators | null;
-  locations: ILocations | null;
-  originCity: ICity | null;
-  arrivalCity: ICity | null;*/
+  data: ITrips | null;
   isLoading: boolean;
   hasError: boolean;
 };
@@ -35,13 +30,22 @@ const reducer = (state: State, action: Action): State => {
         data: action.results
       };
     case "fetchMoreSuccess": {
-      const { departures } = action.results;
+      const { departures, isComplete, locations, operators } = action.results;
       return {
         ...state,
         isLoading: false,
         data: {
           ...state.data!, // ??
-          departures: [...state.data!.departures, ...departures]
+          departures: [...state.data!.departures, ...departures],
+          locations: new Map([
+            ...Array.from(state.data!.locations.entries()),
+            ...Array.from(locations.entries())
+          ]),
+          operators: new Map([
+            ...Array.from(state.data!.operators.entries()),
+            ...Array.from(operators.entries())
+          ]),
+          isComplete: isComplete
         }
       };
     }
@@ -59,26 +63,31 @@ const SearchResults: React.FC<RouteComponentProps> = () => {
     isLoading: true
   });
 
-  React.useEffect(() => {
+  const initSearch = () => {
     getFirstTickets()
       .then(results => dispatch({ type: "initSearchSuccess", results }))
       .catch(_err => dispatch({ type: "error" }));
-  }, []);
+  };
 
-  /*
+  const loadMore = (index: number) => {
+    dispatch({ type: "fetchMore" });
+    getMoreTickets(index)
+      .then(results => dispatch({ type: "fetchMoreSuccess", results }))
+      .catch(err => {
+        console.log(err);
+        dispatch({ type: "error" });
+      });
+  };
+
+  React.useEffect(initSearch, []);
+
   React.useEffect(() => {
-    const loadMore = () => {
-      dispatch({ type: "fetchMore" });
-      getMoreTickets(state.departures.length)
-        .then(results => dispatch({ type: "fetchMoreSuccess", results }))
-        .catch(_err => dispatch({ type: "error" }));
-    };
-
-    if (!state.isComplete && !state.isLoading) {
-      setTimeout(loadMore, 2000);
+    if (!state.data && !state.isLoading) {
+      setTimeout(initSearch, 2000);
+    } else if (state.data && !state.data.isComplete && !state.isLoading) {
+      setTimeout(() => loadMore(state.data!.departures.length), 2000);
     }
-  }, [state.departures.length, state.isLoading, state.isComplete]);
-*/
+  }, [state.isLoading, state.data]);
 
   return (
     <>

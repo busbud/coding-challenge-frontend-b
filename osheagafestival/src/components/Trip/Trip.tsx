@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import * as S from "./../../styledComponents";
-import { IOperator, ILocation, ICity, IDeparture } from "./../../api/ITicket";
+import * as S from "../../styledComponents";
+import { IOperator, ILocation, ICity, IDeparture } from "../../api/ITicket";
 import { greyDark, primary, secondary } from "../../assets/Colors";
 import { reg, sm } from "../../assets/Spacing";
 
@@ -27,6 +27,7 @@ const Trip: React.FC<ITripProps> = ({
     departureLocationId,
     departureTime,
     prices,
+    id,
     operatorId
   } = departure;
   return (
@@ -34,7 +35,7 @@ const Trip: React.FC<ITripProps> = ({
       <Time>{departureTime.toLocaleTimeString()}</Time>
       <LocationPin />
       <div>
-        <City> {originCity.name}</City>
+        <City> {originCity}</City>
         <Location> {locations.get(departureLocationId)!.name}</Location>
       </div>
 

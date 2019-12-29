@@ -1,29 +1,27 @@
-import { IJsonTicket, IDeparturesResults } from "./ITicket";
+import { IDepartures, IJsonTicket, ITrips } from "./ITicket";
 
-export const decodeTrips = (json: IJsonTicket): IDeparturesResults => {
-  const mappedOperators = new Map();
-  json.operators.forEach(operator =>
-    mappedOperators.set(operator.id, {
-      id: operator.id,
-      displayName: operator.display_name,
-      logoUrl: operator.logo_url,
-      name: operator.name
-    })
-  );
-
-  const mappedLocations = new Map();
-  json.locations.forEach(location =>
-    mappedLocations.set(location.id, {
-      id: location.id,
-      name: location.name
-    })
-  );
-
+export const decodeTrips = (json: IJsonTicket): ITrips => {
   const mappedCities = new Map();
   json.cities.forEach(city =>
     mappedCities.set(city.id, {
       id: city.id,
       name: city.name
+    })
+  );
+
+  return {
+    ...decodeDepartures(json),
+    originCity: mappedCities.get(json.origin_city_id),
+    arrivalCity: mappedCities.get(json.destination_city_id)
+  };
+};
+
+export const decodeDepartures = (json: IJsonTicket): IDepartures => {
+  const mappedLocations = new Map();
+  json.locations.forEach(location =>
+    mappedLocations.set(location.id, {
+      id: location.id,
+      name: location.name
     })
   );
 
@@ -38,27 +36,20 @@ export const decodeTrips = (json: IJsonTicket): IDeparturesResults => {
     prices: departure.prices
   }));
 
+  const mappedOperators = new Map();
+  json.operators.forEach(operator =>
+    mappedOperators.set(operator.id, {
+      id: operator.id,
+      displayName: operator.display_name,
+      logoUrl: operator.logo_url,
+      name: operator.name
+    })
+  );
+
   return {
     departures: mappedDepartures,
     operators: mappedOperators,
     locations: mappedLocations,
-    originCity: mappedCities.get(json.origin_city_id),
-    arrivalCity: mappedCities.get(json.destination_city_id),
     isComplete: json.complete
   };
 };
-
-/*
-export const decodeTrips = (json: IJsonTicket): IDeparturesResults => ({
-  originCity: {
-    id: json.origin_city_id,
-    name: json.cities.find(city => city.id === json.origin_city_id)?.name
-  },
-  destinationCity: {
-    id: json.destination_city_id,
-    name: json.cities.find(city => city.id === json.destination_city_id)?.name
-  },
-  departures: mapDepartures(json.operators, json.departures),
-  complete: json.complete
-});
-*/
