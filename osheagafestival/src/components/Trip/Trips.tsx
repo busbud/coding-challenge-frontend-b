@@ -1,7 +1,10 @@
 import React from "react";
+import styled from "styled-components";
+
+import Trip from "./Trip";
+import { sm } from "../../assets/Spacing";
 
 import { IOperator, ILocation, ICity, IDeparture } from "../../api/ITicket";
-import Trip from "./Trip";
 
 interface ITipsProps {
   arrivalCity: ICity;
@@ -24,7 +27,7 @@ const Trips: React.FC<ITipsProps> = ({
         <div>No result</div>
       ) : (
         departures.map(departure => (
-          <div key={departure.id}>
+          <TripContainer key={departure.id}>
             <Trip
               departure={departure}
               operators={operators}
@@ -32,11 +35,17 @@ const Trips: React.FC<ITipsProps> = ({
               originCity={originCity}
               arrivalCity={arrivalCity}
             />
-          </div>
+          </TripContainer>
         ))
       )}
     </div>
   );
 };
+
+const TripContainer = styled.div`
+  margin-top: ${sm};
+  display: flex;
+  justify-content: center;
+`;
 
 export default Trips;

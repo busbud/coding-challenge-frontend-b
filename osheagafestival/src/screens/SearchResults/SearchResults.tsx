@@ -1,10 +1,12 @@
 import React from "react";
 import { RouteComponentProps } from "@reach/router";
+import styled from "styled-components";
 
 import Trips from "../../components/Trip/Trips";
 import Summary from "./Summary";
 import Loader from "./../../components/Loader";
 import Nav from "./../../components/Nav";
+import { greyLight } from "../../assets/Colors";
 
 import { ITrips, IDepartures } from "./../../api/ITicket";
 import { getFirstTickets, getMoreTickets } from "./../../api/fetchTickets";
@@ -90,7 +92,7 @@ const SearchResults: React.FC<RouteComponentProps> = () => {
   }, [state.isLoading, state.data]);
 
   return (
-    <>
+    <Container>
       <Nav />
       <Summary />
       {state.isLoading && state.data === null ? (
@@ -106,8 +108,12 @@ const SearchResults: React.FC<RouteComponentProps> = () => {
           arrivalCity={state.data!.arrivalCity}
         />
       )}
-    </>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  background-color: ${greyLight};
+`;
 
 export default SearchResults;
