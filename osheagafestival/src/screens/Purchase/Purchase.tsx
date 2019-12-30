@@ -1,23 +1,28 @@
 import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components";
 
 import * as S from "./../../styledComponents";
 import { greyDark, primary, secondary } from "../../assets/Colors";
-import { reg, xsm } from "../../assets/Spacing";
+import { reg } from "../../assets/Spacing";
 
 const Purchase: React.FC<RouteComponentProps> = () => {
   return (
     <Background>
       <Card>
-        <Thanks> Thanks for your purchase ! </Thanks>
+        <Thanks>
+          <FormattedMessage id="purchase.thanks" />
+        </Thanks>
         <Disclaimer>
-          Unfortunately this is a fake micro website so I'll strongly suggest
-          you to go on a
-          <ExternalLink href="https://busbud.com">
-            real travel ticket seller
-          </ExternalLink>
-          to being able to travel.
+          <FormattedMessage
+            id="purchase.disclaimer"
+            values={{
+              website: (...elt: Array<HTMLElement>) => (
+                <ExternalLink href="https://busbud.com">{elt}</ExternalLink>
+              )
+            }}
+          />
         </Disclaimer>
       </Card>
     </Background>
@@ -50,7 +55,6 @@ const Disclaimer = styled.div`
 
 const ExternalLink = styled.a`
   color: ${secondary};
-  margin: 0 ${xsm};
 `;
 
 const Thanks = styled.div`

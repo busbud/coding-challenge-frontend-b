@@ -64,11 +64,7 @@ const Trip: React.FC<ITripProps> = ({
       })} ${prices.currency}`}</Price>
       <Button className="pure-button pure-button-primary">
         <S.WhiteLink to="/purchase">
-          <FormattedMessage
-            id="trip.buyNow"
-            defaultMessage="Buy now"
-            description="Buy now"
-          />
+          <FormattedMessage id="trip.buyNow" defaultMessage="Buy now" />
         </S.WhiteLink>
       </Button>
     </Card>

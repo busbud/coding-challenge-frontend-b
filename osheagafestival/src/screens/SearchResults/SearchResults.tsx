@@ -17,6 +17,7 @@ import { getFirstTickets, getMoreTickets } from "./../../api/fetchTickets";
 type Action =
   | { type: "initSearchSuccess"; results: ITrips }
   | { type: "fetchMoreSuccess"; results: IDepartures }
+  | { type: "startFetchInitSearch" }
   | { type: "error" };
 
 type State = {
@@ -29,6 +30,12 @@ const defaultState: State = { data: null, hasError: false, isLoading: true };
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
+    case "startFetchInitSearch":
+      return {
+        ...state,
+        isLoading: true,
+        data: null
+      };
     case "initSearchSuccess":
       return {
         ...state,
@@ -40,11 +47,11 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         isLoading: false,
-        data: {
-          ...state.data!,
-          departures: [...state.data!.departures, ...departures],
-          locations: concatMap<ILocation>(state.data!.locations, locations),
-          operators: concatMap<IOperator>(state.data!.operators, operators),
+        data: state.data && {
+          ...state.data,
+          departures: [...state.data.departures, ...departures],
+          locations: concatMap<ILocation>(state.data.locations, locations),
+          operators: concatMap<IOperator>(state.data.operators, operators),
           isComplete: isComplete
         }
       };
@@ -57,6 +64,7 @@ const reducer = (state: State, action: Action): State => {
 const isDataReady = (data: ITrips | null) => data && data.departures.length > 0;
 
 const initSearch = (dispatch: (a: Action) => void, lang: string) => {
+  dispatch({ type: "startFetchInitSearch" });
   getFirstTickets(lang)
     .then(results => dispatch({ type: "initSearchSuccess", results }))
     .catch(_err => dispatch({ type: "error" }));

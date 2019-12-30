@@ -14,7 +14,6 @@ const Summary: React.FC = () => {
         <Information>
           <FormattedMessage
             id="trip.description"
-            defaultMessage="Your trip from <city>NYC</city> to <city>MTL</city> - {date}"
             values={{
               city: (...elt: Array<HTMLElement>) => <City>{elt}</City>,
               date: intl.formatDate(new Date(2020, 7, 2), {
@@ -23,7 +22,6 @@ const Summary: React.FC = () => {
                 day: "2-digit"
               })
             }}
-            description="Trip Search Information"
           />
         </Information>
         <People>
@@ -32,7 +30,6 @@ const Summary: React.FC = () => {
             values={{
               travelersCount: 1
             }}
-            description="Trip Travelers Count Information"
           />
         </People>
       </S.Card>

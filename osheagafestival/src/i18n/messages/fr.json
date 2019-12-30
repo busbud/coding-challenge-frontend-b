@@ -2,6 +2,8 @@
   "nav.home": "Acceuil",
   "home.welcome": "Venez profiter du festival, trouvez un trajet au départ de NYC !",
   "home.searchDepartures": "Chercher un trajet",
+  "purchase.disclaimer": "Dans le fond, ceci n'est pas un vrai site web. Nous vous recommandons fortement d'aller sur un <website> vrai site de réservation de tickets de bus</website> pour réserver votre voyage pour assister au festival !",
+  "purchase.thanks": "Merci pour votre achat !",
   "trip.buyNow": "Réserver ce billet",
   "trip.description": "Votre voyage de <city>NYC</city> vers <city>MTL</city> - {date}",
   "trip.travelers": "{travelersCount} {travelersCount, plural, one {Adulte} other {Adultes}}"

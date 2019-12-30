@@ -2,6 +2,8 @@
   "nav.home": "Home",
   "home.welcome": "Going to Montréal from NYC ? Check out the departures !",
   "home.searchDepartures": "Search departures",
+  "purchase.disclaimer": "Unfortunately this is a fake micro website so I'll strongly suggest you to go on a <website>real travel ticket seller</website>to being able to travel.",
+  "purchase.thanks": "Thanks for your purchase !",
   "trip.buyNow": "Buy Now",
   "trip.description": "Your trip from <city>NYC</city> to <city>MTL</city> - {date}",
   "trip.travelers": "{travelersCount} {travelersCount, plural, one {Adult} other {Adults}}"
