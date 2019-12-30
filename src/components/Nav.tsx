@@ -29,20 +29,20 @@ const Nav: React.FC = () => {
           height={30}
         />
       </Busbud>
-      <div>
+      <S.FlexRow>
         <Lang
           isSelected={intlContext.lang === "fr"}
           onClick={_evt => intlContext.setLanguage("fr")}
         >
-          Fr
+          <img src="./assets/images/fr.svg" alt="fr" width={20} />
         </Lang>
         <Lang
           isSelected={intlContext.lang === "en"}
           onClick={_evt => intlContext.setLanguage("en")}
         >
-          En
+          <img src="./assets/images/en.svg" alt="en" width={20} />
         </Lang>
-      </div>
+      </S.FlexRow>
     </Navbar>
   );
 };
@@ -52,8 +52,10 @@ const Busbud = styled.div`
 `;
 
 const Lang = styled.a`
-  border: ${(props: LanguageProps) =>
-    props.isSelected ? "1px solid black" : "none"};
+  margin-left: ${reg};
+  img {
+    opacity: ${(props: LanguageProps) => (props.isSelected ? "none" : "60%")};
+  }
 `;
 
 const Navbar = styled.nav`

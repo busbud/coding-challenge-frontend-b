@@ -20,3 +20,8 @@ export const WhiteLink = styled(Link)`
     color: ${white};
   }
 `;
+
+export const FlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
