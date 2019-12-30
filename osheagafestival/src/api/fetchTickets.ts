@@ -14,19 +14,15 @@ const getHeaders = () => {
 };
 
 export const getFirstTickets = (): Promise<ITrips> =>
-  fetch(
-    //"https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-06-07"
-    "./__mocks__/20200708init.json",
-    {
-      headers: getHeaders()
-    }
-  )
+  fetch("https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02", {
+    headers: getHeaders()
+  })
     .then(response => response.json())
     .then(decodeTrips);
 
 export const getMoreTickets = (index: number): Promise<IDepartures> =>
   fetch(
-    `https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-06-07/poll?index=${index}`,
+    `https://napi.busbud.com/x-departures/dr5reg/f25dvk/2020-08-02/poll?index=${index}`,
     {
       headers: getHeaders()
     }

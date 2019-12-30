@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 import * as S from "../../styledComponents";
-import { IOperator, ILocation, ICity, IDeparture } from "../../api/ITicket";
 import { greyDark, primary, secondary } from "../../assets/Colors";
 import { reg, sm } from "../../assets/Spacing";
+
+import { IOperator, ILocation, ICity, IDeparture } from "../../api/ITicket";
 
 interface ITripProps {
   departure: IDeparture;
@@ -70,6 +71,11 @@ const Card = styled(S.Card)`
   grid-column-gap: ${sm};
   grid-row-gap: ${reg};
   align-items: center;
+
+  @media (max-width: 768px) {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 100px 100px 10px 100px;
+  }
 `;
 
 const City = styled.span`
@@ -82,6 +88,11 @@ const Button = styled.span`
   grid-column: 5;
   align-self: center;
   background-color: ${primary};
+  @media (max-width: 768px) {
+    grid-row: 3;
+    grid-column: 3 / span 2;
+    margin: 0;
+  }
 `;
 
 const OperatorLogo = styled.img`
@@ -131,6 +142,11 @@ const Price = styled.div`
   grid-row: 1;
   align-self: center;
   justify-self: center;
+
+  @media (max-width: 768px) {
+    grid-row: 3;
+    grid-column: 1 / span 2;
+  }
 `;
 
 const Time = styled.span`

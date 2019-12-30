@@ -5,10 +5,13 @@ import styled from "styled-components";
 import Trips from "../../components/Trip/Trips";
 import Summary from "./Summary";
 import Loader from "./../../components/Loader";
+import Error from "./../../components/Error";
 import Nav from "./../../components/Nav";
 import { greyLight } from "../../assets/Colors";
+import { reg } from "../../assets/Spacing";
 
-import { ITrips, IDepartures } from "./../../api/ITicket";
+import { concatMap } from "./../../utils";
+import { ILocation, IOperator, ITrips, IDepartures } from "./../../api/ITicket";
 import { getFirstTickets, getMoreTickets } from "./../../api/fetchTickets";
 
 type Action =
@@ -37,16 +40,10 @@ const reducer = (state: State, action: Action): State => {
         ...state,
         isLoading: false,
         data: {
-          ...state.data!, // ??
+          ...state.data!,
           departures: [...state.data!.departures, ...departures],
-          locations: new Map([
-            ...Array.from(state.data!.locations.entries()),
-            ...Array.from(locations.entries())
-          ]),
-          operators: new Map([
-            ...Array.from(state.data!.operators.entries()),
-            ...Array.from(operators.entries())
-          ]),
+          locations: concatMap<ILocation>(state.data!.locations, locations),
+          operators: concatMap<IOperator>(state.data!.operators, operators),
           isComplete: isComplete
         }
       };
@@ -75,8 +72,7 @@ const SearchResults: React.FC<RouteComponentProps> = () => {
     dispatch({ type: "fetchMore" });
     getMoreTickets(index)
       .then(results => dispatch({ type: "fetchMoreSuccess", results }))
-      .catch(err => {
-        console.log(err);
+      .catch(_err => {
         dispatch({ type: "error" });
       });
   };
@@ -91,14 +87,19 @@ const SearchResults: React.FC<RouteComponentProps> = () => {
     }
   }, [state.isLoading, state.data]);
 
+  const isDataReady = (data: ITrips | null) =>
+    data && data.departures.length > 0;
+
   return (
     <Container>
       <Nav />
       <Summary />
-      {state.isLoading && state.data === null ? (
-        <Loader />
+      {(state.isLoading && !state.data) || !isDataReady(state.data) ? (
+        <LoaderContainer>
+          <Loader />
+        </LoaderContainer>
       ) : state.hasError ? (
-        <div> Error </div>
+        <Error onRetry={() => initSearch()} />
       ) : (
         <Trips
           departures={state.data!.departures}
@@ -114,6 +115,11 @@ const SearchResults: React.FC<RouteComponentProps> = () => {
 
 const Container = styled.div`
   background-color: ${greyLight};
+  height: 100vh;
+`;
+
+const LoaderContainer = styled.div`
+  margin-top: ${reg};
 `;
 
 export default SearchResults;

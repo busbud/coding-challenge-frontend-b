@@ -20,27 +20,21 @@ const Trips: React.FC<ITipsProps> = ({
   locations,
   originCity,
   arrivalCity
-}) => {
-  return (
-    <div>
-      {departures.length === 0 ? (
-        <div>No result</div>
-      ) : (
-        departures.map(departure => (
-          <TripContainer key={departure.id}>
-            <Trip
-              departure={departure}
-              operators={operators}
-              locations={locations}
-              originCity={originCity}
-              arrivalCity={arrivalCity}
-            />
-          </TripContainer>
-        ))
-      )}
-    </div>
-  );
-};
+}) => (
+  <>
+    {departures.map(departure => (
+      <TripContainer key={departure.id}>
+        <Trip
+          departure={departure}
+          operators={operators}
+          locations={locations}
+          originCity={originCity}
+          arrivalCity={arrivalCity}
+        />
+      </TripContainer>
+    ))}
+  </>
+);
 
 const TripContainer = styled.div`
   margin-top: ${sm};
