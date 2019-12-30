@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { FormattedMessage, FormattedTime } from "react-intl";
 
-import * as S from "../../styledComponents";
-import { greyDark, primary, secondary } from "../../assets/Colors";
-import { reg, sm } from "../../assets/Spacing";
+import * as S from "./../../styledComponents";
+import { greyDark, primary, secondary } from "./../../assets/Colors";
+import { reg, sm } from "./../../assets/Spacing";
+import { PURCHASE } from "./../../constants/Routes";
 
-import { IOperator, ILocation, ICity, IDeparture } from "../../api/ITicket";
+import { IOperator, ILocation, ICity, IDeparture } from "./../../api/ITicket";
 
 interface ITripProps {
   departure: IDeparture;
@@ -63,7 +64,7 @@ const Trip: React.FC<ITripProps> = ({
         maximumFractionDigits: 2
       })} ${prices.currency}`}</Price>
       <Button className="pure-button pure-button-primary">
-        <S.WhiteLink to="/purchase">
+        <S.WhiteLink to={PURCHASE}>
           <FormattedMessage id="trip.buyNow" defaultMessage="Buy now" />
         </S.WhiteLink>
       </Button>

@@ -7,6 +7,7 @@ import messages_fr from "./i18n/messages/fr.json";
 import messages_en from "./i18n/messages/en.json";
 import Loader from "./components/Loader";
 import { getUserLanguage, saveSelectedLanguage } from "./utils";
+import * as Routes from "./constants/Routes";
 
 const Search = lazy(() => import("./screens/Search"));
 const SearchResults = lazy(() => import("./screens/SearchResults"));
@@ -37,9 +38,9 @@ const App: React.FC = () => {
       <IntlProvider locale={language} messages={getMessages(language)}>
         <Suspense fallback={<Loader />}>
           <Router>
-            <Search path="/" />
-            <SearchResults path="/search" />
-            <Purchase path="/purchase" />
+            <Search path={Routes.HOME} />
+            <SearchResults path={Routes.SEARCH} />
+            <Purchase path={Routes.PURCHASE} />
           </Router>
         </Suspense>
       </IntlProvider>

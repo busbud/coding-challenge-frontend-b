@@ -2,10 +2,12 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 
+import { IntlContext } from "../i18n/IntlContext";
+import { HOME } from "./../constants/Routes";
+
+import * as S from "./../styledComponents";
 import { greyDark, primary, greyLight } from "../assets/Colors";
 import { reg, sm } from "./../assets/Spacing";
-import * as S from "./../styledComponents";
-import { IntlContext } from "../i18n/IntlContext";
 
 interface LanguageProps {
   isSelected: boolean;
@@ -16,7 +18,7 @@ const Nav: React.FC = () => {
 
   return (
     <Navbar role="navigation">
-      <S.WhiteLink to="/">
+      <S.WhiteLink to={HOME}>
         <FormattedMessage id="nav.home" description="Home" />
       </S.WhiteLink>
       <Busbud>

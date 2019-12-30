@@ -6,6 +6,7 @@ import styled from "styled-components";
 import * as S from "./../../styledComponents";
 import { reg } from "./../../assets/Spacing";
 import { primary } from "./../../assets/Colors";
+import { SEARCH } from "./../../constants/Routes";
 
 const Search: React.FC<RouteComponentProps> = () => {
   return (
@@ -13,7 +14,7 @@ const Search: React.FC<RouteComponentProps> = () => {
       <S.Card>
         <FormattedMessage id="home.welcome" description="Welcome" />
         <Button className="pure-button pure-button-primary">
-          <S.WhiteLink to="search">
+          <S.WhiteLink to={SEARCH}>
             <FormattedMessage
               id="home.searchDepartures"
               description="Search Departures"
