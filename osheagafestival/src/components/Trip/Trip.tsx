@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { FormattedMessage, FormattedTime } from "react-intl";
 
 import * as S from "../../styledComponents";
 import { greyDark, primary, secondary } from "../../assets/Colors";
@@ -32,7 +33,9 @@ const Trip: React.FC<ITripProps> = ({
   } = departure;
   return (
     <Card>
-      <Time>{departureTime.toLocaleTimeString()}</Time>
+      <Time>
+        <FormattedTime value={departureTime} />
+      </Time>
       <Timeline>
         <LocationPin />
         <LocationPin />
@@ -42,7 +45,9 @@ const Trip: React.FC<ITripProps> = ({
         <Location> {locations.get(departureLocationId)!.name}</Location>
       </div>
 
-      <Time>{arrivalTime.toLocaleTimeString()}</Time>
+      <Time>
+        <FormattedTime value={arrivalTime} />
+      </Time>
       <div>
         <City> {arrivalCity.name}</City>
         <Location> {locations.get(arrivalLocationId)!.name}</Location>
@@ -58,7 +63,13 @@ const Trip: React.FC<ITripProps> = ({
         maximumFractionDigits: 2
       })} ${prices.currency}`}</Price>
       <Button className="pure-button pure-button-primary">
-        <S.WhiteLink to="/purchase">Buy now</S.WhiteLink>
+        <S.WhiteLink to="/purchase">
+          <FormattedMessage
+            id="trip.buyNow"
+            defaultMessage="Buy now"
+            description="Buy now"
+          />
+        </S.WhiteLink>
       </Button>
     </Card>
   );

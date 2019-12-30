@@ -1,0 +1,8 @@
+{
+  "nav.home": "Home",
+  "home.welcome": "Going to Montréal from NYC ? Check out the departures !",
+  "home.searchDepartures": "Search departures",
+  "trip.buyNow": "Buy Now",
+  "trip.description": "Your trip from <city>NYC</city> to <city>MTL</city> - {date}",
+  "trip.travelers": "{travelersCount} {travelersCount, plural, one {Adult} other {Adults}}"
+}

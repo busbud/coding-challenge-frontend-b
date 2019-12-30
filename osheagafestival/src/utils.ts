@@ -7,3 +7,7 @@ export function concatMap<T>(
     ...Array.from(map2.entries())
   ]);
 }
+
+export const getUserLanguage = () => localStorage.getItem("lang") || "en";
+export const saveSelectedLanguage = (lang: string) =>
+  localStorage.setItem("lang", lang);

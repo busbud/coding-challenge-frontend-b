@@ -19,6 +19,8 @@
     "@types/styled-components": "^4.4.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-intl": "^3.9.3",
+    "react-intl-translations-manager": "^5.0.3",
     "react-scripts": "3.3.0",
     "styled-components": "^4.4.1",
     "typescript": "^3.7.4"
@@ -42,5 +44,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }

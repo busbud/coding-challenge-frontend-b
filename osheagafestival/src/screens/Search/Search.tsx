@@ -1,4 +1,5 @@
 import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components";
 
@@ -10,9 +11,14 @@ const Search: React.FC<RouteComponentProps> = () => {
   return (
     <Background>
       <S.Card>
-        Going to Montréal from NYC ? Check out the departures !
+        <FormattedMessage id="home.welcome" description="Welcome" />
         <Button className="pure-button pure-button-primary">
-          <S.WhiteLink to="search">search departures</S.WhiteLink>
+          <S.WhiteLink to="search">
+            <FormattedMessage
+              id="home.searchDepartures"
+              description="Search Departures"
+            />
+          </S.WhiteLink>
         </Button>
       </S.Card>
     </Background>

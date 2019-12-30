@@ -1,19 +1,44 @@
 import React from "react";
 import styled from "styled-components";
+import { FormattedMessage, useIntl } from "react-intl";
 
 import { greyDark, primary } from "../../assets/Colors";
 import * as S from "./../../styledComponents";
 
-const Summary: React.FC = () => (
-  <Container>
-    <S.Card>
-      <Information>
-        Your trip from <City>NYC</City> > <City>MTL</City> - August 2nd, 2020
-      </Information>
-      <People> 1 Adult </People>
-    </S.Card>
-  </Container>
-);
+const Summary: React.FC = () => {
+  const intl = useIntl();
+
+  return (
+    <Container>
+      <S.Card>
+        <Information>
+          <FormattedMessage
+            id="trip.description"
+            defaultMessage="Your trip from <city>NYC</city> to <city>MTL</city> - {date}"
+            values={{
+              city: (...elt: Array<HTMLElement>) => <City>{elt}</City>,
+              date: intl.formatDate(new Date(2020, 7, 2), {
+                year: "numeric",
+                month: "long",
+                day: "2-digit"
+              })
+            }}
+            description="Trip Search Information"
+          />
+        </Information>
+        <People>
+          <FormattedMessage
+            id="trip.travelers"
+            values={{
+              travelersCount: 1
+            }}
+            description="Trip Travelers Count Information"
+          />
+        </People>
+      </S.Card>
+    </Container>
+  );
+};
 
 const People = styled.div`
   font-weight: 300;

@@ -1,0 +1,8 @@
+{
+  "nav.home": "Acceuil",
+  "home.welcome": "Venez profiter du festival, trouvez un trajet au départ de NYC !",
+  "home.searchDepartures": "Chercher un trajet",
+  "trip.buyNow": "Réserver ce billet",
+  "trip.description": "Votre voyage de <city>NYC</city> vers <city>MTL</city> - {date}",
+  "trip.travelers": "{travelersCount} {travelersCount, plural, one {Adulte} other {Adultes}}"
+}
