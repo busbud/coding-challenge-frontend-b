@@ -1,7 +1,9 @@
 {
-  "nav.home": "Home",
+  "error.message": "Oops ! Something went wrong.",
+  "error.retry": "Retry",
   "home.welcome": "Going to Montréal from NYC ? Check out the departures !",
   "home.searchDepartures": "Search departures",
+  "nav.home": "Home",
   "purchase.disclaimer": "Unfortunately this is a fake micro website so I'll strongly suggest you to go on a <website>real travel ticket seller</website>to being able to travel.",
   "purchase.thanks": "Thanks for your purchase !",
   "trip.buyNow": "Buy Now",

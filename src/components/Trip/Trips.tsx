@@ -21,7 +21,7 @@ const Trips: React.FC<ITipsProps> = ({
   originCity,
   arrivalCity
 }) => (
-  <>
+  <div data-testid="trips">
     {departures.map(departure => (
       <TripContainer key={departure.id}>
         <Trip
@@ -33,7 +33,7 @@ const Trips: React.FC<ITipsProps> = ({
         />
       </TripContainer>
     ))}
-  </>
+  </div>
 );
 
 const TripContainer = styled.div`

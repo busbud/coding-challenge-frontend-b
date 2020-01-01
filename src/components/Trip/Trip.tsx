@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FormattedMessage, FormattedTime } from "react-intl";
 
-import * as S from "./../../styledComponents";
+import * as S from "./../StyledComponents";
 import { greyDark, primary, secondary } from "./../../assets/Colors";
 import { reg, sm } from "./../../assets/Spacing";
 import { PURCHASE } from "./../../constants/Routes";

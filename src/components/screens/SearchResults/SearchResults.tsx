@@ -2,17 +2,22 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components";
 
-import { IntlContext } from "../../i18n/IntlContext";
-import Trips from "../../components/Trip/Trips";
+import { IntlContext } from "../../../contexts/IntlContext";
+import Trips from "../../Trip/Trips";
 import Summary from "./Summary";
-import Loader from "./../../components/Loader";
-import Error from "./../../components/Error";
-import Nav from "./../../components/Nav";
-import { greyLight } from "../../assets/Colors";
+import Loader from "../../Loader";
+import Error from "../../Error";
+import Nav from "../../Nav";
+import { greyLight } from "../../../assets/Colors";
 
-import { concatMap } from "./../../utils";
-import { ILocation, IOperator, ITrips, IDepartures } from "./../../api/ITicket";
-import { getFirstTickets, getMoreTickets } from "./../../api/fetchTickets";
+import { concatMap } from "../../../utils";
+import {
+  ILocation,
+  IOperator,
+  ITrips,
+  IDepartures
+} from "../../../api/ITicket";
+import { getFirstTickets, getMoreTickets } from "../../../api/fetchTickets";
 
 type Action =
   | { type: "initSearchSuccess"; results: ITrips }
@@ -106,10 +111,10 @@ const SearchResults: React.FC<RouteComponentProps> = () => {
     <Container>
       <Nav />
       <Summary />
-      {(state.isLoading && !state.data) || !isDataReady(state.data) ? (
-        <Loader />
-      ) : state.hasError ? (
+      {state.hasError ? (
         <Error onRetry={() => initSearch(dispatch, intlContext.lang)} />
+      ) : (state.isLoading && !state.data) || !isDataReady(state.data) ? (
+        <Loader />
       ) : (
         <Trips
           departures={state.data!.departures}

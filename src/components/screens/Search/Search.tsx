@@ -3,10 +3,10 @@ import { FormattedMessage } from "react-intl";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components";
 
-import * as S from "./../../styledComponents";
-import { reg } from "./../../assets/Spacing";
-import { primary } from "./../../assets/Colors";
-import { SEARCH } from "./../../constants/Routes";
+import * as S from "./../../StyledComponents";
+import { reg } from "../../../assets/Spacing";
+import { primary } from "../../../assets/Colors";
+import { SEARCH } from "../../../constants/Routes";
 
 const Search: React.FC<RouteComponentProps> = () => {
   return (
@@ -15,10 +15,7 @@ const Search: React.FC<RouteComponentProps> = () => {
         <FormattedMessage id="home.welcome" description="Welcome" />
         <Button className="pure-button pure-button-primary">
           <S.WhiteLink to={SEARCH}>
-            <FormattedMessage
-              id="home.searchDepartures"
-              description="Search Departures"
-            />
+            <FormattedMessage id="home.searchDepartures" />
           </S.WhiteLink>
         </Button>
       </S.Card>

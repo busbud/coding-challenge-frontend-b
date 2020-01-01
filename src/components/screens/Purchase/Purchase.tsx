@@ -3,9 +3,9 @@ import { FormattedMessage } from "react-intl";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components";
 
-import * as S from "./../../styledComponents";
-import { greyDark, primary, secondary } from "../../assets/Colors";
-import { reg } from "../../assets/Spacing";
+import * as S from "./../../StyledComponents";
+import { greyDark, primary, secondary } from "../../../assets/Colors";
+import { reg } from "../../../assets/Spacing";
 
 const Purchase: React.FC<RouteComponentProps> = () => {
   return (
@@ -17,6 +17,7 @@ const Purchase: React.FC<RouteComponentProps> = () => {
         <Disclaimer>
           <FormattedMessage
             id="purchase.disclaimer"
+            defaultMessage=""
             values={{
               website: (...elt: Array<HTMLElement>) => (
                 <ExternalLink href="https://busbud.com">{elt}</ExternalLink>

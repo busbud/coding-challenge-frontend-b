@@ -2,16 +2,16 @@ import React, { lazy, Suspense } from "react";
 import { Router } from "@reach/router";
 import { IntlProvider } from "react-intl";
 
-import { IntlContext } from "./i18n/IntlContext";
+import { IntlContext } from "./contexts/IntlContext";
 import messages_fr from "./i18n/messages/fr.json";
 import messages_en from "./i18n/messages/en.json";
 import Loader from "./components/Loader";
 import { getUserLanguage, saveSelectedLanguage } from "./utils";
 import * as Routes from "./constants/Routes";
 
-const Search = lazy(() => import("./screens/Search"));
-const SearchResults = lazy(() => import("./screens/SearchResults"));
-const Purchase = lazy(() => import("./screens/Purchase"));
+const Search = lazy(() => import("./components/screens/Search"));
+const SearchResults = lazy(() => import("./components/screens/SearchResults"));
+const Purchase = lazy(() => import("./components/screens/Purchase"));
 
 const App: React.FC = () => {
   const [language, setLanguage] = React.useState(() => getUserLanguage());

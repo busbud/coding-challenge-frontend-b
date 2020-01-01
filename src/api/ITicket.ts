@@ -64,7 +64,6 @@ export interface IDeparture {
   operatorId: string;
   arrivalLocationId: string;
   departureLocationId: string;
-  cityId: string;
   prices: IPrice;
 }
 

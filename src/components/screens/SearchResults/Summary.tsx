@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { FormattedMessage, useIntl } from "react-intl";
 
-import { greyDark, primary } from "../../assets/Colors";
-import * as S from "./../../styledComponents";
+import { greyDark, primary } from "../../../assets/Colors";
+import * as S from "./../../StyledComponents";
 
 const Summary: React.FC = () => {
   const intl = useIntl();

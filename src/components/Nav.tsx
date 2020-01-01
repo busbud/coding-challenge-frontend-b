@@ -2,10 +2,10 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 
-import { IntlContext } from "../i18n/IntlContext";
+import { IntlContext } from "../contexts/IntlContext";
 import { HOME } from "./../constants/Routes";
 
-import * as S from "./../styledComponents";
+import * as S from "./StyledComponents";
 import { greyDark, primary, greyLight } from "../assets/Colors";
 import { reg, sm } from "./../assets/Spacing";
 
@@ -19,7 +19,7 @@ const Nav: React.FC = () => {
   return (
     <Navbar role="navigation">
       <S.WhiteLink to={HOME}>
-        <FormattedMessage id="nav.home" description="Home" />
+        <FormattedMessage id="nav.home" defaultMessage="Home" />
       </S.WhiteLink>
       <Busbud>
         <Sponsor>Powered by</Sponsor>
@@ -30,18 +30,22 @@ const Nav: React.FC = () => {
         />
       </Busbud>
       <S.FlexRow>
-        <Lang
-          isSelected={intlContext.lang === "fr"}
-          onClick={_evt => intlContext.setLanguage("fr")}
-        >
-          <img src="./assets/images/fr.svg" alt="fr" width={20} />
-        </Lang>
-        <Lang
-          isSelected={intlContext.lang === "en"}
-          onClick={_evt => intlContext.setLanguage("en")}
-        >
-          <img src="./assets/images/en.svg" alt="en" width={20} />
-        </Lang>
+        <div onClick={_evt => intlContext.setLanguage("fr")}>
+          <Flag
+            isSelected={intlContext.lang === "fr"}
+            src="./assets/images/fr.svg"
+            alt="fr"
+            width={20}
+          />
+        </div>
+        <div onClick={_evt => intlContext.setLanguage("en")}>
+          <Flag
+            src="./assets/images/en.svg"
+            isSelected={intlContext.lang === "en"}
+            alt="en"
+            width={20}
+          />
+        </div>
       </S.FlexRow>
     </Navbar>
   );
@@ -51,11 +55,9 @@ const Busbud = styled.div`
   display: flex;
 `;
 
-const Lang = styled.a`
+const Flag = styled.img`
   margin-left: ${reg};
-  img {
-    opacity: ${(props: LanguageProps) => (props.isSelected ? "none" : "60%")};
-  }
+  opacity: ${(props: LanguageProps) => (props.isSelected ? "none" : "60%")};
 `;
 
 const Navbar = styled.nav`

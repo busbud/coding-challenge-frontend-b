@@ -1,8 +1,8 @@
 import { Link } from "@reach/router";
 import styled from "styled-components";
 
-import { white } from "./assets/Colors";
-import { xsm, reg } from "./assets/Spacing";
+import { white } from "./../assets/Colors";
+import { xsm, reg } from "./../assets/Spacing";
 
 export const Card = styled.div`
   background-color: ${white};

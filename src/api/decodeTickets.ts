@@ -32,7 +32,6 @@ export const decodeDepartures = (json: IJsonTicket): IDepartures => {
     operatorId: departure.operator_id,
     arrivalLocationId: departure.destination_location_id,
     departureLocationId: departure.origin_location_id,
-    cityId: departure.city_id,
     prices: departure.prices
   }));
 

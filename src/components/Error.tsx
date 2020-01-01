@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { FormattedMessage } from "react-intl";
 
 import { reg } from "../assets/Spacing";
 import { secondary } from "../assets/Colors";
@@ -10,10 +11,9 @@ interface IErrorProps {
 
 const Error: React.FC<IErrorProps> = ({ onRetry }) => (
   <Container>
-    <span>Oops ! An error occured.</span>
-
+    <FormattedMessage id="error.message" />
     <Button className="pure-button pure-button-primary" onClick={onRetry}>
-      Retry
+      <FormattedMessage id="error.retry" />
     </Button>
   </Container>
 );
