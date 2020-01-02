@@ -8,6 +8,9 @@ import { HOME } from "./../constants/Routes";
 import * as S from "./StyledComponents";
 import { greyDark, primary, greyLight } from "../assets/Colors";
 import { reg, sm } from "./../assets/Spacing";
+import logo from "./../assets/images/busbud-logo.png";
+import flag_fr from "./../assets/images/fr.svg";
+import flag_en from "./../assets/images/en.svg";
 
 interface LanguageProps {
   isSelected: boolean;
@@ -23,24 +26,20 @@ const Nav: React.FC = () => {
       </S.WhiteLink>
       <Busbud>
         <Sponsor>Powered by</Sponsor>
-        <img
-          src="./assets/images/busbud-logo.png"
-          alt="logo-busbud"
-          height={30}
-        />
+        <img src={logo} alt="logo-busbud" height={30} />
       </Busbud>
       <S.FlexRow>
         <div onClick={_evt => intlContext.setLanguage("fr")}>
           <Flag
             isSelected={intlContext.lang === "fr"}
-            src="./assets/images/fr.svg"
+            src={flag_fr}
             alt="fr"
             width={20}
           />
         </div>
         <div onClick={_evt => intlContext.setLanguage("en")}>
           <Flag
-            src="./assets/images/en.svg"
+            src={flag_en}
             isSelected={intlContext.lang === "en"}
             alt="en"
             width={20}

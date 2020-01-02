@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
+import loader from "./../assets/images/loader.svg";
+
 const Loader: React.FC = () => (
   <Container>
-    <img src="./assets/images/loader.svg" alt="loader" width={100} />
+    <img src={loader} alt="loader" width={100} />
   </Container>
 );
 
