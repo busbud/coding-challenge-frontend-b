@@ -26,25 +26,25 @@ const Nav: React.FC = () => {
       </S.WhiteLink>
       <Busbud>
         <Sponsor>Powered by</Sponsor>
-        <img src={logo} alt="logo-busbud" height={35} />
+        <img src={logo} alt="logo-busbud" height={30} />
       </Busbud>
       <S.FlexRow>
-        <div onClick={_evt => intlContext.setLanguage("fr")}>
+        <FlagContainer onClick={_evt => intlContext.setLanguage("fr")}>
           <Flag
             isSelected={intlContext.lang === "fr"}
             src={flag_fr}
             alt="fr"
             width={30}
           />
-        </div>
-        <div onClick={_evt => intlContext.setLanguage("en")}>
+        </FlagContainer>
+        <FlagContainer onClick={_evt => intlContext.setLanguage("en")}>
           <Flag
             src={flag_en}
             isSelected={intlContext.lang === "en"}
             alt="en"
             width={30}
           />
-        </div>
+        </FlagContainer>
       </S.FlexRow>
     </Navbar>
   );
@@ -52,6 +52,11 @@ const Nav: React.FC = () => {
 
 const Busbud = styled.div`
   display: flex;
+`;
+
+const FlagContainer = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const Flag = styled.img`
