@@ -26,7 +26,7 @@ const Nav: React.FC = () => {
       </S.WhiteLink>
       <Busbud>
         <Sponsor>Powered by</Sponsor>
-        <img src={logo} alt="logo-busbud" height={30} />
+        <img src={logo} alt="logo-busbud" height={35} />
       </Busbud>
       <S.FlexRow>
         <div onClick={_evt => intlContext.setLanguage("fr")}>
@@ -34,7 +34,7 @@ const Nav: React.FC = () => {
             isSelected={intlContext.lang === "fr"}
             src={flag_fr}
             alt="fr"
-            width={20}
+            width={30}
           />
         </div>
         <div onClick={_evt => intlContext.setLanguage("en")}>
@@ -42,7 +42,7 @@ const Nav: React.FC = () => {
             src={flag_en}
             isSelected={intlContext.lang === "en"}
             alt="en"
-            width={20}
+            width={30}
           />
         </div>
       </S.FlexRow>
@@ -56,7 +56,7 @@ const Busbud = styled.div`
 
 const Flag = styled.img`
   margin-left: ${reg};
-  opacity: ${(props: LanguageProps) => (props.isSelected ? "none" : "60%")};
+  opacity: ${(props: LanguageProps) => (props.isSelected ? "none" : "40%")};
 `;
 
 const Navbar = styled.nav`
@@ -64,7 +64,7 @@ const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${sm} ${reg};
+  padding: ${reg};
   box-shadow: 0px -2px 10px 2px ${greyDark};
 `;
 
@@ -72,7 +72,7 @@ const Sponsor = styled.span`
   color: ${greyLight};
   margin-right: ${sm};
   font-weight: 300;
-  font-size: 0.8em;
+  font-size: 0.9em;
 `;
 
 export default Nav;

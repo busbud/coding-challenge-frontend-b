@@ -75,7 +75,7 @@ const Trip: React.FC<ITripProps> = ({
 const Card = styled(S.Card)`
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 100px 100px 10px 100px 1fr;
+  grid-template-columns: 100px 100px 10px 150px 1fr;
   grid-column-gap: ${sm};
   grid-row-gap: ${reg};
   align-items: center;
@@ -98,7 +98,7 @@ const Button = styled.span`
   background-color: ${primary};
   @media (max-width: 768px) {
     grid-row: 3;
-    grid-column: 3 / span 2;
+    grid-column: 2 / span 3;
     margin: 0;
   }
 `;
@@ -153,7 +153,7 @@ const Price = styled.div`
 
   @media (max-width: 768px) {
     grid-row: 3;
-    grid-column: 1 / span 2;
+    grid-column: 1;
   }
 `;
 
