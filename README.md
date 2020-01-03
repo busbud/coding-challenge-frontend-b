@@ -29,7 +29,7 @@ This project has been created having in mind that this should be a micro-website
 
 ## React
 
-As part of the requirements, React was the Framework I chose to develop this application. I used the boilerplate `create-react-app` to start a project oevr.
+As part of the requirements, React was the Framework I chose to develop this application. I used the boilerplate `create-react-app` to start a project over.
 
 This allowed me to quickly have a running application and quickly been able to create components to build the application.
 
@@ -43,7 +43,7 @@ That is why I chose to use TypeScript in this project, setting the `strict mode`
 
 I used TypeScript types for the components' `propTypes` and `state`. I also created several `interfaces` for deseralizing the API Response, that I map into another data structure that is easier and more efficient to use from the front-end perspective.
 
-This mapping is done once the API response is received, and its shape is so that accessing data (like `operators`and `locations` information ) would be done in `O(1)`.
+This mapping is done once the API response is received, and its shape is so that accessing data (like `operators`and `locations` information ) would be done in a complexity of `O(1)`.
 
 ## State management
 
