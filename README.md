@@ -2,15 +2,15 @@
 
 ## Run project locally
 
-Install dependancies: `yarn`
-Run locall server: `yarn start`
+- Install dependancies: `yarn`
+- Run locall server: `yarn start`
 
-The app detects your browser's language but you can append lng param `localhost:3000/?lng=[fr|en]` to choose the language.
+The app detects your browser's language but you can append `lng` param `localhost:3000/?lng=[fr|en]` to choose the language.
 
-[French Website](http://localhost:3000/?lng=fr)
-[English Website](http://localhost:3000/?lng=en)
-
-![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
+- [French Website](http://localhost:3000/?lng=fr)
+- [English Website](http://localhost:3000/?lng=en)
+  ![demo](./docs/demo.gif)
+  ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 
 It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)!
 Your challenge is to build a microsite that allows a traveler from NYC to find one-way departure schedules for the festival's opening weekend.
