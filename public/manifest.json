@@ -1,0 +1,9 @@
+{
+  "short_name": "BusBud Osheaga 2020",
+  "name": "BusBud Osheaga 2020",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
