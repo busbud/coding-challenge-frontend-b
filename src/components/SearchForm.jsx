@@ -39,7 +39,7 @@ const Button = styled.button`
 `;
 
 function SearchForm({ onSubmit }) {
-  const [date, setDate] = useState('2020-07-02');
+  const [date, setDate] = useState('2020-08-02');
   const { t } = useTranslation();
 
   const handleSubmit = e => {

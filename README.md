@@ -1,5 +1,12 @@
 # Busbud Front-End Coding Challenge
 
+The application allows you to fetch bus tickets from Ney York to Montreal for a given date.
+The search form shows Depature city, Destination and Date input fields but only Date's vlue is used to perform the search. I recommand to chose a date in december to get results that needs multiple requests before to be completed.
+
+## Heroku deploy
+
+[busbud-osheaga-2020](https://busbud-osheaga-2020.herokuapp.com/)
+
 ## Run project locally
 
 - Install dependancies: `yarn`
@@ -10,7 +17,8 @@ The app detects your browser's language but you can append `lng` param `localhos
 - [French Website](http://localhost:3000/?lng=fr)
 - [English Website](http://localhost:3000/?lng=en)
   ![demo](./docs/demo.gif)
-  ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
+
+![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 
 It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)!
 Your challenge is to build a microsite that allows a traveler from NYC to find one-way departure schedules for the festival's opening weekend.
