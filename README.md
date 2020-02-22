@@ -1,7 +1,7 @@
 # Busbud Front-End Coding Challenge
 
-The application allows you to fetch bus tickets from Ney York to Montreal for a given date.
-The search form shows Depature city, Destination and Date input fields but only Date's vlue is used to perform the search. I recommand to chose a date in december to get results that needs multiple requests before to be completed.
+This application allows you to fetch bus tickets from Ney York to Montreal for a given date.
+The search form shows Depature city, Destination and Date input fields but only Date's value is used to perform the search. I recommand to chose a date in december to get results that needs multiple requests before to be completed.
 
 ## Heroku deploy
 

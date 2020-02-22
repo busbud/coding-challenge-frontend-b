@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
 import { SearchApi } from '../services/search-api';
@@ -28,6 +27,9 @@ export function useSearch() {
       }
     };
 
+    /**
+     * Stop interval poll and cancel any pending requests
+     */
     const stopOngoingSearch = () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);

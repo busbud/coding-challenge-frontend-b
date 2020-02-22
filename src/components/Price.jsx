@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
   position: relative;
@@ -27,5 +28,9 @@ function Price({ amount }) {
     </Wrapper>
   );
 }
+
+Price.propTypes = {
+  amount: PropTypes.number.isRequired
+};
 
 export default Price;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Pin = styled.div`
@@ -30,5 +31,10 @@ function LocationMap({ lat, lng }) {
     </ReactMapGL>
   );
 }
+
+LocationMap.propTypes = {
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired
+};
 
 export default LocationMap;

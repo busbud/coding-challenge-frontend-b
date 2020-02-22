@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import SearchResultItem from './SearchResultItem';
 
 function SearchResult({ results = [] }) {
@@ -17,5 +18,9 @@ function SearchResult({ results = [] }) {
     />
   ));
 }
+
+SearchResult.propTypes = {
+  results: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default SearchResult;

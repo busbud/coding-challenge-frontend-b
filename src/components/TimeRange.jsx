@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import { formatTime } from '../utils/format';
 
@@ -9,12 +10,17 @@ const H5 = styled.h5`
   color: #025687;
 `;
 
-function TimeRange({ from = '18:30PM', to = '01:30AM' }) {
+function TimeRange({ from, to }) {
   return (
     <H5>
       {formatTime(from)} - {formatTime(to)}
     </H5>
   );
 }
+
+TimeRange.propType = {
+  from: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired
+};
 
 export default TimeRange;

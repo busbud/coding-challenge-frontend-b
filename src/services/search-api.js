@@ -7,8 +7,6 @@ const headers = {
   'X-Busbud-Token': process.env.REACT_APP_BUSBUD_TOKEN
 };
 
-// const defaultParams = { lang: getCurrentLng() };
-
 export class SearchApi {
   static _generateBaseUrl(origin, destination, date) {
     return `https://napi.busbud.com/x-departures/${origin}/${destination}/${date}`;
@@ -17,6 +15,7 @@ export class SearchApi {
   static _generateParams(params) {
     const defaultParams = { lang: getCurrentLng() };
     params = { ...defaultParams, ...params };
+
     return Object.keys(params)
       .map(key => `${key}=${params[key]}`)
       .join('&');
@@ -49,13 +48,11 @@ export class SearchApi {
   }
 
   static _formatResponse = response => {
-    const _generateHashTable = data => {
-      const res = {};
-      if (!data) {
-        return res;
-      }
-      data.forEach(entity => (res[entity.id] = entity));
-      return res;
+    const _generateHashTable = entities => {
+      return (entities || []).reduce((acc, entity) => {
+        acc[entity.id] = entity;
+        return acc;
+      }, {});
     };
 
     const { data } = response;
@@ -77,8 +74,8 @@ export class SearchApi {
       const operator = operators[departure.operator_id];
       const depLoc = locations[departure.origin_location_id];
       const depCity = cities[depLoc.city_id] || {};
-      const arrLoc = locations[departure.destination_location_id];
-      const arrCity = cities[arrLoc.city_id] || {};
+      const destiLoc = locations[departure.destination_location_id];
+      const destiCity = cities[destiLoc.city_id] || {};
 
       return {
         id: departure.id,
@@ -89,9 +86,9 @@ export class SearchApi {
           location: _formatLocation(depLoc)
         },
         arrival: {
-          city: arrCity.name,
+          city: destiCity.name,
           date: departure.arrival_time,
-          location: _formatLocation(arrLoc)
+          location: _formatLocation(destiLoc)
         },
         price: departure.prices.total / 100
       };

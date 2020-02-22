@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'styled-bootstrap-grid';
 import { useTranslation } from 'react-i18next';
 
@@ -85,5 +86,9 @@ function SearchForm({ onSubmit }) {
     </form>
   );
 }
+
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+};
 
 export default SearchForm;

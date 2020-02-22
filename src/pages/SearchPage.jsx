@@ -24,7 +24,7 @@ const LogoImg = styled.img`
   height: auto;
 `;
 
-function SearchPage(props) {
+function SearchPage() {
   const { t } = useTranslation();
   const { search, error, loading, data } = useSearch();
   const [searchFired, setSearchFired] = useState(false);
@@ -48,12 +48,10 @@ function SearchPage(props) {
             <>
               <hr />
               <Row justifyContent='center'>
-                <Col xs={12}>
+                <Col xs={11}>
                   <h3>
                     {t('SearchPage.foundResults', { count: data.length })}
                   </h3>
-                </Col>
-                <Col xs={11}>
                   {loading && (
                     <SpinnerWrapper>
                       <Spinner />

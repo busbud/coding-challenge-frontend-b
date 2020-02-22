@@ -1,5 +1,4 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
-import './App.css';
 import './services/i18n';
 
 import React from 'react';

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Row, Container, Col } from 'styled-bootstrap-grid';
 import TimeRange from './TimeRange';
 import Price from './Price';
@@ -131,5 +132,15 @@ function SearchResultItem({
     </Card>
   );
 }
+
+SearchResultItem.propTypes = {
+  id: PropTypes.string,
+  operator: PropTypes.object,
+  departure: PropTypes.object,
+  arrival: PropTypes.object,
+  price: PropTypes.number,
+  selected: PropTypes.bool,
+  onClick: PropTypes.func
+};
 
 export default SearchResultItem;
