@@ -1,0 +1,36 @@
+@import-normalize;
+
+@font-face {
+  font-family: 'PlayfairDisplay-Bold';
+  src: local('PlayfairDisplay'), url(./assets/fonts/Playfair_Display/static/PlayfairDisplay-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins-Light';
+  src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins-Regular';
+  src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins-Bold';
+  src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-Bold.ttf) format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Poppins-Light', sans-serif;
+}
+
+h1, h2 {
+  font-family: 'PlayfairDisplay-Bold', serif;
+}
+
+b {
+  font-family: 'Poppins-Bold', sans-serif;
+}

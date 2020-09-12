@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
 
@@ -13,7 +12,7 @@ import messages_fr from "./lang/fr.json";
 import Home from './Components/Home';
 import Coachella from './Components/Coachella';
 
-import './App.scss';
+import './scss/App.scss';
 
 var classNames = require('classnames');
 
@@ -42,15 +41,15 @@ class App extends Component {
       <IntlProvider locale={this.state.locale} messages={messages[this.state.locale]}>
         <Router>
           <div className="roadToOsheaga--container">
-            <header>
+            <header className="roadToOsheaga--header">
               <div
-                className={ classNames({ 'active': this.state.locale=='fr' }) }
+                className={ classNames({ 'active': this.state.locale === 'fr' }) }
                 onClick={() => this.changeLocale('fr')}
               >
                 FR
               </div>
               <div
-                className={ classNames({ 'active': this.state.locale=='en' }) }
+                className={ classNames({ 'active': this.state.locale === 'en' }) }
                 onClick={() => this.changeLocale('en')}
               >
                 EN

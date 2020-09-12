@@ -1,0 +1,44 @@
+.roadToOsheaga--container {
+  position: relative;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  .roadToOsheaga--header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+
+    font-size: 10px;
+    background-color: #efefef;
+
+    div {
+      margin-right: 10px;
+
+      &.active {
+        color: #AA3333;
+      }
+    }
+  }
+
+  .roadToOsheaga-home--container {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-image: url(../assets/imgs/osheaga.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #FFFFFF;
+
+    padding: 15%;
+    color: #FFFFFF;
+    text-align: center;
+  }
+}

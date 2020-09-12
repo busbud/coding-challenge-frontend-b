@@ -1,3 +1,6 @@
 {
-    "myMessage": "Today, is the {ts, date, ::yyyyMMdd}"
+    "home.Cancellation.header": "Oh no!",
+    "home.Cancellation.message": "Unfortunatelly, the borders are currently closed due to COVID-19. You won't be able to attend Osheaga this year.",
+    "home.Cancellation.solution": "But don't worry, we've got your music fix: you can still go to <b>Coachella!</b>",
+    "home.redirection.message": "Click here to start your journey to Coachella"
 }
