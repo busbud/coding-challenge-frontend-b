@@ -7,5 +7,9 @@ header {
 
   div {
     margin-right: 10px;
+
+    &.active {
+      color: #AA3333;
+    }
   }
 }

@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
+
 import messages_en from "./lang/en-US.json";
 import messages_fr from "./lang/fr.json";
 
@@ -13,6 +14,8 @@ import Home from './Components/Home';
 import Coachella from './Components/Coachella';
 
 import './App.scss';
+
+var classNames = require('classnames');
 
 const messages = {
   'en': messages_en,
@@ -24,7 +27,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      locale: 'en'
+      locale: navigator.language.split(/[-_]/)[0]
     }
   }
 
@@ -40,8 +43,18 @@ class App extends Component {
         <Router>
           <div className="roadToOsheaga--container">
             <header>
-              <div onClick={() => this.changeLocale('fr')}>FR</div>
-              <div onClick={() => this.changeLocale('en')}>EN</div>
+              <div
+                className={ classNames({ 'active': this.state.locale=='fr' }) }
+                onClick={() => this.changeLocale('fr')}
+              >
+                FR
+              </div>
+              <div
+                className={ classNames({ 'active': this.state.locale=='en' }) }
+                onClick={() => this.changeLocale('en')}
+              >
+                EN
+              </div>
             </header>
             <Switch>
               <Route path="/coachella">
