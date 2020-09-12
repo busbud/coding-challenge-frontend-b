@@ -1,0 +1,3 @@
+{
+    "myMessage": "Today, is the {ts, date, ::yyyyMMdd}"
+}
