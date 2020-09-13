@@ -10,7 +10,7 @@ import { ReactComponent as CoachellaLogo } from '../assets/imgs/coachella-logo.s
 
 const currentDateTime = new Date().toISOString().split('T');
 const currentDate = currentDateTime[0].split('-');
-let searchDate = `${currentDate[0]}-${currentDate[1]}-${parseInt(currentDate[2]) + 5}`;
+let searchDate = `${currentDate[0]}-${currentDate[1]}-${parseInt(currentDate[2]) + 6}`;
 
 // Hook from https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 function useInterval(callback, delay) {
@@ -34,11 +34,14 @@ function useInterval(callback, delay) {
 }
 
 export default function Coachella() {
-    const url = `https://napi.busbud.com/x-departures/dr5reg/dp3wj6/${searchDate}`;
     const [results, updateResults] = useState([]);
     const [loading, updateLoading] = useState(true);
+    const [refreshing, updateRefreshing] = useState(false);
+    const [polling, updatePolling] = useState(false)
+    const [newDeparturesId, updateNewDeparturesId] = useState([]);
 
     useInterval(async () => {
+        const url = `https://napi.busbud.com/x-departures/dr5reg/9zvxvs/${searchDate}${polling || refreshing ? '/poll?index=10' : ''}`;
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -47,9 +50,33 @@ export default function Coachella() {
             }
         });
         const json = await response.json();
-        updateResults(json);
-        if (json.complete === true) { updateLoading(false); }
-    }, loading ? 3000 : null);
+
+        if (results.departures && results.departures.length > 0) {
+            let merge = {
+                ...json,
+                ...results
+            }
+
+            updateResults(merge);
+        } else {
+            updateResults(json);
+        }
+
+        if (json.complete === true) {
+            let newIds = [];
+            json.departures.map((departure) => (
+                newDeparturesId.push(departure.id)
+            ))
+
+            updateNewDeparturesId(newDeparturesId);
+            updatePolling(false);
+
+            updateRefreshing(false);
+            updateLoading(false);
+        } else if (json.complete !== true && json.departures.length > 0){
+            updatePolling(true);
+        }
+    }, loading || refreshing ? 3000 : null);
 
     return (
         <div className="roadToOsheaga-coachella--container">
@@ -73,35 +100,25 @@ export default function Coachella() {
                             <label htmlFor="origin-city">
                                 <FormattedMessage id="coachella.city.origin.title" defaultMessage="Departure:" />
                             </label>
-                            <FormattedMessage id="coachella.city.origin" defaultMessage="NYC">
-                                {
-                                    placeholder =>
-                                        <input
-                                            id="origin-city"
-                                            disabled
-                                            type="text"
-                                            name="origin-city"
-                                            value={ placeholder }
-                                        />
-                                }
-                            </FormattedMessage>
+                            <input
+                                id="origin-city"
+                                disabled
+                                type="text"
+                                name="origin-city"
+                                value={ results.cities ? results.cities[0].name : '' }
+                            />
                         </div>
                         <div className="roadToOsheaga-coachella--search-form--section">
                             <label htmlFor="destination-city">
                                 <FormattedMessage id="coachella.city.destination.title" defaultMessage="Destination:" />
                             </label>
-                            <FormattedMessage id="coachella.city.destination" defaultMessage="Indio">
-                                {
-                                    placeholder =>
-                                        <input
-                                            disabled
-                                            id="destination-city"
-                                            type="text"
-                                            name="destination-city"
-                                            value={ placeholder }
-                                        />
-                                }
-                            </FormattedMessage>
+                            <input
+                                id="destination-city"
+                                disabled
+                                type="text"
+                                name="destination-city"
+                                value={ results.cities ? results.cities[1].name : '' }
+                            />
                         </div>
                         <div className="roadToOsheaga-coachella--search-form--section">
                             <label htmlFor="leaving-date">
@@ -119,6 +136,11 @@ export default function Coachella() {
                     <div className="roadToOsheaga-coachella--search-button--container">
                         <button
                             className="roadToOsheaga-coachella--search-form--button"
+                            onClick={
+                                () => {
+                                    updateRefreshing(true);
+                                }
+                            }
                         >
                             <FormattedMessage
                                 id="commons.Update"
@@ -133,25 +155,31 @@ export default function Coachella() {
                     results && !loading ?
                         results.departures.length > 0 ?
                             <React.Fragment>
+                                { refreshing ? 'Refreshing...' : null }
                                 <Departures
                                     departures={
-                                        results.departures.sort(
-                                            (itemA, itemB) => (
-                                                itemA.departure_time > itemB.departure_time ? 1 : -1
+                                        results
+                                            .departures
+                                            .sort(
+                                                (itemA, itemB) => {
+                                                    if (itemA.departure_time === itemB.departure_time) {
+                                                        if (itemA.prices.total >= itemB.prices.total) {
+                                                            return -1;
+                                                        } else {
+                                                            return 1;
+                                                        }
+                                                    } else if (itemA.departure_time > itemB.departure_time) {
+                                                        return 1;
+                                                    } else {
+                                                        return -1;
+                                                    }
+                                                }
                                             )
-                                        )
                                     }
+                                    newDeparturesId={newDeparturesId || null}
                                     locations={results.locations}
+                                    operators={results.operators}
                                 />
-                                <button
-                                    className="roadToOsheaga-coachella--search-form--button"
-                                    disabled={results.complete}
-                                >
-                                    <FormattedMessage
-                                        id="commons.More"
-                                        defaultMessage="Load More"
-                                    />
-                                </button>
                             </React.Fragment> :
                             null :
                         <p>Loading</p>

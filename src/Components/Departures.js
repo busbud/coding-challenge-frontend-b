@@ -17,6 +17,8 @@ const Departures = props => {
                                 key={item.id}
                                 item={item}
                                 locations={props.locations}
+                                operator={props.operators.find((operator) => (operator.id ===item.operator_id))}
+                                newDeparture={props.newDeparturesId.includes(item.id)}
                                 cheapestItem={
                                     Math.min( ...props.departures.map((item) => (item.prices.total)) )
                                 }
