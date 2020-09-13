@@ -1,3 +1,5 @@
+@import "../index.scss";
+
 .roadToOsheaga--container {
   position: relative;
 
@@ -40,5 +42,126 @@
     padding: 15%;
     color: #FFFFFF;
     text-align: center;
+  }
+
+  .roadToOsheaga-coachella--container {
+    .roadToOsheaga-coachella--header-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      padding: 50px 0;
+      min-height: 300px;
+
+      @include md {
+        min-height: 400px;
+      }
+
+      background-image: url(../assets/imgs/coachella.jpeg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: #FFFFFF;
+
+      color: #FFFFFF;
+
+      h2 {
+        font-size: 2em;
+        margin: 20px auto;
+        text-align: center;
+      }
+
+      .roadToOsheaga-coachella--header-description {
+        width: 70%;
+        margin: 20px auto 40px auto;
+      }
+
+      .roadToOsheaga-coachella--header-logo {
+        width: 50%;
+      }
+
+      .roadToOsheaga-coachella--search-form {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+
+        @include md {
+          flex-direction: row;
+        }
+
+        .roadToOsheaga-coachella--search-form--section {
+          display: flex;
+          flex-direction: column;
+
+          input {
+            padding: 5px;
+            height: 20px;
+          }
+        }
+      }
+    }
+
+    .roadToOsheaga-coachella--results-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      padding: 10px;
+
+      .roadToOsheaga-coachella--results-box {
+          width: 200px;
+          margin: 10px;
+          background-color: #F5F5F5;
+
+          transition: all 0.5s ease-in-out;
+
+          &:hover {
+            opacity: 0.8;
+            cursor: pointer;
+          }
+
+            &.roadToOsheaga-coachella--results-box-cheapest {
+              .roadToOsheaga-coachella--results-box--content {
+                background-color: #81C784;
+              }
+            }
+
+          .roadToOsheaga-coachella--results-box--header, .roadToOsheaga-coachella--results-box--footer {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 5px;
+
+            p {
+              font-size: 0.8em;
+            }
+          }
+
+          .roadToOsheaga-coachella--results-box--header {
+            color: #CFD8DC;
+            background-color: #212121;
+          }
+
+          .roadToOsheaga-coachella--results-box--from, .roadToOsheaga-coachella--results-box--to {
+            text-align: center;
+            padding: 5px 0;
+
+            p {
+              font-size: 0.8em;
+            }
+          }
+
+          .roadToOsheaga-coachella--results-box--content {
+              padding: 20px 10px;
+              text-align: center;
+
+            p {
+              font-size: 1.8em;
+            }
+          }
+      }
+    }
   }
 }

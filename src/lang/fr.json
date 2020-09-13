@@ -2,5 +2,14 @@
     "home.Cancellation.header": "Oh no!",
     "home.Cancellation.message": "Unfortunatelly, the borders are currently closed due to COVID-19. You won't be able to attend Osheaga this year.",
     "home.Cancellation.solution": "But don't worry, we've got your music fix: you can still go to <b>Coachella!</b>",
-    "home.redirection.message": "Cliques ici pour débuter ton voyage à Coachella"
+    "home.redirection.message": "Cliques ici pour débuter ton voyage à Coachella",
+    "coachella.title": "Tu y es presque !",
+    "coachella.description": "Coachella is just 7 days away! Book your ticket now to be part of one of the biggest musical event in the world!",
+    "coachella.city.origin": "New York City",
+    "coachella.city.origin.title": "Départ",
+    "coachella.city.destination": "Indio",
+    "coachella.city.destination.title": "Destination",
+    "coachella.leaving.date.title": "Date",
+    "coachella.city.from": "De:",
+    "coachella.city.to": "À:"
 }
