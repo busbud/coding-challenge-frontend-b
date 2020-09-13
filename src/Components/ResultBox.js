@@ -9,7 +9,6 @@ import {
 var classNames = require('classnames');
 
 const ResultBox = props => {
-    console.log(props)
   return (
         <div
             className={

@@ -1,7 +1,9 @@
 {
+    "commons.Update": "Update",
     "home.Cancellation.header": "Oh no!",
     "home.Cancellation.message": "Unfortunatelly, the borders are currently closed due to COVID-19. You won't be able to attend Osheaga this year.",
-    "home.Cancellation.solution": "But don't worry, we've got your music fix: you can still go to <b>Coachella!</b>",
+    "home.Cancellation.solution.title": "But don't worry, we've got your music fix:",
+    "home.Cancellation.solution.message": "you can still go to <b>Coachella!</b>",
     "home.redirection.message": "Click here to start your journey to Coachella",
     "coachella.title": "You are almost there!",
     "coachella.description": "Coachella is just 7 days away! Book your ticket now to be part of one of the biggest musical event in the world!",

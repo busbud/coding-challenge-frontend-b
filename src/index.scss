@@ -20,6 +20,16 @@
   src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-Bold.ttf) format('truetype');
 }
 
+$primary-color: #FFD54F;
+$secondary-color: #64b5f6;
+
+$dark: #212121;
+$gray: #CFD8DC;
+$light-gray: #F5F5F5;
+
+$primary-color-dark: #C8A415;
+$secondary-color-dark: #2286C3;
+
 * {
   margin: 0;
   padding: 0;
@@ -34,6 +44,36 @@ h1, h2 {
 
 b {
   font-family: 'Poppins-Bold', sans-serif;
+  color: $primary-color;
+}
+
+button {
+  padding: 5px 15px;
+  margin: 2em auto;
+
+  border-radius: 50px;
+  border: 0;
+
+  background-color: $primary-color;
+  color: $dark;
+
+  transition: all 0.2s ease-in-out;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:hover {
+    background-color: $primary-color-dark;
+    cursor: pointer;
+  }
+
+  &[disabled] {
+    background-color: $light-gray;
+    color: $gray;
+    cursor: not-allowed;
+  }
 }
 
 // based on twitter bootstrap

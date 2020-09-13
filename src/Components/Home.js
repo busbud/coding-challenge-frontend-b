@@ -21,14 +21,20 @@ export default function Home() {
             </p>
             <p>
                 <FormattedMessage
-                    id="home.Cancellation.solution"
+                    id="home.Cancellation.solution.title"
+                    defaultMessage="Oh no!"
+                />
+            </p>
+            <p>
+                <FormattedMessage
+                    id="home.Cancellation.solution.message"
                     defaultMessage="Oh no!"
                     values={{
                         b: (...chunks) => <b>{chunks}</b>
                     }}
                 />
             </p>
-            <button>
+            <button className="roadToOsheaga-home--button">
                 <Link to="/coachella">
                     <FormattedMessage
                         id="home.redirection.message"
