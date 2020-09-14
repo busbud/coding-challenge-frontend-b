@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bb51fe69.chunk.css",
+    "main.js": "/static/js/main.61a9adf1.chunk.js",
+    "main.js.map": "/static/js/main.61a9adf1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ba1c7691.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ba1c7691.js.map",
+    "static/js/2.f2390b9e.chunk.js": "/static/js/2.f2390b9e.chunk.js",
+    "static/js/2.f2390b9e.chunk.js.map": "/static/js/2.f2390b9e.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.4e471db5acb4baed419d75529d26e178.js": "/precache-manifest.4e471db5acb4baed419d75529d26e178.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.bb51fe69.chunk.css.map": "/static/css/main.bb51fe69.chunk.css.map",
+    "static/js/2.f2390b9e.chunk.js.LICENSE.txt": "/static/js/2.f2390b9e.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/static/media/Poppins-Regular.8b6af8e5.ttf",
+    "static/media/bus.97df1c64.svg": "/static/media/bus.97df1c64.svg",
+    "static/media/calendar.bc61a025.svg": "/static/media/calendar.bc61a025.svg",
+    "static/media/edit.4d86e8d9.svg": "/static/media/edit.4d86e8d9.svg",
+    "static/media/half-arrow-right.84b2d8f8.svg": "/static/media/half-arrow-right.84b2d8f8.svg",
+    "static/media/passengers.0e2c06db.svg": "/static/media/passengers.0e2c06db.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ba1c7691.js",
+    "static/js/2.f2390b9e.chunk.js",
+    "static/css/main.bb51fe69.chunk.css",
+    "static/js/main.61a9adf1.chunk.js"
+  ]
+}
