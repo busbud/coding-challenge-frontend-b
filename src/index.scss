@@ -24,8 +24,10 @@ $primary-color: #FFD54F;
 $secondary-color: #64b5f6;
 
 $dark: #212121;
-$gray: #CFD8DC;
+$gray: #DCDCDC;
 $light-gray: #F5F5F5;
+
+$green: #81C784;
 
 $primary-color-dark: #C8A415;
 $secondary-color-dark: #2286C3;
@@ -34,8 +36,14 @@ $secondary-color-dark: #2286C3;
   margin: 0;
   padding: 0;
 
+  box-sizing: border-box;
+
   font-family: 'Poppins-Light', sans-serif;
-  font-size: 14px;
+}
+
+body {
+  font-size: 16px;
+  color: $dark;
 }
 
 h1, h2 {
@@ -44,7 +52,6 @@ h1, h2 {
 
 b {
   font-family: 'Poppins-Bold', sans-serif;
-  color: $primary-color;
 }
 
 button {
@@ -73,6 +80,25 @@ button {
     background-color: $light-gray;
     color: $gray;
     cursor: not-allowed;
+  }
+}
+
+@keyframes loader-animation {
+  to {
+    stroke-dashoffset: 1000;
+  }
+}
+
+.loader {
+  height: 10px;
+
+  &.loader-bus {
+    stroke-dasharray: 100;
+    animation: loader-animation 10s linear;
+
+    height: 20px;
+    margin: 20px auto 0 auto;
+    width: 100%;
   }
 }
 

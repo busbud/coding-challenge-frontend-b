@@ -1,15 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import {
-    FormattedMessage,
     FormattedDate,
     FormattedTime,
     FormattedNumber
 } from 'react-intl';
 
+import { ReactComponent as HalfArrowRight} from '../assets/svg/icons/half-arrow-right.svg';
+
 var classNames = require('classnames');
 
 const ResultBox = props => {
-  return (
+    return (
         <div
             className={
                 classNames(
@@ -21,42 +22,55 @@ const ResultBox = props => {
                 )
             }
         >
-            <div className="roadToOsheaga-coachella--results-box--header">
-                <p><FormattedDate value={ props.item.departure_time } /></p>
-                <p><FormattedTime value={ props.item.departure_time } /></p>
+            <div className="roadToOsheaga-coachella--results-box--left-container roadToOsheaga-coachella--results-box--price">
+                <p>
+                    <FormattedNumber
+                        value={ props.item.prices.total / 100 }
+                        style="currency"
+                        currency={ props.item.prices.currency }
+                    />
+                </p>
             </div>
-            <div className="roadToOsheaga-coachella--results-box--container">
-                <div className="roadToOsheaga-coachella--results-box--operator">
-                    <img src={props.operator.logo_url} />
+            <div className="roadToOsheaga-coachella--results-box--right-container">
+                <div className="roadToOsheaga-coachella--results-box--right-container--timetable">
+                    <p>
+                        <FormattedTime value={ props.item.departure_time } />
+                        <span><FormattedDate value={ props.item.departure_time } /></span>
+                        <span>
+                            {
+                                props.locations.find(
+                                    (location) => (location.id === props.item.origin_location_id)
+                                ).name
+                            }
+                        </span>
+                    </p>
+                    <HalfArrowRight className="roadToOsheaga-coachella--results-box--right-container--icon" />
+                    <p>
+                        <FormattedTime value={ props.item.arrival_time } />
+                        <span><FormattedDate value={ props.item.arrival_time } /></span>
+                        <span>
+                            {
+                                props.locations.find(
+                                    (location) => (location.id === props.item.destination_location_id)
+                                ).name
+                            }
+                        </span>
+                    </p>
                 </div>
-                <div className="roadToOsheaga-coachella--results-box--from">
-                    <p>
-                        <FormattedMessage id="coachella.city.from" defaultMessage="From:" />
-                    </p>
-                    <p>
-                        { props.locations.find((location) => (location.id === props.item.origin_location_id)).name }
-                    </p>
-                </div>
-                <div className="roadToOsheaga-coachella--results-box--content">
-                    <p>
-                        <FormattedNumber value={ props.item.prices.total / 100 } style="currency" currency={ props.item.prices.currency } />
+                <div className="roadToOsheaga-coachella--results-box--right-container--details-container">
+                    <p
+                        className="roadToOsheaga-coachella--results-box--right-container--details roadToOsheaga-coachella--results-box--details--class"
+                    >
+                        { props.item.class }
+                    </p> | <p
+                        className="roadToOsheaga-coachella--results-box--right-container--details roadToOsheaga-coachella--results-box--details--operator"
+                    >
+                        { props.operator.name }
                     </p>
                 </div>
-                <div className="roadToOsheaga-coachella--results-box--to">
-                    <p>
-                        <FormattedMessage id="coachella.city.to" defaultMessage="To:" />
-                    </p>
-                    <p>
-                        { props.locations.find((location) => (location.id === props.item.destination_location_id)).name }
-                    </p>
-                </div>
-            </div>
-            <div className="roadToOsheaga-coachella--results-box--footer">
-                <p><FormattedDate value={ props.item.arrival_time } /></p>
-                <p><FormattedTime value={ props.item.arrival_time } /></p>
             </div>
         </div>
-  );
+    );
 };
 
 export default ResultBox;

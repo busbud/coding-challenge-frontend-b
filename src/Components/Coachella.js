@@ -1,16 +1,16 @@
-import React, { Component, useState, useEffect, useRef } from "react";
-import {
-    FormattedMessage
-} from 'react-intl';
-
+import React, { useState, useEffect, useRef } from "react";
+import { FormattedMessage } from 'react-intl';
 
 import Departures from './Departures';
+import SearchDestination from './SearchDestination';
+import SearchParameters from './SearchParameters';
 
-import { ReactComponent as CoachellaLogo } from '../assets/imgs/coachella-logo.svg';
+import { ReactComponent as Bus} from '../assets/svg/icons/bus.svg';
 
 const currentDateTime = new Date().toISOString().split('T');
 const currentDate = currentDateTime[0].split('-');
-let searchDate = `${currentDate[0]}-${currentDate[1]}-${parseInt(currentDate[2]) + 6}`;
+// +7 days because the festival will be in 11 days, it takes 2 to 3 days to get there by bus and we want to arrive at least the day before
+let searchDate = `${currentDate[0]}-${currentDate[1]}-${parseInt(currentDate[2]) + 7}`;
 
 // Hook from https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 function useInterval(callback, delay) {
@@ -41,7 +41,7 @@ export default function Coachella() {
     const [newDeparturesId, updateNewDeparturesId] = useState([]);
 
     useInterval(async () => {
-        const url = `https://napi.busbud.com/x-departures/dr5reg/9zvxvs/${searchDate}${polling || refreshing ? '/poll?index=10' : ''}`;
+        const url = `https://napi.busbud.com/x-departures/dr5reg/9mvrg6/${searchDate}${polling || refreshing ? '/poll?index=10' : ''}`;
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -63,12 +63,14 @@ export default function Coachella() {
         }
 
         if (json.complete === true) {
-            let newIds = [];
-            json.departures.map((departure) => (
-                newDeparturesId.push(departure.id)
-            ))
+            if (refreshing) {
+                json.departures.map((departure) => (
+                    newDeparturesId.push(departure.id)
+                ))
 
-            updateNewDeparturesId(newDeparturesId);
+                updateNewDeparturesId(newDeparturesId);
+            }
+
             updatePolling(false);
 
             updateRefreshing(false);
@@ -81,81 +83,58 @@ export default function Coachella() {
     return (
         <div className="roadToOsheaga-coachella--container">
             <header className="roadToOsheaga-coachella--header-container">
-                <CoachellaLogo className="roadToOsheaga-coachella--header-logo" />
-                <h2>
-                    <FormattedMessage
-                        id="coachella.title"
-                        defaultMessage="Almost there!"
-                    />
-                </h2>
-                <p className="roadToOsheaga-coachella--header-description">
-                    <FormattedMessage
-                        id="coachella.description"
-                        defaultMessage="Few days away."
-                    />
-                </p>
-                <div className="roadToOsheaga-coachella--search-container">
-                    <form className="roadToOsheaga-coachella--search-form">
-                        <div className="roadToOsheaga-coachella--search-form--section">
-                            <label htmlFor="origin-city">
-                                <FormattedMessage id="coachella.city.origin.title" defaultMessage="Departure:" />
-                            </label>
-                            <input
-                                id="origin-city"
-                                disabled
-                                type="text"
-                                name="origin-city"
-                                value={ results.cities ? results.cities[0].name : '' }
-                            />
-                        </div>
-                        <div className="roadToOsheaga-coachella--search-form--section">
-                            <label htmlFor="destination-city">
-                                <FormattedMessage id="coachella.city.destination.title" defaultMessage="Destination:" />
-                            </label>
-                            <input
-                                id="destination-city"
-                                disabled
-                                type="text"
-                                name="destination-city"
-                                value={ results.cities ? results.cities[1].name : '' }
-                            />
-                        </div>
-                        <div className="roadToOsheaga-coachella--search-form--section">
-                            <label htmlFor="leaving-date">
-                                <FormattedMessage id="coachella.leaving.date.title" defaultMessage="Date:" />
-                            </label>
-                            <input
-                                disabled
-                                id="leaving-date"
-                                type="date"
-                                name="leaving-date"
-                                value={ searchDate }
-                            />
-                        </div>
-                    </form>
-                    <div className="roadToOsheaga-coachella--search-button--container">
-                        <button
-                            className="roadToOsheaga-coachella--search-form--button"
-                            onClick={
-                                () => {
-                                    updateRefreshing(true);
-                                }
+                <div className="roadToOsheaga-coachella--header-container-left">
+                    <h2>
+                        <FormattedMessage
+                            id="coachella.title"
+                            defaultMessage="Almost there!"
+                        />
+                    </h2>
+                    <p className="roadToOsheaga-coachella--header-description">
+                        <FormattedMessage
+                            id="coachella.description"
+                            defaultMessage="Few days away."
+                        />
+                    </p>
+                </div>
+                <div className="roadToOsheaga-coachella--header-container-right">
+                    <form className="roadToOsheaga-coachella--search-destination">
+                        <SearchDestination
+                            name='origin-city'
+                            value={
+                                results.cities ?
+                                    results.cities[0].short_name : '...'
                             }
-                        >
-                            <FormattedMessage
-                                id="commons.Update"
-                                defaultMessage="Update"
-                            />
-                        </button>
-                    </div>
+                            messageId="coachella.outbound"
+                        />
+                        <SearchDestination
+                            name='destination-city'
+                            value={
+                                results.cities ?
+                                    results.cities[1].short_name : '...'
+                            }
+                            messageId="coachella.inbound"
+                        />
+                    </form>
                 </div>
             </header>
             <div className="roadToOsheaga-coachella--content-container">
+                <div className="roadToOsheaga-coachella--content-container-left">
+                    <SearchParameters
+                        searchDate={searchDate}
+                        updateRefreshing={updateRefreshing}
+                    />
+                </div>
+                <div className="roadToOsheaga-coachella--content-container-right">
                 {
                     results && !loading ?
                         results.departures.length > 0 ?
                             <React.Fragment>
-                                { refreshing ? 'Refreshing...' : null }
+                                {
+                                    refreshing ?
+                                        <Bus className="loader loader-bus" /> :
+                                        null
+                                }
                                 <Departures
                                     departures={
                                         results
@@ -182,8 +161,9 @@ export default function Coachella() {
                                 />
                             </React.Fragment> :
                             null :
-                        <p>Loading</p>
-                }
+                        <Bus className="loader loader-bus" />
+                    }
+                </div>
             </div>
         </div>
     );

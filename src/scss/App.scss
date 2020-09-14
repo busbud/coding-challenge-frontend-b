@@ -36,38 +36,39 @@
     flex-direction: column;
     justify-content: center;
 
-    background-image: url(../assets/imgs/osheaga.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: #FFFFFF;
+    background-color: $primary-color;
 
     padding: 15%;
     color: #FFFFFF;
     text-align: center;
+
+    h1 {
+      color: #FFFFFF;
+    }
+
+    p {
+      color: #FFFFFF;
+    }
+
+    .roadToOsheaga-home--button {
+      background-color: $primary-color-dark;
+
+      &:hover {
+        background-color: $primary-color;
+      }
+    }
   }
 
   .roadToOsheaga-coachella--container {
     .roadToOsheaga-coachella--header-container {
       display: flex;
       flex-direction: column;
-      align-items: center;
-
-      padding: 50px 0;
-      min-height: 300px;
 
       @include md {
-        min-height: 400px;
+        flex-direction: row;
       }
 
-      background-image: url(../assets/imgs/coachella.jpeg);
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-      background-color: #FFFFFF;
-
+      background-color: $primary-color;
       color: #FFFFFF;
 
       h2 {
@@ -76,111 +77,257 @@
         text-align: center;
       }
 
-      .roadToOsheaga-coachella--header-description {
-        max-width: 70%;
-        margin: 20px auto 40px auto;
+      .roadToOsheaga-coachella--header-container-left {
+        padding: 50px 0;
+        flex: 1;
+
+        text-align: center;
+        background-color: $primary-color-dark;
+
+        .roadToOsheaga-coachella--header-description {
+          max-width: 70%;
+          margin: 20px auto 40px auto;
+        }
       }
 
-      .roadToOsheaga-coachella--header-logo {
-        width: 50%;
-      }
-
-      .roadToOsheaga-coachella--search-form {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        justify-content: center;
+      .roadToOsheaga-coachella--header-container-right {
+        flex: 1;
 
         @include md {
-          flex-direction: row;
+            flex: 2;
         }
 
-        .roadToOsheaga-coachella--search-form--section {
+        .roadToOsheaga-coachella--search-destination {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: column;
+          justify-content: center;
+
+          @include lg {
+            flex-direction: row;
+          }
+
+          height: 100%;
+          align-items: center;
+
+          .roadToOsheaga-coachella--search-destination--section {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex: 1;
+            align-items: center;
+
+            height: 30%;
+            padding-left: 0px;
+
+            @include md {
+              flex-direction: column;
+              height: 100%;
+              align-items: flex-start;
+              flex-wrap: wrap;
+              width: 40%;
+            }
+
+            @include lg {
+              padding-left: 50px;
+            }
+
+            .roadToOsheaga-coachella--search-destination--input--container {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+
+              height: 100px;
+
+              border: 0;
+              padding: 0;
+
+              @include md {
+                border-left: 4px solid #FFFFFF;
+                padding-left: 30px;
+              }
+
+              input {
+                height: 25px;
+                border: 0;
+                background-color: transparent;
+                color: #FFFFFF;
+
+                &.roadToOsheaga-coachella--search-destination--city {
+                  font-family: 'PlayfairDisplay-Bold', serif;
+                  font-size: 1.5em;
+                }
+              }
+
+              .roadToOsheaga-coachella--search-destination--icon {
+                height: 10px;
+                opacity: 0.5;
+
+                [stroke] {
+                  color: #FFFFFF;
+                }
+              }
+
+              .roadToOsheaga-coachella--search-destination--legend {
+                font-size: 0.8em;
+                text-transform: uppercase;
+                color: #FFFFFF;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .roadToOsheaga-coachella--content-container {
+      display: flex;
+      flex-direction: column;
+
+      @include md {
+        flex-direction: row;
+      }
+
+      .roadToOsheaga-coachella--content-container-left {
+        width: 100%;
+        max-height: 100vh;
+        background-color: $light-gray;
+
+        @include md {
+          width: 50%;
+
+        }
+
+        .roadToOsheaga-coachella--search-parameters-container {
           display: flex;
           flex-direction: column;
+          padding: 50px 20px;
+          align-items: center;
 
-          input {
-            padding: 5px;
-            height: 20px;
+          @include md {
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+
+          .roadToOsheaga-coachella--search-parameters-input-container {
+            display: flex;
+            align-items: center;
+
+            .roadToOsheaga-coachella--search-parameters-input--icon {
+              height: 20px;
+            }
+
+            .roadToOsheaga-coachella--search-parameters-input--content {
+              input {
+                height: 25px;
+                border: 0;
+                background-color: transparent;
+
+                &.roadToOsheaga-coachella--search-parameters-input--date {
+                  font-family: 'PlayfairDisplay-Bold', serif;
+                  font-size: 1.5em;
+                }
+              }
+
+              .roadToOsheaga-coachella--search-parameters-input--legend {
+                font-size: 0.8em;
+                text-transform: uppercase;
+              }
+            }
+
           }
         }
       }
 
-      .roadToOsheaga-coachella--search-button--container {
-        text-align: center;
-      }
-    }
+      .roadToOsheaga-coachella--content-container-right {
+        width: 100%;
 
-  .roadToOsheaga-coachella--content-container {
-        padding: 10px;
+        @include md {
+          width: 40%;
+        }
+
         margin: auto;
-        width: 80%;
-        text-align: center;
+      }
 
       .roadToOsheaga-coachella--results-container {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        flex-direction: column;
+        margin: 30px auto;
 
         .roadToOsheaga-coachella--results-box {
-            width: 100%;
+          display: flex;
+          justify-content: center;
 
-            @include md {
-              width: 220px;
-            }
+          margin: auto;
+          padding: 10px;
 
-            margin: 10px;
-            background-color: $light-gray;
+          transition: all 0.5s ease-in-out;
 
-            transition: all 0.5s ease-in-out;
+          &:hover {
+            cursor: pointer;
+            box-shadow: 0px 0px 8px 1px $gray;
+          }
 
-            &:hover {
-              opacity: 0.8;
-              cursor: pointer;
-            }
-
-              &.roadToOsheaga-coachella--results-box-cheapest {
-                .roadToOsheaga-coachella--results-box--content {
-                  background-color: #81C784;
-                }
+          &.roadToOsheaga-coachella--results-box-cheapest {
+            .roadToOsheaga-coachella--results-box--left-container {
+              &.roadToOsheaga-coachella--results-box--price {
+                color: $green;
               }
+            }
+          }
 
-              &.roadToOsheaga-coachella--results-box-new-departures {
-                box-shadow: 1px 1px 1px;
-              }
+          &.roadToOsheaga-coachella--results-box-new-departure {
+            box-shadow: 0px 0px 8px 1px $primary-color;
+          }
 
-            .roadToOsheaga-coachella--results-box--header, .roadToOsheaga-coachella--results-box--footer {
+          .roadToOsheaga-coachella--results-box--left-container {
+            &.roadToOsheaga-coachella--results-box--price {
               display: flex;
+              align-items: center;
+            }
+          }
+
+          .roadToOsheaga-coachella--results-box--right-container {
+            padding: 20px 30px;
+
+            .roadToOsheaga-coachella--results-box--right-container--timetable {
+              display: flex;
+              align-items: baseline;
               justify-content: space-between;
 
-              padding: 5px;
+              span {
+                display: block;
 
-              p {
-                font-size: 0.8em;
+                font-size: 0.5em;
+                opacity: 0.5;
+              }
+
+              .roadToOsheaga-coachella--results-box--right-container--icon {
+                height: 10px;
+                margin: 0 10px;
               }
             }
 
-            .roadToOsheaga-coachella--results-box--header {
-              background-color: $primary-color;
-            }
+            .roadToOsheaga-coachella--results-box--right-container--details-container {
+              display: flex;
 
-            .roadToOsheaga-coachella--results-box--from, .roadToOsheaga-coachella--results-box--to {
-              text-align: center;
-              padding: 5px 0;
+              margin: 5px 0;
 
-              p {
-                font-size: 0.8em;
+              font-size: 0.8em;
+
+              .roadToOsheaga-coachella--results-box--right-container--details {
+                &.roadToOsheaga-coachella--results-box--details--class {
+                  font-family: 'Poppins-Light', sans-serif;
+                  margin-right: 10px;
+                  font-style: italic;
+                }
+
+                &.roadToOsheaga-coachella--results-box--details--operator {
+                  font-family: 'Poppins-Regular', sans-serif;
+                  margin-left: 10px;
+                }
               }
             }
-
-            .roadToOsheaga-coachella--results-box--content {
-              padding: 20px 10px;
-              text-align: center;
-
-              p {
-                font-size: 1.8em;
-              }
-            }
+          }
         }
       }
     }

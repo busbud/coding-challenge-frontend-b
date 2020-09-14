@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+
 import ResultBox from './ResultBox';
 
 const Departures = props => {
@@ -11,20 +12,23 @@ const Departures = props => {
                         (itemA, itemB) => (
                             itemA.departure_time > itemB.departure_time ? 1 : -1
                         )
-                    ).map(
+                    )
+                    .map(
                         (item) => (
                             <ResultBox
                                 key={item.id}
                                 item={item}
                                 locations={props.locations}
-                                operator={props.operators.find((operator) => (operator.id ===item.operator_id))}
+                                operator={
+                                    props.operators.find((operator) => (operator.id ===item.operator_id))
+                                }
                                 newDeparture={props.newDeparturesId.includes(item.id)}
                                 cheapestItem={
                                     Math.min( ...props.departures.map((item) => (item.prices.total)) )
                                 }
                             />
                         )
-                )
+                    )
             }
         </div>
     )

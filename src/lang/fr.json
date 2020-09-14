@@ -1,17 +1,14 @@
 {
     "commons.Update": "Rafraîchir",
-    "home.Cancellation.header": "Oh no!",
-    "home.Cancellation.message": "Unfortunatelly, the borders are currently closed due to COVID-19. You won't be able to attend Osheaga this year.",
-    "home.Cancellation.solution.title": "Mais ne t'inquiète pas, on a la solution :",
+    "commons.passenger": "Passager",
+    "home.Cancellation.header": "Oh non !",
+    "home.Cancellation.message": "Les frontières sont actuellement fermées à cause de la COVID-19. Tu ne pourras malheureusement pas te rendre à Osheaga cette année.",
+    "home.Cancellation.solution.title": "Mais ne t'inquiètes pas, on a la solution :",
     "home.Cancellation.solution.message": "Tu peux te rendre à <b>Coachella !</b>",
-    "home.redirection.message": "Cliques ici pour débuter ton voyage à Coachella",
+    "home.redirection.message": "Clique ici pour débuter ton voyage à Coachella",
     "coachella.title": "Tu y es presque !",
-    "coachella.description": "Coachella is just 7 days away! Book your ticket now to be part of one of the biggest musical event in the world!",
-    "coachella.city.origin": "New York City",
-    "coachella.city.origin.title": "Départ",
-    "coachella.city.destination": "Indio",
-    "coachella.city.destination.title": "Destination",
-    "coachella.leaving.date.title": "Date",
-    "coachella.city.from": "De:",
-    "coachella.city.to": "À:"
+    "coachella.description": "Coachella est juste dans 11 jours ! Achète maintenant ton billet pour faire partie de l'un des plus grands évènements musicaux au monde !",
+    "coachella.outbound.date": "Date de départ",
+    "coachella.outbound": "Départ",
+    "coachella.inbound": "Arrivée"
 }
