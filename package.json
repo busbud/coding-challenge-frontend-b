@@ -1,0 +1,43 @@
+{
+  "name": "coding-test-busbud-frontend",
+  "version": "1.1.0",
+  "description": "Simple React+TypeScript App allowing to search search for bus tickets to the Osheaga festival",
+  "keywords": [
+    "react",
+    "typescript",
+    "react-fetch-hook",
+    "react-hook-form",
+    "chakra-ui",
+    "busbud"
+  ],
+  "main": "src/index.tsx",
+  "dependencies": {
+    "@chakra-ui/core": "0.8.0",
+    "@emotion/core": "10.0.35",
+    "@emotion/styled": "10.0.27",
+    "emotion-theming": "10.0.27",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-fetch-hook": "1.8.3",
+    "react-hook-form": "6.8.5",
+    "react-scripts": "3.4.3"
+  },
+  "devDependencies": {
+    "@hookform/devtools": "2.2.1",
+    "@types/node": "14.11.2",
+    "@types/react": "16.9.49",
+    "typescript": "4.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
