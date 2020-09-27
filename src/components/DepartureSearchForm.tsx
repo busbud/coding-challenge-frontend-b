@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { departureService } from "../services/departureService";
 import { squashSearchResults } from "../utils/squashSearchResults";
+import svgPerson from "../assets/person.svg";
 
 interface DestinationOption {
   name: string;
@@ -22,6 +23,7 @@ export const DepartureSearchForm: FC<Props> = ({
     origin: PROMOTION_ORIGINS[0].geohash,
     destination: PROMOTION_DESTINATION.geohash,
     outboundDate: today,
+    adults: 1,
   };
 
   const [formValues, setFormValues] = useState<DepartureSearchInitParams>(
@@ -98,6 +100,18 @@ export const DepartureSearchForm: FC<Props> = ({
               className="w-full sm:w-auto px-2 py-2 mb-2 h-10"
               onChange={updateFormValues}
             />
+            <div className="h-10 bg-white flex items-center">
+              <img src={svgPerson} className="h-6" />
+              <input
+                type="number"
+                name="adults"
+                min="1"
+                max="10"
+                value={formValues.adults}
+                className="w-12 px-2"
+                onChange={updateFormValues}
+              />
+            </div>
             <input
               type="submit"
               className="cursor-pointer px-6 py-2 mb-2 h-10 bg-bb-orange text-white "

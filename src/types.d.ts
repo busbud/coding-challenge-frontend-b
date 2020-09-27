@@ -52,6 +52,7 @@ interface DepartureSearchInitParams {
   origin: string;
   destination: string;
   outboundDate: string;
+  adults: number;
 }
 interface DepartureSearchPollParams extends DepartureSearchInitParams {
   index: number;

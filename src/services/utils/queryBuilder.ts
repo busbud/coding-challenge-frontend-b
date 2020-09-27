@@ -3,15 +3,17 @@ export const queryBuilder = {
     origin,
     destination,
     outboundDate,
+    adults,
   }: DepartureSearchInitParams): string => {
-    return `x-departures/${origin}/${destination}/${outboundDate}?adults=1`;
+    return `x-departures/${origin}/${destination}/${outboundDate}?adult=${adults}`;
   },
   searchPoll: ({
     origin,
     destination,
     outboundDate,
+    adults,
     index,
   }: DepartureSearchPollParams): string => {
-    return `x-departures/${origin}/${destination}/${outboundDate}?index=${index}&adults=1`;
+    return `x-departures/${origin}/${destination}/${outboundDate}?index=${index}&adult=${adults}`;
   },
 };
