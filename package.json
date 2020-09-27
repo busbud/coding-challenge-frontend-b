@@ -1,0 +1,54 @@
+{
+  "name": "challenge",
+  "version": "0.1.0",
+  "private": true,
+  "engine": "v12.18.3",
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/humanize-duration": "^3.18.1",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-loader-spinner": "^3.1.0",
+    "axios": "^0.20.0",
+    "express": "^4.17.1",
+    "humanize-duration": "^3.23.1",
+    "moment": "^2.29.0",
+    "moment-timezone": "^0.5.31",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-loader-spinner": "^3.1.14",
+    "react-reveal": "^1.2.2",
+    "react-scripts": "3.4.3",
+    "tailwindcss": "^1.8.10",
+    "ts-money": "^0.4.6",
+    "typescript": "^4.0.3"
+  },
+  "scripts": {
+    "tailwind:css": "tailwind build src/App.css -c tailwind.config.js -o src/index.css",
+    "start": "yarn tailwind:css && node server.js",
+    "dev": "yarn tailwind:css && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "typecheck": "tsc --noemit"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

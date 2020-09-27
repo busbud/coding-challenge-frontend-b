@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-200 text-off-black;
+  }
+}
