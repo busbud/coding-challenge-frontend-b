@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  festival-tracker:
+    container_name: festival-tracker
+    image: festival-tracker:latest
+    build: 
+      context: ./festival-tracker
+    ports :
+      - 80:80

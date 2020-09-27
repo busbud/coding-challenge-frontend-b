@@ -1,4 +1,4 @@
 build:
   docker:
-    web: ./festival-tracker/Dockerfile
+    festival-tracker: ./festival-tracker/Dockerfile
     
