@@ -11,7 +11,7 @@ const searchInit = async (
 ): Promise<DepartureSearchResponse | void> => {
   return departureDao.searchInit(params);
 };
-// TODO: error handling
+
 export const departureService = {
   search: (
     values: DepartureSearchInitParams
@@ -22,36 +22,44 @@ export const departureService = {
     return new Promise((resolve, reject) => {
       let responseArr: DepartureSearchResponse[] = [];
 
-      searchInit(values).then((res) => {
-        if (res) {
-          responseArr.push(res);
-          if (res && res.complete) {
-            complete = true;
-          } else if (res) {
-            lastIndex = res.departures.length ? res.departures.length - 1 : 0;
-          } else {
-            reject("Error: something went wrong on search init");
+      searchInit(values)
+        .then((res) => {
+          if (res) {
+            responseArr.push(res);
+            if (res && res.complete) {
+              complete = true;
+            } else if (res) {
+              lastIndex = res.departures.length ? res.departures.length - 1 : 0;
+            } else {
+              reject("Error: something went wrong on search init");
+            }
           }
-        }
-      });
+        })
+        .catch((e) => {
+          reject(e);
+        });
 
       if (complete) {
         resolve(responseArr);
       }
       const poll = async () => {
-        await searchPoll({ ...values, index: lastIndex }).then((res) => {
-          if (res) {
-            responseArr.push(res);
-            if (res && res.complete) {
-              complete = true;
+        await searchPoll({ ...values, index: lastIndex })
+          .then((res) => {
+            if (res) {
+              responseArr.push(res);
+              if (res && res.complete) {
+                complete = true;
+              } else {
+                lastIndex = res.departures.length - 1;
+              }
+              continuePollingForCompletion();
             } else {
-              lastIndex = res.departures.length - 1;
+              reject("something horrible happened");
             }
-            continuePollingForCompletion();
-          } else {
-            reject("something horrible happened");
-          }
-        });
+          })
+          .catch((e) => {
+            reject(e);
+          });
       };
 
       const continuePollingForCompletion = () => {

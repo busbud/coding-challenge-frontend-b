@@ -40,19 +40,19 @@ const DepartureCard: FC<Props> = ({
   // Build terminal location strings
   const originString = originCity && originLocation && (
     <span>
-      {originCity.name}- {originLocation.name}
+      {originCity.name} - {originLocation.name}
     </span>
   );
   const destinationString = destinationCity && destinationLocation && (
     <span>
-      {originCity.name}- {destinationLocation.name}
+      {destinationCity.name} - {destinationLocation.name}
     </span>
   );
 
   return (
     <div className="mx-0 p-6 w-full shadow-md max-w-screen-sm md:max-w-screen-md bg-white m-2">
       <div className="flex justify-between">
-        <div className="mr-4 md:mr-10">
+        <div className="mr-4 md:mr-20">
           {operator && (
             <img
               src={operator.logo_url}
@@ -81,7 +81,7 @@ const DepartureCard: FC<Props> = ({
           <p className="text-bb-blue font-bold text-xl">{price}</p>
           <button
             className="cursor-pointer bg-bb-orange text-white px-6 py-2"
-            onClick={() => alert(NO_BEANS)}
+            onClick={() => alert(NOPE)}
           >
             Select
           </button>
@@ -91,7 +91,7 @@ const DepartureCard: FC<Props> = ({
   );
 };
 
-const NO_BEANS =
+const NOPE =
   "This is Fauxsheaga, not Fyre Festival. We aren't going to charge you for a fake music extravaganza.";
 
 export default DepartureCard;

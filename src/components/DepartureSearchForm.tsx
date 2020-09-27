@@ -47,10 +47,13 @@ export const DepartureSearchForm: FC<Props> = ({
 
     setSearchResult(null);
     setLoading(true);
-    const responses = await departureService.search(formValues);
-
-    const finalResult = squashSearchResults(responses);
-    setSearchResult(finalResult);
+    const responses = await departureService
+      .search(formValues)
+      .catch((e) => alert(e));
+    if (responses) {
+      const finalResult = squashSearchResults(responses);
+      setSearchResult(finalResult);
+    }
     setLoading(false);
   };
 
