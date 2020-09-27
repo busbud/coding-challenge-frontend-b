@@ -10,7 +10,7 @@ const DepartureOutput: FC<Props> = ({ searchResult }) => {
   const departuresLength = searchResult.departures.length;
 
   const successMessage = (
-    <p className="text-bb-blue font-semibold mb-4">
+    <p className="text-bb-blue font-semibold mb-4 mt-4 sm:mt-0">
       Found {departuresLength} departure{departuresLength > 1 && "s"} for the
       above date.
     </p>
