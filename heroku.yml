@@ -1,5 +1,4 @@
 build:
   docker:
     web: ./festival-tracker/Dockerfile
-run:
-  web: bundle exec puma -C config/puma.rb
+    
