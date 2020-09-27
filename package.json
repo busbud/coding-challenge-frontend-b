@@ -7,10 +7,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/humanize-duration": "^3.18.1",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-loader-spinner": "^3.1.0",
     "axios": "^0.20.0",
     "express": "^4.17.1",
     "humanize-duration": "^3.23.1",
@@ -21,6 +23,7 @@
     "react-loader-spinner": "^3.1.14",
     "react-reveal": "^1.2.2",
     "react-scripts": "3.4.3",
+    "tailwindcss": "^1.8.10",
     "ts-money": "^0.4.6",
     "typescript": "^4.0.3"
   },
@@ -47,10 +50,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/humanize-duration": "^3.18.1",
-    "@types/react-loader-spinner": "^3.1.0",
-    "tailwindcss": "^1.8.10"
   }
 }
