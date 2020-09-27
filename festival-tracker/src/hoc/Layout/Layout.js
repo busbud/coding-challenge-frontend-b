@@ -1,14 +1,14 @@
 import React from 'react'
 import classes from './Layout.module.sass'
-import logoOsheaga from '../../shared/images/osheaga.png'
+import Toolbar from '../Toolbar/Toolbar'
 
 const Layout = ({ children }) => {
   return (
-    <div className={classes.Content}>
-      <div className={classes.LogoContainer}>
-        <img className={classes.Logo} src={logoOsheaga} alt='Osheaga festival' />
+    <div className={classes.Layout}>
+      <Toolbar />
+      <div className={classes.Content}>
+        {children}
       </div>
-      {children}
     </div>
   )
 }

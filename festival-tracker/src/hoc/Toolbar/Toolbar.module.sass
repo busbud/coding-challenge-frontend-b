@@ -1,0 +1,33 @@
+.Toolbar
+  height: 10vh
+  width: 100vw
+  background-color: #1991fc
+  padding: 0 20px
+  display: flex
+  .LogoContainer
+    height: 90%
+    padding: 5px 0
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    .Logo
+      height: 100%
+      max-width: 100%
+  .ButtonFrench, .ButtonEnglish
+    display: inline-block
+    // background-color: red
+    color: white
+    height: 100%
+    float: right
+    padding: 0 25px
+    display: flex
+    justify-content: center
+    align-items: center
+    &:hover
+      cursor: pointer
+      background-color: white
+      color: black
+    &.Active
+      background-color: white
+      color: black

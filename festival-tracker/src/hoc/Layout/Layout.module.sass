@@ -1,16 +1,10 @@
 @import '../../shared/sass/index.sass'
 
-.Content
+.Layout
   min-height: 100vh
   background-color: $primary-color
   color: $text-color
-  .LogoContainer
-    height: 15vh
-    padding: 3vh 0
-    width: 100%
-    display: flex
-    align-items: center
-    justify-content: center
-    .Logo
-      height: 100%
-      max-width: 100%
+  .Content  
+    padding: 0 10vw
+    @media (max-width: 767px)
+      padding: 0 5vw

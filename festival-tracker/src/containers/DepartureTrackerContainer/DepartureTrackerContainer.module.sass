@@ -1,9 +1,41 @@
+.Instructions
+  // font-weight: 600
+  margin-top: 20px
+  font-size: 1.2rem
 
 .Container
   display: flex
+  flex-direction: column
   .Form
-    width: 50%
-    max-width: 600px
+    width: 100%
+    margin-bottom: 10px
+    .SearchButton
+      height: 50px
+      margin: 10px 0
+    .FormGroup
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      margin: 5px 0
+      @media (max-width: 767px)
+        flex-wrap: wrap
+      .FormItem
+        width: 100%
+        padding: 0 2px
+        input, > div
+          width: 100%
   .Departures
-    width: 50%
-    max-width: 600px
+    width: 100%
+    .NavigationButtons
+      display: flex
+      .NavigationButton
+        width: 100%
+        height: 50px
+        margin-bottom: 10px
+    .DepartureBlocks
+      min-height: 20vh
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      width: 100%

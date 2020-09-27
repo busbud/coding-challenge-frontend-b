@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Dropdown from 'react-dropdown'
+import moment from 'moment'
 import axios from '../../axios-instance'
-import { Button, Typography, DatePicker, InputNumber, Spin } from 'antd'
+import { Button, DatePicker, InputNumber } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
+
+import Departure from '../../components/Departure/Departure'
+import Loading from '../../components/Loading/Loading'
 
 import classes from './DepartureTrackerContainer.module.sass'
 
 const geohashMtl = 'f25dvk'
-const geohashNY = 'dr5reg'
+// const geohashNY = 'dr5reg'
 const geohashQC = 'f2m673'
 
 const optionsCities = [
@@ -26,85 +30,183 @@ const optionsCountry = [
   { value: 'CA', label: 'Canada' }
 ]
 
-const { Title } = Typography
-
 const DepartureTracker = () => {
   const [loading, changeLoading] = useState(false)
   const [departures, changeDepartures] = useState([])
-  const [origin, changeOrigin] = useState(geohashMtl)
-  const [destination, changeDestination] = useState(geohashNY)
+  const [operators, changeOperators] = useState([])
+  const [origin, changeOrigin] = useState(geohashQC)
+  const [destination, changeDestination] = useState(geohashMtl)
   const [adult, changeAdult] = useState(1)
   const [child, changeChild] = useState(0)
   const [senior, changeSenior] = useState(0)
+  const [pollIndex, changePollIndex] = useState(0)
+  const [completeStatus, changeCompleteStatus] = useState(true)
+  // ISO 4217 currency code
   const [currency, changeCurrency] = useState('CAD')
+  // ISO 3166-1 alpha-2 language code
   const [country, changeCountry] = useState('CA')
   const now = new Date()
   const currentDate = now.toISOString().substring(0, 10)
   const [date, changeDate] = useState(currentDate)
 
+  // /**
+  //  * Poll search will change when next page of departures is requested
+  //  */
+  // useEffect(() => {
+  //   pollSearch()
+  // }, [pollIndex])
+
+  /**
+   * Launch a new search of bus departures with current settings
+   */
   const launchSearch = () => {
-    // ISO 3166-1 alpha-2 language code
-    const lang = 'CA'
-    // ISO 4217 currency code
-    const currency = 'USD'
     changeLoading(true)
+    changeCompleteStatus(true)
     axios.get(`/x-departures/${origin}/${destination}/${date}`, {
       params: {
         adult,
         child,
+        child_ages: `${'10,'.repeat(child).slice(0, -1)}`,
         senior,
-        lang,
+        senior_ages: `${'75,'.repeat(senior).slice(0, -1)}`,
+        lang: country,
         currency
       }
     })
       .then(res => {
-        changeLoading(false)
-        changeDepartures(res.data)
-        console.log(res)
+        pollSearch(0)
       })
       .catch(err => {
+        changeDepartures([])
         changeLoading(false)
         console.log(err)
       })
   }
 
-  let departuresBlocks = <Spin size='large' />
+  /**
+   * Poll the next 10 result from the current search (based on pollIndex)
+   * This function is automatically triggered when pollIndex change
+   */
+  const pollSearch = (newPollIndex) => {
+    changePollIndex(newPollIndex)
+    changeLoading(true)
+    axios.get(`/x-departures/${origin}/${destination}/${date}/poll`, {
+      params: {
+        adult,
+        child,
+        child_ages: `${'10,'.repeat(child).slice(0, -1)}`,
+        senior,
+        senior_ages: `${'75,'.repeat(senior).slice(0, -1)}`,
+        lang: country,
+        currency,
+        index: newPollIndex
+      }
+    })
+      .then(res => {
+        changeDepartures(res.data.departures)
+        changeOperators(res.data.operators)
+        console.log(res.data)
+        changeCompleteStatus(res.data.complete)
+        if (!res.data.complete) {
+          changeLoading(true)
+          setTimeout(() => {
+            pollSearch(newPollIndex)
+          }, 2000)
+        } else {
+          changeLoading(false)
+        }
+      })
+      .catch(err => {
+        changeLoading(false)
+        changeDepartures([])
+        console.log(err)
+      })
+  }
+
+  let departuresBlocks = <Loading />
+  // If the departures are found, we render them in blocks
   if (!loading) {
-    departuresBlocks = <div>{JSON.stringify(departures)}</div>
+    let departuresBlocksRendered = <div>No departures found</div>
+    if (departures.length) {
+      departuresBlocksRendered = departures.map((departure, i) => {
+        return <Departure key={`departure-${i}`} departure={departure} operators={operators} />
+      })
+    }
+    departuresBlocks = (
+      <div className={classes.DepartureBlocks}>
+        {departuresBlocksRendered}
+      </div>
+    )
   }
 
   return (
     <>
-
-      <Title level={2}>Departure Tracker</Title>
+      <div className={classes.Instructions}>Find the best bus ticket to your destination !</div>
       <div className={classes.Container}>
         <div className={classes.Form}>
-          <Title level={4}>Date</Title>
-          <DatePicker onChange={(value) => {
-            changeDate(value.toISOString().substring(0, 10))
-          }}
-          />
-          <Title level={4}>Origin</Title>
-          <Dropdown options={optionsCities} onChange={(object) => changeOrigin(object.value)} value={origin} placeholder='Select an origin' />
-          <Title level={4}>Destination</Title>
-          <Dropdown options={optionsCities} onChange={(object) => changeDestination(object.value)} value={destination} placeholder='Select a destination' />
-          <Title level={4}>Adult</Title>
-          <InputNumber min={0} max={99} defaultValue={adult} onChange={(value) => changeAdult(value)} />
-          <Title level={4}>Child</Title>
-          <InputNumber min={0} max={99} defaultValue={child} onChange={(value) => changeChild(value)} />
-          <Title level={4}>Senior (65+)</Title>
-          <InputNumber min={0} max={99} defaultValue={senior} onChange={(value) => changeSenior(value)} />
-          <Title level={4}>Country</Title>
-          <Dropdown options={optionsCountry} onChange={(object) => changeCountry(object.value)} value={country} placeholder='Select a country' />
-          <Title level={4}>Currency</Title>
-          <Dropdown options={optionsCurrency} onChange={(object) => changeCurrency(object.value)} value={currency} placeholder='Select a currency' />
-          <br /><br />
-          <Button onClick={() => launchSearch()} type='primary' icon={<SearchOutlined />}>
+          <div className={classes.FormGroup}>
+            <div className={classes.FormItem}>
+              <div>Date</div>
+              <DatePicker
+                defaultValue={moment(date)} onChange={(value) => {
+                  changeDate(value?.toISOString().substring(0, 10))
+                }}
+              />
+            </div>
+          </div>
+          <div className={classes.FormGroup}>
+            <div className={classes.FormItem}>
+              <div>Origin</div>
+              <Dropdown options={optionsCities} onChange={(object) => changeOrigin(object.value)} value={origin} placeholder='Select an origin' />
+            </div>
+            <div className={classes.FormItem}>
+              <div>Destination</div>
+              <Dropdown options={optionsCities} onChange={(object) => changeDestination(object.value)} value={destination} placeholder='Select a destination' />
+            </div>
+          </div>
+          <div className={classes.FormGroup}>
+            <div className={classes.FormItem}>
+              <div>Adult</div>
+              <InputNumber min={0} max={99} defaultValue={adult} onChange={(value) => changeAdult(value)} />
+            </div>
+            <div className={classes.FormItem}>
+              <div>Child</div>
+              <InputNumber min={0} max={99} defaultValue={child} onChange={(value) => changeChild(value)} />
+            </div>
+            <div className={classes.FormItem}>
+              <div>Senior (65+)</div>
+              <InputNumber min={0} max={99} defaultValue={senior} onChange={(value) => changeSenior(value)} />
+            </div>
+          </div>
+          <div className={classes.FormGroup}>
+            <div className={classes.FormItem}>
+              <div>Country</div>
+              <Dropdown options={optionsCountry} onChange={(object) => changeCountry(object.value)} value={country} placeholder='Select a country' />
+            </div>
+            <div className={classes.FormItem}>
+              <div>Currency</div>
+              <Dropdown options={optionsCurrency} onChange={(object) => changeCurrency(object.value)} value={currency} placeholder='Select a currency' />
+            </div>
+          </div>
+          <Button className={classes.SearchButton} onClick={() => launchSearch()} type='primary' icon={<SearchOutlined />}>
             Search
           </Button>
-          <br /><br />
         </div>
         <div className={classes.Departures}>
+          <div className={classes.NavigationButtons}>
+            <Button className={classes.NavigationButton} disabled={pollIndex === 0} onClick={() => pollSearch(pollIndex - 10 > 0 ? pollIndex - 10 : 0)} type='primary'>
+                Previous
+            </Button>
+            <Button
+              className={classes.NavigationButton}
+              // Should be disabled by default but for testing purpose it is enabled
+              // disabled={completeStatus}
+              onClick={() => pollSearch(pollIndex + 10)}
+              type='primary'
+            >
+              Next
+            </Button>
+          </div>
           {departuresBlocks}
         </div>
       </div>

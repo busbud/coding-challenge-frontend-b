@@ -1,0 +1,1021 @@
+[
+  {
+    "amenities": {
+      "display_name": "Flex",
+      "wifi": false,
+      "toilet": true,
+      "ac": true,
+      "refreshment": false,
+      "food": false,
+      "hot_meal": false,
+      "power_outlets": true,
+      "tv": false,
+      "bus_attendant": false,
+      "leg_room": true,
+      "small_seat": false,
+      "average_seat": true,
+      "xl_seat": false,
+      "full_recline_seat": false,
+      "carpool": false
+    },
+    "arrival_timezone": "America/Montreal",
+    "available_seats": 11,
+    "vehicle": null,
+    "busbud_departure_id": "13bf644a",
+    "class": "FLEX",
+    "class_name": "Flex",
+    "complete": false,
+    "contractor_name": null,
+    "fare_name": null,
+    "deeplink": null,
+    "departure_timezone": "America/Montreal",
+    "departure_type": "editable-refundable",
+    "destination_location_id": 12189,
+    "duration": 195,
+    "has_search_details": false,
+    "has_layout": null,
+    "has_transfers": false,
+    "has_addons": null,
+    "id": "YTczNGZkMzY6MTNiZjY0NGE",
+    "links": {
+      "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/f2m673/YTczNGZkMzY6MTNiZjY0NGE?outbound_date=2020-09-27&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+    },
+    "num_transfers": 0,
+    "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+    "origin_location_id": 1938,
+    "passenger_questions": [],
+    "schedule_id": null,
+    "sellable": true,
+    "source_id": 262,
+    "ticket_types": [
+      "eticket"
+    ],
+    "departure_time": "2020-09-27T11:00:00",
+    "arrival_time": "2020-09-27T14:15:00",
+    "fetched_at": "2020-09-27T14:26:41.059Z",
+    "search_request_id": "202009271426f714d83aa79124b1df1166e009db3a3df606e829825a6a0f756fefc4906dcbea",
+    "unreliable_duration": null,
+    "has_unmapped_location": null,
+    "data_source": "live",
+    "cache_source": "departure-service",
+    "operator_disclaimers": null,
+    "vehicle_type": "bus",
+    "bus": null,
+    "has_bus_details": null,
+    "prices": {
+      "currency": "CAD",
+      "total": 6869,
+      "categories": {
+        "adult": 5870,
+        "baby": 5870,
+        "child": 5870,
+        "senior": 5870
+      },
+      "discount": 0,
+      "roundtrip_min": null,
+      "roundtrip_min_fees_included": null,
+      "roundtrip_total": null,
+      "roundtrip_total_fees_included": null,
+      "discounted": null,
+      "breakdown": {
+        "base": 5870,
+        "fees": 119,
+        "taxes": 880,
+        "discount": 0
+      }
+    },
+    "trip_stops": [
+      {
+        "arrival_time": null,
+        "departure_time": "2020-09-27T11:00:00",
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 1938,
+        "name": "Montréal (Centre ville)",
+        "transfer": false
+      },
+      {
+        "arrival_time": "2020-09-27T13:50:00",
+        "departure_time": "2020-09-27T13:50:00",
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 17507,
+        "name": "Québec (Sainte-Foy)",
+        "transfer": false
+      },
+      {
+        "arrival_time": "2020-09-27T14:15:00",
+        "departure_time": null,
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 12189,
+        "name": "Québec (centre-ville)",
+        "transfer": false
+      }
+    ],
+    "addons": [],
+    "details": {},
+    "terms": {
+      "type_of_id": "photo_and_full_name",
+      "ticket_requirements": {
+        "eticket": "printed_or_mobile_tkt"
+      },
+      "nb_carry_on": 1,
+      "kg_by_carry_on": null,
+      "nb_checked_bags": 2,
+      "kg_by_bag": 34,
+      "checked_in_size_cm": {
+        "l": 60,
+        "w": 60,
+        "h": 90
+      },
+      "extra_checked_in_fees": {
+        "type": "per_extra_checked_in",
+        "amount": 500
+      },
+      "nb_extra_checked_in": null,
+      "total_checked_in_kg": null,
+      "oversized_luggage": {
+        "allowed": true,
+        "allowed_types": [],
+        "fees": {
+          "type": "flat_fee",
+          "amount": 500
+        },
+        "early_arrival_required": true,
+        "cover_required": true
+      },
+      "animals": {
+        "fees": {
+          "type": "unknown",
+          "amount": null,
+          "percent": null
+        },
+        "main_compartment_allowed": false,
+        "hold_compartment_allowed": false,
+        "main_max_weight_kg": null,
+        "main_small_cage_required": null,
+        "hold_max_weight_kg": null,
+        "vaccination_required": true,
+        "special_animals_allowed": true,
+        "early_arrival_required": true,
+        "specific_hours": null
+      },
+      "refund_policies": [
+        {
+          "type": "self-serve",
+          "flat_fee": null,
+          "flat_fee_currency": "CAD",
+          "percent_fee": 0.25,
+          "cutoff_reference": "departure-date",
+          "cutoff_from": null,
+          "cutoff_to": 1,
+          "external_link": null
+        }
+      ],
+      "refund": true,
+      "refund_cutoff": 1,
+      "exchange_policies": [
+        {
+          "type": "station",
+          "flat_fee": null,
+          "flat_fee_currency": "CAD",
+          "percent_fee": null,
+          "cutoff_reference": "departure-date",
+          "cutoff_from": null,
+          "cutoff_to": 1,
+          "external_link": null
+        }
+      ],
+      "exchange": true,
+      "exchange_cutoff": 1,
+      "exchange_cutoff_at": "2020-09-27T14:00:00.000Z",
+      "refund_cutoff_at": "2020-09-27T14:00:00.000Z",
+      "currency": "CAD",
+      "addons": {},
+      "piece_of_id": true,
+      "boarding_requirement": "printed_or_mobile_tkt",
+      "extra_bag_policy": true,
+      "extra_bag_cost": 500,
+      "extra_bag_kg_cost": null,
+      "bag_allowed": true
+    }
+  },
+  {
+    "amenities": {
+      "display_name": "Flex",
+      "wifi": false,
+      "toilet": true,
+      "ac": true,
+      "refreshment": false,
+      "food": false,
+      "hot_meal": false,
+      "power_outlets": true,
+      "tv": false,
+      "bus_attendant": false,
+      "leg_room": true,
+      "small_seat": false,
+      "average_seat": true,
+      "xl_seat": false,
+      "full_recline_seat": false,
+      "carpool": false
+    },
+    "arrival_timezone": "America/Montreal",
+    "available_seats": 17,
+    "vehicle": null,
+    "busbud_departure_id": "647446aa",
+    "class": "FLEX",
+    "class_name": "Flex",
+    "complete": false,
+    "contractor_name": null,
+    "fare_name": null,
+    "deeplink": null,
+    "departure_timezone": "America/Montreal",
+    "departure_type": "editable-refundable",
+    "destination_location_id": 12189,
+    "duration": 220,
+    "has_search_details": false,
+    "has_layout": null,
+    "has_transfers": false,
+    "has_addons": null,
+    "id": "MmQ2YTljNTk6NjQ3NDQ2YWE",
+    "links": {
+      "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/f2m673/MmQ2YTljNTk6NjQ3NDQ2YWE?outbound_date=2020-09-27&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+    },
+    "num_transfers": 0,
+    "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+    "origin_location_id": 1938,
+    "passenger_questions": [],
+    "schedule_id": null,
+    "sellable": true,
+    "source_id": 262,
+    "ticket_types": [
+      "eticket"
+    ],
+    "departure_time": "2020-09-27T13:00:00",
+    "arrival_time": "2020-09-27T16:40:00",
+    "fetched_at": "2020-09-27T14:26:41.059Z",
+    "search_request_id": "202009271426f714d83aa79124b1df1166e009db3a3df606e829825a6a0f756fefc4906dcbea",
+    "unreliable_duration": null,
+    "has_unmapped_location": null,
+    "data_source": "live",
+    "cache_source": "departure-service",
+    "operator_disclaimers": null,
+    "vehicle_type": "bus",
+    "bus": null,
+    "has_bus_details": null,
+    "prices": {
+      "currency": "CAD",
+      "total": 6869,
+      "categories": {
+        "adult": 5870,
+        "baby": 5870,
+        "child": 5870,
+        "senior": 5870
+      },
+      "discount": 0,
+      "roundtrip_min": null,
+      "roundtrip_min_fees_included": null,
+      "roundtrip_total": null,
+      "roundtrip_total_fees_included": null,
+      "discounted": null,
+      "breakdown": {
+        "base": 5870,
+        "fees": 119,
+        "taxes": 880,
+        "discount": 0
+      }
+    },
+    "trip_stops": [
+      {
+        "arrival_time": null,
+        "departure_time": "2020-09-27T13:00:00",
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 1938,
+        "name": "Montréal (Centre ville)",
+        "transfer": false
+      },
+      {
+        "arrival_time": "2020-09-27T14:45:00",
+        "departure_time": "2020-09-27T15:00:00",
+        "duration": 15,
+        "departure_operator_id": null,
+        "location_id": 12187,
+        "name": "Trois-Rivières",
+        "transfer": false
+      },
+      {
+        "arrival_time": "2020-09-27T16:15:00",
+        "departure_time": "2020-09-27T16:15:00",
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 17507,
+        "name": "Québec (Sainte-Foy)",
+        "transfer": false
+      },
+      {
+        "arrival_time": "2020-09-27T16:40:00",
+        "departure_time": null,
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 12189,
+        "name": "Québec (centre-ville)",
+        "transfer": false
+      }
+    ],
+    "addons": [],
+    "details": {},
+    "terms": {
+      "type_of_id": "photo_and_full_name",
+      "ticket_requirements": {
+        "eticket": "printed_or_mobile_tkt"
+      },
+      "nb_carry_on": 1,
+      "kg_by_carry_on": null,
+      "nb_checked_bags": 2,
+      "kg_by_bag": 34,
+      "checked_in_size_cm": {
+        "l": 60,
+        "w": 60,
+        "h": 90
+      },
+      "extra_checked_in_fees": {
+        "type": "per_extra_checked_in",
+        "amount": 500
+      },
+      "nb_extra_checked_in": null,
+      "total_checked_in_kg": null,
+      "oversized_luggage": {
+        "allowed": true,
+        "allowed_types": [],
+        "fees": {
+          "type": "flat_fee",
+          "amount": 500
+        },
+        "early_arrival_required": true,
+        "cover_required": true
+      },
+      "animals": {
+        "fees": {
+          "type": "unknown",
+          "amount": null,
+          "percent": null
+        },
+        "main_compartment_allowed": false,
+        "hold_compartment_allowed": false,
+        "main_max_weight_kg": null,
+        "main_small_cage_required": null,
+        "hold_max_weight_kg": null,
+        "vaccination_required": true,
+        "special_animals_allowed": true,
+        "early_arrival_required": true,
+        "specific_hours": null
+      },
+      "refund_policies": [
+        {
+          "type": "self-serve",
+          "flat_fee": null,
+          "flat_fee_currency": "CAD",
+          "percent_fee": 0.25,
+          "cutoff_reference": "departure-date",
+          "cutoff_from": null,
+          "cutoff_to": 1,
+          "external_link": null
+        }
+      ],
+      "refund": true,
+      "refund_cutoff": 1,
+      "exchange_policies": [
+        {
+          "type": "station",
+          "flat_fee": null,
+          "flat_fee_currency": "CAD",
+          "percent_fee": null,
+          "cutoff_reference": "departure-date",
+          "cutoff_from": null,
+          "cutoff_to": 1,
+          "external_link": null
+        }
+      ],
+      "exchange": true,
+      "exchange_cutoff": 1,
+      "exchange_cutoff_at": "2020-09-27T16:00:00.000Z",
+      "refund_cutoff_at": "2020-09-27T16:00:00.000Z",
+      "currency": "CAD",
+      "addons": {},
+      "piece_of_id": true,
+      "boarding_requirement": "printed_or_mobile_tkt",
+      "extra_bag_policy": true,
+      "extra_bag_cost": 500,
+      "extra_bag_kg_cost": null,
+      "bag_allowed": true
+    }
+  },
+  {
+    "amenities": {
+      "display_name": "Flex",
+      "wifi": false,
+      "toilet": true,
+      "ac": true,
+      "refreshment": false,
+      "food": false,
+      "hot_meal": false,
+      "power_outlets": true,
+      "tv": false,
+      "bus_attendant": false,
+      "leg_room": true,
+      "small_seat": false,
+      "average_seat": true,
+      "xl_seat": false,
+      "full_recline_seat": false,
+      "carpool": false
+    },
+    "arrival_timezone": "America/Montreal",
+    "available_seats": 5,
+    "vehicle": null,
+    "busbud_departure_id": "20abaec2",
+    "class": "FLEX",
+    "class_name": "Flex",
+    "complete": false,
+    "contractor_name": null,
+    "fare_name": null,
+    "deeplink": null,
+    "departure_timezone": "America/Montreal",
+    "departure_type": "editable-refundable",
+    "destination_location_id": 12189,
+    "duration": 195,
+    "has_search_details": false,
+    "has_layout": null,
+    "has_transfers": false,
+    "has_addons": null,
+    "id": "ZjliYzI4NjoyMGFiYWVjMg",
+    "links": {
+      "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/f2m673/ZjliYzI4NjoyMGFiYWVjMg?outbound_date=2020-09-27&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+    },
+    "num_transfers": 0,
+    "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+    "origin_location_id": 1938,
+    "passenger_questions": [],
+    "schedule_id": null,
+    "sellable": true,
+    "source_id": 262,
+    "ticket_types": [
+      "eticket"
+    ],
+    "departure_time": "2020-09-27T15:00:00",
+    "arrival_time": "2020-09-27T18:15:00",
+    "fetched_at": "2020-09-27T14:26:41.059Z",
+    "search_request_id": "202009271426f714d83aa79124b1df1166e009db3a3df606e829825a6a0f756fefc4906dcbea",
+    "unreliable_duration": null,
+    "has_unmapped_location": null,
+    "data_source": "live",
+    "cache_source": "departure-service",
+    "operator_disclaimers": null,
+    "vehicle_type": "bus",
+    "bus": null,
+    "has_bus_details": null,
+    "prices": {
+      "currency": "CAD",
+      "total": 6869,
+      "categories": {
+        "adult": 5870,
+        "baby": 5870,
+        "child": 5870,
+        "senior": 5870
+      },
+      "discount": 0,
+      "roundtrip_min": null,
+      "roundtrip_min_fees_included": null,
+      "roundtrip_total": null,
+      "roundtrip_total_fees_included": null,
+      "discounted": null,
+      "breakdown": {
+        "base": 5870,
+        "fees": 119,
+        "taxes": 880,
+        "discount": 0
+      }
+    },
+    "trip_stops": [
+      {
+        "arrival_time": null,
+        "departure_time": "2020-09-27T15:00:00",
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 1938,
+        "name": "Montréal (Centre ville)",
+        "transfer": false
+      },
+      {
+        "arrival_time": "2020-09-27T17:50:00",
+        "departure_time": "2020-09-27T17:50:00",
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 17507,
+        "name": "Québec (Sainte-Foy)",
+        "transfer": false
+      },
+      {
+        "arrival_time": "2020-09-27T18:15:00",
+        "departure_time": null,
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 12189,
+        "name": "Québec (centre-ville)",
+        "transfer": false
+      }
+    ],
+    "addons": [],
+    "details": {},
+    "terms": {
+      "type_of_id": "photo_and_full_name",
+      "ticket_requirements": {
+        "eticket": "printed_or_mobile_tkt"
+      },
+      "nb_carry_on": 1,
+      "kg_by_carry_on": null,
+      "nb_checked_bags": 2,
+      "kg_by_bag": 34,
+      "checked_in_size_cm": {
+        "l": 60,
+        "w": 60,
+        "h": 90
+      },
+      "extra_checked_in_fees": {
+        "type": "per_extra_checked_in",
+        "amount": 500
+      },
+      "nb_extra_checked_in": null,
+      "total_checked_in_kg": null,
+      "oversized_luggage": {
+        "allowed": true,
+        "allowed_types": [],
+        "fees": {
+          "type": "flat_fee",
+          "amount": 500
+        },
+        "early_arrival_required": true,
+        "cover_required": true
+      },
+      "animals": {
+        "fees": {
+          "type": "unknown",
+          "amount": null,
+          "percent": null
+        },
+        "main_compartment_allowed": false,
+        "hold_compartment_allowed": false,
+        "main_max_weight_kg": null,
+        "main_small_cage_required": null,
+        "hold_max_weight_kg": null,
+        "vaccination_required": true,
+        "special_animals_allowed": true,
+        "early_arrival_required": true,
+        "specific_hours": null
+      },
+      "refund_policies": [
+        {
+          "type": "self-serve",
+          "flat_fee": null,
+          "flat_fee_currency": "CAD",
+          "percent_fee": 0.25,
+          "cutoff_reference": "departure-date",
+          "cutoff_from": null,
+          "cutoff_to": 1,
+          "external_link": null
+        }
+      ],
+      "refund": true,
+      "refund_cutoff": 1,
+      "exchange_policies": [
+        {
+          "type": "station",
+          "flat_fee": null,
+          "flat_fee_currency": "CAD",
+          "percent_fee": null,
+          "cutoff_reference": "departure-date",
+          "cutoff_from": null,
+          "cutoff_to": 1,
+          "external_link": null
+        }
+      ],
+      "exchange": true,
+      "exchange_cutoff": 1,
+      "exchange_cutoff_at": "2020-09-27T18:00:00.000Z",
+      "refund_cutoff_at": "2020-09-27T18:00:00.000Z",
+      "currency": "CAD",
+      "addons": {},
+      "piece_of_id": true,
+      "boarding_requirement": "printed_or_mobile_tkt",
+      "extra_bag_policy": true,
+      "extra_bag_cost": 500,
+      "extra_bag_kg_cost": null,
+      "bag_allowed": true
+    }
+  },
+  {
+    "amenities": {
+      "display_name": "Flex",
+      "wifi": false,
+      "toilet": true,
+      "ac": true,
+      "refreshment": false,
+      "food": false,
+      "hot_meal": false,
+      "power_outlets": true,
+      "tv": false,
+      "bus_attendant": false,
+      "leg_room": true,
+      "small_seat": false,
+      "average_seat": true,
+      "xl_seat": false,
+      "full_recline_seat": false,
+      "carpool": false
+    },
+    "arrival_timezone": "America/Montreal",
+    "available_seats": 25,
+    "vehicle": null,
+    "busbud_departure_id": "cf8855ef",
+    "class": "FLEX",
+    "class_name": "Flex",
+    "complete": false,
+    "contractor_name": null,
+    "fare_name": null,
+    "deeplink": null,
+    "departure_timezone": "America/Montreal",
+    "departure_type": "editable-refundable",
+    "destination_location_id": 12189,
+    "duration": 180,
+    "has_search_details": false,
+    "has_layout": null,
+    "has_transfers": false,
+    "has_addons": null,
+    "id": "ODJmZmUzMTpjZjg4NTVlZg",
+    "links": {
+      "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/f2m673/ODJmZmUzMTpjZjg4NTVlZg?outbound_date=2020-09-27&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+    },
+    "num_transfers": 0,
+    "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+    "origin_location_id": 1938,
+    "passenger_questions": [],
+    "schedule_id": null,
+    "sellable": true,
+    "source_id": 262,
+    "ticket_types": [
+      "eticket"
+    ],
+    "departure_time": "2020-09-27T17:00:00",
+    "arrival_time": "2020-09-27T20:00:00",
+    "fetched_at": "2020-09-27T14:26:41.059Z",
+    "search_request_id": "202009271426f714d83aa79124b1df1166e009db3a3df606e829825a6a0f756fefc4906dcbea",
+    "unreliable_duration": null,
+    "has_unmapped_location": null,
+    "data_source": "live",
+    "cache_source": "departure-service",
+    "operator_disclaimers": null,
+    "vehicle_type": "bus",
+    "bus": null,
+    "has_bus_details": null,
+    "prices": {
+      "currency": "CAD",
+      "total": 6869,
+      "categories": {
+        "adult": 5870,
+        "baby": 5870,
+        "child": 5870,
+        "senior": 5870
+      },
+      "discount": 0,
+      "roundtrip_min": null,
+      "roundtrip_min_fees_included": null,
+      "roundtrip_total": null,
+      "roundtrip_total_fees_included": null,
+      "discounted": null,
+      "breakdown": {
+        "base": 5870,
+        "fees": 119,
+        "taxes": 880,
+        "discount": 0
+      }
+    },
+    "trip_stops": [
+      {
+        "arrival_time": null,
+        "departure_time": "2020-09-27T17:00:00",
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 1938,
+        "name": "Montréal (Centre ville)",
+        "transfer": false
+      },
+      {
+        "arrival_time": "2020-09-27T19:35:00",
+        "departure_time": "2020-09-27T19:35:00",
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 17507,
+        "name": "Québec (Sainte-Foy)",
+        "transfer": false
+      },
+      {
+        "arrival_time": "2020-09-27T20:00:00",
+        "departure_time": null,
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 12189,
+        "name": "Québec (centre-ville)",
+        "transfer": false
+      }
+    ],
+    "addons": [],
+    "details": {},
+    "terms": {
+      "type_of_id": "photo_and_full_name",
+      "ticket_requirements": {
+        "eticket": "printed_or_mobile_tkt"
+      },
+      "nb_carry_on": 1,
+      "kg_by_carry_on": null,
+      "nb_checked_bags": 2,
+      "kg_by_bag": 34,
+      "checked_in_size_cm": {
+        "l": 60,
+        "w": 60,
+        "h": 90
+      },
+      "extra_checked_in_fees": {
+        "type": "per_extra_checked_in",
+        "amount": 500
+      },
+      "nb_extra_checked_in": null,
+      "total_checked_in_kg": null,
+      "oversized_luggage": {
+        "allowed": true,
+        "allowed_types": [],
+        "fees": {
+          "type": "flat_fee",
+          "amount": 500
+        },
+        "early_arrival_required": true,
+        "cover_required": true
+      },
+      "animals": {
+        "fees": {
+          "type": "unknown",
+          "amount": null,
+          "percent": null
+        },
+        "main_compartment_allowed": false,
+        "hold_compartment_allowed": false,
+        "main_max_weight_kg": null,
+        "main_small_cage_required": null,
+        "hold_max_weight_kg": null,
+        "vaccination_required": true,
+        "special_animals_allowed": true,
+        "early_arrival_required": true,
+        "specific_hours": null
+      },
+      "refund_policies": [
+        {
+          "type": "self-serve",
+          "flat_fee": null,
+          "flat_fee_currency": "CAD",
+          "percent_fee": 0.25,
+          "cutoff_reference": "departure-date",
+          "cutoff_from": null,
+          "cutoff_to": 1,
+          "external_link": null
+        }
+      ],
+      "refund": true,
+      "refund_cutoff": 1,
+      "exchange_policies": [
+        {
+          "type": "station",
+          "flat_fee": null,
+          "flat_fee_currency": "CAD",
+          "percent_fee": null,
+          "cutoff_reference": "departure-date",
+          "cutoff_from": null,
+          "cutoff_to": 1,
+          "external_link": null
+        }
+      ],
+      "exchange": true,
+      "exchange_cutoff": 1,
+      "exchange_cutoff_at": "2020-09-27T20:00:00.000Z",
+      "refund_cutoff_at": "2020-09-27T20:00:00.000Z",
+      "currency": "CAD",
+      "addons": {},
+      "piece_of_id": true,
+      "boarding_requirement": "printed_or_mobile_tkt",
+      "extra_bag_policy": true,
+      "extra_bag_cost": 500,
+      "extra_bag_kg_cost": null,
+      "bag_allowed": true
+    }
+  },
+  {
+    "amenities": {
+      "display_name": "Flex",
+      "wifi": false,
+      "toilet": true,
+      "ac": true,
+      "refreshment": false,
+      "food": false,
+      "hot_meal": false,
+      "power_outlets": true,
+      "tv": false,
+      "bus_attendant": false,
+      "leg_room": true,
+      "small_seat": false,
+      "average_seat": true,
+      "xl_seat": false,
+      "full_recline_seat": false,
+      "carpool": false
+    },
+    "arrival_timezone": "America/Montreal",
+    "available_seats": 8,
+    "vehicle": null,
+    "busbud_departure_id": "4fb5ad07",
+    "class": "FLEX",
+    "class_name": "Flex",
+    "complete": false,
+    "contractor_name": null,
+    "fare_name": null,
+    "deeplink": null,
+    "departure_timezone": "America/Montreal",
+    "departure_type": "editable-refundable",
+    "destination_location_id": 12189,
+    "duration": 195,
+    "has_search_details": false,
+    "has_layout": null,
+    "has_transfers": false,
+    "has_addons": null,
+    "id": "OWY3NDBjNDg6NGZiNWFkMDc",
+    "links": {
+      "deeplink": "https://www.busbud.com/en/deeplink/f25dvk/f2m673/OWY3NDBjNDg6NGZiNWFkMDc?outbound_date=2020-09-27&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+    },
+    "num_transfers": 0,
+    "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+    "origin_location_id": 1938,
+    "passenger_questions": [],
+    "schedule_id": null,
+    "sellable": true,
+    "source_id": 262,
+    "ticket_types": [
+      "eticket"
+    ],
+    "departure_time": "2020-09-27T19:00:00",
+    "arrival_time": "2020-09-27T22:15:00",
+    "fetched_at": "2020-09-27T14:26:41.059Z",
+    "search_request_id": "202009271426f714d83aa79124b1df1166e009db3a3df606e829825a6a0f756fefc4906dcbea",
+    "unreliable_duration": null,
+    "has_unmapped_location": null,
+    "data_source": "live",
+    "cache_source": "departure-service",
+    "operator_disclaimers": null,
+    "vehicle_type": "bus",
+    "bus": null,
+    "has_bus_details": null,
+    "prices": {
+      "currency": "CAD",
+      "total": 6869,
+      "categories": {
+        "adult": 5870,
+        "baby": 5870,
+        "child": 5870,
+        "senior": 5870
+      },
+      "discount": 0,
+      "roundtrip_min": null,
+      "roundtrip_min_fees_included": null,
+      "roundtrip_total": null,
+      "roundtrip_total_fees_included": null,
+      "discounted": null,
+      "breakdown": {
+        "base": 5870,
+        "fees": 119,
+        "taxes": 880,
+        "discount": 0
+      }
+    },
+    "trip_stops": [
+      {
+        "arrival_time": null,
+        "departure_time": "2020-09-27T19:00:00",
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 1938,
+        "name": "Montréal (Centre ville)",
+        "transfer": false
+      },
+      {
+        "arrival_time": "2020-09-27T21:50:00",
+        "departure_time": "2020-09-27T21:50:00",
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 17507,
+        "name": "Québec (Sainte-Foy)",
+        "transfer": false
+      },
+      {
+        "arrival_time": "2020-09-27T22:15:00",
+        "departure_time": null,
+        "duration": 0,
+        "departure_operator_id": null,
+        "location_id": 12189,
+        "name": "Québec (centre-ville)",
+        "transfer": false
+      }
+    ],
+    "addons": [],
+    "details": {},
+    "terms": {
+      "type_of_id": "photo_and_full_name",
+      "ticket_requirements": {
+        "eticket": "printed_or_mobile_tkt"
+      },
+      "nb_carry_on": 1,
+      "kg_by_carry_on": null,
+      "nb_checked_bags": 2,
+      "kg_by_bag": 34,
+      "checked_in_size_cm": {
+        "l": 60,
+        "w": 60,
+        "h": 90
+      },
+      "extra_checked_in_fees": {
+        "type": "per_extra_checked_in",
+        "amount": 500
+      },
+      "nb_extra_checked_in": null,
+      "total_checked_in_kg": null,
+      "oversized_luggage": {
+        "allowed": true,
+        "allowed_types": [],
+        "fees": {
+          "type": "flat_fee",
+          "amount": 500
+        },
+        "early_arrival_required": true,
+        "cover_required": true
+      },
+      "animals": {
+        "fees": {
+          "type": "unknown",
+          "amount": null,
+          "percent": null
+        },
+        "main_compartment_allowed": false,
+        "hold_compartment_allowed": false,
+        "main_max_weight_kg": null,
+        "main_small_cage_required": null,
+        "hold_max_weight_kg": null,
+        "vaccination_required": true,
+        "special_animals_allowed": true,
+        "early_arrival_required": true,
+        "specific_hours": null
+      },
+      "refund_policies": [
+        {
+          "type": "self-serve",
+          "flat_fee": null,
+          "flat_fee_currency": "CAD",
+          "percent_fee": 0.25,
+          "cutoff_reference": "departure-date",
+          "cutoff_from": null,
+          "cutoff_to": 1,
+          "external_link": null
+        }
+      ],
+      "refund": true,
+      "refund_cutoff": 1,
+      "exchange_policies": [
+        {
+          "type": "station",
+          "flat_fee": null,
+          "flat_fee_currency": "CAD",
+          "percent_fee": null,
+          "cutoff_reference": "departure-date",
+          "cutoff_from": null,
+          "cutoff_to": 1,
+          "external_link": null
+        }
+      ],
+      "exchange": true,
+      "exchange_cutoff": 1,
+      "exchange_cutoff_at": "2020-09-27T22:00:00.000Z",
+      "refund_cutoff_at": "2020-09-27T22:00:00.000Z",
+      "currency": "CAD",
+      "addons": {},
+      "piece_of_id": true,
+      "boarding_requirement": "printed_or_mobile_tkt",
+      "extra_bag_policy": true,
+      "extra_bag_cost": 500,
+      "extra_bag_kg_cost": null,
+      "bag_allowed": true
+    }
+  }
+]
