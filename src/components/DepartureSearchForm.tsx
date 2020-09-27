@@ -1,82 +1,119 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { departureService } from "../services/departureService";
+import { squashSearchResults } from "../utils/squashSearchResults";
 
 interface DestinationOption {
   name: string;
   geohash: string;
 }
 
-export const DepartureSearchForm: FC = () => {
+interface Props {
+  setLoading: (state: boolean) => void;
+  setSearchResult: (result: DepartureSearchResponse | null) => void;
+}
+
+export const DepartureSearchForm: FC<Props> = ({
+  setLoading,
+  setSearchResult,
+}) => {
   const today = new Date().toISOString().replace(/T.*/, "");
-  const [values, setValues] = useState<DepartureSearchInitParams>({
+
+  const initialFormValues = {
     origin: PROMOTION_ORIGINS[0].geohash,
     destination: PROMOTION_DESTINATION.geohash,
     outboundDate: today,
-  });
+  };
 
-  const [lastIndex, setLastIndex] = useState<number>(0);
+  const [formValues, setFormValues] = useState<DepartureSearchInitParams>(
+    initialFormValues
+  );
 
-  const updateValues = (e: React.ChangeEvent<any>): void => {
+  const updateFormValues = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ): void => {
     if (!e.target.name || !e.target.value) return;
-    setValues({
-      ...values,
+    setFormValues({
+      ...formValues,
       [e.target.name]: e.target.value,
     });
   };
 
-  // TODO: remove
-  useEffect(() => {
-    console.log(values);
-  }, [values]);
-
-  const searchDepartures = async (e: React.FormEvent<HTMLFormElement>) => {
+  const searchDepartures = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault();
-    const res = await departureService.searchInit(values).then((res) => {
-      if (res) {
-        setLastIndex(res.departures.length - 1);
-      }
-    });
-    console.log(res);
+
+    setSearchResult(null);
+    setLoading(true);
+    const responses = await departureService.search(formValues);
+
+    const finalResult = squashSearchResults(responses);
+    setSearchResult(finalResult);
+    setLoading(false);
   };
 
   return (
     <div>
-      <form onSubmit={searchDepartures}>
-        <select name="origin" value={values.origin} onChange={updateValues}>
-          {PROMOTION_ORIGINS.map((g: DestinationOption, i: number) => (
-            <option key={i} value={g.geohash}>
-              {g.name}
-            </option>
-          ))}
-        </select>
-        {">>"}
-        <select
-          name="destination"
-          value={values.origin}
-          onChange={updateValues}
-          disabled
-        >
-          <option value={PROMOTION_DESTINATION.geohash}>
-            {PROMOTION_DESTINATION.name}
-          </option>
-        </select>
-        <input
-          type="date"
-          name="outboundDate"
-          min={today}
-          value={values.outboundDate}
-          onChange={updateValues}
-        />
-        <input type="submit" value="Search" />
+      <form
+        onSubmit={searchDepartures}
+        className="w-full bg-bb-blue py-6 px-12 md:rounded-full shadow-lg"
+      >
+        <div className="flex md:justify-center md:items-center flex-col md:flex-row ">
+          <div className="flex flex-wrap sm:justify-center items-center">
+            {/* Origin */}
+            <select
+              name="origin"
+              value={formValues.origin}
+              className="w-full sm:w-auto px-2 py-2 ml-0 h-10 bg-white mb-2"
+              onChange={updateFormValues}
+            >
+              {PROMOTION_ORIGINS.map((g: DestinationOption, i: number) => (
+                <option key={i} value={g.geohash}>
+                  {g.name}
+                </option>
+              ))}
+            </select>
+            <span className="text-white mx-2">{"to"}</span>
+            {/* Destination */}
+            <select
+              name="destination"
+              value={formValues.origin}
+              onChange={updateFormValues}
+              className="w-full sm:w-auto px-2 py-2 mx-0 h-10 bg-white mb-2"
+              disabled
+            >
+              <option value={PROMOTION_DESTINATION.geohash}>
+                {PROMOTION_DESTINATION.name}
+              </option>
+            </select>
+          </div>
+          <div className="flex flex-wrap sm:justify-center sm:flex-row">
+            {/* Outbound Date */}
+            <input
+              type="date"
+              name="outboundDate"
+              min={today}
+              max="2020-12-31"
+              value={formValues.outboundDate}
+              className="w-full sm:w-auto px-2 py-2 mb-2 h-10"
+              onChange={updateFormValues}
+            />
+            <input
+              type="submit"
+              className="cursor-pointer px-6 py-2 mb-2 h-10 bg-bb-orange text-white "
+              value="Search"
+            />
+          </div>
+        </div>
       </form>
     </div>
   );
 };
 
 const PROMOTION_ORIGINS = [
-  { name: "Toronto", geohash: "dpz88g" },
   { name: "Quebec City", geohash: "f2m673" },
   { name: "Ottawa", geohash: "f244m6" },
+  { name: "Sherbrooke", geohash: "f2hf7b" },
 ];
 
 const PROMOTION_DESTINATION = {

@@ -6,7 +6,7 @@ export const queryBuilder = {
   }: DepartureSearchInitParams): string => {
     return `x-departures/${origin}/${destination}/${outboundDate}?adults=1`;
   },
-  poll: ({
+  searchPoll: ({
     origin,
     destination,
     outboundDate,

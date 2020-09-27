@@ -10,10 +10,10 @@ export const departureDao = {
     );
   },
   searchPoll: async (
-    params: DepartureSearchInitParams
+    params: DepartureSearchPollParams
   ): Promise<DepartureSearchResponse> => {
     return apiService.get<DepartureSearchResponse>(
-      queryBuilder.searchInit(params)
+      queryBuilder.searchPoll(params)
     );
   },
 };
