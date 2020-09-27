@@ -13,7 +13,6 @@ const App: FC = () => {
   ] = useState<DepartureSearchResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  console.log(searchResult);
   return (
     <div>
       <div className="min-h-screen">

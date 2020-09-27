@@ -101,7 +101,8 @@ export const DepartureSearchForm: FC<Props> = ({
               onChange={updateFormValues}
             />
             <div className="h-10 bg-white flex items-center">
-              <img src={svgPerson} className="h-6" />
+              {/* Adult count*/}
+              <img src={svgPerson} alt="Person icon" className="h-6" />
               <input
                 type="number"
                 name="adults"

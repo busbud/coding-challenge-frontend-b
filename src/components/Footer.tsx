@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 const Footer: FC = () => {
   return (
-    <div className="w-screen bg-bb-blue text-white h-40 p-10 flex flex-col justify-center items-center text-center">
+    <div className="w-screen bg-bb-blue text-white h-40 p-10 mt-10 flex flex-col justify-center items-center text-center">
       <p>
         Hero image from{" "}
         <a

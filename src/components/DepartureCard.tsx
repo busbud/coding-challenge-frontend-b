@@ -29,9 +29,9 @@ const DepartureCard: FC<Props> = ({
 
   // Extract associated data from cities, locations and operators
   const price = toCADString(prices.total);
-  const originLocation = locations.find((l) => l.id == origin_location_id);
+  const originLocation = locations.find((l) => l.id === origin_location_id);
   const destinationLocation = locations.find(
-    (l) => l.id == destination_location_id
+    (l) => l.id === destination_location_id
   );
   const operator = operators.find((o) => o.id === operator_id);
   const originCity = cities[0];
