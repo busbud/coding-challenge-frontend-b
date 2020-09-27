@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Fauxsheaga
 
 Submitted by [Claire Froelich](https://www.clairefroelichdev.com/)
@@ -19,7 +18,7 @@ If I spent more time on this, I would
 - add Redux. I am at the limit of comfort with prop-drilling.
 - add more robust error handling
 - add unit tests for services
-=======
+
 # Busbud Front-End Coding Challenge
 
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
@@ -320,4 +319,3 @@ The response is similar to:
   "ttl": 900
 }
 ```
->>>>>>> 91e36c605f782831f07b380ff0f7864c6aad82b7
