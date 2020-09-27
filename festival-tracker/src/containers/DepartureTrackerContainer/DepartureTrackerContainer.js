@@ -34,6 +34,7 @@ const DepartureTracker = () => {
   const [loading, changeLoading] = useState(false)
   const [departures, changeDepartures] = useState([])
   const [operators, changeOperators] = useState([])
+  const [locations, changeLocations] = useState([])
   const [origin, changeOrigin] = useState(geohashQC)
   const [destination, changeDestination] = useState(geohashMtl)
   const [adult, changeAdult] = useState(1)
@@ -105,7 +106,7 @@ const DepartureTracker = () => {
       .then(res => {
         changeDepartures(res.data.departures)
         changeOperators(res.data.operators)
-        console.log(res.data)
+        changeLocations(res.data.locations)
         changeCompleteStatus(res.data.complete)
         if (!res.data.complete) {
           changeLoading(true)
@@ -129,7 +130,7 @@ const DepartureTracker = () => {
     let departuresBlocksRendered = <div>No departures found</div>
     if (departures.length) {
       departuresBlocksRendered = departures.map((departure, i) => {
-        return <Departure key={`departure-${i}`} departure={departure} operators={operators} />
+        return <Departure key={`departure-${i}`} departure={departure} operators={operators} locations={locations} />
       })
     }
     departuresBlocks = (
@@ -193,6 +194,7 @@ const DepartureTracker = () => {
           </Button>
         </div>
         <div className={classes.Departures}>
+          Results {pollIndex + 1} - {pollIndex + 10}
           <div className={classes.NavigationButtons}>
             <Button className={classes.NavigationButton} disabled={pollIndex === 0} onClick={() => pollSearch(pollIndex - 10 > 0 ? pollIndex - 10 : 0)} type='primary'>
                 Previous
