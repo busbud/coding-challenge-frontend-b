@@ -1,7 +1,9 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import classes from './Departure.module.sass'
 
 const Departure = ({ departure, operators, locations }) => {
+  const { t } = useTranslation()
   const operator = operators.find(o => o.id === departure.operator_id)
   const locationDeparture = locations.find(location => location.id === departure.trip_stops[0].location_id)
   const locationArrival = locations.find(location => location.id === departure.trip_stops[departure.trip_stops.length - 1].location_id)
@@ -12,14 +14,14 @@ const Departure = ({ departure, operators, locations }) => {
       </div>
       <div>
         <div className={classes.Locations}>
-          Departure:
+          {t('Departure')}:
           <div key={`departure-${departure.id}-location-departure`} className={classes.Location}>
             <div>{departure.departure_time}</div>
             <div className={classes.LocationName}>{locationDeparture.name}</div>
             <div className={classes.LocationAddress}>{locationDeparture.address.join(',')}</div>
           </div>
           <br />
-          Arrival:
+          {t('Arrival')}:
           <div key={`departure-${departure.id}-location-arrival`} className={classes.Location}>
             <div>{departure.arrival_time}</div>
             <div className={classes.LocationName}>{locationArrival.name}</div>
@@ -29,7 +31,7 @@ const Departure = ({ departure, operators, locations }) => {
       </div>
       <br />
       <div>
-        Trip:
+        {t('Trip')}:
         <div className={classes.TripItems}>
           {departure.trip_stops.map((tripStop, i) => {
             return (
@@ -45,7 +47,7 @@ const Departure = ({ departure, operators, locations }) => {
           })}
         </div>
       </div>
-      <div>Price: {(departure.prices?.total / 100).toFixed(2)}$ {departure.prices?.currency}</div>
+      <div>{t('Price')}: {(departure.prices?.total / 100).toFixed(2)}$ {departure.prices?.currency}</div>
     </div>
   )
 }

@@ -1,3 +1,28 @@
 {
-  
+  "Loading...": "Chargement...",
+
+  "No departures found": "Aucun départ trouvé",
+  "Find the best bus ticket to your destination !": "Trouve les meilleurs billets d'autobus pour ta destination !",
+  "Date": "Date",
+  "Origin": "Départ",
+  "Select an origin": "Sélectionne un départ",
+  "Destination": "Arrivée",
+  "Select a destination": "Sélectionne une arrivée",
+  "Adult": "Adulte",
+  "Child": "Enfant",
+  "Senior (65+)": "Ainé (65+)",
+  "Country": "Pays",
+  "Select a country": "Sélectionne un pays", 
+  "Currency": "Devise",
+  "Select a currency": "Sélectionne une devise",
+  "Search": "Recherche",
+  "Results": "Résultats",
+  "Previous": "Précédent",
+  "Next": "Suivant",
+
+  "Departure": "Départ",
+  "Arrival": "Arrivée",
+  "Trip": "Voyage",
+  "Price": "Prix"
+
 }

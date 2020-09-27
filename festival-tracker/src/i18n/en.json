@@ -1,3 +1,27 @@
 {
-  
+  "Loading...": "Loading...",
+
+  "No departures found": "No departures found",
+  "Find the best bus ticket to your destination !": "Find the best bus tickets to your destination !",
+  "Date": "Date",
+  "Origin": "Origin",
+  "Select an origin": "Select an origin",
+  "Destination": "Destination",
+  "Select a destination": "Select a destination",
+  "Adult": "Adult",
+  "Child": "Child",
+  "Senior (65+)": "Senior (65+)",
+  "Country": "Country",
+  "Select a country": "Select a country", 
+  "Currency": "Currency",
+  "Select a currency": "Select a currency",
+  "Search": "Search",
+  "Results": "Results",
+  "Previous": "Previous",
+  "Next": "Next",
+
+  "Departure": "Departure",
+  "Arrival": "Arrival",
+  "Trip": "Trip",
+  "Price": "Price"
 }
