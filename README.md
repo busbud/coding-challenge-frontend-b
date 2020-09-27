@@ -1,6 +1,7 @@
 ## Fauxsheaga
 
 Submitted by [Claire Froelich](https://www.clairefroelichdev.com/)
+Deployed: https://fauxsheaga.herokuapp.com/
 
 Osheaga 2020 may have been postponed, but Montreal's lesser known Fauxsheaga is welcoming socially-distant music lovers from inside Canada's borders from September to the end of December. This micro site is a promotional page for the event in partnership with Busbud.
 
