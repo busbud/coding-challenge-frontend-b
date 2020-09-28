@@ -23,6 +23,6 @@ COPY ./app/nginx /etc/nginx/
 
 RUN chmod -R 777 /usr/share/nginx/html
 
-EXPOSE 8080
+EXPOSE 5000
 
 CMD ["nginx", "-g", "daemon off;"]
