@@ -52,13 +52,6 @@ const DepartureTracker = () => {
   const currentDate = now.toISOString().substring(0, 10)
   const [date, changeDate] = useState(currentDate)
 
-  // /**
-  //  * Poll search will change when next page of departures is requested
-  //  */
-  // useEffect(() => {
-  //   pollSearch()
-  // }, [pollIndex])
-
   /**
    * Launch a new search of bus departures with current settings
    */
@@ -87,8 +80,7 @@ const DepartureTracker = () => {
   }
 
   /**
-   * Poll the next 10 result from the current search (based on pollIndex)
-   * This function is automatically triggered when pollIndex change
+   * Poll the next= result based on current pollIndex
    */
   const pollSearch = (newPollIndex) => {
     changePollIndex(newPollIndex)
