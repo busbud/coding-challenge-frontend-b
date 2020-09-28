@@ -7,4 +7,4 @@ services:
     build: 
       context: ./festival-tracker
     ports :
-      - 80:80
+      - 80:5000
