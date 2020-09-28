@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e00f35f7.chunk.css",
+    "main.js": "/static/js/main.3fb71038.chunk.js",
+    "main.js.map": "/static/js/main.3fb71038.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.835adc88.js",
+    "runtime-main.js.map": "/static/js/runtime-main.835adc88.js.map",
+    "static/css/2.941c1f5b.chunk.css": "/static/css/2.941c1f5b.chunk.css",
+    "static/js/2.56240cdf.chunk.js": "/static/js/2.56240cdf.chunk.js",
+    "static/js/2.56240cdf.chunk.js.map": "/static/js/2.56240cdf.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.810dafea9136a61050e84980b4ef2ef4.js": "/precache-manifest.810dafea9136a61050e84980b4ef2ef4.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.941c1f5b.chunk.css.map": "/static/css/2.941c1f5b.chunk.css.map",
+    "static/css/main.e00f35f7.chunk.css.map": "/static/css/main.e00f35f7.chunk.css.map",
+    "static/js/2.56240cdf.chunk.js.LICENSE.txt": "/static/js/2.56240cdf.chunk.js.LICENSE.txt",
+    "static/media/osheaga.png": "/static/media/osheaga.81e1a223.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.835adc88.js",
+    "static/css/2.941c1f5b.chunk.css",
+    "static/js/2.56240cdf.chunk.js",
+    "static/css/main.e00f35f7.chunk.css",
+    "static/js/main.3fb71038.chunk.js"
+  ]
+}
