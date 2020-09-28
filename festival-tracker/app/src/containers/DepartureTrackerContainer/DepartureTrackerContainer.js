@@ -80,7 +80,7 @@ const DepartureTracker = () => {
   }
 
   /**
-   * Poll the next= result based on current pollIndex
+   * Poll the next results based on current pollIndex
    */
   const pollSearch = (newPollIndex) => {
     changePollIndex(newPollIndex)
