@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/hdeschenes/coding-challenge-frontend-b/issues"
   },
-  "homepage": "https://github.com/hdeschenes/coding-challenge-frontend-b#readme"
+  "homepage": "https://github.com/hdeschenes/coding-challenge-frontend-b#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
 }
