@@ -3,12 +3,12 @@
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 
 It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)! 
-Your challenge is to build a microsite that allows a traveler from NYC to find one-way departure schedules for the festival's opening weekend.
+Your challenge is to build a microsite that allows a traveler from Québec to find one-way departure schedules for the festival's opening weekend.
 
 ## Functional requirements
 
 - Has a simple onboarding screen that will trigger the departure search
-- Lists all the departures for a given origin city (**New York - geohash: dr5reg**) and a given destination city (**Montréal - geohash: f25dvk**) for a given day (**the 2nd of August 2020**) for **1** adult.
+- Lists all the departures for a given origin city (**Québec - geohash: f2m673**) and a given destination city (**Montréal - geohash: f25dvk**) for a given day (**the 2nd of August 2020**) for **1** adult.
 - For each departure, we want, at least, to see the **departure time**, the **arrival time**, the **location name** and the **price** (use `prices.total` of the `departure`).
 
 ## Non-functional requirements
