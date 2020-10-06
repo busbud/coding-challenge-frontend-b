@@ -1,15 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+import { HelmetProvider } from "react-helmet-async";
 
-import App from "./App";
+import { AppRouting } from "./app-routing";
+
+require("dotenv").config();
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
       <CSSReset />
-      <App />
+      <HelmetProvider>
+        <AppRouting />
+      </HelmetProvider>
     </ThemeProvider>
   </React.StrictMode>,
   rootElement
