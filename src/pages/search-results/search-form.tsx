@@ -292,25 +292,27 @@ export const SearchForm: React.FunctionComponent<SearchFormProps> = () => {
                   <FormErrorMessage>{errors?.child?.message}</FormErrorMessage>
                 </FormControl>
               </Tooltip>
-              <FormControl
-                isInvalid={!!errors?.senior}
-                as={Flex}
-                flexDirection="column"
-              >
-                <Flex flexDirection={{ sm: "column" }} width="100%">
-                  <FormLabel htmlFor="senior" flexGrow={1}>
-                    Seniors
-                  </FormLabel>
-                  <ControlledNumberInput
-                    minWidth="8rem"
-                    maxWidth={{ _: "9rem", sm: "100%" }}
-                    name="senior"
-                    aria-label="senior"
-                    variantColor="blue"
-                  />
-                </Flex>
-                <FormErrorMessage>{errors?.senior?.message}</FormErrorMessage>
-              </FormControl>
+              <Tooltip hasArrow label="Coming soon" placement="bottom">
+                <FormControl
+                  isInvalid={!!errors?.senior}
+                  as={Flex}
+                  flexDirection="column"
+                >
+                  <Flex flexDirection={{ sm: "column" }} width="100%">
+                    <FormLabel htmlFor="senior" flexGrow={1}>
+                      Seniors
+                    </FormLabel>
+                    <ControlledNumberInput
+                      minWidth="8rem"
+                      maxWidth={{ _: "9rem", sm: "100%" }}
+                      name="senior"
+                      aria-label="senior"
+                      variantColor="blue"
+                    />
+                  </Flex>
+                  <FormErrorMessage>{errors?.senior?.message}</FormErrorMessage>
+                </FormControl>
+              </Tooltip>
             </SimpleGrid>
           </Flex>
         </Flex>
