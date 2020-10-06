@@ -41,7 +41,12 @@
     "start": "TSC_COMPILE_ON_ERROR=true react-scripts start",
     "build": "TSC_COMPILE_ON_ERROR=true react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "npm run build"
+  },
+  "engines": {
+    "node": "12.x",
+    "npm": "6.x"
   },
   "browserslist": [
     ">0.2%",
