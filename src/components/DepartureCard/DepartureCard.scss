@@ -1,0 +1,15 @@
+@import "../../containers/App/App.scss";
+
+.departure-card {
+    border-radius: 0;
+    border-color: lighten($color: $pumpkin, $amount: 25%);
+
+    h5 {
+        color: $pumpkin;
+        font-weight: 500;
+    }
+
+    label {
+        font-weight: 500;
+    }
+}

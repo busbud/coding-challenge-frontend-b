@@ -1,0 +1,57 @@
+@import "../App/App.scss";
+
+.search-section {
+  padding: 0 2rem 2rem 2rem;
+
+  label {
+    color: $pumpkin;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  .destination-dropdown,
+  .currency-dropdown {
+    .dropdown-toggle {
+      background-color: $white;
+      border-color: $pumpkin;
+      border-radius: 0;
+      color: $black;
+      height: 2.5rem;
+      width: 100%;
+
+      &.active {
+        background-color: $white;
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    .dropdown-toggle::after {
+      margin-left: 3em;
+    }
+
+    .dropdown-menu {
+      border-color: $pumpkin;
+      border-radius: 0;
+      width: 100%;
+
+      .dropdown-item {
+        &:hover {
+          background-color: lighten($color: $pumpkin, $amount: 25%);
+        }
+      }
+    }
+  }
+
+  .btn-search {
+    background-color: $pumpkin;
+    border-radius: 0;
+    border: none;
+    color: $white;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+}

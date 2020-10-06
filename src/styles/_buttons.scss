@@ -1,0 +1,22 @@
+@import "./colors";
+.btn-link {
+  color: $white;
+  font-weight: 700;
+
+  &:hover {
+    color: $white;
+  }
+
+  &.active {
+    color: $pumpkin;
+    text-decoration: underline;
+
+    &:hover {
+      color: $pumpkin;
+    }
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+}

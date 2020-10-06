@@ -1,0 +1,15 @@
+@import "../../containers/App/App.scss";
+
+.passenger-count {
+    align-items: center;
+    display: flex;  
+    justify-content: space-around;
+
+    .btn-light {
+        background-color: $pumpkin;
+        border-radius: 0;
+        color: $white;
+        width: 2.5rem;
+
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "ENGLISH_LANG": "English",
+  "FRENCH_LANG": "French",
+  "WEBSITE_PRESENTATION": "You are living in New York and you want to go to Bosheaga? This site will allow you to easily find available routes to go to the festival. See you soon to enjoy our amazing programming.",
+  "SELECT_CITY": "Select city",
+  "DEPARTURE_CITY": "Departure city",
+  "ARRIVAL_CITY": "Arrival city",
+  "DATE": "Date",
+  "PASSENGERS": "Passenger(s)",
+  "ADULT": "Adult",
+  "ADULTS": "Adults",
+  "CHILD": "Child",
+  "CHILDREN": "Children",
+  "SENIOR": "Senior",
+  "SENIORS": "Seniors",
+  "SEARCH": "Search",
+  "CURRENCY": "Currency",
+  "CURRENCY_EUR": "Euros",
+  "CURRENCY_USD": "Dollars"
+}
