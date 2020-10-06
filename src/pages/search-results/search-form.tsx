@@ -124,7 +124,7 @@ export const SearchForm: React.FunctionComponent<SearchFormProps> = () => {
 
   return (
     <FormProvider {...formMethods}>
-      <DevTool control={control} />
+      {process.env.NODE_ENV === "development" && <DevTool control={control} />}
       <Stack
         as="form"
         onSubmit={handleSubmit(onSubmit)}

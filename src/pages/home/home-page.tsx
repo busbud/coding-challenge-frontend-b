@@ -130,7 +130,9 @@ export const HomePage: React.FunctionComponent<HomePageProps> = () => {
           spacing={6}
           onSubmit={handleSubmit(onSubmit)}
         >
-          <DevTool control={control} />
+          {process.env.NODE_ENV === "development" && (
+            <DevTool control={control} />
+          )}
 
           <Flex as="fieldset" flexDirection="row">
             <Text as="legend" fontWeight="bold">

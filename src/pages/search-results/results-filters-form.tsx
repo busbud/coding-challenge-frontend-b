@@ -53,7 +53,7 @@ export const ResultsFiltersForm: React.FunctionComponent<ResultsFiltersFormProps
         onFiltersChange(getValues());
       }}
     >
-      <DevTool control={control} />
+      {process.env.NODE_ENV === "development" && <DevTool control={control} />}
       <Stack isInline>
         <Heading as="h2" fontSize="3xl" flexGrow={1}>
           Filter the results
