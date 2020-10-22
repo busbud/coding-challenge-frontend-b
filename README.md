@@ -77,8 +77,8 @@ Querystring parameters:
 - `adult` : Number of adults
 - `child` : Number of children
 - `senior` : Number of seniors
-- `lang` : ISO 3166-1 alpha-2 language code
-- `currency` : ISO 4217 currency code
+- `lang` :  ISO 639-1 (2 letter code) language code (supported values include `en`, `fr`, `es`, and a few others)
+- `currency` : ISO 4217 currency code (supported values include `CAD`, `USD`, `EUR`, and a few others)
 
 The response looks like:
 ```
