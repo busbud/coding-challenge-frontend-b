@@ -16,6 +16,7 @@ import types from '@/store/departures/action-types';
 import typesOperators from '@/store/operators/action-types';
 import typesMessages from '@/store/messages/action-types';
 import { useContext, useEffect, useState } from 'react';
+import { NextPage } from 'next';
 
 type OptionsMapper = {
   [index: string]: string;
@@ -28,7 +29,7 @@ const optionsMapper: OptionsMapper = {
 
 const options = Object.keys(optionsMapper);
 
-const Index = () => {
+const Index: NextPage = () => {
   const [t] = useTranslation('common');
   const { loading, withLoading } = useLoading();
   const [from, setFrom] = useState(optionsMapper['Québec']);
