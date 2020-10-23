@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 
-type BudInputProps = InputHTMLAttributes<HTMLInputElement>;
+export type BudInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 const BudInput: React.FC<BudInputProps> = ({ className, ...rest }) =>
   (

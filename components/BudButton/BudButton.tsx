@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
 import classnames from 'classnames';
 
-type BudButtonProps = {
+export type BudButtonProps = {
   size?: 'sm' | 'md' | 'lg';
   loading?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;

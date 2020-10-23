@@ -17,7 +17,7 @@ import {
   NavigationMoreIcon,
 } from '../BudIcons';
 
-type BudTravelCardProps = {
+export type BudTravelCardProps = {
   departure: Departure;
   operator?: Operator;
 };

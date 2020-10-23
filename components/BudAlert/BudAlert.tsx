@@ -3,11 +3,11 @@ import { CSSTransition } from 'react-transition-group';
 import fromRight from '@/styles/transitions/fromRight.module.scss';
 import { createPortal } from 'react-dom';
 
-type BudAlertProps = {
+export type BudAlertProps = {
   title?: string;
   visible?: boolean;
   timeout?: number;
-  onTimeout: () => void;
+  onTimeout?: () => void;
 };
 
 const BudAlert: React.FC<BudAlertProps> = ({
@@ -21,13 +21,14 @@ const BudAlert: React.FC<BudAlertProps> = ({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    ref.current = document.querySelector('#__next');
+    ref.current = document.querySelector('#__next')
+      || document.getElementsByTagName('body')[0];
     setMounted(true);
   }, []);
 
   useEffect(() => {
     const timeoutListener = setTimeout(() => {
-      onTimeout();
+      onTimeout?.();
     }, timeout);
     return () => {
       clearTimeout(timeoutListener);

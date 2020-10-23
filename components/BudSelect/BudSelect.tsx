@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { InputHTMLAttributes } from 'react';
 
-type BudSelectProps = {
+export type BudSelectProps = {
   options: string[];
 } & InputHTMLAttributes<HTMLSelectElement>;
 
