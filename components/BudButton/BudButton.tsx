@@ -18,7 +18,7 @@ const BudButton: React.FC<BudButtonProps> = ({
     lg: 'py-4 px-6',
   };
   const classes = classnames([
-    'inline-block bg-gray-900 transition duration-200 ease-out hover:bg-gray-800 text-white font-medium rounded-lg leading-tight flex m-auto w-full sm:w-auto justify-items-center',
+    'inline-block bg-gray-900 transition duration-200 ease-out hover:bg-gray-800 text-white font-medium rounded-lg leading-tight flex m-auto w-full sm:w-auto justify-center',
     sizeClasses[size],
   ]);
   return (
