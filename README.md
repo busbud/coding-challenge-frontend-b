@@ -38,6 +38,7 @@ For this project I'm using:
 
 
 - [next-i18next](https://github.com/isaachinman/next-i18next): A plugin for NextJS that allows to get translations supporting SSR. This project was structured with internationalization in two main languages: French and English, but it's fairly easy to implement more languages. In that part, I'm using only one `common.json` for the sake of simplicity, but while the project grows, it's wise to separate namespaces to not only keep it simple, but keep it more efficient.
+
 - [Stylelint](https://stylelint.io/): A linter to help avoid errors on styles.
 
 Despite this is a test project, it is structured to be responsive, scalable, maintainable and testable.
