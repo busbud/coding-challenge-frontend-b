@@ -7,7 +7,9 @@ export type DispatchAction = {
   payload?: unknown;
 };
 
-type ActionType = (actions: DispatchAction) => Reducer<any, any>;
+type ActionType = (actions: {
+  [x: string]: (state: any, payload: any) => any;
+}) => Reducer<any, any>;
 
 const createReducers: ActionType = actions =>
   (
