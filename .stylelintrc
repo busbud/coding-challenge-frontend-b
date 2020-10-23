@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended-scss",
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-css-modules",
+    "stylelint-config-concentric-order"
+  ],
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-declaration-use-variable"
+  ],
+  "rules": {
+    "at-rule-no-unknown": [ true, {
+      "ignoreAtRules": [
+        "tailwind"
+      ]
+    }],
+    "max-nesting-depth": 3,
+    "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$",
+    "declaration-no-important": true,
+    "selector-max-id": 0,
+    "number-leading-zero": "never",
+    "scss/at-rule-no-unknown": true,
+    "scss/no-duplicate-dollar-variables": true,
+    "scss/no-duplicate-mixins": true,
+    "scss/selector-no-union-class-name": true,
+    "scss/selector-nest-combinators": "always",
+    "scss/operator-no-unspaced": true,
+    "scss/operator-no-newline-before": true,
+    "scss/operator-no-newline-after": true,
+    "scss/dimension-no-non-numeric-values": true,
+    "order/properties-alphabetical-order": null,
+    "sh-waqar/declaration-use-variable": [["/color/", "content", "font-weight", { "ignoreValues": ["transparent", "inherit"] }]]
+  }
+}
