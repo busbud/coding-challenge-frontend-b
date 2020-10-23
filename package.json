@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "heroku-postbuild": "yarn build",
+    "start": "next start -p $PORT",
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook",
     "test": "jest",
