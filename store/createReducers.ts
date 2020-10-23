@@ -1,15 +1,19 @@
+import { Reducer } from 'react';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type DispatchAction = {
+  [index: string]: any;
   type: string;
   payload?: unknown;
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const createReducers = (actions: any) =>
+type ActionType = (actions: DispatchAction) => Reducer<any, any>;
+
+const createReducers: ActionType = actions =>
   (
     state: unknown,
     { type, payload }: DispatchAction
-  ): unknown =>
+  ) =>
     actions[type]?.(state, payload) || state || null;
 
 export default createReducers;
