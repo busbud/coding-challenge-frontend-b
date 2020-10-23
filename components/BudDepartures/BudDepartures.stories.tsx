@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { Story } from '@storybook/react/types-6-0';
 import AxiosMock from '@/.storybook/AxiosMock';
 import MockAdapter from 'axios-mock-adapter';
@@ -10,7 +9,7 @@ export default {
   component: BudDepartures,
 };
 
-const mockData = {
+export const mockData = {
   departures: [
     {
       amenities: {
@@ -72,7 +71,7 @@ const mockData = {
   ],
 };
 
-const mock = (apiMock: MockAdapter) => {
+export const mock = (apiMock: MockAdapter): void => {
   apiMock.onGet('/api/meetings/1').reply(200, mockData);
 };
 

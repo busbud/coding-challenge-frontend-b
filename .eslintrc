@@ -16,7 +16,8 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -49,6 +50,16 @@
     "comma-dangle": "off",
     "no-throw-literal": "off",
     "camelcase": "off",
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": [
+        "**/*.test.js",
+        "**/*.test.tsx",
+        "**/*.spec.js",
+        "**/*.stories.tsx",
+        "**/*.setup.js"
+        ]
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",

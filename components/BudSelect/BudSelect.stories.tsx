@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { Story } from '@storybook/react/types-6-0';
 import BudSelect, { BudSelectProps } from './BudSelect';
 

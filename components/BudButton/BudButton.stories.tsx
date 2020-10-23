@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { Story } from '@storybook/react/types-6-0';
 import BudButton, { BudButtonProps } from './BudButton';
 
