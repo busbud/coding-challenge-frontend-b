@@ -17,7 +17,7 @@ const BudAlert: React.FC<BudAlertProps> = ({
   timeout = 5000,
   visible,
 }) => {
-  const ref = useRef<any>();
+  const ref = useRef<unknown>();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const BudAlert: React.FC<BudAlertProps> = ({
             <p>{children}</p>
           </div>
         </CSSTransition>,
-        ref.current
+        ref.current as Element
       )) || <></>
   );
 };
