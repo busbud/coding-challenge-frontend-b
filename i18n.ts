@@ -7,7 +7,9 @@ const NextI18NextInstance = new NextI18Next({
   localePath: path.resolve('./public/locales'),
   serverLanguageDetection: false,
   otherLanguages: ['fr'],
-  localeSubpaths: nextConfig().publicRuntimeConfig.localeSubpaths,
+  localeSubpaths: nextConfig()?.publicRuntimeConfig?.localeSubpaths || {
+    fr: 'fr',
+  },
 });
 
 export const {
@@ -15,6 +17,7 @@ export const {
   useTranslation,
   Link,
   Router,
+  i18n,
   withTranslation,
 } = NextI18NextInstance;
 
