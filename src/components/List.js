@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function List(props){
+export default function List({data}){
     return(
         <div>
             list of elements
