@@ -14,10 +14,28 @@ function App() {
 	});
 
 	useEffect(() => {
+		function checkData(data, url, query) {
+			if (!data.complete) {
+				const length = data.departures.length;
+
+				setTimeout(async () => {
+					const newData = await postData(url + '/poll' + query + '&index=' + length);
+
+					setData(data.concat(newData));
+
+					checkData(newData, url, query);
+				}, 2000);
+			}
+		}
+
 		async function fetchData() {
-			const data = await postData('https://napi.busbud.com/x-departures/f2m673/f25dvk/2020-12-01?adult=1&child=0&senior=0&lang=en&currency=EUR');
-			console.log('data', data);
+			const url = 'https://napi.busbud.com/x-departures/f2m673/f25dvk/2020-12-01';
+			const query = '?adult=1&child=0&senior=0&lang=en&currency=CAD';
+
+			const data = await postData(url + query);
 			setData(data);
+
+			checkData(data, url, query);
 		}
 
 		fetchData();
