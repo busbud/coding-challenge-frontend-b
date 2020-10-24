@@ -30,7 +30,7 @@ function App() {
 
 		async function fetchData() {
 			const url = 'https://napi.busbud.com/x-departures/f2m673/f25dvk/2020-12-01';
-			const query = '?adult=1&child=0&senior=0&lang=en&currency=CAD';
+			const query = '?adult=1&child=0&senior=0&lang=fr&currency=CAD';
 
 			const data = await postData(url + query);
 			setData(data);
@@ -68,10 +68,11 @@ function App() {
 											src="/img/icon-onbus.png"
 											alt="OSHEAGA"
 											className="logo"
-										/>
+										/><br />
 
-										<h4 className="subtitle mb-0">Departure</h4>
-										<strong className="date">{formatDate(departure.departure_time)}</strong><br />
+										{/* <h4 className="subtitle mb-0">Departure</h4> */}
+										<strong className="date">{formatDate(departure.departure_time).date}</strong><br />
+										<strong className="time">{formatDate(departure.departure_time).time}</strong><br />
 										<span className="location">
 											Montréal <br />
 											<small>
@@ -108,10 +109,12 @@ function App() {
 											src="/img/icon-offbus.png"
 											alt="OSHEAGA"
 											className="logo"
-										/>
+										/><br />
 
-										<h4 className="subtitle mb-0">Arrival</h4>
-										<strong className="date">{formatDate(departure.arrival_time)}</strong><br />
+										{/* <h4 className="subtitle mb-0">Arrival</h4> */}
+
+										<strong className="date">{formatDate(departure.arrival_time).date}</strong><br />
+										<strong className="time">{formatDate(departure.arrival_time).time}</strong><br />
 
 										<span className="location">
 											Québec <br />
@@ -134,7 +137,9 @@ function App() {
 									</div>
 
 									<h4 className="mb-0">
-										<span className="text-success">{departure.prices.currency} {departure.prices.total}</span>
+										<span className="text-success">
+											{departure.prices.currency} {typeof departure.prices.total === 'number' ? departure.prices.total / 100 : departure.prices.total}
+										</span>
 									</h4>
 								</div>
 							</div>
@@ -170,11 +175,17 @@ async function postData(url = '') {
 
 function formatDate(string) {
 	let date = string.split('T')[0];
-	const time = string.split('T')[1];
+	let time = string.split('T')[1];
 
 	date = date.split('-').reverse().join('/');
 
-	return date + ' ' + time;
+	time = time.split(':');
+	time = time[0] + ':' + time[1];
+
+	return {
+		date,
+		time,
+	};
 }
 
 function getPlaceholderData() {
@@ -190,7 +201,7 @@ function getPlaceholderData() {
 }
 
 function getPlaceholderDate() {
-	return '____-__-__T__:__:__';
+	return '____-__-__T_:_:__';
 }
 
 export default App;
