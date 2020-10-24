@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import fromRight from '@/styles/transitions/fromRight.module.scss';
+import fade from '@/styles/transitions/fade.module.scss';
 import { createPortal } from 'react-dom';
 
 export type BudAlertProps = {
@@ -42,7 +42,7 @@ const BudAlert: React.FC<BudAlertProps> = ({
           in={visible}
           timeout={200}
           unmountOnExit
-          classNames={fromRight}
+          classNames={fade}
         >
           <div
             className="absolute right-0 top-0 mt-4 bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4"
