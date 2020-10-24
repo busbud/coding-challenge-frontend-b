@@ -1,3 +1,20 @@
-.App {
+.app {
+	font-family: 'Syne Mono', monospace;
+	padding: 20px;
+	background-color: #ffe454;
 
+	.logo {
+		max-width: 100%;
+	}
+}
+
+.title {
+	text-transform: uppercase;
+}
+
+.list-schedules {
+	list-style: none;
+	padding: 0;
+	max-width: 600px;
+	margin: 0 auto;
 }
