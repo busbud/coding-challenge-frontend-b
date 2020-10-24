@@ -20,12 +20,12 @@ function App() {
 			setData(data);
 		}
 
-		// fetchData();
+		fetchData();
 	}, []);
 
 	return (
-		<div className="app text-center">
-			<header className="app-header mt-5">
+		<div className="app text-center mt-5 mb-5">
+			<header className="app-header">
 				<h1 className="title">
 					<div className="mb-2">Going to</div>
 					<img
@@ -35,77 +35,77 @@ function App() {
 					/>
 					<div>from Quebéc?</div>
 				</h1>
+			</header>
 
-				<h2 className="mt-5">Bus Schedules</h2>
+			<h2 className="mt-5">Bus Schedules</h2>
 
-				<ul className="list-schedules">
-					{data && data.departures.map((departure, index) => {
-						return (
-							<li key={index}>
-								<div className="card p-3 mb-3 text-left">
-									<div className="d-flex justify-content-between">
-										<div>
-											<h4 className="mb-0">Departure</h4>
-											<strong className="date">{formatDate(departure.departure_time)}</strong><br />
-											<span className="location">
-												Montréal <br />
-												<small>
-													(
-														{data.locations && data.locations.find((location) => {
-															return location.id === departure.origin_location_id;
-														}).name}
+			<ul className="list-schedules">
+				{data && data.departures.map((departure, index) => {
+					return (
+						<li key={index}>
+							<div className="card p-3 mb-3 text-left">
+								<div className="d-flex justify-content-between">
+									<div>
+										<h4 className="mb-0">Departure</h4>
+										<strong className="date">{formatDate(departure.departure_time)}</strong><br />
+										<span className="location">
+											Montréal <br />
+											<small>
+												(
+													{data.locations && data.locations.find((location) => {
+														return location.id === departure.origin_location_id;
+													}).name}
 
-														{!data.locations && '---------------'}
-													)
-												</small>
-											</span>
-										</div>
+													{!data.locations && '_________'}
+												)
+											</small>
+										</span>
+									</div>
 
-										<div className="flex-grow-1 mr-2 ml-2">
-											<div className="arrow d-flex">
-												<div className="line flex-grow-1"></div>
-												&gt;
+									<div className="flex-grow-1 mr-2 ml-2">
+										<div className="arrow d-flex">
+											<div className="line flex-grow-1"></div>
+											&gt;
 
-												<span className="duration badge badge-pill">
-													{departure.duration} min
-												</span>
-											</div>
-										</div>
-
-										<div>
-											<h4 className="mb-0">Arrival</h4>
-											<strong className="date">{formatDate(departure.arrival_time)}</strong><br />
-
-											<span className="location">
-												Québec <br />
-												<small>
-													(
-														{data.locations && data.locations.find((location) => {
-															return location.id === departure.destination_location_id;
-														}).name}
-
-														{!data.locations && '---------------'}
-													)
-												</small>
+											<span className="duration badge badge-pill">
+												{departure.duration} min
 											</span>
 										</div>
 									</div>
 
-									<div className="d-flex justify-content-between flex-row align-items-baseline">
-										<div>
-											<div className="duration">Duration: {departure.duration} min</div>
-										</div>
+									<div>
+										<h4 className="mb-0">Arrival</h4>
+										<strong className="date">{formatDate(departure.arrival_time)}</strong><br />
 
-										<h4 className="mb-0">
-											<span className="text-success">{departure.prices.currency} {departure.prices.total}</span>
-										</h4>
+										<span className="location">
+											Québec <br />
+											<small>
+												(
+													{data.locations && data.locations.find((location) => {
+														return location.id === departure.destination_location_id;
+													}).name}
+
+													{!data.locations && '_________'}
+												)
+											</small>
+										</span>
 									</div>
 								</div>
-							</li>
-						)
-					})}
-				</ul>
-			</header>
+
+								<div className="d-flex justify-content-between flex-row align-items-baseline">
+									<div>
+										<div className="duration">Duration: {departure.duration} min</div>
+									</div>
+
+									<h4 className="mb-0">
+										<span className="text-success">{departure.prices.currency} {departure.prices.total}</span>
+									</h4>
+								</div>
+							</div>
+						</li>
+					)
+				})}
+			</ul>
 		</div>
 	);
 }
@@ -143,14 +143,18 @@ function formatDate(string) {
 
 function getPlaceholderData() {
 	return {
-		departure_time: '−−−−-−−-−−T−−:−−:−−',
-		arrival_time: '−−−−-−−-−−T−−:−−:−−',
+		departure_time: getPlaceholderDate(),
+		arrival_time: getPlaceholderDate(),
 		prices: {
-			total: '-.--',
-			currency: '---',
+			total: '_.__',
+			currency: '___',
 		},
-		duration: '---',
+		duration: '___',
 	};
+}
+
+function getPlaceholderDate() {
+	return '____-__-__T__:__:__';
 }
 
 export default App;
