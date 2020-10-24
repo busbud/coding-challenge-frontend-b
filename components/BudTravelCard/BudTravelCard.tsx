@@ -115,7 +115,7 @@ const BudTravelCard: React.FC<BudTravelCardProps> = ({
             {' '}
           </span>
           <strong className="text-gray-900">
-            {toNumberFormat(departure?.prices?.total)}
+            {toNumberFormat(departure?.prices?.total / 100)}
           </strong>
         </p>
         <div className="sm:absolute right-0 sm:pr-8 sm:pt-12 sm:top-0 ml-2">
