@@ -9,7 +9,7 @@ export default {
   component: BudDepartures,
 };
 
-export const mockData = {
+const mockData = {
   departures: [
     {
       amenities: {
@@ -71,7 +71,7 @@ export const mockData = {
   ],
 };
 
-export const mock = (apiMock: MockAdapter): void => {
+const mock = (apiMock: MockAdapter): void => {
   apiMock.onGet('/api/meetings/1').reply(200, mockData);
 };
 
