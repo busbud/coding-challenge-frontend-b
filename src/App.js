@@ -64,7 +64,13 @@ function App() {
 							<div className="card p-3 mb-3 text-left">
 								<div className="d-flex justify-content-between">
 									<div>
-										<h4 className="mb-0">Departure</h4>
+										<img
+											src="/img/icon-onbus.png"
+											alt="OSHEAGA"
+											className="logo"
+										/>
+
+										<h4 className="subtitle mb-0">Departure</h4>
 										<strong className="date">{formatDate(departure.departure_time)}</strong><br />
 										<span className="location">
 											Montréal <br />
@@ -80,7 +86,13 @@ function App() {
 										</span>
 									</div>
 
-									<div className="flex-grow-1 mr-2 ml-2">
+									<div className="flex-grow-1 mr-2 ml-2 text-center">
+										<img
+											src="/img/shuttle.png"
+											alt="OSHEAGA"
+											className="shuttle"
+										/>
+
 										<div className="arrow d-flex">
 											<div className="line flex-grow-1"></div>
 											&gt;
@@ -92,7 +104,13 @@ function App() {
 									</div>
 
 									<div>
-										<h4 className="mb-0">Arrival</h4>
+										<img
+											src="/img/icon-offbus.png"
+											alt="OSHEAGA"
+											className="logo"
+										/>
+
+										<h4 className="subtitle mb-0">Arrival</h4>
 										<strong className="date">{formatDate(departure.arrival_time)}</strong><br />
 
 										<span className="location">

@@ -26,7 +26,7 @@
 }
 
 .arrow {
-	margin-top: 26px;
+	margin-top: 20px;
 	position: relative;
 }
 
@@ -34,7 +34,7 @@
 	width: 100%;
 	height: 0;
 	border-bottom: 1px dashed black;
-	margin-top: 14px;
+	margin-top: 11px;
 }
 
 .arrow span.duration {
@@ -51,6 +51,27 @@
 	display: inline-block;
 }
 
+.shuttle {
+	width: 58px;
+	margin-top: -3px;
+}
+
+.shuttle {
+	// animation: shake .3s linear;
+	// animation-iteration-count: infinite;
+	// transform: translate3d(0, 0, 0);
+	// backface-visibility: hidden;
+	// perspective: 1000px;
+}
+
+.card {
+	font-size: 14px;
+}
+
+.subtitle {
+	font-size: 14px;
+}
+
 @media only screen and (min-width: 500px) {
 	.arrow span.duration {
 		display: inline-block;
@@ -64,5 +85,35 @@
 
 	.duration {
 		display: none;
+	}
+
+	.subtitle {
+		font-size: 1.5rem;
+	}
+}
+
+@keyframes shake {
+	0% {
+		transform: translate3d(0, -1px, 0);
+	}
+
+	20% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	40% {
+		transform: translate3d(0, 1px, 0);
+	}
+
+	60% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	80% {
+		transform: translate3d(0, -1px, 0);
+	}
+
+	100% {
+		transform: translate3d(0, -1px, 0);
 	}
 }
