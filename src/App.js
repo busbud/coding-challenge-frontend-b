@@ -34,19 +34,56 @@ function App() {
 					{data && data.departures.map((departure, index) => {
 						return (
 							<li key={index}>
-								<div className="card p-3 mb-3 text-left d-block">
-									departure time: <span>{departure.departure_time}</span><br />
-									arrival time: <span>{departure.arrival_time}</span><br />
+								<div className="card p-3 mb-3 text-left">
+									<div className="d-flex justify-content-between">
+										<div>
+											<h4 className="mb-0">Departure</h4>
+											<strong className="date">{formatDate(departure.departure_time)}</strong><br />
+											<span className="location">
+												Montréal <br />
+												<small>
+													({data.locations.find((location) => {
+														return location.id === departure.origin_location_id;
+													}).name})
+												</small>
+											</span>
+										</div>
 
-									departure from: {data.locations.find((location) => {
-										return location.id === departure.destination_location_id;
-									}).name}<br />
+										<div className="flex-grow-1 mr-2 ml-2">
+											<div className="arrow d-flex">
+												<div className="line flex-grow-1"></div>
+												&gt;
 
-									departure to: {data.locations.find((location) => {
-										return location.id === departure.origin_location_id;
-									}).name}<br />
+												<span className="duration badge badge-pill">
+													{departure.duration} min
+												</span>
+											</div>
+										</div>
 
-									price: {departure.prices.total}
+										<div>
+											<h4 className="mb-0">Arrival</h4>
+											<strong className="date">{formatDate(departure.arrival_time)}</strong><br />
+
+											<span className="location">
+												Québec <br />
+												<small>
+													({data.locations.find((location) => {
+														return location.id === departure.destination_location_id;
+													}).name})
+												</small>
+											</span>
+										</div>
+									</div>
+
+									<div className="d-flex justify-content-between flex-row align-items-baseline">
+										<div>
+											<div className="duration">Duration: {departure.duration} min</div>
+										</div>
+
+										<h4 className="mb-0">
+											<span className="text-success">{departure.prices.currency} {departure.prices.total}</span>
+										</h4>
+									</div>
 								</div>
 							</li>
 						)
@@ -79,6 +116,13 @@ async function postData(url = '') {
 	return response.json(); // parses JSON response into native JavaScript objects
 }
 
+function formatDate(string) {
+	let date = string.split('T')[0];
+	const time = string.split('T')[1];
 
+	date = date.split('-').reverse().join('/');
+
+	return date + ' ' + time;
+}
 
 export default App;
