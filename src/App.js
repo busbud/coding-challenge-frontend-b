@@ -3,7 +3,15 @@ import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-	const [data, setData] = useState();
+	const [data, setData] = useState({
+		departures: [
+			getPlaceholderData(),
+			getPlaceholderData(),
+			getPlaceholderData(),
+			getPlaceholderData(),
+			getPlaceholderData(),
+		]
+	});
 
 	useEffect(() => {
 		async function fetchData() {
@@ -12,7 +20,7 @@ function App() {
 			setData(data);
 		}
 
-		fetchData();
+		// fetchData();
 	}, []);
 
 	return (
@@ -42,9 +50,13 @@ function App() {
 											<span className="location">
 												Montréal <br />
 												<small>
-													({data.locations.find((location) => {
-														return location.id === departure.origin_location_id;
-													}).name})
+													(
+														{data.locations && data.locations.find((location) => {
+															return location.id === departure.origin_location_id;
+														}).name}
+
+														{!data.locations && '---------------'}
+													)
 												</small>
 											</span>
 										</div>
@@ -67,9 +79,13 @@ function App() {
 											<span className="location">
 												Québec <br />
 												<small>
-													({data.locations.find((location) => {
-														return location.id === departure.destination_location_id;
-													}).name})
+													(
+														{data.locations && data.locations.find((location) => {
+															return location.id === departure.destination_location_id;
+														}).name}
+
+														{!data.locations && '---------------'}
+													)
 												</small>
 											</span>
 										</div>
@@ -125,4 +141,21 @@ function formatDate(string) {
 	return date + ' ' + time;
 }
 
+function getPlaceholderData() {
+	return {
+		departure_time: '−−−−-−−-−−T−−:−−:−−',
+		arrival_time: '−−−−-−−-−−T−−:−−:−−',
+		prices: {
+			total: '-.--',
+			currency: '---',
+		},
+		duration: '---',
+	};
+}
+
 export default App;
+
+
+// −
+// -
+// ﹣
