@@ -28,6 +28,7 @@ const optionsMapper: OptionsMapper = {
 };
 
 const options = Object.keys(optionsMapper);
+const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
 
 const Index: NextPage = () => {
   const [t] = useTranslation('common');
@@ -120,6 +121,7 @@ const Index: NextPage = () => {
             <BudInput
               type="date"
               className="my-2 sm:my-0"
+              min={yesterday.toISOString().split('T')[0]}
               value={departureDate}
               onChange={ev => {
                 setDepartureDate(ev.target.value);
