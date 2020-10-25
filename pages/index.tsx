@@ -58,7 +58,7 @@ const Index: NextPage = () => {
       if (!fetchedDepartures.length) {
         dispatchMessage({
           type: typesMessages.SET_ALERT,
-          payload: { text: 'No data available' },
+          payload: { text: t('No data available') },
         });
       }
 
