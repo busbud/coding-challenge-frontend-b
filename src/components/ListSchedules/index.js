@@ -1,12 +1,10 @@
 import './ListSchedules.scss';
+import translations from '../../helpers/translations';
 
 function ListSchedules(params) {
-	// data = data.data;
-
-	console.log('params', params);
-
 	const departures = params.departures;
 	const locations = params.locations;
+	const lang = params.lang;
 
 	return (
 		<ul className="list-schedules">
@@ -82,7 +80,7 @@ function ListSchedules(params) {
 
 							<div className="d-flex justify-content-between flex-row align-items-baseline">
 								<div>
-									<div className="duration">Duration: {departure.duration} min</div>
+									<div className="duration">{translations[lang].duration}: {departure.duration} min</div>
 								</div>
 
 								<h4 className="mb-0">
