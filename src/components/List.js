@@ -1,9 +1,13 @@
 import React from 'react';
 
-export default function List({data}){
+export default function List({data, isLoading, error}){
     return(
         <div>
-            list of elements
+            {error ? <div>Error!</div> : ''}
+            {isLoading ? <div>Loading...</div> : ''}
+            {data && data.map(departure => {
+                return <div key={departure.id}>{departure.id}</div>
+            })}
         </div>
     )
 }

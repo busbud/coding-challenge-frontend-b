@@ -1,4 +1,4 @@
-import React, {Img} from 'react';
+import React from 'react';
 import MenuItem from './MenuItem'
 import {ReactComponent as Logo} from './logo.svg'
 
