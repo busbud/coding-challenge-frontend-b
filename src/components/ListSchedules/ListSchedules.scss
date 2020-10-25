@@ -1,6 +1,4 @@
 .app {
-	font-family: 'Syne Mono', monospace;
-	font-family: 'Mukta', sans-serif;
 	font-family: 'Quicksand', sans-serif;
 	padding: 20px;
 
@@ -58,23 +56,35 @@
 
 .shuttle {
 	width: 58px;
+	height: 58px;
 	margin-top: -3px;
-}
-
-.shuttle {
-	// animation: shake .3s linear;
-	// animation-iteration-count: infinite;
-	// transform: translate3d(0, 0, 0);
-	// backface-visibility: hidden;
-	// perspective: 1000px;
 }
 
 .card {
 	font-size: 14px;
+	text-decoration: none;
+	transition: background-color .3s;
+	color: black;
+
+	&:hover {
+		text-decoration: none;
+		background-color: #fff5c0;
+		color: black;
+
+		strong,
+		span {
+			text-decoration: none;
+		}
+	}
 }
 
 .subtitle {
 	font-size: 14px;
+}
+
+.icon {
+	height: 48px;
+	width: 48px;
 }
 
 @media only screen and (min-width: 400px) {
@@ -94,31 +104,5 @@
 
 	.subtitle {
 		font-size: 1.5rem;
-	}
-}
-
-@keyframes shake {
-	0% {
-		transform: translate3d(0, -1px, 0);
-	}
-
-	20% {
-		transform: translate3d(0, 0, 0);
-	}
-
-	40% {
-		transform: translate3d(0, 1px, 0);
-	}
-
-	60% {
-		transform: translate3d(0, 0, 0);
-	}
-
-	80% {
-		transform: translate3d(0, -1px, 0);
-	}
-
-	100% {
-		transform: translate3d(0, -1px, 0);
 	}
 }
