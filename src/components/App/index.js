@@ -16,7 +16,7 @@ function App() {
 	const [lang, setLang] = useState('en');
 
 	const url = 'https://napi.busbud.com/x-departures/f2m673/f25dvk/2020-12-01';
-	const query = `?adult=4&child=0&senior=0&lang=${lang}&currency=CAD`;
+	const query = `?adult=1&child=0&senior=0&lang=${lang}&currency=CAD`;
 
 	useEffect(() => {
 		fetchData();
