@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import ListSchedules from '../ListSchedules';
 import translations from '../../helpers/translations';
