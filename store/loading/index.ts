@@ -1,4 +1,7 @@
 import actions from './actions';
 import createReducers from '../createReducers';
+import state, { LoadingState } from './state';
 
-export default createReducers(actions);
+export const reducer = createReducers(actions);
+export { state };
+export type { LoadingState as type };

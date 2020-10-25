@@ -1,23 +1,29 @@
 import { createContext, ReactNode, useMemo, useReducer } from 'react';
-import { DispatchAction } from './createReducers';
-import departureReducer from './departures';
-import departureState from './departures/state';
-import loadingReducer from './loading';
-import loadingState from './loading/state';
-import messageReducer from './messages';
-import messageState from './messages/state';
-import operatorReducer from './operators';
-import operatorState from './operators/state';
+import {
+  reducer as departureReducer,
+  state as departureState,
+} from './departures';
+import { reducer as loadingReducer, state as loadingState } from './loading';
+import { reducer as messageReducer, state as messageState } from './messages';
+import {
+  reducer as operatorReducer,
+  state as operatorState,
+} from './operators';
+import type { DispatchAction } from './createReducers';
+import type { DepartureState } from './departures/state';
+import type { LoadingState } from './loading/state';
+import type { MessageState } from './messages/state';
+import type { OperatorState } from './operators/state';
 
 type BaseState = {
   dispatch: (action: DispatchAction) => void;
 };
 
-type InitialState = {
-  message: typeof messageState & BaseState;
-  loading: typeof loadingState & BaseState;
-  departure: typeof departureState & BaseState;
-  operator: typeof operatorState & BaseState;
+type InitialState<T> = {
+  message: MessageState & T;
+  loading: LoadingState & T;
+  departure: DepartureState & T;
+  operator: OperatorState & T;
 };
 
 const initialState = {
@@ -26,13 +32,15 @@ const initialState = {
   departure: departureState,
 };
 
-export const Store = createContext(initialState as InitialState);
+export const Store = createContext(initialState as InitialState<BaseState>);
 
 type StoreProviderProps = {
   children: ReactNode;
 };
 
-export default function StoreProvider({ children }: StoreProviderProps) {
+export default function StoreProvider({
+  children,
+}: StoreProviderProps): JSX.Element {
   const [stateMessage, dispatchMessage] = useReducer(
     messageReducer,
     messageState
@@ -54,7 +62,7 @@ export default function StoreProvider({ children }: StoreProviderProps) {
   );
 
   const store = useMemo(
-    (): InitialState =>
+    (): InitialState<BaseState> =>
       ({
         message: { ...stateMessage, dispatch: dispatchMessage },
         loading: { ...stateLoading, dispatch: dispatchLoading },
