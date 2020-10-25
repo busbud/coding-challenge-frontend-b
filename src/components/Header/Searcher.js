@@ -1,11 +1,10 @@
 import React from 'react';
-import { useQuery, QueryCache, ReactQueryCacheProvider } from "react-query";
 
-export default function SearcherComponent({triggerSearch}){
+export default function SearcherComponent(props){
 
     return(
         <div>
-            <button onClick={triggerSearch} className="button">Search!</button>
+            <button onClick={props.triggerSearch} className="button">Search!</button>
         </div>
     )
 }
