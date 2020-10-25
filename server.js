@@ -54,11 +54,7 @@ if (!dev && isMaster) {
       })
     );
 
-    // Default catch-all renders Next app
     server.get('*', (req, res) => {
-      // res.set({
-      //   'Cache-Control': 'public, max-age=3600'
-      // });
       const parsedUrl = parse(req.url, true);
       nextHandler(req, res, parsedUrl);
     });
