@@ -16,16 +16,18 @@ export default function queryWrapperContainer(props){
 
 function usePollDepartures(){ //extracted fetch/poll functionality in a custom hook
     const headers = new Headers({'X-Busbud-Token': 'process.env.REACT_APP_TOKEN'});
+    const [originalResponse, setOriginal] = useState(null)
     const [departures, setDepartures] = useState([])
     const [queryIndex, setQueryIndex] = useState(0);
     const [enabled, toggle] = useState(false);
     const [pollString, setPoll] = useState('')
-    const url = "https://napi.busbud.com/x-departures/gcpvj0/gcpn7m/2020-11-12/" + pollString;
+    const url = "https://napi.busbud.com/x-departures/gcpvj0/gcpn7m/2020-11-15/" + pollString;
     const response = useQuery("busbud", () =>
         fetch(url,{headers})
         .then((res) => 
             res.json()
         ).then((data) => {
+            if (data.origin_city_id) setOriginal(data)
             if (data.complete) {
                 toggle(false) // no more fetching/polling
             } else {
@@ -37,15 +39,16 @@ function usePollDepartures(){ //extracted fetch/poll functionality in a custom h
         }), 
         {enabled, refetchInterval:3000 //if enabled, the query will run every 3 seconds
         });
-    return {toggle, response, departures}
+    return {toggle, response, departures, originalResponse, enabled}
 }
 
 
 function Container(){
-    const {toggle, response, departures} = usePollDepartures() //get response and toggle
+    const {toggle, response, departures, originalResponse, enabled} = usePollDepartures() //get response and toggle
     return(
         <div>
             <HeaderContainer triggerSearch={() => toggle(true)}/>
+            {originalResponse && enabled && departures.length > 0 && <div>More results might be added to the list</div>}
             <List data={departures} isLoading={response.isLoading} error={response.error}/>
             <Footer/>
         </div>
