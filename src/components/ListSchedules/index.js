@@ -1,4 +1,5 @@
 import './ListSchedules.scss';
+import Location from '../Location';
 import translations from '../../helpers/translations';
 
 function ListSchedules(params) {
@@ -11,7 +12,7 @@ function ListSchedules(params) {
 			{departures.map((departure, index) => {
 				return (
 					<li key={index}>
-						<a className="card p-3 mb-3 text-left" href={departure.links ? departure.links.deeplink : ''}>
+						<a className="card p-3 mb-3 text-left" href={departure.links ? departure.links.deeplink : '#'}>
 							<div className="d-flex justify-content-between">
 								<div>
 									<img
@@ -22,18 +23,12 @@ function ListSchedules(params) {
 
 									<strong className="date">{formatDate(departure.departure_time).date}</strong><br />
 									<strong className="time">{formatDate(departure.departure_time).time}</strong><br />
-									<span className="location">
-										Montréal <br />
-										<small>
-											(
-												{locations && locations.find((location) => {
-													return location.id === departure.origin_location_id;
-												}).name}
 
-												{!locations && '_________'}
-											)
-										</small>
-									</span>
+									<Location
+										city="Montréal"
+										id={departure.origin_location_id}
+										locations={locations}
+									/>
 								</div>
 
 								<div className="flex-grow-1 mr-2 ml-2 text-center">
@@ -63,18 +58,11 @@ function ListSchedules(params) {
 									<strong className="date">{formatDate(departure.arrival_time).date}</strong><br />
 									<strong className="time">{formatDate(departure.arrival_time).time}</strong><br />
 
-									<span className="location">
-										Québec <br />
-										<small>
-											(
-												{locations && locations.find((location) => {
-													return location.id === departure.destination_location_id;
-												}).name}
-
-												{!locations && '_________'}
-											)
-										</small>
-									</span>
+									<Location
+										city="Québec"
+										id={departure.destination_location_id}
+										locations={locations}
+									/>
 								</div>
 							</div>
 

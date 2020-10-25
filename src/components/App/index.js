@@ -107,7 +107,7 @@ function getPlaceholderData() {
 			total: '_.__',
 			currency: '___',
 		},
-		duration: '___',
+		duration: '__',
 	};
 }
 
