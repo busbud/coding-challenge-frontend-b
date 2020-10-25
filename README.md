@@ -11,6 +11,7 @@
 - Makes a poll searches every 2 seconds while current departure list is not complete.
 - Responsive design (adjustments for smaller mobile screens).
 - Languages supported: English, French.
+- Every card is a link to Busbud's checkout form, in the respective language.
 
 ## How to run
 
