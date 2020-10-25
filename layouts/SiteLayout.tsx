@@ -2,6 +2,7 @@ import BudSelect from '@/components/BudSelect';
 import { useTranslation } from '@/i18n';
 import { NextPage } from 'next';
 import { I18nContext } from 'next-i18next';
+import Head from 'next/head';
 import { ChangeEvent, useContext } from 'react';
 
 const options = ['en', 'fr'];
@@ -18,6 +19,14 @@ const SiteLayout: NextPage = ({ children }) => {
 
   return (
     <div>
+      <Head>
+        <title>
+          {t('Coding Challenge Busbud')}
+          {' '}
+          | Douglas Pires
+        </title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div className="bg-blue-600 antialiased">
         <div className="max-w-xl mx-auto px-8 sm:px-0">
           <nav>
