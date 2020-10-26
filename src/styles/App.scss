@@ -1,20 +1,32 @@
 $blue: #127ccb;
 $orange: #f19020;
 
+body {
+  background-color: #f6f6f6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+
 .top-container {
   background-color: $blue;
   color: white;
-  padding: 20px 50px 100px 50px;
+  padding: 20px 0px 60px 0px;
 }
 
 .top-container .header {
   text-align:left;
   width: 60%;
-  margin: 0 auto;  
+  margin: 45px auto;  
+}
+
+.top-container .header h1 {
+  font-size: 36px;
 }
 
 .top-container .menu{
   width:60%;
+  height:80px;
   margin: 0 auto;
 }
 
@@ -24,10 +36,118 @@ $orange: #f19020;
 }
 
 .top-container .button {
-  background-color: $orange
+  background-color: $orange;
+  border: none;
+  width:120px;
+  height: 60px;
+  color: white;
+  border-radius:5px;
+  cursor: pointer;
 }
 
+.ticket {
+  max-width: 71.4285714286rem;
+  height: 100px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.24);
+  margin: 1.4285714286rem auto;
+  width: 60%;
+  padding: 20px;
+}
+
+.ticket .top {
+  display: flex;
+  justify-content: space-between
+}
+
+.ticket .top img {
+  height:25px;
+}
+
+.ticket .middle {
+  text-align: left;
+}
+
+.ticket .price {
+  color:$blue;
+  font-weight: 700;
+  font-size: 1.4285714286rem;
+  line-height: 1.4285714286rem;  
+}
+
+.ribbon {
+  margin: 0;
+  padding: 0;
+  color: white;
+  position: absolute;
+  top: -5em;
+  right: -6em;
+  transform: translateX(30%) translateY(0%) rotate(45deg);
+  transform-origin: top left;
+  height: 6em;
+  box-shadow: 0 1px 6px 17px rgba(0, 0, 0, 0.24);
+}
+
+@media only screen and (max-width: 550px) {
+  .ribbon {
+    height: 4em;
+    top: -4em;
+    right: -5em;    
+  }
+  .header {
+    padding-right: 70px;
+  }
+  .menu {
+    padding-right: 70px;
+  }
+  .polling span {
+    display:none !important;
+  }
+
+  .polling>img {
+    right:0px !important;
+  }
+
+}
+
+.loading {
+  margin-top: 50px
+}
+
+.polling {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+}
+
+.polling>span {
+  display: block;
+  margin-bottom: 10px;
+  color: $blue;
+  font-weight: 500;
+}
+
+.polling>img {
+  width: 40px;
+}
+
+.ribbon:before,
+.ribbon:after {
+  content: '';
+  position: absolute;
+  top:0;
+  margin: 0 -1px; /* tweak */
+  width: 100%;
+  height: 100%;
+  background: rebeccapurple;
+}
+.ribbon:before {
+  right:100%;
+}
+
+
 .App {
+  position: relative;
+  overflow-x: hidden;
   text-align: center;
 }
 
