@@ -6,10 +6,6 @@ export default function Menu(props){
     return(
         <div className="menu">
             <Logo className="menu-logo"/>
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
         </div>
     )
 }
