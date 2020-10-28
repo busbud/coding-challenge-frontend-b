@@ -35,8 +35,8 @@ export default function List({latestData, isLoading, error, enabled}){
 
     return(
         <div className="list">
-            {error ? <div>{t("error")}</div> : ''}
-            {noResults && <div>{t("noResults")}</div>}
+            {error ? <div className="message">{t("error")}</div> : ''}
+            {noResults && <div className="message">{t("noResults")}</div>}
             {loadingInitialResults && <img className="loading" src="loader-blue.gif"/>}
             {pollingMoreResults && <div className="polling"><span>{t("polling")}</span><img src="loader-blue.gif"/></div>}
             {departures.length > 0 && departures.map((departure, index) => {
