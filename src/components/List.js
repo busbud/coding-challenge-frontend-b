@@ -10,12 +10,14 @@ export default function List({latestData, isLoading, error, enabled}){
     const [departures, setDepartures] = useState([]);
     const [operators, setOperators] = useState([]);
     const [locations, setLocations] = useState([]);
+    const [cities, setCities] = useState([]);
 
     useEffect(() => {
         if (latestData) {
             if (latestData.departures) setDepartures(departures.concat(latestData.departures))
             if (latestData.operators) setOperators(operators.concat(latestData.operators))
             if (latestData.locations) setLocations(locations.concat(latestData.locations))
+            if (latestData.cities) setCities(locations.concat(latestData.cities))
         }
     }, [latestData])
 
@@ -23,6 +25,7 @@ export default function List({latestData, isLoading, error, enabled}){
         if (enabled) { //if enabled was changed to true, clean departures and cities for new fetch
             setDepartures([])
             setLocations([])
+            setCities([])
         }
     }, [enabled])
 
@@ -45,7 +48,8 @@ export default function List({latestData, isLoading, error, enabled}){
                     departure={departure} 
                     operator={operator} 
                     originLocation={originLocation} 
-                    destinationLocation={destinationLocation}/>
+                    destinationLocation={destinationLocation}
+                    cities={cities}/>
             })}
         </div>
     )

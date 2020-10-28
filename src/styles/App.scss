@@ -50,6 +50,34 @@ body {
   float: left;
 }
 
+.times, .locations {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;  
+}
+
+.icons>img {
+  opacity:0.3;
+}
+
+.icons div:last-child img{
+  margin-top:0px;
+}
+
+.icons div:first-child img{
+  margin-top:2px;
+}
+
+.locations div:last-child {
+  margin-bottom: 4px;
+}
+
+
+.times div:last-child {
+  margin-bottom: 4px;
+}
+
+
 .top-container .header {
   text-align:left;
   width: 60%;
@@ -77,7 +105,7 @@ body {
 
 .ticket {
   max-width: 71.4285714286rem;
-  height: 100px;
+  height: 120px;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,.24);
   margin: 1.4285714286rem auto;
   width: 60%;
@@ -101,10 +129,10 @@ body {
 }
 
 .ticket .times {
-  margin-right: 5px;
+  margin:0px 5px;
 }
 
-.ticket .location img {
+.ticket .icons img {
   height:20px;
 }
 
@@ -203,6 +231,21 @@ button:disabled {
 
   .searcher {
     padding-right: 70px;
+  }
+
+  .list {
+    margin-top:40px;
+  }
+  .loading {
+    margin-top: 0px !important;
+  }
+
+  .locations div {
+    font-size:0.8em;
+  }
+
+  .ticket {
+    width:70%;
   }
 
 }
