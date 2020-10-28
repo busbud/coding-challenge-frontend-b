@@ -21,20 +21,20 @@ export default function List({latestData, isLoading, error, enabled}){
         }
     }, [enabled])
 
-    const loadingInitialResults = isLoading || (latestData && !latestData.complete && departures.length === 0);
-    const pollingMoreResults = !isLoading && latestData && !latestData.complete && departures.length > 0
-
+    const loadingInitialResults =!error && (isLoading || (latestData && !latestData.complete && departures.length === 0)); //loading but no restults yet
+    const pollingMoreResults = !error && ( latestData && !latestData.complete && departures.length > 0) //loading but alrady showing results
+    const noResults = latestData && latestData.complete && latestData.departures.length === 0 && departures.length === 0;
 
     return(
         <div className="list">
-            {error ? <div>Error!</div> : ''}
+            {error ? <div>There was an error while fetching results. Please, try a different date</div> : ''}
+            {noResults && <div>There are no results or your search</div>}
             {loadingInitialResults && <img className="loading" src="loader-blue.gif"/>}
             {pollingMoreResults && <div className="polling"><span>Getting you more</span><img src="loader-blue.gif"/></div>}
-            {departures.length > 0 && departures.map(departure => {
+            {departures.length > 0 && departures.map((departure, index) => {
                 let operator = operators.filter(operators => operators.id === departure.operator_id)[0]
-                return <Ticket departure={departure} operator={operator} cities={cities}/>
+                return <Ticket key={index} departure={departure} operator={operator} cities={cities}/>
             })}
-            {/*<img src="osheaga-banner.png"/>*/}
         </div>
     )
 }
