@@ -1,5 +1,6 @@
 import React from 'react';
-import dots from '../dots.png'
+import dots from './dots.png'
+import location from './location.png'
 
 export default function Ticket({departure, operator, originLocation, destinationLocation, cities}){
 
@@ -27,9 +28,9 @@ export default function Ticket({departure, operator, originLocation, destination
             </div>
             <div className="middle">
                 <div className="icons">
-                    <div><img src="location.png"/></div>
+                    <div><img src={location}/></div>
                     <img src={dots}/>
-                    <div><img src="location.png"/></div>
+                    <div><img src={location}/></div>
                 </div>                
                 <div className="times">
                     <div>{getTimes(departure.departure_time)}</div>
