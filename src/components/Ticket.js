@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Ticket({departure, operator, cities}){
+export default function Ticket({departure, operator, originLocation, destinationLocation}){
 
     function getTimes(time){
         let hours = new Date(time).getHours();
@@ -8,6 +8,9 @@ export default function Ticket({departure, operator, cities}){
         if (minutes < 10) {
             minutes = '0' + minutes;
         }
+        if (hours < 10) {
+            hours = '0' + hours;
+        }        
         return hours + ':' + minutes
     }
 
@@ -22,17 +25,17 @@ export default function Ticket({departure, operator, cities}){
                 </div>
             </div>
             <div className="middle">
-                <div className="times">
-                    <div>{getTimes(departure.departure_time)}</div>
-                    <div>{getTimes(departure.arrival_time)}</div>
-                </div>
                 <div className="location">
                     <div><img src="location.png"/></div>
                     <div><img src="location.png"/></div>
                 </div>                
+                <div className="times">
+                    <div>{getTimes(departure.departure_time)}</div>
+                    <div>{getTimes(departure.arrival_time)}</div>
+                </div>
                 <div>
-                    <div>{cities[0].name}</div> 
-                    <div>{cities[1].name}</div>
+                    <div>{originLocation}</div> 
+                    <div>{destinationLocation}</div>
                 </div>
             </div>
             <div className="bottom"></div>
