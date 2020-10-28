@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div className="App">
       <AppContainer/>
-      <a href="https://osheaga.com" target="_blank"><img src='osheaga.png' className="ribbon"/></a>
+      <a href="https://osheaga.com" target="_blank"><img src={'../osheaga.png'} className="ribbon"/></a>
     </div>
   );
 }
