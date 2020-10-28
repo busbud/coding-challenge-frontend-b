@@ -18,7 +18,7 @@ function usePollDepartures(){ //extracted fetch/poll functionality
     const headers = new Headers({'X-Busbud-Token': process.env.REACT_APP_TOKEN});
     const [departure, changeDeparture] = useState(new Date().toISOString().substring(0, 10))
     const [queryIndex, setQueryIndex] = useState(0);
-    const [enabled, toggle] = useState(false);
+    const [enabled, toggle] = useState(true);
     const [pollString, setPoll] = useState('') //first call needs to be an initialize search call
     const urlParams = new URLSearchParams(window.location.search);
     const origin = urlParams.get('origin') || 'f2m673'
