@@ -19,7 +19,7 @@ there are very few results and you might not be able to test polling correctly.
 
 ## Non-functional requirements
 
-- The site was deployed in Heroku: 
+- The site was deployed in Heroku: https://osheaga-torre.herokuapp.com/
 
 ### Bonus
 
@@ -28,7 +28,7 @@ there are very few results and you might not be able to test polling correctly.
 
 ### Things I couln't do because of lack of time
 
-*TESTING: This is the most important lacking feature I think. I usually use "Testing library" to validate my application behavior. 
-*More styling (for example use skeleton tickets/cards when loading, display amenities with icons...)
-*currency selector
-*If I had more time, I would have added location select dropdowns for origin and destination (instead of URL paramters). I know the challenge states that It should be from Quebec to Glasgow, but with other locations is easier to test IMO.
+- TESTING: This is the most important lacking feature I think. I usually use "Testing library" to validate my application behavior./n
+- More styling (for example use skeleton tickets/cards when loading, display amenities with icons...)/n
+- currency selector
+- If I had more time, I would have added location select dropdowns for origin and destination (instead of URL paramters). I know the challenge states that It should be from Quebec to Glasgow, but with other locations is easier to test IMO.
