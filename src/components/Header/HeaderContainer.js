@@ -8,7 +8,10 @@ export default function List(props){
         <div className="top-container">
           <Menu/>
           <BudHeader/>
-          <Searcher triggerSearch={props.triggerSearch}/>
+          <Searcher 
+            enabled={props.enabled}
+            triggerSearch={props.triggerSearch} 
+            changeDeparture={props.changeDeparture}/>
         </div>
     )
 }
