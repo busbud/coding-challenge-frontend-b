@@ -20,7 +20,10 @@ function usePollDepartures(){ //extracted fetch/poll functionality
     const [queryIndex, setQueryIndex] = useState(0);
     const [enabled, toggle] = useState(false);
     const [pollString, setPoll] = useState('') //first call needs to be an initialize search call
-    const url = "https://napi.busbud.com/x-departures/gcpvj0/gcpn7m/" + departure + "/" + pollString;
+    const urlParams = new URLSearchParams(window.location.search);
+    const origin = urlParams.get('origin') || 'f2m673'
+    const destination = urlParams.get('destination') || 'f25dvk'
+    const url = "https://napi.busbud.com/x-departures/" + origin + "/" + destination + "/" + departure + "/" + pollString;
     const response = useQuery(departure, () =>
         fetch(url,{headers})
         .then((res) => 
