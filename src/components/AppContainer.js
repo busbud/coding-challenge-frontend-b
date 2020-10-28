@@ -43,7 +43,7 @@ function usePollDepartures(){ //extracted fetch/poll functionality
 
 
 function Container(){
-    const {toggle, changeDeparture, response, enabled, departure } = usePollDepartures() //get response and toggle
+    const {toggle, changeDeparture, response, enabled, departure } = usePollDepartures() //get initial response and keep polling
     return(
         <div>
             <HeaderContainer

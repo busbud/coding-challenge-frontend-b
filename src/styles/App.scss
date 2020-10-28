@@ -1,10 +1,15 @@
 $blue: #127ccb;
 $orange: #f19020;
 
+html {
+  height: 100%;
+}
+
 body {
   background-color: #f6f6f6;
   overflow-x: hidden;
   position: relative;
+  overflow: auto;
 }
 
 .list {
@@ -62,22 +67,6 @@ body {
   height:36px;
   float:left;
 }
-
-
-.localization {
-  background-color: #127ccb;
-  border: 1px solid #7dcff8;
-  border-top: none;  
-  position: absolute;
-  top: 0px;
-  left: 20px;
-  color: white;
-}
-
-.localization:focus {
-  outline: none;
-}
-
 
 .top-container .button:focus {
   outline: none;
@@ -142,6 +131,19 @@ button:disabled {
   opacity:0.5;
 }
 
+.localization {
+  position: relative;
+  top: 15px;
+  left: 15px;
+  background-color: #127ccb;
+  color: white;
+  border: none;
+  float: left;
+}
+
+.localization:focus {
+  outline: none;
+}
 
 @media only screen and (max-width: 900px) {
   .searcher input[type=date] {
@@ -149,6 +151,30 @@ button:disabled {
     float: none;
     margin-bottom: 20px;
   }
+}
+
+
+@media only screen and (max-width: 695px) {
+  
+    .menu {
+      display: flex;
+      flex-direction: column;    
+    }
+    
+    .top-container .menu-logo {
+      align-self: flex-start;
+    }
+  
+  .localization{
+    position: relative;
+    left: 42px;
+    background-color: #127ccb;
+    color: white;
+    border: none;
+    width: 69px;
+    top: 0px;   
+  }
+
 }
 
 @media only screen and (max-width: 550px) {
