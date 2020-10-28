@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Ticket from './Ticket'
 import { useTranslation } from 'react-i18next';
-
+import loaderBlue from './loaderBlue.gif'
 
 export default function List({latestData, isLoading, error, enabled}){
 
@@ -37,8 +37,8 @@ export default function List({latestData, isLoading, error, enabled}){
         <div className="list">
             {error ? <div className="message">{t("error")}</div> : ''}
             {noResults && <div className="message">{t("noResults")}</div>}
-            {loadingInitialResults && <img className="loading" src="loader-blue.gif"/>}
-            {pollingMoreResults && <div className="polling"><span>{t("polling")}</span><img src="loader-blue.gif"/></div>}
+            {loadingInitialResults && <img className="loading" src={loaderBlue}/>}
+            {pollingMoreResults && <div className="polling"><span>{t("polling")}</span><img src={loaderBlue}/></div>}
             {departures.length > 0 && departures.map((departure, index) => {
                 let operator = operators.filter(operators => operators.id === departure.operator_id)[0]
                 let originLocation = locations.filter( location => location.id === departure.origin_location_id)[0].name
