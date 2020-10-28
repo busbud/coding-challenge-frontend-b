@@ -1,5 +1,4 @@
 import React from 'react';
-import MenuItem from './MenuItem'
 import {ReactComponent as Logo} from './logo.svg'
 import { useTranslation } from "react-i18next";
 

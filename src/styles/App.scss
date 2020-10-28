@@ -208,6 +208,10 @@ button:disabled {
 
 }
 
+.list .message {
+  margin-bottom:20px;
+}
+
 @media only screen and (max-width: 550px) {
   .ribbon {
     height: 4em;
@@ -243,6 +247,15 @@ button:disabled {
   .locations div {
     font-size:0.8em;
   }
+
+  .locations div:first-child {
+    margin-top: 3px;
+  }
+
+  .locations div:last-child {
+    margin-bottom: 5px;
+  }
+
 
   .ticket {
     width:70%;
