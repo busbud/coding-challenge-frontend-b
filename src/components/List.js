@@ -9,20 +9,20 @@ export default function List({latestData, isLoading, error, enabled}){
 
     const [departures, setDepartures] = useState([]);
     const [operators, setOperators] = useState([]);
-    const [cities, setCities] = useState([]);
+    const [locations, setLocations] = useState([]);
 
     useEffect(() => {
         if (latestData) {
             if (latestData.departures) setDepartures(departures.concat(latestData.departures))
             if (latestData.operators) setOperators(operators.concat(latestData.operators))
-            if (latestData.cities) setCities(cities.concat(latestData.cities))
+            if (latestData.locations) setLocations(locations.concat(latestData.locations))
         }
     }, [latestData])
 
     useEffect(() => {
         if (enabled) { //if enabled was changed to true, clean departures and cities for new fetch
             setDepartures([])
-            setCities([])
+            setLocations([])
         }
     }, [enabled])
 
@@ -38,7 +38,14 @@ export default function List({latestData, isLoading, error, enabled}){
             {pollingMoreResults && <div className="polling"><span>{t("polling")}</span><img src="loader-blue.gif"/></div>}
             {departures.length > 0 && departures.map((departure, index) => {
                 let operator = operators.filter(operators => operators.id === departure.operator_id)[0]
-                return <Ticket key={index} departure={departure} operator={operator} cities={cities}/>
+                let originLocation = locations.filter( location => location.id === departure.origin_location_id)[0].name
+                let destinationLocation = locations.filter( location => location.id === departure.destination_location_id)[0].name
+                return <Ticket 
+                    key={index} 
+                    departure={departure} 
+                    operator={operator} 
+                    originLocation={originLocation} 
+                    destinationLocation={destinationLocation}/>
             })}
         </div>
     )
