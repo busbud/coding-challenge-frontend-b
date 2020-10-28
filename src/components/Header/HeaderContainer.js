@@ -11,7 +11,8 @@ export default function List(props){
           <Searcher 
             enabled={props.enabled}
             triggerSearch={props.triggerSearch} 
-            changeDeparture={props.changeDeparture}/>
+            changeDeparture={props.changeDeparture}
+            departure={props.departure}/>
         </div>
     )
 }
