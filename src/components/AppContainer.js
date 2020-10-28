@@ -14,13 +14,14 @@ export default function queryWrapperContainer(props){
     )
 }
 
-function usePollDepartures(){ //extracted fetch/poll functionality in a custom hook
+function usePollDepartures(){ //extracted fetch/poll functionality
     const headers = new Headers({'X-Busbud-Token': 'PARTNER_BaASYYHxTxuOINEOMWq5GA'});
+    const [departure, changeDeparture] = useState(new Date().toISOString().substring(0, 10))
     const [queryIndex, setQueryIndex] = useState(0);
     const [enabled, toggle] = useState(false);
     const [pollString, setPoll] = useState('') //first call needs to be an initialize search call
-    const url = "https://napi.busbud.com/x-departures/gcpvj0/gcpn7m/2020-10-31/" + pollString;
-    const response = useQuery("busbud", () =>
+    const url = "https://napi.busbud.com/x-departures/gcpvj0/gcpn7m/" + departure + "/" + pollString;
+    const response = useQuery(departure, () =>
         fetch(url,{headers})
         .then((res) => 
             res.json()
@@ -28,6 +29,7 @@ function usePollDepartures(){ //extracted fetch/poll functionality in a custom h
             if (data.complete || data.error) {
                 toggle(false) // no more fetching/polling. enable = false
                 setPoll('');
+                setQueryIndex(0);
             } else {
                 setQueryIndex(queryIndex + data.departures.length) //change index for new poll
                 setPoll('poll?index=' + (queryIndex + data.departures.length)) //create poll with the required index
@@ -36,20 +38,24 @@ function usePollDepartures(){ //extracted fetch/poll functionality in a custom h
         }), 
         {enabled, refetchInterval:3000 //if enabled, the query will run every 3 seconds
         });
-    return {toggle, response, enabled}
+    return {toggle, departure, changeDeparture, response, enabled}
 }
 
 
 function Container(){
-    const {toggle, response, enabled } = usePollDepartures() //get response and toggle
+    const {toggle, changeDeparture, response, enabled, departure } = usePollDepartures() //get response and toggle
     return(
         <div>
-            <HeaderContainer  triggerSearch={() => toggle(true)}/>
+            <HeaderContainer
+                enabled={enabled}
+                departure={departure} 
+                triggerSearch={() => toggle(true)} 
+                changeDeparture={(e) => changeDeparture(e.target.value)}/>
             <List 
                 enabled={enabled} 
                 latestData={response.data} 
                 isLoading={response.isLoading} 
-                error={response.error}/>
+                error={response.isError || (response.data && response.data.error)}/>
             <Footer/>
         </div>
     )
