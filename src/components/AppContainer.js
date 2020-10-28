@@ -15,7 +15,7 @@ export default function queryWrapperContainer(props){
 }
 
 function usePollDepartures(){ //extracted fetch/poll functionality
-    const headers = new Headers({'X-Busbud-Token': 'PARTNER_BaASYYHxTxuOINEOMWq5GA'});
+    const headers = new Headers({'X-Busbud-Token': process.env.REACT_APP_TOKEN});
     const [departure, changeDeparture] = useState(new Date().toISOString().substring(0, 10))
     const [queryIndex, setQueryIndex] = useState(0);
     const [enabled, toggle] = useState(false);
