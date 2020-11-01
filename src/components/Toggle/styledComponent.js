@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 
 const darkModeStyle = css`
     &::after {
-        transform: translateX(${({ isChecked }) => (!isChecked ? '65px' : '42px')});
-        top: 3px;
+        transform: translateX(${({ isChecked }) => (!isChecked ? '65px' : '38px')});
+        top: 4px;
         background: ${({ theme }) => theme.colors.primaryShade1};
         width: 16px;
         height: 16px; 
@@ -26,6 +26,8 @@ export const StyledToggle = styled.label`
     background: ${({ theme, isChecked }) => (isChecked ? theme.colors.highlight : theme.colors.secondaryShade2)};
     align-items: center;
     overflow: hidden;
+    padding: 4px;
+    box-sizing: border-box;
     input[type="checkbox"]{
         opacity: 0;
     }
@@ -39,8 +41,8 @@ export const StyledToggle = styled.label`
     }
     &::before{
         background: #FFFFFF;
-        margin: 4px;
-        transform: translateX(${({ isChecked }) => (isChecked ? 'calc(100% + 4px)' : '0')});
+        top: 50%;
+        transform: translateX(${({ isChecked }) => (isChecked ? 'calc(100% + 4px)' : '0')}) translateY(-50%);
     }
     ${({ isDarkModeToggle }) => isDarkModeToggle && darkModeStyle}
 `;

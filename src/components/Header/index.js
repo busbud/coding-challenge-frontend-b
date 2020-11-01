@@ -14,7 +14,7 @@ type Props = {
     routes: Array<String>,
     languages: Array<String>,
     onThemeSwitch: Function,
-    isLightTheme: Boolean
+    isDarkTheme: Boolean
 }
 
 function Header(props: Props) {
@@ -24,7 +24,7 @@ function Header(props: Props) {
     routes,
     languages,
     onThemeSwitch,
-    isLightTheme,
+    isDarkTheme,
   } = props;
 
   return (
@@ -54,7 +54,7 @@ function Header(props: Props) {
             })}
           <Toggle
             label="Dark mode"
-            checked={!isLightTheme}
+            checked={isDarkTheme}
             onChange={(e) => onThemeSwitch(e)}
             isDarkModeToggle
           />
