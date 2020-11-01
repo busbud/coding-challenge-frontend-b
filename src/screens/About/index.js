@@ -10,7 +10,7 @@ function About() {
         style={{
           width: '200px',
           height: '200px',
-          background: '#BADA55',
+          background: '#FF0000',
         }}
       >
         Deploy test
