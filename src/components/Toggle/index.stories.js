@@ -21,3 +21,10 @@ export const ControlledToggle = (args) => (
     {...args}
   />
 );
+
+export const ControlledDarkModeToggle = (args) => (
+  <Toggle
+    {...args}
+    isDarkModeToggle
+  />
+);
