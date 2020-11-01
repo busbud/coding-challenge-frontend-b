@@ -44,7 +44,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**'",
     "storybook": "start-storybook -p 6006 -s public --no-dll",
-    "build-storybook": "build-storybook -s public --no-dll"
+    "build-storybook": "build-storybook -s public --no-dll",
+    "heroku-push": "git push heroku master"
   },
   "eslintConfig": {
     "extends": [

@@ -4,7 +4,18 @@ import { useTranslation } from 'react-i18next';
 function About() {
   const { t } = useTranslation();
   return (
-    <h1>{t('about_title')}</h1>
+    <>
+      <h1>{t('about_title')}</h1>
+      <div
+        style={{
+          width: '200px',
+          height: '200px',
+          background: '#BADA55',
+        }}
+      >
+        Deploy test
+      </div>
+    </>
   );
 }
 
