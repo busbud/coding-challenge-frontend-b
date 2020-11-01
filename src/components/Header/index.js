@@ -2,6 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import Toggle from '../Toggle';
 import {
   HeaderWrapper,
   RoutesWrapper,
@@ -12,6 +13,8 @@ type Props = {
     onLangItemClick: Function,
     routes: Array<String>,
     languages: Array<String>,
+    onThemeSwitch: Function,
+    isLightTheme: Boolean
 }
 
 function Header(props: Props) {
@@ -20,6 +23,8 @@ function Header(props: Props) {
     onLangItemClick,
     routes,
     languages,
+    onThemeSwitch,
+    isLightTheme,
   } = props;
 
   return (
@@ -47,6 +52,12 @@ function Header(props: Props) {
                 </button>
               );
             })}
+          <Toggle
+            label="Dark mode"
+            checked={!isLightTheme}
+            onChange={(e) => onThemeSwitch(e)}
+            isDarkModeToggle
+          />
         </LangWrapper>
       )}
     </HeaderWrapper>
