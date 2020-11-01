@@ -13,19 +13,27 @@ import GlobalStyle from './components/GlobalStyle';
 
 function AppRouter() {
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
-  const [isLightTheme, setIsLightTheme] = useState(true);
+  const isDarkOS = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [isDarkTheme, setIsDarkTheme] = useState(isDarkOS);
+
   useEffect(() => {
     i18n.changeLanguage(currentLanguage);
   }, [currentLanguage]);
 
   function changeTheme(checked) {
-    console.log('checked', checked);
-    setIsLightTheme(!checked);
+    setIsDarkTheme(checked);
   }
+
+  useEffect(() => {
+    if (isDarkOS) {
+      setIsDarkTheme(true);
+    } else setIsDarkTheme(false);
+  }, [isDarkOS]);
+
 
   return (
     <ThemeProvider
-      themeStyle={isLightTheme ? 'light' : 'dark'}
+      themeStyle={isDarkTheme ? 'dark' : 'light'}
     >
       <>
         <GlobalStyle />
@@ -35,7 +43,7 @@ function AppRouter() {
             languages={Object.keys(resources).map((lng) => lng)}
             onLangItemClick={(e) => setCurrentLanguage(e.target.value)}
             onThemeSwitch={(e) => changeTheme(e.target.checked)}
-            isLightTheme={isLightTheme}
+            isDarkTheme={isDarkTheme}
           />
           <Switch>
             {routes.map((route) => <Route key={route} {...route} />)}
