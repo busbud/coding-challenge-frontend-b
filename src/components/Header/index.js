@@ -3,6 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Toggle from '../Toggle';
+import { ReactComponent as FestivalLogo } from '../../assets/images/festival-logo.svg';
 import {
   HeaderWrapper,
   RoutesWrapper,
@@ -11,20 +12,22 @@ import {
 
 type Props = {
     onLangItemClick: Function,
+    currentLanguage: String,
     routes: Array<String>,
     languages: Array<String>,
     onThemeSwitch: Function,
-    isLightTheme: Boolean
+    isDarkTheme: Boolean
 }
 
 function Header(props: Props) {
   const { t } = useTranslation();
   const {
+    currentLanguage,
     onLangItemClick,
     routes,
     languages,
     onThemeSwitch,
-    isLightTheme,
+    isDarkTheme,
   } = props;
 
   return (
@@ -32,6 +35,14 @@ function Header(props: Props) {
       {routes.length >= 1 && (
         <RoutesWrapper>
           {routes.map((route) => {
+            if (route.name === 'home') {
+              return (
+                <Link key={route.name} to={route.path}>
+                  <FestivalLogo />
+                  <h1>{t(`route_${route.name}`)}</h1>
+                </Link>
+              );
+            }
             return (
               <Link key={route.name} to={route.path}>{t(`route_${route.name}`)}</Link>
             );
@@ -47,6 +58,7 @@ function Header(props: Props) {
                   key={lang}
                   value={lang}
                   onClick={(e) => onLangItemClick(e)}
+                  className={currentLanguage === lang ? 'active' : ''}
                 >
                   {lang}
                 </button>
@@ -54,7 +66,7 @@ function Header(props: Props) {
             })}
           <Toggle
             label="Dark mode"
-            checked={!isLightTheme}
+            checked={isDarkTheme}
             onChange={(e) => onThemeSwitch(e)}
             isDarkModeToggle
           />

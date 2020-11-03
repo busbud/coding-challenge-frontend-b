@@ -10,6 +10,7 @@
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "react": "^17.0.1",
+    "react-device-detect": "^1.14.0",
     "react-dom": "^17.0.1",
     "react-i18next": "^11.3.1",
     "react-router-dom": "^5.1.2",
@@ -42,8 +43,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint 'src/**'",
     "storybook": "start-storybook -p 6006 -s public --no-dll",
-    "build-storybook": "build-storybook -s public --no-dll"
+    "build-storybook": "build-storybook -s public --no-dll",
+    "heroku-push": "git push heroku master"
   },
   "eslintConfig": {
     "extends": [

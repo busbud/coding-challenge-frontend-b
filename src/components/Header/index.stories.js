@@ -16,7 +16,7 @@ export const BasicUsage = () => (
       onLangItemClick={(e) => console.log(e)}
       routes={[{ name: 'home', path: '/' }]}
       languages={['fr', 'en']}
-      isLightTheme
+      isDarkTheme
       onThemeSwitch={(e) => console.log(e)}
     />
   </MemoryRouter>
