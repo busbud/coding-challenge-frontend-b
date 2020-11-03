@@ -39,6 +39,7 @@ function AppRouter() {
         <GlobalStyle />
         <Router>
           <Header
+            currentLanguage={currentLanguage}
             routes={routes}
             languages={Object.keys(resources).map((lng) => lng)}
             onLangItemClick={(e) => setCurrentLanguage(e.target.value)}
