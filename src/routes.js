@@ -1,4 +1,4 @@
-import { makeLazy } from './utils/routes';
+import { makeLazy } from './utils/makeLazy';
 
 export default [
   {
