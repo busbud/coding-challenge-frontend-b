@@ -10,11 +10,11 @@ export default [
     )),
   },
   {
-    path: '/about',
+    path: '/travel-tickets',
     exact: true,
     name: 'about',
     component: makeLazy(() => import(
-      './screens/About'
+      './screens/TravelTickets'
     )),
   },
 
