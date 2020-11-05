@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchSpotifyPlaylistTracks, fetchArtistsData } from '../api/fetchSpotifyPlaylist';
+import { fetchSpotifyPlaylistTracks, fetchArtistsData } from '../api/spotify';
 import { spotifyData as mockSpotifyData } from '../mocks/spotify';
 
 function withSpotifyData(Comp) {
