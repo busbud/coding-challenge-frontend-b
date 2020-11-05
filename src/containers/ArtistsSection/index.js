@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { SectionWrapper, ArtistsWrapper } from './styledComponent';
 import { makeLazy } from '../../utils/makeLazy';
-import withSpotify from '../../context/WithSpotify';
+import withSpotifyDataData from '../../context/withSpotifyData';
 import { LazyArtist } from '../../components/ArtistCard/styledComponent';
 import Banner from '../../components/Banner';
 
@@ -26,6 +26,7 @@ function ArtistsSection(props: Props) {
           title="Spotify Error"
           content={`Oooops "${spotifyData.error.message}" 😅🤷🏻`}
           closable
+          type="error"
         />
       )}
       <h1>{t('artists_section_title')}</h1>
@@ -53,4 +54,4 @@ function ArtistsSection(props: Props) {
   );
 }
 
-export default withSpotify(ArtistsSection);
+export default withSpotifyDataData(ArtistsSection);
