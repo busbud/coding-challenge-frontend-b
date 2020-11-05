@@ -40,10 +40,10 @@ To build this project I used these technologies:
 
 ## Run project scripts locally
 
-`yarn` Will install all the project's dependencies.
-`yarn start` Starts the app locally at [http://localhost:3000](http://localhost:3000).
-`yarn storybook` Starts Storybook locally at [http://localhost:6006](http://localhost:6006).
-`yarn lint` Stars eslint check across the project.
+- `yarn` Will install all the project's dependencies.
+- `yarn start` Starts the app locally at [http://localhost:3000](http://localhost:3000).
+- `yarn storybook` Starts Storybook locally at [http://localhost:6006](http://localhost:6006).
+- `yarn lint` Stars eslint check across the project.
 
 ## Bonus
 
