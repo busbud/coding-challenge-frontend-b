@@ -1,7 +1,7 @@
 export default {
   APIs: {
     busbud: {
-      api: 'https://napi.busbud.com',
+      api: 'https://napi.busbud.com/x-departures',
       'X-Busbud-Token': 'PARTNER_BaASYYHxTxuOINEOMWq5GA',
     },
     spotify: {
@@ -16,5 +16,11 @@ export default {
   destinationCity: {
     name: 'Montréal',
     geohash: 'f25dvk',
+  },
+  defaultSearchDate: '2020-12-01',
+  festivalTicketPrices: {
+    basic: 333.50,
+    gold: 608.50,
+    platinum: 1258.50,
   },
 };
