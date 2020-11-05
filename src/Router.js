@@ -5,6 +5,8 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import moment from 'moment';
+import 'moment/locale/fr';
 import routes from './routes';
 import i18n, { resources } from './i18n';
 import Header from './components/Header';
@@ -18,6 +20,7 @@ function AppRouter() {
 
   useEffect(() => {
     i18n.changeLanguage(currentLanguage);
+    moment.locale(currentLanguage);
   }, [currentLanguage]);
 
   function changeTheme(checked) {
@@ -47,7 +50,13 @@ function AppRouter() {
             isDarkTheme={isDarkTheme}
           />
           <Switch>
-            {routes.map((route) => <Route key={route} {...route} />)}
+            {routes.map((route) => (
+              <Route
+                key={route}
+                {...route}
+                currentLanguage={currentLanguage}
+              />
+            ))}
           </Switch>
         </Router>
       </>
