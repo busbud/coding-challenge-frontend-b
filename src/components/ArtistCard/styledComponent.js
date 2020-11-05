@@ -200,6 +200,9 @@ export const ArtistWrapper = styled.div`
     p {
         margin: 0;
         font-size: 24px;
+        @media screen and (max-width: 1280px){
+            font-size: 20px;
+        }
         margin-bottom: 16px;
         font-weight: bold;
         color: ${({ theme }) => theme.colors.secondary};
