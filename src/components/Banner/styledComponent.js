@@ -1,11 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const BannerWrapper = styled.div`
   backdrop-filter: blur(3px);
   width: 100%;
   opacity: .7;
   padding: 12px 16px;
-  top: 0;
   position: relative;
   box-sizing: border-box;
   display: flex;
@@ -13,7 +12,72 @@ export const BannerWrapper = styled.div`
   left: 50%;
   transform: translateX(-50%);
   align-items: center;
-  background: ${({ theme }) => theme.colors.danger}60;
+  ${({ fixedTo }) => fixedTo && css`
+    position: fixed;
+    width: 100%;
+    z-index: 4;
+    bottom: ${fixedTo === 'bottom' ? 0 : 'none'};
+    top: ${fixedTo === 'top' ? 0 : 'none'};
+    box-shadow: ${({ theme }) => theme.mainBoxShadow};
+  `}
+  ${({ theme, type }) => {
+    switch (type) {
+      case 'error': return css`
+        background: ${theme.colors.danger}60;
+        &::after {
+          background: ${theme.colors.danger};
+        }
+        h4{
+          color: ${theme.colors.danger};
+        }
+        p {
+          color: #000000;
+        }
+        button, a {
+          &:hover {
+            background: #FFFFFF;
+            color: ${theme.colors.danger};
+          }
+        }
+      `;
+      case 'highlight': return css`
+        background: ${theme.colors.highlight};
+        height: fit-content;
+        padding: 24px;
+        opacity: 1;
+        &::after {
+          display: none;
+        }
+        h4{
+          color: ${theme.colors.primary};
+          font-size: 24px;
+        }
+        p {
+          color: ${theme.colors.primary};
+        }
+        button, a {
+          display: block;
+          width: max-content;
+          &:hover {
+            color: ${theme.colors.primaryShade2};
+          }
+        }
+        @media screen and (max-width: 667px){
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+      `;
+      default: return css`
+        background: ${theme.colors.secondary};
+        &::after {
+          background: ${theme.colors.primary};
+        }
+        h4{
+          color: ${theme.colors.secondary};
+        }
+      `;
+    }
+  }}
   &:hover {
     opacity: 1;
   }
@@ -26,14 +90,9 @@ export const BannerWrapper = styled.div`
     top: 0;
     display: block;
     position: absolute;
-    background: ${({ theme }) => theme.colors.danger};
   }
-
-  h4{
-    color: ${({ theme }) => theme.colors.danger};
-  }
-  p {
-    color: #000000;
+  h4, p {
+    text-align: ${({ textAlign }) => textAlign};
   }
   a, h4, p {
     margin: 0;
@@ -46,10 +105,11 @@ export const BannerWrapper = styled.div`
   button, a {
     background: #ffffff;
     color: #000000;
-    &:hover {
-      background: #ffffff;
-      color: ${({ theme }) => theme.colors.danger};
-    }
+    text-decoration: none;
+  }
+  a {
+    padding: 8px 12px;
+    border-radius: 25px;
   }
 
   button {
@@ -86,4 +146,17 @@ export const BannerWrapper = styled.div`
   }
 `;
 
-export default null;
+export const ContentWrapper = styled.div`
+  ${({ type }) => type === 'highlight' && css`
+    flex-grow: 1;
+    padding-right: 24px;
+    @media screen and (max-width: 667px){
+      padding-right: 0;
+      width: 80%;
+      margin: 0 auto;
+      h4, p {
+        text-align: center;
+      }
+    }
+  `}
+`;
