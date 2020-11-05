@@ -121,16 +121,5 @@ module.exports = {
         ],
       },
     },
-    {
-      files: [
-        './src/**/*.test.js',
-      ],
-      globals: {
-        it: true,
-        fit: true,
-        describe: true,
-        expect: true,
-      },
-    },
   ],
 };
