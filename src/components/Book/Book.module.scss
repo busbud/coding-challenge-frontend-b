@@ -1,0 +1,28 @@
+@import '../../styles/variables/colors.scss';
+@import '../../styles/mixins/mixins.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  @include respond(phone) {
+    justify-content: space-around;
+    font-size: 0.8rem;
+  }
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  display: inline-block;
+  cursor: pointer;
+  background-color: $primaryColor;
+  color: $secondaryColor;
+  box-shadow: 0 0.5rem 1rem rgba(black, 0.2);
+}
