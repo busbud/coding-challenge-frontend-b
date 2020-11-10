@@ -1,0 +1,26 @@
+/*
+1em = 16px
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  } //600px  600/16 = 37.5
+  @if $breakpoint == tabPort {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  } //900px  900/16 = 56.25
+  @if $breakpoint == tabLand {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  } //1200px  1200/16 = 75
+  @if $breakpoint == bigDesktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }
+  } //1800px  1800/16 = 112.5
+}

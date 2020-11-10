@@ -1,0 +1,33 @@
+@import '../../../styles/variables/colors.scss';
+
+.select {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-left: 0.5rem;
+
+  &,
+  &:focus {
+    outline: none;
+  }
+}
+
+.navbar {
+  background-color: transparent;
+  color: $tertiaryColor;
+
+  &,
+  &:focus {
+    border: none;
+  }
+}
+
+.sort {
+  background-color: transparent;
+  color: $primaryColor;
+  border-radius: 0.1rem;
+  border-color: $primaryColor;
+}
+
+.label {
+  font-weight: 400;
+}
