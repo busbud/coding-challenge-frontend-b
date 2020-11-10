@@ -1,0 +1,15 @@
+{
+  "navbar": {
+    "title": "Quebec to Osheaga"
+  },
+  "book": {
+    "search": "Find Bus",
+    "showMore": "Show more"
+  },
+  "departure": {
+    "dTime": "departure time",
+    "aTime": "arrival time",
+    "location": "location name",
+    "price": "price"
+  }
+}
