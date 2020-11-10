@@ -1,0 +1,16 @@
+@import '../../styles/variables/colors.scss';
+@import '../../styles/mixins/mixins.scss';
+
+.layout {
+  min-height: 100vh;
+  padding-bottom: 2rem;
+  background-color: $tertiaryColor;
+}
+
+.container {
+  padding: 1rem 2rem;
+
+  @include respond(phone) {
+    padding: 1rem 0;
+  }
+}
