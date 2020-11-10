@@ -1,0 +1,28 @@
+@import '../../../styles/variables/colors.scss';
+@import '../../../styles/mixins/mixins.scss';
+
+.navbar {
+  height: 5rem;
+  background-color: $primaryColor;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  font-size: 1.2rem;
+
+  @include respond(phone) {
+    padding: 0 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+.title {
+  color: $secondaryColor;
+}
+
+.userNav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+}
