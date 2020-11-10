@@ -1,10 +1,9 @@
 @import '../../../styles/variables/colors.scss';
 .card {
-  background-color: $cardColor;
-  padding: 2rem;
+  background-image: linear-gradient(to right, $primaryColor, $white);
   box-shadow: 0 0.5rem 0.5rem rgba(black, 0.2);
   margin-bottom: 1.5rem;
-
+  padding: 1rem;
   &:hover {
     box-shadow: 0 0.5rem 1rem rgba(black, 0.2);
   }

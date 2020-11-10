@@ -17,6 +17,7 @@ const Book = (props) => {
     () => ({ adult: 1, currency, lang: i18n.language }),
     [currency, i18n.language]
   );
+
   const { searchHandler, result, loading, error } = useSearch({
     url,
     baseParams,
@@ -34,7 +35,7 @@ const Book = (props) => {
     if (departureData?.length) {
       searchHandler();
     }
-  }, [currency, searchHandler]);
+  }, [searchHandler]);
 
   return (
     <div className={styles.container}>
