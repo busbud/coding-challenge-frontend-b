@@ -34,6 +34,9 @@ const DeparturesList = (props) => {
               <h5>{`${t('departure.price')}:`}</h5>
               &nbsp;{`${departure.price} ${currency}`}
             </div>
+            <div className={styles.col}>
+              <a href={departure.link}>{`${t('departure.buy')}`}</a>
+            </div>
           </div>
         </Card>
       ))}

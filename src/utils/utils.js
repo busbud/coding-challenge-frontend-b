@@ -17,6 +17,7 @@ export const getDeparturesData = (data) => {
     aTime: moment(dep.arrival_time).format('dddd, MMMM Do YYYY, h:mm:ss a'),
     price: dep.prices.total / 100,
     location: getLocationName(locations, dep.origin_location_id) || '',
+    link: dep.links.deeplink,
   }));
 
   return departuresData;

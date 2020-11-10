@@ -9,7 +9,8 @@
   "departure": {
     "dTime": "departure time",
     "aTime": "arrival time",
-    "location": "location name",
-    "price": "price"
+    "location": "departure location",
+    "price": "price",
+    "buy": "buy ticket"
   }
 }
