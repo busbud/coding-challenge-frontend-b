@@ -1,0 +1,108 @@
+@import 'uiAssets/vars.pcss';
+
+.__SCOPE {
+  background: #fff;
+  color: $colors-main;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+  max-width: 100%;
+  position: relative;
+  text-decoration: none;
+  width: auto;
+  height: 48px;
+  border: 3px solid $colors-mainDark;
+  box-shadow: $colors-mainDark -6px 6px 0 0;
+
+  &.secondary {
+    background: #fff;
+  }
+
+  > span,
+  > div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0 20px;
+    height: 100%;
+
+    > span {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    > svg {
+      display: block;
+      flex-grow: 0;
+
+      &.marginRight {
+        margin-right: 10px;
+      }
+
+      &.marginLeft {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  &a {
+    color: $colors-main;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.link {
+    display: inline-block;
+  }
+
+  &.small {
+    font-size: 12px;
+    height: 30px;
+    border: 2px solid $colors-mainDark;
+    box-shadow: $colors-mainDark -3px 3px 0 0;
+    font-weight: bold;
+
+    > span {
+      padding: 0 12px;
+
+      > svg {
+        &.marginRight {
+          margin-right: 7px;
+        }
+
+        &.marginLeft {
+          margin-left: 7px;
+        }
+      }
+    }
+  }
+
+  &.big {
+    font-size: 20px;
+    height: 60px;
+
+    > span {
+      > svg {
+        &.marginRight {
+          margin-right: 12px;
+        }
+
+        &.marginLeft {
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

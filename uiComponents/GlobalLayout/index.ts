@@ -1,0 +1,1 @@
+export { GlobalLayout } from './GlobalLayout';

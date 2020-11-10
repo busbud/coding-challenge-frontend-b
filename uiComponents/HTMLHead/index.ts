@@ -1,0 +1,1 @@
+export { HTMLHead } from './HTMLHead';

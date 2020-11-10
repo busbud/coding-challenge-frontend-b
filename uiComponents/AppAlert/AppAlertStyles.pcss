@@ -1,0 +1,74 @@
+@import 'uiAssets/vars.pcss';
+
+.__SCOPE {
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  > .background {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
+  > .container {
+    border-radius: 10px;
+    position: relative;
+    width: 300px;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 200ms ease-out, transform 200ms ease-out;
+    background-color: $colors-white;
+    border: 3px solid $colors-main;
+    box-shadow: $colors-main -5px 5px 0;
+
+    > div {
+      margin-bottom: 10px;
+      font-size: 14px;
+      text-align: center;
+      white-space: pre-wrap;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    > footer {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      > button {
+        margin: 10px;
+      }
+    }
+  }
+
+  &.displayed {
+    pointer-events: all;
+
+    > .background {
+      opacity: 1;
+    }
+
+    > .container {
+      transform: translateY(0);
+      opacity: 1;
+
+      > footer {
+        display: flex;
+      }
+    }
+  }
+}

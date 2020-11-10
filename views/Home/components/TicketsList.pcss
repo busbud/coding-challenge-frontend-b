@@ -1,0 +1,122 @@
+@import 'uiAssets/vars.pcss';
+
+.__SCOPE {
+  width: 300px;
+  margin-bottom: 100px;
+
+  > header {
+    animation: slideRightAnimateIn 300ms linear 50ms forwards;
+    opacity: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 3px solid $colors-mainLight;
+    width: 100%;
+
+    > h2 {
+      color: $colors-main;
+      font-size: 24px;
+      text-align: center;
+      padding: 5px;
+    }
+
+    > p {
+      border-radius: 0 0 5px 5px;
+      color: #fff;
+      font-size: 14px;
+      background-color: $colors-mainLight;
+      padding: 10px 13px;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+  }
+
+  > ul {
+    > li {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      animation: slideRightAnimateIn 300ms linear 50ms forwards;
+      opacity: 0;
+      list-style-type: none;
+      margin-top: 20px;
+      display: flex;
+
+      > div {
+        background-color: #fff;
+        border-radius: 15px;
+        border: 3px solid $colors-mainDark;
+      }
+
+      > .data {
+        width: 240px;
+        flex-grow: 0;
+        flex-shrink: 0;
+
+        > div {
+          display: flex;
+          align-items: stretch;
+          line-height: 1.4;
+
+          &.time {
+            border-bottom: 2px dotted #999;
+            padding: 10px 0;
+          }
+
+          &.duration {
+            > .spacer {
+              flex-grow: 1;
+            }
+
+            > button {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 10px;
+              background: none;
+              border: none;
+              border-left: 2px dotted #999;
+            }
+          }
+
+          > p {
+            display: flex;
+            align-self: center;
+          }
+
+          > svg {
+            display: block;
+            flex-shrink: 0;
+            margin: 15px;
+          }
+        }
+
+        > footer {
+          background: $colors-mainLight;
+          color: #fff;
+          border-radius: 0 0 11px 11px;
+          padding: 5px 18px;
+          font-size: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      > .logoContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        transform: translateX(-3px);
+        border-left: 3px dashed $colors-main;
+
+        > img {
+          transform: rotateZ(-90deg);
+          height: 30px;
+        }
+      }
+    }
+  }
+}

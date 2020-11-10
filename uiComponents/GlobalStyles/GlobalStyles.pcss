@@ -1,0 +1,69 @@
+@import 'uiAssets/vars.pcss';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  vertical-align: baseline;
+  user-select: none;
+  color: inherit;
+  touch-action: manipulation;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+html {
+  overscroll-behavior: none;
+  height: 100%;
+  background-color: #fff;
+}
+
+body {
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 16px;
+  line-height: 1.8;
+  font-family: $baseFont;
+  text-rendering: optimizeLegibility;
+  word-wrap: break-word;
+  min-height: calc(100vh - 20px);
+  border: 3px solid $colors-mainDark;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCI+CiAgPGNpcmNsZSBjeD0iNyIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuMjUiPjwvY2lyY2xlPgo8L3N2Zz4=');
+  background-color: $colors-main;
+  padding-bottom: 50px;
+}
+
+#__next {
+  height: fill-available;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+input {
+  user-select: initial;
+  touch-action: manipulation;
+}
+
+b {
+  font-weight: 700;
+}
+
+i {
+  font-style: italic;
+}
+
+::-moz-selection {
+  background: #000;
+  color: #fff;
+}
+
+::selection {
+  background: #000;
+  color: #fff;
+}

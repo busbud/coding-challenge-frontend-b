@@ -1,0 +1,29 @@
+@import 'uiAssets/vars.pcss';
+
+.__SCOPE {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 30px;
+  opacity: 0;
+  animation: slideLeftAnimateIn 300ms linear 150ms forwards;
+
+  > div {
+    text-align: right;
+    color: #fff;
+    padding-top: 10px;
+    line-height: 1.4;
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 50px;
+      background-color: #fff;
+      height: 3px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+}
