@@ -1,0 +1,32 @@
+@import '../../../styles/mixins/mixins.scss';
+
+.container {
+  margin: 3rem 2rem;
+
+  @include respond(tabLand) {
+    font-size: 0.8rem;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @include respond(phone) {
+    flex-direction: column;
+  }
+}
+
+.col {
+  display: flex;
+  flex: 0 1 45%;
+  margin-bottom: 1rem;
+
+  @include respond(tabPort) {
+    flex-direction: column;
+  }
+
+  @include respond(phone) {
+    flex-direction: row;
+  }
+}
