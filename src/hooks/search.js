@@ -1,9 +1,8 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 
 import useApi from './api';
-import { getDeparturesData } from '../utils/utils';
 
-const useSearch = ({ url, baseParams }) => {
+const useSearch = ({ url, baseParams, serachField = 'departures' }) => {
   const [loading, setLoading] = useState(false);
   const [searchError, setSearchError] = useState(false);
 
@@ -31,9 +30,8 @@ const useSearch = ({ url, baseParams }) => {
       setSearchError(error);
       clear();
     } else if (data) {
-      const mapDepartures = getDeparturesData(data);
-      indexRef.current = indexRef.current + mapDepartures.length;
-      dataRef.current.push(...mapDepartures);
+      indexRef.current = indexRef.current + data[serachField].length;
+      dataRef.current.push(...data[serachField]);
 
       if (data.complete) {
         setLoading(false);
