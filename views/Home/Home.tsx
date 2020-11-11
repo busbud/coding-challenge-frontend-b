@@ -86,7 +86,7 @@ export class Home extends React.Component<unknown, IState> {
             <TicketsList
               title={i18n(homeTexts.ticketsToGoTitle)}
               baseline={'Québec > Montréal'}
-              day={new Date('08-02-2020').toLocaleDateString(`${language}-CA`, {
+              day={new Date('2020/08/02').toLocaleDateString(`${language}-CA`, {
                 weekday: 'long',
                 year: 'numeric',
                 month: 'long',

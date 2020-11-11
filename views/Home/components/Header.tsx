@@ -10,7 +10,7 @@ export const Header = (): JSX.Element => (
     <div>
       <p>Osheaga</p>
       <p>
-        {new Date('08-02-2020').toLocaleDateString(
+        {new Date('2020/08/02').toLocaleDateString(
           `${
             (Acta.getState(
               EActaStateKeys.APPLICATION_LANGUAGE,
