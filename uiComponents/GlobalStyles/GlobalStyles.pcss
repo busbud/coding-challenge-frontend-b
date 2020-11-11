@@ -22,22 +22,21 @@ html {
 }
 
 body {
-  border-radius: 10px;
   margin: 10px;
   font-size: 16px;
   line-height: 1.8;
   font-family: $baseFont;
   text-rendering: optimizeLegibility;
   word-wrap: break-word;
+}
+
+#__next {
   min-height: calc(100vh - 20px);
+  border-radius: 10px;
   border: 3px solid $colors-mainDark;
   background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCI+CiAgPGNpcmNsZSBjeD0iNyIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuMjUiPjwvY2lyY2xlPgo8L3N2Zz4=');
   background-color: $colors-main;
   padding-bottom: 50px;
-}
-
-#__next {
-  height: fill-available;
 }
 
 a,
