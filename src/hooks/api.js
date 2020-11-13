@@ -7,6 +7,7 @@ const initialState = {
   data: null,
 };
 
+// Request status handler
 const requestStateReducer = (currentState, action) => {
   switch (action.type) {
     case 'SEND':
@@ -30,25 +31,25 @@ const requestStateReducer = (currentState, action) => {
   }
 };
 
+// Rest Apis handler hook
 const useApi = () => {
   const [requestState, dispatchRequest] = useReducer(
     requestStateReducer,
     initialState
   );
 
+  // Reset Reducer
   const clear = useCallback(() => dispatchRequest({ type: 'CLEAR' }), []);
 
+  // Api handler
   const sendRequest = useCallback(
-    (url = '', method = '', token = '', params = {}, body = null) => {
+    (url = '', method = '', queries = {}, headers = {}, body = null) => {
       dispatchRequest({ type: 'SEND' });
       axios({
         method,
         url,
-        params,
-        headers: {
-          Accept: `application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/`,
-          'X-Busbud-Token': token,
-        },
+        params: queries,
+        headers,
         data: body,
       })
         .then((res) => {

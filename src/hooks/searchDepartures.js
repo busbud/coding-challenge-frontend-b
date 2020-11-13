@@ -1,30 +1,55 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback, useRef, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
+import CurrencyContext from '../contexts/currencyContext';
 import { getDeparturesData } from '../utils/utils';
 import useApi from './api';
+import { baseUrl, headers } from '../utils/constants';
 
-const useSearch = ({ url, baseParams }) => {
+// custome hook for handle departure search
+const useSearchDeparture = ({ params = {}, baseQueryString = {} }) => {
   const [loading, setLoading] = useState(false);
   const [searchError, setSearchError] = useState(false);
   const [result, setResult] = useState(null);
 
-  const indexRef = useRef(0);
-  const dataRef = useRef([]);
-
   const { sendRequest, clear, data, error } = useApi();
 
-  const initialSearchHandler = useCallback(() => {
-    setLoading(true);
-    indexRef.current = 0;
-    dataRef.current = [];
-    sendRequest(url, 'GET', process.env.React_APP_TOKEN, baseParams);
-  }, [baseParams, sendRequest]);
+  const { i18n } = useTranslation();
+  const { currency } = useContext(CurrencyContext);
 
-  const pollSearchHandler = useCallback(() => {
-    const pollUrl = `${url}/poll`;
-    const pollParams = { ...baseParams, index: indexRef.current };
-    sendRequest(pollUrl, 'GET', process.env.React_APP_TOKEN, pollParams);
-  }, [baseParams, sendRequest]);
+  // accumulate index with no extra rendering
+  const indexRef = useRef(0);
+
+  // accumulate mapDepartures with no extra rendering
+  const departuresRef = useRef([]);
+
+  const initialSearchHandler = useCallback(
+    (isPoll) => {
+      const { origin, destination, outbound_date } = params;
+      let url = `${baseUrl}/${origin}/${destination}/${outbound_date}`;
+
+      if (!isPoll) {
+        // initial search
+        setLoading(true);
+        indexRef.current = 0;
+        departuresRef.current = [];
+      } else {
+        // Poll search
+        url = `${url}/poll`;
+        baseQueryString = { ...baseQueryString, index: indexRef.current };
+      }
+
+      sendRequest(url, 'GET', baseQueryString, headers);
+    },
+    [baseQueryString, sendRequest]
+  );
+
+  // update data if its already fetched and language or currency have changed
+  useEffect(() => {
+    if (departuresRef.current?.length) {
+      initialSearchHandler();
+    }
+  }, [currency, i18n.language]);
 
   useEffect(() => {
     if (error) {
@@ -32,20 +57,20 @@ const useSearch = ({ url, baseParams }) => {
       setSearchError(error);
       clear();
     } else if (data) {
-      const dparturesData = getDeparturesData(data);
-      indexRef.current = indexRef.current + dparturesData.length;
-      dataRef.current.push(...dparturesData);
+      const mapDepartures = getDeparturesData(data);
+      indexRef.current = indexRef.current + mapDepartures.length;
+      departuresRef.current.push(...mapDepartures);
 
       if (data.complete) {
-        setResult(dparturesData);
+        setResult(mapDepartures);
         setLoading(false);
         clear();
       } else {
         clear();
-        pollSearchHandler();
+        initialSearchHandler(true);
       }
     }
-  }, [data, error, pollSearchHandler, clear]);
+  }, [data, error, initialSearchHandler, clear]);
 
   return {
     searchHandler: initialSearchHandler,
@@ -55,4 +80,4 @@ const useSearch = ({ url, baseParams }) => {
   };
 };
 
-export default useSearch;
+export default useSearchDeparture;
