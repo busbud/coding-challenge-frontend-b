@@ -29,7 +29,9 @@ const Departure = (props) => {
         &nbsp;{`${departure.price} ${currency}`}
       </div>
       <div className={styles.col}>
-        <a href={departure.link}>{`${t('departure.buy')}`}</a>
+        <a href={departure.link} className={styles.btn}>{`${t(
+          'departure.buy'
+        )}`}</a>
       </div>
     </div>
   );

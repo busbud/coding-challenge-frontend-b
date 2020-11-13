@@ -1,4 +1,5 @@
 @import '../../../../styles/variables/colors.scss';
+@import '../../../../styles/mixins/mixins.scss';
 
 .row {
   display: flex;
@@ -14,7 +15,7 @@
   text-transform: uppercase;
   align-items: center;
 
-  & a {
+  & .btn {
     &,
     &:link,
     &:visited {
@@ -24,6 +25,12 @@
       border: none;
       cursor: pointer;
       color: $primaryColorDark;
+      margin: 0 auto;
     }
+  }
+
+  @include respond(phone) {
+    justify-content: right;
+    align-self: stretch;
   }
 }
