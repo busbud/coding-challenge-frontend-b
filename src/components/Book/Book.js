@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import { params } from '../../utils/constants';
 import CurrencyContext from '../../contexts/currencyContext';
@@ -11,25 +12,20 @@ import styles from './Book.module.scss';
 const Book = (props) => {
   const { t, i18n } = useTranslation();
   const { currency } = useContext(CurrencyContext);
-  const [departureData, setDepartureData] = useState([]);
-
   const baseQueryString = useMemo(
     () => ({ adult: 1, currency, lang: i18n.language }),
     [currency, i18n.language]
   );
+  // In real app adult in params and baseQueryString comes from inputs
+  const { searchHandler } = useSearchDepartures({ params, baseQueryString });
 
-  const { searchHandler, result, loading, error } = useSearchDepartures({
-    params,
-    baseQueryString,
-  });
+  const { loading, departures, error } = useSelector(({ data }) => data);
 
   useEffect(() => {
     if (error) {
       alert('ERROR IN GETTING DEPARTUES!');
-    } else if (result) {
-      setDepartureData(result);
     }
-  }, [result, error]);
+  }, [error]);
 
   return (
     <div className={styles.container}>
@@ -40,9 +36,9 @@ const Book = (props) => {
       </div>
       {loading ? (
         <Spinner loading={loading} />
-      ) : (
-        <DeparturesList departures={departureData} />
-      )}
+      ) : departures ? (
+        <DeparturesList departures={departures} />
+      ) : null}
     </div>
   );
 };

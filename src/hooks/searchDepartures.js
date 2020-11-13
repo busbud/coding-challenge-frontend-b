@@ -1,6 +1,12 @@
 import { useEffect, useState, useCallback, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 
+import {
+  setDepartures,
+  startGettingData,
+  errorFettichingData,
+} from '../store/actions';
 import CurrencyContext from '../contexts/currencyContext';
 import { getDeparturesData } from '../utils/utils';
 import useApi from './api';
@@ -8,14 +14,12 @@ import { baseUrl, headers } from '../utils/constants';
 
 // custome hook for handle departure search
 const useSearchDeparture = ({ params = {}, baseQueryString = {} }) => {
-  const [loading, setLoading] = useState(false);
-  const [searchError, setSearchError] = useState(false);
-  const [result, setResult] = useState(null);
-
   const { sendRequest, clear, data, error } = useApi();
 
   const { i18n } = useTranslation();
   const { currency } = useContext(CurrencyContext);
+
+  const dispatch = useDispatch();
 
   // accumulate index with no extra rendering
   const indexRef = useRef(0);
@@ -30,7 +34,7 @@ const useSearchDeparture = ({ params = {}, baseQueryString = {} }) => {
 
       if (!isPoll) {
         // initial search
-        setLoading(true);
+        dispatch(startGettingData());
         indexRef.current = 0;
         departuresRef.current = [];
       } else {
@@ -53,8 +57,7 @@ const useSearchDeparture = ({ params = {}, baseQueryString = {} }) => {
 
   useEffect(() => {
     if (error) {
-      setLoading(false);
-      setSearchError(error);
+      dispatch(errorFettichingData(error));
       clear();
     } else if (data) {
       const mapDepartures = getDeparturesData(data);
@@ -62,8 +65,7 @@ const useSearchDeparture = ({ params = {}, baseQueryString = {} }) => {
       departuresRef.current.push(...mapDepartures);
 
       if (data.complete) {
-        setResult(mapDepartures);
-        setLoading(false);
+        dispatch(setDepartures(departuresRef.current));
         clear();
       } else {
         clear();
@@ -74,9 +76,6 @@ const useSearchDeparture = ({ params = {}, baseQueryString = {} }) => {
 
   return {
     searchHandler: initialSearchHandler,
-    result,
-    loading,
-    error: searchError,
   };
 };
 
