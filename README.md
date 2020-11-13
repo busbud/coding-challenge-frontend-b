@@ -4,7 +4,7 @@ Your challenge is to build a microsite that allows a traveler from Québec to fi
 
 ## result
 
-https://quebec-to-osheaga.herokuapp.com/
+https://ticket-from-quebec-to-osheaga.herokuapp.com
 
 ## Project setup
 
