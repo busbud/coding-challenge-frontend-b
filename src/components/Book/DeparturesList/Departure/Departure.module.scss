@@ -1,0 +1,29 @@
+@import '../../../../styles/variables/colors.scss';
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.col {
+  display: flex;
+  flex: 0 1 45%;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  align-items: center;
+
+  & a {
+    &,
+    &:link,
+    &:visited {
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.5rem 4rem;
+      border: none;
+      cursor: pointer;
+      color: $primaryColorDark;
+    }
+  }
+}
