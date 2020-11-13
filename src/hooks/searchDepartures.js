@@ -1,10 +1,12 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 
+import { getDeparturesData } from '../utils/utils';
 import useApi from './api';
 
-const useSearch = ({ url, baseParams, serachField = 'departures' }) => {
+const useSearch = ({ url, baseParams }) => {
   const [loading, setLoading] = useState(false);
   const [searchError, setSearchError] = useState(false);
+  const [result, setResult] = useState(null);
 
   const indexRef = useRef(0);
   const dataRef = useRef([]);
@@ -30,10 +32,12 @@ const useSearch = ({ url, baseParams, serachField = 'departures' }) => {
       setSearchError(error);
       clear();
     } else if (data) {
-      indexRef.current = indexRef.current + data[serachField].length;
-      dataRef.current.push(...data[serachField]);
+      const dparturesData = getDeparturesData(data);
+      indexRef.current = indexRef.current + dparturesData.length;
+      dataRef.current.push(...dparturesData);
 
       if (data.complete) {
+        setResult(dparturesData);
         setLoading(false);
         clear();
       } else {
@@ -45,7 +49,7 @@ const useSearch = ({ url, baseParams, serachField = 'departures' }) => {
 
   return {
     searchHandler: initialSearchHandler,
-    result: loading ? null : dataRef.current,
+    result,
     loading,
     error: searchError,
   };

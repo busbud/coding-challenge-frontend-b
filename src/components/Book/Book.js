@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { url } from '../../utils/constants';
 import { getDeparturesData } from '../../utils/utils';
 import CurrencyContext from '../../contexts/currencyContext';
-import useSearch from '../../hooks/search';
+import useSearchDepartures from '../../hooks/searchDepartures';
 import Spinner from '../shared/Spinner/Spinner';
 import DeparturesList from './DeparturesList/DeparturesList';
 import styles from './Book.module.scss';
@@ -19,7 +19,7 @@ const Book = (props) => {
     [currency, i18n.language]
   );
 
-  const { searchHandler, result, loading, error } = useSearch({
+  const { searchHandler, result, loading, error } = useSearchDepartures({
     url,
     baseParams,
   });
@@ -28,7 +28,6 @@ const Book = (props) => {
     if (error) {
       alert('ERROR IN GETTING DEPARTUES!');
     } else if (result) {
-      const departures = getDeparturesData(result);
       setDepartureData(result);
     }
   }, [result, error]);
