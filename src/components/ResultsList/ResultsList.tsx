@@ -9,8 +9,10 @@ import { TDeparture } from "../../types";
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
+    flexFlow: "wrap",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
+      flexFlow: "wrap",
     },
   },
 }));

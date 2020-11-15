@@ -4,9 +4,12 @@ This is the coding challenge submission for Thomas Baxter (... hey! That's me!)
 This allows users to specify an origin and destination along with a date, and will query the Busbud production API
 
 ## Functional Technologies Used
+* create-react-app
+* material-ui
 * redux
 * axios
 * date-fns
+* react-i18next
 
 ## DX Technologies Used
 * typescript

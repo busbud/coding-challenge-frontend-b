@@ -35,7 +35,7 @@ export const getScheduledDepartues = (
   try {
     // 1) Dispatch an action to trigger a loading state
     dispatch({
-      currentRequest: request,
+      payload: { currentRequest: request },
       type: actionTypes.DEPARTURE_FETCH_START,
     });
 

@@ -57,3 +57,9 @@ export const useCardContentStyles = makeStyles(() => ({
     justifyContent: "center",
   },
 }));
+
+export const useSnackbarStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: `${theme.palette.primary.light} !important`,
+  },
+}));

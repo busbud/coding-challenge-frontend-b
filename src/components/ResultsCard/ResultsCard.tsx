@@ -8,6 +8,7 @@ import {
 import {
   useCardActionStyles,
   useCardContentStyles,
+  useSnackbarStyles,
   useStyles,
 } from "./ResultsCard.styles";
 import Button from "@material-ui/core/Button";
@@ -16,6 +17,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import { PriceDisplay } from "../PriceDisplay";
 import React from "react";
+import Snackbar from "@material-ui/core/Snackbar";
 import Typography from "@material-ui/core/Typography";
 import { useTranslation } from "react-i18next";
 
@@ -32,20 +34,61 @@ export const ResultsCard = (
   const classes = useStyles();
   const cardActionClasses = useCardActionStyles();
   const cardContentClases = useCardContentStyles();
+  const snackbarClasses = useSnackbarStyles();
   const { i18n, t } = useTranslation();
+  const [isMessageShown, setMessageShownState] = React.useState(false);
 
   const locales = {
     en: enUS,
     fr: fr,
   };
 
+  const handleClose = React.useCallback(() => {
+    setTimeout(() => {
+      setMessageShownState(false);
+    }, 6000);
+  }, [setMessageShownState]);
+
+  const handleAddToCart = React.useCallback(() => {
+    setMessageShownState(true);
+  }, [setMessageShownState]);
+
+  // NOTE: Details button disabled due to time constraints
+  // but ultimately the intention was to show all the details
+  // about the selected  route (terms, amenities, etc)
+  // TRB 11/15/2020
+  /*
+      <Button color="secondary" size="small" variant="outlined">
+        {t("details")}
+      </Button>
+      */
+  const buttons = (
+    <>
+      <Button
+        onClick={handleAddToCart}
+        color="secondary"
+        size="small"
+        variant="outlined"
+      >
+        {t("purchase")}
+      </Button>
+    </>
+  );
   const departureDate = new Date(departure.departure_time);
   const arrivalDate = new Date(departure.arrival_time);
   return (
     <Card className={classes.root} variant="outlined">
+      <Snackbar
+        open={isMessageShown}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        ContentProps={{ classes: snackbarClasses }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        message={t("finished")}
+      />
       <CardContent classes={cardContentClases}>
         <Typography gutterBottom className={classes.title} color="secondary">
-          {format(departureDate, "MMM co, yyyy", {
+          {format(departureDate, "MMM do, yyyy", {
             locale: locales[i18n.language],
           })}
         </Typography>
@@ -80,12 +123,7 @@ export const ResultsCard = (
         </Typography>
       </CardContent>
       <CardActions disableSpacing classes={cardActionClasses}>
-        <Button color="secondary" size="small" variant="outlined">
-          {t("details")}
-        </Button>
-        <Button color="secondary" size="small" variant="outlined">
-          {t("purchase")}
-        </Button>
+        {buttons}
       </CardActions>
     </Card>
   );

@@ -19,6 +19,8 @@ const resources = {
       errorEncoutered: "Whoops!",
       errorEncouteredPrompt:
         "Something went wrong, can you give it another try?",
+      finished:
+        "Congrats! You're on your way! ... and thus ends this example app!",
       loading: "Hold on while we put on our dancing shoes...",
       origin: "Origin",
       osheaga: "Osheaga Music and Arts Festival",
@@ -44,6 +46,8 @@ const resources = {
       errorEncoutered: "Oups!",
       errorEncouteredPrompt:
         "Un problème est survenu, pouvez-vous essayer à nouveau?",
+      finished:
+        "Félicitations! Vous êtes sur votre chemin! ... et termine ainsi cet exemple d'application!",
       loading: "Juste une minute, on s'habille... ",
       origin: "Origine",
       osheaga: "Osheaga Festival Musique et Arts",

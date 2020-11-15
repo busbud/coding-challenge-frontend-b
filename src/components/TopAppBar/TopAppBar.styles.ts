@@ -69,11 +69,8 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "flex",
-      flexGrow: 1,
-      justifyContent: "center",
-    },
+    display: "flex",
+    flexGrow: 1,
+    justifyContent: "center",
   },
 }));

@@ -35,6 +35,8 @@ export const performPoll = async (
     ? parseInt(process.env.REACT_APP_BUSBUS_API_POLL_FREQUENCY, 10)
     : FALLBACK_TIMEOUT;
   if (!response.complete) {
+    // eslint-disable-next-line
+    console.log("polling", response);
     setTimeout(() => {
       const nextIndex = index + response.departures.length;
       performPoll({ ...request, index: nextIndex });

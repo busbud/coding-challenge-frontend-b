@@ -51,7 +51,6 @@ export const callApi = async (requestData: TCallApiRequest): Promise<any> => {
       data: params,
       headers: requestHeaders,
       method,
-      withCredentials: true,
     });
 
     return response.data;
