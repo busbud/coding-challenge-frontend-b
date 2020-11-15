@@ -27,6 +27,12 @@ type TResultsCard = {
   request: TScheduleDepartureRequest;
 };
 
+const HIDE_TIMEOUT = 6000;
+// The `Snackbar` element should be abstracted out to its
+// own component, this would get us under the 80 line limit
+// but for the sake of expediency, I'm bein' lazy!
+// TRB 11/15/2020
+// eslint-disable-next-line max-lines-per-function
 export const ResultsCard = (
   props: TResultsCard
 ): React.ReactElement<typeof Card> => {
@@ -46,7 +52,7 @@ export const ResultsCard = (
   const handleClose = React.useCallback(() => {
     setTimeout(() => {
       setMessageShownState(false);
-    }, 6000);
+    }, HIDE_TIMEOUT);
   }, [setMessageShownState]);
 
   const handleAddToCart = React.useCallback(() => {
@@ -63,28 +69,26 @@ export const ResultsCard = (
       </Button>
       */
   const buttons = (
-    <>
-      <Button
-        onClick={handleAddToCart}
-        color="secondary"
-        size="small"
-        variant="outlined"
-      >
-        {t("purchase")}
-      </Button>
-    </>
+    <Button
+      color="secondary"
+      size="small"
+      variant="outlined"
+      onClick={handleAddToCart}
+    >
+      {t("purchase")}
+    </Button>
   );
   const departureDate = new Date(departure.departure_time);
   const arrivalDate = new Date(departure.arrival_time);
   return (
     <Card className={classes.root} variant="outlined">
       <Snackbar
-        open={isMessageShown}
-        autoHideDuration={6000}
-        onClose={handleClose}
+        anchorOrigin={{ horizontal: "center", vertical: "top" }}
+        autoHideDuration={HIDE_TIMEOUT}
         ContentProps={{ classes: snackbarClasses }}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
         message={t("finished")}
+        open={isMessageShown}
+        onClose={handleClose}
       />
       <CardContent classes={cardContentClases}>
         <Typography gutterBottom className={classes.title} color="secondary">
