@@ -3,6 +3,8 @@
 This is the coding challenge submission for Thomas Baxter (... hey! That's me!)
 This allows users to specify an origin and destination along with a date, and will query the Busbud production API
 
+You can review the app deployed to Heroku here: https://thomb-coding-challenge-b.herokuapp.com/
+
 ## Functional Technologies Used
 * create-react-app
 * material-ui
