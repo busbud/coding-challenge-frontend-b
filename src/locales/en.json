@@ -1,0 +1,24 @@
+{
+  "bus": {
+    "Departure": "Departure",
+    "YourTrip": "Your trip",
+    "OperatedBy": "Operated By",
+    "Class": "Class",
+    "StartingPoint": "Starting Point/Bus Stop",
+    "DepartureTime": "Departure Time",
+    "ArrivalTime": "Arrival Time",
+    "AvailableSeats": "Available Seats",
+    "TotalPrice": "Total Price",
+    "Stops": "Stops",
+    "Duration": "Duration"
+  },
+  "details": {
+    "From": "From",
+    "To": "To",
+    "DepartureDate": "Departure Date",
+    "FindText": "Find a Bus for your Trip",
+    "ChooseLanguage": "Choose Language",
+    "Search": "Search",
+    "Expand": "Expand"
+  }
+}

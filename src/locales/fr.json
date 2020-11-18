@@ -1,0 +1,24 @@
+{
+  "bus": {
+    "Departure": "Départ",
+    "YourTrip": "Votre voyage",
+    "OperatedBy": "Opéré par",
+    "Class": "Classe",
+    "StartingPoint": "Point de départ / arrêt de bus",
+    "DepartureTime": "Heure de départ",
+    "ArrivalTime": "Heure d'arrivée",
+    "AvailableSeats": "Places libres",
+    "TotalPrice": "Prix total",
+    "Stops": "Arrêts",
+    "Duration": "Durée"
+  },
+  "details": {
+    "From": "De",
+    "To": "À",
+    "DepartureDate": "Date de départ",
+    "FindText": "Trouvez un bus pour votre voyage",
+    "ChooseLanguage": "Choisissez la langue",
+    "Search": "Chercher",
+    "Expand": "étendre"
+  }
+}

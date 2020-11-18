@@ -1,0 +1,55 @@
+body, input[type="text"], option, select
+{
+    font-size : 14px
+}
+
+.btnToggle {
+    font-size: 10px;
+}
+
+
+.btnToggle {
+    width: 78px !important;
+}
+
+.price {
+    color: blue;
+}
+
+
+.mybtn {
+    padding: 3px 5px;
+    font-size: 5px;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+
+.pricebox h4 {
+    text-align: center;
+    color: yellow;
+}
+
+.langDropDown {
+    margin-left: 5px;
+}
+
+.detailsbox {
+    width: 400px;
+    min-width: 30%;
+    position: fixed;
+    margin-top: 290px;
+}
+
+body { padding: 40px; }
+.dropdown-toggle, .dropdown-menu { width: 350px; margin-left: 5px }
+.btn-group img { margin-right: 10px ;width: 55px }
+.dropdown-toggle { padding-right: 50px }
+.dropdown-toggle .glyphicon { margin-left: 20px; margin-right: -40px }
+.dropdown-menu>li>a:hover { background: #f1f9fd } /* $search-blue */
+.dropdown-header { background: #ccc; font-size: 14px; font-weight: 700; padding-top: 5px; padding-bottom: 5px; margin-top: 10px; margin-bottom: 5px }
+
+.langSelector {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
