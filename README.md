@@ -1,6 +1,6 @@
 # Busbud Front-End Coding Challenge
 
-#Bus Bud App Deployed on Heroku
+# Bus Bud App Deployed on Heroku
 https://bus-bud-staging-joseph.herokuapp.com/
 
 # Notes
