@@ -10,3 +10,4 @@ https://bus-bud-staging-joseph.herokuapp.com/
 4. Polling is after every 2 sec.
 5. Pagination after specific number of departures to avoid duplication of data while polling.
 6. Language can be switeched between English and French
+7. Error Message is not deplayed when departures object comes as empty. Please change dates to get the data.
