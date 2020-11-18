@@ -26,7 +26,7 @@ const ItineraryData = (props) => {
         </div>
       </div>
 
-          {legsDiv}
+      {legsDiv}
 
 
     </div>
