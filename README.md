@@ -1,5 +1,8 @@
 # Busbud Front-End Coding Challenge
 
+#Bus Bud App Deployed on Heroku
+https://bus-bud-staging-joseph.herokuapp.com/
+
 # Notes
 1. Search is fixed between Quebec to Montreal.
 2. You can change date in datepicker and iniate new search.
