@@ -24,6 +24,9 @@ body, input[type="text"], option, select
     margin-right: 5px;
 }
 
+.section-spacing {
+    margin-left: -45px;
+}
 
 .pricebox h4 {
     text-align: center;
