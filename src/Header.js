@@ -17,7 +17,7 @@ const Header = () => (
             </div>
         </div>
       <div className="row">
-        <div className="col-12">
+        <div className="col-12 section-spacing">
           <img src="/logos/ReduxLogo.png" />
                Online Bus Booking System
         </div>
