@@ -17,7 +17,7 @@ const Header = () => (
             </div>
         </div>
       <div className="row">
-        <div className="col-12 offset-2">
+        <div className="col-12">
           <img src="/logos/ReduxLogo.png" />
                Online Bus Booking System
         </div>
