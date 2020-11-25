@@ -28,3 +28,6 @@ node_modules
 
 # IDE directory
 .idea
+
+# Generated app
+client/dist/app.js
