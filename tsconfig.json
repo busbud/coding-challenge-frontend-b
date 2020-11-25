@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "lib": ["es6", "esnext.asynciterable", "dom", "es2019"],
+    "module": "commonjs",
+    "outDir": "./dist",
+    "target": "es5",
+    "jsx": "react",
+    "noImplicitAny": true,
+    "esModuleInterop":true,
+    "allowSyntheticDefaultImports": true
+  }
+}
