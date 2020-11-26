@@ -8,7 +8,7 @@ const buildPath = path.join(__dirname, '..', 'client', 'dist');
 app.use(express.static(buildPath));
 
 app.use((req, res, next) => {
-    res.sendFile(buildPath);
+    res.sendFile(path.join(buildPath, 'index.html'));
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

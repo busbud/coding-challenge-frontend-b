@@ -1,10 +1,15 @@
 import { all, fork, put, takeEvery, call } from 'redux-saga/effects';
 import { LocationChangeAction } from 'connected-react-router';
-import { getType } from 'typesafe-actions';
+import { supportedLanguages } from '../../utils/language';
+import { changeLanguageAction } from '../language/actions';
 import * as queryString from 'query-string';
 
 export function* locationChange(action: LocationChangeAction) {
     const path = action.payload.location.pathname;
+    const language = path?.substring(1);
+    if (supportedLanguages.some((l) => l.id === language)) {
+        yield put(changeLanguageAction(language));
+    }
 }
 
 function* watchLocationChange() {

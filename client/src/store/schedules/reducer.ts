@@ -4,12 +4,10 @@ import { Schedule } from '../../api/schedules';
 
 export interface SchedulesStateType {
     schedules: Schedule[];
-    language: string;
 }
 
 export const schedulesInitialState: SchedulesStateType = {
     schedules: [],
-    language: 'en',
 };
 
 export const schedulesReducer = createReducer<
