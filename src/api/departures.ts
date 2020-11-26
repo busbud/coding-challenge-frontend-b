@@ -76,9 +76,9 @@ export const getDepartures = ({
     .then(async (res) => {
       // More data should be fetched
       if (res.complete === false) {
-        debugger;
         // waiting 2 seconds
         await delay(2_000);
+        debugger;
         // Polling next items
         const poll = await getDepartures({
           origin,

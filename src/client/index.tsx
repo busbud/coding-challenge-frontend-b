@@ -1,4 +1,4 @@
-import { init } from '../api';
+import { init } from '@root/api';
 import { React, ReactDOM } from './dependencies';
 import { App } from './application';
 

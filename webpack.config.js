@@ -1,6 +1,5 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge').default;
 const modeConfig = (mode) =>
@@ -10,14 +9,7 @@ module.exports = ({ mode = 'development' } = {}) => {
   return webpackMerge(
     {
       mode,
-      plugins: [
-        new Dotenv(),
-        new HtmlWebpackPlugin({
-          hash: true,
-          template: path.resolve('./webpack-configs/index-template.html'),
-        }),
-        new webpack.ProgressPlugin(),
-      ],
+      plugins: [new webpack.ProgressPlugin()],
       module: {
         rules: [
           {
@@ -27,7 +19,14 @@ module.exports = ({ mode = 'development' } = {}) => {
           },
         ],
       },
-      resolve: { extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'] },
+      resolve: {
+        extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'],
+        plugins: [new TsconfigPathsPlugin()],
+      },
+      performance: {
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000,
+      },
     },
     modeConfig(mode),
   );

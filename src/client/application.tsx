@@ -1,5 +1,12 @@
-import { React } from './dependencies';
+import { React, ReactQueryCacheProvider } from './dependencies';
+import { DepartureLanding } from './departures';
+import { GlobalStyle } from './global-styles';
 
 export const App = () => {
-  return <div>Busbud</div>;
+  return (
+    <ReactQueryCacheProvider>
+      <GlobalStyle />
+      <DepartureLanding />
+    </ReactQueryCacheProvider>
+  );
 };
