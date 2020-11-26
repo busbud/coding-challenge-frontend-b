@@ -32,12 +32,16 @@ export const DepartureLanding = () => {
   return (
     <Container>
       <Loading visible={isLoading} />
+      <DepartureWelcome />
       {error && (
         <DisplayError title="Oh-uh cannot get departures!">
-          {JSON.stringify(error)}
+          {error && 'message' in (error as any) ? (
+            (error as any).message
+          ) : (
+            <p>{JSON.stringify(error)}</p>
+          )}
         </DisplayError>
       )}
-      <DepartureWelcome />
       <DepartureList departures={data}>
         <h3>
           Today trips from {'Quebec'} to {'Montreal'} for 1 Adult

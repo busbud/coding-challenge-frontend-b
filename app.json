@@ -1,0 +1,8 @@
+{
+  "name": "Busbud challenge",
+  "description": "You know what this is",
+  "repository": "https://github.com/aminpaks/coding-challenge-frontend-b",
+  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/main/public/node.svg",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}

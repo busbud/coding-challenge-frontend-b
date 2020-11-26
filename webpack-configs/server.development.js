@@ -1,5 +1,5 @@
 const path = require('path');
-const NodemonPlugin = require('nodemon-webpack-plugin'); // Ding
+const NodemonPlugin = require('nodemon-webpack-plugin');
 
 module.exports = () => ({
   entry: './src/server/index.ts',

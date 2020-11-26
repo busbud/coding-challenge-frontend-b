@@ -4,17 +4,19 @@
   "repository": "git@github.com:aminpaks/coding-challenge-frontend-b.git",
   "author": "Amin Paks <amin.pakseresht@hotmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
-    "dev": "webpack serve --env mode=development",
-    "dev:server": "webpack --env mode=development --env entry=server --watch",
-    "build": "webpack --env mode=production --env entry=client-server --progress",
-    "build:server": "node ./build/server.js",
-    "prebuild:server": "npm run build",
+    "start": "node ./build/server.js",
+    "dev": "webpack serve --env mode=development --env entry=client --progress",
+    "dev:server": "webpack --env mode=development --env entry=server --progress",
+    "build": "webpack --env mode=production",
+    "build:serve": "npm run build -- --watch --env forceWatch=true",
     "prebuild": "npm run clean",
     "clean": "rimraf build/*"
   },
   "dependencies": {
-    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.2.0"

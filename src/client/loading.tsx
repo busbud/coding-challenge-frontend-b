@@ -3,7 +3,7 @@ import { React, styled } from './dependencies';
 const Container = styled.div<{ visible: boolean }>`
   top: 50%;
   left: 50%;
-  border-radius: 0.1rem;
+  border-radius: 0.4rem;
   display: block;
   position: absolute;
   padding: 2rem;

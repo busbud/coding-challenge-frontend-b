@@ -5,18 +5,22 @@ import { existsSync } from 'fs';
 import { applyMiddleware } from './middleware';
 
 const app = express();
-const port = parseInt(process.env.serverPort ?? '8080', 10);
+const port = parseInt(process.env.PORT ?? '8080', 10);
 const publicFolderPath = path.resolve(__dirname, 'public');
 
-// Minimal express security
-app.use(helmet());
+// Minimum express security
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  }),
+);
 app.disable('x-powered-by');
 
 app.use(express.static(publicFolderPath));
 
 applyMiddleware(app);
 
-app.get('/', (req, res) => {
+app.get('/', (_, res) => {
   const indexHtmlPath = path.resolve(__dirname, 'public/index.html');
   if (existsSync(indexHtmlPath)) {
     return res.sendFile(indexHtmlPath);

@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
@@ -17,11 +18,16 @@ module.exports = () => ({
   output: {
     path: path.resolve(__dirname, '../build/public'),
   },
+  devtool: 'source-map',
   plugins: [
     new Dotenv(),
     new HtmlWebpackPlugin({
       hash: true,
       template: path.resolve(__dirname, './index-template.html'),
+    }),
+    new webpack.DefinePlugin({
+      apiUrl: JSON.stringify(process.env.apiUrl),
+      apiToken: JSON.stringify(process.env.apiToken),
     }),
   ],
 });

@@ -67,6 +67,7 @@ export const getDepartures = ({
       polling === true ? `/poll?index${pollingIndex}` : '?'
     }adult=${adult}&child=${child}&senior=${senior}&lang=${lang}&currency=${currency}`,
     {
+      mode: 'cors',
       headers: getHeaders(),
     },
   )
@@ -78,7 +79,6 @@ export const getDepartures = ({
       if (res.complete === false) {
         // waiting 2 seconds
         await delay(2_000);
-        debugger;
         // Polling next items
         const poll = await getDepartures({
           origin,

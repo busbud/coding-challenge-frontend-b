@@ -12,7 +12,9 @@ export const DisplayError: React.FC<{ title: string }> = ({
 }) => {
   return (
     <Container>
-      <header>{title}</header>
+      <header>
+        <h2>{title}</h2>
+      </header>
       <div>{children}</div>
     </Container>
   );

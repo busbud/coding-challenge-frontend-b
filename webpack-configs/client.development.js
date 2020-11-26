@@ -10,6 +10,10 @@ module.exports = () => ({
       hash: true,
       template: path.resolve(__dirname, './index-template.html'),
     }),
+    new webpack.DefinePlugin({
+      apiUrl: JSON.stringify(process.env.apiUrl),
+      apiToken: JSON.stringify(process.env.apiToken),
+    }),
   ],
   devtool: 'inline-cheap-source-map',
   watch: true,

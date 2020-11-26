@@ -1,37 +1,46 @@
+require('dotenv/config');
 const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge').default;
-const modeConfig = (mode, entry) =>
-  require(`./webpack-configs/${entry}.${mode}.js`)(mode);
+const modeConfig = ({ mode, entry, forceWatch }) =>
+  require(`./webpack-configs/${entry}.${mode}.js`)({ mode, forceWatch });
 
-module.exports = ({ mode = 'production', entry = 'client-server' } = {}) => {
+const defaultSettings = {
+  module: {
+    rules: [
+      {
+        test: /\.(t|j)sx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules\//,
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'],
+    plugins: [new TsconfigPathsPlugin()],
+  },
+};
+
+module.exports = ({
+  mode = 'production',
+  entry = 'client-server',
+  forceWatch = false,
+} = {}) => {
+  forceWatch = Boolean(forceWatch);
   const result = [];
   if (entry === 'client' || entry === 'client-server') {
     result.push(
       webpackMerge(
         {
           mode,
-          plugins: [new webpack.ProgressPlugin()],
-          module: {
-            rules: [
-              {
-                test: /\.(t|j)sx?$/,
-                loader: 'babel-loader',
-                exclude: /node_modules\//,
-              },
-            ],
-          },
-          resolve: {
-            extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'],
-            plugins: [new TsconfigPathsPlugin()],
-          },
+          ...defaultSettings,
           performance: {
             maxEntrypointSize: 512000,
             maxAssetSize: 512000,
           },
         },
-        modeConfig(mode, 'client'),
+        modeConfig({ mode, entry: 'client', forceWatch }),
       ),
     );
   }
@@ -41,22 +50,9 @@ module.exports = ({ mode = 'production', entry = 'client-server' } = {}) => {
         {
           mode,
           target: 'node',
-          plugins: [new webpack.ProgressPlugin()],
-          module: {
-            rules: [
-              {
-                test: /\.(t|j)sx?$/,
-                loader: 'babel-loader',
-                exclude: /node_modules\//,
-              },
-            ],
-          },
-          resolve: {
-            extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'],
-            plugins: [new TsconfigPathsPlugin()],
-          },
+          ...defaultSettings,
         },
-        modeConfig(mode, 'server'),
+        modeConfig({ mode, entry: 'server', forceWatch }),
       ),
     );
   }
