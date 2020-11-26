@@ -6,7 +6,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack serve --env mode=development",
-    "build": "webpack --env mode=production --progress",
+    "dev:server": "webpack --env mode=development --env entry=server --watch",
+    "build": "webpack --env mode=production --env entry=client-server --progress",
+    "build:server": "node ./build/server.js",
+    "prebuild:server": "npm run build",
     "prebuild": "npm run clean",
     "clean": "rimraf build/*"
   },
@@ -23,6 +26,7 @@
     "@babel/preset-react": "^7.12.7",
     "@babel/preset-typescript": "^7.12.7",
     "@hot-loader/react-dom": "^17.0.0",
+    "@types/express": "^4.17.9",
     "@types/luxon": "^1.25.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
@@ -31,6 +35,8 @@
     "dotenv-webpack": "^5.1.0",
     "html-webpack-plugin": "5.0.0-alpha.14",
     "luxon": "^1.25.0",
+    "nodemon": "^2.0.6",
+    "nodemon-webpack-plugin": "^4.3.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-i18next": "^11.7.3",

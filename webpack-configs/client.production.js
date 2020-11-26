@@ -7,15 +7,15 @@ module.exports = () => ({
     app: {
       import: './src/client/index.tsx',
       dependOn: 'vendors',
-      filename: 'js/[name]-[contenthash].js',
+      filename: 'js/[name]-[fullhash].js',
     },
     vendors: {
       import: './src/client/dependencies.ts',
-      filename: 'js/[name]-[contenthash].js',
+      filename: 'js/[name]-[fullhash].js',
     },
   },
   output: {
-    path: path.resolve(__dirname, '../build/js'),
+    path: path.resolve(__dirname, '../build/public'),
   },
   plugins: [
     new Dotenv(),
