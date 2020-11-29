@@ -6,19 +6,25 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import SearchContent from './SearchContainer/SearchContainer';
+import SearchContainer from './SearchContainer/SearchContainer';
+import ScheduleItem from './ScheduleItem/ScheduleItem';
 import './App.scss';
-import InputBase from '@material-ui/core/InputBase';
 import { supportedLanguages } from '../utils/language';
+import { getDepartureInfo } from '../utils/departures';
 import { goToLanguage } from '../store/router/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSchedulesFromState } from '../store/schedules/selectors';
 import { selectLanguageFromState } from '../store/language/selectors';
 import { BootstrapInput } from '../config/theme';
+import { getSchedules } from '../store/schedules/actions';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+    },
+    content: {
+        overflowY: 'auto',
+        height: 'calc(100vh - 50px)',
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -36,14 +42,37 @@ const app = () => {
     const dispatch = useDispatch();
     const { language } = useSelector(selectLanguageFromState);
     const [displayedLanguage, setDisplayedLanguage] = React.useState(language);
-    const { schedules, loading } = useSelector(selectSchedulesFromState);
+    const { schedules, loading, searchCriteria } = useSelector(
+        selectSchedulesFromState
+    );
     console.log(schedules);
+    console.log(loading);
+    console.log(searchCriteria);
+
+    if (schedules?.complete === false) {
+        console.log('not complete ');
+        // setTimeout(() => {
+        //     dispatch(
+        //         getSchedules.request({
+        //             ...searchCriteria,
+        //             index: schedules?.departures.length,
+        //         })
+        //     );
+        // }, 2000);
+    }
 
     const handleLanguageChange = (event: any) => {
         const newLanguage = event?.target?.value;
         dispatch(goToLanguage(newLanguage));
         setDisplayedLanguage(newLanguage);
     };
+
+    const getDepartureDetails = React.useCallback(
+        (departure) => {
+            return getDepartureInfo(schedules, departure);
+        },
+        [schedules]
+    );
 
     return (
         <>
@@ -56,7 +85,6 @@ const app = () => {
                             color="inherit"
                             aria-label="menu"
                         >
-                            {/**/}
                         </IconButton>
                         <Typography variant="h6" className={classes.title}>
                             Osheaga 2021
@@ -82,7 +110,16 @@ const app = () => {
                     </Toolbar>
                 </AppBar>
                 <div className={classes.pad} />
-                <SearchContent />
+                <div className={classes.content} >
+                    <SearchContainer />
+                    {schedules?.departures?.length > 0 &&
+                    schedules?.departures?.map((departure, index) => (
+                        <ScheduleItem
+                            key={index}
+                            data={getDepartureDetails(departure)}
+                        />
+                    ))}
+                </div>
             </div>
         </>
     );

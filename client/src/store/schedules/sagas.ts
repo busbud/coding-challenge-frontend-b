@@ -8,7 +8,6 @@ import { Schedules } from '../../api/interfaces';
 export function* getSchedules(action: any) {
     let schedules: Schedules;
     try {
-        console.log(action?.payload);
         schedules = yield call(getSchedulesData, action?.payload);
         yield put(getSchedulesAction.success(schedules));
     } catch (err) {

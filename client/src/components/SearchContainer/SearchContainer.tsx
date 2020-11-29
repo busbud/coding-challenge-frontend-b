@@ -18,12 +18,13 @@ import {
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { getSchedules } from '../../store/schedules/actions';
-import {SearchCriteria} from "../../api/interfaces";
+import { SearchCriteria } from '../../api/interfaces';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         marginTop: 10,
+        marginBottom: 10,
         backgroundColor: '#0288d1',
     },
     margin: {
@@ -59,6 +60,7 @@ const searchContainer = () => {
     const [origin, setOrigin] = React.useState('f2m673');
     const [destination, setDestination] = React.useState('f25dvk');
     const [departureDate, setDepartureDate] = React.useState(new Date());
+    const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
     const [adultsNumber, setAdultNumbers] = React.useState(1);
     contentLanguages.setLanguage(language);
 
@@ -72,6 +74,7 @@ const searchContainer = () => {
 
     const handleDepartureDateChange = (event: any) => {
         setDepartureDate(event);
+        setIsCalendarOpen(false);
     };
 
     const handleAdultNumberChange = (event: any) => {
@@ -80,7 +83,14 @@ const searchContainer = () => {
 
     const handleSearchClick = () => {
         const formattedDate = departureDate.toISOString()?.split('T')[0];
-        const search: SearchCriteria = {origin, destination, outbound_date: formattedDate, adult: adultsNumber, lang: language};
+        const search: SearchCriteria = {
+            origin,
+            destination,
+            outbound_date: formattedDate,
+            adult: adultsNumber,
+            lang: language,
+            index: 0,
+        };
         dispatch(getSchedules.request(search));
     };
 
@@ -135,10 +145,25 @@ const searchContainer = () => {
                                     value={departureDate}
                                     minDate={new Date()}
                                     onChange={handleDepartureDateChange}
+                                    inputVariant="outlined"
                                     KeyboardButtonProps={{
                                         'aria-label': 'change date',
+                                        onFocus: (e) => {
+                                            setIsCalendarOpen(true);
+                                        },
                                     }}
-                                    inputVariant="outlined"
+                                    PopoverProps={{
+                                        disableRestoreFocus: true,
+                                        onClose: () => {
+                                            setIsCalendarOpen(false);
+                                        },
+                                    }}
+                                    InputProps={{
+                                        onFocus: () => {
+                                            setIsCalendarOpen(true);
+                                        },
+                                    }}
+                                    open={isCalendarOpen}
                                 />
                             </MuiPickersUtilsProvider>
                         </FormControl>

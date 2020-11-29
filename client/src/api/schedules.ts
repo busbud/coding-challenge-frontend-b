@@ -16,8 +16,7 @@ const getToken = async () => {
 };
 
 export const getSchedulesData = async (
-    search: SearchCriteria,
-    pollIndex: number = 0
+    search: SearchCriteria
 ): Promise<Schedules> => {
     let token;
     if (localStorage.getItem(TOKEN_KEY) === null) {
@@ -36,9 +35,9 @@ export const getSchedulesData = async (
             currency: search.currency || 'CAD',
         } as SearchCriteriaQuery;
 
-        if (pollIndex !== 0) {
+        if (search.index !== 0) {
             url = urlJoin(url, 'poll');
-            params = { ...params, index: pollIndex };
+            // params = { ...params, index: pollIndex };
         }
         const { data } = await axios.get(url, {
             headers: {
