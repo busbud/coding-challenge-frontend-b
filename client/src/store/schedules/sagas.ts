@@ -1,16 +1,18 @@
 import { all, fork, put, takeEvery, call } from 'redux-saga/effects';
 import { getType } from 'typesafe-actions';
-import { Schedule } from '../../api/schedules';
 import { getSchedules as getSchedulesAction } from './actions';
 // import { init as initAction } from './actions';
 import { getSchedulesData } from '../../api/schedules';
+import { Schedules } from '../../api/interfaces';
 
 export function* getSchedules(action: any) {
-    let schedules: Schedule[];
+    let schedules: Schedules;
     try {
-        // schedules = yield call(getSchedulesData, action?.payload);
-        // yield put(getSchedulesAction.success(schedules));
+        console.log(action?.payload);
+        schedules = yield call(getSchedulesData, action?.payload);
+        yield put(getSchedulesAction.success(schedules));
     } catch (err) {
+        console.log(err);
         yield put(getSchedulesAction.failure(err));
     }
 }

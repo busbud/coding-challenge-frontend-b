@@ -1,13 +1,15 @@
 import { ActionType, createReducer } from 'typesafe-actions';
 import * as actions from './actions';
-import { Schedule } from '../../api/schedules';
+import { Schedules } from '../../api/interfaces';
 
 export interface SchedulesStateType {
-    schedules: Schedule[];
+    schedules: Schedules;
+    loading: boolean;
 }
 
 export const schedulesInitialState: SchedulesStateType = {
-    schedules: [],
+    schedules: {},
+    loading: false,
 };
 
 export const schedulesReducer = createReducer<
@@ -17,6 +19,6 @@ export const schedulesReducer = createReducer<
     actions.getSchedules.success,
     (state, action) => ({
         ...state,
-        schedules: [...action.payload],
+        schedules: { ...action.payload },
     })
 );

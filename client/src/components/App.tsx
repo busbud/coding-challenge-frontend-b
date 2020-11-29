@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import SearchContent from './SearchContent/SearchContent';
+import SearchContent from './SearchContainer/SearchContainer';
 import './App.scss';
 import InputBase from '@material-ui/core/InputBase';
 import { supportedLanguages } from '../utils/language';
@@ -36,6 +36,8 @@ const app = () => {
     const dispatch = useDispatch();
     const { language } = useSelector(selectLanguageFromState);
     const [displayedLanguage, setDisplayedLanguage] = React.useState(language);
+    const { schedules, loading } = useSelector(selectSchedulesFromState);
+    console.log(schedules);
 
     const handleLanguageChange = (event: any) => {
         const newLanguage = event?.target?.value;
