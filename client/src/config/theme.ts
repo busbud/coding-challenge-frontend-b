@@ -5,7 +5,7 @@ import InputBase from "@material-ui/core/InputBase";
 export const themes: any = {
     default: {
         palette: {
-            primary: { main: '#d7ebfc' },
+            primary: { main: '#0288d1' },
             secondary: { main: '#1b87b2' },
         },
         themeName: 'dark',

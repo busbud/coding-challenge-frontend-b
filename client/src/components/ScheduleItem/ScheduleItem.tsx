@@ -9,9 +9,6 @@ interface ScheduleItemProps {
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            // flexGrow: 1,
-        },
         paper: {
             flexGrow: 1,
             padding: theme.spacing(2),
@@ -19,6 +16,20 @@ const useStyles = makeStyles((theme: Theme) =>
             marginRight: 10,
             marginLeft: 10,
         },
+        price: {
+            color: '#fb8c00',
+            textAlign: 'right',
+            fontSize: '23px',
+            fontWeight: 'bold',
+            fontFamily: 'trebuchet ms',
+        },
+        schedule: {
+            fontSize: '18px',
+            color: '#00315a',
+            fontFamily: 'trebuchet ms',
+            marginBottom: 5
+        }
+
     })
 );
 
@@ -27,23 +38,21 @@ function scheduleItem(props: ScheduleItemProps) {
     const { data } = props;
     console.log(data);
     return (
-        <div className={classes.root}>
+        <div>
             <Grid container>
                 <Paper className={classes.paper}>
                     <Grid container justify="space-around">
                         <Grid item xs={10}>
                             <Grid container justify="space-around">
-                                <Grid item xs={12} sm={6}>
-                                    {data.departureHour} - {data.originCity} -{' '}
-                                    {data.locationOriginName}
+                                <Grid item xs={12} sm={6} className={classes.schedule}>
+                                    {data.departureHour} - {data.originCity} - {data.locationOriginName}
                                 </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    {data.arrivalHour} - {data.destinationCity} -{' '}
-                                    {data.locationDestinationName}
+                                <Grid item xs={12} sm={6} className={classes.schedule}>
+                                    {data.arrivalHour} - {data.destinationCity} - {data.locationDestinationName}
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs={2} className={classes.price}>
                                 ${data.price}
                         </Grid>
                     </Grid>

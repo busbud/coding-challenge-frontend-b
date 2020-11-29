@@ -12,6 +12,7 @@ import { selectLanguageFromState } from '../../store/language/selectors';
 import { BootstrapInput } from '../../config/theme';
 import Select from '@material-ui/core/Select';
 import { yellow } from '@material-ui/core/colors';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import {
     MuiPickersUtilsProvider,
     KeyboardDatePicker,
@@ -19,15 +20,16 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 import { getSchedules } from '../../store/schedules/actions';
 import { SearchCriteria } from '../../api/interfaces';
+import { selectSchedulesFromState } from '../../store/schedules/selectors';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         marginTop: 10,
         marginBottom: 10,
-        backgroundColor: '#0288d1',
+        backgroundColor: '#d7ebfc',
     },
-    margin: {
+    search: {
         margin: theme.spacing(1),
     },
     container: {
@@ -48,15 +50,31 @@ const SearchButton = withStyles((theme: Theme) => ({
         color: theme.palette.getContrastText(yellow[500]),
         backgroundColor: yellow[500],
         '&:hover': {
-            backgroundColor: yellow[700],
+            backgroundColor: yellow[600],
         },
+        fontWeight: 'bold',
+        fontFamily: [
+            'Nunito',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+        ].join(','),
     },
 }))(Button);
+
+const LoadingSpinner = withStyles((theme: Theme) => ({
+    root: {
+        marginRight: 10,
+        opacity: 0.7,
+    },
+}))(CircularProgress);
 
 const searchContainer = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
     const { language } = useSelector(selectLanguageFromState);
+    const { loading } = useSelector(selectSchedulesFromState);
     const [origin, setOrigin] = React.useState('f2m673');
     const [destination, setDestination] = React.useState('f25dvk');
     const [departureDate, setDepartureDate] = React.useState(new Date());
@@ -205,9 +223,15 @@ const searchContainer = () => {
                             <SearchButton
                                 variant="contained"
                                 color="primary"
-                                className={classes.margin}
+                                className={classes.search}
                                 onClick={handleSearchClick}
                             >
+                                {' '}
+                                {loading ? (
+                                    <LoadingSpinner size={24} color="inherit" />
+                                ) : (
+                                    ''
+                                )}
                                 {contentLanguages.search}
                             </SearchButton>
                         </FormControl>

@@ -16,7 +16,7 @@ export const getDepartureInfo = (
     const arrivalDate = new Date(arrival_time);
     const departureHour = `${departureDate.getHours()}:${departureDate.getMinutes()}`;
     const arrivalHour = `${arrivalDate.getHours()}:${arrivalDate.getMinutes()}`;
-    const price = `${prices?.total / 100}${prices?.currency} `;
+    const price = `${prices?.total / 100} ${prices?.currency}`;
     const locationOriginName = locations
         ?.filter((location) => location.id === origin_location_id)
         .map((l) => l.name);
