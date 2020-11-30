@@ -17,10 +17,16 @@ import {
     MuiPickersUtilsProvider,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
+import { fr, it } from 'date-fns/locale';
 import DateFnsUtils from '@date-io/date-fns';
 import { getSchedules } from '../../store/schedules/actions';
 import { SearchCriteria } from '../../api/interfaces';
 import { selectSchedulesFromState } from '../../store/schedules/selectors';
+
+const geohash = {
+    QUEBEC: 'f2m673',
+    MONTREAL: 'f25dvk',
+};
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -75,8 +81,8 @@ const searchContainer = () => {
     const classes = useStyles();
     const { language } = useSelector(selectLanguageFromState);
     const { loading } = useSelector(selectSchedulesFromState);
-    const [origin, setOrigin] = React.useState('f2m673');
-    const [destination, setDestination] = React.useState('f25dvk');
+    const [origin, setOrigin] = React.useState(geohash.QUEBEC);
+    const [destination, setDestination] = React.useState(geohash.MONTREAL);
     const [departureDate, setDepartureDate] = React.useState(new Date());
     const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
     const [adultsNumber, setAdultNumbers] = React.useState(1);
@@ -119,7 +125,7 @@ const searchContainer = () => {
                     <Grid item xs={12} sm={6} md={3}>
                         <FormControl className={classes.container}>
                             <InputLabel id="departure-select-label">
-                                Departure from
+                                {contentLanguages.departureFrom}
                             </InputLabel>
                             <Select
                                 labelId="departure-label"
@@ -128,15 +134,19 @@ const searchContainer = () => {
                                 onChange={handleOriginChange}
                                 input={<BootstrapInput />}
                             >
-                                <MenuItem value={'f2m673'}>Québec</MenuItem>
-                                <MenuItem value={'f25dvk'}>Montréal</MenuItem>
+                                <MenuItem value={geohash.QUEBEC}>
+                                    {contentLanguages.quebec}
+                                </MenuItem>
+                                <MenuItem value={geohash.MONTREAL}>
+                                    {contentLanguages.montreal}
+                                </MenuItem>
                             </Select>
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={6} md={3}>
                         <FormControl className={classes.container}>
                             <InputLabel id="destination-select-label">
-                                Destination
+                                {contentLanguages.destination}
                             </InputLabel>
                             <Select
                                 labelId="destination-label"
@@ -145,21 +155,34 @@ const searchContainer = () => {
                                 onChange={handleDestinationChange}
                                 input={<BootstrapInput />}
                             >
-                                <MenuItem value={'f25dvk'}>Montréal</MenuItem>
-                                <MenuItem value={'f2m673'}>Québec</MenuItem>
+                                <MenuItem value={geohash.QUEBEC}>
+                                    {contentLanguages.quebec}
+                                </MenuItem>
+                                <MenuItem value={geohash.MONTREAL}>
+                                    {contentLanguages.montreal}
+                                </MenuItem>
                             </Select>
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={6} md={2}>
                         <FormControl className={classes.container}>
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <MuiPickersUtilsProvider
+                                utils={DateFnsUtils}
+                                locale={
+                                    language === 'fr'
+                                        ? fr
+                                        : language === 'it'
+                                        ? it
+                                        : ''
+                                }
+                            >
                                 <KeyboardDatePicker
                                     disableToolbar
                                     variant="inline"
                                     format="yyyy/MM/dd"
                                     margin="normal"
                                     id="departure-date-picker-inline"
-                                    label="Departure Date"
+                                    label={contentLanguages.departureDate}
                                     value={departureDate}
                                     minDate={new Date()}
                                     onChange={handleDepartureDateChange}
@@ -196,7 +219,7 @@ const searchContainer = () => {
                         <FormControl className={classes.container}>
                             <TextField
                                 id="adult-number"
-                                label="Adults"
+                                label={contentLanguages.adults}
                                 type="number"
                                 InputLabelProps={{
                                     shrink: true,

@@ -27,16 +27,14 @@ const useStyles = makeStyles((theme: Theme) =>
             fontSize: '18px',
             color: '#00315a',
             fontFamily: 'trebuchet ms',
-            marginBottom: 5
-        }
-
+            marginBottom: 5,
+        },
     })
 );
 
 function scheduleItem(props: ScheduleItemProps) {
     const classes = useStyles();
     const { data } = props;
-    console.log(data);
     return (
         <div>
             <Grid container>
@@ -44,16 +42,28 @@ function scheduleItem(props: ScheduleItemProps) {
                     <Grid container justify="space-around">
                         <Grid item xs={10}>
                             <Grid container justify="space-around">
-                                <Grid item xs={12} sm={6} className={classes.schedule}>
-                                    {data.departureHour} - {data.originCity} - {data.locationOriginName}
+                                <Grid
+                                    item
+                                    xs={12}
+                                    sm={6}
+                                    className={classes.schedule}
+                                >
+                                    {data.departureHour} - {data.originCity} -{' '}
+                                    {data.locationOriginName}
                                 </Grid>
-                                <Grid item xs={12} sm={6} className={classes.schedule}>
-                                    {data.arrivalHour} - {data.destinationCity} - {data.locationDestinationName}
+                                <Grid
+                                    item
+                                    xs={12}
+                                    sm={6}
+                                    className={classes.schedule}
+                                >
+                                    {data.arrivalHour} - {data.destinationCity}{' '}
+                                    - {data.locationDestinationName}
                                 </Grid>
                             </Grid>
                         </Grid>
                         <Grid item xs={2} className={classes.price}>
-                                ${data.price}
+                            ${data.price}
                         </Grid>
                     </Grid>
                 </Paper>

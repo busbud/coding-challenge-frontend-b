@@ -37,7 +37,7 @@ export const getSchedulesData = async (
 
         if (search.index !== 0) {
             url = urlJoin(url, 'poll');
-            // params = { ...params, index: pollIndex };
+            params = { ...params, index: search.index };
         }
         const { data } = await axios.get(url, {
             headers: {

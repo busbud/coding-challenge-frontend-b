@@ -33,11 +33,32 @@ export const getLanguage = () => {
 export let contentLanguages = new LocalizedStrings({
     en: {
         search: 'Search',
+        adults: 'Adults',
+        departureFrom: 'Departure from',
+        departureDate: 'Departure date',
+        destination: 'Destination',
+        noResultsFound: 'No results found',
+        montreal: 'Montreal',
+        quebec: 'Quebec'
     },
     fr: {
         search: 'Chercher',
+        adults: 'Adultes',
+        departureFrom: 'Départ de',
+        departureDate: 'Date de départ',
+        destination: 'Destination',
+        noResultsFound: 'Aucun résultat trouvé',
+        montreal: 'Montréal',
+        quebec: 'Québec'
     },
     it: {
         search: 'Ricerca',
+        adults: 'Adulti',
+        departureFrom: 'Partenza da',
+        departureDate: 'Data di partenza',
+        destination: 'Destinazione',
+        noResultsFound: 'Nessun risultato trovato',
+        montreal: 'Montreal',
+        quebec: 'Quebec'
     },
 });

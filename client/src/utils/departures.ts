@@ -14,8 +14,12 @@ export const getDepartureInfo = (
     const { locations, cities } = schedules;
     const departureDate = new Date(departure_time);
     const arrivalDate = new Date(arrival_time);
-    const departureHour = `${departureDate.getHours()}:${departureDate.getMinutes()}`;
-    const arrivalHour = `${arrivalDate.getHours()}:${arrivalDate.getMinutes()}`;
+    const departureHour = `${departureDate.getHours()}:${String(
+        departureDate.getMinutes()
+    ).padStart(2, '0')}`;
+    const arrivalHour = `${arrivalDate.getHours()}:${String(
+        arrivalDate.getMinutes()
+    ).padStart(2, '0')}`;
     const price = `${prices?.total / 100} ${prices?.currency}`;
     const locationOriginName = locations
         ?.filter((location) => location.id === origin_location_id)
@@ -29,7 +33,7 @@ export const getDepartureInfo = (
         price,
         locationOriginName,
         locationDestinationName,
-        originCity: cities[0].name,
-        destinationCity: cities[1].name,
+        originCity: cities[0]?.name,
+        destinationCity: cities[1]?.name,
     };
 };
