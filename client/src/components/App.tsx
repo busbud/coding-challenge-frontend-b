@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectSchedulesFromState } from '../store/schedules/selectors';
 import { selectLanguageFromState } from '../store/language/selectors';
 import { BootstrapInput } from '../config/theme';
+import {getSchedules} from "../store/schedules/actions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -54,6 +55,10 @@ const app = () => {
         const newLanguage = event?.target?.value;
         dispatch(goToLanguage(newLanguage));
         setDisplayedLanguage(newLanguage);
+
+        if(Object.entries(schedules).length !== 0){
+            dispatch(getSchedules.request({...searchCriteria, lang: newLanguage}));
+        }
     };
 
     const getDepartureDetails = React.useCallback(
