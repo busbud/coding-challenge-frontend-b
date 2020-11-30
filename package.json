@@ -8,7 +8,7 @@
     "build-watch": "webpack --mode development --watch",
     "start": "ts-node server",
     "start-watch": "nodemon --watch client/src/**/*.* --ignore 'client/src/**/*.spec.ts' --exec ts-node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config ./jest.config.js"
   },
   "repository": {
     "type": "git",
@@ -48,13 +48,17 @@
     "url-join": "^4.0.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.12.7",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.11",
+    "babel-jest": "^26.6.3",
     "css-loader": "^5.0.1",
+    "jest": "^26.6.3",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.6",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
+    "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.11",
     "webpack": "^5.6.0",
     "webpack-cli": "^4.2.0"

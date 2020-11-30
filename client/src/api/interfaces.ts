@@ -31,11 +31,11 @@ interface City {
 }
 
 interface Location {
-    id: string;
-    city_id: string;
-    name: string;
-    address: string[];
-    type: string;
+    id?: number;
+    city_id?: string;
+    name?: string;
+    address?: string[];
+    type?: string;
 }
 
 interface Operator {
@@ -46,16 +46,16 @@ interface Operator {
 }
 
 export interface Departure {
-    id: string;
-    departure_time: string;
-    arrival_time: string;
-    source_id: number;
-    checkout_type: string;
-    operator_id: string;
-    prices: {
+    id?: string;
+    departure_time?: string;
+    arrival_time?: string;
+    source_id?: number;
+    checkout_type?: string;
+    operator_id?: string;
+    prices?: {
         total: number;
         currency: string;
     };
-    origin_location_id: string;
-    destination_location_id: string;
+    origin_location_id?: number;
+    destination_location_id?: number;
 }
