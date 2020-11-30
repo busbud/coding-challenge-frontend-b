@@ -11,7 +11,7 @@ export interface SchedulesStateType {
 export const schedulesInitialState: SchedulesStateType = {
     schedules: {},
     loading: false,
-    searchCriteria: {}
+    searchCriteria: {},
 };
 
 export const schedulesReducer = createReducer<

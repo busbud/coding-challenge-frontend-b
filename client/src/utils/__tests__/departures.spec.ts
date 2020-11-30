@@ -53,8 +53,10 @@ describe('Test getDepartureInfo function', () => {
         expect(result1?.departureHour).toBe('9:30');
         expect(result1?.arrivalHour).toBe('12:45');
         expect(result1?.price).toBe('68.69 CAD');
-        expect(result1?.locationOriginName).toStrictEqual(["Gare du Palais"]);
-        expect(result1?.locationDestinationName).toStrictEqual([`Gare d'autocars`]);
+        expect(result1?.locationOriginName).toStrictEqual(['Gare du Palais']);
+        expect(result1?.locationDestinationName).toStrictEqual([
+            `Gare d'autocars`,
+        ]);
 
         const result2 = getDepartureInfo(schedules, departure2);
         expect(result2?.arrivalHour).toBe('14:15');

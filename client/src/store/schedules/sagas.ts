@@ -24,7 +24,7 @@ export function* getSchedules(action: any) {
                 getSchedulesAction.success({
                     ...schedules,
                     departures: allDepartures,
-                    complete
+                    complete,
                 })
             );
         }

@@ -27,6 +27,11 @@ module.exports = {
                     "sass-loader",
                 ],
             },
+            {
+                test: /\.js$/,
+                enforce: 'pre',
+                use: ['source-map-loader'],
+            },
         ],
     },
     output: {

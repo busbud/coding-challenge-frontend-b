@@ -49,9 +49,6 @@ const app = () => {
         selectSchedulesFromState
     );
     contentLanguages.setLanguage(language);
-    console.log(schedules);
-    console.log(loading);
-    console.log(searchCriteria);
 
     const handleLanguageChange = (event: any) => {
         const newLanguage = event?.target?.value;

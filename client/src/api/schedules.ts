@@ -24,7 +24,7 @@ export const getSchedulesData = async (
     } else {
         token = localStorage.getItem(TOKEN_KEY);
     }
-    console.log(token);
+
     try {
         let url = `https://napi.busbud.com/x-departures/${search.origin}/${search.destination}/${search.outbound_date}`;
         let params = {
