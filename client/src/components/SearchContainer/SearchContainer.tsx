@@ -164,7 +164,7 @@ const searchContainer = () => {
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={2}>
+                    <Grid item xs={12} sm={6} md={3}>
                         <FormControl className={classes.container}>
                             <MuiPickersUtilsProvider
                                 utils={DateFnsUtils}
@@ -213,7 +213,7 @@ const searchContainer = () => {
                         item
                         xs={12}
                         sm={6}
-                        md={2}
+                        md={1}
                         className={classes.adultsNumberContainer}
                     >
                         <FormControl className={classes.container}>
