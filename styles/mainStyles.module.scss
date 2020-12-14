@@ -1,0 +1,208 @@
+///////////MEDIA QUERIES//////////////////
+//// Small tablets and large smartphones (landscape view)
+$screen-mobile-max: 576px;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 620px;
+
+// Tablets and small desktops
+$screen-lg-min: 960px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+/////////MIXINS///////////////
+// Small devices
+@mixin mobile {
+  @media (max-width: #{$screen-mobile-max}) {
+    @content;
+  }
+}
+
+// Small devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin tablet {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin laptop {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin desktop {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+.bigSquare {
+  border-radius: 4px;
+  box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.13);
+  padding: 32px;
+}
+
+.rowOrder {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.rowStyle {
+  border: 2px solid blue;
+  width: fit-content;
+}
+
+.datePick {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  @include mobile {
+    margin-top: 32px;
+  }
+}
+
+.dateBorder {
+  border: 1px solid #f2f2f2;
+  border-radius: 4px;
+  height: 38px;
+  width: 350px;
+  @include mobile {
+    width: 400px;
+  }
+}
+
+.labelStyle {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+}
+
+.inputStyle {
+  border: 1px solid #f2f2f2;
+  border-radius: 4px;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  background: #eb1a1a;
+  padding: 10px 20px 10px 20px;
+  border: solid #eb1a1a 1px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #cf0808;
+  text-decoration: none;
+}
+
+.bigTable {
+  margin-top: 32px;
+
+  box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.13);
+  padding: 32px;
+}
+
+.rowHeader {
+  flex: display;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.columnHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroStyle {
+  background-image: url("https://s3.eu-central-1.amazonaws.com/festivall-bucket/festivals/hero_images/000/003/425/large_webp_2x/d2a2efc11d9753a8556e8e2f13086068.webp?1582570920");
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  @include laptop {
+    height: 50vh;
+    background-size: cover;
+  }
+
+  @include mobile {
+    height: 30vh;
+    background-size: cover;
+  }
+}
+
+.imgStyle {
+  background-size: cover;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.77);
+  width: 100%;
+  height: 100%;
+}
+
+.containerStyle {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  h2 {
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 96px;
+    font-weight: 600;
+  }
+  h3 {
+    color: #ffafcc;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+  }
+}

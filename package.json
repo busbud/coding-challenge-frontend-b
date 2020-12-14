@@ -1,0 +1,34 @@
+{
+  "name": "busbud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
+    "date-fns": "^2.16.1",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.32",
+    "next": "^10.0.3",
+    "next-redux-wrapper": "^6.0.2",
+    "node-sass": "^5.0.0",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.4.0",
+    "react-bootstrap-date-picker": "^5.1.0",
+    "react-datepicker": "^3.3.0",
+    "react-dom": "^17.0.1",
+    "react-moment": "^1.0.0",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
+  }
+}
