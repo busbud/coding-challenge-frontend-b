@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DeparturesList /> should render the departures if loading was successful 1`] = `
+<div
+  class="Wrapper-sc-1l7ow4n-0 gikgZI"
+>
+  <ul
+    class="Ul-sc-1l9y7is-0 jTPOp"
+  >
+    <li
+      class="Wrapper-sc-11n0iqq-0 fJThNy"
+    >
+      <div
+        class="Item-sc-141m8an-0 gvGHMp"
+      >
+        <div
+          class="Wrapper-sc-1k2q7aa-0 dtddjJ"
+        >
+          <div>
+            <strong>
+              09:10:00
+               
+            </strong>
+            <span>
+              Québec
+            </span>
+            <span>
+               - 
+              quebec
+            </span>
+          </div>
+          <div>
+            <strong>
+              14:00:00
+               
+            </strong>
+            <span>
+              Montréal
+            </span>
+          </div>
+          <div>
+            <strong>
+              <span>
+                CA$55.20
+              </span>
+            </strong>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`<DeparturesList /> should render the loading indicator when its loading 1`] = `
+<div
+  class="Wrapper-sc-1l7ow4n-0 gikgZI"
+>
+  <ul
+    class="Ul-sc-1l9y7is-0 jTPOp"
+  >
+    <div
+      class="Wrapper-lo97gk-0 eKejYq"
+    >
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 dVhQYz"
+      />
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 tXKYg"
+      />
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 dsPEef"
+      />
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 kupaCF"
+      />
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 ctNzoM"
+      />
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 kkwFVw"
+      />
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 jByibz"
+      />
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 kMisqh"
+      />
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 gjakJJ"
+      />
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 JfqmL"
+      />
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 kJVFAj"
+      />
+      <div
+        class="Circle__CirclePrimitive-rqgep1-0 fIjItU"
+      />
+    </div>
+  </ul>
+</div>
+`;

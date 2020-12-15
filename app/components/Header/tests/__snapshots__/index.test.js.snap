@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render a div 1`] = `
+<div>
+  <a
+    href="https://www.busbud.com/"
+  >
+    <img
+      alt="Busbud osheaga - Logo"
+      class="Img-sc-1ws7ger-0 gBUgDk"
+      src="IMAGE_MOCK"
+    />
+  </a>
+</div>
+`;

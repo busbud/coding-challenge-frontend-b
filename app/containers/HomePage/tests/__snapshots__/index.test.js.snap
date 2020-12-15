@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomePage /> should render and match the snapshot 1`] = `
+<article>
+  <div>
+    <section
+      class="Section-yrd82d-0 CenteredSection-sc-9nc1xs-0 dHSliU"
+    >
+      <h2
+        class="H2-jhzvdt-0 jcQAUa"
+      >
+        <span>
+          Search all departures for a given origin city and a given destination city for a given day
+        </span>
+      </h2>
+    </section>
+    <section
+      class="Section-yrd82d-0 SearchSection-sc-9353ax-0 fqcZqV"
+    >
+      <div
+        class="search-params-form-container"
+      >
+        <form
+          class="search-params-form"
+        >
+          <div
+            class="search-origin"
+          >
+            <label
+              for="origin"
+            >
+              <span>
+                Origin
+              </span>
+            </label>
+            <select
+              class="Select-qu3sxg-0 fumbYO"
+              id="origin"
+            >
+              <option
+                value="quebec"
+              >
+                Québec
+              </option>
+            </select>
+          </div>
+          <div
+            class="search-destination"
+          >
+            <label
+              for="destination"
+            >
+              <span>
+                Destination
+              </span>
+            </label>
+            <select
+              class="Select-qu3sxg-0 fumbYO"
+              id="destination"
+            >
+              <option
+                value="montreal"
+              >
+                Montréal
+              </option>
+            </select>
+          </div>
+          <div
+            class="search-outbound-date"
+          >
+            <label
+              for="outboundDate"
+            >
+              <span>
+                Date
+              </span>
+            </label>
+            <div
+              class="react-datepicker-wrapper"
+            >
+              <div
+                class="react-datepicker__input-container"
+              >
+                <input
+                  class=""
+                  id="outboundDate"
+                  type="text"
+                  value="12/14/2020"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="search-adult"
+          >
+            <label
+              for="adult"
+            >
+              <span>
+                Adults
+              </span>
+            </label>
+            <input
+              id="adult"
+              min="1"
+              type="number"
+              value="1"
+            />
+          </div>
+          <div
+            class="submit"
+          >
+            <button
+              class="submit-btn StyledButton-e3glmp-0 iVzJYl"
+              type="submit"
+            >
+              <span>
+                Search
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section
+      class="Section-yrd82d-0 ldfMvH"
+    >
+      <div
+        class="Wrapper-sc-1l7ow4n-0 gikgZI"
+      >
+        <ul
+          class="Ul-sc-1l9y7is-0 jTPOp"
+        />
+      </div>
+    </section>
+  </div>
+</article>
+`;

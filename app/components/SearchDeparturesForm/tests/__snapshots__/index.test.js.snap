@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchDeparturesForm /> should render the SearchDeparturesForm form 1`] = `
+<div
+  class="search-params-form-container"
+>
+  <form
+    class="search-params-form"
+  >
+    <div
+      class="search-origin"
+    >
+      <label
+        for="origin"
+      >
+        <span>
+          Origin
+        </span>
+      </label>
+      <select
+        class="Select-qu3sxg-0 fumbYO"
+        id="origin"
+      >
+        <option
+          value="quebec"
+        >
+          Québec
+        </option>
+      </select>
+    </div>
+    <div
+      class="search-destination"
+    >
+      <label
+        for="destination"
+      >
+        <span>
+          Destination
+        </span>
+      </label>
+      <select
+        class="Select-qu3sxg-0 fumbYO"
+        id="destination"
+      >
+        <option
+          value="montreal"
+        >
+          Montréal
+        </option>
+      </select>
+    </div>
+    <div
+      class="search-outbound-date"
+    >
+      <label
+        for="outboundDate"
+      >
+        <span>
+          Date
+        </span>
+      </label>
+      <div
+        class="react-datepicker-wrapper"
+      >
+        <div
+          class="react-datepicker__input-container"
+        >
+          <input
+            class=""
+            id="outboundDate"
+            type="text"
+            value="12/12/2020"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="search-adult"
+    >
+      <label
+        for="adult"
+      >
+        <span>
+          Adults
+        </span>
+      </label>
+      <input
+        id="adult"
+        min="1"
+        type="number"
+        value="1"
+      />
+    </div>
+    <div
+      class="submit"
+    >
+      <button
+        class="submit-btn StyledButton-e3glmp-0 iVzJYl"
+        type="submit"
+      >
+        <span>
+          Search
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
+`;

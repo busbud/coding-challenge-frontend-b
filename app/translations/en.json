@@ -1,0 +1,16 @@
+{
+  "busbud.components.DepartureListItem.montreal": "Montréal",
+  "busbud.components.DepartureListItem.quebec": "Québec",
+  "busbud.components.SearchDeparturesForm.adult": "Adults",
+  "busbud.components.SearchDeparturesForm.chooseUpcomingDate": "Date must be in the future",
+  "busbud.components.SearchDeparturesForm.destination": "Destination",
+  "busbud.components.SearchDeparturesForm.montreal": "Montréal",
+  "busbud.components.SearchDeparturesForm.origin": "Origin",
+  "busbud.components.SearchDeparturesForm.outboundDate": "Date",
+  "busbud.components.SearchDeparturesForm.quebec": "Québec",
+  "busbud.components.SearchDeparturesForm.search": "Search",
+  "busbud.containers.HomePage.searchDeparturesHeader": "Search all departures for a given origin city and a given destination city for a given day",
+  "busbud.containers.LocaleToggle.en": "en",
+  "busbud.containers.LocaleToggle.fr": "fr",
+  "busbud.containers.NotFoundPage.header": "Page not found."
+}

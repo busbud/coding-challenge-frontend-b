@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LocaleToggle /> should match the snapshot 1`] = `
+<div
+  class="Wrapper-sc-1ir6li9-0 fDtHht"
+>
+  <select
+    class="Select-qu3sxg-0 fumbYO"
+  >
+    <option
+      value="en"
+    >
+      en
+    </option>
+    <option
+      value="fr"
+    >
+      fr
+    </option>
+  </select>
+</div>
+`;

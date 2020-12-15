@@ -1,0 +1,35 @@
+.search-params-form {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.search-params-form div label {
+  display: block;
+  text-align: left;
+}
+
+.search-params-form > div {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.search-params-form > div.submit {
+  align-self: center;
+}
+
+.search-params-form div.error {
+  color: yellow;
+}
+
+@media screen and (max-width:700px) {
+  .search-params-form { flex-wrap: wrap;  }
+  .search-params-form > div { flex-basis: 50%; }
+  .search-params-form > div.submit { flex-basis: 100%; }
+}

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DepartureListItem /> should render a ListItem 1`] = `
+<li
+  class="Wrapper-sc-11n0iqq-0 fJThNy"
+>
+  <div
+    class="Item-sc-141m8an-0 gvGHMp"
+  >
+    <div
+      class="Wrapper-sc-1k2q7aa-0 dtddjJ"
+    >
+      <div>
+        <strong>
+          10:30:00
+           
+        </strong>
+        <span>
+          Québec
+        </span>
+        <span>
+           - 
+          Gare du Palais
+        </span>
+      </div>
+      <div>
+        <strong>
+          14:15:00
+           
+        </strong>
+        <span>
+          Montréal
+        </span>
+      </div>
+      <div>
+        <strong>
+          <span>
+            CA$55.24
+          </span>
+        </strong>
+      </div>
+    </div>
+  </div>
+</li>
+`;

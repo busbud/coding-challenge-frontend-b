@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getDepartures Saga should call the departureLoadingError action if the response errors 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+  "type": "SELECT",
+}
+`;
+
+exports[`getDepartures Saga should call the departureLoadingError action if the response errors 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [
+      "https://napi.busbud.com/x-departures/f2m673/f25dvk/2020-12-14?adult=1",
+      Object {
+        "cache": "default",
+        "headers": mockConstructor {},
+        "method": "GET",
+        "mode": "cors",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+  "type": "CALL",
+}
+`;
+
+exports[`getDepartures Saga should dispatch the departuresLoaded action if it requests the data successfully and complete is true 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+  "type": "SELECT",
+}
+`;
+
+exports[`getDepartures Saga should dispatch the departuresLoaded action if it requests the data successfully and complete is true 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [
+      "https://napi.busbud.com/x-departures/f2m673/f25dvk/2020-12-14?adult=1",
+      Object {
+        "cache": "default",
+        "headers": mockConstructor {},
+        "method": "GET",
+        "mode": "cors",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+  "type": "CALL",
+}
+`;
+
+exports[`getDepartures Saga should dispatch the departuresLoaded action if it requests the data successfully and completed is false 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+  "type": "SELECT",
+}
+`;
+
+exports[`getDepartures Saga should dispatch the departuresLoaded action if it requests the data successfully and completed is false 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [
+      "https://napi.busbud.com/x-departures/f2m673/f25dvk/2020-12-14?adult=1",
+      Object {
+        "cache": "default",
+        "headers": mockConstructor {},
+        "method": "GET",
+        "mode": "cors",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+  "type": "CALL",
+}
+`;
