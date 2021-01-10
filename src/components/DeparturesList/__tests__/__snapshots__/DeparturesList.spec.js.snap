@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DeparturesList /> should render properly 1`] = `
+<div>
+  <div
+    class="sc-dlfnbm gcgkll"
+  >
+    <div
+      class="sc-bdfBwQ kZkkxR"
+    >
+      <h2>
+        Departures found
+      </h2>
+      <div
+        class="sc-eCssSg cNuKOQ"
+      >
+        <div
+          class="sc-jSgupP gwIvAm"
+        >
+          <div
+            class="sc-gKsewC hVeZal"
+          />
+          <div
+            class="sc-iBPRYJ kaGFBF"
+          >
+            <h3
+              class="sc-fubCfw dcLfJZ"
+            >
+              Origin
+            </h3>
+            <div>
+              <span
+                class="sc-pFZIQ eQauFK"
+              >
+                Sat, January 30 - 9:30 am
+              </span>
+              <span
+                class="sc-jrAGrp gzhVfY"
+              >
+                Gare du Palais
+                 - 
+                Quebec City
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-jSgupP dkBRuJ"
+        >
+          <div
+            class="sc-gKsewC hVeZal"
+          />
+          <div
+            class="sc-iBPRYJ kaGFBF"
+          >
+            <h3
+              class="sc-fubCfw dcLfJZ"
+            >
+              Destination
+            </h3>
+            <div>
+              <span
+                class="sc-pFZIQ eQauFK"
+              >
+                Sat, January 30 - 12:45 pm
+              </span>
+              <span
+                class="sc-jrAGrp gzhVfY"
+              >
+                Gare d'autocars
+                 - 
+                Montreal
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-kEjbxe cOSuxd"
+        >
+          <img
+            alt="Orléans Express"
+            class="sc-hKgILt fZkQDV"
+            src="https://busbud.imgix.net/operator-logos/logo_orleans-express.png.png?h={height}&w={width}&auto=format&fit=fill&bg=0FFF"
+          />
+          <span
+            class="sc-iqHYGH frYZlH"
+          >
+            $5,549.00
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

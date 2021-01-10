@@ -1,0 +1,27 @@
+:root {
+  --black: #1f242b;
+  --blue: #127ccb;
+  --orange: #f19020;
+  --light-orange: #fcab4f;
+  --gray: #dbdbdb;
+  --light-gray: #ececec;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f6f6f6;
+  color: var(--black);
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
