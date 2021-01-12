@@ -1,0 +1,10 @@
+{
+  "name": "MS Busbud",
+  "short_name": "Busbud",
+  "icons": [],
+  "background_color": "#FBAE16",
+  "theme_color": "#FBAE16",
+  "description": "",
+  "display": "fullscreen",
+  "start_url": "/"
+}
