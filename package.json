@@ -8,8 +8,10 @@
     "start": "next start",
     "lint:css": "stylelint src",
     "lint": "eslint src",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json)\"",
-    "test": "jest"
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(ts|tsx)\"",
+    "test": "jest",
+    "storybook": "start-storybook -s ./public -p 9001",
+    "build-storybook": "build-storybook -s ./public"
   },
   "husky": {
     "hooks": {
@@ -41,6 +43,8 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
+    "@storybook/addon-essentials": "^6.1.14",
+    "@storybook/react": "^6.1.14",
     "@testing-library/react": "^11.2.3",
     "@types/jest": "^26.0.20",
     "@types/react": "^17.0.0",
@@ -61,7 +65,7 @@
     "jest-styled-components": "^7.0.3",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
-    "storybook": "^6.1.14",
+    "storybook-addon-next-router": "^2.0.3",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0",
