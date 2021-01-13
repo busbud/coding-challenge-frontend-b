@@ -1,0 +1,12 @@
+{
+  "language.en": "English",
+  "language.fr": "Français",
+  "title": "Busbud",
+  "description": "Horaires des départs aller simple de Québec à Montréal pour la fin de semaine d'ouverture du festival Osheaga",
+  "origin": "Départ de",
+  "destination": "Destination",
+  "date": "Date",
+  "passenger": "Passager",
+  "select": "Sélectionner",
+  "no.results": "Désolé, aucun résultat. Veuillez essayer une autre date."
+}

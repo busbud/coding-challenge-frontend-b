@@ -2,41 +2,137 @@
 
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 
-It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)! 
-Your challenge is to build a microsite that allows a traveler from Québec to find one-way departure schedules for the festival's opening weekend.
+## App Structure
+
+* src
+    * /**assets**/**jss**
+        JavaScript Style Sheets https://www.w3.org/Submission/1996/1/WD-jsss-960822
+    * /**components**
+        * /**Brand**
+            Logo component
+        * /**Dropdown**
+            Customized ```<button><select>```
+        * /**Header**
+            Static header for ```<Brand>``` and language switch ```<button>```
+        * /**Helmet**
+            Dynamically set ```<head>``` elements, e.g. ```<html lang="en|fr">```
+        * **i18n**
+            **Class-based components** implementing i18n state management with ```connect``` from ```react-redux``` https://www.npmjs.com/package/react-redux
+        * **SearchPanel**
+            Read-only search fields ```<form>```
+        * **SearchResults**
+            * /**SearchResult**
+                **Functional component** for displaying individual departure
+            * /**SearchResults**
+                **Functional component** for triggering search and rendering results with ```useState``` & ```useEffect``` hooks state management
+    * /**constants**
+      * some sample geohash for easy access
+    * **messages**
+      * **en**, **fr**, etc. individual language files
+    * /**services**
+      * **getDepartures.js** simple ```fetch``` with single poll
+      - [ ] ```useInterval``` https://usehooks-typescript.com/react-hook/use-interval
+      - [ ] ```Redux-Thunk``` https://www.npmjs.com/package/redux-thunk
+      - [ ] ```Redux-Saga``` https://www.npmjs.com/package/redux-saga
+    * /**state**
+      * /**actions**
+      * /**reducers**
+      * /**store**
+      * **i18n** Class based component state management
+  * **App.jsx**
+    * ```<html>``` wrapper
+  * **index.jsx**
+    * ```<Provider>``` ```store``` from ```react-redux``` https://www.npmjs.com/package/react-redux
+    * ```ConnectedDynamicIntlProvider``` i18n component
+* **.env**
+  * REACT_APP_API_SCHEDULES_URL=%API_URL%
+  * REACT_APP_API_ACCESS_TOKEN=%API_ACCESS_TOKEN%
+* **.env.production**
+  * GENERATE_SOURCEMAP=false
+* **server.js**
+  * Express JS server to serve production build https://www.npmjs.com/package/express
 
 ## Functional requirements
 
-- Has a simple onboarding screen that will trigger the departure search
-- Lists all the departures for a given origin city (**Québec - geohash: f2m673**) and a given destination city (**Montréal - geohash: f25dvk**) for a given day (**the 2nd of August 2020**) for **1** adult.
-- For each departure, we want, at least, to see the **departure time**, the **arrival time**, the **location name** and the **price** (use `prices.total` of the `departure`).
+- Search is triggered on page load via ```src/components/SearchResults/SearchResults``` component
+- Lists all the departures for origin city **Québec - geohash: f2m673** and destination city **Montréal - geohash: f25dvk** for _current day_ for **1** adult.
 
 ## Non-functional requirements
 
-- Challenge is submitted as pull request against this repo ([fork it](https://help.github.com/articles/fork-a-repo/) and [create a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
-- The microsite should be deployed to [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
+- Deployed to https://quiet-lowlands-81884.herokuapp.com/
 
 ### Bonus
+- [x] Localized in english & français
+- [x] Responsive design via https://material-ui.com/
 
-* Localization: support for multiple languages (English, French, ...)
-* Responsive design
+## Available Scripts
 
-### Remarks
+In the project directory, you can run:
 
-* You can setup your microsite any way you like; we're partial to NodeJS, ExpressJS and React
-* CSS can be written using SASS, LESS or similar higher-level language
+### `yarn start`
 
-### Things that are important to us
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-- Code quality, maintainability and readability
-- Attention to the User Experience
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### Things you'll not be evaluated on
+### `yarn test`
 
-- Features we didn't list in this README
-- The quantity of code you write
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-# Documentation
+### `yarn build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `yarn build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# BusBud Documentation
 
 ## Supporting API
 

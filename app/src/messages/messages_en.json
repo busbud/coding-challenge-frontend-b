@@ -1,0 +1,12 @@
+{
+  "language.en": "English",
+  "language.fr": "Français",
+  "title": "Busbud",
+  "description": "One-way departure schedules from Québec to Montréal for Osheaga festival's opening weekend",
+  "origin": "Origin",
+  "destination": "Destination",
+  "date": "Date",
+  "passenger": "Passenger",
+  "select": "Select",
+  "no.results": "Sorry, no results. Please try another date."
+}
