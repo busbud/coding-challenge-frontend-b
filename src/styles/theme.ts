@@ -9,6 +9,11 @@ const theme: DefaultTheme = {
   transition: {
     ease: '0.3s ease-in-out'
   },
+  shadow: {
+    small: '0 1px 1px rgba(0, 0, 0, .16)',
+    medium: '0 8px 10px rgba(0, 0, 0, .16)',
+    large: '0 24px 32px rgba(0, 0, 0, .16)'
+  },
   font: {
     family:
       "'Helvetica Neue', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif",
