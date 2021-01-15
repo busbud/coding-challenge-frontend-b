@@ -22,8 +22,7 @@
   "lint-staged": {
     "src/**/*": [
       "yarn lint --fix",
-      "yarn test --findRelatedTests --bail",
-      "git add"
+      "yarn test --findRelatedTests --bail"
     ]
   },
   "dependencies": {
@@ -72,6 +71,7 @@
     "jest-styled-components": "^7.0.3",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
+    "react-select-event": "^5.1.0",
     "storybook-addon-next-router": "^2.0.3",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
