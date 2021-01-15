@@ -11,8 +11,9 @@ import Button from '.'
 afterEach(cleanup)
 
 const handleClick = jest.fn()
+
 describe('<Button />', () => {
-  it('should render a button', () => {
+  test('should render a button', () => {
     const { getByTestId } = renderWithTheme(
       <Button onClick={handleClick}>Click Me</Button>
     )
@@ -20,7 +21,7 @@ describe('<Button />', () => {
     expect(getByTestId(/button/)).toBeInTheDocument()
   })
 
-  it('should call a function after clicking on the button', () => {
+  test('should call a function after clicking on the button', () => {
     const { getByTestId } = renderWithTheme(
       <Button onClick={handleClick}>Click Me</Button>
     )
@@ -29,7 +30,7 @@ describe('<Button />', () => {
     expect(handleClick).toBeCalled()
   })
 
-  it('should render the button colors correctly', () => {
+  test('should render the button color correctly', () => {
     const { container } = renderWithTheme(
       <Button primary onClick={handleClick}>
         Click Me
