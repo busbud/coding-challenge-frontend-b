@@ -6,5 +6,15 @@ import { render } from '@testing-library/react'
 // Theme
 import theme from 'styles/theme'
 
-export const renderWithTheme = (children) =>
-  render(<ThemeProvider theme={theme}>{children}</ThemeProvider>)
+export const renderWithTheme = (children, params = {}) => {
+  const component = render(
+    <ThemeProvider theme={theme}>{children}</ThemeProvider>,
+    params
+  )
+
+  return {
+    ...component,
+    rerender: (ui, options = {}) =>
+      renderWithTheme(ui, { container: component.container, ...options })
+  }
+}
