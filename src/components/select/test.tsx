@@ -20,7 +20,7 @@ function targetValueFactory(value: string) {
 }
 
 describe('<Select />', () => {
-  test.skip('should render select component', (): void => {
+  test('should render select component', (): void => {
     const { getByTestId } = renderWithTheme(
       <div data-testid="select">
         <Select />
@@ -29,7 +29,7 @@ describe('<Select />', () => {
     expect(getByTestId('select')).toBeVisible()
   })
 
-  test.skip('should open focusing the select and simulating a down arrow keypress render', () => {
+  test('should open focusing the select and simulating a down arrow keypress render', () => {
     const { container, getByText } = renderWithTheme(
       <Select options={OPTIONS} name="cities" />
     )
