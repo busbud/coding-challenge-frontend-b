@@ -3,7 +3,9 @@ import React, { PropsWithChildren, useRef, useState, useEffect } from 'react'
 import { IoChevronDown } from 'react-icons/io5'
 import { useToggle } from 'react-use'
 
+// Styles
 import * as S from './styles'
+import * as L from 'layout'
 
 interface AccordionProps {
   trigger: React.ReactNode | string
@@ -42,18 +44,18 @@ function Accordion(props: PropsWithChildren<AccordionProps>) {
         align="center"
         onClick={onClick}
       >
-        <S.Box>
-          <S.Box>{trigger}</S.Box>
-          <S.Box data-testid="accordion-button">
-            <S.TurnIcon turn={open}>
+        <L.Box>
+          <L.Box>{trigger}</L.Box>
+          <L.Box data-testid="accordion-button">
+            <L.TurnIcon turn={open}>
               <IoChevronDown height={30} />
-            </S.TurnIcon>
-          </S.Box>
-        </S.Box>
+            </L.TurnIcon>
+          </L.Box>
+        </L.Box>
       </S.TriggerWrapper>
-      <S.Divider />
+      <L.Divider />
       <S.ContentWrapper ref={contentRef} maxHeight={maxHeight}>
-        {!loading && <S.Box>{children}</S.Box>}
+        {!loading && <L.Box>{children}</L.Box>}
       </S.ContentWrapper>
     </S.Wrapper>
   )
