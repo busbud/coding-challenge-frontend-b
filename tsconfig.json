@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "exclude": ["node_modules", ".next"],
+  "exclude": ["node_modules", ".next", "src/**/*.test.(ts|tsx)"],
   "include": [
     "next-env.d.ts",
     "styled-components.d.ts",
