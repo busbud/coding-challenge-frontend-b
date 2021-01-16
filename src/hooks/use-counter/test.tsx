@@ -5,7 +5,7 @@ import { renderHook, act } from '@testing-library/react-hooks'
 import useCounter from '.'
 
 describe('[useCounter]', () => {
-  test('should expose the  increment/decrement functions', () => {
+  test('should expose the increment/decrement functions', () => {
     const { result } = renderHook(useCounter)
 
     expect(result.current.count).toBe(0)
@@ -20,6 +20,22 @@ describe('[useCounter]', () => {
     const { result } = renderHook(useCounter, {
       initialProps: { initialCount: 1 }
     })
+    expect(result.current.count).toBe(1)
+  })
+
+  test('should not decrement less than the initialValue', () => {
+    const { result } = renderHook(useCounter, {
+      initialProps: { initialCount: 1 }
+    })
+
+    act(() => result.current.increment())
+    expect(result.current.count).toBe(2)
+
+    act(() => result.current.decrement())
+    expect(result.current.count).toBe(1)
+    act(() => result.current.decrement())
+    expect(result.current.count).not.toEqual(-1)
+    expect(result.current.count).not.toEqual(0)
     expect(result.current.count).toBe(1)
   })
 
