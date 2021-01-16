@@ -43,6 +43,7 @@ const theme: DefaultTheme = {
   },
   spaces: {
     tiny: '0.8rem',
+    xxsmall: '1rem',
     xsmall: '1.6rem',
     small: '2.4rem',
     medium: '3.2rem',
