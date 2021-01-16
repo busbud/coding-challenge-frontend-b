@@ -92,7 +92,8 @@ function Select(
         color: theme.colors.secondary,
         fontWeight: 'bolder'
       }
-    })
+    }),
+    menu: (styles) => ({ ...styles, zIndex: 9999 })
   }
 
   const ValueContainer = ({ children, ...props }) => {
