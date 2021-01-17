@@ -58,10 +58,6 @@ export const ButtonWrapper = styled.button<Props>`
     cursor: pointer;
     transition: ${theme.transition.ease};
 
-    &:hover {
-      background: ${darken(0.2, theme.colors.gray)};
-    }
-
     ${rounded && modifiers.rounded(theme)};
     ${circle && modifiers.circle(theme)};
     ${primary && modifiers.primary(theme)};

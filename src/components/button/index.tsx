@@ -12,6 +12,7 @@ type Props = {
   secondary?: boolean
   skyBlue?: boolean
   onClick: () => void
+  type?: string
 }
 
 const Button: React.FC<Props> = ({
@@ -21,6 +22,7 @@ const Button: React.FC<Props> = ({
   primary,
   secondary,
   skyBlue,
+  type = 'button',
   onClick
 }) => (
   <S.ButtonWrapper
@@ -30,6 +32,7 @@ const Button: React.FC<Props> = ({
     secondary={secondary}
     skyBlue={skyBlue}
     onClick={onClick}
+    type={type}
     data-testid="button"
   >
     {children}
