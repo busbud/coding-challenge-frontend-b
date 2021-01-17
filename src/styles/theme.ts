@@ -1,6 +1,10 @@
 import { DefaultTheme } from 'styled-components'
 
 const theme: DefaultTheme = {
+  grid: {
+    container: '130rem',
+    gutter: '3.2rem'
+  },
   border: {
     radius: '0.4rem',
     rounded: '1.8rem',
