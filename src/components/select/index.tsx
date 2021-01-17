@@ -87,13 +87,18 @@ function Select(
     }),
     placeholder: (styles) => ({
       ...styles,
-      inputStyles,
       marginLeft: theme.spaces.xsmall,
-      marginRight: theme.spaces.xsmall
+      marginRight: theme.spaces.xsmall,
+      inputStyles
     }),
     input: (styles) => ({
       ...styles,
       inputStyles
+    }),
+    singleValue: (styles) => ({
+      ...styles,
+      marginLeft: theme.spaces.xsmall,
+      marginRight: theme.spaces.xsmall
     }),
     option: (styles, state) => ({
       ...styles,

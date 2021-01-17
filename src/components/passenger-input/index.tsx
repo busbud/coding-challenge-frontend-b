@@ -84,7 +84,6 @@ function PassagerInput(props: Props) {
     const [fieldType, id] = name.split('_')
 
     if (typeof paxCount === 'number') ages[fieldType][id] = { label, paxCount }
-    console.log({ ages })
   }
 
   useEffect(() => {
