@@ -6,7 +6,6 @@ export const Container = styled.div`
     max-width: ${theme.grid.container};
     padding: ${theme.spaces.large} calc(${theme.grid.gutter} / 2);
     margin: 0 auto;
-
     ${media.greaterThan('medium')`
       padding: ${theme.spaces.large} calc(${theme.grid.gutter} / 2);
     `}

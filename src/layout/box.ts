@@ -19,8 +19,6 @@ export const Box = styled.div<BoxProps>`
     alignItems,
     justifyContent
   }) => css`
-    background-color: ${theme.colors.white};
-    color: ${theme.colors.black};
     padding: ${padding};
     border: ${border};
     margin: ${margin};
