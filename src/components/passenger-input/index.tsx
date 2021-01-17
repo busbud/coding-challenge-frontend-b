@@ -31,9 +31,9 @@ type Props = {
   onChange?(event: {
     adult: number
     child?: number
-    senior: number
-    childAges?: string
-    seniorAges?: string
+    senior?: number
+    childAges?: Record<string | number, string | number>[]
+    seniorAges?: Record<string | number, string | number>[]
   }): void
 }
 
@@ -44,7 +44,8 @@ function PassagerInput(props: Props) {
   const contentRef = useRef<HTMLDivElement>(null)
   const [childAgeField, setChildAgeField] = useState([])
   const [seniorAgeField, setSeniorAgeField] = useState([])
-  const [age, setAge] = useState({ child: '', senior: '' })
+  const [ages] = useState({ child: [], senior: [] })
+
   const {
     increment: adultIncrement,
     decrement: adultDecrement,
@@ -52,6 +53,7 @@ function PassagerInput(props: Props) {
   } = useCounter({
     initialCount: 1
   })
+
   const {
     increment: childIncrement,
     decrement: childDecrement,
@@ -73,8 +75,16 @@ function PassagerInput(props: Props) {
   const childRangeAge = ageOptionFactory(0, 18)
 
   const handleClick = async () => await toggleOpen(!open)
+
   const handleChangeAge = ({ target }) => {
-    console.log(target)
+    const {
+      name,
+      value: { label, value: paxCount }
+    } = target
+    const [fieldType, id] = name.split('_')
+
+    if (typeof paxCount === 'number') ages[fieldType][id] = { label, paxCount }
+    console.log({ ages })
   }
 
   useEffect(() => {
@@ -86,10 +96,10 @@ function PassagerInput(props: Props) {
       adult: adultTotal,
       child: childTotal,
       senior: srTotal,
-      childAges: age.child,
-      seniorAges: age.senior
+      childAges: ages.child,
+      seniorAges: ages.senior
     })
-  }, [adultTotal, childTotal, srTotal, age, onChange])
+  }, [adultTotal, childTotal, srTotal, ages, onChange])
 
   return (
     <S.Wrapper ref={ref} borderless={borderless}>
@@ -131,6 +141,7 @@ function PassagerInput(props: Props) {
               circle
               onClick={() => {
                 childDecrement()
+                ages.child.splice(childAgeField.length - 1, 1)
                 childAgeField.splice(childAgeField.length - 1, 1)
               }}
             >
@@ -152,9 +163,10 @@ function PassagerInput(props: Props) {
           <div>
             {ageFieldFactory(
               childAgeField,
-              'childAges',
+              'child',
               'Child',
               childRangeAge,
+              ages.child,
               handleChangeAge
             )}
           </div>
@@ -166,6 +178,7 @@ function PassagerInput(props: Props) {
               circle
               onClick={() => {
                 srDecrement()
+                ages.senior.splice(childAgeField.length - 1, 1)
                 seniorAgeField.splice(seniorAgeField.length - 1, 1)
               }}
             >
@@ -187,9 +200,10 @@ function PassagerInput(props: Props) {
           <div>
             {ageFieldFactory(
               seniorAgeField,
-              'seniorAges',
+              'senior',
               'Senior',
               seniorRangeAge,
+              ages.senior,
               handleChangeAge
             )}
           </div>
