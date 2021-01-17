@@ -1,5 +1,5 @@
 // Packages
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { withTheme } from 'styled-components'
 import { rgba, darken } from 'polished'
 import ReactSelect, {
@@ -18,6 +18,7 @@ interface SelectProps extends Omit<ReactSelectProps, 'onChange'> {
     colors: Record<string, string>
     spaces: Record<string, string>
     transition: Record<string, string>
+    font: Record<string, string>
   }
 }
 
@@ -33,20 +34,32 @@ function Select(
     theme,
     ...restProps
   } = props
+  const [bodyElement, setBodyElement] = useState(undefined)
+
+  useEffect(() => {
+    setBodyElement(document.body)
+  }, [])
+
   const inputStyles = {
-    fontSize: 14,
-    color: theme.colors.darkGray,
+    color: theme.colors.gray,
     '&:focus, &:active': {
       boxShadow: `0 0 0 2px ${rgba(theme.colors.muted, 1)}`
     }
   }
 
   const styles: StylesConfig = {
+    container: (styles) => ({
+      ...styles,
+      width: '100%',
+      fontSize: theme.font.sizes.small,
+      color: theme.colors.gray
+    }),
     control: (styles) => ({
       ...styles,
       border: 0,
       flexWrap: 'nowrap',
       borderRadius: theme.border.radius,
+      padding: theme.spaces.xxsmall,
       boxShadow: borderless ?? `0 0 0 1px ${rgba(theme.colors.muted, 1)}`,
       '&:hover': {
         boxShadow: `0 0 0 2px ${rgba(theme.colors.gray, 0.3)}`
@@ -74,7 +87,9 @@ function Select(
     }),
     placeholder: (styles) => ({
       ...styles,
-      inputStyles
+      inputStyles,
+      marginLeft: theme.spaces.xsmall,
+      marginRight: theme.spaces.xsmall
     }),
     input: (styles) => ({
       ...styles,
@@ -82,7 +97,7 @@ function Select(
     }),
     option: (styles, state) => ({
       ...styles,
-      fontSize: 14,
+      fontSize: theme.font.sizes.small,
       background: 'transparent',
       cursor: 'pointer',
       color: state.isSelected ? theme.colors.secondary : theme.colors.primary,
@@ -93,7 +108,8 @@ function Select(
         fontWeight: 'bolder'
       }
     }),
-    menu: (styles) => ({ ...styles, zIndex: 9999 })
+    menu: (styles) => ({ ...styles, zIndex: 9999 }),
+    menuPortal: (styles) => ({ ...styles, zIndex: 9999 })
   }
 
   const ValueContainer = ({ children, ...props }) => {
@@ -118,6 +134,7 @@ function Select(
       options={options}
       isSearchable={false}
       components={{ ValueContainer }}
+      menuPortalTarget={bodyElement}
       onChange={(option: OptionTypeBase) => {
         onChange && onChange({ target: { name, value: option } })
       }}

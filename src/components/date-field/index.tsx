@@ -58,7 +58,7 @@ function DateField(props: DateFieldProps): React.ReactElement {
 
   const dayPickerProps = {
     className: 'Selectable',
-    numberOfMonths: 1,
+    numberOfMonths: 2,
     onDayClick: handleDayClick,
     modifiers: {
       disabled: [

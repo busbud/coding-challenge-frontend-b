@@ -9,17 +9,19 @@ export const Overlay = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     background: ${theme.colors.white};
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 20px 80px 0px;
+    box-shadow: ${rgba(theme.colors.muted, 1)};
     border: 2px solid ${rgba(theme.colors.gray, 0.3)};
     border-radius: ${theme.border.radius};
 
+    position: absolute;
     transform: translateY(4px);
-    z-index: 900;
+    z-index: 100;
   `}
 `
 
 export const OverlayToolbar = styled.div`
   ${({ theme }) => css`
+    font-size: ${theme.font.sizes.small};
     display: flex;
     flex-direction: row;
     padding-left: ${theme.spaces.xsmall};
@@ -32,7 +34,7 @@ export const LibStyles = styled.div`
   ${({ theme }) => css`
     .DayPicker {
       display: inline-block;
-      font-size: 1rem;
+      font-size: ${theme.font.sizes.small};
       margin-top: 0.4rem;
     }
 
@@ -115,11 +117,12 @@ export const LibStyles = styled.div`
       margin-bottom: 0.5rem;
       padding: 0 0.5rem;
       text-align: left;
+      font-size: ${theme.font.sizes.small};
     }
 
     .DayPicker-Caption > div {
       font-weight: 500;
-      font-size: 1.15rem;
+      font-size: ${theme.font.sizes.small};
     }
 
     .DayPicker-Weekdays {
@@ -136,7 +139,7 @@ export const LibStyles = styled.div`
       padding: 0.5rem;
       color: ${theme.colors.gray};
       text-align: center;
-      font-size: 0.875rem;
+      font-size: ${theme.font.sizes.small};
     }
 
     .DayPicker-Weekday abbr[title] {
@@ -169,7 +172,7 @@ export const LibStyles = styled.div`
       color: ${theme.colors.gray};
       vertical-align: middle;
       text-align: right;
-      font-size: 0.75rem;
+      font-size: ${theme.font.sizes.small};
       cursor: pointer;
     }
 
@@ -187,7 +190,7 @@ export const LibStyles = styled.div`
       background-image: none;
       box-shadow: none;
       color: ${theme.colors.blue};
-      font-size: 0.875rem;
+      font-size: ${theme.font.sizes.small};
       cursor: pointer;
     }
 
@@ -222,19 +225,11 @@ export const LibStyles = styled.div`
 
     .DayPickerInput {
       display: inline-block;
+      width: 100%;
     }
 
     .DayPickerInput-OverlayWrapper {
       position: relative;
-    }
-
-    .DayPickerInput-Overlay {
-      position: absolute;
-      left: 0;
-      z-index: 1;
-
-      background: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     }
 
     .Selectable

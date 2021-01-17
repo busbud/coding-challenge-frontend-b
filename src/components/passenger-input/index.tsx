@@ -22,9 +22,11 @@ import ageFieldFactory from 'helpers/age-field-factory'
 import ageOptionFactory from 'helpers/age-option-factory'
 
 // Styles
+import * as L from 'layout'
 import * as S from './styles'
 
-interface Props {
+type Props = {
+  maxWidth?: string
   borderless?: boolean
   onChange?(event: {
     adult: number
@@ -36,7 +38,7 @@ interface Props {
 }
 
 function PassagerInput(props: Props) {
-  const { borderless, onChange } = props
+  const { maxWidth, borderless, onChange } = props
   const [open, toggleOpen] = useToggle(false)
   const [maxHeight, setMaxHeight] = useState<string>()
   const contentRef = useRef<HTMLDivElement>(null)
@@ -96,30 +98,35 @@ function PassagerInput(props: Props) {
         keyValue="Escape"
         onKeyHandle={handleClick}
       />
-      <S.Placeholder onClick={handleClick}>
+      <S.Placeholder maxWidth={maxWidth} onClick={handleClick}>
         <div>
           <IoPersonOutline />
           {pluralize(totalPassagers, 'Passager')}
         </div>
-        <S.IconRotate turn={open}>
+        <L.TurnIcon turn={open}>
           <IoChevronDown />
-        </S.IconRotate>
+        </L.TurnIcon>
       </S.Placeholder>
       {open && (
-        <S.ContentWrapper ref={contentRef} maxHeight={maxHeight}>
+        <S.ContentWrapper
+          ref={contentRef}
+          maxHeight={maxHeight}
+          maxWidth={maxWidth}
+        >
           <S.Box display="flex" alignItems="center">
             <S.Text>Adult</S.Text>
-            <Button skyBlue circle onClick={adultDecrement}>
+            <Button type="button" skyBlue circle onClick={adultDecrement}>
               <IoRemoveOutline />
             </Button>
-            <span>{adultTotal}</span>
-            <Button skyBlue circle onClick={adultIncrement}>
+            <S.Total>{adultTotal}</S.Total>
+            <Button type="button" skyBlue circle onClick={adultIncrement}>
               <IoAddOutline />
             </Button>
           </S.Box>
           <S.Box display="flex" alignItems="center">
             <S.Text>Children</S.Text>
             <Button
+              type="button"
               skyBlue
               circle
               onClick={() => {
@@ -129,8 +136,9 @@ function PassagerInput(props: Props) {
             >
               <IoRemoveOutline />
             </Button>
-            <span>{childTotal}</span>
+            <S.Total>{childTotal}</S.Total>
             <Button
+              type="button"
               skyBlue
               circle
               onClick={(): void => {
@@ -153,6 +161,7 @@ function PassagerInput(props: Props) {
           <S.Box display="flex" alignItems="center">
             <S.Text>Senior</S.Text>
             <Button
+              type="button"
               skyBlue
               circle
               onClick={() => {
@@ -162,8 +171,9 @@ function PassagerInput(props: Props) {
             >
               <IoRemoveOutline />
             </Button>
-            <span>{srTotal}</span>
+            <S.Total>{srTotal}</S.Total>
             <Button
+              type="button"
               skyBlue
               circle
               onClick={(): void => {
