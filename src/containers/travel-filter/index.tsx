@@ -30,15 +30,15 @@ const OPTIONS = [
   { label: 'Montreal', value: geoHash.MONTREAL },
   { label: 'Quebec', value: geoHash.QUEBEC }
 ]
+const CURRENCY_OPTIONS = [
+  { label: 'USD', value: 'USD' },
+  { label: 'CAD', value: 'CAD' },
+  { label: 'EUR', value: 'EUR' },
+  { label: 'BRL', value: 'BRL' }
+]
 
 const TravelFilter = ({ onChange }: Props) => {
   const { t, i18n } = useTranslation()
-  const CURRENCY_OPTIONS = [
-    { label: t('us_dollars'), value: 'USD' },
-    { label: t('ca_dollars'), value: 'CAD' },
-    { label: t('euros'), value: 'EUR' },
-    { label: t('br_reals'), value: 'BRL' }
-  ]
 
   const [outboundDate, setOutboundDate] = useState<Date>(new Date())
   const [from, setFrom] = useState(OPTIONS[0])
