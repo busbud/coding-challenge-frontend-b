@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components'
 export const Card = styled.article`
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
-    padding: ${theme.spaces.medium};
-    color: ${theme.colors.texts};
+    padding: ${theme.spaces.xxsmall};
+    color: ${theme.colors.black};
     font-size: ${theme.font.sizes.xsmall};
     border-radius: ${theme.border.radius};
   `}
