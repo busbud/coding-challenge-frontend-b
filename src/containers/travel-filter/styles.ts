@@ -1,16 +1,10 @@
 // Packages
-import styled, { css, keyframes } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import media from 'styled-media-query'
 
 // Common Layout
 import { Box as LBox } from 'layout/box'
-
-const pulse = keyframes`
-  0% { transform: scale(1)};
-  50% { transform: scale(1.2)};
-  100% { transform: scale(1)};
-`
 
 export const Box = styled(LBox)`
   ${({ theme }) => css`
@@ -26,7 +20,7 @@ export const Box = styled(LBox)`
       width: 36px;
       margin: -18px;
       padding: 5px;
-      transition: transform 150ms ease 0ms;
+      transition: ${theme.transition.ease};
       z-index: 1;
       background: ${theme.colors.white};
       border: 1px solid ${rgba(theme.colors.muted, 1)};
@@ -34,8 +28,7 @@ export const Box = styled(LBox)`
       font-size: ${theme.font.sizes.xmedium};
 
       :hover {
-        animation: ${pulse} 1s infinite;
-        animation-timing-function: linear;
+        border: 2px solid ${theme.colors.primary};
       }
     }
 
