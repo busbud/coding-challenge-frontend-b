@@ -53,7 +53,6 @@ function Accordion(props: PropsWithChildren<AccordionProps>) {
           </L.Box>
         </L.Box>
       </S.TriggerWrapper>
-      <L.Divider />
       <S.ContentWrapper ref={contentRef} maxHeight={maxHeight}>
         {!loading && <L.Box>{children}</L.Box>}
       </S.ContentWrapper>

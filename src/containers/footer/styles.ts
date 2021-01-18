@@ -21,11 +21,12 @@ export const Wrapper = styled.footer`
     z-index: 2;
     margin-top: ${theme.spaces.medium};
     transition: ${theme.transition.ease};
+    padding-bottom: ${theme.spaces.large};
 
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.small};
       margin-top: ${theme.spaces.xxlarge};
-      padding-bottom: ${theme.spaces.large};
+      padding-bottom: ${theme.spaces.xsmall};
     `}
 
     a {

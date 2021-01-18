@@ -10,15 +10,7 @@ type BoxProps = {
 }
 
 export const Box = styled.div<BoxProps>`
-  ${({
-    theme,
-    padding,
-    border,
-    margin,
-    display,
-    alignItems,
-    justifyContent
-  }) => css`
+  ${({ padding, border, margin, display, alignItems, justifyContent }) => css`
     padding: ${padding};
     border: ${border};
     margin: ${margin};
