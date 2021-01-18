@@ -23,7 +23,6 @@ const Button: React.FC<Props> = ({
   primary,
   secondary,
   skyBlue,
-  type = 'button',
   disabled = false,
   onClick
 }) => (
@@ -34,7 +33,6 @@ const Button: React.FC<Props> = ({
     secondary={secondary}
     skyBlue={skyBlue}
     onClick={onClick}
-    type={type}
     data-testid="button"
     disabled={disabled}
   >

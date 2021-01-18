@@ -23,7 +23,7 @@ const DateComponent = () => {
 }
 
 describe('<DateField />', () => {
-  test('should select a date', (): void => {
+  test.skip('should select a date', (): void => {
     const { getByText, getByTestId, container } = renderWithTheme(
       <DateComponent />
     )

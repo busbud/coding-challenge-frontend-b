@@ -12,7 +12,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "storybook": "start-storybook -s ./public -p 9001",
-    "build-storybook": "build-storybook -s ./public"
+    "build-storybook": "build-storybook -s ./public",
+    "heroku-postbuild": "npm run build"
   },
   "husky": {
     "hooks": {

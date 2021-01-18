@@ -1,6 +1,4 @@
-import { DefaultTheme } from 'styled-components'
-
-const theme: DefaultTheme = {
+const theme: any = {
   grid: {
     container: '130rem',
     gutter: '3.2rem'
