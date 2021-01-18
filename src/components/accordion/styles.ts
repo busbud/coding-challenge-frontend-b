@@ -21,6 +21,7 @@ export const TriggerWrapper = styled(L.Cluster)`
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
     transition: ${theme.transition.ease};
+    font-size: ${theme.font.sizes.small};
   `}
 `
 
