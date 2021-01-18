@@ -8,6 +8,7 @@ type Props = {
   primary?: boolean
   secondary?: boolean
   skyBlue?: boolean
+  disabled?: boolean
 }
 
 const modifiers = {
@@ -43,11 +44,18 @@ const modifiers = {
     &:hover {
       background: ${darken(0.1, theme.colors.blue)};
     }
+  `,
+  disabled: (theme) => css`
+    background-color: ${theme.colors.muted};
+    cursor: not-allowed;
+    &:hover {
+      background: ${darken(0.1, theme.colors.muted)};
+    }
   `
 }
 
 export const ButtonWrapper = styled.button<Props>`
-  ${({ theme, rounded, circle, primary, secondary, skyBlue }) => css`
+  ${({ theme, rounded, circle, primary, secondary, skyBlue, disabled }) => css`
     background-color: ${theme.colors.gray};
     border-radius: ${theme.border.radius};
     color: ${theme.colors.white};
@@ -63,5 +71,6 @@ export const ButtonWrapper = styled.button<Props>`
     ${primary && modifiers.primary(theme)};
     ${secondary && modifiers.secondary(theme)};
     ${skyBlue && modifiers.skyBlue(theme)};
+    ${disabled && modifiers.disabled(theme)};
   `}
 `
