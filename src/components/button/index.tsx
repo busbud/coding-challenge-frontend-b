@@ -34,6 +34,7 @@ const Button: React.FC<Props> = ({
     skyBlue={skyBlue}
     onClick={onClick}
     data-testid="button"
+    type="button"
     disabled={disabled}
   >
     {children}
