@@ -9,8 +9,12 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    whitelist: ['en-US', 'fr', 'es'],
     fallbackLng: 'en-US',
+    preload: ['en-US', 'fr', 'es'],
     react: {
+      wait: true,
+      bindI18n: 'languageChanged loaded',
       useSuspense: false
     }
   })
