@@ -36,7 +36,7 @@ type Props = {
   }): void
 }
 
-function PassagerInput(props: Props) {
+function PassengerInput(props: Props) {
   const { maxWidth, borderless, onChange } = props
   const [open, toggleOpen] = useToggle(false)
   const [maxHeight, setMaxHeight] = useState<string>()
@@ -65,7 +65,7 @@ function PassagerInput(props: Props) {
     count: srTotal
   } = useCounter()
 
-  const totalPassagers = adultTotal + childTotal + srTotal
+  const totalPassengers = adultTotal + childTotal + srTotal
   const seniorRangeAge = ageOptionFactory(60, 80)
   const childRangeAge = ageOptionFactory(0, 18)
   const isDisabled = adultTotal === 5
@@ -108,7 +108,7 @@ function PassagerInput(props: Props) {
       <S.Placeholder maxWidth={maxWidth} onClick={handleClick}>
         <div>
           <IoPersonOutline />
-          {pluralize(totalPassagers, 'Passager')}
+          {pluralize(totalPassengers, 'Passenger')}
         </div>
         <L.TurnIcon turn={open}>
           <IoChevronDown />
@@ -226,4 +226,4 @@ function PassagerInput(props: Props) {
   )
 }
 
-export default PassagerInput
+export default PassengerInput

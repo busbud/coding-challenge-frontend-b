@@ -2,19 +2,19 @@
 import React from 'react'
 
 // Component
-import PassagerInput from '.'
+import PassengerInput from '.'
 
 export default {
-  title: 'Components/PassagerInput',
-  component: PassagerInput
+  title: 'Components/PassengerInput',
+  component: PassengerInput
 }
 
 export function Default() {
   const handleChange = (params) => console.log(params)
-  return <PassagerInput onChange={handleChange} />
+  return <PassengerInput onChange={handleChange} />
 }
 
 export function Borderless() {
   const handleChange = (params) => console.log(params)
-  return <PassagerInput borderless onChange={handleChange} />
+  return <PassengerInput borderless onChange={handleChange} />
 }

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import useSWR from 'swr'
 import { stringify } from 'query-string'
+import { useTranslation } from 'react-i18next'
 
 // Containers
 import TravelFilter from 'containers/travel-filter'
@@ -24,30 +25,39 @@ import * as S from './styles'
 // Constants
 const URL = 'x-departures/${from}/${to}/${outboundDate}'
 
-const queryfy = ({ adult, child, senior, childAges, seniorAges }) => {
+const queryfy = (
+  { adult, child, senior, childAges, seniorAges },
+  currency,
+  lang
+) => {
   const child_ages =
     child > 0 ? childAges.map(({ paxCount }) => paxCount).toString() : ''
   const senior_ages =
     senior > 0 ? seniorAges.map(({ paxCount }) => paxCount).toString() : ''
+  const language = lang === 'en-US' ? 'en' : lang
 
   return {
     adult,
     child,
     senior,
     child_ages,
-    senior_ages
+    senior_ages,
+    currency,
+    lang: language
   }
 }
 
 function FilteredTickets() {
   const [endpoint, setEndpoint] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [currency, setCurrency] = useState('CAD')
   const [filters, setFilters] = useState({})
   const [response, setResponse] = useState({
     complete: false,
     departures: [],
     operators: []
   })
+  const { t, i18n } = useTranslation()
 
   const { data } = useSWR(`${endpoint}?${stringify(filters)}`, request, {
     onErrorRetry: (error, key, option, revalidate, { retryCount }) => {
@@ -73,18 +83,26 @@ function FilteredTickets() {
     }
   )
 
-  const handleSearch = async ({ from, to, outboundDate, passagers }) => {
+  const handleSearch = async ({
+    from,
+    to,
+    outboundDate,
+    passengers,
+    currency
+  }) => {
+    const lang = i18n.language
+
     setIsLoading(true)
     setResponse({
       complete: false,
       departures: [],
       operators: []
     })
-
-    const query = queryfy(passagers)
+    const query = queryfy(passengers, currency, lang)
 
     await setEndpoint(dynamicString(URL, { from, to, outboundDate }))
     await setFilters(query)
+    await setCurrency(currency)
   }
 
   useEffect(() => {
@@ -117,6 +135,7 @@ function FilteredTickets() {
                 <Accordion
                   trigger={
                     <AccordionTrigger
+                      currency={currency}
                       departure={item}
                       operator={response.operators.find(
                         ({ id }) => id === item.operator_id
@@ -125,8 +144,9 @@ function FilteredTickets() {
                   }
                 >
                   <L.Box>
-                    <S.Text margin="0 0 0.4rem">AC: true</S.Text>
-                    <S.Text margin="0 0.4rem">Average Seat: true</S.Text>
+                    <S.Text margin="0 0.4rem">
+                      {t('common.average_seat')} true
+                    </S.Text>
                   </L.Box>
                 </Accordion>
               </S.Wrapper>

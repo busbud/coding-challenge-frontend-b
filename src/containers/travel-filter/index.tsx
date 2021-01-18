@@ -1,6 +1,7 @@
 // Packages
 import React, { useState } from 'react'
 import { formatISO } from 'date-fns'
+import { useTranslation } from 'react-i18next'
 import { MdAutorenew } from 'react-icons/md'
 import { IoLocationOutline, IoRadioButtonOffOutline } from 'react-icons/io5'
 import { FiSearch } from 'react-icons/fi'
@@ -10,7 +11,7 @@ import Card from 'components/card'
 import Select from 'components/select'
 import Button from 'components/button'
 import DateField from 'components/date-field'
-import PassagerInput from 'components/passenger-input'
+import PassengerInput from 'components/passenger-input'
 
 // Styles
 import * as L from 'layout'
@@ -30,13 +31,23 @@ const OPTIONS = [
   { label: 'Quebec', value: geoHash.QUEBEC }
 ]
 
+const CURRENCY_OPTIONS = [
+  { label: 'US dollars', value: 'USD' },
+  { label: 'Canadian dollars', value: 'CAD' },
+  { label: 'Euros', value: 'EUR' },
+  { label: 'Brazilian reals', value: 'BRL' }
+]
+
 const TravelFilter = ({ onChange }: Props) => {
+  const { t } = useTranslation()
   const [outboundDate, setOutboundDate] = useState<Date>(new Date())
   const [from, setFrom] = useState(OPTIONS[0])
   const [to, setTo] = useState(OPTIONS[1])
-  const [passagers, setPassagers] = useState({})
+  const [currency, setCurrency] = useState(CURRENCY_OPTIONS[1])
+  const [passengers, setPassengers] = useState({})
 
-  const handleChangePassager = (params) => setPassagers(params)
+  const handleChangePassenger = (params) => setPassengers(params)
+
   const handleSwapPlaces = () => {
     setFrom(to)
     setTo(from)
@@ -47,12 +58,12 @@ const TravelFilter = ({ onChange }: Props) => {
       <Card>
         <form>
           <S.Row>
-            <PassagerInput borderless onChange={handleChangePassager} />
+            <PassengerInput borderless onChange={handleChangePassenger} />
           </S.Row>
           <S.Box display="flex" alignItems="center" margin="0.5rem">
             <Select
               name="from"
-              placeholder="Where from?"
+              placeholder={t('where_from')}
               icon={<IoRadioButtonOffOutline />}
               onChange={({ target: { value } }) => setFrom({ ...value })}
               value={from}
@@ -64,7 +75,7 @@ const TravelFilter = ({ onChange }: Props) => {
             <Select
               name="to"
               value={to}
-              placeholder="Where to?"
+              placeholder={t('where_to')}
               onChange={({ target: { value } }) => setTo({ ...value })}
               icon={<IoLocationOutline />}
               options={OPTIONS}
@@ -73,6 +84,13 @@ const TravelFilter = ({ onChange }: Props) => {
               name="date"
               value={outboundDate}
               onChange={({ target: { value } }) => setOutboundDate(value)}
+            />
+            <Select
+              name="currency"
+              placeholder="Currency"
+              onChange={({ target: { value } }) => setCurrency({ ...value })}
+              value={currency}
+              options={CURRENCY_OPTIONS}
             />
           </S.Box>
           <S.FloatButton>
@@ -86,12 +104,13 @@ const TravelFilter = ({ onChange }: Props) => {
                   }),
                   from: from.value,
                   to: to.value,
-                  passagers
+                  currency: currency.value,
+                  passengers
                 })
               }}
             >
               <L.Box display="flex" alignItems="center">
-                <FiSearch /> Search
+                <FiSearch /> {t('search')}
               </L.Box>
             </Button>
           </S.FloatButton>

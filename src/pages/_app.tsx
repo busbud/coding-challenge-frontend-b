@@ -6,6 +6,8 @@ import { ThemeProvider } from 'styled-components'
 import theme from 'styles/theme'
 import GlobalStyle from 'styles/global-styles'
 
+import 'i18n/config'
+
 const App = ({ Component, pageProps }: AppProps) => (
   <ThemeProvider theme={theme}>
     <Head>

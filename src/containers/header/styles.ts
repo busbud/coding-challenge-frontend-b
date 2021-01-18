@@ -15,6 +15,9 @@ export const Wrapper = styled.header`
     box-sizing: border-box;
     box-shadow: ${theme.shadow.small};
     padding: ${theme.spaces.small};
+    display: flex;
+    align-item: center;
+    justify-content: space-between;
 
     ${media.greaterThan('medium')`
       text-align: left;
@@ -33,5 +36,11 @@ export const Content = styled.div`
     align-items: center;
     justify-content: space-between;
     margin: 15rem auto;
+  `}
+`
+
+export const ContentSelect = styled.div`
+  ${({ theme }) => css`
+    width: 16rem;
   `}
 `

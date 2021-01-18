@@ -6,7 +6,7 @@ const formatCurrency = ({ amount = 0, currency = 'USD' }): string => {
 
   const localizedAmount = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency,
+    currency: currency ? currency : 'USD',
     minimumFractionDigits: 2
   }).format(normalizedAmount)
 

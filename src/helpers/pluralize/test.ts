@@ -2,11 +2,11 @@ import pluralize from '.'
 
 describe('[Helper: pluralize]', () => {
   test('should render singular word', () => {
-    expect(pluralize(1, 'Passager')).toEqual('1 Passager')
+    expect(pluralize(1, 'Passenger')).toEqual('1 Passenger')
   })
 
   test('should render plural word', () => {
-    expect(pluralize(3, 'Passager')).toEqual('3 Passagers')
+    expect(pluralize(3, 'Passenger')).toEqual('3 Passengers')
   })
 
   test('should render plural word with new suffix', () => {
