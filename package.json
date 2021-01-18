@@ -31,6 +31,7 @@
     "date-fns": "^2.16.1",
     "date-fns-tz": "^1.0.12",
     "dayjs": "^1.10.3",
+    "express": "^4.17.1",
     "i18next": "^19.8.4",
     "i18next-browser-languagedetector": "^6.0.1",
     "i18next-http-backend": "^1.0.22",
