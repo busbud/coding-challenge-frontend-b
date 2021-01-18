@@ -5,10 +5,6 @@ This challenge consists in building a page to find a bus ticket using the Busbud
 <p align="center">
   <img width="400" height="auto" src=".github/ms_busbud.png"/>
 </p>
-<p align="center">
-  <img width="200" height="auto" src=".github/mobile_2.jpg"/>
-  <img width="200" height="auto" src=".github/mobile_1.jpg"/>
-</p>
 
 ## Main Libraries
 - React
