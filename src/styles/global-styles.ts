@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   ${({ theme }) => css`
     html {
       font-family: ${theme.font.family};
-      font-size: 16px;
+      font-size: 62.5%;
       scroll-behavior: smooth;
     }
 
