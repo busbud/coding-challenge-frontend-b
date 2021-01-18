@@ -26,5 +26,6 @@
   "hours": "heures",
   "adult": "Adulte",
   "child": "Enfant",
-  "senior": "Senior"
+  "senior": "Senior",
+  "error_setting_ages": "Vous devez définir correctement un âge lors de l'ajout de passagers enfants ou seniors"
 }

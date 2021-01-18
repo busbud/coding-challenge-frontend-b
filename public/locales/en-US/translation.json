@@ -26,5 +26,6 @@
   "hours": "hours",
   "adult": "Adult",
   "child": "Child",
-  "senior": "Senior"
+  "senior": "Senior",
+  "error_setting_ages": "You have to properly set an age when adding child or senior passengers"
 }

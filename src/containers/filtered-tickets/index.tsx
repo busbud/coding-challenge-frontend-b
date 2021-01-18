@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import useSWR from 'swr'
 import { stringify } from 'query-string'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
+import { withTheme } from 'styled-components'
 
 // Containers
 import TravelFilter from 'containers/travel-filter'
@@ -47,7 +49,7 @@ const queryfy = (
   }
 }
 
-function FilteredTickets() {
+function FilteredTickets({ theme }) {
   const [endpoint, setEndpoint] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [currency, setCurrency] = useState('CAD')
@@ -91,6 +93,15 @@ function FilteredTickets() {
     currency
   }) => {
     const lang = i18n.language
+    const { child, senior, childAges, seniorAges } = passengers
+
+    if (seniorAges.length < senior || childAges.length < child) {
+      return toast.error(t('error_setting_ages'), {
+        style: {
+          fontSize: theme.font.sizes.xxsmall
+        }
+      })
+    }
 
     setIsLoading(true)
     setResponse({
@@ -100,9 +111,9 @@ function FilteredTickets() {
     })
     const query = queryfy(passengers, currency, lang)
 
-    await setEndpoint(dynamicString(URL, { from, to, outboundDate }))
-    await setFilters(query)
-    await setCurrency(currency)
+    setEndpoint(dynamicString(URL, { from, to, outboundDate }))
+    setFilters(query)
+    setCurrency(currency)
   }
 
   useEffect(() => {
@@ -155,4 +166,4 @@ function FilteredTickets() {
   )
 }
 
-export default FilteredTickets
+export default withTheme(FilteredTickets)

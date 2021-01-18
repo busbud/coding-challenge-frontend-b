@@ -26,5 +26,6 @@
   "hours": "horas",
   "adult": "Adulto",
   "child": "Niño",
-  "senior": "Mayor"
+  "senior": "Mayor",
+  "error_setting_ages": "Debe establecer correctamente una edad al agregar niños o pasajeros mayores"
 }
