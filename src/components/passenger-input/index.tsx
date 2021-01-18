@@ -87,7 +87,9 @@ function PassagerInput(props: Props) {
   }
 
   useEffect(() => {
-    setMaxHeight(open ? `${contentRef?.current?.scrollHeight}px` : undefined)
+    setMaxHeight(
+      open ? `calc(${contentRef?.current?.scrollHeight}px + 5rem)` : undefined
+    )
   }, [contentRef, open, childAgeField, seniorAgeField])
 
   useEffect(() => {
