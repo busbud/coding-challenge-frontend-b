@@ -1,7 +1,17 @@
+// Packages
 import React from 'react'
 
-function HomePage() {
-  return <div>Welcome to Busbud!</div>
-}
+// Containers
+import Header from 'containers/header'
+import Footer from 'containers/footer'
+import FilteredTickets from 'containers/filtered-tickets'
 
-export default HomePage
+const Home = () => (
+  <>
+    <Header />
+    <FilteredTickets />
+    <Footer />
+  </>
+)
+
+export default Home
