@@ -6,14 +6,15 @@ import Select from 'components/select'
 // Styles
 import * as S from './styles'
 
-const LANGUAGE_OPTIONS = [
-  { label: 'English', value: 'en-US' },
-  { label: 'French', value: 'fr' },
-  { label: 'Spanish', value: 'es' }
-]
-
 const Header = () => {
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
+
+  const LANGUAGE_OPTIONS = [
+    { label: t('english'), value: 'en-US' },
+    { label: t('french'), value: 'fr' },
+    { label: t('spanish'), value: 'es' }
+  ]
+
   const selectedOption = LANGUAGE_OPTIONS.find(
     ({ value }) => value === i18n.language
   ) || { label: 'English', value: 'en-US' }

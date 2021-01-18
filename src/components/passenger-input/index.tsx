@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useToggle } from 'react-use'
 import KeyHandler from 'react-key-handler'
+import { useTranslation } from 'react-i18next'
 import {
   IoChevronDown,
   IoPersonOutline,
@@ -37,6 +38,7 @@ type Props = {
 }
 
 function PassengerInput(props: Props) {
+  const { t } = useTranslation()
   const { maxWidth, borderless, onChange } = props
   const [open, toggleOpen] = useToggle(false)
   const [maxHeight, setMaxHeight] = useState<string>()
@@ -108,7 +110,7 @@ function PassengerInput(props: Props) {
       <S.Placeholder maxWidth={maxWidth} onClick={handleClick}>
         <div>
           <IoPersonOutline />
-          {pluralize(totalPassengers, 'Passenger')}
+          {pluralize(totalPassengers, t('passenger'))}
         </div>
         <L.TurnIcon turn={open}>
           <IoChevronDown />
@@ -121,7 +123,7 @@ function PassengerInput(props: Props) {
           maxWidth={maxWidth}
         >
           <S.Box display="flex" alignItems="center">
-            <S.Text>Adult</S.Text>
+            <S.Text>{t('adult')}</S.Text>
             <Button
               type="button"
               skyBlue
@@ -143,7 +145,7 @@ function PassengerInput(props: Props) {
             </Button>
           </S.Box>
           <S.Box display="flex" alignItems="center">
-            <S.Text>Children</S.Text>
+            <S.Text>{t('child')}</S.Text>
             <Button
               type="button"
               skyBlue
@@ -175,14 +177,14 @@ function PassengerInput(props: Props) {
             {ageFieldFactory(
               childAgeField,
               'child',
-              'Child',
+              t('child'),
               childRangeAge,
               ages.child,
               handleChangeAge
             )}
           </div>
           <S.Box display="flex" alignItems="center">
-            <S.Text>Senior</S.Text>
+            <S.Text>{t('senior')}</S.Text>
             <Button
               type="button"
               skyBlue
@@ -214,7 +216,7 @@ function PassengerInput(props: Props) {
             {ageFieldFactory(
               seniorAgeField,
               'senior',
-              'Senior',
+              t('senior'),
               seniorRangeAge,
               ages.senior,
               handleChangeAge

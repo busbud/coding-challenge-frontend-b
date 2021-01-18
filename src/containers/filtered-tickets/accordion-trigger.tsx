@@ -3,6 +3,7 @@ import React from 'react'
 import { format } from 'date-fns-tz'
 import { getTime, formatDistanceStrict } from 'date-fns'
 import { BsArrowRight, BsFillCircleFill } from 'react-icons/bs'
+import { useTranslation } from 'react-i18next'
 
 // Helpers
 import formatCurrency from 'helpers/currency'
@@ -12,15 +13,16 @@ import * as L from 'layout'
 import * as S from './styles'
 
 const AccordionTrigger = ({ departure, operator, currency }: any) => {
+  const { t } = useTranslation()
   const departureTime = getTime(new Date(departure.departure_time))
   const arrivalTime = getTime(new Date(departure.arrival_time))
   const duration = formatDistanceStrict(
     new Date(departure.departure_time),
     new Date(departure.arrival_time)
-  )
+  ).replace('hours', t('hours'))
   const hasStop =
     departure?.trip_stops.length > 0
-      ? `${departure?.trip_stops.length} Stops`
+      ? `${departure?.trip_stops.length} ${t('stop')}`
       : 'Nonstop'
 
   return (

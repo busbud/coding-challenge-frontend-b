@@ -10,7 +10,7 @@ const Select = dynamic(() => import('components/select'), { ssr: false })
 const ageFieldFactory = (
   field = [],
   name: string,
-  label: string | number,
+  label: any,
   options: Record<string | number, string | number>[],
   values: Record<string | number, string | number>[],
   handleChange

@@ -1,5 +1,5 @@
 // Packages
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { formatISO } from 'date-fns'
 import { useTranslation } from 'react-i18next'
 import { MdAutorenew } from 'react-icons/md'
@@ -31,15 +31,15 @@ const OPTIONS = [
   { label: 'Quebec', value: geoHash.QUEBEC }
 ]
 
-const CURRENCY_OPTIONS = [
-  { label: 'US dollars', value: 'USD' },
-  { label: 'Canadian dollars', value: 'CAD' },
-  { label: 'Euros', value: 'EUR' },
-  { label: 'Brazilian reals', value: 'BRL' }
-]
-
 const TravelFilter = ({ onChange }: Props) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const CURRENCY_OPTIONS = [
+    { label: t('us_dollars'), value: 'USD' },
+    { label: t('ca_dollars'), value: 'CAD' },
+    { label: t('euros'), value: 'EUR' },
+    { label: t('br_reals'), value: 'BRL' }
+  ]
+
   const [outboundDate, setOutboundDate] = useState<Date>(new Date())
   const [from, setFrom] = useState(OPTIONS[0])
   const [to, setTo] = useState(OPTIONS[1])
@@ -52,6 +52,10 @@ const TravelFilter = ({ onChange }: Props) => {
     setFrom(to)
     setTo(from)
   }
+
+  useEffect(() => {
+    setCurrency(CURRENCY_OPTIONS[1])
+  }, [i18n.language])
 
   return (
     <L.Container>
