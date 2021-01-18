@@ -1,5 +1,6 @@
 // Packages
 import React, { useState } from 'react'
+import { formatISO } from 'date-fns'
 import { MdAutorenew } from 'react-icons/md'
 import { IoLocationOutline, IoRadioButtonOffOutline } from 'react-icons/io5'
 import { FiSearch } from 'react-icons/fi'
@@ -15,13 +16,27 @@ import PassagerInput from 'components/passenger-input'
 import * as L from 'layout'
 import * as S from './styles'
 
-const TravelFilter = () => {
-  const [date, setDate] = useState<Date>(new Date())
-  const [from, setFrom] = useState({ label: 'Montreal', value: 'Montreal' })
-  const [to, setTo] = useState({ label: 'Quebec', value: 'Quebec' })
+type Props = {
+  onChange?: any
+}
 
-  const handleChangePassager = (params) => console.log('passagers', params)
-  const handleChangeCountry = (params) => console.log(params)
+enum geoHash {
+  MONTREAL = 'f25dvk',
+  QUEBEC = 'f2m673'
+}
+
+const OPTIONS = [
+  { label: 'Montreal', value: geoHash.MONTREAL },
+  { label: 'Quebec', value: geoHash.QUEBEC }
+]
+
+const TravelFilter = ({ onChange }: Props) => {
+  const [outboundDate, setOutboundDate] = useState<Date>(new Date())
+  const [from, setFrom] = useState(OPTIONS[0])
+  const [to, setTo] = useState(OPTIONS[1])
+  const [passagers, setPassagers] = useState({})
+
+  const handleChangePassager = (params) => setPassagers(params)
   const handleSwapPlaces = () => {
     setFrom(to)
     setTo(from)
@@ -39,12 +54,9 @@ const TravelFilter = () => {
               name="from"
               placeholder="Where from?"
               icon={<IoRadioButtonOffOutline />}
-              onChange={handleChangeCountry}
+              onChange={({ target: { value } }) => setFrom({ ...value })}
               value={from}
-              options={[
-                { label: 'Montreal', value: 'Montreal' },
-                { label: 'Quebec', value: 'Quebec' }
-              ]}
+              options={OPTIONS}
             />
             <Button circle onClick={handleSwapPlaces}>
               <MdAutorenew />
@@ -53,21 +65,31 @@ const TravelFilter = () => {
               name="to"
               value={to}
               placeholder="Where to?"
-              onChange={handleChangeCountry}
+              onChange={({ target: { value } }) => setTo({ ...value })}
               icon={<IoLocationOutline />}
-              options={[
-                { label: 'Montreal', value: 'Montreal' },
-                { label: 'Quebec', value: 'Quebec' }
-              ]}
+              options={OPTIONS}
             />
             <DateField
               name="date"
-              value={date}
-              onChange={({ target: { value } }) => setDate(value)}
+              value={outboundDate}
+              onChange={({ target: { value } }) => setOutboundDate(value)}
             />
           </S.Box>
           <S.FloatButton>
-            <Button primary rounded onClick={() => console.log('clicked')}>
+            <Button
+              primary
+              rounded
+              onClick={() => {
+                onChange({
+                  outboundDate: formatISO(outboundDate, {
+                    representation: 'date'
+                  }),
+                  from: from.value,
+                  to: to.value,
+                  passagers
+                })
+              }}
+            >
               <L.Box display="flex" alignItems="center">
                 <FiSearch /> Search
               </L.Box>

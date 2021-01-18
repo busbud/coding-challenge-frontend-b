@@ -14,7 +14,6 @@ import Button from 'components/button'
 
 // Hooks
 import useCounter from 'hooks/use-counter'
-import useClickAway from 'hooks/use-click-away'
 
 // Helpers
 import pluralize from 'helpers/pluralize'
@@ -66,13 +65,10 @@ function PassagerInput(props: Props) {
     count: srTotal
   } = useCounter()
 
-  const ref = useClickAway(() => {
-    toggleOpen(false)
-  })
-
   const totalPassagers = adultTotal + childTotal + srTotal
   const seniorRangeAge = ageOptionFactory(60, 80)
   const childRangeAge = ageOptionFactory(0, 18)
+  const isDisabled = adultTotal === 5
 
   const handleClick = async () => await toggleOpen(!open)
 
@@ -100,10 +96,10 @@ function PassagerInput(props: Props) {
       childAges: ages.child,
       seniorAges: ages.senior
     })
-  }, [adultTotal, childTotal, srTotal, ages, onChange])
+  }, [adultTotal, childTotal, srTotal, ages])
 
   return (
-    <S.Wrapper ref={ref} borderless={borderless}>
+    <S.Wrapper borderless={borderless}>
       <KeyHandler
         keyEventName="keydown"
         keyValue="Escape"
@@ -126,11 +122,23 @@ function PassagerInput(props: Props) {
         >
           <S.Box display="flex" alignItems="center">
             <S.Text>Adult</S.Text>
-            <Button type="button" skyBlue circle onClick={adultDecrement}>
+            <Button
+              type="button"
+              skyBlue
+              circle
+              onClick={adultDecrement}
+              disabled={adultTotal === 1}
+            >
               <IoRemoveOutline />
             </Button>
             <S.Total>{adultTotal}</S.Total>
-            <Button type="button" skyBlue circle onClick={adultIncrement}>
+            <Button
+              type="button"
+              skyBlue
+              circle
+              onClick={adultIncrement}
+              disabled={isDisabled}
+            >
               <IoAddOutline />
             </Button>
           </S.Box>
@@ -140,6 +148,7 @@ function PassagerInput(props: Props) {
               type="button"
               skyBlue
               circle
+              disabled={childTotal === 0}
               onClick={() => {
                 childDecrement()
                 ages.child.splice(childAgeField.length - 1, 1)
@@ -153,6 +162,7 @@ function PassagerInput(props: Props) {
               type="button"
               skyBlue
               circle
+              disabled={isDisabled}
               onClick={(): void => {
                 childIncrement()
                 setChildAgeField([...childAgeField, ''])
@@ -177,6 +187,7 @@ function PassagerInput(props: Props) {
               type="button"
               skyBlue
               circle
+              disabled={srTotal === 0}
               onClick={() => {
                 srDecrement()
                 ages.senior.splice(childAgeField.length - 1, 1)
@@ -190,6 +201,7 @@ function PassagerInput(props: Props) {
               type="button"
               skyBlue
               circle
+              disabled={isDisabled}
               onClick={(): void => {
                 srIncrement()
                 setSeniorAgeField([...seniorAgeField, ''])

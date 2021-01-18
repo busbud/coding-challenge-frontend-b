@@ -5,7 +5,7 @@ export const Logo = styled.img`
   width: 14.5rem;
 
   ${media.greaterThan('medium')`
-    width: 18.5rem;
+    width: 12rem;
   `}
 `
 
@@ -17,9 +17,9 @@ export const Wrapper = styled.header`
     padding: ${theme.spaces.small};
 
     ${media.greaterThan('medium')`
-    text-align: left;
-    margin: auto;
-  `}
+      text-align: left;
+      margin: auto;
+    `}
   `}
 `
 
