@@ -13,10 +13,18 @@ interface AccordionProps {
   loading?: boolean
   space?: string
   withBorder?: boolean
+  noIcon?: boolean
 }
 
 function Accordion(props: PropsWithChildren<AccordionProps>) {
-  const { trigger, onTrigger, space = '2rem', withBorder, children } = props
+  const {
+    trigger,
+    onTrigger,
+    space = '2rem',
+    withBorder,
+    noIcon,
+    children
+  } = props
   const [open, toggleOpen] = useToggle(false)
   const [loading, toggleLoading] = useToggle(false)
   const contentRef = useRef<HTMLDivElement>(null)
@@ -46,11 +54,13 @@ function Accordion(props: PropsWithChildren<AccordionProps>) {
       >
         <L.Box>
           {trigger}
-          <L.Box data-testid="accordion-button">
-            <L.TurnIcon turn={open}>
-              <IoChevronDown height={30} />
-            </L.TurnIcon>
-          </L.Box>
+          {!noIcon && (
+            <L.Box data-testid="accordion-button">
+              <L.TurnIcon turn={open}>
+                <IoChevronDown height={30} />
+              </L.TurnIcon>
+            </L.Box>
+          )}
         </L.Box>
       </S.TriggerWrapper>
       <S.ContentWrapper ref={contentRef} maxHeight={maxHeight}>

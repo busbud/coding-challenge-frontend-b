@@ -29,18 +29,18 @@ const AccordionTrigger = ({ departure, operator, currency }: any) => {
     <section>
       <L.Box display="flex" alignItems="center" justifyContent="space-between">
         <S.Image src={operator?.logo_url} alt="" />
-        <S.Text bold>
+        <S.Text className="text__medium" bold>
           {formatCurrency({ amount: departure?.prices.total, currency })}
         </S.Text>
       </L.Box>
       <S.BusInfo>
-        <L.Box display="flex" alignItems="center">
+        <L.Box display="flex" alignItems="center" margin="1rem 0 1rem">
           <S.Text bold>
             {format(departureTime, 'hh:mm aaa', {
               timeZone: departure?.departure_timezone
             })}
           </S.Text>
-          <BsArrowRight />
+          <BsArrowRight className="svg__arrow" />
           <S.Text bold>
             {format(arrivalTime, 'hh:mm aaa', {
               timeZone: departure?.arrival_timezone
@@ -54,7 +54,6 @@ const AccordionTrigger = ({ departure, operator, currency }: any) => {
           <BsFillCircleFill className="svg__circle" />
           <S.Text>{duration}</S.Text>
         </L.Box>
-        <S.Text>{operator?.name}</S.Text>
       </S.BusInfo>
     </section>
   )

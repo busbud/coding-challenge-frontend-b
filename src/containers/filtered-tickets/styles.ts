@@ -5,6 +5,10 @@ import media from 'styled-media-query'
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     margin: ${theme.spaces.tiny};
+    section {
+      width: min(60rem, 100%);
+    }
+
     ${media.greaterThan('medium')`
       section {
         width: min(110rem, 100%);
@@ -25,29 +29,34 @@ export const Image = styled.img`
 export const BusInfo = styled.div`
   ${({ theme }) => css`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     text-align: center;
     column-gap: ${theme.spaces.small};
     row-gap: ${theme.spaces.small};
     font-size: calc(${theme.spaces.xsmall} - 2px);
 
+    .svg__arrow {
+      font-size: 3rem;
+      margin: 0 2rem 0 2rem;
+    }
+
     .svg__circle {
       margin: 0 16px;
       width: 0.5rem;
     }
-
-    ${media.greaterThan('small')`
-      grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-    `}
   `}
 `
 
 export const Text = styled.span<{ bold?: boolean; margin?: string }>`
   ${({ theme, bold, margin }) => css`
-    font-size: ${theme.font.sizes.xxxsmall};
+    font-size: ${theme.font.sizes.small};
     line-height: ${theme.font.sizes.small};
     font-weight: ${bold && 500};
     margin: ${margin};
+
+    &.text__medium {
+      font-size: ${theme.font.sizes.xmedium};
+    }
   `}
 `
 

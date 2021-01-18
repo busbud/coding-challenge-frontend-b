@@ -133,6 +133,7 @@ function FilteredTickets() {
             {response.departures.map((item, i) => (
               <S.Wrapper key={i}>
                 <Accordion
+                  noIcon
                   trigger={
                     <AccordionTrigger
                       currency={currency}
@@ -142,13 +143,7 @@ function FilteredTickets() {
                       )}
                     />
                   }
-                >
-                  <L.Box>
-                    <S.Text margin="0 0.4rem">
-                      {t('common.average_seat')} true
-                    </S.Text>
-                  </L.Box>
-                </Accordion>
+                />
               </S.Wrapper>
             ))}
           </>
