@@ -1,6 +1,7 @@
 import React from 'react'
 import Document, {
   Html,
+  Head,
   Main,
   NextScript,
   DocumentContext
@@ -37,6 +38,7 @@ export default class NextDocument extends Document {
   render() {
     return (
       <Html lang="en">
+        <Head />
         <body>
           <Main />
           <NextScript />
