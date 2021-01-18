@@ -45,7 +45,7 @@ function Accordion(props: PropsWithChildren<AccordionProps>) {
         onClick={onClick}
       >
         <L.Box>
-          <L.Box>{trigger}</L.Box>
+          {trigger}
           <L.Box data-testid="accordion-button">
             <L.TurnIcon turn={open}>
               <IoChevronDown height={30} />
