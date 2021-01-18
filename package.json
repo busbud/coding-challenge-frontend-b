@@ -1,6 +1,6 @@
 {
   "name": "ms-busbud",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Marcus Silva <mvfsillva@gmail.com>",
   "scripts": {
     "dev": "next dev",
