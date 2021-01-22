@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "engines": {
     "node": "14.x",
@@ -30,6 +32,7 @@
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-react": "^7.22.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "prettier": "2.2.1",
     "ts-jest": "^26.4.4",
