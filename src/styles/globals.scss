@@ -1,10 +1,24 @@
 html,
 body {
+  background-color: $bg-color;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: $red;
+  font-family: $font-default, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+  font-size: $font-size-default;
+  line-height: 1.5;
+}
+
+button,
+h1,
+h2,
+h3,
+input,
+a,
+span,
+p {
+  font-family: inherit;
 }
 
 a {
@@ -14,4 +28,8 @@ a {
 
 * {
   box-sizing: border-box;
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
 }
