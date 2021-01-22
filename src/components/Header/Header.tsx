@@ -1,18 +1,28 @@
 import Link from 'next/link'
+import styled from 'styled-components'
+import Logo from '../Logo/Logo'
+import LanguageSelect from '../LanguageSelect/LanguageSelect'
 
-import Logo from 'components/Logo/Logo'
+const StyledLogo = styled(Logo)`
+  height: 40px;
+`
 
-import style from './Header.module.scss'
+const StyledHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+  padding: ${(props) => props.theme.padding} 0;
+`
 
 const Header = () => {
   return (
-    <header className={style.header}>
+    <StyledHeader>
       <Link href="/">
-        <a>
-          <Logo />
+        <a title="Go to Home">
+          <StyledLogo />
         </a>
       </Link>
-    </header>
+      <LanguageSelect />
+    </StyledHeader>
   )
 }
 

@@ -1,14 +1,13 @@
 import React from 'react'
-import styles from './Logo.module.scss'
+import styled from 'styled-components'
 
-const Logo = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
+const Logo = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 217 73"
     role="img"
     aria-label="Busbud.com"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className={`${styles.logo} ${className}`}
     {...props}
   >
     <path
@@ -36,4 +35,7 @@ const Logo = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-export default Logo
+const StyledLogo = styled(Logo)`
+  color: ${(props) => props.theme.colors.blue};
+`
+export default StyledLogo

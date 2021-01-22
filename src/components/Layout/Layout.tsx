@@ -1,8 +1,13 @@
 import { ReactNode } from 'react'
 import Head from 'next/head'
-import Header from 'components/Header/Header'
+import Header from '../Header/Header'
+import styled from 'styled-components'
 
-import styles from './Layout.module.scss'
+const Main = styled.main`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 ${(props) => props.theme.padding};
+`
 
 type Props = {
   children: ReactNode
@@ -35,10 +40,10 @@ const Layout = ({ children }: Props) => (
       type="font/woff2"
       crossOrigin=""
     />
-    <main className={styles.main}>
+    <Main>
       <Header />
       {children}
-    </main>
+    </Main>
   </>
 )
 

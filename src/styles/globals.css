@@ -21,3 +21,38 @@
   font-weight: normal;
   font-style: normal;
 }
+
+html,
+body {
+  background-color: #f0fff7;
+  padding: 0;
+  margin: 0;
+  font-family: 'Codec Pro', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+button,
+h1,
+h2,
+h3,
+input,
+a,
+span,
+p {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+*::before,
+*::after {
+  box-sizing: inherit;
+}

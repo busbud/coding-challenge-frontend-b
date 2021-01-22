@@ -13,9 +13,9 @@ module.exports = {
       },
     },
   },
+  coveragePathIgnorePatterns: [
+    '<rootDir>/src/test-support/',
+    '<rootDir>/src/styles/',
+  ],
   setupFilesAfterEnv: ['<rootDir>/src/test-support/setup-tests.ts'],
-  moduleNameMapper: {
-    '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$':
-      'identity-obj-proxy',
-  },
 }
