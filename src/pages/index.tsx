@@ -1,5 +1,14 @@
+import React from 'react'
+
+import LocationForm from '../components/Form/LocationForm'
 import Layout from '../components/Layout/Layout'
 
-export default function Home() {
-  return <Layout />
+const Home = () => {
+  return (
+    <Layout>
+      <LocationForm />
+    </Layout>
+  )
 }
+
+export default Home
