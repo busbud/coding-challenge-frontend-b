@@ -2,6 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import Logo from '../Logo/Logo'
 import LanguageSelect from '../LanguageSelect/LanguageSelect'
+import CurrencySelect from '../CurrencySelect/CurrencySelect'
 
 const StyledLogo = styled(Logo)`
   height: 40px;
@@ -22,6 +23,7 @@ const Header = () => {
         </a>
       </Link>
       <LanguageSelect />
+      <CurrencySelect />
     </StyledHeader>
   )
 }

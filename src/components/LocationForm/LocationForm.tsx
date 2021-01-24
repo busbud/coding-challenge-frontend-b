@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+import { Button } from 'grommet'
 
-import LocationInput from '../Form/LocationInput'
+import LocationInput from '../LocationInput/LocationInput'
+import LocationSwitch from '../LocationSwitch/LocationSwitch'
+import DateInput from '../DateInput/DateInput'
+import CurrencySelect from '../CurrencySelect/CurrencySelect'
 
 const LocationForm = () => {
   return (
@@ -14,6 +18,7 @@ const LocationForm = () => {
           suggestions: ['Quebec'],
         }}
       />
+      <LocationSwitch onClick={() => {}} />
       <LocationInput
         formField={{
           label: 'Destination',
@@ -23,6 +28,8 @@ const LocationForm = () => {
           suggestions: ['Montreal'],
         }}
       />
+      <DateInput />
+      <Button>Search</Button>
     </>
   )
 }
