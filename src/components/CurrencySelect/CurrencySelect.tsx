@@ -1,15 +1,16 @@
 import React from 'react'
 import { FormField, Select } from 'grommet'
+import { CurrencyDomain } from '../../domain/currency'
+import { useCurrency } from '../../store/currency/hooks'
 
 const CurrencySelect = () => {
-  const [value, setValue] = React.useState('medium')
-
+  const { currency, setCurrency } = useCurrency()
   return (
     <FormField>
       <Select
-        options={['BRL', 'USD', 'CAD']}
-        value={value}
-        onChange={({ option }) => setValue(option)}
+        options={CurrencyDomain.currencies}
+        value={currency.value}
+        onChange={({ option }) => setCurrency(option)}
       />
     </FormField>
   )

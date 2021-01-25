@@ -1,37 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 import { FormField, FormFieldProps, TextInput, TextInputProps } from 'grommet'
 
 type Props = {
   formField: FormFieldProps
-  textInput: TextInputProps
+  textInput: TextInputProps & {
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  }
 }
 
 const LocationInput = (props: Props) => {
-  const [value, setValue] = useState('')
-
-  const onSelect: TextInputProps['onSelect'] = (event) =>
-    setValue(event.suggestion)
-
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value: newValue } = event.target
-    setValue(newValue)
-
-    if (!newValue.trim()) {
-      // setSuggestedFolks([])
-    } else {
-      // // simulate an async call to the backend
-      // setTimeout(() => setSuggestedFolks(folks), 300)
-    }
-  }
-
   return (
     <FormField {...props.formField}>
       <TextInput
-        value={value}
-        onChange={onChange}
-        onSelect={onSelect}
+        value={props.textInput.value}
         {...props.textInput}
+        onChange={props.textInput.onChange}
+        onSelect={props.textInput.onSelect}
       />
     </FormField>
   )

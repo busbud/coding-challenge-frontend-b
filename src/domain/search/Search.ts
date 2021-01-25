@@ -1,21 +1,21 @@
-import { Location } from '../location/Location'
-import { Language } from '../language/Language'
-import { Currency } from '../currency/Currency'
+import { LocationDomain } from '../location'
+import { LanguageDomain } from '../language'
+import { CurrencyDomain } from '../currency'
 
 export interface SearchData {
-  readonly origin: Location
-  readonly destination: Location
-  readonly outboundDate: string
-  readonly adult: number
-  readonly child: number
-  readonly senior: number
-  readonly lang: Language
-  readonly currency: Currency
+  origin: LocationDomain.Location
+  destination: LocationDomain.Location
+  outboundDate: string
+  adult: number
+  child: number
+  senior: number
+  lang: LanguageDomain.Language
+  currency: CurrencyDomain.Currency
 }
 
 export interface PathParams {
-  origin: Location['geohash']
-  destination: Location['geohash']
+  origin: LocationDomain.Location['geohash']
+  destination: LocationDomain.Location['geohash']
   outbound_date: string
 }
 
@@ -23,8 +23,8 @@ export interface QueryParams {
   adult: number
   child: number
   senior: number
-  lang: Language['code']
-  currency: Currency['code']
+  lang: LanguageDomain.Language
+  currency: CurrencyDomain.Currency
 }
 
 export enum SearchStatus {
@@ -59,8 +59,8 @@ export class Search {
       adult,
       child,
       senior,
-      lang: lang.code,
-      currency: currency.code,
+      lang,
+      currency,
     }
     this._status = SearchStatus.INITIAL
   }

@@ -6,7 +6,7 @@ const LanguageSelect = () => (
     label="Language"
     items={[
       { label: 'English', href: '/' },
-      { label: 'Portuguese', href: '/' },
+      { label: 'Portuguese', href: '/pt' },
     ]}
   />
 )

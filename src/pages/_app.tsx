@@ -1,18 +1,50 @@
-import { AppProps } from 'next/app'
+import { AppProps, AppContext } from 'next/app'
 import { Grommet } from 'grommet'
 import { ThemeProvider } from 'styled-components'
+import { IntlProvider } from 'react-intl'
+import { Provider } from 'react-redux'
 
 import { styledTheme } from '../styles/theme'
 import { grommetTheme } from '../styles/grommetTheme'
+import { getMessages } from '../lang/locale'
+import { Language } from '../domain/language/Language'
+import configureAppStore from '../store'
+import { getLocationCurrency } from '../domain/currency/Currency'
 
 import '../styles/globals.css'
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps, router }: AppProps) => {
+  const { locale, defaultLocale } = router
+  const { messages } = pageProps
+
+  const preloadedState = {
+    currency: { value: getLocationCurrency(locale as Language) },
+  }
+
   return (
-    <Grommet theme={grommetTheme}>
-      <ThemeProvider theme={styledTheme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </Grommet>
+    <Provider store={configureAppStore(preloadedState)}>
+      <IntlProvider
+        messages={messages}
+        locale={locale as Language}
+        defaultLocale={defaultLocale}
+      >
+        <Grommet theme={grommetTheme}>
+          <ThemeProvider theme={styledTheme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </Grommet>
+      </IntlProvider>
+    </Provider>
   )
 }
+
+App.getInitialProps = async (ctx: AppContext) => {
+  const { locale } = ctx.router
+  const messages = await getMessages(locale as Language)
+  return {
+    pageProps: {
+      messages,
+    },
+  }
+}
+export default App
