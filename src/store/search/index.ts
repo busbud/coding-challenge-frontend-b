@@ -13,7 +13,7 @@ type SearchState = {
   }
 }
 
-const initialState: SearchState = {
+export const initialState: SearchState = {
   form: {
     origin: LocationDomain.getLocationByName('Québec'),
     destination: LocationDomain.getLocationByName('Montréal'),

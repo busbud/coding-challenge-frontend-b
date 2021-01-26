@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from 'grommet'
 import { FormattedMessage } from 'react-intl'
+import useInterval from 'use-interval'
 
 import LocationInput from '../LocationInput/LocationInput'
 import LocationSwitch from '../LocationSwitch/LocationSwitch'
@@ -8,6 +9,7 @@ import DateInput from '../DateInput/DateInput'
 import { LocationDomain } from '../../domain/location'
 import { DateDomain } from '../../domain/language'
 import { useSearch } from '../../store/search/hooks'
+import { useDepartures } from '../../store/departures/hooks'
 
 const LocationForm = () => {
   const {
@@ -18,6 +20,18 @@ const LocationForm = () => {
     getDestination,
     getOutboundDate,
   } = useSearch()
+
+  const {
+    isDeparturesSearchIncomplete,
+    fetchDepartures,
+    pollDepartures,
+  } = useDepartures()
+
+  useInterval(
+    () => pollDepartures(),
+    isDeparturesSearchIncomplete ? 3000 : null
+  )
+
   const locationsSuggestions = LocationDomain.getNames()
   return (
     <>
@@ -68,7 +82,7 @@ const LocationForm = () => {
             setDate(DateDomain.dateISO(new Date(event.value as string))),
         }}
       />
-      <Button>Search</Button>
+      <Button onClick={() => fetchDepartures()}>Search</Button>
     </>
   )
 }

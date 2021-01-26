@@ -10,15 +10,23 @@ import { getMessages } from '../lang/locale'
 import { Language } from '../domain/language/Language'
 import configureAppStore from '../store'
 import { getLocationCurrency } from '../domain/currency/Currency'
-
+import { initialState as SearchInitialState } from '../store/search'
 import '../styles/globals.css'
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   const { locale, defaultLocale } = router
   const { messages } = pageProps
+  const currency = getLocationCurrency(locale as Language)
 
   const preloadedState = {
     currency: { value: getLocationCurrency(locale as Language) },
+    search: {
+      form: {
+        ...SearchInitialState.form,
+        lang: locale,
+        currency: currency,
+      },
+    },
   }
 
   return (
