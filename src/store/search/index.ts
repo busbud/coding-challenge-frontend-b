@@ -3,12 +3,12 @@ import { formatISO } from 'date-fns'
 
 import { DateDomain, LanguageDomain } from '../../domain/language'
 import { CurrencyDomain } from '../../domain/currency'
-import { SearchData } from '../../domain/search/Search'
+import { SearchDomain } from '../../domain/search'
 import { setCurrency } from '../currency'
 import { LocationDomain } from '../../domain/location'
 
 type SearchState = {
-  form: SearchData & {
+  form: SearchDomain.SearchData & {
     isLoading: boolean
   }
 }
@@ -18,9 +18,11 @@ export const initialState: SearchState = {
     origin: LocationDomain.getLocationByName('Québec'),
     destination: LocationDomain.getLocationByName('Montréal'),
     outboundDate: DateDomain.todayString(),
-    adult: 0,
+    adult: 1,
     child: 0,
     senior: 0,
+    senior_ages: [],
+    child_ages: [],
     lang: LanguageDomain.EN,
     currency: CurrencyDomain.USD,
     isLoading: false,
@@ -50,6 +52,31 @@ const switchPlaces = (state: SearchState) => {
   state.form.origin = newOrigin
 }
 
+export type setPassengerPayload = {
+  passenger: SearchDomain.PassengerKeys | SearchDomain.PassengerAgeKeys
+  value: number | string[]
+}
+
+const setPassenger = (
+  state: SearchState,
+  action: PayloadAction<setPassengerPayload>
+) => {
+  const { passenger, value } = action.payload
+  state.form[passenger] = value as string[] & number
+
+  if (passenger === SearchDomain.SENIOR) {
+    state.form[SearchDomain.SENIOR_AGES] = state.form[
+      SearchDomain.SENIOR_AGES
+    ].slice(0, value as number)
+  }
+
+  if (passenger === SearchDomain.CHILD) {
+    state.form[SearchDomain.CHILD_AGES] = state.form[
+      SearchDomain.CHILD_AGES
+    ].slice(0, value as number)
+  }
+}
+
 const currencySlice = createSlice({
   name: 'search',
   initialState,
@@ -57,6 +84,7 @@ const currencySlice = createSlice({
     setPlace,
     switchPlaces,
     setDate,
+    setPassenger,
   },
   extraReducers: (builder) => {
     builder.addCase(

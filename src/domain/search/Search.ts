@@ -1,7 +1,6 @@
 import { LocationDomain } from '../location'
 import { LanguageDomain } from '../language'
 import { CurrencyDomain } from '../currency'
-
 export interface SearchData {
   origin: LocationDomain.Location
   destination: LocationDomain.Location
@@ -9,6 +8,8 @@ export interface SearchData {
   adult: number
   child: number
   senior: number
+  senior_ages: string[]
+  child_ages: string[]
   lang: LanguageDomain.Language
   currency: CurrencyDomain.Currency
 }
@@ -23,9 +24,25 @@ export interface QueryParams {
   adult: number
   child: number
   senior: number
+  senior_ages: string
+  child_ages: string
   lang: LanguageDomain.Language
   currency: CurrencyDomain.Currency
 }
+
+export const CHILD = 'child'
+export const ADULT = 'adult'
+export const SENIOR = 'senior'
+export const SENIOR_AGES = 'senior_ages'
+export const CHILD_AGES = 'child_ages'
+
+export type PassengerKeys = typeof CHILD | typeof ADULT | typeof SENIOR
+export type PassengerAgeKeys = typeof CHILD_AGES | typeof SENIOR_AGES
+
+export const hasMaxPassengers = (count: number) => {
+  return count === 5
+}
+
 export class Search {
   private _path: PathParams
   private _query: QueryParams
@@ -37,6 +54,8 @@ export class Search {
     adult,
     child,
     senior,
+    senior_ages,
+    child_ages,
     lang,
     currency,
   }: SearchData) {
@@ -49,6 +68,8 @@ export class Search {
       adult,
       child,
       senior,
+      senior_ages: senior_ages.map((age) => parseInt(age)).join(','),
+      child_ages: child_ages.join(','),
       lang,
       currency,
     }

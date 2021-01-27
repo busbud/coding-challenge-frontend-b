@@ -2,5 +2,19 @@
   "origin": "Origin",
   "destination": "Destination",
   "select.origin": "Select Origin",
-  "select.destination": "Select Destination"
+  "select.destination": "Select Destination",
+  "passengers_count": "{count, plural, one {# passenger} other {# passengers} }",
+  "date": "Date",
+  "passengers": "Passengers",
+  "search": "Search",
+  "lang.english": "English",
+  "lang.portuguese": "Portuguese",
+  "lang.french": "French",
+  "lang.spanish": "Spanish",
+  "children": "Children",
+  "child": "Child",
+  "seniors": "Seniors",
+  "senior": "Senior",
+  "adults": "Adults",
+  "age": "Age"
 }

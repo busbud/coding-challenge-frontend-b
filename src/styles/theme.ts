@@ -14,4 +14,5 @@ export const styledTheme = {
     lg: '1200px',
   },
   padding: '15px',
+  borderRadius: '6px',
 }

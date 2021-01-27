@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import styled from 'styled-components'
+import { Box } from 'grommet'
+
 import Logo from '../Logo/Logo'
 import LanguageSelect from '../LanguageSelect/LanguageSelect'
 import CurrencySelect from '../CurrencySelect/CurrencySelect'
@@ -22,8 +24,10 @@ const Header = () => {
           <StyledLogo />
         </a>
       </Link>
-      <LanguageSelect />
-      <CurrencySelect />
+      <Box direction="row" gap="small">
+        <LanguageSelect />
+        <CurrencySelect />
+      </Box>
     </StyledHeader>
   )
 }
