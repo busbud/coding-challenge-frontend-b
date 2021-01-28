@@ -4,6 +4,8 @@ import rootReducer from './rootReducer'
 
 export type State = ReturnType<typeof rootReducer>
 
+declare var module: any
+
 const configureAppStore = (preloadedState?: any) => {
   const store = configureStore({
     reducer: rootReducer,

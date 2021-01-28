@@ -1,3 +1,5 @@
+export {}
+
 describe('Departures List', () => {
   before(() => {
     cy.intercept('GET', 'https://napi.busbud.com/x-departures/*', {

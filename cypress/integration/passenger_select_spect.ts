@@ -1,3 +1,5 @@
+export {}
+
 describe('Passenger Select', () => {
   it('Adds 1 Senior Passenger', () => {
     cy.visit('/')

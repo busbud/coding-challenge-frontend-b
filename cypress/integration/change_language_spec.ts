@@ -1,3 +1,4 @@
+export {}
 describe('Change Language', () => {
   it('Loads page in English', () => {
     cy.visit('/')

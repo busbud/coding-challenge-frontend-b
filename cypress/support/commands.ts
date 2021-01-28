@@ -10,6 +10,8 @@ declare global {
   }
 }
 
-Cypress.Commands.add('getTestId', (cyName: string) => {
+function getTestId(cyName: string) {
   return cy.get(`[data-testid='${cyName}']`)
-})
+}
+
+Cypress.Commands.add('getTestId', getTestId)

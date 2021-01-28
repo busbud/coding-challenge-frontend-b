@@ -1,3 +1,5 @@
+export {}
+
 describe('Search Inputs', () => {
   it('Select Origin as Montreal', () => {
     cy.visit('/')
