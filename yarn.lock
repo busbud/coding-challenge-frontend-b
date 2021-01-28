@@ -594,6 +594,11 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
+"@jedmao/redux-mock-store@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@jedmao/redux-mock-store/-/redux-mock-store-3.0.5.tgz#015fa4fc96bfc02b61ca221d9ea0476b78c70c97"
+  integrity sha512-zNcVCd5/ekSMdQWk64CqTPM24D9Lo59st9KvS+fljGpQXV4SliB7Vo0NFQIgvQJWPYeeobdngnrGy0XbCaARNw==
+
 "@jest/console@^26.6.2":
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-26.6.2.tgz#4e04bc464014358b03ab4937805ee36a0aeb98f2"

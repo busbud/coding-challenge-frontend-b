@@ -35,7 +35,7 @@ const Logo = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const StyledLogo = styled(Logo)`
+export const StyledLogo = styled(Logo)`
   color: ${(props) => props.theme.colors.blue};
 `
 export default StyledLogo

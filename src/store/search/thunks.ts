@@ -3,7 +3,7 @@ import { State } from '..'
 import { getSearchForm } from './selectors'
 import { getDeparturesCount } from '../departures/selectors'
 import { SearchDomain, DeparturesDomain } from '../../domain/search'
-import SearchService from 'src/services/searchService'
+import SearchService from '../../services/searchService'
 
 export const fetchDepartures = createAsyncThunk<
   DeparturesDomain.Departures,

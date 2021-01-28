@@ -1,11 +1,11 @@
 import React from 'react'
 
-import renderStyled from '../../test-support/renderStyled'
-import Logo from './Logo'
+import { render } from 'test/components'
+import { StyledLogo } from './Logo'
 
 describe('Logo', () => {
   it('renders SVG Busbud Logo', () => {
-    const wrapper = renderStyled({ children: <Logo /> })
+    const wrapper = render(<StyledLogo />)
 
     wrapper.getByLabelText('Busbud.com')
   })

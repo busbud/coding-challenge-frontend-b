@@ -15,8 +15,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
-    "types": ["cypress"]
+    "types": ["cypress"],
+    "paths": {
+      "test/*": ["./src/test-support/modules/test/*"]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "src/**/*"],
   "exclude": ["node_modules"]
 }

@@ -36,7 +36,7 @@ const LanguageSelect = () => {
 
   return (
     <Menu
-      data-testId="MENU.SELECT"
+      data-testid="MENU.SELECT"
       label={<IntlText id={`lang.${currentLang}`} />}
       items={items}
     />
