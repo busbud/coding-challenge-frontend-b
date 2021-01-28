@@ -1,8 +1,10 @@
 import React from 'react'
+import { Grommet } from 'grommet'
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 
 import { styledTheme, ThemeType } from '../styles/theme'
+import { grommetTheme } from '../styles/grommetTheme'
 
 const renderStyled = ({
   theme = styledTheme,
@@ -10,6 +12,11 @@ const renderStyled = ({
 }: {
   theme?: ThemeType
   children: React.ReactChild
-}) => render(<ThemeProvider theme={theme}>{children}</ThemeProvider>)
+}) =>
+  render(
+    <Grommet theme={grommetTheme as any}>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </Grommet>
+  )
 
 export default renderStyled
