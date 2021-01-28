@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { Subtract, Add } from 'grommet-icons'
-import { Select, Box, Button, SelectProps, FormField, Form } from 'grommet'
+import { Select, Box, FormField } from 'grommet'
 import { IntlText } from '../Intl/IntlText'
 
 import { useSearch } from '../../store/search/hooks'
@@ -161,7 +161,7 @@ export const PassengerSelect = () => {
       <Select
         dropProps={{ stretch: false }}
         focusIndicator={false}
-        ref={selectRef}
+        ref={selectRef as any}
         closeOnChange={false}
         options={passengersList}
         value={renderValue()}

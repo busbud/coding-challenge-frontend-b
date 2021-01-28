@@ -118,7 +118,7 @@ const LocationForm = () => {
           <SearchButtonIcon>
             <FormSearch color="#FFF" />
           </SearchButtonIcon>
-          Search
+          <IntlText id="search" />
         </SearchButton>
       </LocationFormBox>
     </LocationFormContainer>

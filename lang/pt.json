@@ -1,6 +1,25 @@
 {
   "origin": "Origem",
   "destination": "Destino",
-  "select.origin": "Selecionar Origem",
-  "select.destination": "Selecionar Destino"
+  "select.origin": "Selecione a Origem",
+  "select.destination": "Selecione o Destino",
+  "passengers_count": "{count, plural, one {# passageiro} other {# passageiros} }",
+  "date": "Data",
+  "passengers": "Passageiros",
+  "search": "Busca",
+  "lang.english": "English",
+  "lang.portuguese": "Português",
+  "lang.french": "Français",
+  "lang.spanish": "Español",
+  "children": "Crianças",
+  "child": "Crianças",
+  "seniors": "Idosos",
+  "senior": "Idoso",
+  "adults": "Adultos",
+  "age": "Idade",
+  "departures.count": "{count, plural, =0 {Sem trechos encontrado} one {# Trecho Encontrado} other {# Trechos Encontrado} }",
+  "operated_by": "Operated By",
+  "stops": "{count, plural, one {# parada} other {# paradas}}",
+  "thanks": "Obrigado",
+  "thanks_message": "Muito obrigado! Espero que vocês gostem. Estou ansioso por uma resposta positiva. :D"
 }
