@@ -28,7 +28,7 @@ const StyledButton = styled(Button)`
   }
 `
 const LocationSwitch = ({ onClick }: LocationSwitchProps) => (
-  <StyledButton onClick={onClick}>
+  <StyledButton data-testid="PLACE_SWITCH" onClick={onClick}>
     <Transaction />
   </StyledButton>
 )

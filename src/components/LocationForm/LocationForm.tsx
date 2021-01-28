@@ -75,6 +75,8 @@ const LocationForm = () => {
             label: <IntlText id="origin" />,
           }}
           textInput={{
+            //@ts-ignore
+            'data-testid': 'INPUT.ORIGIN',
             name: 'origin',
             value: getOrigin.name,
             placeholder: <IntlText id="select.origin" />,
@@ -93,6 +95,8 @@ const LocationForm = () => {
             label: <IntlText id="destination" />,
           }}
           textInput={{
+            //@ts-ignore
+            'data-testid': 'INPUT.DESTINATION',
             name: 'destination',
             value: getDestination.name,
             placeholder: <IntlText id="select.destination" />,
@@ -114,7 +118,10 @@ const LocationForm = () => {
           />
           <PassengerSelect />
         </DatePassengerGroup>
-        <SearchButton onClick={() => fetchDepartures()}>
+        <SearchButton
+          data-testid="SEARCH.BUTTON"
+          onClick={() => fetchDepartures()}
+        >
           <SearchButtonIcon>
             <FormSearch color="#FFF" />
           </SearchButtonIcon>

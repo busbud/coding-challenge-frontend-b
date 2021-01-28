@@ -34,7 +34,13 @@ const LanguageSelect = () => {
     }
   })
 
-  return <Menu label={<IntlText id={`lang.${currentLang}`} />} items={items} />
+  return (
+    <Menu
+      data-testId="MENU.SELECT"
+      label={<IntlText id={`lang.${currentLang}`} />}
+      items={items}
+    />
+  )
 }
 
 export default LanguageSelect

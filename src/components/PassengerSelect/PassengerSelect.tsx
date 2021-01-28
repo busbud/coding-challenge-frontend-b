@@ -68,7 +68,9 @@ export const PassengerSelect = () => {
     for (let i = 0; i < itemsToRender; i++) {
       renderedItems.push(
         <Styled.PassengerAge direction="row" align="center" justify="between">
-          <Styled.PassengerAgeText>
+          <Styled.PassengerAgeText
+            data-testid={`AGE.${ageItem!.id.toUpperCase()}.${i}`}
+          >
             {ageItem!.name} {`${i + 1}`}
           </Styled.PassengerAgeText>
           <Styled.PassengerAgeSelect
@@ -112,6 +114,7 @@ export const PassengerSelect = () => {
           {name}
           <Styled.PassengerButtons>
             <Styled.PassengerButton
+              data-testid="DECREMENT"
               onFocus={(event) => event.stopPropagation()}
               disabled={isDecrementDisabled}
               onClick={(event) => {
@@ -127,6 +130,7 @@ export const PassengerSelect = () => {
             <Styled.PassengerText>{value}</Styled.PassengerText>
 
             <Styled.PassengerButton
+              data-testid="INCREMENT"
               disabled={SearchDomain.hasMaxPassengers(getPassengersCount)}
               onFocus={(event) => event.stopPropagation()}
               onClick={(event) => {
@@ -157,9 +161,16 @@ export const PassengerSelect = () => {
   }
 
   return (
-    <FormField label={<IntlText id="passengers" />}>
+    <FormField
+      label={<IntlText id="passengers" />}
+      data-testid="PASSENGER.TEXT"
+    >
       <Select
-        dropProps={{ stretch: false }}
+        dropProps={{
+          //@ts-ignore
+          'data-testid': 'PASSENGER.DROP',
+          stretch: false,
+        }}
         focusIndicator={false}
         ref={selectRef as any}
         closeOnChange={false}

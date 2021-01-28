@@ -15,6 +15,7 @@ const DateInput = (props: Props) => {
   const dateField = {
     readOnly: true,
     calendarProps: {
+      'data-testid': 'CALENDAR',
       locale: locale,
       size: 'small',
       bounds: [DateDomain.todayString(), '2025-01-01'],
@@ -25,7 +26,12 @@ const DateInput = (props: Props) => {
 
   return (
     <FormField width="150px" label={<IntlText id="date" />}>
-      <Input format={format} {...dateField} onChange={props.onChange} />
+      <Input
+        data-testid="INPUT.DATE"
+        format={format}
+        {...dateField}
+        onChange={props.onChange}
+      />
     </FormField>
   )
 }

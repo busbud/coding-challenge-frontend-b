@@ -42,7 +42,7 @@ const DepartureListItem = ({
   const { locale } = useRouter()
 
   return (
-    <Container direction="column">
+    <Container direction="column" data-testid="DEPARTURE_LIST_ITEM">
       <Box
         margin={{ bottom: '15px' }}
         direction="row"
