@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "engines": {
     "node": "14.x",
