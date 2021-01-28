@@ -13,6 +13,7 @@ const LocationInput = (props: Props) => {
   return (
     <FormField {...props.formField}>
       <TextInput
+        readOnly={true}
         value={props.textInput.value}
         {...props.textInput}
         onChange={props.textInput.onChange}

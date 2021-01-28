@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { FormattedMessage } from 'react-intl'
+import { IntlText } from '../Intl/IntlText'
 import { FormField, DateInput, DateInputProps } from 'grommet'
 import { DateDomain, LanguageDomain } from '../../domain/language'
 
@@ -13,7 +13,9 @@ const Input = (props: Props) => {
   const format = DateDomain.localeDateMask(locale as LanguageDomain.Language)
 
   const dateField = {
+    readOnly: true,
     calendarProps: {
+      size: 'small',
       bounds: [DateDomain.todayString(), '2025-01-01'],
     },
     name: 'date',
@@ -21,7 +23,7 @@ const Input = (props: Props) => {
   }
 
   return (
-    <FormField width="150px" label={<FormattedMessage id="date" />}>
+    <FormField width="150px" label={<IntlText id="date" />}>
       <DateInput format={format} {...dateField} onChange={props.onChange} />
     </FormField>
   )

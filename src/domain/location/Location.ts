@@ -1,25 +1,23 @@
-import { format } from 'prettier'
+import { LocationDomain } from '.'
 
 export type Location = {
+  id: number
+  city_id: string
   name: string
   geohash: string
 }
 
-export const locations: Location[] = [
-  {
-    name: 'Québec',
-    geohash: 'f2m673',
-  },
-  {
-    name: 'Montréal',
-    geohash: 'f25dvk',
-  },
-]
-
-export const getLocationByName = (name: string) => {
+export const getLocationByName = (locations: Location[], name: string) => {
   return locations.find((location) => location.name === name)!
 }
 
-export const getNames = () => {
+export const getLocationById = (
+  locations: Location[],
+  id: LocationDomain.Location['id']
+) => {
+  return locations.find((location) => location.id === id)!
+}
+
+export const getNames = (locations: Location[]) => {
   return locations.map((loc) => loc.name)
 }

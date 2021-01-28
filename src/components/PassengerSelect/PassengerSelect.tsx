@@ -1,74 +1,55 @@
 import React, { useRef } from 'react'
 import { Subtract, Add } from 'grommet-icons'
 import { Select, Box, Button, SelectProps, FormField, Form } from 'grommet'
-import styled from 'styled-components'
-import { FormattedMessage } from 'react-intl'
+import { IntlText } from '../Intl/IntlText'
 
 import { useSearch } from '../../store/search/hooks'
 import { SearchDomain } from '../../domain/search'
 
-const Passenger = styled(Box)`
-  padding: 10px 5px;
-  font-size: 18px;
-  border-bottom: 1px solid ${(props) => props.theme.colors.blueLight};
-`
-const PassengerText = styled.p`
-  display: inline-block;
-  font-weight: 700;
-  margin: 0 5px;
-`
+import * as Styled from './styles'
 
-const PassengerAgeText = styled.p``
+const passengersList: Array<{
+  name: React.ReactNode
+  id: SearchDomain.PassengerKeys
+  child?: SearchDomain.PassengerAgeKeys
+}> = [
+  { name: <IntlText id="adults" />, id: SearchDomain.ADULT },
+  {
+    name: <IntlText id="children" />,
+    id: SearchDomain.CHILD,
+    child: SearchDomain.CHILD_AGES,
+  },
+  {
+    name: <IntlText id="seniors" />,
+    id: SearchDomain.SENIOR,
+    child: SearchDomain.SENIOR_AGES,
+  },
+]
 
-const PassengerButtons = styled.div`
-  margin-left: 20px;
-`
-const PassengerButton = styled(Button)`
-  display: inline-flex;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  background-color: ${(props) => props.theme.colors.blueLight};
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-  transition: background-color 200ms;
+const agesList = [
+  {
+    parent: SearchDomain.SENIOR,
+    name: <IntlText id="senior" />,
+    id: SearchDomain.SENIOR_AGES,
+    options: ['60', '61', '62', '63', '64', '65', '65+'],
+  },
+  {
+    parent: SearchDomain.CHILD,
+    name: <IntlText id="child" />,
+    id: SearchDomain.CHILD_AGES,
+    options: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+  },
+]
 
-  &:hover {
-    background-color: ${(props) => props.theme.colors.yellow};
-  }
-
-  svg {
-    width: 14px;
-    height: 14px;
-  }
-`
-const PassengerCounter = styled(Box)``
-
-const PassengerAge = styled(Box)`
-  padding-left: 10px;
-`
-
-const PassengerAgeSelect = styled(Select)`
-  width: 60px;
-`
-
-const PassengersCount = styled.div`
-  margin-top: 8px;
-`
 export const PassengerSelect = () => {
-  const { getPassengers, setPassenger, getPassengersCount } = useSearch()
-  const selectRef = useRef<React.Component<SelectProps, any, any>>(null)
-
-  const incrementPassenger = (id: SearchDomain.PassengerKeys) => {
-    setPassenger({ passenger: id, value: ++getPassengers[id] })
-  }
-
-  const decrementPassenger = (id: SearchDomain.PassengerKeys) => {
-    const value =
-      getPassengers[id] > 0 ? --getPassengers[id] : getPassengers[id]
-    setPassenger({ passenger: id, value })
-  }
+  const {
+    getPassengers,
+    setPassenger,
+    getPassengersCount,
+    incrementPassenger,
+    decrementPassenger,
+  } = useSearch()
+  const selectRef = useRef<HTMLInputElement>(null)
 
   const renderAgeInput = (id: SearchDomain.PassengerKeys) => {
     const item = passengersList.filter((item) => item.id === id)[0]
@@ -83,15 +64,14 @@ export const PassengerSelect = () => {
         itemsToRender
       ),
     ]
-    console.log(actualValues)
 
     for (let i = 0; i < itemsToRender; i++) {
       renderedItems.push(
-        <PassengerAge direction="row" align="center" justify="between">
-          <PassengerAgeText>
+        <Styled.PassengerAge direction="row" align="center" justify="between">
+          <Styled.PassengerAgeText>
             {ageItem!.name} {`${i + 1}`}
-          </PassengerAgeText>
-          <PassengerAgeSelect
+          </Styled.PassengerAgeText>
+          <Styled.PassengerAgeSelect
             size="small"
             value={actualValues[i] ? actualValues[i].toString() : undefined}
             options={ageItem!.options as string[]}
@@ -103,9 +83,9 @@ export const PassengerSelect = () => {
                 value: actualValues,
               })
             }}
-            placeholder={<FormattedMessage id="age" />}
-          ></PassengerAgeSelect>
-        </PassengerAge>
+            placeholder={<IntlText id="age" />}
+          ></Styled.PassengerAgeSelect>
+        </Styled.PassengerAge>
       )
     }
     return <Box>{renderedItems}</Box>
@@ -119,15 +99,21 @@ export const PassengerSelect = () => {
     id: SearchDomain.PassengerKeys
   }) => {
     const value = getPassengers[id]
+    const isDecrementDisabled =
+      value <= 0 || (getPassengersCount === 1 && value === 1)
 
     return (
-      <Passenger direction="column" wrap={true}>
-        <PassengerCounter direction="row" align="center" justify="between">
+      <Styled.Passenger direction="column" wrap={true}>
+        <Styled.PassengerCounter
+          direction="row"
+          align="center"
+          justify="between"
+        >
           {name}
-          <PassengerButtons>
-            <PassengerButton
+          <Styled.PassengerButtons>
+            <Styled.PassengerButton
               onFocus={(event) => event.stopPropagation()}
-              disabled={value <= 0 || (getPassengersCount === 1 && value === 1)}
+              disabled={isDecrementDisabled}
               onClick={(event) => {
                 event.preventDefault()
                 event.stopPropagation()
@@ -136,9 +122,11 @@ export const PassengerSelect = () => {
               }}
             >
               <Subtract color="#fff" />
-            </PassengerButton>
-            <PassengerText>{value}</PassengerText>
-            <PassengerButton
+            </Styled.PassengerButton>
+
+            <Styled.PassengerText>{value}</Styled.PassengerText>
+
+            <Styled.PassengerButton
               disabled={SearchDomain.hasMaxPassengers(getPassengersCount)}
               onFocus={(event) => event.stopPropagation()}
               onClick={(event) => {
@@ -149,60 +137,27 @@ export const PassengerSelect = () => {
               }}
             >
               <Add color="#fff" />
-            </PassengerButton>
-          </PassengerButtons>
-        </PassengerCounter>
+            </Styled.PassengerButton>
+          </Styled.PassengerButtons>
+        </Styled.PassengerCounter>
         {renderAgeInput(id)}
-      </Passenger>
+      </Styled.Passenger>
     )
   }
 
-  const passengersList: Array<{
-    name: React.ReactNode
-    id: SearchDomain.PassengerKeys
-    child?: SearchDomain.PassengerAgeKeys
-  }> = [
-    { name: <FormattedMessage id="adults" />, id: SearchDomain.ADULT },
-    {
-      name: <FormattedMessage id="children" />,
-      id: SearchDomain.CHILD,
-      child: SearchDomain.CHILD_AGES,
-    },
-    {
-      name: <FormattedMessage id="seniors" />,
-      id: SearchDomain.SENIOR,
-      child: SearchDomain.SENIOR_AGES,
-    },
-  ]
-
-  const agesList = [
-    {
-      parent: SearchDomain.SENIOR,
-      name: <FormattedMessage id="senior" />,
-      id: SearchDomain.SENIOR_AGES,
-      options: ['60', '61', '62', '63', '64', '65', '65+'],
-    },
-    {
-      parent: SearchDomain.CHILD,
-      name: <FormattedMessage id="child" />,
-      id: SearchDomain.CHILD_AGES,
-      options: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-    },
-  ]
-
   const renderValue = () => {
     return (
-      <PassengersCount>
-        <FormattedMessage
+      <Styled.PassengersCount>
+        <IntlText
           id="passengers_count"
           values={{ count: getPassengersCount }}
         />
-      </PassengersCount>
+      </Styled.PassengersCount>
     )
   }
 
   return (
-    <FormField label={<FormattedMessage id="passengers" />}>
+    <FormField label={<IntlText id="passengers" />}>
       <Select
         dropProps={{ stretch: false }}
         focusIndicator={false}

@@ -5,7 +5,7 @@ import { DateDomain, LanguageDomain } from '../../domain/language'
 import { CurrencyDomain } from '../../domain/currency'
 import { SearchDomain } from '../../domain/search'
 import { setCurrency } from '../currency'
-import { LocationDomain } from '../../domain/location'
+import { CityDomain } from '../../domain/city'
 
 type SearchState = {
   form: SearchDomain.SearchData & {
@@ -15,8 +15,8 @@ type SearchState = {
 
 export const initialState: SearchState = {
   form: {
-    origin: LocationDomain.getLocationByName('Québec'),
-    destination: LocationDomain.getLocationByName('Montréal'),
+    origin: CityDomain.getCityByName('Quebec'),
+    destination: CityDomain.getCityByName('Montreal'),
     outboundDate: DateDomain.todayString(),
     adult: 1,
     child: 0,
@@ -31,14 +31,14 @@ export const initialState: SearchState = {
 
 type SetPlaceAction = {
   field: 'origin' | 'destination'
-  location: LocationDomain.Location['name']
+  location: CityDomain.City['name']
 }
 const setPlace = (
   state: SearchState,
   action: PayloadAction<SetPlaceAction>
 ) => {
   const { field, location } = action.payload
-  state.form[field] = LocationDomain.getLocationByName(location)
+  state.form[field] = CityDomain.getCityByName(location)
 }
 
 const setDate = (state: SearchState, action: PayloadAction<string>) => {

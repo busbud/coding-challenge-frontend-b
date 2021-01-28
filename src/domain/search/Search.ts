@@ -1,9 +1,9 @@
-import { LocationDomain } from '../location'
+import { CityDomain } from '../city'
 import { LanguageDomain } from '../language'
 import { CurrencyDomain } from '../currency'
 export interface SearchData {
-  origin: LocationDomain.Location
-  destination: LocationDomain.Location
+  origin: CityDomain.City
+  destination: CityDomain.City
   outboundDate: string
   adult: number
   child: number
@@ -15,8 +15,8 @@ export interface SearchData {
 }
 
 export interface PathParams {
-  origin: LocationDomain.Location['geohash']
-  destination: LocationDomain.Location['geohash']
+  origin: CityDomain.City['geohash']
+  destination: CityDomain.City['geohash']
   outbound_date: string
 }
 

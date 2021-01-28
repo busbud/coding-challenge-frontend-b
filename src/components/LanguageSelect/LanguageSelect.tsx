@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
+import { IntlText } from '../Intl/IntlText'
 import { Menu } from 'grommet'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
@@ -22,11 +22,11 @@ const LanguageSelect = () => {
     if (lang.id === currentLang) {
       label = (
         <ActiveMenu>
-          <FormattedMessage id={`lang.${lang.id}`} />
+          <IntlText id={`lang.${lang.id}`} />
         </ActiveMenu>
       )
     } else {
-      label = <FormattedMessage id={`lang.${lang.id}`} />
+      label = <IntlText id={`lang.${lang.id}`} />
     }
     return {
       label,
@@ -34,12 +34,7 @@ const LanguageSelect = () => {
     }
   })
 
-  return (
-    <Menu
-      label={<FormattedMessage id={`lang.${currentLang}`} />}
-      items={items}
-    />
-  )
+  return <Menu label={<IntlText id={`lang.${currentLang}`} />} items={items} />
 }
 
 export default LanguageSelect

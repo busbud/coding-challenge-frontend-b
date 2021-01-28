@@ -36,7 +36,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         locale={locale as Language}
         defaultLocale={defaultLocale}
       >
-        <Grommet theme={grommetTheme}>
+        <Grommet theme={grommetTheme as any}>
           <ThemeProvider theme={styledTheme}>
             <Component {...pageProps} />
           </ThemeProvider>

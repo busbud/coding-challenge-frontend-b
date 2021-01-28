@@ -16,5 +16,10 @@
   "seniors": "Seniors",
   "senior": "Senior",
   "adults": "Adults",
-  "age": "Age"
+  "age": "Age",
+  "departures.count": "{count, plural, =0 {No Departures Found} one {# Departure Found} other {# Departures Found} }",
+  "operated_by": "Operated By",
+  "stops": "{count, plural, one {# stop} other {# stops}}",
+  "thanks": "Thank you",
+  "thanks_message": "Thank you so much! I hope you like it. I look forward to a positive response. :D"
 }

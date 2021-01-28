@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import useInterval from 'use-interval'
-import { FormattedMessage } from 'react-intl'
-import { Box } from 'grommet'
+import { IntlText } from '../Intl/IntlText'
 import { FormSearch } from 'grommet-icons'
 import styled from 'styled-components'
 
@@ -9,7 +8,7 @@ import { LocationFormContainer, LocationFormBox } from './LocationFormContainer'
 import LocationInput from '../LocationInput/LocationInput'
 import LocationSwitch from '../LocationSwitch/LocationSwitch'
 import DateInput from '../DateInput/DateInput'
-import { LocationDomain } from '../../domain/location'
+import { CityDomain } from '../../domain/city'
 import { DateDomain } from '../../domain/language'
 import { useSearch } from '../../store/search/hooks'
 import { useDepartures } from '../../store/departures/hooks'
@@ -67,18 +66,18 @@ const LocationForm = () => {
     isDeparturesSearchIncomplete ? 3000 : null
   )
 
-  const locationsSuggestions = LocationDomain.getNames()
+  const locationsSuggestions = CityDomain.getNames()
   return (
     <LocationFormContainer>
       <LocationFormBox direction="row" wrap={true}>
         <LocationInput
           formField={{
-            label: <FormattedMessage id="origin" />,
+            label: <IntlText id="origin" />,
           }}
           textInput={{
             name: 'origin',
             value: getOrigin.name,
-            placeholder: <FormattedMessage id="select.origin" />,
+            placeholder: <IntlText id="select.origin" />,
             suggestions: locationsSuggestions,
             onChange: (event) =>
               setPlace({ field: 'origin', location: event.target.value }),
@@ -91,12 +90,12 @@ const LocationForm = () => {
         <LocationSwitch onClick={() => switchPlaces()} />
         <LocationInput
           formField={{
-            label: <FormattedMessage id="destination" />,
+            label: <IntlText id="destination" />,
           }}
           textInput={{
             name: 'destination',
             value: getDestination.name,
-            placeholder: <FormattedMessage id="select.destination" />,
+            placeholder: <IntlText id="select.destination" />,
             suggestions: locationsSuggestions,
             onChange: (event) =>
               setPlace({ field: 'destination', location: event.target.value }),
