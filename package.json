@@ -1,11 +1,15 @@
 {
   "name": "coding-challenge-frontend-b",
+  "author": {
+    "name": "Abner Soares Alves Junior",
+    "email": "abnersajr@gmail.com"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "next start",
     "test": "jest",
     "test:watch": "jest --watch",
     "cy:open": "cypress open",
