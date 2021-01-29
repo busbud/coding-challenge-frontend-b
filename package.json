@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port $PORT",
     "test": "jest",
     "test:watch": "jest --watch",
     "cy:open": "cypress open",
