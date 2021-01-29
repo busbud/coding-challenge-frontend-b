@@ -15,6 +15,7 @@ const DeparturesListContainer = () => {
     isDeparturesSearchComplete,
   } = useDepartures()
   const departuresFormatted = DeparturesDomain.responseToList(getDepartures)
+  console.log(departuresFormatted)
   const departuresComponent = departuresFormatted.map((departure) => (
     <DepartureListItem key={departure.id} departure={departure} />
   ))
