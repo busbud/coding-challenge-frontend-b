@@ -68,7 +68,7 @@ const LocationForm = () => {
 
   const locationsSuggestions = CityDomain.getNames()
   return (
-    <LocationFormContainer>
+    <LocationFormContainer data-testid="LOCATION.CONTAINER">
       <LocationFormBox direction="row" wrap={true}>
         <LocationInput
           formField={{

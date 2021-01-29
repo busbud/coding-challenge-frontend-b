@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { formatISO } from 'date-fns'
 
 import { DateDomain, LanguageDomain } from '../../domain/language'
 import { CurrencyDomain } from '../../domain/currency'

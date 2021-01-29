@@ -35,12 +35,13 @@ export const ADULT = 'adult'
 export const SENIOR = 'senior'
 export const SENIOR_AGES = 'senior_ages'
 export const CHILD_AGES = 'child_ages'
+export const MAX_PASSENGERS = 5
 
 export type PassengerKeys = typeof CHILD | typeof ADULT | typeof SENIOR
 export type PassengerAgeKeys = typeof CHILD_AGES | typeof SENIOR_AGES
 
 export const hasMaxPassengers = (count: number) => {
-  return count === 5
+  return count === MAX_PASSENGERS
 }
 
 export class Search {

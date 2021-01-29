@@ -9,8 +9,8 @@ import { DeparturesDomain } from '../../domain/search'
 import DepartureListDuration from './DepartureListDuration'
 import DepartureListStep from './DepartureListStep'
 import DepartureListStops from './DepartureListStops'
-import { DepartureDomain } from '../../domain/departure'
 import { useCurrency } from '../../store/currency/hooks'
+import { CurrencyDomain } from '../../domain/currency'
 
 const Container = styled(Box)`
   background: #fff;
@@ -59,7 +59,7 @@ const DepartureListItem = ({
         </Box>
         <Box>
           <Text>
-            {DepartureDomain.formatPrice({
+            {CurrencyDomain.formatPrice({
               locale: locale!,
               value: departure.price_total,
               currency: currency.value,

@@ -14,18 +14,3 @@ export type Departure = {
 export type Prices = {
   total: number
 }
-
-export const formatPrice = ({
-  locale,
-  value,
-  currency,
-}: {
-  locale: string
-  value: number
-  currency: string
-}) =>
-  Intl.NumberFormat(locale, { style: 'currency', currency }).format(
-    centsToFloat(value)
-  )
-
-export const centsToFloat = (value: number) => value / 100

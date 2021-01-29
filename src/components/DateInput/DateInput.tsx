@@ -5,7 +5,7 @@ import { FormField, DateInput as Input, DateInputProps } from 'grommet'
 import { DateDomain, LanguageDomain } from '../../domain/language'
 
 type Props = {
-  value: string
+  value?: string
   onChange: DateInputProps['onChange']
 }
 const DateInput = (props: Props) => {
@@ -21,7 +21,7 @@ const DateInput = (props: Props) => {
       bounds: [DateDomain.todayString(), '2025-01-01'],
     },
     name: 'date',
-    defaultValue: DateDomain.todayString(),
+    defaultValue: props.value || DateDomain.todayString(),
   }
 
   return (

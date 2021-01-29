@@ -5,3 +5,5 @@ jest.mock('next/router', () => ({
     locale: 'en',
   }),
 }))
+
+window.scrollTo = jest.fn()

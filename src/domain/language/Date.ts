@@ -1,4 +1,4 @@
-import { format, formatISO, startOfToday } from 'date-fns'
+import { format, formatISO } from 'date-fns'
 import { LanguageDomain } from '.'
 
 export const localeDateMask = (locale: LanguageDomain.Language) => {

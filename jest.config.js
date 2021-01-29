@@ -1,4 +1,5 @@
 module.exports = {
+  collectCoverage: true,
   testEnvironment: 'jsdom',
   preset: 'ts-jest',
   testMatch: ['**/*.test.(ts?(x)|js)'],
@@ -20,4 +21,5 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  globalSetup: './jest.global.js',
 }

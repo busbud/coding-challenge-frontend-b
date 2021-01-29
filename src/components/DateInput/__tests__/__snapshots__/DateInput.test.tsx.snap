@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateInput matchs the snapshot 1`] = `
+<input
+  autocomplete="off"
+  class="StyledMaskedInput-sc-99vkfa-0 jLezbT"
+  data-testid="INPUT.DATE"
+  name="date"
+  placeholder="MM/dd/yyyy"
+  readonly=""
+  value="10/22/2022"
+/>
+`;

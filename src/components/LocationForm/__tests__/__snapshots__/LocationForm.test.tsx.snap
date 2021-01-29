@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationForm renders correct 1`] = `
+<div
+  class="sc-bdfBwQ eNKbnG"
+  data-testid="LOCATION.CONTAINER"
+>
+  <div
+    class="StyledBox-sc-13pk1d4-0 gzJnOw sc-gsTCUz gMThGG"
+  >
+    <div
+      class="StyledBox-sc-13pk1d4-0 bGTiyL FormField__FormFieldBox-m9hood-0 jGEMXj"
+    >
+      <label
+        class="StyledText-sc-1sadyjn-0 jSBJfW"
+      >
+        Origin
+      </label>
+      <div
+        class="StyledBox-sc-13pk1d4-0 dYebPD FormField__FormFieldContentBox-m9hood-1"
+      >
+        <div
+          class="StyledTextInput__StyledTextInputContainer-sc-1x30a0s-1 dpaJQp"
+        >
+          <input
+            autocomplete="off"
+            class="StyledTextInput-sc-1x30a0s-0 kgYyVh"
+            data-testid="INPUT.ORIGIN"
+            name="origin"
+            readonly=""
+            value="Quebec"
+          />
+        </div>
+      </div>
+    </div>
+    <button
+      class="StyledButton-sc-323bzc-0 ebqXLG sc-dlfnbm cpUHiu"
+      data-testid="PLACE_SWITCH"
+      type="button"
+    >
+      <svg
+        aria-label="Transaction"
+        class="StyledIcon-ofa7kd-0 dEeaTZ"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M2,7 L20,7 M16,2 L21,7 L16,12 M22,17 L4,17 M8,12 L3,17 L8,22"
+          fill="none"
+          stroke="#000"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+    <div
+      class="StyledBox-sc-13pk1d4-0 bGTiyL FormField__FormFieldBox-m9hood-0 jGEMXj"
+    >
+      <label
+        class="StyledText-sc-1sadyjn-0 jSBJfW"
+      >
+        Destination
+      </label>
+      <div
+        class="StyledBox-sc-13pk1d4-0 dYebPD FormField__FormFieldContentBox-m9hood-1"
+      >
+        <div
+          class="StyledTextInput__StyledTextInputContainer-sc-1x30a0s-1 dpaJQp"
+        >
+          <input
+            autocomplete="off"
+            class="StyledTextInput-sc-1x30a0s-0 kgYyVh"
+            data-testid="INPUT.DESTINATION"
+            name="destination"
+            readonly=""
+            value="Montreal"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="StyledBox-sc-13pk1d4-0 gwCBYn sc-iqHYGH eLhfkV"
+    >
+      <div
+        class="StyledBox-sc-13pk1d4-0 jiuZyo FormField__FormFieldBox-m9hood-0 jGEMXj"
+      >
+        <label
+          class="StyledText-sc-1sadyjn-0 jSBJfW"
+        >
+          Date
+        </label>
+        <div
+          class="StyledBox-sc-13pk1d4-0 dYebPD FormField__FormFieldContentBox-m9hood-1"
+        >
+          <div
+            class="StyledMaskedInput__StyledMaskedInputContainer-sc-99vkfa-1 dOerlP"
+          >
+            <div
+              class="StyledMaskedInput__StyledIcon-sc-99vkfa-2 wgxqL"
+            >
+              <svg
+                aria-label="Calendar"
+                class="StyledIcon-ofa7kd-0 ebVQeN"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M2,5 L22,5 L22,22 L2,22 L2,5 Z M18,5 L18,1 M6,5 L6,1 M2,10 L22,10"
+                  fill="none"
+                  stroke="#000"
+                  stroke-width="2"
+                />
+              </svg>
+            </div>
+            <input
+              autocomplete="off"
+              class="StyledMaskedInput-sc-99vkfa-0 jLezbT"
+              data-testid="INPUT.DATE"
+              name="date"
+              placeholder="MM/dd/yyyy"
+              readonly=""
+              value="10/22/2022"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="StyledBox-sc-13pk1d4-0 bGTiyL FormField__FormFieldBox-m9hood-0 jGEMXj"
+        data-testid="PASSENGER.TEXT"
+      >
+        <label
+          class="StyledText-sc-1sadyjn-0 jSBJfW"
+        >
+          Passengers
+        </label>
+        <div
+          class="StyledBox-sc-13pk1d4-0 dYebPD FormField__FormFieldContentBox-m9hood-1"
+        >
+          <button
+            aria-label="Open Drop"
+            class="StyledButton-sc-323bzc-0 hkpJCj Select__StyledSelectDropButton-sc-17idtfo-1 eYoNBZ"
+            type="button"
+          >
+            <div
+              class="StyledBox-sc-13pk1d4-0 jmuHez"
+            >
+              <div
+                class="StyledBox-sc-13pk1d4-0 iAryDB"
+              >
+                <div
+                  class="sc-kEjbxe kgPgIK"
+                >
+                  1 passenger
+                </div>
+              </div>
+              <div
+                class="StyledBox-sc-13pk1d4-0 eA-DBEo"
+                style="min-width: auto;"
+              >
+                <svg
+                  aria-label="FormDown"
+                  class="StyledIcon-ofa7kd-0 kKTTyN"
+                  viewBox="0 0 24 24"
+                >
+                  <polyline
+                    fill="none"
+                    points="18 9 12 15 6 9"
+                    stroke="#000"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <button
+      class="sc-crrsfI kppKVf"
+      data-testid="SEARCH.BUTTON"
+    >
+      <span
+        class="sc-dQppl cmRHMh"
+      >
+        <svg
+          aria-label="FormSearch"
+          class="StyledIcon-ofa7kd-0 hXPYKN"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M13.8,13.8 L18,18 L13.8,13.8 Z M10.5,15 C12.9852814,15 15,12.9852814 15,10.5 C15,8.01471863 12.9852814,6 10.5,6 C8.01471863,6 6,8.01471863 6,10.5 C6,12.9852814 8.01471863,15 10.5,15 Z"
+            fill="none"
+            stroke="#000"
+            stroke-width="2"
+          />
+        </svg>
+      </span>
+      Search
+    </button>
+  </div>
+</div>
+`;

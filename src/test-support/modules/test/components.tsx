@@ -22,7 +22,8 @@ type Props = {
 }
 
 type CustomOptions = {
-  initialState: PreloadedState<State>
+  initialState?: PreloadedState<State>
+  container?: HTMLElement
 }
 
 export const render = (
@@ -33,7 +34,7 @@ export const render = (
 
   const AllProviders = ({ children }: Props) => (
     <Provider store={store}>
-      <Grommet theme={grommetTheme as any}>
+      <Grommet data-testid="GROMMET.WRAPPER" theme={grommetTheme as any}>
         <ThemeProvider theme={styledTheme}>
           <IntlProvider locale="en-US" messages={defaultLocaleMessages}>
             <>{children}</>
