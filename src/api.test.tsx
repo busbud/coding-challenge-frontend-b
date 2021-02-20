@@ -64,6 +64,7 @@ describe("getDepartures", () => {
     );
     const [, next] = await getDepartures();
     expect(next).toEqual({
+      departureDate: getFestivalStartDate(),
       poll: true,
       index: fakeResponse.departures.length,
     });
@@ -100,6 +101,23 @@ describe("getDepartures", () => {
     expect(next?.index).toEqual(unfinishedResponse.departures.length);
     const [, nextParams] = await getDepartures(next);
     expect(nextParams?.index).toEqual(2 * unfinishedResponse.departures.length);
+  });
+
+  it("should add index as query param", async () => {
+    const unfinishedResponse: ApiResponse = {
+      ...fakeResponse,
+      complete: false,
+    };
+    server.use(
+      rest.get("*", (req, res, ctx) => {
+        return res(ctx.json(unfinishedResponse));
+      })
+    );
+    const [, next] = await getDepartures();
+    const mockFetch = jest.spyOn(global, "fetch");
+    await getDepartures(next);
+    expect(typeof next?.index).toEqual("number");
+    expect(mockFetch.mock.calls[0][0]).toMatch(`index=${next?.index}`);
   });
 
   it("should return undefined next params if complete", async () => {

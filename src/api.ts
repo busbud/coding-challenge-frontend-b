@@ -12,11 +12,16 @@ export function getFestivalStartDate() {
 }
 
 type getDeparturesProps = {
+  departureDate: string;
   poll?: boolean;
   index?: number;
 };
 export async function getDepartures(
-  args: getDeparturesProps = { poll: false, index: 0 }
+  { departureDate, poll, ...queryParamObj }: getDeparturesProps = {
+    departureDate: getFestivalStartDate(),
+    poll: false,
+    index: 0,
+  }
 ): Promise<[ApiResponse, getDeparturesProps | undefined]> {
   const token = process.env.REACT_APP_API_TOKEN;
   if (!token) {
@@ -28,14 +33,17 @@ export async function getDepartures(
     throw new Error("API Endpoint not set");
   }
 
-  const departureDate = getFestivalStartDate();
   const origin = cities.quebec;
   const destination = cities.montreal;
   const pathParams = [origin, destination, departureDate];
-  if (args.poll) {
+  if (poll) {
     pathParams.push("poll");
   }
-  const url = `${endpoint}${pathParams.join("/")}`;
+  const searchParams = new URLSearchParams();
+  for (const [key, value] of Object.entries(queryParamObj)) {
+    searchParams.append(key, encodeURIComponent(value));
+  }
+  const url = `${endpoint}${pathParams.join("/")}?${searchParams.toString()}`;
   const response = await fetch(url, {
     headers: {
       Accept:
@@ -47,8 +55,9 @@ export async function getDepartures(
   let nextParams: getDeparturesProps | undefined;
   if (!data.complete) {
     nextParams = {
+      departureDate,
       poll: true,
-      index: (args.index ?? 0) + data.departures.length,
+      index: (queryParamObj.index ?? 0) + data.departures.length,
     };
   }
   return [data, nextParams];
