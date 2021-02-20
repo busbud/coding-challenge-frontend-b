@@ -11,18 +11,19 @@ export function getFestivalStartDate() {
   return departureDate;
 }
 
-type getDeparturesProps = {
+export type getDepartureParams = {
   departureDate: string;
   poll?: boolean;
   index?: number;
 };
+
 export async function getDepartures(
-  { departureDate, poll, ...queryParamObj }: getDeparturesProps = {
+  { departureDate, poll, ...queryParamObj }: getDepartureParams = {
     departureDate: getFestivalStartDate(),
     poll: false,
     index: 0,
   }
-): Promise<[ApiResponse, getDeparturesProps | undefined]> {
+): Promise<[ApiResponse, getDepartureParams | undefined]> {
   const token = process.env.REACT_APP_API_TOKEN;
   if (!token) {
     throw new Error("API Token not set");
@@ -52,7 +53,7 @@ export async function getDepartures(
     },
   });
   const data: ApiResponse = await response.json();
-  let nextParams: getDeparturesProps | undefined;
+  let nextParams: getDepartureParams | undefined = undefined;
   if (!data.complete) {
     nextParams = {
       departureDate,
