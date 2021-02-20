@@ -8,18 +8,34 @@
   box-shadow: var(--box-shadow);
 }
 
+.departure .section {
+  display: grid;
+  gap: 0.25rem;
+}
+
 .departure .label {
   font-size: small;
+  white-space: nowrap;
 }
 
 .departure .value {
   font-weight: 700;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-@media (min-width: 780px) {
+@media (min-width: 800px) {
   .departure {
-    grid-template-columns: auto 100px auto 100px auto 1fr;
-    align-items: center;
+    grid-template-columns: 1fr repeat(2, 180px) 100px;
     justify-content: space-between;
+  }
+
+  .departure .section {
+    gap: 0.5rem;
+    justify-content: start;
+    grid-auto-flow: column;
+    align-items: center;
   }
 }
