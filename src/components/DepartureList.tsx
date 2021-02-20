@@ -1,7 +1,7 @@
-import { format, parseISO } from "date-fns";
 import { AnimatePresence, motion } from "framer-motion";
 import { ReactNode } from "react";
 import { Departure as DepartureType } from "../types";
+import { formatDate } from "../utils";
 import Departure from "./Departure";
 import "./DepartureList.css";
 
@@ -70,8 +70,4 @@ export function AnimatedChild({
       {children}
     </motion.div>
   ) : null;
-}
-
-function formatDate(dateString: string) {
-  return format(parseISO(dateString), "EEEE, MMMM do y");
 }

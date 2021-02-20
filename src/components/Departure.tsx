@@ -1,13 +1,9 @@
 import { Departure as DepartureType } from "../types";
 import "./Departure.css";
-import { format, parseISO } from "date-fns";
 import { useContext, useEffect, useState } from "react";
 import { LocationContext } from "./Locations";
 import { Location } from "../types";
-
-function formatTime(dateString: string) {
-  return format(parseISO(dateString), "p");
-}
+import { formatTime } from "../utils";
 
 function useLocationName(departure: DepartureType) {
   const locations = useContext(LocationContext);
