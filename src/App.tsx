@@ -1,10 +1,14 @@
+import { AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { getDepartureParams, getDepartures, getFestivalStartDate } from "./api";
 import "./App.css";
-import { Departure } from "./types";
+import DepartureList, { AnimatedChild } from "./components/DepartureList";
+import Loading from "./components/Loading";
+import { Departure as DepartureType } from "./types";
 const festivalStartDate = getFestivalStartDate();
 
 type AppState = {
+  hasSearched: boolean;
   shouldFetch: boolean;
   isLoading: boolean;
   isFinished: boolean;
@@ -13,6 +17,7 @@ type AppState = {
 };
 
 const initialAppState: AppState = {
+  hasSearched: false,
   shouldFetch: false,
   isLoading: false,
   isFinished: false,
@@ -22,7 +27,7 @@ const initialAppState: AppState = {
 
 function App() {
   const [
-    { shouldFetch, isLoading, isFinished, isError, resultDate },
+    { hasSearched, shouldFetch, isLoading, isFinished, isError, resultDate },
     update,
   ] = useReducer(
     (current: AppState, next: Partial<AppState>) => ({
@@ -32,7 +37,7 @@ function App() {
     initialAppState
   );
   const nextParams = useRef<undefined | getDepartureParams>();
-  const [departures, setDepartures] = useState<Departure[]>([]);
+  const [departures, setDepartures] = useState<DepartureType[]>([]);
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
@@ -40,7 +45,13 @@ function App() {
     const departureDate = data.get("departureDate");
     if (typeof departureDate === "string") {
       nextParams.current = { departureDate };
-      update({ shouldFetch: true, isLoading: true, isFinished: false });
+      update({
+        shouldFetch: true,
+        isLoading: true,
+        isFinished: false,
+        hasSearched: true,
+        isError: false,
+      });
     }
   }, []);
 
@@ -80,40 +91,56 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Osheaga Festival 2021</h1>
-      <p>Headed to Osheaga this year? Let us help you find your way there.</p>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="departureDate">Departure Date</label>
-        <input
-          type="date"
-          id="departureDate"
-          name="departureDate"
-          defaultValue={festivalStartDate}
-          onChange={(e) => {
-            nextParams.current = undefined;
-            update({ isLoading: false, isFinished: false });
-          }}
-        />
-        <button
-          type="submit"
-          disabled={isLoading || isFinished}
-          aria-label="Search"
-        >
-          Search
-        </button>
-      </form>
+      <header className={!hasSearched ? "splash" : ""}>
+        <div className="container">
+          <h1>Osheaga Festival 2021</h1>
+          <div className="search">
+            <p>
+              Headed to Osheaga this year?
+              <br />
+              Let us help you find your way there.
+            </p>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="departureDate">Departure Date</label>
+              <input
+                type="date"
+                id="departureDate"
+                name="departureDate"
+                defaultValue={festivalStartDate}
+                onChange={(e) => {
+                  nextParams.current = undefined;
+                  update({ isLoading: false, isFinished: false });
+                }}
+              />
+              <button
+                type="submit"
+                disabled={isLoading || isFinished}
+                aria-label="Search"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </header>
       <div className="results">
-        {isLoading && <p>Loading...</p>}
-        {!!departures.length && resultDate && <h2>Results for {resultDate}</h2>}
-        {!departures.length && isFinished && <p>No Departures Found</p>}
-        {isError && (
-          <p>Sorry, an error occurred. Please try searching again.</p>
-        )}
-        <ul>
-          {departures.map((departure) => (
-            <li key={departure.id}>{departure.id}</li>
-          ))}
-        </ul>
+        <div className="container">
+          <AnimatePresence exitBeforeEnter={true}>
+            <AnimatedChild key="departures-list" showing={!!departures.length}>
+              <DepartureList departures={departures} resultDate={resultDate} />
+            </AnimatedChild>
+            <AnimatedChild
+              key="no-departures"
+              showing={!departures.length && isFinished}
+            >
+              No Departures Found
+            </AnimatedChild>
+            <AnimatedChild key="error" showing={isError}>
+              Sorry, an error occurred. Please try searching again.
+            </AnimatedChild>
+          </AnimatePresence>
+          {isLoading && <Loading />}
+        </div>
       </div>
     </div>
   );

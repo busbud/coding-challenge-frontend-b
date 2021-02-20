@@ -1,0 +1,25 @@
+.departure {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: white;
+  color: black;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.departure .label {
+  font-size: small;
+}
+
+.departure .value {
+  font-weight: 700;
+}
+
+@media (min-width: 780px) {
+  .departure {
+    grid-template-columns: auto 100px auto 100px auto 1fr;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
