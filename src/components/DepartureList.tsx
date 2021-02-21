@@ -1,5 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { ReactNode } from "react";
+import { motion } from "framer-motion";
 import { Departure as DepartureType } from "../types";
 import { formatDate } from "../utils";
 import Departure from "./Departure";
@@ -19,7 +18,7 @@ const container = {
 };
 
 const listItem = {
-  hidden: { x: -5, opacity: 0 },
+  hidden: { x: -10, opacity: 0 },
   show: { x: 0, opacity: 1 },
 };
 
@@ -35,39 +34,18 @@ export default function DepartureList({
       <p className="results-title" key="title">
         Showing Results for <strong>{formatDate(resultDate)}</strong>
       </p>
-      <AnimatePresence>
-        <motion.ul
-          initial="hidden"
-          animate="show"
-          exit="hidden"
-          variants={container}
-        >
-          {departures.map((departure) => (
-            <motion.div key={departure.id} variants={listItem}>
-              <Departure {...departure} />
-            </motion.div>
-          ))}
-        </motion.ul>
-      </AnimatePresence>
+      <motion.ul
+        initial="hidden"
+        animate="show"
+        exit="hidden"
+        variants={container}
+      >
+        {departures.map((departure) => (
+          <motion.div key={departure.id} variants={listItem}>
+            <Departure {...departure} />
+          </motion.div>
+        ))}
+      </motion.ul>
     </div>
   );
-}
-
-export function AnimatedChild({
-  showing,
-  children,
-}: {
-  showing: boolean;
-  children: ReactNode;
-}) {
-  return showing ? (
-    <motion.div
-      initial="hidden"
-      animate="show"
-      exit="hidden"
-      variants={listItem}
-    >
-      {children}
-    </motion.div>
-  ) : null;
 }

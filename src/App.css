@@ -116,3 +116,7 @@ form {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+
+.results-title {
+  font-size: 1.25rem;
+}

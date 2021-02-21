@@ -1,35 +1,37 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import "./App.css";
 import { getDepartureParams, getDepartures, getFestivalStartDate } from "./api";
 import { Departure as DepartureType, Location } from "./types";
-import DepartureList, { AnimatedChild } from "./components/DepartureList";
+import DepartureList from "./components/DepartureList";
 import Loading from "./components/Loading";
 import Locations from "./components/Locations";
+import NoDepartures from "./components/NoDepartures";
+import { wait } from "./utils";
 
 const festivalStartDate = getFestivalStartDate();
 
 type AppState = {
-  hasSearched: boolean;
-  shouldFetch: boolean;
-  isLoading: boolean;
-  isFinished: boolean;
+  splashHidden: boolean;
+  isPolling: boolean;
   isError: boolean;
   resultDate: string;
+  canSearch: boolean;
 };
 
 const initialAppState: AppState = {
-  hasSearched: false,
-  shouldFetch: false,
-  isLoading: false,
-  isFinished: false,
+  splashHidden: false,
+  isPolling: false,
   resultDate: "",
   isError: false,
+  canSearch: true,
 };
+
+const throttle = 3000;
 
 function App() {
   const [
-    { hasSearched, shouldFetch, isLoading, isFinished, isError, resultDate },
+    { splashHidden, isPolling, canSearch, isError, resultDate },
     update,
   ] = useReducer(
     (current: AppState, next: Partial<AppState>) => ({
@@ -49,10 +51,9 @@ function App() {
     if (typeof departureDate === "string") {
       nextParams.current = { departureDate };
       update({
-        shouldFetch: true,
-        isLoading: true,
-        isFinished: false,
-        hasSearched: true,
+        splashHidden: true,
+        isPolling: true,
+        canSearch: false,
         isError: false,
       });
     }
@@ -65,40 +66,37 @@ function App() {
           const [data, next] = await getDepartures(nextParams.current);
           setDepartures((departures) => [...departures, ...data.departures]);
           setLocations((locations) => [...locations, ...data.locations]);
+
           nextParams.current = next;
-          if (!next) {
-            update({ isLoading: false, isFinished: true });
+          if (!nextParams.current) {
+            update({ isPolling: false });
           }
         } catch {
-          update({ isLoading: false, isError: true });
+          update({ isPolling: false, isError: true, resultDate: undefined });
           setDepartures([]);
           setLocations([]);
         }
       }
 
-      if (!shouldFetch || !nextParams.current) {
+      if (!isPolling || !nextParams.current) {
         return;
       }
 
-      update({
-        shouldFetch: false,
-        resultDate: nextParams.current.departureDate,
-      });
+      update({ resultDate: nextParams.current.departureDate });
       setDepartures([]);
       setLocations([]);
-
       while (nextParams.current) {
-        await Promise.all([runRequest(), throttle()]);
+        await Promise.all([runRequest(), wait(throttle)]);
       }
     }
 
     startPolling();
-  }, [shouldFetch]);
+  }, [isPolling]);
 
   return (
     <Locations value={locations}>
       <div className="App">
-        <header className={!hasSearched ? "splash" : ""}>
+        <header className={!splashHidden ? "splash" : ""}>
           <div className="container">
             <h1>Osheaga Festival 2021</h1>
             <div className="search">
@@ -114,16 +112,9 @@ function App() {
                   id="departureDate"
                   name="departureDate"
                   defaultValue={festivalStartDate}
-                  onChange={(e) => {
-                    nextParams.current = undefined;
-                    update({ isLoading: false, isFinished: false });
-                  }}
+                  onChange={(e) => update({ canSearch: true })}
                 />
-                <button
-                  type="submit"
-                  disabled={isLoading || isFinished}
-                  aria-label="Search"
-                >
+                <button type="submit" disabled={!canSearch} aria-label="Search">
                   Search
                 </button>
               </form>
@@ -131,28 +122,57 @@ function App() {
           </div>
         </header>
         <div className="results">
+          {isPolling && <Loading />}
           <div className="container">
             <AnimatePresence exitBeforeEnter={true}>
-              <AnimatedChild
-                key="departures-list"
-                showing={!!departures.length}
-              >
-                <DepartureList
-                  departures={departures}
-                  resultDate={resultDate}
-                />
-              </AnimatedChild>
-              <AnimatedChild
-                key="no-departures"
-                showing={!departures.length && isFinished}
-              >
-                No Departures Found
-              </AnimatedChild>
-              <AnimatedChild key="error" showing={isError}>
-                Sorry, an error occurred. Please try searching again.
-              </AnimatedChild>
+              {!departures.length && !isPolling && !!resultDate && (
+                <motion.div
+                  key="no-departures"
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    show: { opacity: 1 },
+                  }}
+                >
+                  <NoDepartures resultDate={resultDate} />
+                </motion.div>
+              )}
+              {isError && (
+                <motion.div
+                  key="no-departures"
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    show: { opacity: 1 },
+                  }}
+                >
+                  <p className="results-title">
+                    Sorry, an error occurred. Please try searching again.
+                  </p>
+                </motion.div>
+              )}
+              {!!resultDate && !!departures.length && (
+                <motion.div
+                  key="no-departures"
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    show: { opacity: 1 },
+                  }}
+                >
+                  <DepartureList
+                    departures={departures}
+                    resultDate={resultDate}
+                  />
+                </motion.div>
+              )}
             </AnimatePresence>
-            {isLoading && <Loading />}
           </div>
         </div>
       </div>
@@ -161,8 +181,3 @@ function App() {
 }
 
 export default App;
-
-const THROTTLE_TIME = 3000;
-function throttle() {
-  return new Promise((resolve) => setTimeout(resolve, THROTTLE_TIME));
-}

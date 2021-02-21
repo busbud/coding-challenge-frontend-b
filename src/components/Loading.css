@@ -3,3 +3,16 @@
   top: 1rem;
   right: 1rem;
 }
+
+.loading svg circle {
+  animation: spinning 1200ms linear infinite forwards;
+}
+
+@keyframes spinning {
+  from {
+    stroke-dashoffset: 31.4159265359;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
