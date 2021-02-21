@@ -8,6 +8,7 @@ import Loading from "./components/Loading";
 import Locations from "./components/Locations";
 import NoDepartures from "./components/NoDepartures";
 import { wait } from "./utils";
+import ErrorPage from "./components/ErrorPage";
 
 const festivalStartDate = getFestivalStartDate();
 
@@ -150,9 +151,7 @@ function App() {
                     show: { opacity: 1 },
                   }}
                 >
-                  <p className="results-title">
-                    Sorry, an error occurred. Please try searching again.
-                  </p>
+                  <ErrorPage />
                 </motion.div>
               )}
               {!!resultDate && !!departures.length && (
