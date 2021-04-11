@@ -28,3 +28,6 @@ node_modules
 
 # next.js build output
 .next
+
+# add .env.local to hide ENV variables
+.env.local
