@@ -1,4 +1,4 @@
-import { createContext, Dispatch, useReducer } from 'react'
+import { createContext, Dispatch, useContext } from 'react'
 import { ICity, ILocation, IXDeparture } from '../types'
 
 export type StateEntry<T> = { [id:string]: T }
@@ -15,6 +15,8 @@ export interface IAppState {
   departures: StateEntry<IXDeparture>,
   pollCompleted: boolean
 }
+
+export type AppContextType = [IAppState, Dispatch<IAction>]
 
 export const initialState: IAppState = {
   cities: {},
@@ -59,4 +61,35 @@ export function appReducer(state: IAppState, action: IAction): IAppState {
   }
 }
 
-export const AppContext = createContext([initialState, () => {}] as [IAppState, Dispatch<IAction>])
+export function addCity(payload: ICity): IAction {
+  return {
+    type: 'ADD_CITY',
+    payload
+  }
+}
+
+export function addLocation(payload: ILocation): IAction {
+  return {
+    type: 'ADD_LOCATION',
+    payload
+  }
+}
+
+export function addDeparture(payload: IXDeparture): IAction {
+  return {
+    type: 'ADD_DEPARTURE',
+    payload
+  }
+}
+
+export function completePoll(): IAction {
+  return {
+    type: 'COMPLETE_POLL'
+  }
+}
+
+export const AppContext = createContext<AppContextType>([initialState, () => {}])
+
+export function useAppContext():AppContextType {
+  return useContext(AppContext)
+}
