@@ -25,3 +25,10 @@ export function toISO8061(date: Date | string): DateStr {
   throw new Error(`Shouldn't get here (invalid toDateStr provided): ${date}`)
 }
 
+export function getTime(date: string | Date) {
+  const dateObj = typeof date === 'string'
+    ? new Date(date)
+    : date
+
+  return dateObj.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' })
+}

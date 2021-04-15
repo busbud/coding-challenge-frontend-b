@@ -1,4 +1,4 @@
-import { checkValidDateStr, toISO8061 } from './dateHelpers'
+import { checkValidDateStr, toISO8061, getTime } from './dateHelpers'
 
 describe('checkValidDateStr funciton', () => {
   it('should return true if given date string is in YYYY/MM/DD format', () => {
@@ -22,5 +22,15 @@ describe('toISO8061 function', () => {
 
   it('should throw expection if format of input string different than', () => {
     expect(() => toISO8061('worst-date-ever')).toThrowError(/Invalid date/)
+  })
+})
+
+describe('getTime function', () => {
+  it('should accept date as string and return time', () => {
+    expect(getTime('2021-07-30T10:30:00')).toBe('10:30')
+  })
+
+  it('should accept date as Date and return time', () => {
+    expect(getTime(new Date('2021-07-30T10:30:00'))).toBe('10:30')
   })
 })
