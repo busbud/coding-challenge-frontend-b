@@ -15,7 +15,7 @@ export interface IXDeparture {
   id: string,
   origin_location_id: string,
   destination_location_id: string,
-  price: IPrice
+  prices: IPrice
   departure_timezone: string,
   arrival_timezone: string,
   departure_time: Date,
@@ -24,4 +24,5 @@ export interface IXDeparture {
 
 export interface IPrice {
   total: number
+  currency: string
 }
