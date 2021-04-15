@@ -1,10 +1,93 @@
 @import 'normalize';
 
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
 
 body {
+  font-family: system, -apple-system, ".SFNSDisplay-Regular", HelveticaNeue, Arial;
   min-height: 100%;
-  background: linear-gradient(-180deg, #39e4e8, #e88748 90%, #fbc671 97%)
+  background: linear-gradient(-180deg, #39e4e8, #e88748 90%, #fbc671 97%);
+  color: #1E2251;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 3px;
+}
+
+.departure-container {
+  margin: 10px auto;
+  padding: 10px 10px 5px;
+  display: grid;
+  min-width: 322px;
+  background-color: #fff;
+  grid-template-columns: 1.5fr 2fr 1.5fr;
+  grid-template-areas:
+    "departure-info route-sign  arrival-info"
+    "price-info price-info price-info";
+
+  p.time {
+    font-size: 14px;
+  }
+
+  p.city {
+    font-size: 12px;
+    color: #697886;
+  }
+
+  p.location {
+    font-size: 10px;
+    color: #697886;
+  }
+
+  .departure-info {
+    grid-area: departure-info;
+  }
+
+  .route-sign {
+    grid-area: route-sign;
+    position: relative;
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-top: 2px solid #000;
+      border-right: 2px solid #000;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+
+  .arrival-info {
+    grid-area: arrival-info;
+    text-align: right;
+  }
+
+  .price-info {
+    grid-area: price-info;
+    text-align: right;
+    margin-top: 7px;
+    margin-bottom: 0;
+  }
+}
+
+.departure-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 700px;
+
 }

@@ -21,14 +21,26 @@ export default function Depature({ departure }: IProps) {
   const amount = formatToCurrency(departure.prices.total, departure.prices.currency, true)
 
   return (
-    <>
-      <p>departureLocation: {departureLocation.name}</p>
-      <p>arrivalLocation: {arrivalLocation.name}</p>
-      <p>departureTime: {departureTime}</p>
-      <p>arrivalTime: {arrivalTime}</p>
-      <p>departureCity: {departureCity.name}</p>
-      <p>arrivalCity: {arrivalCity.name}</p>
-      <p>amount: {amount}</p>
-    </>
+    <div className="departure-container">
+      <div className="departure-info">
+        <p className="time">{departureTime}</p>
+        <p className="city">{departureCity.name}</p>
+        <p className="location">{departureLocation.name}</p>
+      </div>
+
+      <div className="route-sign">
+        <span className="arrow"></span>
+      </div>
+
+      <div className="arrival-info">
+        <p className="time">{arrivalTime}</p>
+        <p className="city">{arrivalCity.name}</p>
+        <p className="location">{arrivalLocation.name}</p>
+      </div>
+
+      <div className="price-info">
+        <p className="price">{amount}</p>
+      </div>
+    </div>
   )
 }

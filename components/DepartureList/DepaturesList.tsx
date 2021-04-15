@@ -46,8 +46,8 @@ export default function DepatureList(props: IProps) {
   }
 
   return (
-    <>
+    <div className="departure-list-container">
       { Object.keys(state.departures).map(id => <Departure key={id} departure={state.departures[id]} />) }
-    </>
+    </div>
   )
 }
