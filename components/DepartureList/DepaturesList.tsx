@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useAppContext, addLocation, addDeparture, completePoll } from '../../store'
 import { ORIGIN_GEOHASH, DESTINATION_GEOHASH, FESTIVAL_DATE } from '../../utils/constants'
 import { getXDeparturesPoll } from '../../utils/api'
+import Departure from '../Depature'
 
 interface IProps {
   pollCompleted: boolean
@@ -45,8 +46,8 @@ export default function DepatureList(props: IProps) {
   }
 
   return (
-    <ul>
-      { Object.keys(state.departures).map(id => <li key={id}>{id}</li>) }
-    </ul>
+    <>
+      { Object.keys(state.departures).map(id => <Departure key={id} departure={state.departures[id]} />) }
+    </>
   )
 }
