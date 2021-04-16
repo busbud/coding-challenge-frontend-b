@@ -1,9 +1,10 @@
 import { ICity, ILocation, IXDeparture } from '../types'
+import {X_BUSBUD_TOKEN } from './constants'
 
 const BASE_URL = 'https://napi.busbud.com'
 
 const HEADERS = {
-  'X-Busbud-Token': process.env['X-BUSBUD-TOKEN']
+  'X-Busbud-Token': X_BUSBUD_TOKEN
 }
 
 interface IGetXDeparturesURLParams {
