@@ -5,6 +5,7 @@ import { getXDepartures } from '../utils/api'
 import { useAppContext, addCity, addDeparture, addLocation, completePoll } from '../store'
 import { ORIGIN_GEOHASH, DESTINATION_GEOHASH, FESTIVAL_DATE } from '../utils/constants'
 import DepartureList from  '../components/DepartureList'
+import Banner from  '../components/Banner'
 
 export default function HomePage(
   { cities, locations, departures, pollCompleted }: InferGetServerSidePropsType<typeof getStaticProps>
@@ -19,7 +20,10 @@ export default function HomePage(
   }, [])
 
   return (
-    <DepartureList pollCompleted={pollCompleted} />
+    <div className="container">
+      <Banner />
+      <DepartureList pollCompleted={pollCompleted} />
+    </div>
   )
 }
 
