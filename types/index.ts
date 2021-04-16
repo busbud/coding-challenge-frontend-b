@@ -1,3 +1,5 @@
+export type Locale = 'en' | 'fr'
+
 export interface ICity {
   id: string,
   name: string
@@ -21,7 +23,6 @@ export interface IXDeparture {
   departure_time: Date,
   arrival_time: Date
 }
-
 export interface IPrice {
   total: number
   currency: string

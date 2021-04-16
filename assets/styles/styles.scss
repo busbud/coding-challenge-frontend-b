@@ -20,6 +20,31 @@ body {
   color: #1E2251;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #FAF17C;
+  box-shadow: 0 2px 6px rgb(24 15 46 / 12%);
+
+  .logo {
+    margin-left: 20px;
+    font-size: 24px;
+  }
+
+  .locale-links {
+    margin-right: 20px;
+    a {
+      color: #1E2251;
+      font-weight: 800;
+      text-decoration: none;
+    }
+  }
+}
+
 p {
   margin: 0;
   margin-bottom: 3px;
@@ -89,5 +114,6 @@ p {
   flex-wrap: wrap;
   margin: 0 auto;
   max-width: 700px;
-
 }
+
+
