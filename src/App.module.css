@@ -1,0 +1,43 @@
+.container {
+  text-align: center;
+  display: flex;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  height: 100vmax;
+}
+
+.logo {
+  height: 20vmin;
+  pointer-events: none;
+}
+
+.header {
+  width: 80vmax;
+  background-image: url(https://www.osheaga.com/uploads/osheaga/backgrounds/2019bg-6.jpg?v=3eeae9a8f515fe95d9d3fa330d4c66b1);
+  background-color: #282c34;
+  min-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.p {
+  max-width: 40vmin;
+}
+
+.footer {
+  padding: 2vmin;
+  background-color: #39e4e8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.link {
+  color: #61dafb;
+}
