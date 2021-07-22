@@ -1,0 +1,30 @@
+{
+	"name": "busbud",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start -p $PORT",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@material-ui/core": "^4.12.1",
+		"@material-ui/icons": "^4.11.2",
+		"@material-ui/lab": "^4.0.0-alpha.60",
+		"axios": "^0.21.1",
+		"next": "11.0.1",
+		"react": "17.0.2",
+		"react-dom": "17.0.2",
+		"sass": "^1.35.2"
+	},
+	"devDependencies": {
+		"@types/react": "17.0.14",
+		"eslint": "7.30.0",
+		"eslint-config-next": "11.0.1",
+		"typescript": "4.3.5"
+	},
+	"cacheDirectories": [
+		".next/cache"
+	]
+}
