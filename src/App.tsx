@@ -1,19 +1,22 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styles from "./App.module.css";
-import Search from "./pages/Search";
+
+const Search = lazy(() => import("./pages/Search"));
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route path="/search">
-          <Search message={"search"} />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route path="/search">
+            <Search message={"search"} />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Suspense>
     </Router>
   );
 }
@@ -30,8 +33,8 @@ function Home() {
           alt="logo"
         />
         <p className={styles.p}>
-          It will be hot this summer in Montreal. Find one-way tickets from
-          Québec departure schedules for the festival's opening weekend.
+          It will be hot this summer in Montreal. Find one-way tickets for the
+          festival's opening weekend.
         </p>
         <a
           className={styles.link}
@@ -45,7 +48,10 @@ function Home() {
       <footer className={styles.footer}>
         <div>
           <h1>
-            <code>Find a</code> <Link to="/search">ticket</Link>
+            <code>Find a</code>{" "}
+            <Link className={styles.link} to="/search">
+              ticket
+            </Link>
           </h1>
         </div>
       </footer>

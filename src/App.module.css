@@ -7,13 +7,12 @@
 }
 
 .logo {
-  height: 20vmin;
+  background-image: url("./assets/2019bg-6.jpeg");
   pointer-events: none;
 }
 
 .header {
   width: 80vmax;
-  background-image: url(https://www.osheaga.com/uploads/osheaga/backgrounds/2019bg-6.jpg?v=3eeae9a8f515fe95d9d3fa330d4c66b1);
   background-color: #282c34;
   min-width: fit-content;
   display: flex;
@@ -39,5 +38,5 @@
 }
 
 .link {
-  color: #61dafb;
+  color: white;
 }
