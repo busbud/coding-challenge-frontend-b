@@ -1,8 +1,24 @@
 import React from "react";
-// import logo from "./logo.svg";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styles from "./App.module.css";
+import Search from "./pages/Search";
 
 function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/search">
+          <Search message={"search"} />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
+  );
+}
+
+function Home() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -27,9 +43,11 @@ function App() {
         </a>
       </header>
       <footer className={styles.footer}>
-        <h1>
-          <code>Find a</code> ticket.
-        </h1>
+        <div>
+          <h1>
+            <code>Find a</code> <Link to="/search">ticket</Link>
+          </h1>
+        </div>
       </footer>
     </div>
   );
