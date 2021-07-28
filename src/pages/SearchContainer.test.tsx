@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Search from "./Search";
+import SearchContainer from "./SearchContainer";
 
 test("renders search container", () => {
-  render(<Search message="search context" />);
+  render(<SearchContainer message="search context" />);
   const search = screen.getByText(/search context/i);
   expect(search).toBeInTheDocument();
 });

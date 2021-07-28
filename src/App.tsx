@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styles from "./App.module.css";
 
-const Search = lazy(() => import("./pages/Search"));
+const Search = lazy(() => import("./pages/SearchContainer"));
 
 function App() {
   return (
