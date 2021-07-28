@@ -1,8 +1,12 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+
 import styles from "./App.module.css";
 
 const Search = lazy(() => import("./pages/SearchContainer"));
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
@@ -10,7 +14,9 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route path="/search">
-            <Search message={"search"} />
+            <QueryClientProvider client={queryClient}>
+              <Search />
+            </QueryClientProvider>
           </Route>
           <Route path="/">
             <Home />
@@ -20,6 +26,7 @@ function App() {
     </Router>
   );
 }
+
 
 function Home() {
   return (
