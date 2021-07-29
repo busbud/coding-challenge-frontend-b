@@ -6,7 +6,14 @@ import styles from "./App.module.css";
 
 const Search = lazy(() => import("./pages/SearchContainer"));
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 3,
+      suspense: true,
+    },
+  },
+});
 
 function App() {
   return (
@@ -26,7 +33,6 @@ function App() {
     </Router>
   );
 }
-
 
 function Home() {
   return (
