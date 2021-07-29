@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+// TODO map the data
 type Data = {
   description?: string;
 };
@@ -47,14 +48,14 @@ const requestHeaders = {
   "X-Busbud-Token": process.env.BUSBUD_API_TOKEN ?? "",
 };
 
-const origin = geohashData.Québec;
+// TODO put these in corresponding handlers
+const origin = geohashData.Québec; // where do you get geohash values?
 const destination = geohashData.Montreal;
-var iso = new Date().toISOString();
+let iso = new Date().toISOString();
 iso = iso.substring(0, iso.indexOf("T"));
 const outboundDate = iso;
 
 const SearchContainer = () => {
-  // The first commit of Material-UI
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(
     new Date("2021-08-02T21:00:00")
   );
@@ -158,6 +159,7 @@ const SearchContainer = () => {
                 />
               </MuiPickersUtilsProvider>
             </Grid>
+            {/* // TODO display departure cards here */}
           </Grid>
         </div>
         <ReactQueryDevtools initialIsOpen />
