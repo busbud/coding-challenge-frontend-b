@@ -134,7 +134,6 @@ const SearchContainer = () => {
         }
       ).then((res) => res.json()),
     {
-      // Refetch the data every second
       refetchInterval: intervalMs,
     }
   );
@@ -148,10 +147,6 @@ const SearchContainer = () => {
   const classes = useStyles();
 
   const handleChange = () => {};
-
-  // const pureLocs = data?.locations?.map((loc: Loc) => {
-  //   return loc.name || "";
-  // });
 
   useEffect(() => {
     if (data?.ttl && !data.complete) {
