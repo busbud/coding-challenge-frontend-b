@@ -1,5 +1,5 @@
-import SearchView from "../views/Search/search.component";
-import DeparturesView from "../views/Departures/departures.component";
+import SearchView from "../views/Search/search.view";
+import DeparturesView from "../views/Departures/departures.view";
 
 const routes = () => [
   {

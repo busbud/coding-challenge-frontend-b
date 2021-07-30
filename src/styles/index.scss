@@ -2,8 +2,8 @@
 @import "./defaults";
 
 // Views
-@import "../views/Search/search.component";
-@import "../views/Departures/departures.component";
+@import "../views/Search/search.view";
+@import "../views/Departures/departures.view";
 
 // Components
 @import "../components/spinner.component";
