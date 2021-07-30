@@ -1,6 +1,10 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import {
+  MuiThemeProvider,
+  unstable_createMuiStrictModeTheme as createTheme,
+} from "@material-ui/core/styles";
 
 import styles from "./App.module.css";
 
@@ -15,22 +19,34 @@ const queryClient = new QueryClient({
   },
 });
 
+const defaultTheme = createTheme({
+  typography: {
+    fontFamily: `"Changa One", "Helvetica", "Arial", sans-serif`,
+    fontSize: 14,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+  },
+});
+
 function App() {
   return (
-    <Router>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <Route path="/search">
-            <QueryClientProvider client={queryClient}>
-              <Search />
-            </QueryClientProvider>
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </Suspense>
-    </Router>
+    <MuiThemeProvider theme={defaultTheme}>
+      <Router>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route path="/search">
+              <QueryClientProvider client={queryClient}>
+                <Search />
+              </QueryClientProvider>
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Suspense>
+      </Router>
+    </MuiThemeProvider>
   );
 }
 
