@@ -32,7 +32,8 @@ h6 {
   margin: 0;
 }
 
-button {
+button,
+.button {
   background-color: transparent;
   box-shadow: none;
   border: 0;
@@ -41,10 +42,6 @@ button {
   padding: 4px 10px;
   text-align: center;
   transition: 100ms ease-in;
-
-  &.--border {
-    border: 1px solid;
-  }
 
   &:hover,
   &.active {
@@ -56,5 +53,17 @@ button {
   &[disabled] {
     cursor: default;
     pointer-events: none;
+  }
+
+  &-primary {
+    background-color: $base-header-colour;
+    border: 1px solid;
+    color: $white;
+
+    &:hover,
+    &.active {
+      background-color: transparent;
+      color: $black;
+    }
   }
 }

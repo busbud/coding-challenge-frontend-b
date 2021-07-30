@@ -1,0 +1,118 @@
+.search {
+  background: $white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  padding: 20px;
+  width: 800px;
+
+  &-container {
+    display: flex;
+    padding: 10px 0;
+
+    > * {
+      margin: 0 10px 0 0;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    &-input {
+      border: 1px solid rgba($base-header-colour, 0.1);
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    &-locations {
+      display: flex;
+      flex-direction: column;
+
+      &-location {
+        &:first-child {
+          margin: 0 0 10px;
+        }
+
+        span {
+          &:first-child {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    &-date {
+      align-items: center;
+      justify-content: space-evenly;
+
+      span {
+        &:first-child {
+          font-weight: bold;
+        }
+      }
+    }
+
+    &-passengers {
+      display: flex;
+
+      &-passenger-type {
+        align-items: center;
+        display: flex;
+        justify-content: space-evenly;
+
+        span {
+          &:first-child {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .search-button {
+      flex: 1;
+      font-size: $size-24;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .search {
+    width: unset;
+    margin: auto 20px;
+
+    &-container {
+      flex-direction: column;
+
+      > * {
+        margin: unset;
+      }
+
+      &-input {
+        margin: 0 0 10px;
+      }
+
+      &-locations {
+        display: flex;
+        flex-direction: column;
+
+        &-location {
+          &:first-child {
+            margin: unset;
+          }
+        }
+      }
+
+      &-passengers {
+        &-passenger-type {
+          flex: 1;
+        }
+      }
+
+      .search-button {
+        flex: 1;
+        font-size: $size-18;
+      }
+    }
+  }
+}

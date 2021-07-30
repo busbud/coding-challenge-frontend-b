@@ -15,3 +15,7 @@ export const convertPrice = (price) => {
     currency: "USD",
   }).format(price / 100);
 };
+
+export const handleNavClick = (path, history) => () => {
+  history.push(path);
+};

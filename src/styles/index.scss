@@ -1,6 +1,10 @@
 @import "./variables";
 @import "./defaults";
 
+// Views
+@import "../views/Search/search.component";
+@import "../views/Departures/departures.component";
+
 // Components
 @import "../components/spinner.component";
 
@@ -28,140 +32,24 @@
     }
   }
 
-  .departures {
-    margin: 0 auto;
-    padding: 20px;
-
-    &-departure {
-      border: 1px solid rgba($base-header-colour, 0.5);
-      border-radius: 4px 4px 0 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: row;
-      margin: 0 0 10px;
-      width: 800px;
-
-      &-travel-info {
-        display: flex;
-        flex: 1;
-        padding: 10px;
-      }
-
-      &-arrow {
-        align-items: center;
-        display: flex;
-        flex: 1 1;
-        font-size: $size-24;
-        font-weight: bold;
-        flex-basis: 200px;
-        justify-content: center;
-      }
-
-      &-origin,
-      &-destination {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        &-name {
-          font-weight: bold;
-        }
-      }
-
-      &-destination {
-        flex-basis: 200px;
-
-        span {
-          text-align: right;
-        }
-      }
-
-      &-price {
-        align-items: center;
-        background-color: $base-header-colour;
-        color: $white;
-        font-size: $size-24;
-        display: flex;
-        padding: 20px;
-      }
-    }
-
-    &-table {
-      table-layout: fixed;
-      width: 100%;
-
-      thead {
-        th {
-          padding: 4px 8px;
-          text-align: left;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-
-          &.sortableHeader {
-            cursor: pointer;
-
-            &:hover {
-              background-color: rgba($base-header-colour, 0.1);
-            }
-          }
-        }
-      }
-
-      tbody {
-        tr {
-          border-top: 1px solid $border-colour;
-          border-bottom: 1px solid $border-colour;
-
-          &:nth-of-type(odd) {
-            background-color: $table-row;
-          }
-
-          td {
-            padding: 6px 10px;
-            word-break: break-all;
-            width: 100%;
-
-            &.selectedColumn {
-              background-color: $selected-column;
-            }
-          }
-        }
-      }
-    }
+  .body {
+    background-color: $base-background-colour;
+    display: flex;
+    flex-direction: column;
+    font-size: $size-14;
+    height: 100vh;
+    overflow-y: scroll;
   }
-}
 
-@media only screen and (max-width: 800px) {
-  .App {
-    .departures {
-      margin: 0;
+  .footer {
+    background: $base-header-colour;
+    color: $white;
+    display: flex;
 
-      &-departure {
-        flex-direction: column-reverse;
-        width: unset;
-
-        &-destination {
-          margin: 10px 0 0;
-          flex-basis: unset;
-
-          span {
-            text-align: unset;
-          }
-        }
-
-        &-travel-info {
-          flex-direction: column;
-        }
-
-        &-arrow {
-          display: none;
-        }
-
-        &-price {
-          padding: 10px;
-        }
-      }
+    &-container {
+      display: flex;
+      font-size: $size-12;
+      padding: 20px;
     }
   }
 }

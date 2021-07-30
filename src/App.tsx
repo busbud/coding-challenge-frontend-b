@@ -1,58 +1,33 @@
-import { useEffect, useState } from "react";
-import { getDepartures } from "./api/api";
-import Spinner from "./components/spinner.component";
-import { Departures } from "./interfaces/departures.interface";
-import { convertPrice, parseTime } from "./utils/utils";
+import i18next from "i18next";
+import { initReactI18next } from "react-i18next";
+import { Router, Route, Switch } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import routes from "./routes/routes";
+
+import { languages } from "utils/languages";
 
 const App = () => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [pollingActive, setPollingActive] = useState<boolean>(false);
-  const [departuresData, setDeparturesData] = useState<Departures>();
+  //   const { t } = useTranslation();
 
-  const getData = async (isPolling = false) => {
-    const departuresData = await getDepartures(isPolling);
-    let sortedDeparturesResult = departuresData;
-    console.log(departuresData?.complete);
+  // Initialize the History Browser History.
+  const history = createBrowserHistory();
 
-    if (!departuresData?.complete) {
-      executePolling();
-      setPollingActive(true);
-    } else if (pollingActive) {
-      clearInterval(executePolling());
-      setPollingActive(false);
-    }
-
-    sortedDeparturesResult.departures = departuresData?.departures.sort(
-      (a, b) => {
-        return a.departure_time < b.departure_time
-          ? -1
-          : a.departure_time > b.departure_time
-          ? 1
-          : 0;
-      }
-    );
-
-    setDeparturesData(sortedDeparturesResult ?? []);
-    setLoading(false);
+  // Check Local Store Language value.
+  const lang = () => {
+    return localStorage.lang
+      ? localStorage.lang
+      : localStorage.setItem("lang", "en");
   };
 
-  const executePolling = () => {
-    return setTimeout(() => {
-      console.log("poll hit.");
-
-      getData(true);
-    }, 5000);
-  };
-
-  useEffect(() => {
-    setLoading(true);
-
-    getData();
-  }, []);
-
-  useEffect(() => {
-    console.log(departuresData);
-  }, [departuresData]);
+  // Initialze i18next.
+  i18next.use(initReactI18next).init({
+    resources: languages,
+    lng: lang(),
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false,
+    },
+  });
 
   return (
     <div className="App">
@@ -61,61 +36,26 @@ const App = () => {
           <h1>BusBud</h1>
         </div>
       </nav>
-      {loading && <Spinner />}
 
-      {!loading && departuresData?.departures.length > 0 && (
-        <article className="departures">
-          {departuresData?.departures.map((departure, key) => {
-            const {
-              departure_time,
-              arrival_time,
-              prices: { total },
-              trip_stops,
-              origin_location_id,
-              destination_location_id,
-            } = departure;
-
-            const origin = trip_stops.find((stop) => {
-              return stop.location_id === origin_location_id;
-            });
-
-            const destination = trip_stops.find((stop) => {
-              return stop.location_id === destination_location_id;
-            });
-
-            return (
-              <div key={key} className="departures-departure">
-                <div className="departures-departure-travel-info">
-                  <div className="departures-departure-origin">
-                    <span className="departures-departure-origin-name">
-                      {origin.name}
-                    </span>
-                    <span className="departures-departure-origin-time">
-                      {parseTime(departure_time)}
-                    </span>
-                  </div>
-                  <div className="departures-departure-arrow">&#10230;</div>
-                  <div className="departures-departure-destination">
-                    <span className="departures-departure-destination-name">
-                      {destination.name}
-                    </span>
-                    <span className="departures-departure-destination-time">
-                      {parseTime(arrival_time)}
-                    </span>
-                  </div>
-                </div>
-                <div className="departures-departure-price">
-                  {convertPrice(total)}
-                </div>
-              </div>
-            );
-          })}
-        </article>
-      )}
-
-      {!loading && departuresData?.departures.length === 0 && (
-        <div>NO Results.</div>
-      )}
+      <article className="body">
+        <Router history={history}>
+          <Switch>
+            {routes().map((route, key) => (
+              <Route
+                key={key}
+                path={route.path}
+                component={route.component}
+                exact={route.exact}
+              />
+            ))}
+          </Switch>
+        </Router>
+      </article>
+      <footer className="footer">
+        <div className="footer-container">
+          &copy; BusBud {new Date().getFullYear()}
+        </div>
+      </footer>
     </div>
   );
 };
