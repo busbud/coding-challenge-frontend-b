@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { getDepartures } from "../../api/api";
 import Spinner from "../../components/spinner.component";
 import { Departures } from "../../interfaces/departures.interface";
@@ -9,11 +10,21 @@ const DeparturesView = () => {
   const [pollingActive, setPollingActive] = useState<boolean>(false);
   const [departuresData, setDeparturesData] = useState<Departures>();
 
-  const getData = async (isPolling = false) => {
-    const departuresData = await getDepartures(isPolling);
-    let sortedDeparturesResult = departuresData;
-    console.log(departuresData?.complete);
+  const { t } = useTranslation();
 
+  // Collect the Departures Data
+  const getData = async (isPolling = false) => {
+    const departuresData = await getDepartures(
+      isPolling,
+      1,
+      0,
+      0,
+      localStorage.lang,
+      "CAD"
+    );
+    let sortedDeparturesResult = departuresData;
+
+    // If the Departures data is not complete, continue polling it to complete the results call.
     if (!departuresData?.complete) {
       executePolling();
       setPollingActive(true);
@@ -22,6 +33,7 @@ const DeparturesView = () => {
       setPollingActive(false);
     }
 
+    // Sort the results by date/time of departure.
     sortedDeparturesResult.departures = departuresData?.departures.sort(
       (a, b) => {
         return a.departure_time < b.departure_time
@@ -36,10 +48,9 @@ const DeparturesView = () => {
     setLoading(false);
   };
 
+  // Execute polling every five seconds.
   const executePolling = () => {
-    return setTimeout(() => {
-      console.log("poll hit.");
-
+    return setInterval(() => {
       getData(true);
     }, 5000);
   };
@@ -50,10 +61,6 @@ const DeparturesView = () => {
     getData();
   }, []);
 
-  useEffect(() => {
-    console.log(departuresData);
-  }, [departuresData]);
-
   return (
     <>
       {loading && <Spinner />}
@@ -61,8 +68,8 @@ const DeparturesView = () => {
       {!loading && departuresData?.departures.length > 0 && (
         <section className="departures">
           <h3 className="departures-result-title">
-            Results for Québec City, Québec to Montréal, Québec on August 2,
-            2021
+            {t("departures.from")} Québec City, Québec {t("departures.to")}{" "}
+            Montréal, Québec {t("departures.on")} August 2, 2021
           </h3>
           {departuresData?.departures.map((departure, key) => {
             const {
@@ -107,7 +114,9 @@ const DeparturesView = () => {
                   {convertPrice(total)}
                 </div>
                 <div className="departures-departure-select">
-                  <button type="button">Select</button>
+                  <button type="button" title={t("departures.select")}>
+                    {t("departures.select")}
+                  </button>
                 </div>
               </div>
             );

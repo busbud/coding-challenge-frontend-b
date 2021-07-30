@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import https from "https";
+import { encodeQueryData } from "../utils/utils";
 
 const app = express();
 
@@ -13,12 +14,21 @@ app.listen(8000, () => {
   console.log("Express server started!");
 });
 
+// Get Departures data.
 app.use("/api/departures", (queryParams, response) => {
   const poll = queryParams.query?.poll ?? "false";
+  const { adult, child, senior, lang, currency } = queryParams.query;
 
-  let path =
-    "/x-departures/f2m673/f25dvk/2021-08-02?adult=1&child=0&senior=0&lang=en&currency=CAD";
+  // Create the URL Params for the query.
+  let path = `/x-departures/f2m673/f25dvk/2021-08-02?${encodeQueryData({
+    adult,
+    child,
+    senior,
+    lang,
+    currency,
+  })}`;
 
+  // Append the "Poll" parameter if polling needs to continue.
   if (poll === "true") {
     path = `${path}/poll`;
   }
@@ -38,6 +48,7 @@ app.use("/api/departures", (queryParams, response) => {
 
   const chunks = [];
 
+  // Complete the request by appending all the data chunks until they're ready to be returned.
   const req = https.request(options, (res) => {
     res.on("data", (chunk) => {
       chunks.push(chunk);

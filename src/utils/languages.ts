@@ -1,41 +1,43 @@
 export const languages = {
   en: {
     translation: {
-      date: `today is the {{now, intlDate}}`,
-      nav: {
-        scores: "Scores",
-        standings: "Standings",
-        game: "Game",
-        player: "Player",
+      search: {
+        title: "Bus routes",
+        from: "From",
+        to: "To",
+        date: "Date",
+        adults: "Adults",
+        children: "Children",
+        seniors: "Seniors",
+        search: "Search",
       },
-      team: {
-        schedule: {
-          date: "Date",
-          opponent: "Opponent",
-          time: "Time (EST)",
-          result: "Result",
-          record: "Record",
-        },
+      departures: {
+        from: "From",
+        to: "to",
+        on: "on",
+        select: "Select",
+        noResults: "Sorry. There are no results",
       },
     },
   },
-  es: {
+  fr: {
     translation: {
-      date: `today is the {{now, intlDate}}`,
-      nav: {
-        scores: "Resultados",
-        standings: "Clasificación",
-        game: "Partido",
-        player: "Jugador",
+      search: {
+        title: "Lignes de bus",
+        from: "De",
+        to: "À",
+        date: "Date",
+        adults: "Adultes",
+        children: "Enfants",
+        seniors: "Seniors",
+        search: "Recherher",
       },
-      team: {
-        schedule: {
-          Scoresdate: "Fecha",
-          opponent: "Adversaria",
-          time: "Hora (HNE)",
-          result: "Resultado",
-          record: "Record",
-        },
+      departures: {
+        from: "De",
+        to: "à",
+        on: "le",
+        select: "Sélectionner",
+        noResults: "Aucun voyage disponible à la date sélectionnée",
       },
     },
   },
