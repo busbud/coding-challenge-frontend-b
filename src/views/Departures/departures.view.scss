@@ -2,8 +2,15 @@
   margin: 0 auto;
   padding: 20px;
 
-  &-result-title {
+  &-result-title-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
     margin: 0 0 10px;
+  }
+
+  &-result-title {
+    display: flex;
   }
 
   &-departure {

@@ -9,10 +9,10 @@ export const parseTime = (dateToParse) => {
   return timeToParse.format(date);
 };
 
-export const convertPrice = (price) => {
+export const convertPrice = (price, currency = "USD") => {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "USD",
+    currency,
   }).format(price / 100);
 };
 

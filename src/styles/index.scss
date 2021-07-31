@@ -27,6 +27,12 @@
       padding: 0 20px;
       width: 100%;
 
+      &-selectors {
+        display: flex;
+        justify-content: space-between;
+        width: 130px;
+      }
+
       h1 {
         letter-spacing: 1.5px;
       }

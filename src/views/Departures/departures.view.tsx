@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { getDepartures } from "../../api/api";
 import Spinner from "../../components/spinner.component";
 import { Departures } from "../../interfaces/departures.interface";
 import { convertPrice, parseTime } from "../../utils/utils";
+import { BusbudContext } from "../../interfaces/context.interface";
 
 const DeparturesView = () => {
+  const { currencyValue } = useContext(BusbudContext);
   const [loading, setLoading] = useState<boolean>(false);
   const [pollingActive, setPollingActive] = useState<boolean>(false);
   const [departuresData, setDeparturesData] = useState<Departures>();
@@ -20,7 +22,7 @@ const DeparturesView = () => {
       0,
       0,
       localStorage.lang,
-      "CAD"
+      currencyValue
     );
     let sortedDeparturesResult = departuresData;
 
@@ -55,6 +57,13 @@ const DeparturesView = () => {
     }, 5000);
   };
 
+  // When the currency is changed, update the data with the newly-selected currency.
+  useEffect(() => {
+    setLoading(true);
+
+    getData();
+  }, [currencyValue]);
+
   useEffect(() => {
     setLoading(true);
 
@@ -63,14 +72,18 @@ const DeparturesView = () => {
 
   return (
     <>
-      {loading && <Spinner />}
+      {loading && <Spinner position="center" />}
 
       {!loading && departuresData?.departures.length > 0 && (
         <section className="departures">
-          <h3 className="departures-result-title">
-            {t("departures.from")} Québec City, Québec {t("departures.to")}{" "}
-            Montréal, Québec {t("departures.on")} August 2, 2021
-          </h3>
+          <div className="departures-result-title-container">
+            <h3 className="departures-result-title">
+              {t("departures.from")} Québec City, Québec {t("departures.to")}{" "}
+              Montréal, Québec {t("departures.on")} August 2, 2021
+            </h3>
+            {!departuresData?.complete && <Spinner size="small" />}
+          </div>
+
           {departuresData?.departures.map((departure, key) => {
             const {
               departure_time,
@@ -111,7 +124,7 @@ const DeparturesView = () => {
                   </div>
                 </div>
                 <div className="departures-departure-price">
-                  {convertPrice(total)}
+                  {convertPrice(total, currencyValue)}
                 </div>
                 <div className="departures-departure-select">
                   <button type="button" title={t("departures.select")}>

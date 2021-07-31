@@ -2,6 +2,7 @@ export const languages = {
   en: {
     translation: {
       search: {
+        searchPageTitle: "Search",
         title: "Bus routes",
         from: "From",
         to: "To",
@@ -12,6 +13,7 @@ export const languages = {
         search: "Search",
       },
       departures: {
+        departuresPageTitle: "Departures",
         from: "From",
         to: "to",
         on: "on",
@@ -23,6 +25,7 @@ export const languages = {
   fr: {
     translation: {
       search: {
+        searchPageTitle: "Recherher",
         title: "Lignes de bus",
         from: "De",
         to: "À",
@@ -33,6 +36,7 @@ export const languages = {
         search: "Recherher",
       },
       departures: {
+        departuresPageTitle: "Départs",
         from: "De",
         to: "à",
         on: "le",

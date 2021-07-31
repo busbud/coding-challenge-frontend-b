@@ -30,10 +30,8 @@ app.use("/api/departures", (queryParams, response) => {
 
   // Append the "Poll" parameter if polling needs to continue.
   if (poll === "true") {
-    path = `${path}/poll`;
+    path = `${path}/poll?index=10`;
   }
-
-  console.log(path);
 
   const options = {
     headers: {
