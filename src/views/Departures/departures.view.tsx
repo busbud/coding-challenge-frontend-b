@@ -28,10 +28,9 @@ const DeparturesView = () => {
 
     // If the Departures data is not complete, continue polling it to complete the results call.
     if (!departuresData?.complete) {
-      executePolling();
+      getData(true);
       setPollingActive(true);
     } else if (pollingActive) {
-      clearInterval(executePolling());
       setPollingActive(false);
     }
 
@@ -48,13 +47,6 @@ const DeparturesView = () => {
 
     setDeparturesData(sortedDeparturesResult ?? []);
     setLoading(false);
-  };
-
-  // Execute polling every five seconds.
-  const executePolling = () => {
-    return setInterval(() => {
-      getData(true);
-    }, 5000);
   };
 
   // When the currency is changed, update the data with the newly-selected currency.
