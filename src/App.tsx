@@ -9,6 +9,7 @@ import {
   BusbudContextValues,
   BusbudContext,
 } from "./interfaces/context.interface";
+import { handleNavClick } from "utils/utils";
 
 // Initialize the History Browser History.
 const history = createBrowserHistory();
@@ -54,7 +55,7 @@ const App: React.FC = () => {
       <div className="App">
         <nav className="nav">
           <div className="nav-container">
-            <h1>BusBud</h1>
+            <h1 onClick={handleNavClick("/", history)}>BusBud</h1>
 
             <div className="nav-container-selectors">
               <select
