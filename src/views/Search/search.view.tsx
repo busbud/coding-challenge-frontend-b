@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { handleNavClick } from "utils/utils";
+import DatePicker from "react-datepicker";
+import { handleNavClick, selectedDateFormat } from "utils/utils";
 
 const SearchView = () => {
   const history = useHistory();
+  const [departureDate, setDepartureDate] = useState<Date | string>(new Date());
 
   const { t } = useTranslation();
 
@@ -23,7 +26,14 @@ const SearchView = () => {
         </div>
         <div className="search-container-date search-container-input">
           <span>{t("search.date")}</span>
-          <span>2 August</span>
+          <span>
+            <DatePicker
+              minDate={new Date()}
+              selected={departureDate}
+              dateFormat="yyyy-MM-dd"
+              onChange={(selectedDate) => setDepartureDate(selectedDate)}
+            />
+          </span>
         </div>
         <div className="search-container-passengers">
           <div className="search-container-passengers-passenger-type search-container-input">
@@ -43,7 +53,12 @@ const SearchView = () => {
           type="button"
           className="search-button button-primary"
           title={t("search.search")}
-          onClick={handleNavClick("/departures", history)}
+          onClick={handleNavClick("/departures", history, {
+            adult: 1,
+            senior: 0,
+            child: 0,
+            departureDate: selectedDateFormat(departureDate),
+          })}
         >
           &#x1F50D;
         </button>

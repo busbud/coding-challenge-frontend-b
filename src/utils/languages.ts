@@ -28,7 +28,7 @@ export const languages = {
         searchPageTitle: "Recherher",
         title: "Lignes de bus",
         from: "De",
-        to: "À",
+        to: "Vers",
         date: "Date",
         adults: "Adultes",
         children: "Enfants",
@@ -38,7 +38,7 @@ export const languages = {
       departures: {
         departuresPageTitle: "Départs",
         from: "De",
-        to: "à",
+        to: "vers",
         on: "le",
         select: "Sélectionner",
         noResults: "Aucun voyage disponible à la date sélectionnée",

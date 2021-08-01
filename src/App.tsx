@@ -56,7 +56,6 @@ const App: React.FC = () => {
         <nav className="nav">
           <div className="nav-container">
             <h1 onClick={handleNavClick("/", history)}>BusBud</h1>
-
             <div className="nav-container-selectors">
               <select
                 ref={langRef}
@@ -87,7 +86,6 @@ const App: React.FC = () => {
             </div>
           </div>
         </nav>
-
         <article className="body">
           <Router history={history}>
             <Switch>

@@ -5,6 +5,7 @@ export const getDepartures = async (
   adult = 1,
   child = 0,
   senior = 0,
+  departureDate = "",
   lang = "en",
   currency = "CAD"
 ) => {
@@ -14,6 +15,7 @@ export const getDepartures = async (
       adult,
       child,
       senior,
+      departureDate,
       lang,
       currency,
     },

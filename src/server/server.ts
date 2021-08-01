@@ -17,10 +17,11 @@ app.listen(8000, () => {
 // Get Departures data.
 app.use("/api/departures", (queryParams, response) => {
   const poll = queryParams.query?.poll ?? "false";
-  const { adult, child, senior, lang, currency } = queryParams.query;
+  const { departureDate, adult, child, senior, lang, currency } =
+    queryParams.query;
 
   // Create the URL Params for the query.
-  let path = `/x-departures/f2m673/f25dvk/2021-08-02?${encodeQueryData({
+  let path = `/x-departures/f2m673/f25dvk/${departureDate}?${encodeQueryData({
     adult,
     child,
     senior,
