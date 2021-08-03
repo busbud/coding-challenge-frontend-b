@@ -13,6 +13,7 @@ export const languages = {
         search: "Search",
       },
       departures: {
+        back: "Back",
         departuresPageTitle: "Departures",
         from: "From",
         to: "to",
@@ -36,6 +37,7 @@ export const languages = {
         search: "Recherher",
       },
       departures: {
+        back: "Retourner",
         departuresPageTitle: "Départs",
         from: "De",
         to: "vers",

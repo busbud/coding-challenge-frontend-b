@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useMemo } from "react";
+import { Suspense, useEffect, useRef, useState, useMemo } from "react";
 import i18next from "i18next";
 import { initReactI18next, useTranslation } from "react-i18next";
 import { Router, Route, Switch } from "react-router-dom";
@@ -87,18 +87,20 @@ const App: React.FC = () => {
           </div>
         </nav>
         <article className="body">
-          <Router history={history}>
-            <Switch>
-              {routes(t).map((route, key) => (
-                <Route
-                  key={key}
-                  path={route.path}
-                  component={route.component}
-                  exact={route.exact}
-                />
-              ))}
-            </Switch>
-          </Router>
+          <Suspense fallback={<span>Loading...</span>}>
+            <Router history={history}>
+              <Switch>
+                {routes(t).map((route, key) => (
+                  <Route
+                    key={key}
+                    path={route.path}
+                    component={route.component}
+                    exact={route.exact}
+                  />
+                ))}
+              </Switch>
+            </Router>
+          </Suspense>
         </article>
         <footer className="footer">
           <div className="footer-container">

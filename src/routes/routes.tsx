@@ -1,5 +1,9 @@
-import SearchView from "../views/Search/search.view";
-import DeparturesView from "../views/Departures/departures.view";
+import { lazy } from "react";
+
+const SearchView = lazy(() => import("../views/Search/search.view"));
+const DeparturesView = lazy(
+  () => import("../views/Departures/departures.view")
+);
 
 const routes = (t) => [
   {

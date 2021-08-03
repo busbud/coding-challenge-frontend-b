@@ -1,14 +1,20 @@
-import { useEffect, useState, useContext } from "react";
+import { Suspense, lazy, useEffect, useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { getDepartures } from "../../api/api";
-import DepartureCard from "../../components/DepartureCard/departureCard.component";
-import Spinner from "../../components/Spinner/spinner.component";
 import { Departures } from "../../interfaces/departures.interface";
 import { BusbudContext } from "../../interfaces/context.interface";
-import { dateTimeFormat } from "../../utils/utils";
+import { dateTimeFormat, handleNavClick } from "../../utils/utils";
+
+const DepartureCard = lazy(
+  () => import("../../components/DepartureCard/departureCard.component")
+);
+const Spinner = lazy(
+  () => import("../../components/Spinner/spinner.component")
+);
 
 const DeparturesView = () => {
+  const history = useHistory();
   const { adult, senior, child, departureDate } = useLocation()?.state;
   const { currencyValue } = useContext(BusbudContext);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -74,11 +80,19 @@ const DeparturesView = () => {
   }, []);
 
   return (
-    <>
+    <Suspense fallback={<span>Loading...</span>}>
       {isLoading && <Spinner position="center" />}
 
       {!isLoading && departuresData?.departures.length > 0 && (
         <section className="departures">
+          <button
+            className="departures-back"
+            type="button"
+            title={t("departures.back")}
+            onClick={handleNavClick("/", history)}
+          >
+            &#8592; {t("departures.back")}
+          </button>
           <div className="departures-result-title-container">
             <h3 className="departures-result-title">
               {t("departures.from")} Québec City, Québec {t("departures.to")}{" "}
@@ -95,9 +109,20 @@ const DeparturesView = () => {
       )}
 
       {!isLoading && departuresData?.departures.length === 0 && (
-        <div className="departures-no-data">{t("departures.noResults")}</div>
+        <div className="departures-no-data">
+          <span>{t("departures.noResults")}</span>
+
+          <button
+            className="departures-back"
+            type="button"
+            title={t("departures.back")}
+            onClick={handleNavClick("/", history)}
+          >
+            &#8592; {t("departures.back")}
+          </button>
+        </div>
       )}
-    </>
+    </Suspense>
   );
 };
 
