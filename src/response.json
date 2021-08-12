@@ -1,0 +1,3579 @@
+{
+    "departures": [
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 5,
+            "vehicle": null,
+            "busbud_departure_id": "b0183388",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 225,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "ZTI4ZWFjMTU6YjAxODMzODg",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/ZTI4ZWFjMTU6YjAxODMzODg?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 12189,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T10:30:00",
+            "arrival_time": "2021-07-30T14:15:00",
+            "fetched_at": "2021-07-30T01:12:13.055Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T10:30:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 12189,
+                    "geohash": "f2m677pk6",
+                    "name": "Québec (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T11:00:00",
+                    "departure_time": "2021-07-30T11:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T12:15:00",
+                    "departure_time": "2021-07-30T12:30:00",
+                    "duration": 15,
+                    "departure_operator_id": null,
+                    "location_id": 12187,
+                    "geohash": "f2hrtk01d",
+                    "name": "Trois-Rivières",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T14:15:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T13:30:00.000Z",
+                "refund_cutoff_at": "2021-07-30T13:30:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 21,
+            "vehicle": null,
+            "busbud_departure_id": "925d3d8e",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 195,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "Yzk1YjZlNjo5MjVkM2Q4ZQ",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/Yzk1YjZlNjo5MjVkM2Q4ZQ?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 12189,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T12:30:00",
+            "arrival_time": "2021-07-30T15:45:00",
+            "fetched_at": "2021-07-30T01:12:13.055Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T12:30:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 12189,
+                    "geohash": "f2m677pk6",
+                    "name": "Québec (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T13:00:00",
+                    "departure_time": "2021-07-30T13:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T15:25:00",
+                    "departure_time": "2021-07-30T15:25:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 54328,
+                    "geohash": "f25dyzrn4",
+                    "name": "Longueuil",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T15:45:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T15:30:00.000Z",
+                "refund_cutoff_at": "2021-07-30T15:30:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 24,
+            "vehicle": null,
+            "busbud_departure_id": "a6c8d16c",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 195,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "MTU1YzNjMWM6YTZjOGQxNmM",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/MTU1YzNjMWM6YTZjOGQxNmM?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 12189,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T13:30:00",
+            "arrival_time": "2021-07-30T16:45:00",
+            "fetched_at": "2021-07-30T01:12:13.055Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T13:30:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 12189,
+                    "geohash": "f2m677pk6",
+                    "name": "Québec (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T14:00:00",
+                    "departure_time": "2021-07-30T14:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T16:45:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T16:30:00.000Z",
+                "refund_cutoff_at": "2021-07-30T16:30:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 5,
+            "vehicle": null,
+            "busbud_departure_id": "a8d624a4",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 195,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "NjBlNDA3NGM6YThkNjI0YTQ",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/NjBlNDA3NGM6YThkNjI0YTQ?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 12189,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T15:30:00",
+            "arrival_time": "2021-07-30T18:45:00",
+            "fetched_at": "2021-07-30T01:12:13.055Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T15:30:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 12189,
+                    "geohash": "f2m677pk6",
+                    "name": "Québec (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T16:00:00",
+                    "departure_time": "2021-07-30T16:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T18:45:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T18:30:00.000Z",
+                "refund_cutoff_at": "2021-07-30T18:30:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 24,
+            "vehicle": null,
+            "busbud_departure_id": "b36e29e7",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 229,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "OGZhMWVjYzQ6YjM2ZTI5ZTc",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/OGZhMWVjYzQ6YjM2ZTI5ZTc?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 12189,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T15:31:00",
+            "arrival_time": "2021-07-30T19:20:00",
+            "fetched_at": "2021-07-30T01:12:13.055Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T15:31:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 12189,
+                    "geohash": "f2m677pk6",
+                    "name": "Québec (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T16:01:00",
+                    "departure_time": "2021-07-30T16:01:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T17:15:00",
+                    "departure_time": "2021-07-30T17:30:00",
+                    "duration": 15,
+                    "departure_operator_id": null,
+                    "location_id": 12187,
+                    "geohash": "f2hrtk01d",
+                    "name": "Trois-Rivières",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T18:40:00",
+                    "departure_time": "2021-07-30T18:40:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 41878,
+                    "geohash": "f25u225e1",
+                    "name": "Repentigny",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T19:20:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T18:31:00.000Z",
+                "refund_cutoff_at": "2021-07-30T18:31:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 15,
+            "vehicle": null,
+            "busbud_departure_id": "fab9af6d",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 195,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "N2I1N2RkNDk6ZmFiOWFmNmQ",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/N2I1N2RkNDk6ZmFiOWFmNmQ?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 12189,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T17:30:00",
+            "arrival_time": "2021-07-30T20:45:00",
+            "fetched_at": "2021-07-30T01:12:13.055Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T17:30:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 12189,
+                    "geohash": "f2m677pk6",
+                    "name": "Québec (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T18:00:00",
+                    "departure_time": "2021-07-30T18:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T20:25:00",
+                    "departure_time": "2021-07-30T20:25:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 54328,
+                    "geohash": "f25dyzrn4",
+                    "name": "Longueuil",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T20:45:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T20:30:00.000Z",
+                "refund_cutoff_at": "2021-07-30T20:30:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 22,
+            "vehicle": null,
+            "busbud_departure_id": "29fcee53",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 54328,
+            "duration": 175,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "NjI4NTZjNDY6MjlmY2VlNTM",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/NjI4NTZjNDY6MjlmY2VlNTM?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 12189,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T12:30:00",
+            "arrival_time": "2021-07-30T15:25:00",
+            "fetched_at": "2021-07-29T22:50:23.294Z",
+            "search_request_id": "2021072922500d3e9697941f788daeebd9cb70a18a4ba02a941757898126f2fcc61190e14395+1627599022495",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T12:30:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 12189,
+                    "geohash": "f2m677pk6",
+                    "name": "Québec (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T13:00:00",
+                    "departure_time": "2021-07-30T13:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T15:25:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 54328,
+                    "geohash": "f25dyzrn4",
+                    "name": "Longueuil",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T15:30:00.000Z",
+                "refund_cutoff_at": "2021-07-30T15:30:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 14,
+            "vehicle": null,
+            "busbud_departure_id": "51e20770",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 54328,
+            "duration": 175,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "NzdlZTM1NmI6NTFlMjA3NzA",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/NzdlZTM1NmI6NTFlMjA3NzA?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 12189,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T17:30:00",
+            "arrival_time": "2021-07-30T20:25:00",
+            "fetched_at": "2021-07-29T22:50:23.294Z",
+            "search_request_id": "2021072922500d3e9697941f788daeebd9cb70a18a4ba02a941757898126f2fcc61190e14395+1627599022495",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T17:30:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 12189,
+                    "geohash": "f2m677pk6",
+                    "name": "Québec (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T18:00:00",
+                    "departure_time": "2021-07-30T18:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T20:25:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 54328,
+                    "geohash": "f25dyzrn4",
+                    "name": "Longueuil",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T20:30:00.000Z",
+                "refund_cutoff_at": "2021-07-30T20:30:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 5,
+            "vehicle": null,
+            "busbud_departure_id": "e240d00a",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 195,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "NGE2NTYxYjY6ZTI0MGQwMGE",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/NGE2NTYxYjY6ZTI0MGQwMGE?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 73654,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T11:00:00",
+            "arrival_time": "2021-07-30T14:15:00",
+            "fetched_at": "2021-07-30T01:12:13.369Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T11:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T12:15:00",
+                    "departure_time": "2021-07-30T12:30:00",
+                    "duration": 15,
+                    "departure_operator_id": null,
+                    "location_id": 12187,
+                    "geohash": "f2hrtk01d",
+                    "name": "Trois-Rivières",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T14:15:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T14:00:00.000Z",
+                "refund_cutoff_at": "2021-07-30T14:00:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 21,
+            "vehicle": null,
+            "busbud_departure_id": "222370c",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 165,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "ZTdjMDEwYWQ6MjIyMzcwYw",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/ZTdjMDEwYWQ6MjIyMzcwYw?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 73654,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T13:00:00",
+            "arrival_time": "2021-07-30T15:45:00",
+            "fetched_at": "2021-07-30T01:12:13.369Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T13:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T15:25:00",
+                    "departure_time": "2021-07-30T15:25:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 54328,
+                    "geohash": "f25dyzrn4",
+                    "name": "Longueuil",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T15:45:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T16:00:00.000Z",
+                "refund_cutoff_at": "2021-07-30T16:00:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 24,
+            "vehicle": null,
+            "busbud_departure_id": "b18864e8",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 165,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "OTk1MDFhZmY6YjE4ODY0ZTg",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/OTk1MDFhZmY6YjE4ODY0ZTg?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 73654,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T14:00:00",
+            "arrival_time": "2021-07-30T16:45:00",
+            "fetched_at": "2021-07-30T01:12:13.369Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T14:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T16:45:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T17:00:00.000Z",
+                "refund_cutoff_at": "2021-07-30T17:00:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 5,
+            "vehicle": null,
+            "busbud_departure_id": "e577a724",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 165,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "MjJlZDA2MmM6ZTU3N2E3MjQ",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/MjJlZDA2MmM6ZTU3N2E3MjQ?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 73654,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T16:00:00",
+            "arrival_time": "2021-07-30T18:45:00",
+            "fetched_at": "2021-07-30T01:12:13.369Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T16:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T18:45:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T19:00:00.000Z",
+                "refund_cutoff_at": "2021-07-30T19:00:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 24,
+            "vehicle": null,
+            "busbud_departure_id": "14a63567",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 199,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "Yjc4ZGI1MDM6MTRhNjM1Njc",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/Yjc4ZGI1MDM6MTRhNjM1Njc?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 73654,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T16:01:00",
+            "arrival_time": "2021-07-30T19:20:00",
+            "fetched_at": "2021-07-30T01:12:13.369Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T16:01:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T17:15:00",
+                    "departure_time": "2021-07-30T17:30:00",
+                    "duration": 15,
+                    "departure_operator_id": null,
+                    "location_id": 12187,
+                    "geohash": "f2hrtk01d",
+                    "name": "Trois-Rivières",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T18:40:00",
+                    "departure_time": "2021-07-30T18:40:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 41878,
+                    "geohash": "f25u225e1",
+                    "name": "Repentigny",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T19:20:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T19:01:00.000Z",
+                "refund_cutoff_at": "2021-07-30T19:01:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 15,
+            "vehicle": null,
+            "busbud_departure_id": "f0fde1e1",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 1938,
+            "duration": 165,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "ZjlmMDcxYTY6ZjBmZGUxZTE",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/ZjlmMDcxYTY6ZjBmZGUxZTE?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 73654,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T18:00:00",
+            "arrival_time": "2021-07-30T20:45:00",
+            "fetched_at": "2021-07-30T01:12:13.369Z",
+            "search_request_id": "202107300112de1cdfe49477b57e99c9ebef1029bdfeff00229a4891c3618430db1bd7bc72be",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T18:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T20:25:00",
+                    "departure_time": "2021-07-30T20:25:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 54328,
+                    "geohash": "f25dyzrn4",
+                    "name": "Longueuil",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T20:45:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 1938,
+                    "geohash": "f25dyjcr3",
+                    "name": "Montréal (centre-ville)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T21:00:00.000Z",
+                "refund_cutoff_at": "2021-07-30T21:00:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 22,
+            "vehicle": null,
+            "busbud_departure_id": "39980051",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 54328,
+            "duration": 145,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "OTQ3MDZlODE6Mzk5ODAwNTE",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/OTQ3MDZlODE6Mzk5ODAwNTE?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 73654,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T13:00:00",
+            "arrival_time": "2021-07-30T15:25:00",
+            "fetched_at": "2021-07-29T22:50:23.170Z",
+            "search_request_id": "2021072922500d3e9697941f788daeebd9cb70a18a4ba02a941757898126f2fcc61190e14395+1627599022495",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T13:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T15:25:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 54328,
+                    "geohash": "f25dyzrn4",
+                    "name": "Longueuil",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T16:00:00.000Z",
+                "refund_cutoff_at": "2021-07-30T16:00:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        },
+        {
+            "amenities": {
+                "display_name": "Flex",
+                "wifi": false,
+                "toilet": true,
+                "ac": true,
+                "refreshment": false,
+                "food": false,
+                "hot_meal": false,
+                "power_outlets": true,
+                "tv": false,
+                "bus_attendant": false,
+                "leg_room": true,
+                "small_seat": false,
+                "average_seat": true,
+                "xl_seat": false,
+                "full_recline_seat": false,
+                "carpool": false
+            },
+            "arrival_timezone": "America/Montreal",
+            "available_seats": 14,
+            "vehicle": null,
+            "busbud_departure_id": "42a4e17c",
+            "class": "FLEX",
+            "class_name": "Flex",
+            "complete": false,
+            "contractor_name": null,
+            "fare_name": null,
+            "deeplink": null,
+            "departure_timezone": "America/Montreal",
+            "departure_type": "editable-refundable",
+            "destination_location_id": 54328,
+            "duration": 145,
+            "has_search_details": false,
+            "has_layout": null,
+            "has_transfers": false,
+            "has_addons": null,
+            "id": "N2I2YTE2ODg6NDJhNGUxN2M",
+            "links": {
+                "deeplink": "https://www.busbud.com/en/deeplink/f2m673/f25dvk/N2I2YTE2ODg6NDJhNGUxN2M?outbound_date=2021-07-30&return_date&adults=1&children=0&seniors=0&child_ages=&senior_ages=&discount_code&utm_source={utm_source}&utm_campaign={utm_campaign}&utm_medium={utm_medium}"
+            },
+            "num_transfers": 0,
+            "operator_id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "origin_location_id": 73654,
+            "passenger_questions": [],
+            "schedule_id": null,
+            "sellable": true,
+            "source_id": 262,
+            "ticket_types": [
+                "eticket"
+            ],
+            "departure_time": "2021-07-30T18:00:00",
+            "arrival_time": "2021-07-30T20:25:00",
+            "fetched_at": "2021-07-29T22:50:23.170Z",
+            "search_request_id": "2021072922500d3e9697941f788daeebd9cb70a18a4ba02a941757898126f2fcc61190e14395+1627599022495",
+            "unreliable_duration": null,
+            "has_unmapped_location": null,
+            "data_source": "live",
+            "cache_source": "departure-service",
+            "operator_disclaimers": null,
+            "vehicle_type": "bus",
+            "bus": null,
+            "has_bus_details": null,
+            "prices": {
+                "currency": "USD",
+                "total": 5557,
+                "categories": {
+                    "adult": 4833
+                },
+                "discount": 0,
+                "roundtrip_min": null,
+                "roundtrip_min_fees_included": null,
+                "roundtrip_total": null,
+                "roundtrip_total_fees_included": null,
+                "discounted": null,
+                "breakdown": {
+                    "base": 4833,
+                    "fees": 0,
+                    "taxes": 725,
+                    "discount": 0
+                }
+            },
+            "trip_stops": [
+                {
+                    "arrival_time": null,
+                    "departure_time": "2021-07-30T18:00:00",
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 73654,
+                    "geohash": "f2m616xz2",
+                    "name": "Québec (Sainte-Foy)",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                },
+                {
+                    "arrival_time": "2021-07-30T20:25:00",
+                    "departure_time": null,
+                    "duration": 0,
+                    "departure_operator_id": null,
+                    "location_id": 54328,
+                    "geohash": "f25dyzrn4",
+                    "name": "Longueuil",
+                    "transfer": false,
+                    "service_name": null,
+                    "service_number": null
+                }
+            ],
+            "addons": [],
+            "details": {},
+            "terms": {
+                "type_of_id": "photo_and_full_name",
+                "ticket_requirements": {
+                    "eticket": "printed_or_mobile_tkt"
+                },
+                "nb_carry_on": 1,
+                "kg_by_carry_on": null,
+                "nb_checked_bags": 2,
+                "kg_by_bag": 34,
+                "checked_in_size_cm": {
+                    "l": 60,
+                    "w": 60,
+                    "h": 90
+                },
+                "extra_checked_in_fees": {
+                    "type": "per_extra_checked_in",
+                    "amount": 500
+                },
+                "nb_extra_checked_in": null,
+                "total_checked_in_kg": null,
+                "oversized_luggage": {
+                    "allowed": true,
+                    "allowed_types": [],
+                    "fees": {
+                        "type": "flat_fee",
+                        "amount": 500
+                    },
+                    "early_arrival_required": true,
+                    "cover_required": true
+                },
+                "animals": {
+                    "fees": {
+                        "type": "unknown",
+                        "amount": null,
+                        "percent": null
+                    },
+                    "main_compartment_allowed": false,
+                    "hold_compartment_allowed": false,
+                    "main_max_weight_kg": null,
+                    "main_small_cage_required": null,
+                    "hold_max_weight_kg": null,
+                    "vaccination_required": true,
+                    "special_animals_allowed": true,
+                    "early_arrival_required": true,
+                    "specific_hours": null
+                },
+                "refund_policies": [
+                    {
+                        "type": "self-serve",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": 0.25,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "refund": true,
+                "refund_cutoff": 1,
+                "exchange_policies": [
+                    {
+                        "type": "station",
+                        "flat_fee": null,
+                        "flat_fee_currency": "CAD",
+                        "percent_fee": null,
+                        "cutoff_reference": "departure-date",
+                        "cutoff_from": null,
+                        "cutoff_to": 1,
+                        "external_link": null
+                    }
+                ],
+                "exchange_disclaimers": [],
+                "exchange": true,
+                "exchange_cutoff": 1,
+                "exchange_cutoff_at": "2021-07-30T21:00:00.000Z",
+                "refund_cutoff_at": "2021-07-30T21:00:00.000Z",
+                "currency": "CAD",
+                "addons": {},
+                "piece_of_id": true,
+                "boarding_requirement": "printed_or_mobile_tkt",
+                "extra_bag_policy": true,
+                "extra_bag_cost": 500,
+                "extra_bag_kg_cost": null,
+                "bag_allowed": true
+            }
+        }
+    ],
+    "locations": [
+        {
+            "id": 1938,
+            "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+            "name": "Gare d'autocars",
+            "address": [
+                "1717 Rue Berri",
+                "Montréal, QC H2L 4E9",
+                "Canada"
+            ],
+            "type": "bus_station",
+            "lat": 45.516235,
+            "lon": -73.562668,
+            "geohash": "f25dyjcr3"
+        },
+        {
+            "id": 12189,
+            "city_id": "375dd587-9001-acbd-84a4-683deddcb1b1",
+            "name": "Gare du Palais",
+            "address": [
+                "320 Rue Abraham Martin",
+                "Québec, QC G1K 3X2",
+                "Canada"
+            ],
+            "type": "bus_station",
+            "lat": 46.8189915,
+            "lon": -71.2143053,
+            "geohash": "f2m677pk6"
+        },
+        {
+            "id": 54328,
+            "city_id": "375dd587-9001-acbd-84a4-683dedfb933e",
+            "name": "Longueuil - Métro",
+            "address": [
+                "120 Place Charles-Le Moyne",
+                "Longueuil",
+                "QC J4K 2T4",
+                "Canada"
+            ],
+            "type": "other",
+            "lat": 45.5242577,
+            "lon": -73.5217692,
+            "geohash": "f25dyzrn4"
+        },
+        {
+            "id": 73654,
+            "city_id": "375dd587-9001-acbd-84a4-683deddcb1b1",
+            "name": "Sainte-Foy - Gare d'autocars",
+            "address": [
+                "3001 Chemin des Quatre-Bourgeois",
+                "Québec",
+                "QC G1V 5A6",
+                "Canada"
+            ],
+            "type": "bus_station",
+            "lat": 46.7728,
+            "lon": -71.3016,
+            "geohash": "f2m616xz2"
+        }
+    ],
+    "operators": [
+        {
+            "id": "a7ad22de-ad5b-4408-abce-ded634595698",
+            "source_id": 262,
+            "profile_id": 156,
+            "name": "Orléans Express",
+            "url": "https://www.orleansexpress.com/",
+            "logo_url": "https://busbud.imgix.net/operator-logos/logo_orleans-express.png.png?h={height}&w={width}&auto=format&fit=fill&bg=0FFF",
+            "display_name": "Orléans Express",
+            "review_state": "good",
+            "sellable": true,
+            "fuzzy_prices": false,
+            "sell_tickets_cutoff": {
+                "minutes": 5
+            },
+            "amenities": {
+                "classes": {
+                    "Economy": {
+                        "display_name": "Economy",
+                        "wifi": false,
+                        "toilet": true,
+                        "ac": true,
+                        "refreshment": false,
+                        "food": false,
+                        "hot_meal": false,
+                        "power_outlets": true,
+                        "tv": false,
+                        "bus_attendant": false,
+                        "leg_room": true,
+                        "small_seat": false,
+                        "average_seat": true,
+                        "xl_seat": false,
+                        "full_recline_seat": false,
+                        "carpool": false
+                    },
+                    "FLEX": {
+                        "display_name": "Flex",
+                        "wifi": false,
+                        "toilet": true,
+                        "ac": true,
+                        "refreshment": false,
+                        "food": false,
+                        "hot_meal": false,
+                        "power_outlets": true,
+                        "tv": false,
+                        "bus_attendant": false,
+                        "leg_room": true,
+                        "small_seat": false,
+                        "average_seat": true,
+                        "xl_seat": false,
+                        "full_recline_seat": false,
+                        "carpool": false
+                    },
+                    "PROMO": {
+                        "display_name": "Promo",
+                        "wifi": false,
+                        "toilet": true,
+                        "ac": true,
+                        "refreshment": false,
+                        "food": false,
+                        "hot_meal": false,
+                        "power_outlets": true,
+                        "tv": false,
+                        "bus_attendant": false,
+                        "leg_room": true,
+                        "small_seat": false,
+                        "average_seat": true,
+                        "xl_seat": false,
+                        "full_recline_seat": false,
+                        "carpool": false
+                    },
+                    "PROMO+": {
+                        "display_name": "Promo+",
+                        "wifi": false,
+                        "toilet": true,
+                        "ac": true,
+                        "refreshment": false,
+                        "food": false,
+                        "hot_meal": false,
+                        "power_outlets": true,
+                        "tv": false,
+                        "bus_attendant": false,
+                        "leg_room": true,
+                        "small_seat": false,
+                        "average_seat": true,
+                        "xl_seat": false,
+                        "full_recline_seat": false,
+                        "carpool": false
+                    },
+                    "Regular": {
+                        "display_name": "Regular",
+                        "wifi": true,
+                        "toilet": true,
+                        "ac": true,
+                        "refreshment": false,
+                        "food": false,
+                        "hot_meal": false,
+                        "power_outlets": true,
+                        "tv": false,
+                        "bus_attendant": false,
+                        "leg_room": false,
+                        "small_seat": false,
+                        "average_seat": false,
+                        "xl_seat": false,
+                        "full_recline_seat": false,
+                        "carpool": false
+                    },
+                    "Standard": {
+                        "display_name": "Standard",
+                        "wifi": false,
+                        "toilet": true,
+                        "ac": true,
+                        "refreshment": false,
+                        "food": false,
+                        "hot_meal": false,
+                        "power_outlets": true,
+                        "tv": false,
+                        "bus_attendant": false,
+                        "leg_room": true,
+                        "small_seat": false,
+                        "average_seat": true,
+                        "xl_seat": false,
+                        "full_recline_seat": false,
+                        "carpool": false
+                    }
+                }
+            },
+            "default_vehicle_type": "bus",
+            "passenger_address_required": false,
+            "source": "orleansexpress_api",
+            "referral_deal": false,
+            "referral_deal_type": null,
+            "display_url": "orleansexpress.com",
+            "fraud_check": null,
+            "passenger_phone_required": false
+        }
+    ],
+    "complete": true,
+    "ttl": 900,
+    "metadata": {
+        "complete": true,
+        "ttl": "2021-07-30T01:27:48.555Z",
+        "interval": 2000,
+        "links": {
+            "cache_state_poll": "/legacy/cache-state/poll"
+        }
+    }
+}
