@@ -19,8 +19,7 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "react-hooks",
-        "prettier"
+        "react-hooks"
     ],
     "rules": {
         "no-use-before-define": "off",
@@ -41,15 +40,6 @@
         ],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "error",
-        "prettier/prettier": ["error", {
-            "trailingComma": "all",
-            "singleQuote": true,
-            "useTabs": false,
-            "tabWidth": 2,
-            "semi": true,
-            "jsxSingleQuote": false,
-            "printWidth": 120
-        }],
         "import/extensions": [
             0,
             "ignorePackages",
