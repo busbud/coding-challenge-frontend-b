@@ -1,0 +1,49 @@
+.container {
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cities {
+  display: grid;
+  margin-left: 40px;
+
+  .input {
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    height: 50px;
+    padding-top: 11px;
+  }
+
+  .label {
+    align-self: flex-start;
+    margin-bottom: 5px;
+  }
+}
+
+.date {
+  height: 50px;
+  margin-left: 40px;
+}
+
+.wrapperButton {
+  height: 50px;
+  margin-left: 40px;
+
+  .button {
+    margin-left: 40px;
+    width: 100px;
+    height: 40px;
+    background-color: lightblue;
+    border-color: deepskyblue;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+}

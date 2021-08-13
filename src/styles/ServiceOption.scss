@@ -1,0 +1,40 @@
+.serviceProviders {
+  width: 50%;
+  margin: 200px auto auto;
+
+  .provider {
+    margin-bottom: 20px;
+    border-style: inset;
+    background-color: lightblue;
+    border-color: deepskyblue;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+
+
+  .providerDetails {
+    flex-direction: row;
+    display: flex;
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+
+  .money {
+    float: right;
+    display: flex;
+    margin-right: 20px;
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  .extraInfo {
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
+  .image {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+  }
+}
