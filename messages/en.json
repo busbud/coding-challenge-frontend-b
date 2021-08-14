@@ -1,0 +1,8 @@
+{
+  "Main": {
+    "origin": "Origin",
+    "destination": "Destination",
+    "passengers": "Passengers",
+    "search": "Search"
+  }
+}

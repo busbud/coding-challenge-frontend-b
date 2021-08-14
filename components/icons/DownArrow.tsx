@@ -1,0 +1,9 @@
+import BaseIcon from './BaseIcon'
+
+export default function UpArrow() {
+  return BaseIcon({
+    alt: 'Down arrow',
+    imgData:
+      'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgdmlld0JveD0iMCAwIDMyIDMyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PGcgZGF0YS1uYW1lPSJMYXllciAyIiBpZD0iTGF5ZXJfMiI+PHBhdGggZD0iTTE2LDFBMTUsMTUsMCwxLDEsMSwxNiwxNSwxNSwwLDAsMSwxNiwxWm0wLDI4QTEzLDEzLDAsMSwwLDMsMTYsMTMsMTMsMCwwLDAsMTYsMjlaIi8+PHBhdGggZD0iTTEwLjQxLDEyLjEzLDE2LDE3LjcxbDUuNTktNS41OGExLDEsMCwwLDEsMS40MSwwaDBhMSwxLDAsMCwxLDAsMS40MUwxNi42NCwxOS45YS45MS45MSwwLDAsMS0xLjI4LDBMOSwxMy41NGExLDEsMCwwLDEsMC0xLjQxSDlBMSwxLDAsMCwxLDEwLjQxLDEyLjEzWiIvPjwvZz48L3N2Zz4='
+  })
+}

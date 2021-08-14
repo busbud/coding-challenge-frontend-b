@@ -1,6 +1,8 @@
 {
   "Main": {
-    "queryPlaceholder": "Tapez votre requête",
-    "description": "This page uses messages from <code>./messages/index/{locale}.json</code> and <code>./messages/shared/{locale}.json</code>. Messages from the about page and other locales are not loaded."
+    "origin": "Départ",
+    "destination": "Arrivée",
+    "passengers": "Passagers",
+    "search": "Rechercher"
   }
 }

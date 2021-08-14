@@ -1,0 +1,85 @@
+.column {
+  display: flex;
+  flex-direction: row;
+}
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  border-left: var(--common-border);
+  padding: 5px 10px;
+}
+.inputGroup:first-of-type {
+  border-left: 0;
+}
+.label {
+  font-size: 80%;
+  text-transform: uppercase;
+}
+.input {
+  border: 0;
+}
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto;
+  grid-template-rows: auto;
+  grid-template-areas: 'origin destination passengers submit';
+  background-color: #fff;
+  min-width: 700px;
+  position: sticky;
+  z-index: 99;
+  top: 0;
+}
+.dropshadow {
+  box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
+  clip-path: inset(0 0 -10px 0);
+}
+.roundedBottom {
+  border-bottom-left-radius: var(--main-border-radius);
+  border-bottom-right-radius: var(--main-border-radius);
+  overflow: hidden;
+}
+.origin {
+  composes: inputGroup;
+  grid-area: origin;
+}
+.destination {
+  composes: inputGroup;
+  grid-area: destination;
+}
+.passengers {
+  composes: inputGroup;
+  width: 110px;
+  grid-area: passengers;
+}
+
+.submitButton {
+  border-width: 0;
+  background-color: #0871f2;
+  grid-area: submit;
+  font-weight: 800;
+  color: #fff;
+}
+.submitButton:hover {
+  background-color: #30b0ff;
+}
+
+@media (max-width: 700px) {
+  .form {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 455px) {
+  .form {
+    min-width: auto;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: 'origin destination' 'passengers submit';
+  }
+  .passengers {
+    border-top: var(--common-border);
+    width: auto;
+  }
+}

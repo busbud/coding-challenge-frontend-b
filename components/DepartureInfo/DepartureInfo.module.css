@@ -1,0 +1,79 @@
+.entry {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  grid-template-rows: auto;
+  grid-template-areas: 'departure arrival price';
+  border-bottom: var(--common-border);
+  padding: 3px 0;
+}
+.entry:last-of-type {
+  border-bottom: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.section > * {
+  padding: 0 5px;
+}
+.icon {
+  flex-shrink: 0;
+}
+.departure {
+  composes: section;
+  grid-area: departure;
+}
+.arrival {
+  composes: section;
+  grid-area: arrival;
+}
+.price {
+  composes: section;
+  min-width: auto;
+  grid-area: price;
+}
+
+.time {
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 90%;
+  width: 70px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.location {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 700px) {
+  .section {
+    min-width: 0;
+  }
+  .content {
+    min-width: 0;
+  }
+  .content > * {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 455px) {
+  .content {
+    flex-direction: row;
+  }
+  .entry {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 'departure price' 'arrival price';
+  }
+}
