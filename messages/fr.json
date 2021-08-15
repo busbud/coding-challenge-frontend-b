@@ -3,6 +3,7 @@
     "origin": "Départ",
     "destination": "Arrivée",
     "passengers": "Passagers",
+    "date": "Date",
     "search": "Rechercher"
   }
 }

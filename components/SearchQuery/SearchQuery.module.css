@@ -20,9 +20,9 @@
 }
 .form {
   display: grid;
-  grid-template-columns: 1fr 1fr auto auto;
+  grid-template-columns: 1fr 1fr auto auto auto;
   grid-template-rows: auto;
-  grid-template-areas: 'origin destination passengers submit';
+  grid-template-areas: 'origin destination date passengers submit';
   background-color: #fff;
   min-width: 700px;
   position: sticky;
@@ -45,6 +45,13 @@
 .destination {
   composes: inputGroup;
   grid-area: destination;
+}
+.date {
+  composes: inputGroup;
+  grid-area: date;
+}
+.date input::-webkit-calendar-picker-indicator {
+  display: none;
 }
 .passengers {
   composes: inputGroup;
@@ -70,16 +77,18 @@
   }
 }
 
-@media (max-width: 455px) {
+@media (max-width: 600px) {
   .form {
-    min-width: auto;
-    width: 100%;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    grid-template-areas: 'origin destination' 'passengers submit';
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 'origin destination' 'date passengers' 'submit submit';
   }
+  .date,
   .passengers {
     border-top: var(--common-border);
     width: auto;
+  }
+  .submitButton {
+    padding: 10px 0;
   }
 }

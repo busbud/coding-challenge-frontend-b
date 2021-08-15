@@ -2,6 +2,7 @@
   "Main": {
     "origin": "Origem",
     "destination": "Destino",
+    "date": "Data",
     "passengers": "Passageiros",
     "search": "Pesquisar"
   }

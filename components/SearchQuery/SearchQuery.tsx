@@ -12,14 +12,31 @@ export default function SearchQuery() {
   const currency =
     (locale &&
       {
-        'en': 'USD',
-        'fr': 'EUR',
-        'pt': 'BRL'
+        en: 'USD',
+        fr: 'EUR',
+        pt: 'BRL'
       }[locale]) ??
     'USD'
 
+  // Not using a date library here doesn't help with readability
+  const tomorrowDate = new Date()
+  tomorrowDate.setDate(tomorrowDate.getDate() + 1)
+  const tomorrow = new Date(
+    tomorrowDate.getTime() - tomorrowDate.getTimezoneOffset() * 60000
+  )
+    .toISOString()
+    .split('T')[0]
+
   const { value: adults, bind: bindAdults } = useInput('1')
+  const { value: date, bind: bindDate } = useInput(tomorrow)
   const { departures, locations, stale, search } = useDepartures()
+
+  const doSearch = () => {
+    search('f2m673', 'f25dvk', date, {
+      adult: +adults,
+      currency
+    })
+  }
 
   return (
     <>
@@ -38,11 +55,14 @@ export default function SearchQuery() {
           <label className={styles.label}>{t('destination', { locale })}</label>
           <div className={styles.input}>Montreal</div>
         </div>
+        <div className={styles.date}>
+          <label className={styles.label}>{t('date', { locale })}</label>
+          <input id='date' className={styles.input} type='date' {...bindDate} />
+        </div>
         <div className={styles.passengers}>
           <label className={styles.label} htmlFor='passengers'>
             {t('passengers', { locale })}
           </label>
-
           <input
             id='passengers'
             className={styles.input}
@@ -51,15 +71,7 @@ export default function SearchQuery() {
             {...bindAdults}
           ></input>
         </div>
-        <button
-          className={styles.submitButton}
-          onClick={() => {
-            search('f2m673', 'f25dvk', '2021-09-14', {
-              adult: +adults,
-              currency
-            })
-          }}
-        >
+        <button className={styles.submitButton} onClick={doSearch}>
           {t('search', { locale })}
         </button>
       </div>
