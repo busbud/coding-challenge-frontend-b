@@ -37,8 +37,10 @@ export const getDepartures = (
   index?: number
 ) =>
   get(
-    `https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}`,
-    { ...extraParameters, ...(index ? { index } : {}) },
+    `https://napi.busbud.com/x-departures/${origin}/${destination}/${outboundDate}${
+      index !== undefined ? `/poll` : ''
+    }`,
+    { ...extraParameters, ...(index !== undefined ? { index } : {}) },
     {
       Accept:
         'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',

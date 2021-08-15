@@ -19,13 +19,13 @@ export default function SearchQuery() {
     'USD'
 
   const { value: adults, bind: bindAdults } = useInput('1')
-  const { departures, locations, dirty, search } = useDepartures()
+  const { departures, locations, stale, search } = useDepartures()
 
   return (
     <>
       <div
         className={`${styles.form} ${
-          departures.length > 0 || dirty
+          departures.length > 0 || stale
             ? styles.dropshadow
             : styles.roundedBottom
         }`}
@@ -66,7 +66,7 @@ export default function SearchQuery() {
       <SearchResults
         locations={locations}
         departures={departures}
-        loading={dirty}
+        loading={stale}
       />
     </>
   )
