@@ -39,8 +39,6 @@
   white-space: nowrap;
   font-weight: bold;
   font-size: 90%;
-  width: 70px;
-  text-align: right;
   flex-shrink: 0;
 }
 
@@ -70,6 +68,10 @@
 @media (max-width: 455px) {
   .content {
     flex-direction: row;
+  }
+  .time {
+    width: 70px;
+    text-align: right;
   }
   .entry {
     grid-template-columns: 1fr auto;
