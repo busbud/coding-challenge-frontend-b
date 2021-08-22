@@ -1,0 +1,5 @@
+{
+  "Header": {
+    "locale": "{locale, select, en {English} fr {French} other {Other}}"
+  }
+}

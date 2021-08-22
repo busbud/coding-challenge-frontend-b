@@ -1,8 +1,10 @@
 import { GetServerSideProps } from 'next';
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { useQuery } from 'react-query';
 
 import { Search } from 'domains/search/search';
+import Header from 'components/Header';
 
 type DeparturesPageProps = {
   origin: string;
@@ -17,6 +19,7 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
   outboundDate,
   searchResponse,
 }) => {
+  const t = useTranslations('Search');
   const [pollingEnabled, setPollingEnabled] = useState(true);
   const getDeparturesPoll = () => Search.getDeparturesPoll(origin, destination, outboundDate);
   const { data } = useQuery('search', getDeparturesPoll, {
@@ -32,6 +35,8 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
 
   return (
     <div>
+      <Header />
+      <h1>{t('title')}</h1>
       <div>
         origin:
         {origin}
@@ -62,11 +67,17 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { locale } = context;
+  const messages = {
+    ...require(`messages/[origin]/[destination]/${locale}.json`),
+    ...require(`messages/shared/${locale}.json`),
+  };
+
   const { origin, destination } = context.query;
 
   if (typeof origin !== 'string' || typeof destination !== 'string') {
     return {
-      props: {},
+      props: { messages },
       notFound: true,
     };
   }
@@ -77,7 +88,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // console.log(searchResponse.data); // TODO remove this
   return {
     props: {
-      origin, destination, outboundDate, searchResponse: searchResponse.data,
+      origin,
+      destination,
+      outboundDate,
+      searchResponse: searchResponse.data,
+      messages,
     },
   };
 };
