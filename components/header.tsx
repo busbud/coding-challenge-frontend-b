@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import logo from 'public/osheaga-logo.png';
 
-export default function Header() {
+export const Header: React.VFC = () => {
   const t = useTranslations('Header');
 
   const { locales, route, query } = useRouter();
@@ -38,4 +38,4 @@ export default function Header() {
       </div>
     </div>
   );
-}
+};

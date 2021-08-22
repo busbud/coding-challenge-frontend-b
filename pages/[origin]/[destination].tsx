@@ -3,15 +3,15 @@ import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useQuery } from 'react-query';
 
-import { Search } from 'domains/search/search';
-import Header from 'components/Header';
+import { Search, SearchResponse } from 'domains/search';
+import { Header } from 'components/header';
 
 type DeparturesPageProps = {
-  origin: string;
-  destination: string,
-  outboundDate: string,
-  searchResponse: object, // TODO define object
-};
+  origin: string
+  destination: string
+  outboundDate: string
+  searchResponse: SearchResponse
+}
 
 const DeparturesPage: React.VFC<DeparturesPageProps> = ({
   origin,
@@ -30,8 +30,13 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
 
   useEffect(() => {
     const complete = data?.complete;
-    setPollingEnabled(!complete);
+    if (complete === true) {
+      setPollingEnabled(false);
+    }
   }, [data]);
+
+  const search = Search.fromApi(searchResponse);
+  console.log(search);
 
   return (
     <div>
@@ -60,6 +65,9 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
         })}
       </div> */}
 
+      <div>Response:</div>
+      <pre>{JSON.stringify(search, null, 2)}</pre>
+
       <div>Full response:</div>
       <pre>{JSON.stringify(searchResponse, null, 2)}</pre>
     </div>
@@ -73,25 +81,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     ...require(`messages/shared/${locale}.json`),
   };
 
-  const { origin, destination } = context.query;
+  const { origin, destination, outbound_date: outboundDate } = context.query;
 
-  if (typeof origin !== 'string' || typeof destination !== 'string') {
+  if (typeof origin !== 'string' || typeof destination !== 'string' || typeof outboundDate !== 'string') {
     return {
       props: { messages },
       notFound: true,
     };
   }
 
-  const outboundDate = '2021-08-21';
-  // const searchResponse = await Search.getSSRDepartures(origin, destination, outboundDate);
-  const searchResponse = { data: {} };
-  // console.log(searchResponse.data); // TODO remove this
+  const searchResponse = await Search.getSSRDepartures(origin, destination, outboundDate);
+  // const searchResponse = { };
+
   return {
     props: {
       origin,
       destination,
       outboundDate,
-      searchResponse: searchResponse.data,
+      searchResponse,
       messages,
     },
   };

@@ -22,5 +22,5 @@ export default async function handler(
   }
 
   const response = await Search.getSSRDeparturesPoll(origin, destination, outboundDate);
-  res.status(200).json(response.data);
+  res.status(200).json(response);
 }

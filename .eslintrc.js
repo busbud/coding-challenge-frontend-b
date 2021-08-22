@@ -33,5 +33,6 @@ module.exports = {
       specialLink: ['hrefLeft', 'hrefRight'],
       aspects: ['invalidHref', 'preferButton'],
     }],
+    'import/prefer-default-export': 'off',
   },
 };
