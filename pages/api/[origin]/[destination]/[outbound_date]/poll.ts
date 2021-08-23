@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { Search, SearchResponse } from 'domains/search';
+import { SearchResponse } from 'domains/search';
+
+import { api } from 'client';
 
 type PollError = {
   description: string
@@ -17,6 +19,7 @@ export default async function handler(
     return;
   }
 
-  const data = await Search.getSSRDeparturesPoll(origin, destination, outboundDate);
+  const { data } = await api.get<SearchResponse>(`/x-departures/${origin}/${destination}/${outboundDate}/poll`);
+
   res.status(200).json(data);
 }

@@ -1,11 +1,13 @@
 import { GetServerSideProps } from 'next';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { useQuery } from 'react-query';
 
 import { Search, SearchResponse } from 'domains/search';
 import { Item } from 'domains/departure';
 import { Header, Card } from 'components';
+
+import { api } from 'client';
 
 type DeparturesPageProps = {
   origin: string
@@ -36,7 +38,7 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
     }
   }, [searchPoll]);
 
-  const search = Search.fromApi(searchResponse);
+  const search = useMemo(() => Search.fromApi(searchResponse), [searchResponse]);
 
   return (
     <div>
@@ -49,7 +51,6 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
           </Card>
         ))}
       </div>
-
     </div>
   );
 };
@@ -61,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     ...require(`messages/shared/${locale}.json`),
   };
 
-  const { origin, destination, outbound_date: outboundDate } = context.query;
+  const { origin, destination, outbound_date: outboundDate } = context.query; // TODO insert adult query
 
   if (typeof origin !== 'string' || typeof destination !== 'string' || typeof outboundDate !== 'string') {
     return {
@@ -70,7 +71,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   }
 
-  const searchResponse = await Search.getSSRDepartures(origin, destination, outboundDate);
+  const { data: searchResponse } = await api.get<
+    SearchResponse
+  >(`/x-departures/${origin}/${destination}/${outboundDate}`);
 
   return {
     props: {
