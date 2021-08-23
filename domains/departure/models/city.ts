@@ -25,7 +25,6 @@ export type CityResponse = {
   lon: number
   geohash: string
   timezone: string
-  image_url: null
   image_url: string
   legacy_url_form: string
   full_name: string

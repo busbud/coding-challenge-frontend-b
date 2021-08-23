@@ -1,4 +1,4 @@
-import { Departure } from 'domains/departure';
+import { Departure } from 'domains/departure/models';
 
 type Props = {
   departure: Departure

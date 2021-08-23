@@ -35,5 +35,8 @@ module.exports = {
     }],
     'import/prefer-default-export': 'off',
     '@next/next/no-img-element': 'off',
+    'import/no-dynamic-require': 'off',
+    'global-require': 'off',
+    camelcase: 'off',
   },
 };

@@ -62,7 +62,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     ...require(`messages/shared/${locale}.json`),
   };
 
-  const { origin, destination, outbound_date: outboundDate } = context.query; // TODO insert adult query
+  const {
+    origin,
+    destination,
+    outbound_date: outboundDate,
+  } = context.query; // TODO insert adult query
 
   if (typeof origin !== 'string' || typeof destination !== 'string' || typeof outboundDate !== 'string') {
     return {
