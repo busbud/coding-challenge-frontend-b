@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useQuery } from 'react-query';
 
-import { Search, SearchResponse } from 'domains/search';
+import { Card, Search, SearchResponse } from 'domains/search';
 import { Header } from 'components/header';
 
 type DeparturesPageProps = {
@@ -36,40 +36,17 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
   }, [searchPoll]);
 
   const search = Search.fromApi(searchResponse);
-  console.log(search);
 
   return (
     <div>
       <Header />
       <h1>{t('title')}</h1>
       <div>
-        origin:
-        {origin}
+        {search.departures.map((departure) => (
+          <Card key={departure.id} departure={departure} />
+        ))}
       </div>
-      <div>
-        destination:
-        {destination}
-      </div>
-      {/* <div>
-        {searchResponse.departures.map((departure, index) => {
-          const { arrival_time: arrivalTime } = departure;
-          return (
-            <div key={index}>
-              arrival_time[
-              {index}
-              ]:
-              {' '}
-              {arrivalTime}
-            </div>
-          );
-        })}
-      </div> */}
 
-      <div>Response:</div>
-      <pre>{JSON.stringify(search, null, 2)}</pre>
-
-      <div>Full response:</div>
-      <pre>{JSON.stringify(searchResponse, null, 2)}</pre>
     </div>
   );
 };
@@ -91,7 +68,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   const searchResponse = await Search.getSSRDepartures(origin, destination, outboundDate);
-  // const searchResponse = { };
 
   return {
     props: {
@@ -99,7 +75,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       destination,
       outboundDate,
       searchResponse,
-      messages,
     },
   };
 };

@@ -1,8 +1,8 @@
 import axios, { AxiosInstance } from 'axios';
 
-import { City, CityResponse } from 'domains/city';
-import { Location, LocationResponse } from 'domains/location';
-import { Operator, OperatorResponse } from 'domains/operator';
+import { CityResponse } from 'domains/city';
+import { LocationResponse } from 'domains/location';
+import { OperatorResponse } from 'domains/operator';
 import { Departure, DepartureResponse } from 'domains/departure';
 
 export type SearchResponse = {
@@ -46,9 +46,7 @@ export class Search {
       Search.initSsrClient();
     }
 
-    const { data } = await Search.ssrClient.get<{
-      data: { data: SearchResponse }
-    }>(`/x-departures/${origin}/${destination}/${outboundDate}`);
+    const { data } = await Search.ssrClient.get<SearchResponse>(`/x-departures/${origin}/${destination}/${outboundDate}`);
 
     return data;
   }
@@ -58,9 +56,7 @@ export class Search {
       Search.initSsrClient();
     }
 
-    const { data } = await Search.ssrClient.get<{
-      data: { data: SearchResponse }
-    }>(`/x-departures/${origin}/${destination}/${outboundDate}/poll`);
+    const { data } = await Search.ssrClient.get<SearchResponse>(`/x-departures/${origin}/${destination}/${outboundDate}/poll`);
 
     return data;
   }

@@ -17,6 +17,6 @@ export default async function handler(
     return;
   }
 
-  const { data } = await Search.getSSRDeparturesPoll(origin, destination, outboundDate);
-  res.status(200).json(data.data);
+  const data = await Search.getSSRDeparturesPoll(origin, destination, outboundDate);
+  res.status(200).json(data);
 }

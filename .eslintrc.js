@@ -34,5 +34,6 @@ module.exports = {
       aspects: ['invalidHref', 'preferButton'],
     }],
     'import/prefer-default-export': 'off',
+    '@next/next/no-img-element': 'off',
   },
 };
