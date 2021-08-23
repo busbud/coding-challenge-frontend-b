@@ -42,7 +42,7 @@ export class Search {
   }
 
   static async getSSRDepartures(origin: string, destination: string, outboundDate: string) {
-    if (!Search.ssrClient) { // TODO another way instead of init?
+    if (!Search.ssrClient) {
       Search.initSsrClient();
     }
 
@@ -54,7 +54,7 @@ export class Search {
   }
 
   static async getSSRDeparturesPoll(origin: string, destination: string, outboundDate: string) {
-    if (!Search.ssrClient) { // TODO another way instead of init?
+    if (!Search.ssrClient) {
       Search.initSsrClient();
     }
 
@@ -66,37 +66,31 @@ export class Search {
   }
 
   static async getDeparturesPoll(origin: string, destination: string, outboundDate: string) {
-    if (!Search.client) { // TODO another way instead of init?
+    if (!Search.client) {
       Search.initClient();
     }
 
-    const { data } = await Search.client.get<{
-      data: { data: SearchResponse }
-    }>(`/api/${origin}/${destination}/${outboundDate}/poll`);
+    const { data } = await Search.client.get<SearchResponse>(`/api/${origin}/${destination}/${outboundDate}/poll`);
 
     return data;
   }
 
   static fromApi(rawSearch: SearchResponse) {
-    const cities = rawSearch.cities.map((city) => City.fromApi(city));
-    const locations = rawSearch.locations.map((location) => Location.fromApi(location));
-    const operators = rawSearch.operators.map((operator) => Operator.fromApi(operator));
-    const departures = rawSearch.departures.map((departure) => Departure.fromApi(departure));
+    const departures = rawSearch.departures.map((departure) => (
+      Departure.fromApi(departure, rawSearch.cities, rawSearch.locations, rawSearch.operators)
+    ));
 
     return new Search(
-      cities,
-      locations,
-      operators,
       departures,
       rawSearch.complete,
     );
   }
 
   constructor(
-    public cities: City[],
-    public locations: Location[],
-    public operators: Operator[],
     public departures: Departure[],
     public complete: boolean,
-  ) { }
+  ) {
+    this.departures = departures;
+    this.complete = complete;
+  }
 }

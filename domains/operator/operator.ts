@@ -43,12 +43,17 @@ export type OperatorResponse = {
 
 export class Operator {
   static fromApi(rawOperator: OperatorResponse) {
-    return new Operator(rawOperator.display_name);
+    return new Operator(
+      rawOperator.display_name,
+      rawOperator.logo_url,
+    );
   }
 
   constructor(
     public displayName: string,
-    public url: string,
-    public logo_url: string,
-  ) {}
+    public logoUrl: string,
+  ) {
+    this.displayName = displayName;
+    this.logoUrl = logoUrl;
+  }
 }

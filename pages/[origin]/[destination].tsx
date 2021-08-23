@@ -22,18 +22,18 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
   const t = useTranslations('Search');
   const [pollingEnabled, setPollingEnabled] = useState(true);
   const getDeparturesPoll = () => Search.getDeparturesPoll(origin, destination, outboundDate);
-  const { data } = useQuery('search', getDeparturesPoll, {
+  const { data: searchPoll } = useQuery('search', getDeparturesPoll, {
     enabled: pollingEnabled,
     refetchInterval: 2000,
     refetchOnMount: false,
   });
 
   useEffect(() => {
-    const complete = data?.complete;
+    const complete = searchPoll?.complete;
     if (complete === true) {
       setPollingEnabled(false);
     }
-  }, [data]);
+  }, [searchPoll]);
 
   const search = Search.fromApi(searchResponse);
   console.log(search);

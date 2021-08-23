@@ -1,3 +1,5 @@
+import { City, CityResponse } from 'domains/city';
+
 export type LocationResponse = {
   id: number
   city_id: string
@@ -10,9 +12,24 @@ export type LocationResponse = {
 }
 
 export class Location {
-  static fromApi(rawLocation: LocationResponse) {
-    return new Location(rawLocation.name);
+  static fromApi(rawLocation: LocationResponse, rawCities: CityResponse[]) {
+    const rawCity = rawCities.find((city) => city.id === rawLocation.city_id);
+
+    if (rawCity === undefined) {
+      throw Error(`Could not find a city ${rawLocation.city_id} in location ${rawLocation.id}`);
+    }
+
+    return new Location(
+      rawLocation.name,
+      City.fromApi(rawCity),
+    );
   }
 
-  constructor(public name: string) {}
+  constructor(
+    public name: string,
+    public city: City,
+  ) {
+    this.name = name;
+    this.city = city;
+  }
 }

@@ -35,8 +35,12 @@ export type CityResponse = {
 
 export class City {
   static fromApi(rawCity: CityResponse) {
-    return new City(rawCity.name);
+    return new City(
+      rawCity.name,
+    );
   }
 
-  constructor(public name: string) {}
+  constructor(public name: string) {
+    this.name = name;
+  }
 }

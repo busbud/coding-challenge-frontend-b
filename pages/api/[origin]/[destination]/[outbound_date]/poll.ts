@@ -1,10 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { Search } from 'domains/search';
-
-type Data = {
-  name: string
-}
+import { Search, SearchResponse } from 'domains/search';
 
 type PollError = {
   description: string
@@ -12,7 +8,7 @@ type PollError = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data | PollError>,
+  res: NextApiResponse<SearchResponse | PollError>,
 ) {
   const { origin, destination, outbound_date: outboundDate } = req.query;
 
@@ -21,6 +17,6 @@ export default async function handler(
     return;
   }
 
-  const response = await Search.getSSRDeparturesPoll(origin, destination, outboundDate);
-  res.status(200).json(response);
+  const { data } = await Search.getSSRDeparturesPoll(origin, destination, outboundDate);
+  res.status(200).json(data.data);
 }
