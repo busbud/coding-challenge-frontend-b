@@ -1,6 +1,6 @@
-import { CityResponse } from 'domains/city';
-import { Location, LocationResponse } from 'domains/location';
-import { Operator, OperatorResponse } from 'domains/operator';
+import { CityResponse } from './city';
+import { Location, LocationResponse } from './location';
+import { Operator, OperatorResponse } from './operator';
 
 type AmenityClassResponse = {
   display_name: string

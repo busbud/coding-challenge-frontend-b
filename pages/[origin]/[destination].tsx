@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useQuery } from 'react-query';
 
-import { Card, Search, SearchResponse } from 'domains/search';
-import { Header } from 'components/header';
+import { Search, SearchResponse } from 'domains/search';
+import { Item } from 'domains/departure';
+import { Header, Card } from 'components';
 
 type DeparturesPageProps = {
   origin: string
@@ -43,7 +44,9 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
       <h1>{t('title')}</h1>
       <div>
         {search.departures.map((departure) => (
-          <Card key={departure.id} departure={departure} />
+          <Card key={departure.id}>
+            <Item departure={departure} />
+          </Card>
         ))}
       </div>
 
@@ -71,6 +74,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
+      messages,
       origin,
       destination,
       outboundDate,

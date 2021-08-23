@@ -4,7 +4,7 @@ type Props = {
   departure: Departure
 }
 
-export const Card: React.VFC<Props> = ({ departure }) => (
+export const Item: React.VFC<Props> = ({ departure }) => (
   <div>
     {/* TODO set image height */}
     <img src={departure.operator.logoUrl} alt={departure.operator.displayName} />
@@ -20,6 +20,7 @@ export const Card: React.VFC<Props> = ({ departure }) => (
       </li>
       <li>
         {departure.arrivalTime}
+        {' '}
         {departure.destinationLocation.city.name}
         {' '}
         -

@@ -1,1 +1,2 @@
-export * from './departure';
+export * from './models';
+export * from './views';

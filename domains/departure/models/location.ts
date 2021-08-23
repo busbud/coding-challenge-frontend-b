@@ -1,4 +1,4 @@
-import { City, CityResponse } from 'domains/city';
+import { City, CityResponse } from './city';
 
 export type LocationResponse = {
   id: number
