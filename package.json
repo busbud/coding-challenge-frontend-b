@@ -1,5 +1,9 @@
 {
   "name": "coding-challenge-frontend-b",
+  "author": {
+    "name": "Luan Orlandi",
+    "email": "orlandi.luan@gmail.com"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +12,8 @@
     "start": "next start --port $PORT",
     "lint": "next lint",
     "lint-staged": "lint-staged",
+    "test": "CI=true jest",
+    "test:watch": "jest --watch",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -21,9 +27,11 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@types/jest": "^27.0.1",
     "@types/react": "17.0.19",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
+    "babel-jest": "^27.0.6",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "11.1.0",
@@ -32,6 +40,7 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.1",
+    "jest": "^27.0.6",
     "lint-staged": "^11.1.2",
     "typescript": "4.3.5"
   },
