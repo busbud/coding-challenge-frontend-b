@@ -1,5 +1,7 @@
 {
   "Search": {
-    "description": "Departures available"
+    "description": "Departures available",
+    "emptyState.title": "No available trips on your selected date",
+    "emptyState.description": "None of our partners are operating trips for your chosen date. We apologize for this inconvenience."
   }
 }

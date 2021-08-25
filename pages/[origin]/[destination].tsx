@@ -60,8 +60,8 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
         <p className="mb-4 text-lg text-gray-400">{t('description')}</p>
         {departures.length === 0 && (
           <Card>
-            <p className="text-gray-400 font-bold">No available trips on your selected date</p>
-            <p className="text-gray-400">None of our partners are operating trips for your chosen date. We apologize for this inconvenience.</p>
+            <p className="text-gray-400 font-bold">{t('emptyState.title')}</p>
+            <p className="text-gray-400">{t('emptyState.description')}</p>
           </Card>
         )}
         {departures.length > 0 && departures.map((departure) => (
