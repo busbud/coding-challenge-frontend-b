@@ -1,34 +1,31 @@
-import { Departure } from 'domains/departure/models';
+import { DepartureItem } from 'domains/departure/models';
 
 type Props = {
-  departure: Departure
+  departure: DepartureItem
 }
 
 export const Item: React.VFC<Props> = ({ departure }) => (
-  <div>
+  <>
     {/* TODO set image height */}
-    <img src={departure.operator.logoUrl} alt={departure.operator.displayName} />
-    <ul>
-      <li>
-        {departure.departureTime}
+    <div className="flex justify-between mb-4">
+      <img src={departure.operator.logoUrl} alt={departure.operator.displayName} />
+      <span className="ml-4 text-gray-400 font-bold">{departure.price}</span>
+    </div>
+    <div className="text-sm">
+      <div className="mb-1">
+        <span className="text-gray-400 font-bold">{departure.departureTime}</span>
         {' '}
-        {departure.originLocation.city.name}
+        <span className="text-gray-400 font-bold">{departure.originLocation.city.name}</span>
+        <span className="text-gray-400">{' - '}</span>
+        <span className="text-gray-400">{departure.originLocation.name}</span>
+      </div>
+      <div>
+        <span className="text-gray-400 font-bold">{departure.arrivalTime}</span>
         {' '}
-        -
-        {' '}
-        {departure.originLocation.name}
-      </li>
-      <li>
-        {departure.arrivalTime}
-        {' '}
-        {departure.destinationLocation.city.name}
-        {' '}
-        -
-        {' '}
-        {departure.destinationLocation.name}
-      </li>
-    </ul>
-    <b>{departure.priceTotal}</b>
-    <a href={departure.link}>Select</a>
-  </div>
+        <span className="text-gray-400 font-bold">{departure.destinationLocation.city.name}</span>
+        <span className="text-gray-400">{' - '}</span>
+        <span className="text-gray-400">{departure.destinationLocation.name}</span>
+      </div>
+    </div>
+  </>
 );

@@ -33,6 +33,7 @@ export type DepartureResponse = {
     },
     categories: object
     discounted: boolean
+    currency: string
   },
   links: {
     deeplink: string
@@ -42,6 +43,16 @@ export type DepartureResponse = {
   arrival_timezone: string
   departure_time: string
   arrival_time: string
+}
+
+export type DepartureItem = {
+  id: string,
+  departureTime: string,
+  arrivalTime: string,
+  price: string,
+  originLocation: Location,
+  destinationLocation: Location,
+  operator: Operator,
 }
 
 export class Departure {
@@ -76,8 +87,8 @@ export class Departure {
       rawDeparture.id,
       rawDeparture.departure_time,
       rawDeparture.arrival_time,
-      rawDeparture.prices.total,
-      rawDeparture.links.deeplink,
+      rawDeparture.prices.breakdown.base,
+      rawDeparture.prices.currency,
       Location.fromApi(rawOriginLocation, rawCities),
       Location.fromApi(rawDestinationLocation, rawCities),
       Operator.fromApi(rawOperator),
@@ -88,8 +99,8 @@ export class Departure {
     public id: string,
     public departureTime: string,
     public arrivalTime: string,
-    public priceTotal: number,
-    public link: string,
+    public price: number,
+    public priceCurrency: string,
     public originLocation: Location,
     public destinationLocation: Location,
     public operator: Operator,
@@ -97,10 +108,33 @@ export class Departure {
     this.id = id;
     this.departureTime = departureTime;
     this.arrivalTime = arrivalTime;
-    this.priceTotal = priceTotal;
-    this.link = link;
+    this.price = price;
+    this.priceCurrency = priceCurrency;
     this.originLocation = originLocation;
     this.destinationLocation = destinationLocation;
     this.operator = operator;
+  }
+
+  getDepartureItem(locale: string): DepartureItem {
+    return {
+      id: this.id,
+      departureTime: Intl.DateTimeFormat(locale, {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+      }).format(new Date(this.departureTime)),
+      arrivalTime: Intl.DateTimeFormat(locale, {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+      }).format(new Date(this.arrivalTime)),
+      price: Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: this.priceCurrency,
+      }).format(this.price / 100),
+      originLocation: this.originLocation,
+      destinationLocation: this.destinationLocation,
+      operator: this.operator,
+    };
   }
 }

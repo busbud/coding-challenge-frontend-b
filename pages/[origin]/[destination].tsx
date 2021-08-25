@@ -10,6 +10,7 @@ import { Header, Card } from 'components';
 import { api } from 'client';
 
 type DeparturesPageProps = {
+  locale: string
   origin: string
   destination: string
   outboundDate: string
@@ -17,6 +18,7 @@ type DeparturesPageProps = {
 }
 
 const DeparturesPage: React.VFC<DeparturesPageProps> = ({
+  locale,
   origin,
   destination,
   outboundDate,
@@ -38,17 +40,22 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
     }
   }, [searchPoll]);
 
-  const search = useMemo(() => Search.fromApi(searchResponse), [searchResponse]);
+  const departures = useMemo(() => {
+    const search = Search.fromApi(searchResponse);
+    return search.departures.map((departure) => departure.getDepartureItem(locale));
+  }, [searchResponse, locale]);
 
   return (
     <div>
       <Header />
       <h1>{t('title')}</h1>
-      <div>
-        {search.departures.map((departure) => (
-          <Card key={departure.id}>
-            <Item departure={departure} />
-          </Card>
+      <div className="container mx-auto">
+        {departures.map((departure) => (
+          <div key={departure.id} className="mb-4">
+            <Card>
+              <Item departure={departure} />
+            </Card>
+          </div>
         ))}
       </div>
     </div>
@@ -70,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (typeof origin !== 'string' || typeof destination !== 'string' || typeof outboundDate !== 'string') {
     return {
-      props: { messages },
+      props: { locale, messages },
       notFound: true,
     };
   }
@@ -81,6 +88,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
+      locale,
       messages,
       origin,
       destination,
