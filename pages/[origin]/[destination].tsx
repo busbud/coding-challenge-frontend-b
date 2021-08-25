@@ -55,7 +55,7 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
   return (
     <div>
       <Header />
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-screen-lg">
         {/* TODO show date formatted in description */}
         <p className="mb-4 text-lg text-gray-400">{t('description')}</p>
         {departures.length === 0 && (

@@ -7,9 +7,13 @@ type Props = {
 export const Item: React.VFC<Props> = ({ departure }) => (
   <>
     {/* TODO set image height */}
-    <div className="flex justify-between mb-4">
-      <img src={departure.operator.logoUrl} alt={departure.operator.displayName} />
-      <span className="ml-4 text-gray-400 font-bold">{departure.price}</span>
+    <div className="flex justify-between flex-wrap mb-4">
+      <img
+        className="h-full max-h-6"
+        src={departure.operator.getImageLogoUrl('128')}
+        alt={departure.operator.displayName}
+      />
+      <span className="text-gray-400 font-bold">{departure.price}</span>
     </div>
     <div className="text-sm">
       <div className="mb-1">

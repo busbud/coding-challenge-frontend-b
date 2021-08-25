@@ -11,35 +11,37 @@ export const Header: React.VFC = () => {
   const { locales, route, query } = useRouter();
 
   return (
-    <div className="flex justify-between mb-6 p-4 bg-indigo-50">
-      <div>
-        <Link href="/">
-          <a>
-            <Image
-              src={logo}
-              alt="Osheaga logo"
-              width={152}
-              height={45}
-            />
-          </a>
-        </Link>
-      </div>
-      <div>
-        {locales && locales.map((locale, index) => (
-          <span key={locale}>
-            {index > 0 && (
-              <span> | </span>
-            )}
-            <span>
-              <Link
-                href={{ pathname: route, query }}
-                locale={locale}
-              >
-                <a className="text-gray-700">{t('locale', { locale })}</a>
-              </Link>
+    <div className="bg-indigo-50">
+      <div className="container center max-w-screen-lg mx-auto flex justify-between flex-wrap mb-6 p-4">
+        <div className="mr-2">
+          <Link href="/">
+            <a>
+              <Image
+                src={logo}
+                alt="Osheaga logo"
+                width={152}
+                height={45}
+              />
+            </a>
+          </Link>
+        </div>
+        <div>
+          {locales && locales.map((locale, index) => (
+            <span key={locale}>
+              {index > 0 && (
+                <span> | </span>
+              )}
+              <span>
+                <Link
+                  href={{ pathname: route, query }}
+                  locale={locale}
+                >
+                  <a className="text-gray-700">{t('locale', { locale })}</a>
+                </Link>
+              </span>
             </span>
-          </span>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

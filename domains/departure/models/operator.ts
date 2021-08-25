@@ -56,4 +56,13 @@ export class Operator {
     this.displayName = displayName;
     this.logoUrl = logoUrl;
   }
+
+  getImageLogoUrl(height: string): string {
+    const parsedUrl = this.logoUrl.replace('{height}', height)
+      .replace('{width}', 'auto')
+      .replace('fit=fill', '&fit=fillmax')
+      .replace('&bg=0FFF', '');
+
+    return `${parsedUrl}&trim=auto&trim-md=0`;
+  }
 }
