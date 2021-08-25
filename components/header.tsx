@@ -11,8 +11,8 @@ export const Header: React.VFC = () => {
   const { locales, route, query } = useRouter();
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <div style={{ display: 'flex', gap: 10 }}>
+    <div className="flex justify-between mb-6 p-4 bg-indigo-50">
+      <div>
         <Link href="/">
           <a>
             <Image
@@ -25,15 +25,20 @@ export const Header: React.VFC = () => {
         </Link>
       </div>
       <div>
-        {locales && locales.map((locale) => (
-          <div key={locale}>
-            <Link
-              href={{ pathname: route, query }}
-              locale={locale}
-            >
-              {t('locale', { locale })}
-            </Link>
-          </div>
+        {locales && locales.map((locale, index) => (
+          <span key={locale}>
+            {index > 0 && (
+              <span> | </span>
+            )}
+            <span>
+              <Link
+                href={{ pathname: route, query }}
+                locale={locale}
+              >
+                <a className="text-gray-700">{t('locale', { locale })}</a>
+              </Link>
+            </span>
+          </span>
         ))}
       </div>
     </div>

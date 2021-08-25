@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import { NextIntlProvider } from 'next-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import '../styles/globals.css';
+import 'styles/globals.css';
 
 const queryClient = new QueryClient();
 

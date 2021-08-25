@@ -19,4 +19,12 @@ module.exports = {
     API_URL: process.env.API_URL,
     API_TOKEN: process.env.API_TOKEN,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: '/f2m673/f25dvk?outbound_date=2021-09-03&adults=1',
+      },
+    ];
+  },
 };

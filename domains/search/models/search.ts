@@ -21,11 +21,14 @@ export type SearchResponse = {
   is_valid_route: boolean
 }
 
-// TODO remove eslint disable
-// eslint-disable-next-line import/prefer-default-export
 export class Search {
-  static async getDeparturesPoll(origin: string, destination: string, outboundDate: string) {
-    const { data } = await bff.get<SearchResponse>(`/api/${origin}/${destination}/${outboundDate}/poll`);
+  static async getDeparturesPoll(
+    origin: string,
+    destination: string,
+    outboundDate: string,
+    adults: string,
+  ) {
+    const { data } = await bff.get<SearchResponse>(`/api/${origin}/${destination}/${outboundDate}/poll?adult=${adults}`);
 
     return data;
   }
