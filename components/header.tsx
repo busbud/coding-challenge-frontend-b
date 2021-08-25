@@ -6,7 +6,7 @@ import Image from 'next/image';
 import logo from 'public/osheaga-logo.png';
 
 export const Header: React.VFC = () => {
-  const t = useTranslations('Header');
+  const t = useTranslations('Shared');
 
   const { locales, route, query } = useRouter();
 

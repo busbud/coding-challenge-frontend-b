@@ -1,5 +1,7 @@
 {
-  "Header": {
-    "locale": "{locale, select, en {English} fr {Français} other {Autre}}"
+  "Shared": {
+    "locale": "{locale, select, en {English} fr {Français} other {Autre}}",
+    "errorTitle": "Quelque chose s'est mal passé ici",
+    "errorDescription": "Veuillez patienter quelques instants et essayez à nouveau d'accéder à cette page."
   }
 }

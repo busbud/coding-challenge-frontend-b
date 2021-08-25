@@ -1,7 +1,8 @@
 {
   "Search": {
     "description": "Départs disponibles",
-    "emptyState.title": "Aucun voyage disponible à la date sélectionnée",
-    "emptyState.description": "Aucun de nos partenaires n'organise de voyages pour la date que vous avez choisie. Nous nous excusons pour ce désagrément."
+    "emptyStateTitle": "Aucun voyage disponible à la date sélectionnée",
+    "emptyStateDescription": "Aucun de nos partenaires n'organise de voyages pour la date que vous avez choisie. Nous nous excusons pour ce désagrément.",
+    "loadingStateDescription": "Chargement des départs..."
   }
 }

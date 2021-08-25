@@ -3,13 +3,14 @@ import { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { useQuery } from 'react-query';
 
+import { publicRuntimeConfig } from 'configs/envs';
 import { Search, SearchResponse } from 'domains/search';
 import { Item } from 'domains/departure';
 import { Header, Card } from 'components';
 
 import { api } from 'client';
 
-type DeparturesPageProps = {
+type Props = {
   locale: string
   origin: string
   destination: string
@@ -18,39 +19,57 @@ type DeparturesPageProps = {
   searchResponse: SearchResponse
 }
 
-const DeparturesPage: React.VFC<DeparturesPageProps> = ({
+const DeparturesPage: React.VFC<Props> = ({
   locale,
   origin,
   destination,
   outboundDate,
   adults,
-  searchResponse,
+  searchResponse: initialSearchResponse,
 }) => {
   const t = useTranslations('Search');
-  const [pollingEnabled, setPollingEnabled] = useState(true);
+  const [searchResponse, setSearchResponse] = useState(initialSearchResponse);
+  const [pollingEnabled, setPollingEnabled] = useState(!searchResponse.complete);
   const getDeparturesPoll = () => Search.getDeparturesPoll(
     origin,
     destination,
     outboundDate,
     adults,
+    searchResponse.departures.length,
   );
-  const { data: searchPoll } = useQuery('search', getDeparturesPoll, {
+  const { data: searchPollResponse, isLoading } = useQuery('search', getDeparturesPoll, {
     enabled: pollingEnabled,
-    refetchInterval: 2000,
+    refetchInterval: publicRuntimeConfig.POLLING_INTERVAL,
     refetchOnMount: false,
   });
 
   useEffect(() => {
-    const complete = searchPoll?.complete;
-    if (complete === true) {
+    if (!searchPollResponse || searchPollResponse.complete === true) {
       setPollingEnabled(false);
+    } else if (searchPollResponse) {
+      const newSearchResponse = Search.withAddedPolling(searchResponse, searchPollResponse);
+      setSearchResponse(newSearchResponse);
     }
-  }, [searchPoll]);
+  }, [searchResponse, searchPollResponse]);
 
   const departures = useMemo(() => {
     const search = Search.fromApi(searchResponse);
     return search.departures.map((departure) => departure.getDepartureItem(locale));
   }, [searchResponse, locale]);
+
+  if (departures.length === 0 && !isLoading) {
+    return (
+      <div>
+        <Header />
+        <div className="container mx-auto max-w-screen-lg">
+          <Card>
+            <p className="text-gray-400 font-bold">{t('emptyStateTitle')}</p>
+            <p className="text-gray-400">{t('emptyStateDescription')}</p>
+          </Card>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -58,12 +77,6 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
       <div className="container mx-auto max-w-screen-lg">
         {/* TODO show date formatted in description */}
         <p className="mb-4 text-lg text-gray-400">{t('description')}</p>
-        {departures.length === 0 && (
-          <Card>
-            <p className="text-gray-400 font-bold">{t('emptyState.title')}</p>
-            <p className="text-gray-400">{t('emptyState.description')}</p>
-          </Card>
-        )}
         {departures.length > 0 && departures.map((departure) => (
           <div key={departure.id} className="mb-4">
             <Card>
@@ -71,6 +84,9 @@ const DeparturesPage: React.VFC<DeparturesPageProps> = ({
             </Card>
           </div>
         ))}
+        {isLoading && (
+          <div>{t('loadingStateDescription')}</div>
+        )}
       </div>
     </div>
   );

@@ -15,6 +15,9 @@ module.exports = {
     locales: ['en', 'fr'],
     defaultLocale: 'en',
   },
+  publicRuntimeConfig: {
+    POLLING_INTERVAL: process.env.NEXT_PUBLIC_POLLING_INTERVAL,
+  },
   serverRuntimeConfig: {
     API_URL: process.env.API_URL,
     API_TOKEN: process.env.API_TOKEN,

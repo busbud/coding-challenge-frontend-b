@@ -17,12 +17,14 @@ export default async function handler(
     destination,
     outbound_date: outboundDate,
     adult,
+    index,
   } = req.query;
 
   if (typeof origin !== 'string'
     || typeof destination !== 'string'
     || typeof outboundDate !== 'string'
     || typeof adult !== 'string'
+    || typeof index !== 'string'
   ) {
     res.status(500).json({ description: 'Invalid search filters' });
     return;
@@ -30,7 +32,7 @@ export default async function handler(
 
   const { data } = await api.get<
     SearchResponse
-  >(`/x-departures/${origin}/${destination}/${outboundDate}/poll?adult=${adult}`);
+  >(`/x-departures/${origin}/${destination}/${outboundDate}/poll?adult=${adult}&index=${index}`);
 
   res.status(200).json(data);
 }

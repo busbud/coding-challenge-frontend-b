@@ -21,14 +21,27 @@ export type SearchResponse = {
   is_valid_route: boolean
 }
 
+export type SearchPollingResponse = {
+  cities?: CityResponse[]
+  locations?: LocationResponse[]
+  operators?: OperatorResponse[]
+  departures?: DepartureResponse[]
+  /** Determines if all departures have been received from all relevant bus companies */
+  complete: boolean
+  ttl: number
+}
+
 export class Search {
   static async getDeparturesPoll(
     origin: string,
     destination: string,
     outboundDate: string,
     adults: string,
+    index: number,
   ) {
-    const { data } = await bff.get<SearchResponse>(`/api/${origin}/${destination}/${outboundDate}/poll?adult=${adults}`);
+    const { data } = await bff.get<
+      SearchResponse
+    >(`/api/${origin}/${destination}/${outboundDate}/poll?adult=${adults}&index=${index}`);
 
     return data;
   }
@@ -50,5 +63,29 @@ export class Search {
   ) {
     this.departures = departures;
     this.complete = complete;
+  }
+
+  static withAddedPolling(
+    searchResponse: SearchResponse,
+    searchPollingResponse: SearchPollingResponse,
+  ): SearchResponse {
+    const cities = searchPollingResponse.cities
+      ? [...searchResponse.cities, ...searchPollingResponse.cities] : [];
+    const locations = searchPollingResponse.locations
+      ? [...searchResponse.locations, ...searchPollingResponse.locations] : [];
+    const operators = searchPollingResponse.operators
+      ? [...searchResponse.operators, ...searchPollingResponse.operators] : [];
+    const departures = searchPollingResponse.departures
+      ? [...searchResponse.departures, ...searchPollingResponse.departures] : [];
+    const { complete } = searchPollingResponse;
+
+    return {
+      ...searchResponse,
+      cities,
+      locations,
+      operators,
+      departures,
+      complete,
+    };
   }
 }
