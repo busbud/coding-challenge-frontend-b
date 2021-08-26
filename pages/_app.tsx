@@ -6,7 +6,8 @@ import { publicRuntimeConfig } from 'configs/envs';
 import 'styles/globals.css';
 
 if (publicRuntimeConfig.API_MOCKING) {
-  require('mocks');
+  const { initMsw } = require('mocks');
+  initMsw();
 }
 
 const queryClient = new QueryClient();
