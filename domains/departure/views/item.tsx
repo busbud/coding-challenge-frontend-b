@@ -13,7 +13,7 @@ export const Item: React.VFC<Props> = ({ departure }) => (
         src={departure.operator.getImageLogoUrl('128')}
         alt={departure.operator.displayName}
       />
-      <span className="text-gray-400 font-bold">{departure.price}</span>
+      <span className="text-gray-400 font-bold text-lg">{departure.price}</span>
     </div>
     <div className="text-sm">
       <div className="mb-1">

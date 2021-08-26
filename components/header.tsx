@@ -25,7 +25,7 @@ export const Header: React.VFC = () => {
             </a>
           </Link>
         </div>
-        <div>
+        <div className="my-auto">
           {locales && locales.map((locale, index) => (
             <span key={locale}>
               {index > 0 && (
