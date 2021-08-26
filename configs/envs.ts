@@ -3,6 +3,7 @@ import getConfig from 'next/config';
 export type RuntimeEnvs = {
   publicRuntimeConfig: {
     POLLING_INTERVAL: number
+    API_MOCKING: boolean
   }
   serverRuntimeConfig: {
     API_URL: string;

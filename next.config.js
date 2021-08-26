@@ -17,6 +17,7 @@ module.exports = {
   },
   publicRuntimeConfig: {
     POLLING_INTERVAL: process.env.NEXT_PUBLIC_POLLING_INTERVAL,
+    API_MOCKING: process.env.NEXT_PUBLIC_API_MOCKING === 'true',
   },
   serverRuntimeConfig: {
     API_URL: process.env.API_URL,

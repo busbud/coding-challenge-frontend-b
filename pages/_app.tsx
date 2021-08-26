@@ -2,7 +2,12 @@ import type { AppProps } from 'next/app';
 import { NextIntlProvider } from 'next-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+import { publicRuntimeConfig } from 'configs/envs';
 import 'styles/globals.css';
+
+if (publicRuntimeConfig.API_MOCKING) {
+  require('mocks');
+}
 
 const queryClient = new QueryClient();
 

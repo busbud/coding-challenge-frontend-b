@@ -69,14 +69,10 @@ export class Search {
     searchResponse: SearchResponse,
     searchPollingResponse: SearchPollingResponse,
   ): SearchResponse {
-    const cities = searchPollingResponse.cities
-      ? [...searchResponse.cities, ...searchPollingResponse.cities] : [];
-    const locations = searchPollingResponse.locations
-      ? [...searchResponse.locations, ...searchPollingResponse.locations] : [];
-    const operators = searchPollingResponse.operators
-      ? [...searchResponse.operators, ...searchPollingResponse.operators] : [];
-    const departures = searchPollingResponse.departures
-      ? [...searchResponse.departures, ...searchPollingResponse.departures] : [];
+    const cities = searchResponse.cities.concat(searchPollingResponse.cities || []);
+    const locations = searchResponse.locations.concat(searchPollingResponse.locations || []);
+    const operators = searchResponse.operators.concat(searchPollingResponse.operators || []);
+    const departures = searchResponse.departures.concat(searchPollingResponse.departures || []);
     const { complete } = searchPollingResponse;
 
     return {

@@ -25,11 +25,11 @@ const DeparturesPage: React.VFC<Props> = ({
   destination,
   outboundDate,
   adults,
-  searchResponse: initialSearchResponse,
+  searchResponse: searchInitialResponse,
 }) => {
   const t = useTranslations('Search');
-  const [searchResponse, setSearchResponse] = useState(initialSearchResponse);
-  const [pollingEnabled, setPollingEnabled] = useState(!searchResponse.complete);
+  const [pollingEnabled, setPollingEnabled] = useState(!searchInitialResponse.complete);
+  const [searchResponse, setSearchResponse] = useState(searchInitialResponse);
   const getDeparturesPoll = () => Search.getDeparturesPoll(
     origin,
     destination,
@@ -46,11 +46,15 @@ const DeparturesPage: React.VFC<Props> = ({
   useEffect(() => {
     if (!searchPollResponse || searchPollResponse.complete === true) {
       setPollingEnabled(false);
-    } else if (searchPollResponse) {
-      const newSearchResponse = Search.withAddedPolling(searchResponse, searchPollResponse);
+    }
+  }, [searchPollResponse]);
+
+  useEffect(() => {
+    if (searchPollResponse) {
+      const newSearchResponse = Search.withAddedPolling(searchInitialResponse, searchPollResponse);
       setSearchResponse(newSearchResponse);
     }
-  }, [searchResponse, searchPollResponse]);
+  }, [searchInitialResponse, searchPollResponse]);
 
   const departures = useMemo(() => {
     const search = Search.fromApi(searchResponse);
@@ -85,7 +89,9 @@ const DeparturesPage: React.VFC<Props> = ({
           </div>
         ))}
         {isLoading && (
-          <div>{t('loadingStateDescription')}</div>
+          <div className="flex justify-center text-gray-400">
+            {t('loadingStateDescription')}
+          </div>
         )}
       </div>
     </div>
