@@ -1,19 +1,7 @@
 import { CityResponse } from './city';
 import { Location, LocationResponse } from './location';
 import { Operator, OperatorResponse } from './operator';
-
-type AmenityClassResponse = {
-  display_name: string
-  wifi: boolean
-  toilet: boolean
-  ac: boolean
-  refreshment: boolean
-  food: boolean
-  power_outlets: boolean
-  tv: boolean
-  bus_attendant: boolean
-  leg_room: boolean
-}
+import { AmenityClassResponse } from './amenityClass';
 
 export type DepartureResponse = {
   id: string
@@ -87,7 +75,7 @@ export class Departure {
       rawDeparture.id,
       rawDeparture.departure_time,
       rawDeparture.arrival_time,
-      rawDeparture.prices.breakdown.base,
+      rawDeparture.prices.total,
       rawDeparture.prices.currency,
       Location.fromApi(rawOriginLocation, rawCities),
       Location.fromApi(rawDestinationLocation, rawCities),

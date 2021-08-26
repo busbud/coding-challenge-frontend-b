@@ -9,6 +9,7 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
     'next/core-web-vitals',
+    'plugin:testing-library/react',
   ],
   globals: {
     React: true,
@@ -38,5 +39,6 @@ module.exports = {
     'import/no-dynamic-require': 'off',
     'global-require': 'off',
     camelcase: 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };
