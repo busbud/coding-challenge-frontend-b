@@ -1,12 +1,8 @@
 import { GetServerSideProps } from 'next';
-import { useState, useEffect, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
-import { useQuery } from 'react-query';
+import Head from 'next/head';
 
-import { publicRuntimeConfig } from 'configs/envs';
-import { Search, SearchResponse } from 'domains/search';
-import { Item } from 'domains/departure';
-import { Header, Card } from 'components';
+import { SearchResponse, SearchProvider, List } from 'domains/search';
+import { Header } from 'components';
 
 import { api } from 'client';
 
@@ -26,76 +22,26 @@ const DeparturesPage: React.VFC<Props> = ({
   outboundDate,
   adults,
   searchResponse: searchInitialResponse,
-}) => {
-  const t = useTranslations('Search');
-  const [pollingEnabled, setPollingEnabled] = useState(!searchInitialResponse.complete);
-  const [searchResponse, setSearchResponse] = useState(searchInitialResponse);
-  const getDeparturesPoll = () => Search.getDeparturesPoll(
-    origin,
-    destination,
-    outboundDate,
-    adults,
-    searchResponse.departures.length,
-  );
-  const { data: searchPollResponse, isLoading } = useQuery('search', getDeparturesPoll, {
-    enabled: pollingEnabled,
-    refetchInterval: publicRuntimeConfig.POLLING_INTERVAL,
-    refetchOnMount: false,
-  });
-
-  useEffect(() => {
-    if (!searchPollResponse || searchPollResponse.complete === true) {
-      setPollingEnabled(false);
-    }
-  }, [searchPollResponse]);
-
-  useEffect(() => {
-    if (searchPollResponse) {
-      const newSearchResponse = Search.withAddedPolling(searchInitialResponse, searchPollResponse);
-      setSearchResponse(newSearchResponse);
-    }
-  }, [searchInitialResponse, searchPollResponse]);
-
-  const departures = useMemo(() => {
-    const search = Search.fromApi(searchResponse);
-    return search.departures.map((departure) => departure.getDepartureItem(locale));
-  }, [searchResponse, locale]);
-
-  if (departures.length === 0 && !isLoading) {
-    return (
-      <div>
-        <Header />
-        <div className="container mx-auto max-w-screen-lg">
-          <Card>
-            <p className="text-gray-400 font-bold">{t('emptyStateTitle')}</p>
-            <p className="text-gray-400">{t('emptyStateDescription')}</p>
-          </Card>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div>
-      <Header />
+}) => (
+  <div>
+    <Head>
+      <title>Osheaga</title>
+    </Head>
+    <Header />
+    <SearchProvider
+      locale={locale}
+      origin={origin}
+      destination={destination}
+      outboundDate={outboundDate}
+      adults={adults}
+      searchInitialResponse={searchInitialResponse}
+    >
       <div className="container mx-auto max-w-screen-lg">
-        <p className="mb-4 text-lg text-gray-400">{t('description')}</p>
-        {departures.length > 0 && departures.map((departure) => (
-          <div key={departure.id} className="mb-4" data-cy="departure-item">
-            <Card>
-              <Item departure={departure} />
-            </Card>
-          </div>
-        ))}
-        {isLoading && (
-          <div className="flex justify-center text-gray-400" data-cy="search-loading">
-            {t('loadingStateDescription')}
-          </div>
-        )}
+        <List />
       </div>
-    </div>
-  );
-};
+    </SearchProvider>
+  </div>
+);
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { locale } = context;
