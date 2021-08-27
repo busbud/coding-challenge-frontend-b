@@ -11,7 +11,7 @@ export const Header: React.VFC = () => {
   const { locales, route, query } = useRouter();
 
   return (
-    <div className="bg-indigo-50">
+    <div className="bg-gradient-to-r from-blue-50 to-green-50">
       <div className="container center max-w-screen-lg mx-auto flex justify-between flex-wrap mb-6 p-4">
         <div className="mr-2">
           <Link href="/">
@@ -27,7 +27,7 @@ export const Header: React.VFC = () => {
         </div>
         <div className="my-auto">
           {locales && locales.map((locale, index) => (
-            <span key={locale}>
+            <span key={locale} className="text-indigo-900 text-sm">
               {index > 0 && (
                 <span> | </span>
               )}
@@ -36,7 +36,7 @@ export const Header: React.VFC = () => {
                   href={{ pathname: route, query }}
                   locale={locale}
                 >
-                  <a className="text-gray-700">{t('locale', { locale })}</a>
+                  <a>{t('locale', { locale })}</a>
                 </Link>
               </span>
             </span>
