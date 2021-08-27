@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { axe } from 'jest-axe';
 
 import { Item } from 'domains/departure';
 import { departureItemBuilder } from 'domains/departure/mocks';
@@ -28,5 +29,14 @@ describe('Item', () => {
 
     const price = screen.getByText(departureItem.price);
     expect(price).toBeInTheDocument();
+  });
+
+  describe('a11y', () => {
+    it('should not have violations', async () => {
+      const departureItem = departureItemBuilder();
+      const { container } = render(<Item departure={departureItem} />);
+
+      expect(await axe(container)).toHaveNoViolations();
+    });
   });
 });
