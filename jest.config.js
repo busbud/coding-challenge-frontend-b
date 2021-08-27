@@ -4,7 +4,11 @@ module.exports = {
     'domain/**/*.{ts,tsx}',
     'pages/**/*.{ts,tsx}',
   ],
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+  testPathIgnorePatterns: [
+    '<rootDir>/.next/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/cypress/',
+  ],
   testEnvironment: 'jsdom',
   watchPlugins: [
     'jest-watch-typeahead/filename',
