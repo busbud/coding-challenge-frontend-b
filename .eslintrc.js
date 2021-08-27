@@ -10,6 +10,7 @@ module.exports = {
     'airbnb',
     'next/core-web-vitals',
     'plugin:testing-library/react',
+    'plugin:cypress/recommended',
   ],
   globals: {
     React: true,
