@@ -15,5 +15,11 @@ workflows:
       - node/run:
           name: Build
           npm-run: build
-      - cypress/run
-          name: Cypress
+      - cypress/install:
+          name: "Cypress Build"
+          build: "npm run build"
+      - cypress/run:
+          requires:
+            - "Cypress Build"
+          name: "Cypress Run"
+          start: "npm start 3000"

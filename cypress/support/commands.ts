@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 Cypress.Commands.add('dataCy', (selector, ...args) => (
