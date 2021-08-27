@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.7.0
+  cypress: cypress-io/cypress@1.29.0
 
 workflows:
   ci:
@@ -14,3 +15,5 @@ workflows:
       - node/run:
           name: Build
           npm-run: build
+      - cypress/run
+          name: Cypress
