@@ -37,9 +37,7 @@ const searchResponse = {
     arrival_time: '2021-09-02T12:45:00',
     prices: {
       currency: 'USD',
-      breakdown: {
-        base: 4778,
-      },
+      total: 4778,
     },
   }],
   origin_city_id: '375dd587-9001-acbd-84a4-683deddcb1b1',
@@ -60,9 +58,7 @@ const searchPollResponse = {
     arrival_time: '2021-09-02T14:15:00',
     prices: {
       currency: 'USD',
-      breakdown: {
-        base: 4778,
-      },
+      total: 4778,
     },
   }],
   origin_city_id: '375dd587-9001-acbd-84a4-683deddcb1b1',
