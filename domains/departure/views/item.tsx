@@ -6,7 +6,6 @@ type Props = {
 
 export const Item: React.VFC<Props> = ({ departure }) => (
   <>
-    {/* TODO set image height */}
     <div className="flex justify-between flex-wrap mb-4">
       <img
         className="h-full max-h-6"

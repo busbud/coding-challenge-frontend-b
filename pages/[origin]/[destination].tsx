@@ -79,7 +79,6 @@ const DeparturesPage: React.VFC<Props> = ({
     <div>
       <Header />
       <div className="container mx-auto max-w-screen-lg">
-        {/* TODO show date formatted in description */}
         <p className="mb-4 text-lg text-gray-400">{t('description')}</p>
         {departures.length > 0 && departures.map((departure) => (
           <div key={departure.id} className="mb-4" data-cy="departure-item">
