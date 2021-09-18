@@ -3,5 +3,5 @@ export interface Departure {
   arrivalEpoch: number;
   departureLocationName: string;
   departureEpoch: number;
-  price: { currency: string; ammount: number };
+  price: { currency: string; amount: number };
 }

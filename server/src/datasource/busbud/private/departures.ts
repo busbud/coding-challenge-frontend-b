@@ -28,7 +28,7 @@ export async function fetchDepartures(
     departureEpoch: toEpochTime(dep.departure_time, dep.departure_timezone),
     price: {
       currency: dep.prices.currency,
-      ammount: dep.prices.total,
+      amount: dep.prices.total,
     },
   }));
 
