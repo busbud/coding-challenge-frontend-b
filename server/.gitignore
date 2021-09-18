@@ -1,0 +1,39 @@
+# OSX
+#
+.DS_Store
+
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
+
+trash
+.env
+
+\.vscode/
+\.vs/
+
+dist
+
+.eslintcache
+
+# CI
+/*.log
+
+# CLI's
+.cli.lock
+.cli.epoch
+.yarn-epoch
+
+# Vim
+*.swp
+*~
+
+.env
+
+coverage
+report.*.json
+
+
+/public/index.html

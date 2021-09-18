@@ -1,0 +1,17 @@
+{
+  "name": "budoshea",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "yarn build-server && yarn build-client && yarn build-assemble",
+    "build-client": "cd client && yarn install && yarn build && cd ..",
+    "build-server": "cd server && yarn install && yarn build && cd ..",
+    "build-assemble": "mkdir -p server/public && mv client/public/* server/public/",
+    "start": "node server/dist/index.js"
+  },
+  "engines": {
+    "node": "16.8.0",
+    "yarn": "1.x"
+  }
+}
