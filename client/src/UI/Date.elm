@@ -5,11 +5,9 @@ import Time
 
 toString : Time.Posix -> String
 toString time =
-    String.fromInt (Time.toYear here time)
-        ++ "-"
-        ++ toNumberMonth (Time.toMonth here time)
-        ++ "-"
-        ++ pad (String.fromInt (Time.toDay here time))
+    pad (String.fromInt (Time.toDay here time))
+        ++ " "
+        ++ monthShortName (Time.toMonth here time)
         ++ " "
         ++ pad (String.fromInt (Time.toHour here time))
         ++ ":"
@@ -34,41 +32,41 @@ pad str =
             str
 
 
-toNumberMonth : Time.Month -> String
-toNumberMonth month =
+monthShortName : Time.Month -> String
+monthShortName month =
     case month of
         Time.Jan ->
-            "01"
+            "Jan"
 
         Time.Feb ->
-            "02"
+            "Feb"
 
         Time.Mar ->
-            "03"
+            "Mar"
 
         Time.Apr ->
-            "04"
+            "Apr"
 
         Time.May ->
-            "05"
+            "May"
 
         Time.Jun ->
-            "06"
+            "Jun"
 
         Time.Jul ->
-            "07"
+            "Jul"
 
         Time.Aug ->
-            "08"
+            "Aug"
 
         Time.Sep ->
-            "09"
+            "Sep"
 
         Time.Oct ->
-            "10"
+            "Oct"
 
         Time.Nov ->
-            "11"
+            "Nov"
 
         Time.Dec ->
-            "12"
+            "Dec"
