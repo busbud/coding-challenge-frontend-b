@@ -1,21 +1,19 @@
 module API.Departures exposing (Departure, fetchDepartures)
 
 import Http
-import Json.Decode as Decode exposing (Decoder, field, int, list, map2, string)
+import Json.Decode as Decode exposing (Decoder, field, int, list, map, map2, string)
 import Json.Decode.Pipeline exposing (required)
+import Time exposing (Posix)
+import UI.Price exposing (Price)
 
 
 type alias Departure =
     { arrivalLocation : String
-    , arrivalTime : Int
+    , arrivalTime : Posix
     , departureLocation : String
-    , departureTime : Int
+    , departureTime : Posix
     , price : Price
     }
-
-
-type alias Price =
-    ( Int, String )
 
 
 type alias Options =
@@ -42,12 +40,17 @@ decodeDeparture : Decoder Departure
 decodeDeparture =
     Decode.succeed Departure
         |> required "arrivalLocationName" string
-        |> required "arrivalEpoch" int
+        |> required "arrivalEpoch" decodeEpoch
         |> required "departureLocationName" string
-        |> required "departureEpoch" int
+        |> required "departureEpoch" decodeEpoch
         |> required "price" decodePrice
 
 
 decodePrice : Decoder Price
 decodePrice =
     map2 Tuple.pair (field "amount" int) (field "currency" string)
+
+
+decodeEpoch : Decoder Posix
+decodeEpoch =
+    map ((*) 1000 >> Time.millisToPosix) int
