@@ -1,0 +1,26 @@
+body
+  align-content: stretch
+  display: grid
+  grid-template-rows: 40px auto 160px
+  justify-content: stretch
+  min-height: 100vh
+
+.page-header,
+.page-content,
+.page-footer
+  padding: 10px
+
+.page-header
+  grid-row: 1 / 2
+  background: var(--color-greylight)
+
+.page-content
+  grid-row: 2 / 3
+
+.page-footer
+  grid-row: 3 / 4
+  background: var(--color-greydeep)
+
+.footer-legal
+  font-size: var(--font-size--micro)
+  line-height: 1.2

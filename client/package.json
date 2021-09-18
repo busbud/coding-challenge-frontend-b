@@ -1,0 +1,32 @@
+{
+  "name": "@budoshea/client",
+  "scripts": {
+    "build": "yarn build-css && yarn build-js && yarn compress",
+    "build-css": "gulp sassBuild",
+    "build-js": "elm-spa build",
+    "compress": "gulp optimize",
+    "dev": "concurrently \"npm:watch-*\"",
+    "watch-elm": "elm-spa server",
+    "watch-styles": "gulp watchStyles"
+  },
+  "dependencies": {
+    "concurrently": "^6.2.1",
+    "elm": "^0.19.1-5",
+    "elm-spa": "^6.0.4",
+    "gulp": "^4.0.2",
+    "gulp-brotli": "^3.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-gzip": "^1.4.2",
+    "gulp-sass": "^5.0.0",
+    "normalize.css": "^8.0.1",
+    "prettier": "^2.3.2",
+    "sass": "^1.39.0",
+    "zlib": "^1.0.5"
+  },
+  "engines": {
+    "node": "16.8.0",
+    "yarn": "1.x"
+  }
+}
