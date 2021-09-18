@@ -1,11 +1,14 @@
 import Fastify from "fastify";
 import fastifyStatic from "fastify-static";
+import fastifyCors from "fastify-cors";
 import path from "path";
 import departures from "../api/departures";
 import { serverPort } from "../env";
 
 export async function createServer() {
   const fastify = Fastify({ logger: true });
+
+  fastify.register(fastifyCors);
 
   fastify.register(departures);
 
