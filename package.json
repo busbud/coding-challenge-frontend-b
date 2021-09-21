@@ -31,7 +31,8 @@
   },
   "scripts": {
     "build": "tsc --build && npx webpack --mode=production && npm run copy-assets",
-    "start": "npm run build && node ./dist/server/index.js",
+    "start": "node ./dist/server/index.js",
+    "dev": "npm run build && npm start",
     "copy-assets": "npx ts-node ./copy-assets.ts"
   }
 }
