@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -10,7 +14,41 @@ html, body {
 }
 
 .App header {
-  margin: 40px 0;
+  margin: 20px 0 40px 0;
+}
+
+.App header .options {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.App header .options .label {
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.App header .options .buttons {
+  display: flex;
+  align-items: center;
+  height: 45px;
+}
+
+.App header .options .buttons > * {
+  margin: 0 5px;
+  border: 2px solid #ccc;
+  padding: 2px 5px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.App header .options .buttons > .active {
+  border-color: #4871bd;
+}
+
+.App header .options .currencies .currency {
+  height: 28px;
 }
 
 .App header img {
@@ -27,7 +65,8 @@ html, body {
   text-align: center;
   color: #014568;
   letter-spacing: 2px;
-  transform: rotate(-2deg);
+  transform: rotate(1deg) skew(1deg);
+  text-transform: uppercase;
 }
 
 .App header h2 {
@@ -36,6 +75,7 @@ html, body {
   font-size: 30px;
   text-align: center;
   color: #014568;
+  transform: rotate(1deg) skew(1deg);
 }
 
 .App .transport-help {
@@ -77,7 +117,7 @@ html, body {
 .Results .loading {
   margin: 0 auto;
   width: 500px;
-  padding: 5px 0;
+  padding: 8px 0;
   border-radius: 4px 4px 0 0;
   text-align: center;
   font-style: italic;
@@ -97,11 +137,12 @@ html, body {
   margin: 10px;
   border-radius: 5px;
   overflow: hidden;
+  box-shadow: 0 0 2px rgba(0,0,0,0.3);
 }
 
 .Results .list .departure .locations {
   flex: 1;
-  padding: 10px;
+  padding: 12px 15px;
   background-color: white;
 }
 

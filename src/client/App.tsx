@@ -1,4 +1,5 @@
 import axios, { CancelTokenSource } from 'axios';
+import Cookies from 'js-cookie';
 import React, { Component } from 'react';
 
 import { City } from '../api/busbud/City';
@@ -7,11 +8,16 @@ import { DepartureSearchInitResult, DepartureSearchPollResult }
 import { Location } from '../api/busbud/Location';
 import { Operator } from '../api/busbud/Operator';
 import { XDeparture } from '../api/busbud/XDeparture';
+import translations from './translations';
 
 interface AppProps {
+  language: string,
+  currency: string
 }
 
 interface AppState {
+  language: string,
+  currency: string,
   completed: boolean,
   error: boolean,
   people: number,
@@ -24,13 +30,13 @@ interface AppState {
   pollTimeout?: number
 }
 
-export class App extends Component<AppProps, AppState> {
-  readonly date: string = new Date().toISOString().slice(0, 10);
-
+class App extends Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
 
     this.state = {
+      language: props.language,
+      currency: props.currency,
       completed: false,
       error: false,
       people: 1,
@@ -69,7 +75,7 @@ export class App extends Component<AppProps, AppState> {
     }
   }
 
-  initSearch(people: number) {
+  initSearch(people: number, language: string, currency: string) {
     if (this.state.searchCancelTokenSource && !this.state.completed) {
       this.state.searchCancelTokenSource.cancel();
       clearTimeout(this.state.pollTimeout);
@@ -89,10 +95,10 @@ export class App extends Component<AppProps, AppState> {
       searchCancelTokenSource: cancelTokenSource
     });
 
-    axios.get<DepartureSearchInitResult>(
-      '/api/search',
-      { params: { people }, cancelToken: cancelTokenSource.token }
-    )
+    axios.get<DepartureSearchInitResult>('/api/search', {
+      params: { people, language, currency },
+      cancelToken: cancelTokenSource.token
+    })
       .then(response => {
         const { complete, cities, locations, departures, operators } =
           response.data;
@@ -114,13 +120,15 @@ export class App extends Component<AppProps, AppState> {
   }
 
   pollSearch() {
-    axios.get<DepartureSearchPollResult>(
-      '/api/search/poll',
-      {
-        params: { people: this.state.people, index: this.state.index },
-        cancelToken: this.state.searchCancelTokenSource.token
-      }
-    )
+    axios.get<DepartureSearchPollResult>('/api/search/poll', {
+      params: {
+        index: this.state.index,
+        people: this.state.people,
+        language: this.state.language,
+        currency: this.state.currency
+      },
+      cancelToken: this.state.searchCancelTokenSource.token
+    })
       .then(response => {
         const { complete, departures, operators } = response.data;
         this.handleSearch(complete, departures, operators);
@@ -130,25 +138,83 @@ export class App extends Component<AppProps, AppState> {
 
   changePeople(e: React.ChangeEvent<HTMLSelectElement>) {
     const people = parseInt(e.target.value, 10);
-    this.initSearch(people);
+    this.initSearch(people, this.state.language, this.state.currency);
+  }
+
+  setLanguage(language: string) {
+    Cookies.set('language', language, { expires: 365 });
+    this.setState({ language });
+    this.initSearch(this.state.people, language, this.state.currency);
+  }
+
+  setCurrency(currency: string) {
+    Cookies.set('currency', currency, { expires: 365 });
+    this.setState({ currency });
+    this.initSearch(this.state.people, this.state.language, currency);
+  }
+
+  t(key: string) {
+    return translations[this.state.language][key];
   }
 
   componentDidMount() {
-    this.initSearch(this.state.people);
+    const { people, language, currency } = this.state;
+    this.initSearch(people, language, currency);
   }
 
   render() {
+    const Language = (p: { value: string, name: string, icon: string }) => {
+      const active = this.state.language == p.value;
+      return (
+        <div
+          className={"language " + (active ? 'active' : '')}
+          onClick={(_) => this.setLanguage(p.value)}>
+          <div className="icon">{p.icon}</div>
+          <div className="title">{p.name}</div>
+        </div >
+      );
+    }
+
+    const Currency = (p: { value: string }) => {
+      const active = this.state.currency == p.value;
+      return (
+        <div
+          className={"currency " + (active ? 'active' : '')}
+          onClick={(_) => this.setCurrency(p.value)}>
+          {p.value}
+        </div>
+      );
+    }
+
     return (
-      <div className="App">
+      <div className="App" >
         <header>
+          <div className="options">
+            <div className="languages">
+              <div className="label">{this.t('options.language')}</div>
+              <div className="buttons">
+                <Language value="en" name="English" icon="&#x1f1ec;&#x1f1e7;" />
+                <Language
+                  value="fr" name="Français" icon="&#x1f1eb;&#x1f1f7;" />
+              </div>
+            </div>
+            <div className="currencies">
+              <div className="label">{this.t('options.currency')}</div>
+              <div className="buttons">
+                <Currency value="USD" />
+                <Currency value="EUR" />
+                <Currency value="CAD" />
+              </div>
+            </div>
+          </div>
           <img src="images/header.png" alt="OSHEAGA" />
-          <h1>Music & Arts Festival</h1>
-          <h2>Sepember 25th</h2>
-        </header>
+          <h1>{this.t('header.title')}</h1>
+          <h2>{this.t('header.subtitle')}</h2>
+        </header >
         <div className="transport-help box">
-          <div className="top">Need some help getting here?</div>
+          <div className="top">{this.t('help.title')}</div>
           <div className="bottom">
-            Here are buses from Québec to Montréal for
+            {this.t('help.text.pre-select')}
             <select
               value={this.state.people}
               onChange={(e) => this.changePeople(e)}
@@ -158,9 +224,15 @@ export class App extends Component<AppProps, AppState> {
               <option value="3">3</option>
               <option value="4">4</option>
             </select>
-            people on September 25th!</div>
+            {this.state.people == 1 ?
+              this.t('help.text.person') :
+              this.t('help.text.people')}
+            {" "}
+            {this.t('help.text.post-select')}</div>
         </div>
         <Results
+          language={this.state.language}
+          currency={this.state.currency}
           loading={!this.state.completed}
           departures={this.state.departures}
           operators={this.state.operators}
@@ -172,6 +244,8 @@ export class App extends Component<AppProps, AppState> {
 }
 
 interface ResultsProps {
+  language: string,
+  currency: string,
   loading: boolean,
   departures: XDeparture[],
   operators: { [key: string]: Operator },
@@ -181,9 +255,6 @@ interface ResultsProps {
 interface ResultsState { }
 
 class Results extends Component<ResultsProps, ResultsState> {
-  readonly currencyFmt =
-    new Intl.NumberFormat('en', { style: 'currency', currency: 'EUR' });
-
   readonly timeFmt =
     new Intl.DateTimeFormat('en', { hour: 'numeric', minute: 'numeric' });
 
@@ -191,7 +262,16 @@ class Results extends Component<ResultsProps, ResultsState> {
     super(props);
   }
 
+  t(key: string) {
+    return translations[this.props.language][key];
+  }
+
   render() {
+    const currencyFmt =
+      new Intl.NumberFormat('en', {
+        style: 'currency', currency: this.props.currency
+      });
+
     const Location =
       (p: { point: string, msg: string, time: string, locationId: number }) => {
         const location = this.props.locations[p.locationId];
@@ -224,20 +304,24 @@ class Results extends Component<ResultsProps, ResultsState> {
           <Operator operatorId={departure.operator_id} />
           <Location
             point="from"
-            msg="Departs"
+            msg={this.t('list.departure.departs')}
             time={departure.departure_time}
             locationId={departure.origin_location_id} />
           <Location
             point="to"
-            msg="Arrives"
+            msg={this.t('list.departure.arrives')}
             time={departure.arrival_time}
             locationId={departure.destination_location_id} />
         </div>
         <div className="details">
           <div className="price">
-            {this.currencyFmt.format(departure.prices.total / 100)}
+            {currencyFmt.format(departure.prices.total / 100)}
           </div>
-          <div className="class">Class: {departure.class_name}</div>
+          <div className="class">
+            {this.t('list.departure.class')}
+            {": "}
+            {departure.class_name}
+          </div>
         </div>
       </div >
     );
@@ -246,14 +330,14 @@ class Results extends Component<ResultsProps, ResultsState> {
       <div className="Results" >
         <div className={"loading box " + (this.props.loading ? '' : 'done')}>
           {this.props.loading ?
-            'Loading... The perfect bus for you will be here shortly!' :
-            'Here are all your buses, take your pick!'}
+            this.t('list.loading.inprogress') :
+            this.t('list.loading.done')}
         </div>
         <div className="list box">
           {departures.length ?
             departures :
             <div className="empty">
-              {this.props.loading ? '···' : 'Sorry, there are no Results.'}
+              {this.props.loading ? '···' : this.t('list.loading.no-results')}
             </div>}
         </div>
       </div>
