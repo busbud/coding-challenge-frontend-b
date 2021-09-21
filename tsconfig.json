@@ -13,6 +13,5 @@
       "*": ["node_modules/*"]
     }
   },
-  "compileOnSave": true,
   "include": ["src/**/*"]
 }
