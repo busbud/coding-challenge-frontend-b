@@ -1,0 +1,149 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.App {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.App header {
+  margin: 40px 0;
+}
+
+.App header img {
+  display: block;
+  margin: 0 auto;
+  width: 608px;
+  height: 132px;
+}
+
+.App header h1 {
+  margin: 20px 0 0 0;
+  padding: 0;
+  font-size: 40px;
+  text-align: center;
+  color: #014568;
+  letter-spacing: 2px;
+  transform: rotate(-2deg);
+}
+
+.App header h2 {
+  margin: 5px 0 0 0;
+  padding: 0;
+  font-size: 30px;
+  text-align: center;
+  color: #014568;
+}
+
+.App .transport-help {
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.App .transport-help .top {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.App .transport-help .bottom {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.App .transport-help .bottom select {
+  margin: 0 7px;
+  border: 2px solid black;
+  border-radius: 3px;
+  padding: 3px;
+  width: 50px;
+  background-color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.App .box {
+  background-color: #7ab73d;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 black;
+}
+
+.Results {
+  margin: 20px 0;
+}
+
+.Results .loading {
+  margin: 0 auto;
+  width: 500px;
+  padding: 5px 0;
+  border-radius: 4px 4px 0 0;
+  text-align: center;
+  font-style: italic;
+}
+
+.Results .list {
+  overflow: hidden;
+}
+
+.Results .list .empty {
+  text-align: center;
+  font-size: 50px;
+}
+
+.Results .list .departure {
+  display: flex;
+  margin: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.Results .list .departure .locations {
+  flex: 1;
+  padding: 10px;
+  background-color: white;
+}
+
+.Results .list .departure .locations .location {
+  display: flex;
+  margin-top: 5px;
+}
+
+.Results .list .departure .locations .location .msg {
+  width: 90px;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.Results .list .departure .locations .location .time {
+  width: 80px;
+  font-weight: bold;
+}
+
+.Results .list .departure .locations .city {
+  margin-right: 5px;
+}
+
+.Results .list .departure .locations .exact {
+  color: #555;
+}
+
+.Results .list .departure .details {
+  width: 200px;
+  background-color: #185a82;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.Results .list .departure .details .price {
+  margin-top: 30px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.Results .list .departure .details .class {
+  margin-top: 3px;
+  font-size: 15px;
+}

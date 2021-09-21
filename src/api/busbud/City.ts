@@ -4,6 +4,7 @@ export interface City {
   id: string,
   locale: string,
   region_id: number,
+  name: string,
   lat: number,
   lng: number,
   geohash: string,

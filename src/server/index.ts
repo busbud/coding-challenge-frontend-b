@@ -32,19 +32,37 @@ server.get('/', (_, res) => {
 });
 
 // proxy the calls to the busbud API
-server.get('/api/search', (req, res) => {
-  busbudApi.departureSearchInit('f2m673', 'f25dvk', '2021-09-21', {
-    adult: 1,
+const apiOptions = (req: express.Request) => {
+  return {
+    index: req.query.index || 0,
+    adult: req.query.people || 1,
     child: 0,
     senior: 0,
     lang: 'en',
     currency: 'EUR'
-  })
+  };
+}
+
+server.get('/api/search', (req, res) => {
+  const options = apiOptions(req);
+  busbudApi.departureSearchInit('f2m673', 'f25dvk', '2021-09-25', options)
     .then(response => {
       res.json(response.data);
     })
     .catch(error => {
-      console.log(error);
+      console.log("Busbud API error: ", error);
+      res.json({ error: 'search-failed' })
+    });
+});
+
+server.get('/api/search/poll', (req, res) => {
+  const options = apiOptions(req);
+  busbudApi.departureSearchPoll('f2m673', 'f25dvk', '2021-09-25', options)
+    .then(response => {
+      res.json(response.data);
+    })
+    .catch(error => {
+      console.log("Busbud API error: ", error);
       res.json({ error: 'search-failed' })
     });
 });
