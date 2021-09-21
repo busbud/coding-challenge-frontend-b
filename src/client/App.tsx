@@ -1,5 +1,5 @@
-import axios from 'axios';
-import React, { Component, ReactElement } from 'react';
+import axios, { CancelTokenSource } from 'axios';
+import React, { Component } from 'react';
 
 import { City } from '../api/busbud/City';
 import { DepartureSearchInitResult, DepartureSearchPollResult }
@@ -19,7 +19,9 @@ interface AppState {
   departures: XDeparture[],
   operators: { [key: string]: Operator },
   cities: { [key: string]: City },
-  locations: { [key: string]: Location }
+  locations: { [key: string]: Location },
+  searchCancelTokenSource?: CancelTokenSource,
+  pollTimeout?: number
 }
 
 export class App extends Component<AppProps, AppState> {
@@ -46,13 +48,18 @@ export class App extends Component<AppProps, AppState> {
     operators: Operator[]
   ) {
     // convert the operator list into a hashmap for easier lookup
-    let operatorMap = { ...this.state.operators };
+    const operatorMap = { ...this.state.operators };
     operators.forEach(operator => operatorMap[operator.id] = operator);
+
+    // make sure only new departures are added
+    const newDepartures = departures.filter((departure) =>
+      this.state.departures.every(existing => departure.id != existing.id)
+    );
 
     this.setState({
       completed: completed,
       index: this.state.index + departures.length,
-      departures: [...this.state.departures, ...departures],
+      departures: [...this.state.departures, ...newDepartures],
       operators: operatorMap
     });
     // if the departures have not completed coming in from bus companies
@@ -63,6 +70,13 @@ export class App extends Component<AppProps, AppState> {
   }
 
   initSearch(people: number) {
+    if (this.state.searchCancelTokenSource && !this.state.completed) {
+      this.state.searchCancelTokenSource.cancel();
+      clearTimeout(this.state.pollTimeout);
+    }
+
+    const cancelTokenSource = axios.CancelToken.source();
+
     this.setState({
       completed: false,
       error: false,
@@ -71,19 +85,23 @@ export class App extends Component<AppProps, AppState> {
       departures: [],
       operators: {},
       cities: {},
-      locations: {}
+      locations: {},
+      searchCancelTokenSource: cancelTokenSource
     });
 
-    axios.get<DepartureSearchInitResult>('/api/search', { params: { people } })
+    axios.get<DepartureSearchInitResult>(
+      '/api/search',
+      { params: { people }, cancelToken: cancelTokenSource.token }
+    )
       .then(response => {
         const { complete, cities, locations, departures, operators } =
           response.data;
 
         // convert the city and location lists into hashmaps for easier lookup
-        let cityMap: { [key: string]: City } = {};
+        const cityMap: { [key: string]: City } = {};
         cities.forEach(city => cityMap[city.id] = city);
 
-        let locationMap: { [key: string]: Location } = {};
+        const locationMap: { [key: string]: Location } = {};
         locations.forEach(location => locationMap[location.id] = location);
 
         this.setState({
@@ -98,7 +116,10 @@ export class App extends Component<AppProps, AppState> {
   pollSearch() {
     axios.get<DepartureSearchPollResult>(
       '/api/search/poll',
-      { params: { people: this.state.people, index: this.state.index } }
+      {
+        params: { people: this.state.people, index: this.state.index },
+        cancelToken: this.state.searchCancelTokenSource.token
+      }
     )
       .then(response => {
         const { complete, departures, operators } = response.data;
