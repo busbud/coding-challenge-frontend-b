@@ -62,10 +62,19 @@ class App extends Component<AppProps, AppState> {
       this.state.departures.every(existing => departure.id != existing.id)
     );
 
+    const sortedDepartures =
+      [...this.state.departures, ...newDepartures].sort((a, b) => {
+        return (
+          a.departure_time < b.departure_time ?
+            -1 :
+            (a.departure_time > b.departure_time ? 1 : 0)
+        );
+      });
+
     this.setState({
       completed: completed,
       index: this.state.index + departures.length,
-      departures: [...this.state.departures, ...newDepartures],
+      departures: sortedDepartures,
       operators: operatorMap
     });
     // if the departures have not completed coming in from bus companies
