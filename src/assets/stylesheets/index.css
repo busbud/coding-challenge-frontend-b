@@ -9,7 +9,8 @@ html, body {
 }
 
 .App {
-  width: 800px;
+  max-width: 800px;
+  padding: 0 10px;
   margin: 0 auto;
 }
 
@@ -116,7 +117,7 @@ html, body {
 
 .Results .loading {
   margin: 0 auto;
-  width: 500px;
+  max-width: 500px;
   padding: 8px 0;
   border-radius: 4px 4px 0 0;
   text-align: center;
@@ -162,6 +163,10 @@ html, body {
   font-weight: bold;
 }
 
+.Results .list .departure .locations .place {
+  flex: 1;
+}
+
 .Results .list .departure .locations .city {
   margin-right: 5px;
 }
@@ -172,6 +177,7 @@ html, body {
 
 .Results .list .departure .details {
   width: 200px;
+  padding-top: 30px;
   background-color: #185a82;
   color: white;
   text-align: center;
@@ -179,7 +185,6 @@ html, body {
 }
 
 .Results .list .departure .details .price {
-  margin-top: 30px;
   font-size: 30px;
   font-weight: bold;
 }
@@ -187,4 +192,36 @@ html, body {
 .Results .list .departure .details .class {
   margin-top: 3px;
   font-size: 15px;
+}
+
+/* Tablet / Phone Adjustments */
+
+@media only screen and (max-width: 768px) {
+  .App header img {
+    width: 300px;
+    height: 66px;
+  }
+
+  .App header h1 {
+    font-size: 20px;
+    letter-spacing: 1.5px;
+  }
+
+  .App header h2 {
+    font-size: 16px;
+  }
+
+  .Results .list .departure {
+    flex-direction: column;
+  }
+
+  .Results .list .departure .locations .city {
+    margin-right: 0;
+    display: block;
+  }
+
+  .Results .list .departure .details {
+    padding: 20px 0;
+    width: 100%;
+  }
 }

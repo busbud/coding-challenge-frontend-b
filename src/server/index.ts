@@ -54,7 +54,10 @@ server.get('/', (req, res) => {
     ReactDOMServer.renderToString(
       React.createElement(App, { language, currency })
     );
-  const indexRendered = indexHtml.replace('{app}', appRendered);
+  const indexRendered =
+    indexHtml
+      .replace('{language}', language)
+      .replace('{app}', appRendered);
   return res.send(indexRendered);
 });
 
