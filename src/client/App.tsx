@@ -80,7 +80,9 @@ class App extends Component<AppProps, AppState> {
     // if the departures have not completed coming in from bus companies
     // the results should be polled again in 2 seconds
     if (!completed) {
-      setTimeout(() => this.pollSearch(), 2000);
+      const pollTimeout =
+        setTimeout(() => this.pollSearch(), 2000) as unknown as number;
+      this.setState({ pollTimeout });
     }
   }
 
