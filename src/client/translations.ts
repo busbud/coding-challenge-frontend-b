@@ -17,13 +17,13 @@ const translations: Translations = {
     'help.text.person': 'person',
     'help.text.people': 'people',
 
+    'list.loading.error.line1':
+      'Sorry, there was an error connecting to the bus services.',
+    'list.loading.error.line2': 'Please try again later.',
     'list.loading.inprogress':
-      'Loading... ' +
-      'The perfect bus for you will be here shortly!',
-    'list.loading.done':
-      'Here are all your buses, take your pick!',
-    'list.loading.no-results':
-      'Sorry, there are no results.',
+      'Loading... The perfect bus for you will be here shortly!',
+    'list.loading.done': 'Here are all your buses, take your pick!',
+    'list.loading.no-results': 'Sorry, there are no results.',
 
     'list.departure.departs': 'Departs',
     'list.departure.arrives': 'Arrives',
@@ -38,19 +38,19 @@ const translations: Translations = {
     'header.subtitle': '25 septembre',
 
     'help.title': 'Besoin d\'aide pour venir ici ?',
-    'help.text.pre-select':
-      'Voici les bus de Québec à Montréal pour',
+    'help.text.pre-select': 'Voici les bus de Québec à Montréal pour',
     'help.text.post-select': 'le 25 septembre !',
     'help.text.person': 'personne',
     'help.text.people': 'personnes',
 
+    'list.loading.error.line1':
+      'Désolé, ' +
+      'une erreur s\'est produite lors de la connexion aux services de bus.',
+    'list.loading.error.line2': 'Veuillez réessayer plus tard.',
     'list.loading.inprogress':
-      'Chargement...' +
-      'Le bus parfait pour vous sera bientôt là !',
-    'list.loading.done':
-      'Voici tous vos bus, faites votre choix !',
-    'list.loading.no-results':
-      'Désolé, il n\'y a pas de résultats.',
+      'Chargement... Le bus parfait pour vous sera bientôt là !',
+    'list.loading.done': 'Voici tous vos bus, faites votre choix !',
+    'list.loading.no-results': 'Désolé, il n\'y a pas de résultats.',
 
     'list.departure.departs': 'Départs',
     'list.departure.arrives': 'Arrive',

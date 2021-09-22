@@ -243,6 +243,7 @@ class App extends Component<AppProps, AppState> {
           language={this.state.language}
           currency={this.state.currency}
           loading={!this.state.completed}
+          error={this.state.error}
           departures={this.state.departures}
           operators={this.state.operators}
           cities={this.state.cities}
@@ -256,6 +257,7 @@ interface ResultsProps {
   language: string,
   currency: string,
   loading: boolean,
+  error: boolean,
   departures: XDeparture[],
   operators: { [key: string]: Operator },
   cities: { [key: string]: City },
@@ -338,9 +340,11 @@ class Results extends Component<ResultsProps, ResultsState> {
     return (
       <div className="Results" >
         <div className={"loading box " + (this.props.loading ? '' : 'done')}>
-          {this.props.loading ?
-            this.t('list.loading.inprogress') :
-            this.t('list.loading.done')}
+          {this.props.error ?
+            [this.t('list.loading.error.line1'), <br />, this.t('list.loading.error.line2')] :
+            (this.props.loading ?
+              this.t('list.loading.inprogress') :
+              this.t('list.loading.done'))}
         </div>
         <div className="list box">
           {departures.length ?

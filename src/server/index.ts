@@ -71,7 +71,7 @@ server.get('/api/search', (req, res) => {
     })
     .catch(error => {
       console.log("Busbud API error: ", error);
-      res.json({ error: 'search-failed' })
+      res.status(503).json({ error: 'search-failed' })
     });
 });
 
@@ -83,7 +83,7 @@ server.get('/api/search/poll', (req, res) => {
     })
     .catch(error => {
       console.log("Busbud API error: ", error);
-      res.json({ error: 'search-failed' })
+      res.status(503).json({ error: 'search-failed' })
     });
 });
 
