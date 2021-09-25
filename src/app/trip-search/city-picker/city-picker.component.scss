@@ -1,0 +1,8 @@
+input {
+    min-width: 15em;
+}
+
+:host ::ng-deep .dropdown-menu {
+    min-width: 15em;
+    width: calc(100% - 30px);
+}

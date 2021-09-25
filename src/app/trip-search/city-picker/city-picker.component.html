@@ -1,0 +1,14 @@
+<input
+    type="text"
+    class="form-control"
+    [placeholder]="placeholder"
+    [(ngModel)]="city"
+    (change)=selectCity()
+    (keyup)=selectCity()
+    (selectItem)=delayedSelect()
+    [ngbTypeahead]="searchCity"
+    [inputFormatter]="inputNameExtractor"
+    [resultFormatter]="resultNameExtractor"
+    [showHint]="true"
+    [editable]="false"
+> 
