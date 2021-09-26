@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TripSearch } from '../services/departure.service';
 import { TripConfigService } from './services/trip-config.service';
 
 @Component({
@@ -7,6 +8,7 @@ import { TripConfigService } from './services/trip-config.service';
   styleUrls: ['./trip-search.component.scss']
 })
 export class TripSearchComponent implements OnInit {
+  @Output() tripSearched: EventEmitter<TripSearch> = new EventEmitter();
   public searchReady: boolean = false;
 
   constructor(
@@ -18,7 +20,7 @@ export class TripSearchComponent implements OnInit {
   }
 
   searchTrips() {
-    console.log('Buscamos viajes', this.tripConfigService.getQueryData());
+    this.tripSearched.emit(this.tripConfigService.getQueryData());
   }
 
 }

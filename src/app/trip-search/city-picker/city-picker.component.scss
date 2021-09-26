@@ -1,13 +1,28 @@
-input {
-    min-width: 15em;
+.form-control {
+    cursor: text;
+    height: 55px;
 
-    &.ng-invalid.ng-touched {
+    &.invalid {
         border-color: #d61f1f;
 
         & + .alert {
             visibility: visible;
         }
     }
+}
+
+.input-title {
+    font-size: small;
+    font-weight: bold;
+    margin-top: -3px;
+    padding-left: 2px;
+}
+
+input {
+    border: none;
+    color: inherit;
+    outline: none;
+    width: 100%;
 }
 
 .alert {
@@ -19,6 +34,12 @@ input {
 }
 
 :host ::ng-deep .dropdown-menu {
-    min-width: 15em;
+    font-size: small;
+    margin-left: -13px;
+    overflow: hidden;
     width: calc(100% - 30px);
+
+    button {
+        padding-left: 12px;
+    }
 }

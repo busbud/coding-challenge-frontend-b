@@ -39,7 +39,7 @@ export class DatePickerComponent implements OnInit {
 
   selectDate(date: NgbDateStruct) {
     this.isValid = true;
-    this.tripConfigService.setOutboundDate(this.parseDate(date).toISOString());
+    this.tripConfigService.setOutboundDate(this.parseDate(date).toISOString().split('T')[0]);
   }
 
   private parseDate(date: NgbDateStruct): Date {

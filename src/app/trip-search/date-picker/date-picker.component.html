@@ -3,23 +3,32 @@
     [ngClass]="{ invalid: !isValid }"
 >
 
-    <input
+    <div
         class="form-control"
-        placeholder="yyyy-mm-dd"
-        name="dp"
-        [(ngModel)]="date"
-        ngbDatepicker
-        #d="ngbDatepicker"
-        [minDate]="today"
-        (dateSelect)="selectDate($event)"
-        (keyup)="manualDate()"
+        (click)="inputDate.focus()"
     >
+        <div
+            class="input-title"
+        >Outbound date</div>
+
+        <input
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            [(ngModel)]="date"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            #inputDate
+            [minDate]="today"
+            (dateSelect)="selectDate($event)"
+            (keyup)="manualDate()"
+        >
+    </div>
 
     <div
         class="input-group-append"
     >
         <button
-            class="btn btn-outline-secondary calendar"
+            class="btn calendar"
             (click)="d.toggle()"
             type="button"
         ></button>
@@ -27,5 +36,5 @@
 </div>
 
 <div class="alert">
-    Introduce a valid date
+    Introduce a valid future date
 </div>

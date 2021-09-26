@@ -1,17 +1,25 @@
-<input
-    type="text"
+<div
     class="form-control"
-    required
-    [placeholder]="placeholder"
-    [(ngModel)]="city"
-    (change)=selectCity()
-    (keyup)=selectCity()
-    (selectItem)=delayedSelect()
-    [ngbTypeahead]="searchCity"
-    [inputFormatter]="inputNameExtractor"
-    [resultFormatter]="resultNameExtractor"
-    [editable]="false"
+    [ngClass]="{ invalid: !isValid }"
+    (click)="inputCity.focus()"
 >
+    <div
+        class="input-title"
+    >{{ placeholder }}</div>
+
+    <input
+        type="text"
+        #inputCity
+        [(ngModel)]="city"
+        (change)=selectCity()
+        (keyup)=selectCity()
+        (selectItem)=delayedSelect()
+        [ngbTypeahead]="searchCity"
+        [inputFormatter]="inputNameExtractor"
+        [resultFormatter]="resultNameExtractor"
+        [editable]="false"
+    >
+</div>
 
 <div class="alert">
     Introduce a valid city name

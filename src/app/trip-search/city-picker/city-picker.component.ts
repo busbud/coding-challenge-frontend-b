@@ -14,6 +14,7 @@ export class CityPickerComponent implements OnInit {
   @Input() code: 'origin'|'destination' = 'origin';
   city: any;
   placeholder: string = '';
+  isValid: boolean = true;
 
   constructor(
     private citySearchService: CitySearchService,
@@ -24,14 +25,22 @@ export class CityPickerComponent implements OnInit {
     this.placeholder = this.code.charAt(0).toUpperCase() + this.code.slice(1);;
   }
 
-  inputNameExtractor = (city: {name: string, geohash: string}) => city.name;
-  resultNameExtractor = (city: {name: string, geohash: string}) => this.inputNameExtractor(city).toLocaleUpperCase();
+  inputNameExtractor (city: {full_name: string, geohash: string}) {
+    return city.full_name.split(',')[0];
+  }
+
+  resultNameExtractor (city: {full_name: string, geohash: string}) {
+    const [cityName, ...extras] = city.full_name.split(',')
+    return [cityName.toLocaleUpperCase(), ...extras].join(',');
+  }
 
   selectCity() {
+    const geohash = this.city ? this.city.geohash : '';
+    this.isValid = !!geohash;
     if (this.code === 'origin') {
-      this.tripConfigService.setOrigin(this.city ? this.city.geohash : '');
+      this.tripConfigService.setOrigin(geohash);
     } else {
-      this.tripConfigService.setDestination(this.city ? this.city.geohash : '');
+      this.tripConfigService.setDestination(geohash);
     }
   }
 

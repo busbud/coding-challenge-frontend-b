@@ -1,16 +1,22 @@
 <div ngbDropdown
-    class="input-group"
+    class="selector"
+    #dropdown="ngbDropdown"
     [ngClass]="{ invalid: total == 0 }"
+    (click)="$event.stopPropagation(); dropdown.toggle();"
 >
 
-    <span class="input-group-text travelers"
-        ngbDropdownToggle
-    >Travelers: {{ total }}</span>
+    <div class="form-control">
+        <div class="input-title"
+        >Passengers</div>
 
+        <span class="travelers"
+        >{{ total }} Passengers</span>
+    </div>
+    
     <div ngbDropdownMenu >
         <div class="row age-selector" >
             <app-age-selector
-                title="Adult"
+                title="Adults"
                 [value]="values.adult"
                 (valueUpdated)="updateValue('adult', $event)"
             ></app-age-selector>

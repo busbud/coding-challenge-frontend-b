@@ -1,5 +1,7 @@
 <div class="container">
-    <div>BANNER</div>
-    <app-trip-search></app-trip-search>
-    <div>OFFERS</div>
+    <div class="banner"
+    >PLAN YOUR NEXT SCAPADE!</div>
+    <app-trip-search
+        (tripSearched)="searchTrip($event)"
+    ></app-trip-search>
 </div>

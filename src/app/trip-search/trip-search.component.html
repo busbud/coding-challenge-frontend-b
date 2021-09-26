@@ -1,32 +1,36 @@
-<div class="row">
-    <app-city-picker
-        class="col-sm spaced"
-        code="origin"
-    ></app-city-picker>
+<div class="container">
     
-    <app-city-picker
-        class="col-sm spaced"
-        code="destination"
-    ></app-city-picker>
-
-    <div class="breaker"></div>
+    <div class="row">
+        <app-city-picker
+            class="col-sm spaced"
+            code="origin"
+        ></app-city-picker>
+        
+        <app-city-picker
+            class="col-sm spaced"
+            code="destination"
+        ></app-city-picker>
     
-    <app-date-picker
-        class="col-sm spaced"
-    ></app-date-picker>
-    
-    <app-people-picker
-        class="col-sm spaced"
-    ></app-people-picker>
-</div>
-
-<div class="row">
-    <div class="col-sm centered">
-        <button
-            class="btn btn-primary search-btn"
-            [ngClass]="searchReady ? 'btn-primary' : 'btn-secondary'"
-            [disabled]="searchReady ? null : 'disabled'"
-            (click)=searchTrips()
-        >Find your trip!</button>
+        <div class="breaker"></div>
+        
+        <app-date-picker
+            class="col-sm spaced"
+        ></app-date-picker>
+        
+        <app-people-picker
+            class="col-sm spaced"
+        ></app-people-picker>
     </div>
+    
+    <div class="row">
+        <div class="col-sm centered">
+            <button
+                class="btn btn-primary search-btn"
+                [ngClass]="searchReady ? 'btn-primary' : 'btn-secondary'"
+                [disabled]="searchReady ? null : 'disabled'"
+                (click)=searchTrips()
+            >Find your trip!</button>
+        </div>
+    </div>
+
 </div>

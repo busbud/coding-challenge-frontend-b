@@ -1,3 +1,4 @@
+import { TripSearch } from './../../services/departure.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -18,7 +19,7 @@ export class TripConfigService {
 
   constructor() { }
 
-  getQueryData() {
+  getQueryData(): TripSearch {
     return {
       origin: this.origin,
       destination: this.destination,

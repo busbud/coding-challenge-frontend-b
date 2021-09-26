@@ -1,15 +1,39 @@
-.input-group {
-    min-width: 15em;
-
-    &.invalid {
-        input, button {
-            border-color: #d61f1f;
-        }
-
-        & + .alert {
-            visibility: visible;
-        }
+.input-group.invalid {
+    .form-control, button {
+        border-color: #d61f1f;
     }
+
+    & + .alert {
+        visibility: visible;
+    }
+}
+
+button {
+    background-color: white;
+    border-color: rgb(206, 212, 218);
+    outline: none;
+
+    &:hover {
+        background-color: lightgrey;
+    }
+}
+
+.form-control {
+    cursor: text;
+    height: 55px;
+}
+
+.input-title {
+    font-size: small;
+    font-weight: bold;
+    margin-top: -3px;
+    padding-left: 2px;
+}
+
+input {
+    border: none;
+    color: inherit;
+    outline: none;
 }
 
 .alert {
@@ -21,8 +45,8 @@
 }
 
 :host ::ng-deep .dropdown-menu {
-    min-width: 15em;
-    width: 100%;
+    margin-left: -13px;
+    width: calc(100% + 40px);
 
     .ngb-dp-months {
         display: block;

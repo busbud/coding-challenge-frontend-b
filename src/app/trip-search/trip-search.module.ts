@@ -7,6 +7,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { TripSearchComponent } from './trip-search.component';
 import { PeoplePickerComponent } from './people-picker/people-picker.component';
 import { AgeSelectorComponent } from './age-selector/age-selector.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AgeSelectorComponent } from './age-selector/age-selector.component';
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
     NgbModule
   ],
   exports: [
