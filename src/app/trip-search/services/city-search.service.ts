@@ -34,7 +34,6 @@ export class CitySearchService {
   constructor() { }
 
   search(query: string): Observable<{name: string, geohash: string}[]> {
-    console.log("Servicio llamado", query, this.cityList.filter(city => city.name.includes(query)));
     return of(this.cityList.filter(city => this.normalize(city.name).includes(this.normalize(query))))
   }
 

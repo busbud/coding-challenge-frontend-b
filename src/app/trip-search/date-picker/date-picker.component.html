@@ -1,5 +1,6 @@
 <div
     class="input-group"
+    [ngClass]="{ invalid: !isValid }"
 >
 
     <input
@@ -11,19 +12,20 @@
         #d="ngbDatepicker"
         [minDate]="today"
         (dateSelect)="selectDate($event)"
-        (keyup)="manualDate($event)"
+        (keyup)="manualDate()"
     >
 
     <div
         class="input-group-append"
     >
-
         <button
             class="btn btn-outline-secondary calendar"
             (click)="d.toggle()"
             type="button"
         ></button>
-
     </div>
+</div>
 
+<div class="alert">
+    Introduce a valid date
 </div>

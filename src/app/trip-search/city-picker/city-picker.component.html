@@ -1,6 +1,7 @@
 <input
     type="text"
     class="form-control"
+    required
     [placeholder]="placeholder"
     [(ngModel)]="city"
     (change)=selectCity()
@@ -9,6 +10,9 @@
     [ngbTypeahead]="searchCity"
     [inputFormatter]="inputNameExtractor"
     [resultFormatter]="resultNameExtractor"
-    [showHint]="true"
     [editable]="false"
-> 
+>
+
+<div class="alert">
+    Introduce a valid city name
+</div>

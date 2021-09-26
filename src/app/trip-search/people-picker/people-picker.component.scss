@@ -1,0 +1,36 @@
+.invalid {
+    .travelers {
+        border-color: #d61f1f;
+    }
+
+    & + .alert {
+        visibility: visible;
+    }
+}
+
+.alert {
+    color: #d61f1f;
+    font-size: small;
+    margin: 0;
+    padding: 0 0 0 13px;
+    visibility: hidden;
+}
+
+.travelers {
+    background-color: white;
+    cursor: pointer;
+    justify-content: space-between;
+    min-width: 15em;
+    user-select: none;
+    width: 100%;
+}
+
+:host ::ng-deep .dropdown-menu {
+    min-width: 15em;
+    user-select: none;
+    width: 100%;
+}
+
+.age-selector {
+    margin: 5px 0 0;
+}

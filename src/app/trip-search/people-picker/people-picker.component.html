@@ -1,0 +1,38 @@
+<div ngbDropdown
+    class="input-group"
+    [ngClass]="{ invalid: total == 0 }"
+>
+
+    <span class="input-group-text travelers"
+        ngbDropdownToggle
+    >Travelers: {{ total }}</span>
+
+    <div ngbDropdownMenu >
+        <div class="row age-selector" >
+            <app-age-selector
+                title="Adult"
+                [value]="values.adult"
+                (valueUpdated)="updateValue('adult', $event)"
+            ></app-age-selector>
+        </div>
+        <div class="row age-selector" >
+            <app-age-selector
+                title="Children"
+                [value]="values.child"
+                (valueUpdated)="updateValue('child', $event)"
+            ></app-age-selector>
+        </div>
+        <div class="row age-selector" >
+            <app-age-selector
+                title="Seniors"
+                [value]="values.senior"
+                (valueUpdated)="updateValue('senior', $event)"
+            ></app-age-selector>
+        </div>
+    </div>
+          
+</div>
+
+<div class="alert">
+    Please add some travelers
+</div>

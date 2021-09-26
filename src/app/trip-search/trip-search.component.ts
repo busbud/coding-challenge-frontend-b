@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TripConfigService } from './services/trip-config.service';
 
 @Component({
   selector: 'app-trip-search',
@@ -6,42 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trip-search.component.scss']
 })
 export class TripSearchComponent implements OnInit {
-
-  public origin: string = "";
-  public destination: string = "";
-  public outboundDate: string = "";
   public searchReady: boolean = false;
 
-  constructor() { }
+  constructor(
+    private tripConfigService: TripConfigService
+  ) { }
 
   ngOnInit(): void {
-  }
-
-  selectOrigin(cityGeohash: string) {
-    console.log("Actualizamos el viaje, from", cityGeohash);
-    this.origin = cityGeohash;
-    this.checkReady();
-  }
-
-  selectDestination(cityGeohash: string) {
-    console.log("Actualizamos el viaje, to", cityGeohash);
-    this.destination = cityGeohash;
-    this.checkReady();
-  }
-
-  selectOutboundDate(dateISO: string) {
-    console.log("Actualizamos el viaje, date", dateISO);
-    this.outboundDate = dateISO;
-    this.checkReady();
+    this.tripConfigService.isSearchReady$.subscribe(isReady => this.searchReady = isReady)
   }
 
   searchTrips() {
-    console.log('Buscamos viajes');
+    console.log('Buscamos viajes', this.tripConfigService.getQueryData());
   }
-
-  private checkReady() {
-    this.searchReady = !!this.origin && !!this.destination && !!this.outboundDate;
-  }
-  
 
 }

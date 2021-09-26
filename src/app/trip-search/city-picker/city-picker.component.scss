@@ -1,5 +1,21 @@
 input {
     min-width: 15em;
+
+    &.ng-invalid.ng-touched {
+        border-color: #d61f1f;
+
+        & + .alert {
+            visibility: visible;
+        }
+    }
+}
+
+.alert {
+    color: #d61f1f;
+    font-size: small;
+    margin: 0;
+    padding: 0 0 0 13px;
+    visibility: hidden;
 }
 
 :host ::ng-deep .dropdown-menu {

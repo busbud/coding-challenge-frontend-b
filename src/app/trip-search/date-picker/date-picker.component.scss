@@ -1,5 +1,23 @@
 .input-group {
     min-width: 15em;
+
+    &.invalid {
+        input, button {
+            border-color: #d61f1f;
+        }
+
+        & + .alert {
+            visibility: visible;
+        }
+    }
+}
+
+.alert {
+    color: #d61f1f;
+    font-size: small;
+    margin: 0;
+    padding: 0 0 0 13px;
+    visibility: hidden;
 }
 
 :host ::ng-deep .dropdown-menu {
