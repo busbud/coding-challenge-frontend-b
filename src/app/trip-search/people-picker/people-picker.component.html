@@ -2,14 +2,15 @@
     class="selector"
     #dropdown="ngbDropdown"
     [ngClass]="{ invalid: total == 0 }"
-    (click)="$event.stopPropagation(); dropdown.toggle();"
 >
 
     <div class="form-control">
         <div class="input-title"
+            (click)="$event.stopPropagation(); dropdown.toggle();"
         >Passengers</div>
 
         <span class="travelers"
+            ngbDropdownToggle
         >{{ total }} Passengers</span>
     </div>
     

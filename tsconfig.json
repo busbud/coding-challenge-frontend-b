@@ -22,11 +22,6 @@
       "dom"
     ]
   },
-  "paths": {
-      "@app/*": ["src/app/*"],
-      "@server/*": ["src/server/*"],
-      "@environments/*": ["src/environments/*"]
-  },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

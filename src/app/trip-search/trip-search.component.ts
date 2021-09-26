@@ -17,6 +17,11 @@ export class TripSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.tripConfigService.isSearchReady$.subscribe(isReady => this.searchReady = isReady)
+
+    //TODO: Remove this, only for testing.
+    this.tripConfigService.setOrigin('f25dvk');
+    this.tripConfigService.setDestination('f2m673');
+    setTimeout(() => this.tripSearched.emit(this.tripConfigService.getQueryData()), 100);
   }
 
   searchTrips() {

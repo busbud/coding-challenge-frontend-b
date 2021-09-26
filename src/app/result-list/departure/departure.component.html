@@ -1,0 +1,50 @@
+<div class="container">
+
+    <div class="departure-section upper-section">
+        <img class="logo"
+            [src]="operatorLogo"
+        >
+    
+        <div class="price text-primary">
+    
+            <span class="amount"
+            > {{ formattedPrice }}</span>
+            
+            <span class="currency"
+            > {{ formattedCurrency }}</span>
+           
+        </div>
+    </div>
+
+    <div class="departure-section middle-section">
+        <div class="timing">
+            <div class="time">
+                <span class="hour">{{ departureData.departureTime | date:'h:mm' }}</span>
+                <span class="selector">{{ departureData.departureTime | date:'a' }}</span>
+            </div>
+            <div class="city">{{ originCity }}</div>
+            <div class="location">{{ origin }}</div>
+        </div>
+    
+        <div class="arrow-right"></div>
+        
+        <div class="timing">
+            <div class="time">
+                <span class="hour">{{ departureData.arrivalTime | date:'h:mm' }}</span>
+                <span class="selector">{{ departureData.arrivalTime | date:'a' }}</span>
+            </div>
+            <div class="city">{{ destinationCity }}</div>
+            <div class="location">{{ destination }}</div>
+        </div>
+    </div>
+
+    <div class="departure-section bottom-section">
+        <div class="duration">
+            {{ departureData.duration }} OR {{ duration.days }}D {{ duration.hours }}H {{ duration.minutes }}M 
+        </div>
+        <button class="btn btn-primary">
+            LET'S GO!
+        </button>
+    </div>
+
+</div>

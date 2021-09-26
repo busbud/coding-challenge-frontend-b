@@ -1,3 +1,4 @@
+import { Travel } from './../services/departure.service';
 import { Component, OnInit } from '@angular/core';
 import { DepartureService, TripSearch } from '../services/departure.service';
 
@@ -7,6 +8,7 @@ import { DepartureService, TripSearch } from '../services/departure.service';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
+  travelInfo: Travel;
 
   constructor(
     private departureService: DepartureService
@@ -17,7 +19,10 @@ export class LandingPageComponent implements OnInit {
 
   searchTrip(info: TripSearch) {
     this.departureService.getDepartures(info)
-      .subscribe(data => console.log(data.complete, data.departures.length));
+      .subscribe(travel => {
+        this.travelInfo = travel;
+        console.log("Llega info nueva");
+      });
   }
 
 }

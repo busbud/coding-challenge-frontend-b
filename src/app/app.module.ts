@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ResultListComponent } from './result-list/result-list.component';
 import { TripSearchModule } from './trip-search/trip-search.module';
+import { DepartureComponent } from './result-list/departure/departure.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    ResultListComponent
+    ResultListComponent,
+    DepartureComponent
   ],
   imports: [
     BrowserModule,

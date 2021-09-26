@@ -1,1 +1,24 @@
-<p>result-list works!</p>
+<div
+    class="container"
+>
+    <div class="header">
+        <div class="city">
+            {{ travelInfo.origin}}
+        </div>
+        <div class="arrow-right"></div>
+        <div class="city">
+            {{ travelInfo.destination }}
+        </div>
+    </div>
+
+    <app-departure
+        *ngFor="let departure of travelInfo.departures"
+        [departureData]="departure"
+        [locations]="travelInfo.locations"
+        [operators]="travelInfo.operators"
+        [originCity]="travelInfo.origin"
+        [destinationCity]="travelInfo.destination"
+    ></app-departure>
+</div>
+
+

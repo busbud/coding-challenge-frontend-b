@@ -30,7 +30,7 @@ export type Travel = {
   origin: string;
   destination: string;
   locations: { id: number, name: string }[];
-  operators: { id: number, name: string }[];
+  operators: { id: string, name: string, logoUrl: string }[];
   departures: Departure[];
   complete: boolean;
 }
@@ -54,6 +54,7 @@ export class DepartureService {
     this.tripSearch = tripSearch;
     this.travelInfo = {} as any;
     this.travelSubject$ = new BehaviorSubject(this.travelInfo);
+    
     return this.generateRequest(tripSearch, 0).pipe(
       map(data => this.parseResponse(data)),
       tap(info => this.incrementTravelInfo(info)),
@@ -118,7 +119,7 @@ export class DepartureService {
       origin: cities && cities[0].name,
       destination: cities && cities[1].name,
       locations: locations.map(({ id, name }: any) => ({ id, name })),
-      operators: operators.map(({ id, name }: any) => ({ id, name })),
+      operators: operators.map(({ id, name, logo_url }: any) => ({ id, name, logoUrl: logo_url })),
       departures:  departures.map((departure: any) => ({
           arrivalTime: departure.arrival_time, 
           departureTime: departure.departure_time, 
