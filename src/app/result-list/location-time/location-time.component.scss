@@ -1,0 +1,38 @@
+.location-time {
+    display: flex;
+    flex-wrap: wrap;
+    white-space: nowrap;
+
+    &.display-left {
+        justify-content: flex-end;
+    }
+
+    & > div {
+        padding: 5px 0 0 5px;
+    }
+}
+
+.time {
+    text-align: right;
+}
+
+.hour {
+    font-weight: bolder;
+}
+
+.selector {
+    font-size: smaller;
+    padding-left: 2px;
+}
+
+.city {
+    font-weight: bolder;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.location {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,20 @@
+.duration {
+    display: flex;
+    align-items: center;
+}
+
+.time-icon {
+    filter: invert(0.2);
+    margin-right: 5px;
+    width: 20px;
+}
+
+.time-unit {
+    color: #495057;
+    font-weight: bold;
+    padding-left: 3px;
+}
+
+.unit {
+    font-size: 75%;
+}

@@ -1,0 +1,13 @@
+.selector {
+    width: 8em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropdown-menu {
+    min-width: 8em;
+    padding: 0;
+    user-select: none;
+    width: 8em;
+}

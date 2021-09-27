@@ -6,42 +6,37 @@
         >
     
         <div class="price text-primary">
-    
-            <span class="amount"
-            > {{ formattedPrice }}</span>
-            
-            <span class="currency"
-            > {{ formattedCurrency }}</span>
-           
+            <span class="amount"> {{ formattedPrice }}</span>
+            <span class="currency"> {{ formattedCurrency }}</span>
         </div>
     </div>
 
     <div class="departure-section middle-section">
-        <div class="timing">
-            <div class="time">
-                <span class="hour">{{ departureData.departureTime | date:'h:mm' }}</span>
-                <span class="selector">{{ departureData.departureTime | date:'a' }}</span>
-            </div>
-            <div class="city">{{ originCity }}</div>
-            <div class="location">{{ origin }}</div>
-        </div>
-    
-        <div class="arrow-right"></div>
+        <app-location-time
+            class="location-time"
+            [displayLeft]="true"
+            [city]="originCity"
+            [location]="origin"
+            [time]="departureData.departureTime"
+        ></app-location-time>
         
-        <div class="timing">
-            <div class="time">
-                <span class="hour">{{ departureData.arrivalTime | date:'h:mm' }}</span>
-                <span class="selector">{{ departureData.arrivalTime | date:'a' }}</span>
-            </div>
-            <div class="city">{{ destinationCity }}</div>
-            <div class="location">{{ destination }}</div>
-        </div>
+        <img class="arrow-right"
+            src="/assets/right-arrow.svg"
+            alt="destinated to">
+        
+        <app-location-time
+            class="location-time"
+            [city]="destinationCity"
+            [location]="destination"
+            [time]="departureData.arrivalTime"
+        ></app-location-time>
     </div>
 
     <div class="departure-section bottom-section">
-        <div class="duration">
-            {{ departureData.duration }} OR {{ duration.days }}D {{ duration.hours }}H {{ duration.minutes }}M 
-        </div>
+        <app-duration-indicator
+            [duration]="departureData.duration"
+        ></app-duration-indicator>
+
         <button class="btn btn-primary">
             LET'S GO!
         </button>

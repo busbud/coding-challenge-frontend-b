@@ -1,6 +1,8 @@
 .container {
     background-color: white;
+    border: 1px solid rgb(190 190 190);
     border-radius: 5px;
+    box-shadow: 3px 5px 1px rgb(190 190 190 / 50%);
     margin: 10px 0;
     min-width: 15em;
 }
@@ -35,51 +37,11 @@
     font-weight: bolder;
 }
 
-.timing {
-    display: flex;
-    flex-wrap: wrap;
-    white-space: nowrap;
+.location-time {
     width: 45%;
-
-    &:first-of-type {
-        justify-content: flex-end;
-    }
-
-    & > div {
-        padding: 5px 0 0 5px;
-    }
-
-    .time {
-        text-align: right;
-    
-        .hour {
-            font-weight: bolder;
-        }
-        
-        .selector {
-            font-size: smaller;
-            padding-left: 2px;
-        }
-    }
-
-    .city {
-        font-weight: bolder;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .location {
-        text-align: center;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
 }
 
 .arrow-right {
-    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDQ5Mi4wMDQgNDkyLjAwNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDkyLjAwNCA0OTIuMDA0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Zz4NCgk8Zz4NCgkJPHBhdGggZD0iTTQ4NC4xNCwyMjYuODg2TDMwNi40Niw0OS4yMDJjLTUuMDcyLTUuMDcyLTExLjgzMi03Ljg1Ni0xOS4wNC03Ljg1NmMtNy4yMTYsMC0xMy45NzIsMi43ODgtMTkuMDQ0LDcuODU2bC0xNi4xMzIsMTYuMTM2DQoJCQljLTUuMDY4LDUuMDY0LTcuODYsMTEuODI4LTcuODYsMTkuMDRjMCw3LjIwOCwyLjc5MiwxNC4yLDcuODYsMTkuMjY0TDM1NS45LDIwNy41MjZIMjYuNThDMTEuNzMyLDIwNy41MjYsMCwyMTkuMTUsMCwyMzQuMDAyDQoJCQl2MjIuODEyYzAsMTQuODUyLDExLjczMiwyNy42NDgsMjYuNTgsMjcuNjQ4aDMzMC40OTZMMjUyLjI0OCwzODguOTI2Yy01LjA2OCw1LjA3Mi03Ljg2LDExLjY1Mi03Ljg2LDE4Ljg2NA0KCQkJYzAsNy4yMDQsMi43OTIsMTMuODgsNy44NiwxOC45NDhsMTYuMTMyLDE2LjA4NGM1LjA3Miw1LjA3MiwxMS44MjgsNy44MzYsMTkuMDQ0LDcuODM2YzcuMjA4LDAsMTMuOTY4LTIuOCwxOS4wNC03Ljg3Mg0KCQkJbDE3Ny42OC0xNzcuNjhjNS4wODQtNS4wODgsNy44OC0xMS44OCw3Ljg2LTE5LjFDNDkyLjAyLDIzOC43NjIsNDg5LjIyOCwyMzEuOTY2LDQ4NC4xNCwyMjYuODg2eiIvPg0KCTwvZz4NCjwvZz4NCjwvc3ZnPg==");
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: 15px;
     height: 15px;
     width: 40px;
 }
@@ -88,4 +50,5 @@ button {
     font-size: smaller;
     font-style: oblique;
     font-weight: bolder;
+    outline: none;
 }

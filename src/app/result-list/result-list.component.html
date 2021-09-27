@@ -1,18 +1,26 @@
 <div
     class="container"
+    *ngIf="travelInfo"
 >
     <div class="header">
-        <div class="city">
-            {{ travelInfo.origin}}
+        <div class="title">
+            Select your adventure
         </div>
-        <div class="arrow-right"></div>
-        <div class="city">
-            {{ travelInfo.destination }}
+
+        <div class="filter">
+            <img class="sort-icon"
+                src="/assets/sort-down.svg"
+                alt="sort by">
+
+            <app-dropdown-selector
+                [options]="sortingOptions"
+                (optionSelected)="sorting=$event"
+            ></app-dropdown-selector>
         </div>
     </div>
 
     <app-departure
-        *ngFor="let departure of travelInfo.departures"
+        *ngFor="let departure of sortedDepartures()"
         [departureData]="departure"
         [locations]="travelInfo.locations"
         [operators]="travelInfo.operators"
