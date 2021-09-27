@@ -1,12 +1,8 @@
 import { combineReducers } from "redux";
-import vehicleReducer from "src/vehicle/redux/reducers/vehicle";
-import selectedVehicleReducer from "src/vehicle/redux/reducers/selectedVehicle";
-
-import { Reducers } from "./constants";
+import departureReducer from "@src/departures/redux/reducers/departure";
 
 const rootReducer = combineReducers({
-  [Reducers.VEHICLE_REDUCER]: vehicleReducer,
-  [Reducers.SELECTED_VEHICLE_REDUCER]: selectedVehicleReducer,
+  'DEPARTURE_REDUCER': departureReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

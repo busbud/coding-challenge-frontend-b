@@ -6,5 +6,3 @@ export const isProd = mode === 'production';
 export const isDev = !isProd;
 export const rootDir = join(__dirname, '../../');
 export const webpackDir = join(__dirname, '../');
-export const apiUrl = 'http://localhost:5000';
-export const googleMapApiKey = 'AIzaSyCzeXJiOZHF9bq0KOPFvnHZi0xHAOCfXdc';
