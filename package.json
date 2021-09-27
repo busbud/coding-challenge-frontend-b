@@ -1,32 +1,19 @@
 {
-    "name": "webpack-typescript-react",
+    "name": "react-bus-finder",
     "version": "1.0.5",
-    "description": "Webpack 5 boilerplate with support of most common loaders and modules",
-    "keywords": [
-        "react",
-        "typescript",
-        "webpack",
-        "webpack 5",
-        "webpack boilerplate"
-    ],
+    "description": "React Bus Finder",
     "repository": {
         "type": "git",
-        "url": "git@github.com:glook/webpack-typescript-react.git"
+        "url": "https://github.com/busbud/coding-challenge-frontend-b"
     },
     "license": "MIT",
-    "author": "Andrey Polyakov <andrey@polyakov.im>",
+    "author": "Yusuf Yilmaz",
     "main": "webpack.config.babel.js",
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack --config webpack.config.babel.js",
         "profile": "cross-env NODE_ENV=production webpack --profile --json --config webpack.config.babel.js > ./dist/profile.json && webpack-bundle-analyzer ./dist/profile.json",
         "start": "cross-env WEBPACK_IS_DEV_SERVER=true NODE_ENV=development webpack serve --config webpack.config.babel.js",
         "release": "npm version patch"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged",
-            "post-commit": "git update-index --again"
-        }
     },
     "dependencies": {
         "@types/google-map-react": "^2.1.3",
