@@ -1,6 +1,6 @@
 <div
     class="form-control"
-    [ngClass]="{ invalid: !isValid }"
+    [ngClass]="{ invalid: isInvalid }"
     (click)="inputCity.focus()"
 >
     <div
@@ -13,6 +13,7 @@
         [(ngModel)]="city"
         (change)=selectCity()
         (keyup)=selectCity()
+        (blur)=selectCity(true)
         (selectItem)=delayedSelect()
         [ngbTypeahead]="searchCity"
         [inputFormatter]="inputNameExtractor"

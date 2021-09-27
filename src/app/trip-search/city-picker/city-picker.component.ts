@@ -14,7 +14,7 @@ export class CityPickerComponent implements OnInit {
   @Input() code: 'origin'|'destination' = 'origin';
   city: any;
   placeholder: string = '';
-  isValid: boolean = true;
+  isInvalid: boolean = false;
 
   constructor(
     private citySearchService: CitySearchService,
@@ -34,9 +34,9 @@ export class CityPickerComponent implements OnInit {
     return [cityName.toLocaleUpperCase(), ...extras].join(',');
   }
 
-  selectCity() {
+  selectCity(dirty: boolean = false) {
     const geohash = this.city ? this.city.geohash : '';
-    this.isValid = !!geohash;
+    this.isInvalid = dirty && !geohash;
     if (this.code === 'origin') {
       this.tripConfigService.setOrigin(geohash);
     } else {
