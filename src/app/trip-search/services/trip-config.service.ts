@@ -1,3 +1,5 @@
+import { CurrencyService } from './../../services/currency.service';
+import { LanguageService } from './../../services/language.service';
 import { TripSearch } from './../../services/departure.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -12,12 +14,13 @@ export class TripConfigService {
   private adult: number = 1;
   private child: number = 0;
   private senior: number = 0;
-  private currency: string = 'EUR';
-  private lang: string = 'EN';
 
   public isSearchReady$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor() { }
+  constructor(
+    private languageService: LanguageService,
+    private currencyService: CurrencyService
+  ) { }
 
   getQueryData(): TripSearch {
     return {
@@ -27,8 +30,8 @@ export class TripConfigService {
       adult: this.adult,
       child: this.child,
       senior: this.senior,
-      currency: this.currency,
-      lang: this.lang
+      currency: this.currencyService.getCurrencyValue(),
+      lang: this.languageService.getLanguageValue()
     }
   }
 

@@ -20,8 +20,26 @@
     padding-left: 2px;
 }
 
-.filter {
+.title-text {
+    text-align: center;
+}
+
+.spinner-border {
+    display: none;
+    height: 1em;
+    margin-left: 1em;
+    min-width: 1em;
+    width: 1em;
+    margin-right: 10px;
+
+    @media (min-width: 576px) {
+        display: block;
+    }
+}
+
+.sub-header {
     display: flex;
+    align-items: center;
 }
 
 .sort-icon {

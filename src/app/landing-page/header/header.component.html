@@ -1,0 +1,15 @@
+<div class="base">
+    <app-dropdown-selector
+        [options]="languages"
+        [selectedValue]="selectedLanguage"
+        (optionSelected)="selectLanguage($event)"
+    ></app-dropdown-selector>
+
+    
+    <app-dropdown-selector
+        [options]="currencies"
+        [selectedValue]="selectedCurrency"
+        (optionSelected)="selectCurrency($event)"
+        [shortStyle]="true"
+    ></app-dropdown-selector>
+</div>

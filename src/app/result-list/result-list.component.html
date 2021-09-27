@@ -3,11 +3,19 @@
     *ngIf="travelInfo"
 >
     <div class="header">
-        <div class="title">
-            Select your adventure
+        <div class="title sub-header">
+            <span class="title-text">
+                Select your adventure
+            </span>    
+            <span
+                class="spinner-border"
+                role="status"
+                *ngIf="!travelInfo.complete"
+            >
+            </span>
         </div>
 
-        <div class="filter">
+        <div class="sub-header">
             <img class="sort-icon"
                 src="/assets/sort-down.svg"
                 alt="sort by">
@@ -19,6 +27,11 @@
         </div>
     </div>
 
+    <app-info-banner
+        *ngIf="travelInfo.error"
+        type="error"
+    ></app-info-banner>
+
     <app-departure
         *ngFor="let departure of sortedDepartures()"
         [departureData]="departure"
@@ -27,6 +40,16 @@
         [originCity]="travelInfo.origin"
         [destinationCity]="travelInfo.destination"
     ></app-departure>
+
+    <app-info-banner
+        *ngIf="!travelInfo.complete"
+        type="loading"
+    ></app-info-banner>
+
+    <app-info-banner
+        *ngIf="travelInfo.complete && !travelInfo.error && travelInfo.departures.length === 0"
+        type="noDepartures"
+    ></app-info-banner>
 </div>
 
 

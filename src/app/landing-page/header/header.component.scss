@@ -1,0 +1,13 @@
+.base {
+    align-items: center;
+    background-color: #e4e9ef;
+    display: flex;
+    height: 60px;
+    justify-content: flex-end;
+    min-width: 20em;
+    width: 100%;
+}
+
+app-dropdown-selector {
+    margin-right: 20px;
+}

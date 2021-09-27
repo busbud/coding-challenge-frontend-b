@@ -21,6 +21,7 @@ export class TripSearchComponent implements OnInit {
     //TODO: Remove this, only for testing.
     this.tripConfigService.setOrigin('f25dvk');
     this.tripConfigService.setDestination('f2m673');
+    //this.tripConfigService.setPassengers({ adult: 0, child: 1, senior: 0 });
     setTimeout(() => this.tripSearched.emit(this.tripConfigService.getQueryData()), 100);
   }
 

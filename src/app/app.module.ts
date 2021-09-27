@@ -8,11 +8,13 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { TripSearchModule } from './trip-search/trip-search.module';
 import { ResultListModule } from './result-list/result-list.module';
 import { SharedModule } from './shared/shared.module';
+import { HeaderComponent } from './landing-page/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -12,25 +12,28 @@ export type Option = {
 })
 export class DropdownSelectorComponent implements OnInit {
   @Input() options: Option[] = [];
-  @Input() selected: string;
+  @Input() selectedValue: string;
+  selectedLabel: string;
   @Input() shortStyle: boolean = false;
   @Output() optionSelected: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-    if(!this.selected) {
-      this.selected = this.options[0].label;
+    if (this.selectedValue) {
+      this.selectedLabel = this.options?.find(op => op.value === this.selectedValue)?.label || '';
+    } else {
+      this.selectedLabel = this.options && this.options[0].label || '';
     }
   }
 
   selectOption(option: Option) {
-    this.selected = option.label;
+    this.selectedLabel = option.label;
     this.optionSelected.emit(option.value);
   }
 
   otherOptions(): Option[] {
-    return this.options.filter(op => op.label !== this.selected);
+    return (this.options || []).filter(op => op.label !== this.selectedLabel);
   }
 
 }

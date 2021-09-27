@@ -6,13 +6,15 @@ import { DurationIndicatorComponent } from './duration-indicator/duration-indica
 import { ResultListComponent } from './result-list.component';
 import { LocationTimeComponent } from './location-time/location-time.component';
 import { SharedModule } from '../shared/shared.module';
+import { InfoBannerComponent } from './info-banner/info-banner.component';
 
 @NgModule({
   declarations: [
     ResultListComponent,
     DepartureComponent,
     DurationIndicatorComponent,
-    LocationTimeComponent
+    LocationTimeComponent,
+    InfoBannerComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, timer } from 'rxjs';
-import { map, switchMapTo, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, timer } from 'rxjs';
+import { catchError, map, switchMapTo, tap } from 'rxjs/operators';
 
 export type TripSearch = {
   origin: string;
@@ -33,6 +33,8 @@ export type Travel = {
   operators: { id: string, name: string, logoUrl: string }[];
   departures: Departure[];
   complete: boolean;
+  error?: boolean;
+  errorMessage?: string;
 }
 
 @Injectable({
@@ -51,55 +53,63 @@ export class DepartureService {
   ) { }
 
   getDepartures(tripSearch: TripSearch): Observable<Travel> {
+    this.travelInfo = undefined as any;
     this.tripSearch = tripSearch;
-    this.travelInfo = {} as any;
-    this.travelSubject$ = new BehaviorSubject(this.travelInfo);
+    this.travelSubject$ = new BehaviorSubject(this.generateEmptyResult());
     
-    return this.generateRequest(tripSearch, 0).pipe(
-      map(data => this.parseResponse(data)),
-      tap(info => this.incrementTravelInfo(info)),
-      switchMapTo(this.travelSubject$.asObservable())
-    )
+    this.requestData().subscribe();
+
+    return this.travelSubject$.asObservable();
   }
 
   private incrementTravelInfo(info: Travel) {
-    // Initialize the info object
-    if (this.travelInfo.complete === undefined) {
+    if (!this.travelInfo) {
       this.travelInfo = info;
-    // Expand it
+
     } else {
       info.locations
-        .filter(loc => !this.travelInfo.locations.find(({ id }) => id === loc.id))
+        ?.filter(loc => !this.travelInfo.locations.find(({ id }) => id === loc.id))
         .forEach(loc => this.travelInfo.locations.push(loc));
 
       info.operators
-        .filter(op => !this.travelInfo.operators.find(({ id }) => id === op.id))
+        ?.filter(op => !this.travelInfo.operators.find(({ id }) => id === op.id))
         .forEach(op => this.travelInfo.operators.push(op));
 
       info.departures
-        .filter(dep => !this.travelInfo.departures.find(({ id }) => id === dep.id))
+        ?.filter(dep => !this.travelInfo.departures.find(({ id }) => id === dep.id))
         .forEach(dep => this.travelInfo.departures.push(dep));
 
       this.travelInfo.complete = info.complete;
-    }
-
-    if (!info.complete) {
-      timer(this.pollDelay).pipe(
-        switchMapTo(this.generateRequest(this.tripSearch, this.travelInfo.departures.length)),
-        map(data => this.parseResponse(data)),
-        tap(info => this.incrementTravelInfo(info))
-      ).subscribe();
+      this.travelInfo.error = info.error;
     }
     
     this.travelSubject$.next(this.travelInfo);
+  }
+
+  private pollIfNeeded({ complete }: Travel) {
+    if (!complete) {
+      timer(this.pollDelay).pipe(
+        switchMapTo(this.requestData())
+      ).subscribe();
+    }
+  }
+
+  private requestData(): Observable<Travel> {
+    return this.generateRequest().pipe(
+      map(data => this.parseResponse(data)),
+      catchError(error => of(this.generateEmptyResult(error))),
+      tap(info => this.pollIfNeeded(info)),
+      tap(info => this.incrementTravelInfo(info))
+    );
   }
 
   private composeUrl({ origin, destination, outboundDate }: TripSearch, index: number) {
     return `${ this.url }/${ origin }/${ destination }/${ outboundDate }${ index > 0 ? '/poll' : '' }`;
   }
 
-  private generateRequest(info: TripSearch, index: number = 0): Observable<any> {
-    const { adult, senior, child, lang, currency } = info;
+  private generateRequest(): Observable<any> {
+    const { adult, senior, child, lang, currency } = this.tripSearch;
+    const index = this.travelInfo?.departures.length || 0;
 
     const headers = new HttpHeaders({
       'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
@@ -111,7 +121,7 @@ export class DepartureService {
       ...(index > 0 ? { index } : {})
     } })
 
-    return this.httpClient.get(this.composeUrl(info, index), { headers, params })
+    return this.httpClient.get(this.composeUrl(this.tripSearch, index), { headers, params })
   }
 
   private parseResponse({ cities, departures, locations, operators, complete }: any): Travel {
@@ -132,6 +142,18 @@ export class DepartureService {
           currency: departure.prices.currency
         })),
       complete
+    }
+  }
+
+  private generateEmptyResult(error?: any): Travel {
+    return {
+      origin: this.tripSearch.origin,
+      destination: this.tripSearch.destination,
+      locations: [],
+      operators: [],
+      departures: [],
+      complete: error !== undefined,
+      error: !!error      
     }
   }
 }

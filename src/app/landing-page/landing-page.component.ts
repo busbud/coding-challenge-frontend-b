@@ -21,7 +21,7 @@ export class LandingPageComponent implements OnInit {
     this.departureService.getDepartures(info)
       .subscribe(travel => {
         this.travelInfo = travel;
-        console.log("Llega info nueva");
+        console.log("Llega info nueva", travel);
       });
   }
 

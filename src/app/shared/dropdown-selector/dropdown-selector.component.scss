@@ -11,3 +11,19 @@
     user-select: none;
     width: 8em;
 }
+
+.short-style {
+    .selector {
+        padding: 6px;
+        width: 4em;
+    }
+    
+    .dropdown-menu {
+        min-width: 4em;
+        width: 4em;
+
+        button {
+            padding-left: 12px;
+        }
+    }
+}

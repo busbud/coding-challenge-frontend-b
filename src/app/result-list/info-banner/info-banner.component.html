@@ -1,0 +1,44 @@
+<div class="container">
+    <div 
+        class="banner loading"
+        *ngIf="type==='loading'"
+    >
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    
+        <div class="title">
+            Waiting for more results to show...
+        </div>
+    </div>
+
+    <div
+        class="banner no-departures"
+        *ngIf="type==='noDepartures'"
+    >
+    
+        <div class="title-group">
+            <img class="banner-icon empty-icon"
+                src="/assets/empty.svg">
+            <div class="title">
+                No departures have been found.
+            </div>
+        </div>
+
+        <div class="subtitle">
+            Try another date or a different destination.
+        </div>
+    </div>
+
+    <div 
+        class="banner error"
+        *ngIf="type==='error'"
+    >
+        <img class="banner-icon error-icon"
+            src="/assets/warning.svg">
+
+        <div class="title">
+            There was an error, please try again.
+        </div>
+    </div>
+</div>

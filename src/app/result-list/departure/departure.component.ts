@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { CurrencyService } from 'src/app/services/currency.service';
 import { Departure } from 'src/app/services/departure.service';
 
 @Component({
@@ -18,7 +19,9 @@ export class DepartureComponent implements OnChanges {
   origin: string;
   destination: string;
 
-  constructor() { }
+  constructor(
+    private currencyService: CurrencyService
+  ) { }
 
   ngOnChanges(): void {
     this.formattedPrice = (this.departureData.price / 100).toLocaleString();
@@ -29,11 +32,10 @@ export class DepartureComponent implements OnChanges {
   }
 
   private formatCurrency({ currency }: Departure) {
-    switch(currency) {
-      case 'EUR': return '€';
-      case 'CAD': return 'CAD';
-      default: return 'US$';
-    }
+    const currencies = this.currencyService.getCurrencyOptions();
+    const selected = currencies.find(cur => cur.value === currency) || currencies[0];
+    
+    return selected.label;
   }
 
 }
