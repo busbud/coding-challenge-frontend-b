@@ -1,7 +1,7 @@
-import { all, fork } from "redux-saga/effects";
-import departureSaga from "../departures/redux/sagas/departureSaga";
+import { AllEffect, all, fork } from 'redux-saga/effects';
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function* rootSaga() {
-  yield all([fork(departureSaga)]);
+import departureSagas from '../departures/redux/sagas';
+
+export function* rootSaga(): Generator<AllEffect<unknown>> {
+    yield all([fork(departureSagas)]);
 }

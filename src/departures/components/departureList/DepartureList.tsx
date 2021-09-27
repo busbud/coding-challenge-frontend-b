@@ -1,12 +1,13 @@
 import React from 'react';
-import {Table} from 'antd';
-import {IDeparture} from '@src/types';
-import {useDepartureSelector} from '@src/redux/selector';
+import { Table } from 'antd';
+import { useDepartureSelector } from 'src/redux/selector';
+import { IDeparture } from 'src/types';
+
 import { DEPARTURE_LIST_COLUMNS } from './DepartureList.constants';
-import { DepartureStops } from './departureStops/DepartureStops';
+import { DepartureStopList } from './departureStopList/departureStopList';
 
 const DepartureList = (): React.ReactElement => {
-    const {loading, departures, error} = useDepartureSelector();
+    const { loading, departures, error } = useDepartureSelector();
 
     return (
         <Table
@@ -15,7 +16,7 @@ const DepartureList = (): React.ReactElement => {
             dataSource={departures}
             expandable={{
                 expandedRowRender: (record: IDeparture) => (
-                    <DepartureStops stops={record.stops} />
+                    <DepartureStopList stops={record.stops} />
                 ),
                 rowExpandable: (record) => record.stops?.length > 0,
             }}

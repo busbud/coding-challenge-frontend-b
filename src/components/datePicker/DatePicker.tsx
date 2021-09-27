@@ -1,11 +1,11 @@
 import React from 'react';
 import { DatePicker } from 'antd';
 import moment from 'moment';
+import { DATE_FORMAT_LIST } from 'src/constants';
 
-import { DATE_FORMAT_LIST } from './DatePicker.constants';
+import styles from './DatePicker.styles.scss';
 import type { DatePickerProps, DateType } from './DatePicker.types';
 import { disabledDate } from './DatePicker.utils';
-import styles from './DatePicker.styles.scss';
 
 const CustomDatePicker: React.FC<DatePickerProps> = ({
     date,

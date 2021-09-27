@@ -1,5 +1,8 @@
-import type { DeparturesState } from "@src/departures/redux/types";
-import { useSelector } from "react-redux";
-import type { RootState } from "./reducer";
+import { useSelector } from 'react-redux';
+import type { DeparturesState } from 'src/departures/redux/types';
 
-export const useDepartureSelector = (): DeparturesState => useSelector((state: RootState) => state['DEPARTURE_REDUCER'])
+import { Reducers } from './constants';
+import type { RootState } from './reducer';
+
+export const useDepartureSelector = (): DeparturesState =>
+    useSelector((state: RootState) => state[Reducers.DEPARTURE_REDUCER]);

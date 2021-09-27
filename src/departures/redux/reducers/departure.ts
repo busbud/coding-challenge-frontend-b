@@ -1,5 +1,5 @@
-import {FETCH_DEPARTURE_TYPES} from '../actions/types';
-import type {DeparturesActions, DeparturesState} from '../types';
+import { FETCH_DEPARTURE_TYPES } from '../actions/actionTypes';
+import type { DeparturesActions, DeparturesState } from '../types';
 
 const initialState: DeparturesState = {
     loading: false,
@@ -25,7 +25,7 @@ export default (
                 error: null,
             };
         case FETCH_DEPARTURE_TYPES.FETCH_EXTRA_DEPARTURES_SUCCESS:
-            const {departures} = state;
+            const { departures } = state;
             return {
                 ...state,
                 departures: [...departures, ...action.payload.departures],

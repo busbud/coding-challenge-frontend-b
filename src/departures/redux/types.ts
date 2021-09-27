@@ -1,5 +1,5 @@
 import type { IDeparture } from "../../types";
-import { FETCH_DEPARTURE_TYPES } from "./actions/types";
+import { FETCH_DEPARTURE_TYPES } from "./actions/actionTypes";
 
 export interface DeparturesState {
   loading: boolean;

@@ -1,20 +1,20 @@
-import React, { useMemo } from 'react';
-import {Button, Steps} from 'antd';
+import React from 'react';
+import { Button, Steps } from 'antd';
 
 import { DepartureStop } from '../departureStop/DepartureStop';
-import { DepartureStopsProps } from './DepartureStops.types';
+import { DepartureStopsProps } from './departureStopList.types';
 
-const {Step} = Steps;
+const { Step } = Steps;
 
-export const DepartureStops: React.FC<DepartureStopsProps> = ({stops}) => {
-    const [current, setCurrent] = React.useState(0);
+export const DepartureStopList: React.FC<DepartureStopsProps> = ({ stops }) => {
+    const [current, setCurrent] = React.useState<number>(0);
 
     const next = () => {
-        setCurrent(current + 1);
+        setCurrent((current: number) => current + 1);
     };
 
     const previous = () => {
-        setCurrent(current - 1);
+        setCurrent((current: number) => current - 1);
     };
 
     return (

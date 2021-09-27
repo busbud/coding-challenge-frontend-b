@@ -6,3 +6,5 @@ export const isProd = mode === 'production';
 export const isDev = !isProd;
 export const rootDir = join(__dirname, '../../');
 export const webpackDir = join(__dirname, '../');
+export const apiUrl = 'https://napi.busbud.com';
+export const apiKey = 'PARTNER_c9g6z7V0SNqUlnar2EFsxw';

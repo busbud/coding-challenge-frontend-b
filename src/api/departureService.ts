@@ -1,26 +1,28 @@
+import type { AxiosResponse } from 'axios';
+import type { DepartureRequestParameters } from 'src/types';
+
 import http from './common';
 
 class DepartureService {
-    
-    GEOHASH: Record<string, string>  = {
-        'Québec': 'f2m673',
-        'Montréal': 'f25dvk',
-    }
+    GEOHASH: Record<string, string> = {
+        Québec: 'f2m673',
+        Montréal: 'f25dvk',
+    };
 
-    getDepartures = ( {origin, destination, date, passengerCount, poll = false, departureCount }: any): any => {
-
+    getDepartures = ({
+        origin,
+        destination,
+        date,
+        passengerCount,
+        poll = false,
+        departureCount,
+    }: DepartureRequestParameters): Promise<AxiosResponse<unknown>> => {
         let baseUrl = `/x-departures/${this.GEOHASH[origin]}/${this.GEOHASH[destination]}/${date}`;
-        const passengerCountQuery = `adult=${passengerCount}`
-
-        if(poll) {
-            baseUrl += `/poll?${passengerCountQuery}&index=${departureCount}`
+        if (poll) {
+            baseUrl += `/poll?index=${departureCount}`;
         } else {
-            baseUrl += `?${passengerCountQuery}`
+            baseUrl += `?adult=${passengerCount}`;
         }
-
-        console.log(baseUrl);
-
-
         return http.get(baseUrl);
     };
 }

@@ -1,12 +1,12 @@
 {
   "groupings": [
-    "@src",
+    "src",
     [
-      "@components"
+      "components"
     ],
     [
-      "@images",
-      "@styles"
+      "images",
+      "styles"
     ]
   ]
 }

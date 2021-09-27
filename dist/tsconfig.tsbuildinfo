@@ -191,6 +191,11 @@
         "signature": "89bf2b7a601b73ea4311eda9c41f86a58994fec1bee3b87c4a14d68d9adcdcbd",
         "affectsGlobalScope": true
       },
+      "../src/constants.ts": {
+        "version": "0a3bfecb1ff37308b670a2df6c9ed52b0c5594f64114501e749553b8f32f8a30",
+        "signature": "53da899b3457333380bc7a8c3e33aa359ae833f81c469fe942e121a9c772f8e5",
+        "affectsGlobalScope": false
+      },
       "../node_modules/@types/react/global.d.ts": {
         "version": "ecf78e637f710f340ec08d5d92b3f31b134a46a4fcf2e758690d8c46ce62cba6",
         "signature": "ecf78e637f710f340ec08d5d92b3f31b134a46a4fcf2e758690d8c46ce62cba6",
@@ -234,16 +239,6 @@
       "../node_modules/@types/react-redux/index.d.ts": {
         "version": "e8faeb4be8e43860b01f7f091aa0db082cac83caafb54cc3acb7a0c38bb4d701",
         "signature": "e8faeb4be8e43860b01f7f091aa0db082cac83caafb54cc3acb7a0c38bb4d701",
-        "affectsGlobalScope": false
-      },
-      "../src/components/app/app.module.less.d.ts": {
-        "version": "b11c43bbaaab08219ae03ea2ce0ef6671c4437d47ff96292fb0d5d28d0543246",
-        "signature": "b11c43bbaaab08219ae03ea2ce0ef6671c4437d47ff96292fb0d5d28d0543246",
-        "affectsGlobalScope": false
-      },
-      "../src/components/app/app.module.scss.d.ts": {
-        "version": "f91c37dad677f861f61b54425473992f7275622b1f66b3de4990e5701617e084",
-        "signature": "f91c37dad677f861f61b54425473992f7275622b1f66b3de4990e5701617e084",
         "affectsGlobalScope": false
       },
       "../node_modules/rc-field-form/lib/useForm.d.ts": {
@@ -1631,9 +1626,84 @@
         "signature": "ff215adca72a5aad7ee365435ae92f07ea805bb4d0f27ca825b5c5b40d0fa779",
         "affectsGlobalScope": false
       },
-      "../src/components/datePicker/DatePicker.constants.ts": {
-        "version": "4bd4bbac7b19d9916dfbd23664e2fd34f900ef7d4ed2f7ab643a9f447fb36228",
-        "signature": "108be6232ca465c76155693c3968b400717616575b032174235cc52c09e6267d",
+      "../src/types/index.ts": {
+        "version": "6626c4281f654f5834c215a7c22effa907a467fabeedac6b2fc09c10b42cf80d",
+        "signature": "416d9f26f28caa72b9d73956bb76b8854ee7f3d809ee502bbc6f4c12be65529b",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/redux/actions/actionTypes.ts": {
+        "version": "212edeb86b9cbf55f801a7c0ee42cb34622461eec18cee29e93e2be420ffcb0f",
+        "signature": "60e1104484689604d308aa1925abafdbdb6393e1dc6d44341ed5a899ad10377c",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/redux/types.ts": {
+        "version": "1681789080b5abde6e5e93fbbd2508c491972624c08f75adfc0764eed2789223",
+        "signature": "390622bec1bc82161849e78bf2e4b8e936eeb7c1f8d6c5b2689798a6e250255e",
+        "affectsGlobalScope": false
+      },
+      "../src/redux/constants.ts": {
+        "version": "bbbb4f4e1fea02b91864bde38e830c030343cab9115e09faaf66b18ff67a2a38",
+        "signature": "1a4c7151fc02152b52ba11fbd58fc66c2a7c3d1e18a1dc46f685d59fa9ae45c3",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/redux/reducers/departure.ts": {
+        "version": "ae0cf90a45029419917cee112a85aae864fb427c122b3019598873f0b61cf58e",
+        "signature": "834b8838b5897414eb3405878dd4c6cccea5b383c3ef2598b662411df6480caf",
+        "affectsGlobalScope": false
+      },
+      "../src/redux/reducer.ts": {
+        "version": "6d40a6cdcdb5969fe10c5d1be63f01756ea45cdc00e9eb26c3fa3577276d6270",
+        "signature": "6fb01133246e16cde49559a77f326b7a3b818dfed50bbe0cd68180d4d35f3573",
+        "affectsGlobalScope": false
+      },
+      "../src/redux/selector.ts": {
+        "version": "3c116298805d93f4d953a7f601debca74cc930f9ca9448ce12f298fbf2f688f6",
+        "signature": "9e184766e15e125489fcad7dab94737925f607cfb946ddb27708fba2dd86d151",
+        "affectsGlobalScope": false
+      },
+      "../src/utils/compare.ts": {
+        "version": "d6bcc3a2290b22f4e3f9f477451bba195042637ff0edd600b700266e4cf69c14",
+        "signature": "a12622484c9eb960f66a4328cd8df0e55363219ed5b413c3b7960861869f45ca",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/components/departureList/DepartureList.constants.ts": {
+        "version": "576492f7822a253b0c482ced157e6368e6cc4e41e6dc4a1ba69cd93d0e8d1145",
+        "signature": "b95eed59b43aed3e990c1278a458f8b99e0b55eab5609727134b05b443db7cc2",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/components/departureList/departureStop/DepartureStop.constants.ts": {
+        "version": "b58e66525db9a4e3d95c93dbbc19e62e281cf9e740e76f412d9321e685704cac",
+        "signature": "11aa2f556a2b2434c25dbac72c29e85f34396b328fd6c58b1c51e413050bf5d3",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/components/departureList/departureStop/DepartureStop.types.ts": {
+        "version": "adb264012a01356c82fc6a1833cf052a153697b70a635513d7103b3531e930f9",
+        "signature": "1d7b424879aa27e1af702fa69c455cf272974b0a702451ec2463a01822368ff6",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/components/departureList/departureStop/DepartureStop.tsx": {
+        "version": "345a6910d4b703108c923f67989062b8591ed764b96948646c8f631971c9f03e",
+        "signature": "1961499d791dcfa5b2373149266c7b8105fe410cb3664fcdc1e9f54c3864e751",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/components/departureList/departureStopList/departureStopList.types.ts": {
+        "version": "932925def18e8c5c961386223c85c44327da05df1b7b548290ef2c6a0d22130c",
+        "signature": "12123f46c3134100287dc61854223de1830110fb13eeeb4e3854253158106f10",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/components/departureList/departureStopList/departureStopList.tsx": {
+        "version": "3ab6d9e38de734326d1d3c586ce4c872803c0bb7e15ce49d22fbb888ae54a4d7",
+        "signature": "cbe4f5e23953c05de371ed13e066031fdea717eee3e2bb174c66d9392ad202a2",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/components/departureList/DepartureList.tsx": {
+        "version": "336a4d01da6ca8e2f816f4b8f7a703667a8fc6096a0467ecd2b7f018d1af8b7c",
+        "signature": "317750286581e653cb51b4f675b6f4e512550f0b89f4907d19fc9d07a677d697",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/components/departureList/index.ts": {
+        "version": "33b401e75c0af12925258cde5da0ce844d10826c4acfd3a5ff733f230f25b750",
+        "signature": "2c9f727e13a9842a81387ba8847f9a9b639ddc4825410bc1ebf3e5f8cd3ce71e",
         "affectsGlobalScope": false
       },
       "../src/components/datePicker/DatePicker.types.ts": {
@@ -1647,98 +1717,48 @@
         "affectsGlobalScope": false
       },
       "../src/components/datePicker/DatePicker.tsx": {
-        "version": "62b1d03ca39e13eeb752e9cb03b7846b97a97e686ab75a93777a7edd2677dd6e",
+        "version": "b26e166bc919c871c799fad4fc97942c67da40d4dec2470f0b8ccbbd289a0721",
         "signature": "995a2c8e8b7d689f4f64dd79f5f93417c9ef5fceb35cc412f1387be339c105da",
         "affectsGlobalScope": false
       },
       "../src/utils/date.ts": {
-        "version": "5a81eb4765c60fa4e864a2796e6cd7747c748de0103f4831068b8130bee58045",
-        "signature": "25710002f681dca68c60d24dcadcae4f36a078d9dd153d0602d8ce24559c168f",
-        "affectsGlobalScope": false
-      },
-      "../src/types/index.ts": {
-        "version": "88dd2207f55aaba5bf3c5caeadf51670f32147e6036bc518e9d14625df0ff6fe",
-        "signature": "d4380f0796b733e0f29ebd04267c0c5bf8e675febca718fb7ccde4333de91889",
-        "affectsGlobalScope": false
-      },
-      "../src/departures/redux/actions/types.ts": {
-        "version": "c84152738802a023d4fedd3d0eaafca2226b2ff244a314791fdb0cf5d899acba",
-        "signature": "60e1104484689604d308aa1925abafdbdb6393e1dc6d44341ed5a899ad10377c",
-        "affectsGlobalScope": false
-      },
-      "../src/departures/redux/types.ts": {
-        "version": "2a9b4ed6b4b49044a59f67d23dbd082d17b95974edbee08bfdc4918cbae1fc5d",
-        "signature": "08004c31d22cf8056bcb6d82c7b1df84131cacaf15687b180886bea9658e8da4",
+        "version": "21a7728e1df7a3f6b1694ba9441ca4883807b14a7beb80904f0eb22c679f6fba",
+        "signature": "f25b1a95f077015cee0b044e50bc716abb94dd5dee370a131ac88a939f7479da",
         "affectsGlobalScope": false
       },
       "../src/departures/redux/actions/departure.ts": {
-        "version": "ce26d196c9ea4f786fe2708aa2499d74eaa2dd0ff518b391c09dfcdbcd05fbb9",
+        "version": "2f2cb96c87759b74f85897e70531dfbc0aa44db9db4e24705d0032c94e20db97",
         "signature": "1cfa696ef06a5bf6a02d73293396f89a7afb3ce52e262573315dce1093c55e0d",
         "affectsGlobalScope": false
       },
-      "../src/departures/departureSearch/DepartureSearch.tsx": {
-        "version": "55251adf243b8052aaada8db22c21d9a02353e5a7b4225f3444c11047ea90106",
+      "../src/departures/components/departureSearch/DepartureSearch.utils.ts": {
+        "version": "0332db646bec344107fd9c6e673865d410697037df265004d12fbed3ce83fa2c",
+        "signature": "24f592f78d955d5dcf3935a95a3089aff944b12a2586ce3f0c2c89ccf0c424ce",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/components/departureSearch/DepartureSearch.tsx": {
+        "version": "ad92a8673c3ab0e68ac8a2f75c1cdc0cb99b0c09aabe2565bfddea956778337e",
         "signature": "22465df0e5df12839b6f22b5a9db28d4d821787147758377ec9291f31dbc3128",
         "affectsGlobalScope": false
       },
-      "../src/departures/departureSearch/index.ts": {
+      "../src/departures/components/departureSearch/index.ts": {
         "version": "4a270aefd0d80398047a0d35e2e5126183a1e101b1c52569ce39760177a292ee",
         "signature": "f6c0e4bb16398a07f14c10f5b4dab11e8d181129f2ddae4ad76d0070a1fa6de0",
         "affectsGlobalScope": false
       },
-      "../src/departures/redux/reducers/departure.ts": {
-        "version": "f35551c7269a043bd21d2249b3e2d4e54a58dcf6d4deb2103346553efb2a6fdb",
-        "signature": "834b8838b5897414eb3405878dd4c6cccea5b383c3ef2598b662411df6480caf",
+      "../src/departures/components/departurePage/DeparturePage.tsx": {
+        "version": "eb4fa5a0a92ae883603c1b00e10e7cdb0e99045acb46148bf8b79a1517e105df",
+        "signature": "da22109ba1d4e337196681f78524babc21816536ae7a955a892906ee6dcb136f",
         "affectsGlobalScope": false
       },
-      "../src/redux/reducer.ts": {
-        "version": "ccbb9c499d429b3f946a086b4585bbc73a29a5cf598921c7aa72faa959c251d2",
-        "signature": "6fb01133246e16cde49559a77f326b7a3b818dfed50bbe0cd68180d4d35f3573",
+      "../src/departures/components/departurePage/index.ts": {
+        "version": "3ebecbc82c0b3d09004f92ba83e5e53387098e841911dcba84baa0c033281033",
+        "signature": "631e2731992d06c653fc717d0c8c326bc00c2fb1f52e995bd9267740efc178f4",
         "affectsGlobalScope": false
       },
-      "../src/redux/selector.ts": {
-        "version": "5a0fb53c4f4be4c5219fe87cce314a8f0cc5c99c2daae80220cf4d3d24a9c048",
-        "signature": "c58eb647285c41853ab4335b3fd17740e5cf5d181bedb538d25696208d64fd68",
-        "affectsGlobalScope": false
-      },
-      "../src/departures/departureList/DepartureList.constants.ts": {
-        "version": "1a3645aad1b9da376ec6170c059500d1d134e5c00854682735404e3eda74b6e4",
-        "signature": "2ee6ab7dcc9215c7100bff3bea977f69a709bb4aa7d85471174d6a1755ddec37",
-        "affectsGlobalScope": false
-      },
-      "../src/departures/departureList/departureStop/DepartureStop.types.ts": {
-        "version": "d4a368b60df49441399c898f35235cfc06fbcf236d42367288badb0558d142d4",
-        "signature": "6cdb32a0c3c2a7e3b2fdc34954069278a00037f0e6579286f0414b08ae7a7ff4",
-        "affectsGlobalScope": false
-      },
-      "../src/departures/departureList/departureStop/DepartureStop.tsx": {
-        "version": "c3d9139155757b869137e31404ca207463ba3cf1d1f2fd627db426831686b111",
-        "signature": "1961499d791dcfa5b2373149266c7b8105fe410cb3664fcdc1e9f54c3864e751",
-        "affectsGlobalScope": false
-      },
-      "../src/departures/departureList/departureStops/DepartureStops.types.ts": {
-        "version": "17a6bb1b78f6ec628a106d8b80d28e21bf759b04db8decf0064e17f214c6aa21",
-        "signature": "7f52c8200f1a5b6ae72f27ed3d204a3699936ad57aa7f2690c30a6cb582e9e32",
-        "affectsGlobalScope": false
-      },
-      "../src/departures/departureList/departureStops/DepartureStops.tsx": {
-        "version": "196e205321e65dafb48d318495dadab5f10e7f76b22c79f88ee59f37386be2ff",
-        "signature": "ad2fc9eff882ad5051104c4b2e223456dee36cfb8b7ac6db171165102651d350",
-        "affectsGlobalScope": false
-      },
-      "../src/departures/departureList/DepartureList.tsx": {
-        "version": "c45ee51a915a8cf6db74ce83a5de987bac6705a745bcaded1300316828ae1a7c",
-        "signature": "317750286581e653cb51b4f675b6f4e512550f0b89f4907d19fc9d07a677d697",
-        "affectsGlobalScope": false
-      },
-      "../src/departures/departureList/index.ts": {
-        "version": "33b401e75c0af12925258cde5da0ce844d10826c4acfd3a5ff733f230f25b750",
-        "signature": "2c9f727e13a9842a81387ba8847f9a9b639ddc4825410bc1ebf3e5f8cd3ce71e",
-        "affectsGlobalScope": false
-      },
-      "../src/components/app/app.tsx": {
-        "version": "c278a1b8c39b6482edda0a12ebd5d715475b0569cb40a91fd2feb6a2c6d77e50",
-        "signature": "246e2df78d1a6cc3560c29323934f487a746e366e2ea01f88f74848be12250f2",
+      "../node_modules/@types/redux-logger/index.d.ts": {
+        "version": "8adb0cee1edd485ae5675aa5100d73c1c17201446ee33a1d2bd364b766d6469c",
+        "signature": "8adb0cee1edd485ae5675aa5100d73c1c17201446ee33a1d2bd364b766d6469c",
         "affectsGlobalScope": false
       },
       "../node_modules/@redux-saga/types/types/ts3.6/index.d.ts": {
@@ -1786,11 +1806,6 @@
         "signature": "7b6e484e6b248b0b2c9393549bae07b882bb50e997f1da5eb2405c33a1fd8c1e",
         "affectsGlobalScope": false
       },
-      "../node_modules/@types/redux-logger/index.d.ts": {
-        "version": "8adb0cee1edd485ae5675aa5100d73c1c17201446ee33a1d2bd364b766d6469c",
-        "signature": "8adb0cee1edd485ae5675aa5100d73c1c17201446ee33a1d2bd364b766d6469c",
-        "affectsGlobalScope": false
-      },
       "../node_modules/redux-saga/effects.d.ts": {
         "version": "d7584f06c8026bc776ac6ec204f7732a7ebc60a3538583132a428264d3743458",
         "signature": "d7584f06c8026bc776ac6ec204f7732a7ebc60a3538583132a428264d3743458",
@@ -1802,46 +1817,46 @@
         "affectsGlobalScope": false
       },
       "../src/api/common.ts": {
-        "version": "862259afbc3a669985445a02b5557ba5c4d5b97bce689c7c4d4880478e1e68bf",
+        "version": "2530a210b598218ca93c7005fd315734a1b5fbcb862ccaac49feb63273935cc9",
         "signature": "80f6e2708b971c162a012bf40ba60e16665d6cdcd7bed4ea29b553f109868627",
         "affectsGlobalScope": false
       },
       "../src/api/departureService.ts": {
-        "version": "33db51ddfdc16df8a4ae0accf241aa55606927ecff688a6fee0acc653db366f7",
-        "signature": "e7e49ab9c08bc6a1854da940f190a8a16f5bfca54deeb60c6b637c03675defc3",
+        "version": "ef37384dd541f5109e08aeddd903d33a4036069cd2f4f37f2c8848c90ded3bd2",
+        "signature": "975e9106996122f5c90a033c373e7daf0b5753ff863f07f033bff6ef7872759d",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/redux/sagas/utils.ts": {
+        "version": "faaa3624d1a9a3647753b57818e2abbc58083b8a0932f0f046e095e6e00c2c0b",
+        "signature": "66c18069c831a865fcb05785c3d23063b9960ec8bf02658048a1e1bb42bd4c0b",
         "affectsGlobalScope": false
       },
       "../src/departures/redux/sagas/departureSaga.ts": {
-        "version": "4e5903e7f3b3021e5cb380e53b1d11bebc51b277c5b63ecc86bd9ab74771851b",
-        "signature": "e504bcffff3b231775d971102b19a4b5691ecfe398f6019ec99c633ed4310a51",
+        "version": "caa7ca84b8846e7e412e78d5b56528b308e15a4c8e23ac5b06bff65bccaf4ba0",
+        "signature": "f70311da27d11804c0233ead6f651d45ee92834c585ef00b686bda45774c0e0c",
+        "affectsGlobalScope": false
+      },
+      "../src/departures/redux/sagas/index.ts": {
+        "version": "7582dca0ae5127de557f1232b5adac9733ddd58223aca1de9997b58c74a710d2",
+        "signature": "54aacfc71d3c874519a852e8f4d98efc1e78e20a0aaa86c298b74cb5e61453e7",
         "affectsGlobalScope": false
       },
       "../src/redux/saga.ts": {
-        "version": "d68ebbf3f9b753ba9bc419f7b5c4265942b3572b6965602fd6f89948d1da72b8",
-        "signature": "be5c6a966d7f896bb87e4835875bde84e49b46cacc0b96f2bf8d4d2aeda1172c",
+        "version": "5fb0d913315d22e1c05200042478a0e2826bbae0bb804cd9c3240a99ed6fed74",
+        "signature": "76f518db60a603f78082528da2fa067216b9c9986e1a78783371030aaa6d47d5",
         "affectsGlobalScope": false
       },
       "../src/redux/store.ts": {
-        "version": "383773ae3712fd72819d31d72adaf1540afd1141115a8f860dee441966ed7211",
+        "version": "47bded35ee9658cdefd7c57506e0e5d0782b895d9c23cb0d6c368aa8d3da9dbb",
         "signature": "c96a526a0857c24e521088006a61c9ca6328ec4e730beff14f46d0e9ceb675c8",
         "affectsGlobalScope": false
       },
       "../src/index.tsx": {
-        "version": "b125f536361d477cc465c595996b06666b2371e05767b525983122dee2a406a7",
-        "signature": "8a12ea42380a6ce0290dd2acc8158ca019edb1bded4977863e953a4705deaf6b",
+        "version": "cac632c50a5a4d993e7252d77b6a16398558afd7391ad3c809cefe071eeb7e02",
+        "signature": "a1b26c1a7f693aabb092a397a072ff48201c73d7b3ad72c1b389f7841a718013",
         "affectsGlobalScope": false
       },
-      "../src/components/app/strawberry.tsx": {
-        "version": "ba3f446fb4cef9e34e24994316ded00105e9175f42a19291323557b411190e99",
-        "signature": "48b69ac1b93eb4d810fdd159021f0c33171aa441f174201b2d3e8810aab75b1d",
-        "affectsGlobalScope": false
-      },
-      "../src/departures/index.ts": {
-        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "affectsGlobalScope": false
-      },
-      "../src/departures/redux/saga.ts": {
+      "../src/components/datePicker/DatePicker.constants.ts": {
         "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "affectsGlobalScope": false
@@ -2305,16 +2320,13 @@
         "../src/typings"
       ],
       "paths": {
-        "@src/*": [
+        "src/*": [
           "src/*"
         ],
-        "@images/*": [
+        "images/*": [
           "public/images/*"
         ],
-        "@styles/*": [
-          "src/styles/*"
-        ],
-        "@components/*": [
+        "components/*": [
           "src/components/*"
         ]
       },
@@ -4609,26 +4621,9 @@
       ],
       "../src/api/departureService.ts": [
         "../node_modules/@types/node/util.d.ts",
-        "../src/api/common.ts"
-      ],
-      "../src/components/app/app.module.less.d.ts": [
-        "../node_modules/@types/node/util.d.ts"
-      ],
-      "../src/components/app/app.module.scss.d.ts": [
-        "../node_modules/@types/node/util.d.ts"
-      ],
-      "../src/components/app/app.tsx": [
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/components/app/app.module.less.d.ts",
-        "../src/components/app/app.module.scss.d.ts",
-        "../src/departures/departureList/index.ts",
-        "../src/departures/departureSearch/index.ts"
-      ],
-      "../src/components/app/strawberry.tsx": [
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/typings/declarations.d.ts"
+        "../node_modules/axios/index.d.ts",
+        "../src/api/common.ts",
+        "../src/types/index.ts"
       ],
       "../src/components/datePicker/DatePicker.constants.ts": [
         "../node_modules/@types/node/util.d.ts"
@@ -4638,9 +4633,9 @@
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/antd/lib/index.d.ts",
         "../node_modules/moment/ts3.1-typings/moment.d.ts",
-        "../src/components/datePicker/DatePicker.constants.ts",
         "../src/components/datePicker/DatePicker.types.ts",
         "../src/components/datePicker/DatePicker.utils.ts",
+        "../src/constants.ts",
         "../src/typings/declarations.d.ts"
       ],
       "../src/components/datePicker/DatePicker.types.ts": [
@@ -4651,90 +4646,125 @@
         "../node_modules/moment/ts3.1-typings/moment.d.ts",
         "../src/components/datePicker/DatePicker.types.ts"
       ],
-      "../src/departures/departureList/DepartureList.constants.ts": [
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/moment/ts3.1-typings/moment.d.ts"
+      "../src/constants.ts": [
+        "../node_modules/@types/node/util.d.ts"
       ],
-      "../src/departures/departureList/DepartureList.tsx": [
+      "../src/departures/components/departureList/DepartureList.constants.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/antd/lib/table/index.d.ts",
+        "../src/types/index.ts",
+        "../src/utils/compare.ts"
+      ],
+      "../src/departures/components/departureList/DepartureList.tsx": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/antd/lib/index.d.ts",
-        "../src/departures/departureList/DepartureList.constants.ts",
-        "../src/departures/departureList/departureStops/DepartureStops.tsx",
+        "../src/departures/components/departureList/DepartureList.constants.ts",
+        "../src/departures/components/departureList/departureStopList/departureStopList.tsx",
         "../src/redux/selector.ts",
         "../src/types/index.ts"
       ],
-      "../src/departures/departureList/departureStop/DepartureStop.tsx": [
+      "../src/departures/components/departureList/departureStop/DepartureStop.constants.ts": [
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/departures/components/departureList/departureStop/DepartureStop.tsx": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/antd/lib/index.d.ts",
-        "../src/departures/departureList/departureStop/DepartureStop.types.ts"
+        "../src/departures/components/departureList/departureStop/DepartureStop.constants.ts",
+        "../src/departures/components/departureList/departureStop/DepartureStop.types.ts"
       ],
-      "../src/departures/departureList/departureStop/DepartureStop.types.ts": [
+      "../src/departures/components/departureList/departureStop/DepartureStop.types.ts": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../src/types/index.ts"
       ],
-      "../src/departures/departureList/departureStops/DepartureStops.tsx": [
+      "../src/departures/components/departureList/departureStopList/departureStopList.tsx": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/antd/lib/index.d.ts",
-        "../src/departures/departureList/departureStop/DepartureStop.tsx",
-        "../src/departures/departureList/departureStops/DepartureStops.types.ts"
+        "../src/departures/components/departureList/departureStop/DepartureStop.tsx",
+        "../src/departures/components/departureList/departureStopList/departureStopList.types.ts"
       ],
-      "../src/departures/departureList/departureStops/DepartureStops.types.ts": [
+      "../src/departures/components/departureList/departureStopList/departureStopList.types.ts": [
         "../node_modules/@types/node/util.d.ts",
         "../src/types/index.ts"
       ],
-      "../src/departures/departureList/index.ts": [
+      "../src/departures/components/departureList/index.ts": [
         "../node_modules/@types/node/util.d.ts",
-        "../src/departures/departureList/DepartureList.tsx"
+        "../src/departures/components/departureList/DepartureList.tsx"
       ],
-      "../src/departures/departureSearch/DepartureSearch.tsx": [
+      "../src/departures/components/departurePage/DeparturePage.tsx": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../src/departures/components/departureList/index.ts",
+        "../src/departures/components/departureSearch/index.ts",
+        "../src/typings/declarations.d.ts"
+      ],
+      "../src/departures/components/departurePage/index.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../src/departures/components/departurePage/DeparturePage.tsx"
+      ],
+      "../src/departures/components/departureSearch/DepartureSearch.tsx": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/antd/lib/index.d.ts",
         "../src/components/datePicker/DatePicker.tsx",
-        "../src/departures/redux/actions/departure.ts",
+        "../src/departures/components/departureSearch/DepartureSearch.utils.ts",
         "../src/utils/date.ts"
       ],
-      "../src/departures/departureSearch/index.ts": [
+      "../src/departures/components/departureSearch/DepartureSearch.utils.ts": [
         "../node_modules/@types/node/util.d.ts",
-        "../src/departures/departureSearch/DepartureSearch.tsx"
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/redux/index.d.ts",
+        "../src/departures/redux/actions/departure.ts",
+        "../src/departures/redux/types.ts"
       ],
-      "../src/departures/index.ts": [
+      "../src/departures/components/departureSearch/index.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../src/departures/components/departureSearch/DepartureSearch.tsx"
+      ],
+      "../src/departures/redux/actions/actionTypes.ts": [
         "../node_modules/@types/node/util.d.ts"
       ],
       "../src/departures/redux/actions/departure.ts": [
         "../node_modules/@types/node/util.d.ts",
-        "../src/departures/redux/actions/types.ts",
+        "../src/departures/redux/actions/actionTypes.ts",
         "../src/departures/redux/types.ts"
-      ],
-      "../src/departures/redux/actions/types.ts": [
-        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/departures/redux/reducers/departure.ts": [
         "../node_modules/@types/node/util.d.ts",
-        "../src/departures/redux/actions/types.ts",
+        "../src/departures/redux/actions/actionTypes.ts",
         "../src/departures/redux/types.ts"
-      ],
-      "../src/departures/redux/saga.ts": [
-        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/departures/redux/sagas/departureSaga.ts": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/redux-saga/effects.d.ts",
         "../node_modules/redux-saga/index.d.ts",
+        "../node_modules/redux/index.d.ts",
         "../src/api/departureService.ts",
         "../src/departures/redux/actions/departure.ts",
-        "../src/departures/redux/actions/types.ts",
+        "../src/departures/redux/sagas/utils.ts",
         "../src/departures/redux/types.ts",
         "../src/types/index.ts"
       ],
+      "../src/departures/redux/sagas/index.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/redux-saga/effects.d.ts",
+        "../node_modules/redux/index.d.ts",
+        "../src/departures/redux/actions/actionTypes.ts",
+        "../src/departures/redux/sagas/departureSaga.ts"
+      ],
+      "../src/departures/redux/sagas/utils.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../src/types/index.ts",
+        "../src/utils/compare.ts",
+        "../src/utils/date.ts"
+      ],
       "../src/departures/redux/types.ts": [
         "../node_modules/@types/node/util.d.ts",
-        "../src/departures/redux/actions/types.ts",
+        "../src/departures/redux/actions/actionTypes.ts",
         "../src/types/index.ts"
       ],
       "../src/index.tsx": [
@@ -4742,24 +4772,29 @@
         "../node_modules/@types/react-dom/index.d.ts",
         "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../src/components/app/app.tsx",
+        "../src/departures/components/departurePage/index.ts",
         "../src/redux/store.ts",
         "../src/typings/declarations.d.ts"
+      ],
+      "../src/redux/constants.ts": [
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/redux/reducer.ts": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/redux/index.d.ts",
-        "../src/departures/redux/reducers/departure.ts"
+        "../src/departures/redux/reducers/departure.ts",
+        "../src/redux/constants.ts"
       ],
       "../src/redux/saga.ts": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/redux-saga/effects.d.ts",
-        "../src/departures/redux/sagas/departureSaga.ts"
+        "../src/departures/redux/sagas/index.ts"
       ],
       "../src/redux/selector.ts": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/react-redux/index.d.ts",
         "../src/departures/redux/types.ts",
+        "../src/redux/constants.ts",
         "../src/redux/reducer.ts"
       ],
       "../src/redux/store.ts": [
@@ -4777,10 +4812,15 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
+      "../src/utils/compare.ts": [
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/moment/ts3.1-typings/moment.d.ts",
+        "../src/constants.ts"
+      ],
       "../src/utils/date.ts": [
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/moment/ts3.1-typings/moment.d.ts",
-        "../src/components/datePicker/DatePicker.constants.ts"
+        "../src/constants.ts"
       ]
     },
     "exportedModulesMap": {
@@ -7062,50 +7102,58 @@
       "../src/api/common.ts": [
         "../node_modules/axios/index.d.ts"
       ],
-      "../src/components/app/app.module.less.d.ts": [
-        "../node_modules/@types/node/util.d.ts"
-      ],
-      "../src/components/app/app.module.scss.d.ts": [
-        "../node_modules/@types/node/util.d.ts"
-      ],
-      "../src/components/app/app.tsx": [
-        "../node_modules/@types/react/index.d.ts"
-      ],
-      "../src/components/app/strawberry.tsx": [
-        "../node_modules/@types/react/index.d.ts"
+      "../src/api/departureService.ts": [
+        "../node_modules/axios/index.d.ts",
+        "../src/types/index.ts"
       ],
       "../src/components/datePicker/DatePicker.tsx": [
-        "../node_modules/@types/react/index.d.ts"
+        "../node_modules/@types/react/index.d.ts",
+        "../src/components/datePicker/DatePicker.types.ts"
       ],
       "../src/components/datePicker/DatePicker.utils.ts": [
         "../src/components/datePicker/DatePicker.types.ts"
       ],
-      "../src/departures/departureList/DepartureList.tsx": [
+      "../src/departures/components/departureList/DepartureList.constants.ts": [
+        "../node_modules/antd/lib/table/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/departures/components/departureList/DepartureList.tsx": [
         "../node_modules/@types/react/index.d.ts"
       ],
-      "../src/departures/departureList/departureStop/DepartureStop.tsx": [
+      "../src/departures/components/departureList/departureStop/DepartureStop.tsx": [
         "../node_modules/@types/react/index.d.ts",
-        "../src/departures/departureList/departureStop/DepartureStop.types.ts"
+        "../src/departures/components/departureList/departureStop/DepartureStop.types.ts"
       ],
-      "../src/departures/departureList/departureStop/DepartureStop.types.ts": [
+      "../src/departures/components/departureList/departureStop/DepartureStop.types.ts": [
         "../node_modules/@types/react/index.d.ts",
         "../src/types/index.ts"
       ],
-      "../src/departures/departureList/departureStops/DepartureStops.tsx": [
+      "../src/departures/components/departureList/departureStopList/departureStopList.tsx": [
         "../node_modules/@types/react/index.d.ts",
-        "../src/departures/departureList/departureStops/DepartureStops.types.ts"
+        "../src/departures/components/departureList/departureStopList/departureStopList.types.ts"
       ],
-      "../src/departures/departureList/departureStops/DepartureStops.types.ts": [
+      "../src/departures/components/departureList/departureStopList/departureStopList.types.ts": [
         "../src/types/index.ts"
       ],
-      "../src/departures/departureList/index.ts": [
-        "../src/departures/departureList/DepartureList.tsx"
+      "../src/departures/components/departureList/index.ts": [
+        "../src/departures/components/departureList/DepartureList.tsx"
       ],
-      "../src/departures/departureSearch/DepartureSearch.tsx": [
+      "../src/departures/components/departurePage/DeparturePage.tsx": [
         "../node_modules/@types/react/index.d.ts"
       ],
-      "../src/departures/departureSearch/index.ts": [
-        "../src/departures/departureSearch/DepartureSearch.tsx"
+      "../src/departures/components/departurePage/index.ts": [
+        "../src/departures/components/departurePage/DeparturePage.tsx"
+      ],
+      "../src/departures/components/departureSearch/DepartureSearch.tsx": [
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../src/departures/components/departureSearch/DepartureSearch.utils.ts": [
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/redux/index.d.ts",
+        "../src/departures/redux/types.ts"
+      ],
+      "../src/departures/components/departureSearch/index.ts": [
+        "../src/departures/components/departureSearch/DepartureSearch.tsx"
       ],
       "../src/departures/redux/actions/departure.ts": [
         "../src/departures/redux/types.ts"
@@ -7113,12 +7161,26 @@
       "../src/departures/redux/reducers/departure.ts": [
         "../src/departures/redux/types.ts"
       ],
+      "../src/departures/redux/sagas/departureSaga.ts": [
+        "../node_modules/redux-saga/effects.d.ts",
+        "../node_modules/redux-saga/index.d.ts",
+        "../node_modules/redux/index.d.ts",
+        "../src/departures/redux/types.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/departures/redux/sagas/index.ts": [
+        "../node_modules/redux-saga/effects.d.ts",
+        "../node_modules/redux/index.d.ts"
+      ],
+      "../src/departures/redux/sagas/utils.ts": [
+        "../src/types/index.ts"
+      ],
       "../src/departures/redux/types.ts": [
-        "../src/departures/redux/actions/types.ts",
+        "../src/departures/redux/actions/actionTypes.ts",
         "../src/types/index.ts"
       ],
       "../src/index.tsx": [
-        "../@types/declarations.d.ts"
+        "../src/typings/declarations.d.ts"
       ],
       "../src/redux/reducer.ts": [
         "../node_modules/redux/index.d.ts",
@@ -7564,37 +7626,40 @@
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../src/api/common.ts",
       "../src/api/departureService.ts",
-      "../src/components/app/app.module.less.d.ts",
-      "../src/components/app/app.module.scss.d.ts",
-      "../src/components/app/app.tsx",
-      "../src/components/app/strawberry.tsx",
       "../src/components/datePicker/DatePicker.constants.ts",
       "../src/components/datePicker/DatePicker.tsx",
       "../src/components/datePicker/DatePicker.types.ts",
       "../src/components/datePicker/DatePicker.utils.ts",
-      "../src/departures/departureList/DepartureList.constants.ts",
-      "../src/departures/departureList/DepartureList.tsx",
-      "../src/departures/departureList/departureStop/DepartureStop.tsx",
-      "../src/departures/departureList/departureStop/DepartureStop.types.ts",
-      "../src/departures/departureList/departureStops/DepartureStops.tsx",
-      "../src/departures/departureList/departureStops/DepartureStops.types.ts",
-      "../src/departures/departureList/index.ts",
-      "../src/departures/departureSearch/DepartureSearch.tsx",
-      "../src/departures/departureSearch/index.ts",
-      "../src/departures/index.ts",
+      "../src/constants.ts",
+      "../src/departures/components/departureList/DepartureList.constants.ts",
+      "../src/departures/components/departureList/DepartureList.tsx",
+      "../src/departures/components/departureList/departureStop/DepartureStop.constants.ts",
+      "../src/departures/components/departureList/departureStop/DepartureStop.tsx",
+      "../src/departures/components/departureList/departureStop/DepartureStop.types.ts",
+      "../src/departures/components/departureList/departureStopList/departureStopList.tsx",
+      "../src/departures/components/departureList/departureStopList/departureStopList.types.ts",
+      "../src/departures/components/departureList/index.ts",
+      "../src/departures/components/departurePage/DeparturePage.tsx",
+      "../src/departures/components/departurePage/index.ts",
+      "../src/departures/components/departureSearch/DepartureSearch.tsx",
+      "../src/departures/components/departureSearch/DepartureSearch.utils.ts",
+      "../src/departures/components/departureSearch/index.ts",
+      "../src/departures/redux/actions/actionTypes.ts",
       "../src/departures/redux/actions/departure.ts",
-      "../src/departures/redux/actions/types.ts",
       "../src/departures/redux/reducers/departure.ts",
-      "../src/departures/redux/saga.ts",
       "../src/departures/redux/sagas/departureSaga.ts",
+      "../src/departures/redux/sagas/index.ts",
+      "../src/departures/redux/sagas/utils.ts",
       "../src/departures/redux/types.ts",
       "../src/index.tsx",
+      "../src/redux/constants.ts",
       "../src/redux/reducer.ts",
       "../src/redux/saga.ts",
       "../src/redux/selector.ts",
       "../src/redux/store.ts",
       "../src/types/index.ts",
       "../src/typings/declarations.d.ts",
+      "../src/utils/compare.ts",
       "../src/utils/date.ts"
     ]
   },

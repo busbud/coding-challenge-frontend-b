@@ -1,8 +1,10 @@
-import { combineReducers } from "redux";
-import departureReducer from "@src/departures/redux/reducers/departure";
+import { combineReducers } from 'redux';
+import departureReducer from 'src/departures/redux/reducers/departure';
+
+import { Reducers } from './constants';
 
 const rootReducer = combineReducers({
-  'DEPARTURE_REDUCER': departureReducer
+    [Reducers.DEPARTURE_REDUCER]: departureReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

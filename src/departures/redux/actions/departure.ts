@@ -8,7 +8,7 @@ import type {
     FetchExtraDeparturesSuccess,
     FetchExtraDeparturesSuccessPayload,
 } from '../types';
-import {FETCH_DEPARTURE_TYPES} from './types';
+import { FETCH_DEPARTURE_TYPES } from './actionTypes';
 
 export const fetchDepartures = (
     payload: FetchDeparturesRequestPayload,
@@ -32,9 +32,8 @@ export const fetchExtraDeparturesSuccess = (
 });
 
 export const fetchDeparturesFailure = (
-    payload: FetchDeparturesFailurePayload
-  ): FetchDeparturesFailure => ({
+    payload: FetchDeparturesFailurePayload,
+): FetchDeparturesFailure => ({
     type: FETCH_DEPARTURE_TYPES.FETCH_DEPARTURES_FAILURE,
-    payload
-  });
-  
+    payload,
+});

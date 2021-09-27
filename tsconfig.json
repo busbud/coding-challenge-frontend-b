@@ -16,10 +16,9 @@
         "rootDir": "./",
         "typeRoots": ["./node_modules/@types", "./src/typings"],
         "paths": {
-            "@src/*": ["src/*"],
-            "@images/*": ["public/images/*"],
-            "@styles/*": ["src/styles/*"],
-            "@components/*": ["src/components/*"]
+            "src/*": ["src/*"],
+            "images/*": ["public/images/*"],
+            "components/*": ["src/components/*"]
         },
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
