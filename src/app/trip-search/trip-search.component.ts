@@ -19,10 +19,13 @@ export class TripSearchComponent implements OnInit {
     this.tripConfigService.isSearchReady$.subscribe(isReady => this.searchReady = isReady)
 
     //TODO: Remove this, only for testing.
-    this.tripConfigService.setOrigin('f25dvk');
-    this.tripConfigService.setDestination('f2m673');
-    //this.tripConfigService.setPassengers({ adult: 0, child: 1, senior: 0 });
-    setTimeout(() => this.tripSearched.emit(this.tripConfigService.getQueryData()), 100);
+    this.tripConfigService.setOrigin('eysbgk'); // Malaga
+    this.tripConfigService.setDestination('u09tvm'); // Paris
+    //this.tripConfigService.setPassengers({ adult: 0, child: 1, senior: 0 }); // Force error
+    setTimeout(() => {
+      this.tripConfigService.setOutboundDate('2021-10-09');
+      this.tripSearched.emit(this.tripConfigService.getQueryData());
+    }, 100);
   }
 
   searchTrips() {
