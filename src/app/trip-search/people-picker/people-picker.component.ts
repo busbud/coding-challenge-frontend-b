@@ -8,7 +8,7 @@ import { TripConfigService } from './../services/trip-config.service';
 })
 export class PeoplePickerComponent implements OnInit {
   values: { adult: number, child: number, senior: number } = {} as any;
-  total: number = 0;
+  count: { total: number };
 
   constructor(
     private tripConfigService: TripConfigService
@@ -27,7 +27,7 @@ export class PeoplePickerComponent implements OnInit {
   }
 
   private calculateTotal() {
-    this.total = this.values.adult + this.values.child + this.values.senior;
+    this.count = { total: this.values.adult + this.values.child + this.values.senior };
   }
 
 }

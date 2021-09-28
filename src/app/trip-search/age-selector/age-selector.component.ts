@@ -7,8 +7,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class AgeSelectorComponent {
 
-  @Input() title: string = '';
+  @Input() code: string = '';
   @Input() value: number = 0;
+  @Input() total: number = 1;
   @Output() valueUpdated: EventEmitter<number> = new EventEmitter();
 
   constructor() { }

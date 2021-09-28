@@ -5,11 +5,12 @@
 
     <div
         class="form-control"
-        (click)="inputDate.focus()"
     >
         <div
             class="input-title"
-        >Outbound date</div>
+            appTranslate="date-picker.title"
+            (click)="inputDate.focus()"
+        ></div>
 
         <input
             placeholder="yyyy-mm-dd"
@@ -35,6 +36,7 @@
     </div>
 </div>
 
-<div class="alert">
-    Introduce a valid future date
-</div>
+<div
+    class="alert"
+    appTranslate="error.invalid-date"
+></div>

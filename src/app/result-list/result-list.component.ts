@@ -10,10 +10,10 @@ import { Departure, Travel } from './../services/departure.service';
 export class ResultListComponent implements OnInit {
   @Input() travelInfo: Travel;
   sortingOptions: Option[] = [
-    { label: 'Cheapest', value: 'money' },
-    { label: 'Fastest', value: 'time' },
-    { label: 'Earliest', value: 'departureAsc' },
-    { label: 'Latest', value: 'departureDesc' },
+    { label: 'result-list.orderby.money', value: 'money' },
+    { label: 'result-list.orderby.time', value: 'time' },
+    { label: 'result-list.orderby.departureAsc', value: 'departureAsc' },
+    { label: 'result-list.orderby.departureDesc', value: 'departureDesc' },
   ]
   sorting: 'money'|'time'|'departureAsc'|'departureDesc' = 'money'
 
@@ -34,7 +34,6 @@ export class ResultListComponent implements OnInit {
   }
 
   sortedDepartures() {
-    console.log("Sorting");
     const sorter = this.sorters[this.sorting] || this.sorters.money;
 
     return this.travelInfo.departures.sort(sorter);

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 
 export type Option = {
   label: string;
@@ -10,21 +10,19 @@ export type Option = {
   templateUrl: './dropdown-selector.component.html',
   styleUrls: ['./dropdown-selector.component.scss']
 })
-export class DropdownSelectorComponent implements OnInit {
+export class DropdownSelectorComponent implements OnChanges {
   @Input() options: Option[] = [];
   @Input() selectedValue: string;
   selectedLabel: string;
-  @Input() shortStyle: boolean = false;
+  @Input() style: string = 'normal';
   @Output() optionSelected: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef
+  ) { }
 
-  ngOnInit() {
-    if (this.selectedValue) {
-      this.selectedLabel = this.options?.find(op => op.value === this.selectedValue)?.label || '';
-    } else {
-      this.selectedLabel = this.options && this.options[0].label || '';
-    }
+  ngOnChanges({ selectedValue }: SimpleChanges) {
+    this.selectedLabel = this.calculateLabelByValue(selectedValue?.currentValue);
   }
 
   selectOption(option: Option) {
@@ -34,6 +32,11 @@ export class DropdownSelectorComponent implements OnInit {
 
   otherOptions(): Option[] {
     return (this.options || []).filter(op => op.label !== this.selectedLabel);
+  }
+
+  private calculateLabelByValue(value: any) {
+    const label = value ? this.options?.find(op => op.value === value)?.label : '';
+    return label || this.options && this.options[0].label || '';
   }
 
 }

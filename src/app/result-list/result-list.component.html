@@ -4,9 +4,10 @@
 >
     <div class="header">
         <div class="title sub-header">
-            <span class="title-text">
-                Select your adventure
-            </span>    
+            <span
+                class="title-text"
+                appTranslate="result-list.title"
+            ></span>    
             <span
                 class="spinner-border"
                 role="status"
@@ -22,6 +23,7 @@
 
             <app-dropdown-selector
                 [options]="sortingOptions"
+                [style]="'long'"
                 (optionSelected)="sorting=$event"
             ></app-dropdown-selector>
         </div>

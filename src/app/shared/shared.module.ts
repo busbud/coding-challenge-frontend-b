@@ -3,17 +3,25 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { DropdownSelectorComponent } from './dropdown-selector/dropdown-selector.component';
+import { TranslateDirective } from './translate-directive/translate.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    DropdownSelectorComponent
+    DropdownSelectorComponent,
+    TranslateDirective
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     NgbModule
   ],
   exports: [
-    DropdownSelectorComponent
+    CommonModule,
+    HttpClientModule,
+    NgbModule,
+    DropdownSelectorComponent,
+    TranslateDirective
   ]
 })
 export class SharedModule { }

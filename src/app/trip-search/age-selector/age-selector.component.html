@@ -1,9 +1,12 @@
 <form class="form-inline" >
-    <span class="title" >{{ title }}</span>
+    <span
+        class="title"
+        [appTranslate]="'age-selector.' + code"
+    ></span>
 
     <button class="btn btn-primary squared"
         (click)="decreaseValue()"
-        [disabled]="value ? null : 'disabled'"
+        [disabled]="total > 1 && value ? null : 'disabled'"
     >-</button>
 
     <span class="amount squared" >{{ value }}</span>

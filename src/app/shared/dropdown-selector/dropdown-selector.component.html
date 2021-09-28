@@ -1,21 +1,24 @@
 <div
     ngbDropdown
     class="d-inline-block"
-    [ngClass]="{ 'short-style': shortStyle }"
+    [ngClass]="style + '-style'"
 >
     <button
         ngbDropdownToggle
         class="btn btn-outline-primary selector"
-    >{{ selectedLabel }}</button>
+        [appTranslate]="selectedLabel"
+    >{{selectedLabel}}</button>
 
     <div
         ngbDropdownMenu
     >
         <button
+            class="option-item"
             ngbDropdownItem
             *ngFor="let option of otherOptions()"
             (click)="selectOption(option)"
-        >{{ option.label }}</button>
+            [appTranslate]="option.label"
+        ></button>
     </div>
 
 </div>

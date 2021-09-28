@@ -29,7 +29,8 @@
                 [ngClass]="searchReady ? 'btn-primary' : 'btn-secondary'"
                 [disabled]="searchReady ? null : 'disabled'"
                 (click)=searchTrips()
-            >Find your trip!</button>
+                appTranslate="trip-search.search"
+            ></button>
         </div>
     </div>
 

@@ -5,7 +5,8 @@
 >
     <div
         class="input-title"
-    >{{ placeholder }}</div>
+        [appTranslate]="'placeholder.' + code"
+    ></div>
 
     <input
         type="text"
@@ -22,6 +23,8 @@
     >
 </div>
 
-<div class="alert">
-    Introduce a valid city name
+<div
+    class="alert"
+    appTranslate="error.invalid-city"
+>
 </div>

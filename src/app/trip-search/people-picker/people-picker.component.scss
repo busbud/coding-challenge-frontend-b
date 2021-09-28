@@ -2,24 +2,6 @@
     cursor: pointer;
 }
 
-.invalid {
-    .form-control {
-        border-color: #d61f1f;
-    }
-
-    & + .alert {
-        visibility: visible;
-    }
-}
-
-.alert {
-    color: #d61f1f;
-    font-size: small;
-    margin: 0;
-    padding: 0 0 0 13px;
-    visibility: hidden;
-}
-
 .form-control {
     height: 55px;
 }
@@ -29,6 +11,7 @@
     font-weight: bold;
     margin-top: -3px;
     padding-left: 2px;
+    user-select: none;
 }
 
 .travelers {

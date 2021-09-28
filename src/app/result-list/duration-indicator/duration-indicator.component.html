@@ -7,19 +7,28 @@
         *ngIf="days > 0"
     >
         <span>{{ days }}</span>
-        <span class="unit">{{ dayChar }}</span>
+        <span
+            class="unit"
+            appTranslate="duration.dayChar"
+        ></span>
     </div>
     
     <div class="time-unit"
     >
         <span>{{ hours }}</span>
-        <span class="unit">{{ hourChar }}</span>
+        <span
+            class="unit"
+            appTranslate="duration.hourChar"
+        ></span>
     </div>
     
     <div class="time-unit"
         *ngIf="days == 0"
     >
         <span>{{ minutes }}</span>
-        <span class="unit">{{ minuteChar }}</span>
+        <span
+            class="unit"
+            appTranslate="duration.minuteChar"
+        ></span>
     </div>
 </div>

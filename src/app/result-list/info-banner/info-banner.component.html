@@ -4,12 +4,16 @@
         *ngIf="type==='loading'"
     >
         <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+            <span
+                class="sr-only"
+                appTranslate="info.loading.spinner-message"
+            ></span>
         </div>
     
-        <div class="title">
-            Waiting for more results to show...
-        </div>
+        <div
+            class="title"
+            appTranslate="info.loading.title"
+        ></div>
     </div>
 
     <div
@@ -20,14 +24,16 @@
         <div class="title-group">
             <img class="banner-icon empty-icon"
                 src="/assets/empty.svg">
-            <div class="title">
-                No departures have been found.
-            </div>
+            <div
+                class="title"
+                appTranslate="info.no-departures.title"
+            ></div>
         </div>
 
-        <div class="subtitle">
-            Try another date or a different destination.
-        </div>
+        <div
+            class="subtitle"
+            appTranslate="info.no-departures.subtitle"
+        ></div>
     </div>
 
     <div 
@@ -37,8 +43,9 @@
         <img class="banner-icon error-icon"
             src="/assets/warning.svg">
 
-        <div class="title">
-            There was an error, please try again.
-        </div>
+        <div
+            class="title"
+            appTranslate="info.error.title"
+        ></div>
     </div>
 </div>

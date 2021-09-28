@@ -12,6 +12,10 @@
     width: 8em;
 }
 
+.option-item {
+    padding-left: 10px;
+}
+
 .short-style {
     .selector {
         padding: 6px;
@@ -21,9 +25,16 @@
     .dropdown-menu {
         min-width: 4em;
         width: 4em;
+    }
+}
 
-        button {
-            padding-left: 12px;
-        }
+.long-style {
+    .selector {
+        width: 10em;
+    }
+    
+    .dropdown-menu {
+        min-width: 10em;
+        width: 10em;
     }
 }

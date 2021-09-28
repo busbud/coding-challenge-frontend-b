@@ -9,5 +9,10 @@
     </div>
 
     <div class="city">{{ city }}</div>
-    <div class="location">{{ location }}</div>
+    <div
+        class="location"
+        data-toggle="tooltip"
+        data-placement="top"
+        [title]="location"
+    >{{ location }}</div>
 </div>

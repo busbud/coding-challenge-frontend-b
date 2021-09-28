@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TripSearch } from '../services/departure.service';
 import { TripConfigService } from './services/trip-config.service';
 
@@ -7,9 +8,10 @@ import { TripConfigService } from './services/trip-config.service';
   templateUrl: './trip-search.component.html',
   styleUrls: ['./trip-search.component.scss']
 })
-export class TripSearchComponent implements OnInit {
+export class TripSearchComponent implements OnInit, OnDestroy {
   @Output() tripSearched: EventEmitter<TripSearch> = new EventEmitter();
   public searchReady: boolean = false;
+  private subscriptions: Subscription[] = [];
 
   constructor(
     private tripConfigService: TripConfigService
@@ -17,15 +19,11 @@ export class TripSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.tripConfigService.isSearchReady$.subscribe(isReady => this.searchReady = isReady)
+  }
 
-    //TODO: Remove this, only for testing.
-    this.tripConfigService.setOrigin('eysbgk'); // Malaga
-    this.tripConfigService.setDestination('u09tvm'); // Paris
-    //this.tripConfigService.setPassengers({ adult: 0, child: 1, senior: 0 }); // Force error
-    setTimeout(() => {
-      this.tripConfigService.setOutboundDate('2021-10-09');
-      this.tripSearched.emit(this.tripConfigService.getQueryData());
-    }, 100);
+  ngOnDestroy(): void {
+    // Prevent memory leaks
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   searchTrips() {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable, OperatorFunction } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, filter } from 'rxjs/operators';
 import { CitySearchService } from '../services/city-search.service';
@@ -9,21 +9,16 @@ import { TripConfigService } from './../services/trip-config.service';
   templateUrl: './city-picker.component.html',
   styleUrls: ['./city-picker.component.scss']
 })
-export class CityPickerComponent implements OnInit {
+export class CityPickerComponent {
 
   @Input() code: 'origin'|'destination' = 'origin';
   city: any;
-  placeholder: string = '';
   isInvalid: boolean = false;
 
   constructor(
     private citySearchService: CitySearchService,
     private tripConfigService: TripConfigService
   ) { }
-
-  ngOnInit(): void {
-    this.placeholder = this.code.charAt(0).toUpperCase() + this.code.slice(1);;
-  }
 
   inputNameExtractor (city: {full_name: string, geohash: string}) {
     return city.full_name.split(',')[0];
