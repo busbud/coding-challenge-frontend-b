@@ -1,19 +1,15 @@
-<div
+<div class="d-inline-block"
     ngbDropdown
-    class="d-inline-block"
     [ngClass]="style + '-style'"
 >
-    <button
-        ngbDropdownToggle
-        class="btn btn-outline-primary selector"
-        [appTranslate]="selectedLabel"
-    >{{selectedLabel}}</button>
 
-    <div
-        ngbDropdownMenu
-    >
-        <button
-            class="option-item"
+    <button class="btn btn-outline-primary selector"
+        ngbDropdownToggle
+        [appTranslate]="selectedLabel"
+    ></button>
+
+    <div ngbDropdownMenu>
+        <button class="option-item"
             ngbDropdownItem
             *ngFor="let option of otherOptions()"
             (click)="selectOption(option)"

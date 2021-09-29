@@ -1,9 +1,7 @@
-import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 
-export type Option = {
-  label: string;
-  value: any;
-}
+import { Option } from '@app/shared/models';
+
 
 @Component({
   selector: 'app-dropdown-selector',
@@ -13,13 +11,10 @@ export type Option = {
 export class DropdownSelectorComponent implements OnChanges {
   @Input() options: Option[] = [];
   @Input() selectedValue: string;
-  selectedLabel: string;
+  @Input() emitFullOption: boolean = false;
   @Input() style: string = 'normal';
   @Output() optionSelected: EventEmitter<any> = new EventEmitter();
-
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) { }
+  selectedLabel: string;
 
   ngOnChanges({ selectedValue }: SimpleChanges) {
     this.selectedLabel = this.calculateLabelByValue(selectedValue?.currentValue);
@@ -27,7 +22,7 @@ export class DropdownSelectorComponent implements OnChanges {
 
   selectOption(option: Option) {
     this.selectedLabel = option.label;
-    this.optionSelected.emit(option.value);
+    this.optionSelected.emit(this.emitFullOption ? option : option.value);
   }
 
   otherOptions(): Option[] {

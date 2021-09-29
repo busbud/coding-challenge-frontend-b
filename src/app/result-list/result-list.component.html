@@ -1,19 +1,16 @@
-<div
-    class="container"
+<div class="container"
     *ngIf="travelInfo"
 >
     <div class="header">
         <div class="title sub-header">
-            <span
-                class="title-text"
+            <span class="title-text"
                 appTranslate="result-list.title"
-            ></span>    
-            <span
-                class="spinner-border"
+            ></span>
+            
+            <span class="spinner-border"
                 role="status"
                 *ngIf="!travelInfo.complete"
-            >
-            </span>
+            ></span>
         </div>
 
         <div class="sub-header">
@@ -23,6 +20,7 @@
 
             <app-dropdown-selector
                 [options]="sortingOptions"
+                [emitFullOption]="true"
                 [style]="'long'"
                 (optionSelected)="sorting=$event"
             ></app-dropdown-selector>

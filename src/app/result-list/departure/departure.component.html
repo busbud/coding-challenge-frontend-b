@@ -1,17 +1,19 @@
 <div class="container">
 
     <div class="departure-section upper-section">
+
         <img class="logo"
             [src]="operatorLogo"
         >
     
         <div class="price text-primary">
-            <span class="amount"> {{ formattedPrice }}</span>
-            <span class="currency"> {{ formattedCurrency }}</span>
+            <span>{{ price / 100 | currency : currency }}</span>
         </div>
+
     </div>
 
     <div class="departure-section middle-section">
+
         <app-location-time
             class="location-time"
             [displayLeft]="true"
@@ -31,9 +33,11 @@
             [time]="departureData.arrivalTime"
             [daysAfter]="daysAfter"
         ></app-location-time>
+
     </div>
 
     <div class="departure-section bottom-section">
+
         <app-duration-indicator
             [duration]="departureData.duration"
         ></app-duration-indicator>
@@ -41,8 +45,8 @@
         <button
             class="btn btn-primary"
             appTranslate="buy-button"
-        >
-        </button>
+        ></button>
+
     </div>
 
 </div>

@@ -1,6 +1,9 @@
-import { Travel } from './../services/departure.service';
 import { Component } from '@angular/core';
-import { DepartureService, TripSearch } from '../services/departure.service';
+import { Observable } from 'rxjs';
+
+import { DepartureService } from '@app/services';
+import { Travel, TripSearch } from '@app/shared/models';
+
 
 @Component({
   selector: 'app-landing-page',
@@ -9,16 +12,14 @@ import { DepartureService, TripSearch } from '../services/departure.service';
 })
 export class LandingPageComponent {
   travelInfo: Travel;
+  travelInfo$: Observable<Travel>;
 
   constructor(
     private departureService: DepartureService
   ) { }
 
   searchTrip(info: TripSearch) {
-    this.departureService.getDepartures(info)
-      .subscribe(travel => {
-        this.travelInfo = travel;
-      });
+    this.travelInfo$ = this.departureService.getDepartures(info);
   }
 
 }

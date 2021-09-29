@@ -1,8 +1,10 @@
-import { LanguageService } from './../../services/language.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { LanguageService } from '@app/services';
+
 
 @Injectable({
   providedIn: 'root'

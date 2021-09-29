@@ -1,8 +1,9 @@
-import { LanguageService } from './../../services/language.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Option } from 'src/app/shared/dropdown-selector/dropdown-selector.component';
-import { CurrencyService } from 'src/app/services/currency.service';
 import { Subscription } from 'rxjs';
+
+import { CurrencyService, LanguageService } from '@app/services';
+import { Option } from '@app/shared/models';
+
 
 @Component({
   selector: 'app-header',
@@ -27,11 +28,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.currencies = this.currencyService.getCurrencyOptions();
     this.selectedCurrency = this.currencyService.getCurrencyValue();
 
-    this.languageService.getLanguage()
-      .subscribe(lang => this.selectedLanguage = lang);
+    this.subscriptions.push(this.languageService.getLanguage()
+      .subscribe(lang => this.selectedLanguage = lang));
 
-    this.currencyService.getCurrency()
-      .subscribe(currency => this.selectedCurrency = currency);
+    this.subscriptions.push(this.currencyService.getCurrency()
+      .subscribe(currency => this.selectedCurrency = currency));
   }
 
   ngOnDestroy(): void {

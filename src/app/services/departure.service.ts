@@ -3,39 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, timer } from 'rxjs';
 import { catchError, map, switchMapTo, tap } from 'rxjs/operators';
 
-export type TripSearch = {
-  origin: string;
-  destination: string;
-  outboundDate: string;
-  adult: number;
-  child: number;
-  senior: number;
-  currency: string;
-  lang: string;
-}
+import { Travel, TripSearch } from '@app/shared/models';
 
-export type Departure = {
-  arrivalTime: string;
-  departureTime: string;
-  originId: number;
-  destinationId: number;
-  duration: number;
-  operatorId: string;
-  price: number;
-  currency: string;
-  id: string;
-}
-
-export type Travel = {
-  origin: string;
-  destination: string;
-  locations: { id: number, name: string }[];
-  operators: { id: string, name: string, logoUrl: string }[];
-  departures: Departure[];
-  complete: boolean;
-  error?: boolean;
-  errorMessage?: string;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +31,16 @@ export class DepartureService {
     return this.travelSubject$.asObservable();
   }
 
-  private incrementTravelInfo(info: Travel) {
+  private requestData(): Observable<Travel> {
+    return this.generateRequest().pipe(
+      map(data => this.parseResponse(data)),
+      tap(info => this.pollIfNeeded(info)),
+      catchError(error => of(this.generateEmptyResult(error))),
+      tap(info => this.updateTravelInfo(info))
+    );
+  }
+
+  private updateTravelInfo(info: Travel) {
     if (!this.travelInfo) {
       this.travelInfo = info;
 
@@ -83,6 +61,7 @@ export class DepartureService {
       this.travelInfo.error = info.error;
     }
     
+    console.log(this.travelInfo);
     this.travelSubject$.next(this.travelInfo);
   }
 
@@ -92,15 +71,6 @@ export class DepartureService {
         switchMapTo(this.requestData())
       ).subscribe();
     }
-  }
-
-  private requestData(): Observable<Travel> {
-    return this.generateRequest().pipe(
-      map(data => this.parseResponse(data)),
-      catchError(error => of(this.generateEmptyResult(error))),
-      tap(info => this.pollIfNeeded(info)),
-      tap(info => this.incrementTravelInfo(info))
-    );
   }
 
   private composeUrl({ origin, destination, outboundDate }: TripSearch, index: number) {

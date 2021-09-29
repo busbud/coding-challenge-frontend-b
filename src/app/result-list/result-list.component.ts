@@ -1,42 +1,28 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Option } from '../shared/dropdown-selector/dropdown-selector.component';
-import { Departure, Travel } from './../services/departure.service';
+import { Component, Input } from '@angular/core';
+
+import { Departure, Option, Travel } from '@app/shared/models';
+
 
 @Component({
   selector: 'app-result-list',
   templateUrl: './result-list.component.html',
   styleUrls: ['./result-list.component.scss']
 })
-export class ResultListComponent implements OnInit {
-  @Input() travelInfo: Travel;
+export class ResultListComponent {
+  @Input() travelInfo: Travel | null;
+  sorting: { value: 'price'|'duration'|'departureTime', reversed?: boolean } = { value: 'price' };
   sortingOptions: Option[] = [
-    { label: 'result-list.orderby.money', value: 'money' },
-    { label: 'result-list.orderby.time', value: 'time' },
-    { label: 'result-list.orderby.departureAsc', value: 'departureAsc' },
-    { label: 'result-list.orderby.departureDesc', value: 'departureDesc' },
-  ]
-  sorting: 'money'|'time'|'departureAsc'|'departureDesc' = 'money'
-
-  private sorters = {
-    money: (depA: Departure, depB: Departure) =>
-      depA.price > depB.price ? 1 : depA.price === depB.price ? 0 : -1,
-    time: (depA: Departure, depB: Departure) =>
-      depA.duration > depB.duration ? 1 : depA.duration === depB.duration ? 0 : -1,
-    departureAsc: (depA: Departure, depB: Departure) =>
-      depA.departureTime > depB.departureTime ? 1 : depA.departureTime === depB.departureTime ? 0 : -1,
-    departureDesc: (depA: Departure, depB: Departure) =>
-      depA.departureTime > depB.departureTime ? -1 : depA.departureTime === depB.departureTime ? 0 : 1,
-  }
-
-  constructor() {}
-
-  ngOnInit() {
-  }
+    { value: 'price' },
+    { value: 'duration' },
+    { value: 'departureTime' },
+    { value: 'departureTime', reversed: true }
+  ].map((opt: any) => ({ ...opt, label: `result-list.orderby.${opt.value}${ opt.reversed ? 'Asc' : '' }`}) );
 
   sortedDepartures() {
-    const sorter = this.sorters[this.sorting] || this.sorters.money;
-
-    return this.travelInfo.departures.sort(sorter);
+    const key = this.sorting.value;
+    const factor = this.sorting.reversed ? -1 : 1;
+    return this.travelInfo?.departures.sort((depA: Departure, depB: Departure) =>
+      depA[key] > depB[key] ? factor : depA[key] === depB[key] ? 0 : -1*factor);
   }
 
 }

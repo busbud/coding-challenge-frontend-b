@@ -1,12 +1,8 @@
-import { LanguageService } from './../../services/language.service';
-import { TranslateService } from './../../services/translate.service';
 import { Directive, ElementRef, Input, OnInit, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subscription, combineLatest } from 'rxjs';
 
-export type TranslationData = {
-  id: string;
-  params: { [key: string]: any }
-}
+import { LanguageService, TranslateService } from '@app/services';
+
 
 @Directive({
   selector: '[appTranslate]'
@@ -24,10 +20,11 @@ export class TranslateDirective implements OnInit, OnChanges, OnDestroy {
   ) { }
 
   ngOnInit() {
-    combineLatest([this.languageService.getLanguage(), this.data$.asObservable()])
-      .subscribe(([lang, { id, params }]) => {
-        this.el.nativeElement.innerHTML = this.translateService.translate(id, lang, params);
-      });
+    this.subscriptions.push(
+      combineLatest([this.languageService.getLanguage(), this.data$.asObservable()])
+        .subscribe(([lang, { id, params }]) => {
+          this.el.nativeElement.innerHTML = this.translateService.translate(id, lang, params);
+      }));
   }
 
   ngOnDestroy(): void {
@@ -37,8 +34,8 @@ export class TranslateDirective implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges({ id, params }: SimpleChanges) {
     this.data$.next({
-      id: id && id.currentValue || this.data$.getValue().id,
-      params: params && params.currentValue || this.data$.getValue().params
+      id: id?.currentValue || this.data$.getValue().id,
+      params: params?.currentValue || this.data$.getValue().params
     });
   }
 

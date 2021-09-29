@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Observable, OperatorFunction } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, filter } from 'rxjs/operators';
-import { CitySearchService } from '../services/city-search.service';
-import { TripConfigService } from './../services/trip-config.service';
+
+import { CitySearchService, TripConfigService } from '../services';
+
 
 @Component({
   selector: 'app-city-picker',
@@ -20,11 +21,11 @@ export class CityPickerComponent {
     private tripConfigService: TripConfigService
   ) { }
 
-  inputNameExtractor (city: {full_name: string, geohash: string}) {
+  inputNameExtractor (city: { full_name: string, geohash: string }) {
     return city.full_name.split(',')[0];
   }
 
-  resultNameExtractor (city: {full_name: string, geohash: string}) {
+  resultNameExtractor (city: { full_name: string, geohash: string }) {
     const [cityName, ...extras] = city.full_name.split(',')
     return [cityName.toLocaleUpperCase(), ...extras].join(',');
   }

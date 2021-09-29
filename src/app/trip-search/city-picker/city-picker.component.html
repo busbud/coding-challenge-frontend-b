@@ -1,15 +1,12 @@
-<div
-    class="form-control"
+<div class="form-control"
     [ngClass]="{ invalid: isInvalid }"
     (click)="inputCity.focus()"
 >
-    <div
-        class="input-title"
+    <div class="input-title"
         [appTranslate]="'placeholder.' + code"
     ></div>
 
-    <input
-        type="text"
+    <input type="text"
         #inputCity
         [(ngModel)]="city"
         (change)=selectCity()
@@ -23,8 +20,6 @@
     >
 </div>
 
-<div
-    class="alert"
+<div class="alert"
     appTranslate="error.invalid-city"
->
-</div>
+></div>

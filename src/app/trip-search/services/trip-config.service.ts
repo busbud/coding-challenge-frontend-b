@@ -1,8 +1,9 @@
-import { CurrencyService } from './../../services/currency.service';
-import { LanguageService } from './../../services/language.service';
-import { TripSearch } from './../../services/departure.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+
+import { CurrencyService, LanguageService } from '@app/services';
+import { TripSearch } from '@app/shared/models';
+
 
 @Injectable({
   providedIn: 'root'

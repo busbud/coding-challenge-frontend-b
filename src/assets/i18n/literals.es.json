@@ -21,8 +21,8 @@
     "info.no-departures.subtitle": "Prueba una fecha o destino diferentes.",
     "info.error.title": "Se ha producido un error, inténtalo de nuevo.",
     "result-list.title": "Elige tu aventura",
-    "result-list.orderby.money": "El más barato",
-    "result-list.orderby.time": "El más rápido",
-    "result-list.orderby.departureAsc": "Más temprano",
-    "result-list.orderby.departureDesc": "El último"
+    "result-list.orderby.price": "El más barato",
+    "result-list.orderby.duration": "El más rápido",
+    "result-list.orderby.departureTime": "El primero",
+    "result-list.orderby.departureTimeAsc": "El último"
 }

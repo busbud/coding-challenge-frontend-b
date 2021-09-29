@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TripConfigService } from './../services/trip-config.service';
+
+import { TripConfigService } from '../services';
+
 
 @Component({
   selector: 'app-people-picker',
@@ -27,7 +29,8 @@ export class PeoplePickerComponent implements OnInit {
   }
 
   private calculateTotal() {
-    this.count = { total: this.values.adult + this.values.child + this.values.senior };
+    const { adult, child, senior } = this.values;
+    this.count = { total: adult + child + senior };
   }
 
 }

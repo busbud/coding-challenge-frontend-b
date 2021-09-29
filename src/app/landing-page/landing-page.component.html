@@ -3,8 +3,7 @@
 
 <div class="container">
 
-    <div
-        class="banner"
+    <div class="banner"
         appTranslate="banner.message"
     ></div>
 
@@ -13,7 +12,7 @@
     ></app-trip-search>
 
     <app-result-list
-        [travelInfo]="travelInfo"
+        [travelInfo]="travelInfo$ | async"
     ></app-result-list>
 
 </div>

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 
-import { SharedModule } from '../shared/shared.module';
-import { TripSearchModule } from '../trip-search/trip-search.module';
-import { ResultListModule } from '../result-list/result-list.module';
-import { LandingPageComponent } from './landing-page.component';
+import { SharedModule } from '@app/shared';
+import { TripSearchModule } from '@app/trip-search';
+import { ResultListModule } from '@app/result-list';
 import { HeaderComponent } from './header/header.component';
+import { LandingPageComponent } from './landing-page.component';
+
 
 @NgModule({
   declarations: [

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-duration-indicator',
   templateUrl: './duration-indicator.component.html',
@@ -10,15 +11,9 @@ export class DurationIndicatorComponent implements OnInit {
   days: number;
   hours: number;
   minutes: number;
-  dayChar: string;
-  hourChar: string;
-  minuteChar: string;
-
-  constructor() { }
 
   ngOnInit(): void {
     this.formatDuration(this.duration);
-    this.formatDisplay();
   }
 
   private formatDuration(duration: number) {
@@ -27,11 +22,5 @@ export class DurationIndicatorComponent implements OnInit {
     this.days = Math.floor(duration / minsInDay);
     this.hours = Math.floor((duration % minsInDay) / 60);
     this.minutes = duration % 60;
-  }
-
-  private formatDisplay() {
-    this.dayChar = 'D';
-    this.hourChar = 'H';
-    this.minuteChar = 'M';
   }
 }

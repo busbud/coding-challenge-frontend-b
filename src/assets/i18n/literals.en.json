@@ -21,8 +21,8 @@
     "info.no-departures.subtitle": "Try another date or a different destination.",
     "info.error.title": "There was an error, please try again.",
     "result-list.title": "Select your adventure",
-    "result-list.orderby.money": "Cheapest",
-    "result-list.orderby.time": "Fastest",
-    "result-list.orderby.departureAsc": "Earliest",
-    "result-list.orderby.departureDesc": "Latest"
+    "result-list.orderby.price": "Cheapest",
+    "result-list.orderby.duration": "Fastest",
+    "result-list.orderby.departureTime": "Earliest",
+    "result-list.orderby.departureTimeAsc": "Latest"
 }

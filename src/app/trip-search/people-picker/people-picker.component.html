@@ -1,11 +1,10 @@
-<div ngbDropdown
-    class="selector"
+<div class="selector"
+    ngbDropdown
     #dropdown="ngbDropdown"
 >
 
     <div class="form-control">
-        <div
-            class="input-title"
+        <div class="input-title"
             (click)="$event.stopPropagation(); dropdown.toggle();"
             appTranslate="people-picker.passengers"
         ></div>
@@ -17,7 +16,7 @@
         ></span>
     </div>
     
-    <div ngbDropdownMenu >
+    <div ngbDropdownMenu>
         <div class="row age-selector" >
             <app-age-selector
                 code="adults"
@@ -26,6 +25,7 @@
                 (valueUpdated)="updateValue('adult', $event)"
             ></app-age-selector>
         </div>
+
         <div class="row age-selector" >
             <app-age-selector
                 code="children"
@@ -34,6 +34,7 @@
                 (valueUpdated)="updateValue('child', $event)"
             ></app-age-selector>
         </div>
+        
         <div class="row age-selector" >
             <app-age-selector
                 code="seniors"

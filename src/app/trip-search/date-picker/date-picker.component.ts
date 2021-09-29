@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
-import { TripConfigService } from './../services/trip-config.service';
+
+import { TripConfigService } from '../services';
+
 
 @Component({
   selector: 'app-date-picker',
@@ -46,6 +48,6 @@ export class DatePickerComponent implements OnInit {
     const { year, month, day } = date;
     const parsedDate = new Date(year, month - 1, day);
     // With this we avoid timezone issues when converting the date. Can be removed if it´s desired.
-    return new Date(parsedDate.getTime() - parsedDate.getTimezoneOffset() * 60000)
+    return new Date(parsedDate.getTime() - parsedDate.getTimezoneOffset() * 60000);
   }
 }

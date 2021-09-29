@@ -1,16 +1,17 @@
-<div
-    class="location-time"
+<div class="location-time"
     [ngClass]="{ 'display-left': displayLeft }"
 >
     <div class="time">
         <span class="hour">{{ time | date:'h:mm' }}</span>
         <span class="selector">{{ time | date:'a' }}</span>
-        <span class="superindex" *ngIf="daysAfter">+{{ daysAfter }}</span>
+        <span class="superindex"
+            *ngIf="daysAfter"
+        >+{{ daysAfter }}</span>
     </div>
 
     <div class="city">{{ city }}</div>
-    <div
-        class="location"
+
+    <div class="location"
         data-toggle="tooltip"
         data-placement="top"
         [title]="location"

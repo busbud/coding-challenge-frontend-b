@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CurrencyService } from 'src/app/services/currency.service';
-import { Departure } from 'src/app/services/departure.service';
+
+import { Departure } from '@app/shared/models';
+
 
 @Component({
   selector: 'app-departure',
@@ -13,31 +14,20 @@ export class DepartureComponent implements OnInit {
   @Input() operators: { id: string, name: string, logoUrl: string }[];
   @Input() originCity: string;
   @Input() destinationCity: string;
-  formattedPrice: string;
-  formattedCurrency: string;
   operatorLogo: string;
   origin: string;
   destination: string;
   daysAfter: number;
-
-  constructor(
-    private currencyService: CurrencyService
-  ) { }
+  price: number;
+  currency: string;
 
   ngOnInit(): void {
-    this.formattedPrice = (this.departureData.price / 100).toLocaleString();
-    this.formattedCurrency = this.formatCurrency(this.departureData);
+    this.price = this.departureData.price;
+    this.currency = this.departureData.currency;
     this.origin = this.locations.find(loc => loc.id === this.departureData.originId)?.name || '';
     this.destination = this.locations.find(loc => loc.id === this.departureData.destinationId)?.name || '';
     this.operatorLogo = this.operators.find(op => op.id === this.departureData.operatorId)?.logoUrl || '';
     this.daysAfter = this.calculateDaysAfter(this.departureData.departureTime, this.departureData.arrivalTime);
-  }
-
-  private formatCurrency({ currency }: Departure) {
-    const currencies = this.currencyService.getCurrencyOptions();
-    const selected = currencies.find(cur => cur.value === currency) || currencies[0];
-    
-    return selected.label;
   }
 
   private calculateDaysAfter(departure: string, arrival: string): number {

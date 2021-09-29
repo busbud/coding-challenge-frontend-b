@@ -1,13 +1,8 @@
-<div
-    class="input-group"
+<div class="input-group"
     [ngClass]="{ invalid: !isValid }"
 >
-
-    <div
-        class="form-control"
-    >
-        <div
-            class="input-title"
+    <div class="form-control">
+        <div class="input-title"
             appTranslate="date-picker.title"
             (click)="inputDate.focus()"
         ></div>
@@ -25,18 +20,14 @@
         >
     </div>
 
-    <div
-        class="input-group-append"
-    >
-        <button
-            class="btn calendar"
+    <div class="input-group-append">
+        <button class="btn calendar"
             (click)="d.toggle()"
             type="button"
         ></button>
     </div>
 </div>
 
-<div
-    class="alert"
+<div class="alert"
     appTranslate="error.invalid-date"
 ></div>

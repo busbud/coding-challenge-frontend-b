@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Option } from '../shared/dropdown-selector/dropdown-selector.component';
+
+import { Option } from '@app/shared/models';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrencyService {
-  currency$: BehaviorSubject<string> = new BehaviorSubject('USD');  
-
-  constructor() { }
+  currency$: BehaviorSubject<string> = new BehaviorSubject('USD');
 
   getCurrencyOptions(): Option[] {
     return [
