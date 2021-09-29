@@ -11,7 +11,6 @@ import { Travel, TripSearch } from '@app/shared/models';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent {
-  travelInfo: Travel;
   travelInfo$: Observable<Travel>;
 
   constructor(

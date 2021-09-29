@@ -1,6 +1,8 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DropdownSelectorComponent } from './dropdown-selector.component';
+
 
 describe('DropdownSelectorComponent', () => {
   let component: DropdownSelectorComponent;
@@ -8,7 +10,12 @@ describe('DropdownSelectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DropdownSelectorComponent ]
+      declarations: [
+        DropdownSelectorComponent
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ]
     })
     .compileComponents();
   });
@@ -19,7 +26,7 @@ describe('DropdownSelectorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('initializes', () => {
     expect(component).toBeTruthy();
   });
 });

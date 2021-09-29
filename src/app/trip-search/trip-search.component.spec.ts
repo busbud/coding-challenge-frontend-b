@@ -1,6 +1,8 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TripSearchComponent } from './trip-search.component';
+
 
 describe('TripSearchComponent', () => {
   let component: TripSearchComponent;
@@ -8,7 +10,12 @@ describe('TripSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TripSearchComponent ]
+      declarations: [
+        TripSearchComponent
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ]
     })
     .compileComponents();
   });
@@ -19,7 +26,7 @@ describe('TripSearchComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('initializes', () => {
     expect(component).toBeTruthy();
   });
 });

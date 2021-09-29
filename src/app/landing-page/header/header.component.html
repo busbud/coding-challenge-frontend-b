@@ -2,14 +2,14 @@
 
     <app-dropdown-selector
         [options]="languages"
-        [selectedValue]="selectedLanguage"
+        [selectedValue]="languageService.getLanguage() | async"
         (optionSelected)="selectLanguage($event)"
     ></app-dropdown-selector>
 
     
     <app-dropdown-selector
         [options]="currencies"
-        [selectedValue]="selectedCurrency"
+        [selectedValue]="currencyService.getCurrency() | async"
         (optionSelected)="selectCurrency($event)"
         [style]="'short'"
     ></app-dropdown-selector>

@@ -61,7 +61,6 @@ export class DepartureService {
       this.travelInfo.error = info.error;
     }
     
-    console.log(this.travelInfo);
     this.travelSubject$.next(this.travelInfo);
   }
 

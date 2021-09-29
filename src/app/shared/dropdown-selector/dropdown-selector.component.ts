@@ -10,7 +10,7 @@ import { Option } from '@app/shared/models';
 })
 export class DropdownSelectorComponent implements OnChanges {
   @Input() options: Option[] = [];
-  @Input() selectedValue: string;
+  @Input() selectedValue: string | null;
   @Input() emitFullOption: boolean = false;
   @Input() style: string = 'normal';
   @Output() optionSelected: EventEmitter<any> = new EventEmitter();

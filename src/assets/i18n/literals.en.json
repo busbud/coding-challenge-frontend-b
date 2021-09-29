@@ -1,5 +1,5 @@
 {
-    "banner.message": "PLAN YOUR {data} NEXT SCAPADE! {data2}",
+    "banner.message": "PLAN YOUR NEXT SCAPADE!",
     "placeholder.origin": "Origin",
     "placeholder.destination": "Destination",
     "error.invalid-city": "Introduce a valid city name",

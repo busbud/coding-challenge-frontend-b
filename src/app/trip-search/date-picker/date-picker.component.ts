@@ -26,7 +26,7 @@ export class DatePickerComponent implements OnInit {
   }
   
   manualDate() {
-    setTimeout(() => this.verifyDate(this.date), 0);
+    setTimeout(() => this.verifyDate(this.date));
   }
 
   verifyDate(date: NgbDateStruct|string) {

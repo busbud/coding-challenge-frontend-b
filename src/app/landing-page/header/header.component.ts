@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 import { CurrencyService, LanguageService } from '@app/services';
 import { Option } from '@app/shared/models';
@@ -10,34 +9,18 @@ import { Option } from '@app/shared/models';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   languages: Option[];
-  selectedLanguage: string;
   currencies: Option[];
-  selectedCurrency: string;
-  private subscriptions: Subscription[] = [];
 
   constructor(
-    private languageService: LanguageService,
-    private currencyService: CurrencyService
+    public languageService: LanguageService,
+    public currencyService: CurrencyService
   ) { }
 
   ngOnInit(): void {
     this.languages = this.languageService.getLanguageOptions();
-    this.selectedLanguage = this.languageService.getLanguageValue();
     this.currencies = this.currencyService.getCurrencyOptions();
-    this.selectedCurrency = this.currencyService.getCurrencyValue();
-
-    this.subscriptions.push(this.languageService.getLanguage()
-      .subscribe(lang => this.selectedLanguage = lang));
-
-    this.subscriptions.push(this.currencyService.getCurrency()
-      .subscribe(currency => this.selectedCurrency = currency));
-  }
-
-  ngOnDestroy(): void {
-    // Prevent memory leaks
-    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   selectLanguage(lang: string) {

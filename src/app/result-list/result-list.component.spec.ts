@@ -2,13 +2,16 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResultListComponent } from './result-list.component';
 
+
 describe('ResultListComponent', () => {
   let component: ResultListComponent;
   let fixture: ComponentFixture<ResultListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResultListComponent ]
+      declarations: [
+        ResultListComponent
+      ]
     })
     .compileComponents();
   });
@@ -19,7 +22,7 @@ describe('ResultListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('initializes', () => {
     expect(component).toBeTruthy();
   });
 });

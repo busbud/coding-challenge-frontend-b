@@ -42,7 +42,7 @@ export class CityPickerComponent {
 
   // This is done to trigger the selection when clicking on an option insteand of typing enter.
   delayedSelect() {
-    setTimeout(() => this.selectCity(), 0);
+    setTimeout(() => this.selectCity());
   }
 
   searchCity: OperatorFunction<string, readonly {name: string, geohash: string}[]> = (text$: Observable<string>) =>

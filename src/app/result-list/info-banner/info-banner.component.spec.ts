@@ -2,13 +2,16 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InfoBannerComponent } from './info-banner.component';
 
+
 describe('InfoBannerComponent', () => {
   let component: InfoBannerComponent;
   let fixture: ComponentFixture<InfoBannerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InfoBannerComponent ]
+      declarations: [
+        InfoBannerComponent
+      ]
     })
     .compileComponents();
   });
@@ -19,7 +22,7 @@ describe('InfoBannerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('initializes', () => {
     expect(component).toBeTruthy();
   });
 });

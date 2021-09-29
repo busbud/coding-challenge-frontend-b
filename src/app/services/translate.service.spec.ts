@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { TranslateService } from './translate.service';
 
+
 describe('TranslateService', () => {
   let service: TranslateService;
 
@@ -10,7 +11,7 @@ describe('TranslateService', () => {
     service = TestBed.inject(TranslateService);
   });
 
-  it('should be created', () => {
+  it('initializes', () => {
     expect(service).toBeTruthy();
   });
 });

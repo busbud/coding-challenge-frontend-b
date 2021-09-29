@@ -13,7 +13,7 @@ export class CurrencyService {
   getCurrencyOptions(): Option[] {
     return [
       { label: 'US$', value: 'USD' },
-      { label: 'CAD', value: 'CAD' },
+      { label: 'CA$', value: 'CAD' },
       { label: '€', value: 'EUR' }
     ];
   }

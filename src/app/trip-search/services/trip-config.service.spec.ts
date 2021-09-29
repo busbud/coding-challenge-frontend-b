@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { TripConfigService } from './trip-config.service';
 
+
 describe('TripConfigService', () => {
   let service: TripConfigService;
 
@@ -10,7 +11,7 @@ describe('TripConfigService', () => {
     service = TestBed.inject(TripConfigService);
   });
 
-  it('should be created', () => {
+  it('initializes', () => {
     expect(service).toBeTruthy();
   });
 });

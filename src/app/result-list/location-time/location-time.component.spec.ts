@@ -2,13 +2,16 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LocationTimeComponent } from './location-time.component';
 
+
 describe('LocationTimeComponent', () => {
   let component: LocationTimeComponent;
   let fixture: ComponentFixture<LocationTimeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LocationTimeComponent ]
+      declarations: [
+        LocationTimeComponent
+      ]
     })
     .compileComponents();
   });
@@ -19,7 +22,7 @@ describe('LocationTimeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('initializes', () => {
     expect(component).toBeTruthy();
   });
 });
