@@ -29,7 +29,6 @@ export type Travel = {
     departures: Departure[];
     complete: boolean;
     error?: boolean;
-    errorMessage?: string;
 }
 
 export type Option = {

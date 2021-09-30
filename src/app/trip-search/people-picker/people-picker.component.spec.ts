@@ -8,7 +8,7 @@ import { PeoplePickerComponent } from './people-picker.component';
 
 
 @Component({ selector: 'app-age-selector' })
-export class AgeSelectorComponentMock {
+class AgeSelectorComponentMock {
   @Input() code: string;
   @Input() value: number;
   @Input() total: number;

@@ -34,7 +34,8 @@ export class DepartureComponent implements OnInit {
     const departureDate = this.toDate(departure);
     const arrivalDate = this.toDate(arrival);
     const milisInDay = 24 * 60 * 60 * 1000;
-    return  Math.floor((arrivalDate.getTime() - departureDate.getTime()) / milisInDay);
+    const difference = Math.floor((arrivalDate.getTime() - departureDate.getTime()) / milisInDay);
+    return Math.max(difference, 0);
   }
 
   private toDate(date: string): Date {
