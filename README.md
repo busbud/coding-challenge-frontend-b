@@ -2,11 +2,13 @@
 
 ## Command list:
 
-`npm run start` starts in dev mode, browse in localhost:4200
+`npm run serve` starts in dev mode, browse in localhost:4200
 
 `npm run test` runs all the unit tests
 
 `npm run build` builds the app, outputs to /dist/busbud
+
+`npm run start` runs the server, required for Heroku
 
 ## Interface and usage
 First of all, if the interface is not intuitive by itself then my aim has failed, PERIOD.
