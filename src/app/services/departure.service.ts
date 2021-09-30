@@ -87,7 +87,9 @@ export class DepartureService {
 
     const params = new HttpParams({ fromObject: {
       adult, senior, child, lang, currency,
-      ...(index > 0 ? { index } : {})
+      ...(index > 0 ? { index } : {}),
+      ...(senior > 0 ? { senior_ages: Array.from({length: senior}, (v, i) => 65).join(',') } : {}),
+      ...(child > 0 ? { child_ages: Array.from({length: child}, (v, i) => 5).join(',') } : {})
     } })
 
     return this.httpClient.get(this.composeUrl(this.tripSearch, index), { headers, params })

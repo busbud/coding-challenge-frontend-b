@@ -64,6 +64,12 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('displays the title', () => {
+    const title = fixture.debugElement.query(By.css('h1.title')).nativeElement;
+    
+    expect(title.innerText).toBe('BusBud');
+  });
+
   it('properly stores options', () => {
     expect(component.languages).toBe(languageOptions);
     expect(component.currencies).toBe(currencyOptions);
