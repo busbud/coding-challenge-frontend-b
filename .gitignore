@@ -28,3 +28,7 @@ node_modules
 
 # Next.js
 .next
+
+# Environment variables
+.env.*
+!.env.example
