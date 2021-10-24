@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 const API_BASE = "https://napi.busbud.com/x-departures";
-const ORIGIN_ID = "f2m673";
-const DESTINATION_ID = "f25dvk";
+const ORIGIN_ID = "f2m673"; // Québec
+const DESTINATION_ID = "f25dvk"; // Montréal
 const DATE = "2021-11-01";
 
 const departures = async (
@@ -11,10 +11,13 @@ const departures = async (
 ) => {
   try {
     const index = req.query.index as string;
+    const passengers = req.query.passengers as string;
 
-    const pollPath = parseInt(index) ? `/poll?index=${index}` : "";
+    const urlSuffix = parseInt(index)
+      ? `/poll?index=${index}&adult=${passengers}`
+      : `?adult=${passengers}`;
 
-    const url = `${API_BASE}/${ORIGIN_ID}/${DESTINATION_ID}/${DATE}${pollPath}`;
+    const url = `${API_BASE}/${ORIGIN_ID}/${DESTINATION_ID}/${DATE}${urlSuffix}`;
 
     const departuresResponse = await fetch(url, {
       method: "GET",
