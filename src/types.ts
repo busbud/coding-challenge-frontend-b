@@ -13,6 +13,10 @@ export interface Location {
 }
 
 export interface Departure {
+  arrival_time: string;
+  arrival_timezone: string;
+  departure_time: string;
+  departure_timezone: string;
   destination_location_id: LocationId;
   id: string;
   links: {
@@ -34,10 +38,12 @@ export interface Operator {
 
 export interface SearchResult {
   id: string;
-  operatorLogo: string;
-  operatorName: string;
   from: string;
   to: string;
+  departureTime: string;
+  arrivalTime: string;
+  operatorLogo: string;
+  operatorName: string;
   price: string;
   url: string;
 }

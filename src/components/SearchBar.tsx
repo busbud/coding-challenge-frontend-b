@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { rgba, darken } from "polished";
+import { rgba } from "polished";
 import {
   MdAddCircleOutline,
   MdExplore,
@@ -8,9 +8,11 @@ import {
   MdSchedule,
 } from "react-icons/md";
 
+import { Button } from "@/components";
 import { breakpoints, colors } from "@/theme";
 
 interface Props {
+  hasLoaded: boolean;
   isLoading: boolean;
   onSearchClick: () => void;
   onPassengersDecrement: () => void;
@@ -18,9 +20,15 @@ interface Props {
   passengers: number;
 }
 
-const Wrap = styled.div`
-  position: sticky;
-  top: 20px;
+const OuterWrap = styled.div`
+  @media (min-width: ${breakpoints.tablet}) {
+    position: sticky;
+    top: 20px;
+    z-index: 1;
+  }
+`;
+
+const Wrap = styled.div<{ pushUp: boolean }>`
   margin-bottom: 40px;
   padding: 24px;
   border-radius: 8px;
@@ -34,6 +42,9 @@ const Wrap = styled.div`
 
   @media (min-width: ${breakpoints.tablet}) {
     flex-direction: row;
+    position: relative;
+    top: ${(props) => (!props.pushUp ? "calc(50vh - 280px)" : 0)};
+    transition: top 0.4s ease;
   }
 `;
 
@@ -48,6 +59,12 @@ const BusbudLogo = styled.img`
 
 const SearchFilters = styled.div`
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: ${breakpoints.tabletSmall}) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 const SearchFilter = styled.div`
@@ -55,25 +72,43 @@ const SearchFilter = styled.div`
   align-items: center;
   position: relative;
   min-width: 160px;
+  width: 100%;
 
   &:not(:last-of-type) {
-    margin-right: 32px;
+    margin-bottom: 20px;
 
     &::after {
       content: "";
-      height: 52px;
-      width: 1px;
+      height: 1px;
+      width: 102px;
       border-radius: 2px;
       background: ${colors.lightAlt};
       position: absolute;
-      right: -16px;
-      top: 50%;
+      right: 50%;
+      bottom: -10px;
       transform: translate(50%, -50%);
     }
   }
 
-  &:last-of-type {
-    min-width: initial;
+  @media (min-width: ${breakpoints.tabletSmall}) {
+    width: auto;
+
+    &:last-of-type {
+      min-width: initial;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 0;
+      margin-right: 32px;
+
+      &::after {
+        height: 52px;
+        width: 1px;
+        right: -16px;
+        top: 50%;
+        bottom: initial;
+      }
+    }
   }
 `;
 
@@ -84,8 +119,6 @@ const FilterIcon = styled.i`
   margin-right: 8px;
   flex-shrink: 0;
 `;
-
-const FilterText = styled.div``;
 
 const FilterLabel = styled.span`
   display: block;
@@ -106,6 +139,13 @@ const FilterValue = styled.strong<{ centerAlign?: boolean }>`
   font-size: 18px;
   min-width: 24px;
   text-align: ${(props) => (props.centerAlign ? "center" : "left")};
+`;
+
+const FilterValueDivider = styled.small`
+  font-size: 16px;
+  color: ${colors.grey};
+  opacity: 0.8;
+  font-weight: 400;
 `;
 
 const FilterNumberButton = styled.button<{ side?: "left" | "right" }>`
@@ -131,44 +171,8 @@ const FilterNumberButton = styled.button<{ side?: "left" | "right" }>`
   }}
 `;
 
-const SearchButton = styled.button<{ isLoading?: boolean }>`
+const SearchButtonWrap = styled.div`
   margin: 32px auto 0;
-  padding: 12px 28px;
-  border: 0;
-  border-radius: 9999px;
-  appearance: none;
-  background: ${colors.primary};
-  color: ${colors.light};
-  font-size: 18px;
-  font-weight: bold;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  box-shadow: 0 2px 8px ${rgba(colors.primaryDark, 0.2)};
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  position: relative;
-
-  &:hover {
-    background: ${darken(0.075, colors.primary)};
-  }
-
-  ${(props) =>
-    props.isLoading &&
-    css`
-      color: transparent;
-      pointer-events: none;
-
-      &::after {
-        content: "";
-        width: 24px;
-        height: 24px;
-        background: url("/spinner.svg") no-repeat center center / contain;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
-    `}
 
   @media (min-width: ${breakpoints.tablet}) {
     margin-top: 0;
@@ -177,6 +181,7 @@ const SearchButton = styled.button<{ isLoading?: boolean }>`
 `;
 
 export const SearchBar: React.FC<Props> = ({
+  hasLoaded,
   isLoading,
   onSearchClick,
   onPassengersDecrement,
@@ -184,57 +189,70 @@ export const SearchBar: React.FC<Props> = ({
   passengers,
 }) => {
   return (
-    <Wrap>
-      <BusbudLogo
-        src="/busbud-logo.svg"
-        alt="Busbud"
-        width={30}
-        height={39.3}
-      />
-      <SearchFilters>
-        <SearchFilter>
-          <FilterIcon as={MdExplore} />
+    <OuterWrap>
+      <Wrap pushUp={hasLoaded}>
+        <BusbudLogo
+          src="/busbud-logo.svg"
+          alt="Busbud"
+          width={30}
+          height={39.3}
+        />
+        <SearchFilters>
+          <SearchFilter>
+            <FilterIcon as={MdExplore} />
 
-          <FilterText>
-            <FilterLabel>Where</FilterLabel>
-            <FilterValueRow>
-              <FilterValue>Québec → Montréal</FilterValue>
-            </FilterValueRow>
-          </FilterText>
-        </SearchFilter>
+            <div>
+              <FilterLabel>Where</FilterLabel>
+              <FilterValueRow>
+                <FilterValue>
+                  Québec <FilterValueDivider>→</FilterValueDivider> Montréal
+                </FilterValue>
+              </FilterValueRow>
+            </div>
+          </SearchFilter>
 
-        <SearchFilter>
-          <FilterIcon as={MdSchedule} />
+          <SearchFilter>
+            <FilterIcon as={MdSchedule} />
 
-          <FilterText>
-            <FilterLabel>When</FilterLabel>
-            <FilterValueRow>
-              <FilterValue>01/11/2021</FilterValue>
-            </FilterValueRow>
-          </FilterText>
-        </SearchFilter>
+            <div>
+              <FilterLabel>When</FilterLabel>
+              <FilterValueRow>
+                <FilterValue>01/11/2021</FilterValue>
+              </FilterValueRow>
+            </div>
+          </SearchFilter>
 
-        <SearchFilter>
-          <FilterIcon as={MdPeople} />
+          <SearchFilter>
+            <FilterIcon as={MdPeople} />
 
-          <FilterText>
-            <FilterLabel>Passengers</FilterLabel>
-            <FilterValueRow>
-              <FilterNumberButton onClick={onPassengersDecrement}>
-                <MdRemoveCircleOutline />
-              </FilterNumberButton>
-              <FilterValue centerAlign>{passengers}</FilterValue>
-              <FilterNumberButton onClick={onPassengersIncrement} side="right">
-                <MdAddCircleOutline />
-              </FilterNumberButton>
-            </FilterValueRow>
-          </FilterText>
-        </SearchFilter>
-      </SearchFilters>
+            <div>
+              <FilterLabel>Passengers</FilterLabel>
+              <FilterValueRow>
+                <FilterNumberButton onClick={onPassengersDecrement}>
+                  <MdRemoveCircleOutline />
+                </FilterNumberButton>
+                <FilterValue centerAlign>{passengers}</FilterValue>
+                <FilterNumberButton
+                  onClick={onPassengersIncrement}
+                  side="right"
+                >
+                  <MdAddCircleOutline />
+                </FilterNumberButton>
+              </FilterValueRow>
+            </div>
+          </SearchFilter>
+        </SearchFilters>
 
-      <SearchButton isLoading={isLoading} onClick={onSearchClick}>
-        Search
-      </SearchButton>
-    </Wrap>
+        <SearchButtonWrap>
+          <Button
+            isLoading={isLoading}
+            onClick={onSearchClick}
+            variant="secondary"
+          >
+            Search
+          </Button>
+        </SearchButtonWrap>
+      </Wrap>
+    </OuterWrap>
   );
 };

@@ -1,11 +1,10 @@
 import { NextPage } from "next";
 import { useState } from "react";
 import styled from "styled-components";
-import { rgba } from "polished";
 
-import { SearchBar } from "@/components/SearchBar";
+import { DepartureCard, SearchBar } from "@/components";
 import { useDepartures } from "@/hooks/useDepartures";
-import { colors } from "@/theme";
+import { breakpoints } from "@/theme";
 
 const PageWrap = styled.main`
   min-height: 100vh;
@@ -23,17 +22,26 @@ const Container = styled.div`
 
 const Logo = styled.img`
   display: block;
-  margin: 50px auto;
+  margin: 0 auto 20px;
+  max-width: 100%;
+  height: auto;
+
+  @media (min-width: ${breakpoints.tabletSmall}) {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: ${breakpoints.desktop}) {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
 `;
 
-const ResultCard = styled.div`
-  width: 840px;
-  max-width: 100%;
-  margin: 0 auto 20px;
-  padding: 16px 24px;
-  border-radius: 4px;
-  background: ${colors.white};
-  box-shadow: 0 2px 0 0 ${colors.lightAlt}, 0 4px 14px ${rgba(colors.grey, 0.2)};
+const DeparturesWrap = styled.div<{ isVisible: boolean }>`
+  @media (min-width: ${breakpoints.tablet}) {
+    opacity: ${(props) => (props.isVisible ? 1 : 0)};
+    transition: opacity 0.8s ease;
+  }
 `;
 
 const Home: NextPage = () => {
@@ -46,6 +54,7 @@ const Home: NextPage = () => {
         <Logo src="/logo.png" width={304} height={89.5} />
 
         <SearchBar
+          hasLoaded={!!searchResults.length}
           isLoading={isLoading}
           onPassengersDecrement={() => setPassengers((p) => Math.max(p - 1, 1))}
           onPassengersIncrement={() => setPassengers((p) => p + 1)}
@@ -53,21 +62,11 @@ const Home: NextPage = () => {
           passengers={passengers}
         />
 
-        {searchResults.map((result) => (
-          <ResultCard key={result.id}>
-            <p>
-              {result.from} → {result.to}
-            </p>
-
-            <p>{result.price}</p>
-
-            <img src={result.operatorLogo} alt={result.operatorName} />
-
-            <a href={result.url} target="_blank">
-              Reserve
-            </a>
-          </ResultCard>
-        ))}
+        <DeparturesWrap isVisible={!!searchResults.length}>
+          {searchResults.map((result) => (
+            <DepartureCard key={result.id} data={result} />
+          ))}
+        </DeparturesWrap>
       </Container>
     </PageWrap>
   );

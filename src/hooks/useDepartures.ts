@@ -2,6 +2,12 @@ import { useMemo, useState } from "react";
 
 import { City, Departure, Location, Operator, SearchResult } from "@/types";
 
+const formatISODate = (dateString: string, timeZone: string) =>
+  new Date(dateString).toLocaleString("en-US", {
+    timeStyle: "short",
+    timeZone,
+  });
+
 export const useDepartures = (passengers: number) => {
   const [cities, setCities] = useState<Array<City>>([]);
   const [departures, setDepartures] = useState<Array<Departure>>([]);
@@ -76,21 +82,34 @@ export const useDepartures = (passengers: number) => {
           (c) => c.id === destinationLocation?.city_id
         );
 
+        const departureTime = formatISODate(
+          departure.departure_time,
+          departure.departure_timezone
+        );
+        const arrivalTime = formatISODate(
+          departure.arrival_time,
+          departure.arrival_timezone
+        );
+
         const from = `${originLocation?.name}, ${originCity?.name}`;
         const to = `${destinationLocation?.name}, ${destinationCity?.name}`;
 
         const price = new Intl.NumberFormat("en-US", {
           style: "currency",
           currency: departure.prices.currency,
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
         }).format(departure.prices.total);
 
         return {
           id: departure.id,
-          operatorLogo: operator?.logo_url ?? "",
-          operatorName: operator?.display_name ?? "",
+          departureTime,
+          arrivalTime,
           from,
           to,
           price,
+          operatorLogo: operator?.logo_url ?? "",
+          operatorName: operator?.display_name ?? "",
           url: departure.links.deeplink,
         };
       }),
