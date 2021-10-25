@@ -7,6 +7,8 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-family: ${fonts.body};
     color: ${colors.dark};
+    background: url("/bg.svg") no-repeat center center / cover;
+    background-attachment: fixed;
   }
 
   * {

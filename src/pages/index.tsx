@@ -6,12 +6,6 @@ import { DepartureCard, SearchBar } from "@/components";
 import { useDepartures } from "@/hooks/useDepartures";
 import { breakpoints } from "@/theme";
 
-const PageWrap = styled.main`
-  min-height: 100vh;
-  background: url("/bg.svg") no-repeat center center / cover;
-  background-attachment: fixed;
-`;
-
 const Container = styled.div`
   width: 1064px;
   max-width: 100%;
@@ -49,7 +43,7 @@ const Home: NextPage = () => {
   const { isLoading, onSearch, searchResults } = useDepartures(passengers);
 
   return (
-    <PageWrap>
+    <main>
       <Container>
         <Logo src="/logo.png" width={304} height={89.5} />
 
@@ -68,7 +62,7 @@ const Home: NextPage = () => {
           ))}
         </DeparturesWrap>
       </Container>
-    </PageWrap>
+    </main>
   );
 };
 
