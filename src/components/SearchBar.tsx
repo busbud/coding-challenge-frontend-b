@@ -43,7 +43,7 @@ const Wrap = styled.div<{ pushUp: boolean }>`
   @media (min-width: ${breakpoints.tablet}) {
     flex-direction: row;
     position: relative;
-    top: ${(props) => (!props.pushUp ? "calc(50vh - 280px)" : 0)};
+    top: ${(props) => (!props.pushUp ? "max(50vh - 280px, 30px)" : 0)};
     transition: top 0.4s ease;
   }
 `;
