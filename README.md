@@ -33,7 +33,7 @@ Additionally for number formatting (dates & prices) I took a similar approach, u
   - ⚛️ React
   - ▲ Next.js
   - 💅 Styled-components
-  - 🖍 Polished
+  - ✨ Polished
 - 📦 Backend
   - ⚡️ Next.js Serverless Functions
 
