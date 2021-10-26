@@ -217,7 +217,7 @@ export const SearchBar: React.FC<Props> = ({
             <div>
               <FilterLabel>When</FilterLabel>
               <FilterValueRow>
-                <FilterValue>01/11/2021</FilterValue>
+                <FilterValue>1st Nov. 2021</FilterValue>
               </FilterValueRow>
             </div>
           </SearchFilter>
