@@ -15,6 +15,7 @@ export const useDepartures = (passengers: number) => {
   const [operators, setOperators] = useState<Array<Operator>>([]);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const loadResults = async (offset = 0) => {
     try {
@@ -51,6 +52,7 @@ export const useDepartures = (passengers: number) => {
       }
     } catch (error) {
       setIsLoading(false);
+      setHasError(true);
     }
   };
 
@@ -60,6 +62,7 @@ export const useDepartures = (passengers: number) => {
     setDepartures([]);
     setLocations([]);
     setOperators([]);
+    setHasError(false);
 
     setIsLoading(true);
     loadResults();
@@ -116,5 +119,5 @@ export const useDepartures = (passengers: number) => {
     [cities, departures, locations, operators]
   );
 
-  return { isLoading, onSearch, searchResults };
+  return { hasError, isLoading, onSearch, searchResults };
 };

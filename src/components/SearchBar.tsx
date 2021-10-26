@@ -12,6 +12,7 @@ import { Button } from "@/components";
 import { breakpoints, colors } from "@/theme";
 
 interface Props {
+  hasError: boolean;
   hasLoaded: boolean;
   isLoading: boolean;
   onSearchClick: () => void;
@@ -180,7 +181,19 @@ const SearchButtonWrap = styled.div`
   }
 `;
 
+const ErrorIndicator = styled.div`
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  padding: 10px;
+  background: ${colors.danger};
+  color: ${colors.light};
+  border-radius: 4px;
+`;
+
 export const SearchBar: React.FC<Props> = ({
+  hasError,
   hasLoaded,
   isLoading,
   onSearchClick,
@@ -252,6 +265,12 @@ export const SearchBar: React.FC<Props> = ({
             Search
           </Button>
         </SearchButtonWrap>
+
+        {hasError && (
+          <ErrorIndicator>
+            An error ocurred, please try again later.
+          </ErrorIndicator>
+        )}
       </Wrap>
     </OuterWrap>
   );

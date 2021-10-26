@@ -39,7 +39,8 @@ const DeparturesWrap = styled.div<{ isVisible: boolean }>`
 
 const Home: NextPage = () => {
   const [passengers, setPassengers] = useState<number>(1);
-  const { isLoading, onSearch, searchResults } = useDepartures(passengers);
+  const { hasError, isLoading, onSearch, searchResults } =
+    useDepartures(passengers);
 
   return (
     <main>
@@ -47,6 +48,7 @@ const Home: NextPage = () => {
         <Logo src="/logo.png" width={304} height={89.5} />
 
         <SearchBar
+          hasError={hasError}
           hasLoaded={!!searchResults.length}
           isLoading={isLoading}
           onPassengersDecrement={() => setPassengers((p) => Math.max(p - 1, 1))}

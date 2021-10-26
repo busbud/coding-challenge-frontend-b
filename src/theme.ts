@@ -5,6 +5,7 @@ export const breakpoints = {
 };
 
 export const colors = {
+  danger: "#fc3600",
   dark: "#212121",
   grey: "#747474",
   light: "#f9f9f9",
