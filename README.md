@@ -21,6 +21,10 @@ The backend is a single serverless function, whos main benefit is to hide the au
 
 For the frontend I wanted to do something a little fancy without going too far outside of the requirements, and trying to keep the LOC to a minimum. The UX is probably not the _best_ for a quick search app, but I had to add **some** transitions 🤓.
 
+In regards to state management, to keep the complexity low (and because I didn't feel the project really warranted it) I simply used React state, rather than something like React context or Redux.
+
+Additionally for number formatting (dates & prices) I took a similar approach, using modern browser APIs, as opposed to third-party libraries.
+
 ⚠️ Note: Although the challenge mentioned to use the **2nd of August 2021** as the date, since this is in the past I've used a future date.
 
 ## Stack
@@ -55,4 +59,5 @@ npm run lint
 ## Credits
 
 - Background image → [Wicked Backgrounds](https://wickedbackgrounds.com/)
-- Spinner/Loading icon → [@SamHerbert/SVG-Loaders](https://github.com/SamHerbert/SVG-Loaders)
+- Spinner/Loading indicator → [@SamHerbert/SVG-Loaders](https://github.com/SamHerbert/SVG-Loaders)
+- Icons → [Material Design Icons](https://material.io/icons) via [React Icons](https://react-icons.github.io/react-icons/)
