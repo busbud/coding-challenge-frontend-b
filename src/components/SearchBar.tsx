@@ -116,7 +116,6 @@ const SearchFilter = styled.div`
 const FilterIcon = styled.i`
   font-size: 24px;
   color: ${colors.primaryLight};
-  border-radius: 3px;
   margin-right: 8px;
   flex-shrink: 0;
 `;
