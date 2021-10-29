@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #f9f07d;
+  padding: 32px;
+  margin-bottom: 32px;
+  background-color: #1e2251;
+}
+
+.content {
+  max-width: 1280px;
+  margin: 0 auto;
+}

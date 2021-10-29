@@ -1,0 +1,24 @@
+.Loader {
+  padding: 32px;
+  text-align: center;
+  font-size: 2rem;
+  color: #1e2251;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Loader {
+    animation: Loader-float infinite 3s ease-in-out;
+  }
+}
+
+@keyframes Loader-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

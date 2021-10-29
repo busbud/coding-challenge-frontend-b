@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 8px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+
+  > *:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  &:nth-child(2) {
+    flex-direction: column;
+    align-items: initial;
+  }
+}
+
+.operatorLogo {
+  max-width: 100%;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  font-size: 1.5rem;
+  color: #1e2251;
+  font-weight: bold;
+
+  > span:first-child {
+    margin-right: 4px;
+    transform: rotate(45deg);
+  }
+}
+
+.routeDetails {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.time {
+  font-weight: bold;
+  color: #1e2251;
+  margin-right: 8px;
+}
+
+.vehicle {
+  text-transform: capitalize;
+  color: #1e2251;
+}
+
+.icon {
+  font-size: 18px;
+}
+
+.buyBtn {
+  margin-left: auto;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background-color: #ffe454;
+  color: #1e2251;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background-color: lighten(#ffe454, 10%);
+  }
+}

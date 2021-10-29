@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: 0px 6px 12px rgb(32 65 90 / 10%), 0px 1px 4px rgb(32 65 90 / 10%);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 16px;
+  background-color: #fff;
+
+  &:nth-child(3) {
+    border-right: 1px solid #e4ecf0;
+    border-left: 1px solid #e4ecf0;
+  }
+}
+
+.fieldLabel {
+  font-size: 10px;
+  color: #666;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.formField {
+  padding: 8px;
+  font-size: 1rem;
+  background-color: transparent;
+  border: 0;
+}
+
+.searchBarBtn {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  padding: 16px 28px;
+  background-color: #0795ff;
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  > span {
+    font-size: 18px;
+    margin-right: 8px;
+  }
+
+  &:hover {
+    background-color: lighten(#0795ff, 10%);
+  }
+}
