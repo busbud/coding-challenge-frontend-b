@@ -1,3 +1,14 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next", "airbnb", "prettier"],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error"
+    ],
+    "react/jsx-filename-extension": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/function-component-definition": "off"
+  }
 }
