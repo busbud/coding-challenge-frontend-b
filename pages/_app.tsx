@@ -1,30 +1,33 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import type { AppProps /* , AppContext */ } from 'next/app'
+import type { AppProps } from 'next/app'
 
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { DestinationProvider } from '../hooks/useDestination'
+import { theme } from '../styles/theme'
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Helvetica', sans-serif;
   }
 `
 
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-}
+const Content = styled.main`
+  margin: 16px 32px;
+`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <Content>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <DestinationProvider>
+          <Component {...pageProps} />
+        </DestinationProvider>
       </ThemeProvider>
-    </>
+    </Content>
   )
 }
 
