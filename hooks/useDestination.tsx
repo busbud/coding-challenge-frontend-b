@@ -1,4 +1,4 @@
-import { Context, createContext, FC, useContext, useState } from 'react'
+import { createContext, FC, useContext, useState } from 'react'
 import { Departure } from '../interfaces'
 
 const headers = {
@@ -12,7 +12,7 @@ interface Fetch {
   fetchDepartures(): Promise<void>
   isFetching: boolean
 }
-const DepartureContext = createContext({} as Fetch)
+const Context = createContext({} as Fetch)
 
 export const DestinationProvider: FC = ({ children }) => {
   const [list, setList] = useState<Departure[]>([])
@@ -43,11 +43,7 @@ export const DestinationProvider: FC = ({ children }) => {
     isFetching,
   }
 
-  return (
-    <DepartureContext.Provider value={value}>
-      {children}
-    </DepartureContext.Provider>
-  )
+  return <Context.Provider value={value}>{children}</Context.Provider>
 }
 
-export const useDestination = () => useContext(DepartureContext)
+export const useDestination = () => useContext(Context)
