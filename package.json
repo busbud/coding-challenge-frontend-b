@@ -2,6 +2,9 @@
   "name": "travel-to-osheaga",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.5"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
