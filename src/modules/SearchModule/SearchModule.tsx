@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Search from "./pages/Search";
+import SearchPage from "./pages/SearchPage";
 
 function SearchModule(): JSX.Element {
   return (
     <Routes>
-      <Route index element={<Search />} />
+      <Route index element={<SearchPage />} />
     </Routes>
   );
 }

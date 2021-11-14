@@ -9,7 +9,7 @@ interface FormDataType {
   [key: string]: number | undefined;
 }
 
-function Search(): JSX.Element {
+function SearchPage(): JSX.Element {
   const [formData, setFormData] = useState<FormDataType>({});
 
   const buttonDisabled = useMemo(
@@ -40,4 +40,4 @@ function Search(): JSX.Element {
   );
 }
 
-export default Search;
+export default SearchPage;
