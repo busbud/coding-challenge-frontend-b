@@ -16,7 +16,7 @@ function Layout({ children }: ContainerProps): JSX.Element {
         className="absolute h-full h-screen w-screen object-cover"
       />
       <NavBar />
-      <div className="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-32 xl:py-40">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-32 xl:py-4 h-full">
         {children}
       </div>
     </div>

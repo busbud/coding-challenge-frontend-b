@@ -24,6 +24,7 @@
     },
     "plugins": [
         "react",
+        "react-hooks",
         "@typescript-eslint",
         "prettier"
     ],
@@ -39,6 +40,8 @@
                 "tsx": "never"
             }
         ],
-        "react/function-component-definition": "off"
+        "react/function-component-definition": "off",
+        "react-hooks/rules-of-hooks": "error", // Vérifie les règles des Hooks
+        "react-hooks/exhaustive-deps": "warn"  // Vérifie les tableaux de dépendances
     }
 }
