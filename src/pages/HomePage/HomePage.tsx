@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function HomePage(): JSX.Element {
   return (
@@ -9,12 +10,12 @@ function HomePage(): JSX.Element {
       <h1 className="font-bold text-6xl sm:text-7xl text-white leading-tight mt-4">
         Find one-way departure times for the opening weekend of the festival.
       </h1>
-      <a
-        href="/"
+      <Link
+        to="search"
         className="block bg-white hover:bg-gray-100 py-3 px-4 rounded-lg text-lg text-gray-800 font-bold uppercase mt-10"
       >
-        Discover
-      </a>
+        Search
+      </Link>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function NavBar(): JSX.Element {
   return (
@@ -6,7 +7,7 @@ function NavBar(): JSX.Element {
       <nav className="container mx-auto px-6 md:px-12 py-4">
         <div className="md:flex justify-between items-center">
           <div className="flex justify-between items-center">
-            <a href="/" className="text-white">
+            <Link to="/" className="text-white">
               <svg
                 className="w-8 mr-2 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +18,7 @@ function NavBar(): JSX.Element {
                 <path d="M14.02 4.77v7.8H9.33V8.8h-2.5v3.77H2.14v-7.8h11.88z" />
                 <path d="M16.16 5.82H0L8.08 0l8.08 5.82z" />
               </svg>
-            </a>
+            </Link>
             <div className="md:hidden">
               <button type="button" className="text-white focus:outline-none">
                 <svg
@@ -38,12 +39,12 @@ function NavBar(): JSX.Element {
             </div>
           </div>
           <div className="hidden md:flex items-center">
-            <a
-              href="/"
+            <Link
+              to="/search"
               className="text-lg uppercase mx-3 text-white cursor-pointer hover:text-gray-300"
             >
               Search
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
