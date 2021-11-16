@@ -13,6 +13,7 @@
     "react/jsx-no-constructed-context-values": "off",
     "no-shadow": "off",
     "no-unused-vars": "off",
+    "no-use-before-define": "off",
     "import/extensions": "off"
   }
 }
