@@ -1,6 +1,7 @@
 export enum colors {
   main = '#DF0B9E',
   default = '#111111',
+  danger = '#ff0000',
 }
 
 export enum screenSize {
@@ -11,6 +12,7 @@ export enum screenSize {
 export enum fontSize {
   md = 16,
   lg = 24,
+  xlg = 40,
 }
 
 export const theme = {
