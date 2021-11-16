@@ -17,4 +17,12 @@ describe("<Button />", () => {
     const button = getByText(/button disabled/i) as HTMLButtonElement;
     expect(button.disabled).toBeTruthy();
   });
+
+  it("should render the button component with the good type", () => {
+    const { getByText, rerender } = render(<Button>Button</Button>);
+    const button = getByText(/button/i) as HTMLButtonElement;
+    expect(button.type).toEqual("button");
+    rerender(<Button type="submit">Button</Button>);
+    expect(button.type).toEqual("submit");
+  });
 });

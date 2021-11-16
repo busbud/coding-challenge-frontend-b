@@ -1,10 +1,10 @@
 import React from "react";
 import { fireEvent, render } from "../../../../test-utils";
-import Search from "./Search";
+import SearchPage from "./SearchPage";
 
-describe("<Search />", () => {
+describe("<SearchPage />", () => {
   it("should render the search component", () => {
-    const { baseElement } = render(<Search />);
+    const { baseElement } = render(<SearchPage />);
     expect(baseElement).toBeTruthy();
     expect(baseElement.querySelector('input[name="child"]')).toBeTruthy();
     expect(baseElement.querySelector('input[name="senior"]')).toBeTruthy();
@@ -12,7 +12,7 @@ describe("<Search />", () => {
   });
 
   it("should update formData if we change the value and set 0 if we try to insert a negative value", () => {
-    const { baseElement } = render(<Search />);
+    const { baseElement } = render(<SearchPage />);
     const childInput = baseElement.querySelector(
       'input[name="child"]'
     ) as HTMLInputElement;

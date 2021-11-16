@@ -6,10 +6,13 @@ describe("<SearchInputGroup />", () => {
   it("should render the search input group component", () => {
     const onChange = jest.fn();
     const { baseElement } = render(
-      <SearchInputGroup names={[]} value={{}} onChange={onChange} />
+      <SearchInputGroup
+        value={{ adult: 1, senior: 1, child: 1 }}
+        onChange={onChange}
+      />
     );
     expect(baseElement).toBeTruthy();
-    expect(baseElement.querySelectorAll("input")).toHaveLength(0);
+    expect(baseElement.querySelectorAll("input")).toHaveLength(3);
     expect(onChange).not.toBeCalled();
   });
 });
