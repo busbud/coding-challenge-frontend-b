@@ -1,5 +1,5 @@
 import { createContext, FC, useContext, useState } from 'react'
-import { Departure } from '../interfaces'
+import { Destination, Travel } from '../interfaces'
 
 const headers = {
   Accept:
@@ -7,15 +7,15 @@ const headers = {
   'X-Busbud-Token': 'PARTNER_c9g6z7V0SNqUlnar2EFsxw',
 }
 
-interface Fetch {
-  list: Departure[]
+interface IContext {
+  destinationList: Destination[]
   fetchDepartures(): Promise<void>
   isFetching: boolean
 }
-const Context = createContext({} as Fetch)
+const Context = createContext({} as IContext)
 
 export const DestinationProvider: FC = ({ children }) => {
-  const [list, setList] = useState<Departure[]>([])
+  const [destinationList, setDestinationList] = useState<Destination[]>([])
   const [isFetching, setIsFetching] = useState(false)
 
   const fetchDepartures = async () => {
@@ -28,8 +28,24 @@ export const DestinationProvider: FC = ({ children }) => {
     try {
       setIsFetching(true)
       const response = await fetch(url, { headers })
-      const { departures } = await response.json()
-      setList(departures)
+      const data: Travel = await response.json()
+
+      const findInLocations = (id: number) =>
+        data.locations.find(location => location.id === id).name
+
+      const formatDataToDestination = () =>
+        data.departures.map(departure => ({
+          id: departure.id,
+          departureTime: departure.departure_time,
+          arrivalTime: departure.arrival_time,
+          price: departure.prices.total,
+          originLocationName: findInLocations(departure.origin_location_id),
+          destinationLocationName: findInLocations(
+            departure.destination_location_id
+          ),
+        }))
+      const destination: Destination[] = formatDataToDestination()
+      setDestinationList(destination)
     } catch (error) {
       console.error({ error })
     } finally {
@@ -38,7 +54,7 @@ export const DestinationProvider: FC = ({ children }) => {
   }
 
   const value = {
-    list,
+    destinationList,
     fetchDepartures,
     isFetching,
   }
