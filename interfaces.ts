@@ -334,3 +334,10 @@ export interface Destination {
   destinationLocationName: string
   price: number
 }
+
+export enum FetchStatus {
+  initial,
+  loading,
+  success,
+  error,
+}
