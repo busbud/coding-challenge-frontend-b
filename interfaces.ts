@@ -11,7 +11,7 @@ interface Links2 {
   cache_state_poll: string
 }
 
-export interface Departure {
+interface Departure {
   amenities: Economy
   arrival_timezone: string
   available_seats: number
@@ -324,4 +324,13 @@ export interface Travel {
   ttl: number
   is_valid_route: boolean
   metadata: Metadata
+}
+
+export interface Destination {
+  id: string
+  departureTime: string
+  arrivalTime: string
+  originLocationName: string
+  destinationLocationName: string
+  price: number
 }
