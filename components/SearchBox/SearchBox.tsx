@@ -7,15 +7,16 @@ import {
 } from 'react-icons/fi'
 import styled, { keyframes } from 'styled-components'
 import { useDestination } from '../../hooks/useDestination'
+import { FetchStatus } from '../../interfaces'
 import { fontSize } from '../../styles/theme'
 import FilterOption from '../FilterOption/FilterOption'
 import { Effect, Box, Button, LoadingIcon } from './styles'
 
 const SearchBox: FC = () => {
-  const { fetchDepartures, isFetching } = useDestination()
+  const { getDepartures, fetchingStatus } = useDestination()
 
   const onClickSearch = () => {
-    fetchDepartures()
+    getDepartures()
   }
 
   return (
@@ -27,7 +28,11 @@ const SearchBox: FC = () => {
         <FilterOption icon={FiCalendar}>2020-11-21</FilterOption>
         <FilterOption icon={FiUser}>1 Adult</FilterOption>
         <Button onClick={onClickSearch}>
-          {isFetching ? <LoadingIcon fontSize={fontSize.md} /> : 'Search'}
+          {fetchingStatus === FetchStatus.loading ? (
+            <LoadingIcon fontSize={fontSize.md} />
+          ) : (
+            'Search'
+          )}
         </Button>
       </Box>
     </>
