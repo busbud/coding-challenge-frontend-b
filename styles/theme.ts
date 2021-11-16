@@ -4,8 +4,8 @@ export enum colors {
 }
 
 export enum screenSize {
-  small = 640,
-  medium = 1007,
+  small = '768px',
+  medium = '945px',
 }
 
 export enum fontSize {
