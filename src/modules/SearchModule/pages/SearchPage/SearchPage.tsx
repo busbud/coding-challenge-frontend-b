@@ -1,40 +1,40 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../../../components/Button";
 import SearchInputGroup from "../../components/SearchInputGroup";
-
-interface FormDataType {
-  adult?: number;
-  child?: number;
-  senior?: number;
-  [key: string]: number | undefined;
-}
+import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
+import {
+  searchSelector,
+  updateSearchData,
+} from "../../../../redux/features/search";
 
 function SearchPage(): JSX.Element {
-  const [formData, setFormData] = useState<FormDataType>({});
+  const searchData = useAppSelector(searchSelector);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const buttonDisabled = useMemo(
-    () => Object.keys(formData).filter((key) => formData[key]).length === 0,
-    [formData]
+    () => !searchData.adult && !searchData.child && !searchData.senior,
+    [searchData]
   );
 
   const onFormDataChange = ({
     currentTarget: { name, value },
   }: React.FormEvent<HTMLInputElement>) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: +value >= 0 ? +value : 0,
-    }));
+    dispatch(updateSearchData({ name, value: +value }));
+  };
+
+  const onSubmit = () => {
+    navigate("/search/tickets");
   };
 
   return (
     <div className="w-full flex">
-      <SearchInputGroup
-        names={["adult", "child", "senior"]}
-        value={formData}
-        onChange={onFormDataChange}
-      />
+      <SearchInputGroup value={searchData} onChange={onFormDataChange} />
       <div className="w-1/5 pl-5 flex items-end">
-        <Button disabled={buttonDisabled}>Submit</Button>
+        <Button onClick={onSubmit} disabled={buttonDisabled}>
+          Submit
+        </Button>
       </div>
     </div>
   );

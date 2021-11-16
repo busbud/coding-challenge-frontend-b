@@ -1,14 +1,19 @@
-import React from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 import "./button.scss";
 
-export interface ButtonProps {
-  disabled?: boolean;
-  children: React.ReactNode;
-}
-
-function Button({ children, disabled }: ButtonProps): JSX.Element {
+function Button({
+  children,
+  disabled,
+  onClick,
+  type = "button",
+}: ComponentPropsWithoutRef<"button">): JSX.Element {
   return (
-    <button type="button" disabled={disabled} className="Button">
+    <button
+      type={type === "submit" ? "submit" : "button"}
+      disabled={disabled}
+      className="Button"
+      onClick={onClick}
+    >
       {children}
     </button>
   );
