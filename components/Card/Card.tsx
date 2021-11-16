@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Destination } from '../../interfaces'
-import { formatData } from '../../utils/helpers'
+import { formatDate } from '../../utils/helpers'
 import { CardContainer, V, Row, Register, Title, Value, Price } from './styles'
 
 interface props {
@@ -21,7 +21,7 @@ const Card: FC<props> = props => {
 
           <Register>
             <Title>At</Title>
-            <Value>{formatData(item.departureTime)}</Value>
+            <Value>{formatDate(item.departureTime)}</Value>
           </Register>
         </Row>
         <Row>
@@ -31,7 +31,7 @@ const Card: FC<props> = props => {
           </Register>
           <Register>
             <Title>At</Title>
-            <Value>{formatData(item.arrivalTime)}</Value>
+            <Value>{formatDate(item.arrivalTime)}</Value>
           </Register>
         </Row>
       </V>
