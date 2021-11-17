@@ -1,0 +1,15 @@
+.Alert {
+  @apply w-full text-white rounded-lg max-w-lg;
+
+  &.danger {
+    @apply bg-red-500;
+  }
+
+  &.warning {
+    @apply bg-yellow-400;
+  }
+
+  &--container {
+    @apply container flex items-center justify-between px-6 py-4 mx-auto;
+  }
+}

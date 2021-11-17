@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body, body > div#root {
+  @apply h-full
+}

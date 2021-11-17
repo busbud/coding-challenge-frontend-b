@@ -2,14 +2,20 @@ import React from "react";
 import "./updateButton.scss";
 
 interface UpdateButtonProps {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  loading?: boolean;
 }
 
-function UpdateButton({ onClick }: UpdateButtonProps): JSX.Element {
+function UpdateButton({ onClick, loading }: UpdateButtonProps): JSX.Element {
   return (
-    <button onClick={onClick} type="button" className="UpdateButton">
+    <button
+      onClick={onClick}
+      type="button"
+      disabled={loading}
+      className="UpdateButton"
+    >
       <svg
-        className="w-5 h-5 mx-1"
+        className={`w-5 h-5 mx-1${loading ? "animate-spin" : ""}`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"

@@ -12,16 +12,20 @@ import {
 import ListTicket from "./components/ListTicket/ListTicket";
 import UpdateButton from "../../../../components/UpdateButton";
 import Pagination from "../../../../components/Pagination/Pagination";
+import Spinner from "../../../../components/Spinner";
+import Alert from "../../../../components/Alert";
+
+const ITEM_PER_PAGE = 10;
 
 function TicketsPage(): JSX.Element {
   const [currentPage, setCurrentPage] = useState(1);
   const searchData = useAppSelector(searchSelector);
-  const { tickets: ticketsData, complete: completeData } = useAppSelector(
-    ({ tickets: { tickets, complete } }) => ({
-      tickets,
-      complete,
-    })
-  );
+  const {
+    tickets: ticketsData,
+    complete: completeData,
+    loading,
+    error,
+  } = useAppSelector(({ tickets }) => tickets);
   const dispatch = useAppDispatch();
 
   const onFormDataChange = ({
@@ -49,23 +53,38 @@ function TicketsPage(): JSX.Element {
     <div className="flex flex-col w-full justify-center">
       <div className="flex justify-center items-end">
         <SearchInputGroup value={searchData} onChange={onFormDataChange} />
-        <UpdateButton onClick={reloadData} />
+        <UpdateButton loading={loading} onClick={reloadData} />
       </div>
-      {completeData && (
-        <>
-          <ListTicket
-            tickets={ticketsData.slice((currentPage - 1) * 3, currentPage * 3)}
-          />
-          <div className="flex justify-center items-end pt-5">
-            <Pagination
-              count={ticketsData.length}
-              itemsPerPage={3}
-              onChange={paginationOnChange}
-              currentPage={currentPage}
-            />
-          </div>
-        </>
-      )}
+      {!completeData && loading && <Spinner />}
+      <div className="flex flex-col items-center mt-10">
+        {!error &&
+          completeData &&
+          (ticketsData.length > 0 ? (
+            <>
+              <ListTicket
+                tickets={ticketsData.slice(
+                  (currentPage - 1) * ITEM_PER_PAGE,
+                  currentPage * ITEM_PER_PAGE
+                )}
+              />
+              <div className="flex justify-center items-end pt-5">
+                <Pagination
+                  count={ticketsData.length}
+                  itemsPerPage={ITEM_PER_PAGE}
+                  onChange={paginationOnChange}
+                  currentPage={currentPage}
+                />
+              </div>
+            </>
+          ) : (
+            <Alert variant="warning">No tickets found :(</Alert>
+          ))}
+        {error && (
+          <Alert variant="danger">
+            An error has occurred, please contact support!
+          </Alert>
+        )}
+      </div>
     </div>
   );
 }

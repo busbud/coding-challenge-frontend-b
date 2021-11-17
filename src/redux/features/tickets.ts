@@ -3,8 +3,8 @@ import {
   getDeparturesFromQuebecToMontreal,
   getDeparturesFromQuebecToMontrealPoll,
 } from "../../lib/busbud";
-import { AppThunk, RootState } from "../store";
-import { TicketsDTOOutput } from "../../lib/types/busbud";
+import type { AppThunk } from "../store";
+import type { TicketsDTOOutput } from "../../lib/types/busbud";
 
 interface TicketsState {
   loading: boolean;
@@ -13,7 +13,7 @@ interface TicketsState {
   cities: TicketsDTOOutput["cities"];
   complete: boolean;
   fetchedOneTime: boolean;
-  error?: string;
+  error?: boolean;
 }
 
 const initialState: TicketsState = {
@@ -66,9 +66,9 @@ const ticketsSlice = createSlice({
       ...state,
       complete,
     }),
-    setError: (state, { payload }: PayloadAction<string>) => ({
+    setError: (state) => ({
       ...state,
-      error: payload,
+      error: true,
     }),
     cleanTicketsReducer: () => ({
       ...initialState,
@@ -83,6 +83,7 @@ export const {
   updateLocations,
   updateCities,
   updateComplete,
+  setError,
   cleanTicketsReducer,
 } = ticketsSlice.actions;
 
@@ -105,6 +106,7 @@ export const fetchTicketsPoll = (): AppThunk => async (dispatch, getState) => {
       dispatch(fetchTicketsPoll());
     }
   } catch (e) {
+    dispatch(setError());
     dispatch(stopTicketsFetching());
   }
 };
@@ -127,12 +129,9 @@ export const fetchTickets = (): AppThunk => async (dispatch, getState) => {
       dispatch(fetchTicketsPoll());
     }
   } catch (e) {
+    dispatch(setError());
     dispatch(stopTicketsFetching());
   }
 };
-
-export const ticketsSelector = ({
-  tickets: { tickets },
-}: RootState): TicketsState["tickets"] => tickets;
 
 export default ticketsSlice.reducer;
