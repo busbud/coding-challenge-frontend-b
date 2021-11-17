@@ -12,7 +12,7 @@ describe("<SearchInputGroup />", () => {
       />
     );
     expect(baseElement).toBeTruthy();
-    expect(baseElement.querySelectorAll("input")).toHaveLength(3);
+    expect(baseElement.querySelectorAll("input")).toHaveLength(1);
     expect(onChange).not.toBeCalled();
   });
 });
