@@ -8,7 +8,7 @@ interface SearchState {
 }
 
 const initialState: SearchState = {
-  adult: 4,
+  adult: 1,
   child: 0,
   senior: 0,
 };
@@ -24,7 +24,7 @@ export const searchSlice = createSlice({
       }: PayloadAction<{ name: string; value: number }>
     ) => ({
       ...state,
-      [name]: +value >= 0 ? +value : 0,
+      [name]: +value >= 1 ? +value : 1,
     }),
   },
 });

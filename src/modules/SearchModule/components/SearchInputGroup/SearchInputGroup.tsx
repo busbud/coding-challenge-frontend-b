@@ -12,12 +12,12 @@ function SearchInputGroup({
   value,
   onChange,
 }: SearchInputGroupProps): JSX.Element {
-  const names: ["adult", "child", "senior"] = ["adult", "child", "senior"];
+  const names: ["adult"] = ["adult"];
 
   return (
     <>
       {names.map((name) => (
-        <div key={`formData-${name}`} className="w-1/5 pl-2 flex items-center">
+        <div key={`formData-${name}`} className="w-1/5 pl-2 flex  items-center">
           {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label className="text-gray-700">
             {capitalize(name)}
