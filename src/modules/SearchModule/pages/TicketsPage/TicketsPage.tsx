@@ -40,6 +40,7 @@ function TicketsPage(): JSX.Element {
 
   const reloadData = () => {
     dispatch(fetchTickets());
+    setCurrentPage(1);
   };
 
   useEffect(() => {
