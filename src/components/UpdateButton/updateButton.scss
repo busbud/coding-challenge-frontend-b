@@ -6,4 +6,9 @@ button.UpdateButton {
   .text {
     @apply mx-1;
   }
+
+  svg {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
 }

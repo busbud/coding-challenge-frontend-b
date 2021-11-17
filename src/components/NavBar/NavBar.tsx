@@ -1,54 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import OsheagaLogo from "../../images/osheaga-logo.png";
 
 function NavBar(): JSX.Element {
   return (
-    <header className="absolute top-0 left-0 right-0 z-20">
-      <nav className="container mx-auto px-6 md:px-12 py-4">
-        <div className="md:flex justify-between items-center">
-          <div className="flex justify-between items-center">
-            <Link to="/" className="text-white">
-              <svg
-                className="w-8 mr-2 fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                data-name="Capa 1"
-                viewBox="0 0 16.16 12.57"
-              >
-                <defs />
-                <path d="M14.02 4.77v7.8H9.33V8.8h-2.5v3.77H2.14v-7.8h11.88z" />
-                <path d="M16.16 5.82H0L8.08 0l8.08 5.82z" />
-              </svg>
-            </Link>
-            <div className="md:hidden">
-              <button type="button" className="text-white focus:outline-none">
-                <svg
-                  className="h-12 w-12"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4 6H20M4 12H20M4 18H20"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div className="hidden md:flex items-center">
-            <Link
-              to="/search"
-              className="text-lg uppercase mx-3 text-white cursor-pointer hover:text-gray-300"
-            >
-              Search
-            </Link>
-          </div>
+    <nav className="container p-6 mx-auto lg:flex lg:justify-between lg:items-center">
+      <div className="flex items-center justify-between">
+        <div>
+          <Link
+            className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
+            to="/"
+          >
+            <img src={OsheagaLogo} className="h-16" alt="Osheaga" />
+          </Link>
         </div>
-      </nav>
-    </header>
+
+        <div className="flex lg:hidden">
+          <button
+            type="button"
+            className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
+            aria-label="toggle menu"
+          >
+            <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
+              <path
+                fillRule="evenodd"
+                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <Link
+        className="block px-5 py-2 mt-4 font-medium leading-5 text-center text-white capitalize bg-blue-600 rounded-lg lg:mt-0 hover:bg-blue-500 lg:w-auto"
+        to="/search"
+      >
+        Find your ticket
+      </Link>
+    </nav>
   );
 }
 

@@ -7,7 +7,7 @@ describe("<NavBar />", () => {
     const { baseElement, getByText } = render(<NavBar />);
     expect(baseElement).toBeTruthy();
 
-    const search = getByText(/Search/i);
+    const search = getByText(/Find your ticket/i);
     expect(search).toBeInTheDocument();
   });
 });

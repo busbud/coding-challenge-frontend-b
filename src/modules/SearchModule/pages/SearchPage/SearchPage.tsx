@@ -29,7 +29,7 @@ function SearchPage(): JSX.Element {
   };
 
   return (
-    <div className="w-full flex">
+    <div className="w-full flex items-end justify-center">
       <SearchInputGroup value={searchData} onChange={onFormDataChange} />
       <div className="w-1/5 pl-5 flex items-end">
         <Button onClick={onSubmit} disabled={buttonDisabled}>

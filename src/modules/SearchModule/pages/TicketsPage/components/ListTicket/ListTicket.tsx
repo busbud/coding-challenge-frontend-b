@@ -8,10 +8,13 @@ interface ListTicketProps {
 
 function ListTicket({ tickets }: ListTicketProps): JSX.Element {
   return (
-    <div className="flex flex-col mt-10">
-      <ul className="flex flex-col items-center overflow-y-auto">
+    <div className="flex flex-col w-full flex-grow">
+      <ul className="flex flex-col items-center flex-grow pt-5">
         {tickets.map((ticket) => (
-          <ListTicketItem key={`ListTicketItem-${ticket.id}`} ticket={ticket} />
+          <ListTicketItem
+            key={`ListTicketItem-${ticket.id}-${ticket.departure_time}-${ticket.arrival_time}`}
+            ticket={ticket}
+          />
         ))}
       </ul>
     </div>

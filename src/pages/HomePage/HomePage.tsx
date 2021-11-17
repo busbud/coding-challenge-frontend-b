@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 
 function HomePage(): JSX.Element {
   return (
-    <div className="lg:w-3/5 xl:w-2/5 flex flex-col items-start relative z-10">
-      <span className="font-bold uppercase text-yellow-400">
-        Travel to Osheaga
-      </span>
-      <h1 className="font-bold text-6xl sm:text-7xl text-white leading-tight mt-4">
-        Find one-way departure times for the opening weekend of the festival.
+    <div className="max-w-lg mx-auto text-center">
+      <h1 className="text-3xl font-bold text-gray-800 dark:text-white md:text-4xl">
+        Find a ticket for our next Osheaga Musique et art Festival
       </h1>
+      <p className="my-6 text-gray-500 dark:text-gray-300">
+        This event will take place on 20 December 2021
+      </p>
       <Link
-        to="search"
-        className="block bg-white hover:bg-gray-100 py-3 px-4 rounded-lg text-lg text-gray-800 font-bold uppercase mt-10"
+        to="/search"
+        className="px-6 py-2 text-sm font-medium leading-5 text-center text-white capitalize bg-blue-600 rounded-lg hover:bg-blue-500 md:mx-0 md:w-auto focus:outline-none"
       >
-        Search
+        Find your ticket
       </Link>
     </div>
   );
