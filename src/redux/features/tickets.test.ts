@@ -1,6 +1,8 @@
 import { AnyAction } from "@reduxjs/toolkit";
-import { RootState } from "../store";
+import { AxiosResponse } from "axios";
+import { AppDispatch, RootState } from "../store";
 import reducer, {
+  fetchTicketsPoll,
   setError,
   startTicketsFetching,
   stopTicketsFetching,
@@ -9,6 +11,7 @@ import reducer, {
   updateLocations,
   updateTickets,
 } from "./tickets";
+import * as busbudLib from "../../lib/busbud";
 
 jest.mock("../../lib/busbud");
 
@@ -184,45 +187,59 @@ describe("tickets", () => {
     });
   });
 
-  // @todo: test thunk functions
-  // describe("Thunk fetchTicketsPoll", () => {
-  //   const dispatch: jest.Mock<AppDispatch> = jest.fn();
-  //   const getState: jest.Mock<RootState> = jest.fn().mockReturnValue({
-  //     search: { adult: 0 },
-  //     tickets: {
-  //       loading: false,
-  //       tickets: [],
-  //       locations: [],
-  //       cities: [],
-  //       complete: false,
-  //       fetchedOneTime: false,
-  //     },
-  //   } as unknown as RootState);
-  //   let getDeparturesFromQuebecToMontrealPollSpy: jest.SpyInstance;
-  //
-  //   beforeEach(() => {
-  //     getDeparturesFromQuebecToMontrealPollSpy = jest
-  //       .spyOn(busbudLib, "getDeparturesFromQuebecToMontrealPoll")
-  //       .mockResolvedValueOnce({
-  //         data: {
-  //           complete: true,
-  //           departures: [{ id: "1" }, { id: "2" }],
-  //           locations: [{ id: 1 }, { id: 2 }],
-  //         },
-  //       } as AxiosResponse);
-  //   });
-  //
-  //   it("should handle tickets polled and set complete, locations & tickets data", async () => {
-  //     await fetchTicketsPoll()(dispatch, getState, {});
-  //     expect(dispatch).toHaveBeenCalledTimes(3);
-  //     expect(dispatch).toHaveBeenLastCalledWith(
-  //       updateTickets({
-  //         tickets: [
-  //           { id: "1" },
-  //           { id: "2" },
-  //         ] as RootState["tickets"]["tickets"],
-  //       })
-  //     );
-  //   });
-  // });
+  describe("Thunk fetchTicketsPoll", () => {
+    const dispatch: jest.Mock<AppDispatch> = jest.fn();
+    const getState: jest.Mock<RootState> = jest.fn();
+    const getDeparturesFromQuebecToMontrealPollSpy: jest.SpyInstance =
+      jest.spyOn(busbudLib, "getDeparturesFromQuebecToMontrealPoll");
+
+    const returnGetState = {
+      search: { adult: 0 },
+      tickets: {
+        loading: false,
+        tickets: [],
+        locations: [],
+        cities: [],
+        complete: false,
+        fetchedOneTime: false,
+      },
+    } as unknown as RootState;
+
+    beforeEach(() => {
+      jest.clearAllMocks();
+      getDeparturesFromQuebecToMontrealPollSpy.mockResolvedValueOnce({
+        data: {
+          complete: true,
+          departures: [{ id: "1" }, { id: "2" }],
+          locations: [{ id: 1 }, { id: 2 }],
+        },
+      } as AxiosResponse);
+      getState.mockReturnValueOnce(returnGetState);
+    });
+
+    it("should handle tickets polled once and set data once if is complete", async () => {
+      await fetchTicketsPoll()(dispatch, getState, {});
+      expect(getState).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(5);
+      expect(dispatch).toHaveBeenCalledWith(startTicketsFetching());
+      expect(dispatch).toHaveBeenCalledWith(
+        updateTickets({
+          tickets: [
+            { id: "1" },
+            { id: "2" },
+          ] as RootState["tickets"]["tickets"],
+        })
+      );
+      expect(dispatch).toHaveBeenCalledWith(
+        updateLocations({
+          locations: [
+            { id: 1 },
+            { id: 2 },
+          ] as RootState["tickets"]["locations"],
+        })
+      );
+      expect(dispatch).toHaveBeenCalledWith(updateComplete({ complete: true }));
+      expect(dispatch).toHaveBeenCalledWith(stopTicketsFetching());
+    });
+  });
 });
