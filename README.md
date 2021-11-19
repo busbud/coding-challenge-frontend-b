@@ -1,10 +1,23 @@
 # Busbud Front-End Coding Challenge
 
+## Running
+You can see it now on Heroku:
+
+[busbud-frontend-jhagel.herokuapp.com/](https://busbud-frontend-jhagel.herokuapp.com/)
+
 ## Installation
 
+Run:
 ```sh
 npm install
 ```
+
+Set up the [Environment variable](https://nextjs.org/docs/basic-features/environment-variables) for NextJS
+Create local file `.env.local`
+```
+NEXT_PUBLIC_BUSBUD_TOKEN=${MY_TOKEN}
+```
+
 ## How to run
 ### For development:
 ```sh
@@ -19,12 +32,57 @@ npm run build
 npm start -p ${PORT}
 ```
 
+### For linting:
+```sh
+// to run the linter
+npm run lint
+// to fix any fixable issues the linter found
+npm run lint:fix
+```
+
 ## Tech Stack
 - [Nextjs](https://nextjs.org/)
-- [React](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/) for the frontend
 - [Material UI](https://mui.com/) for styling
 - [RecoilJS](https://recoiljs.org/) for state management
+
+## Points of Interest
+### State management
+[/store/states.ts](/store/states.ts)
+- Using [RecoilJS](https://recoiljs.org/), the API response is broken down {`cities`, `locations`, `operators`, `departures`} and stored in atoms and a selector.
+- The selector `departuresFullState` ([#L38](/store/states.ts#L38)) is a derived state of Departures, combining the required information from the other states (cities, etc). 
+- `departuresFullState` helps avoid filtering through cities on each render of a departure.
+- The states are made the most use of in [/hooks/useFetchSearch.ts](/hooks/useFetchSearch.ts#L34) for setting and [/components/SearchResults.tsx](/components/SearchResults.tsx#L9) for reading.
+
+### API fetching
+[/hooks/useFetchSearch.ts](/hooks/useFetchSearch.ts)
+- A hook used to fetch the search on form submission and to fetch the poll if not complete.
+
+[/interfaces/response.ts](/interfaces/response.ts)
+- Generated interfaces from the Busbud API response from [vilk.com/MakeTypes](https://jvilk.com/MakeTypes/)
+
+[/utils/fetchClient.ts](/utils/fetchClient.ts)
+- A simple fetch client (`fetchClient`) to help with error handling ([#L34](/utils/fetchClient.ts#L34))
+- To make `fetchClient` more generic and to avoid repeating code, a BusBud api wrapper called `busBudApi` is used ([#L18](/utils/fetchClient.ts#L18))
+
+[/utils/api/search.ts](/utils/api/search.ts)
+- An example of how the fetch client (with wrapper) is being used
+
+### Form Validation
+[/hooks/useForm.ts](/hooks/useForm.ts)
+- A form hook that handles the values, validates and displays errors for the form.
+- On submit, it will call [/hooks/useFetchSearch.ts](/hooks/useFetchSearch.ts)'s `fetchSearch`.
+- On a location selected, the location will be filtered out of the opposite locations options. This is done to avoid users from selecting Montreal for both the origin and destination location.
+
+### Form 
+[/components/SearchForm.tsx](/components/SearchForm.tsx)
+- Structured using [Material UI](https://mui.com/) for the inputs and styling.
+
+[/components/LocationPicker.tsx](/components/LocationPicker.tsx)
+- An autocomplete with a list of the locations
+
+---
 
 ## Challenge details
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
