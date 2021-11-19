@@ -5,7 +5,7 @@ import LoadingBar from '../components/LoadingBar';
 import ErrorMessage from '../components/ErrorMessage';
 
 const IndexPage = () => (
-    <Layout title="Home | Search for busses">
+    <Layout title="Home | Search for bus departures">
         <h1>Busbud 👋</h1>
         <SearchForm />
         <LoadingBar />
