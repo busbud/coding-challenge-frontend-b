@@ -1,5 +1,32 @@
 # Busbud Front-End Coding Challenge
 
+## Installation
+
+```sh
+npm install
+```
+## How to run
+### For development:
+```sh
+npm run dev
+```
+
+### For production:
+```sh
+// to build
+npm run build
+// to run
+npm start -p ${PORT}
+```
+
+## Tech Stack
+- [Nextjs](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Material UI](https://mui.com/) for styling
+- [RecoilJS](https://recoiljs.org/) for state management
+
+## Challenge details
 ![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
 
 It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)! 
