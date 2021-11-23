@@ -1,5 +1,7 @@
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, waitFor } from "@testing-library/react";
 import Form from "./Form";
+
+jest.unmock("@mui/material/Autocomplete");
 
 describe("Search form", () => {
   const onSubmit = jest.fn();
@@ -13,9 +15,23 @@ describe("Search form", () => {
     expect(getByText(/search/i)).toBeInTheDocument();
   });
 
-  test("submit data", () => {
-    const { getByText } = render(<Form onSubmit={onSubmit} />);
+  test("submit data", async () => {
+    const { getByText, getByLabelText } = render(<Form onSubmit={onSubmit} />);
+    fireEvent.mouseDown(getByLabelText(/origin/i));
+    await waitFor(() => {
+      fireEvent.click(getByText(/montreal/i));
+    });
+    fireEvent.mouseDown(getByLabelText(/destination/i));
+    await waitFor(() => {
+      fireEvent.click(getByText(/quebec/i));
+    });
+    fireEvent.change(getByLabelText(/passengers/i), { target: { value: "2" } });
     fireEvent.click(getByText(/search/i));
-    expect(onSubmit).toHaveBeenCalled();
+    expect(onSubmit).toHaveBeenCalledWith({
+      passengers: 2,
+      date: "2021-08-02",
+      origin: "f25dvk",
+      destination: "f2m673",
+    });
   });
 });

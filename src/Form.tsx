@@ -10,16 +10,17 @@ import { useTranslation } from "react-i18next";
 import formatISO from "date-fns/formatISO";
 import { City } from "./types";
 
-const cities: City[] = [
-  {
-    name: "Quebec",
-    geohash: "f2m673",
-  },
-  {
-    name: "Montreal",
-    geohash: "f25dvk",
-  },
-];
+const QUEBEC = {
+  name: "Quebec",
+  geohash: "f2m673",
+};
+
+const MONTREAL = {
+  name: "Montreal",
+  geohash: "f25dvk",
+};
+
+const cities: City[] = [QUEBEC, MONTREAL];
 interface Props {
   onSubmit(data: {
     origin: string;
@@ -29,24 +30,12 @@ interface Props {
   }): void;
 }
 
-const DEFAULT_ORIGIN = {
-  name: "Quebec",
-  geohash: "f2m673",
-};
-
-const DEFAULT_DESTINATION = {
-  name: "Montreal",
-  geohash: "f25dvk",
-};
-
 const DEFAULT_DATE = new Date(2021, 7, 2);
 
 export default function Form({ onSubmit }: Props) {
   const { t } = useTranslation();
-  const [origin, setOrigin] = useState<string>(DEFAULT_ORIGIN.geohash);
-  const [destination, setDestination] = useState<string>(
-    DEFAULT_DESTINATION.geohash
-  );
+  const [origin, setOrigin] = useState<string>(QUEBEC.geohash);
+  const [destination, setDestination] = useState<string>(MONTREAL.geohash);
   const [passengers, setPassengers] = useState<number>(1);
   const [date, setDate] = useState<Date | null>();
 
@@ -70,10 +59,10 @@ export default function Form({ onSubmit }: Props) {
             <TextField {...params} label={t("Origin")} />
           )}
           getOptionLabel={(option) => option.name}
-          defaultValue={DEFAULT_ORIGIN}
+          defaultValue={QUEBEC}
           fullWidth
           onChange={(_event, value) => {
-            setOrigin(value?.geohash || DEFAULT_ORIGIN.geohash);
+            setOrigin(value?.geohash || QUEBEC.geohash);
           }}
         />
       </Grid>
@@ -86,9 +75,9 @@ export default function Form({ onSubmit }: Props) {
             <TextField {...params} label={t("Destination")} />
           )}
           getOptionLabel={(option) => option.name}
-          defaultValue={DEFAULT_DESTINATION}
+          defaultValue={MONTREAL}
           onChange={(event, value) => {
-            setDestination(value?.geohash || DEFAULT_DESTINATION.geohash);
+            setDestination(value?.geohash || MONTREAL.geohash);
           }}
         />
       </Grid>
