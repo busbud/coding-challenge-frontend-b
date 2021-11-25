@@ -1,4 +1,5 @@
 import { render, fireEvent, waitFor } from "@testing-library/react";
+import formatISO from "date-fns/formatISO";
 import Form from "./Form";
 
 jest.unmock("@mui/material/Autocomplete");
@@ -17,6 +18,7 @@ describe("Search form", () => {
 
   test("submit data", async () => {
     const { getByText, getByLabelText } = render(<Form onSubmit={onSubmit} />);
+    const expectedDate = formatISO(new Date(), { representation: "date" });
     fireEvent.mouseDown(getByLabelText(/origin/i));
     await waitFor(() => {
       fireEvent.click(getByText(/montreal/i));
@@ -29,7 +31,7 @@ describe("Search form", () => {
     fireEvent.click(getByText(/search/i));
     expect(onSubmit).toHaveBeenCalledWith({
       passengers: 2,
-      date: "2021-08-02",
+      date: expectedDate,
       origin: "f25dvk",
       destination: "f2m673",
     });

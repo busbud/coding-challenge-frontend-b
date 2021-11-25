@@ -30,14 +30,14 @@ interface Props {
   }): void;
 }
 
-const DEFAULT_DATE = new Date(2021, 7, 2);
+const DEFAULT_DATE = new Date();
 
 export default function Form({ onSubmit }: Props) {
   const { t } = useTranslation();
   const [origin, setOrigin] = useState<string>(QUEBEC.geohash);
   const [destination, setDestination] = useState<string>(MONTREAL.geohash);
   const [passengers, setPassengers] = useState<number>(1);
-  const [date, setDate] = useState<Date | null>();
+  const [date, setDate] = useState<Date | null>(DEFAULT_DATE);
 
   const _onSubmit = useCallback(() => {
     onSubmit({
