@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import formatISO from "date-fns/formatISO";
-import { City } from "./types";
+import type { City, Search } from "./types";
 
 const QUEBEC = {
   name: "Quebec",
@@ -22,12 +22,7 @@ const MONTREAL = {
 
 const cities: City[] = [QUEBEC, MONTREAL];
 interface Props {
-  onSubmit(data: {
-    origin: string;
-    destination: string;
-    date: string;
-    passengers: number;
-  }): void;
+  onSubmit(data: Search): void;
 }
 
 const DEFAULT_DATE = new Date();
