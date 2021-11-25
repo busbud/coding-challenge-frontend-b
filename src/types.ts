@@ -19,5 +19,11 @@ export interface DeparturesResponse {
     prices: {
       total: number;
     };
+    origin_location_id: number;
+  }[];
+  locations: {
+    id: number;
+    name: string;
+    address: string[];
   }[];
 }

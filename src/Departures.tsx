@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import api from "./api";
 import Departure from "./Departure";
 import type { DeparturesResponse } from "./types";
+import { getBaseQuery, getLocationNamesById } from "./utils";
 
 interface DeparturesProps {
   origin: string;
@@ -11,30 +12,14 @@ interface DeparturesProps {
   passengers: number;
 }
 
-function getBaseQuery(parameters: DeparturesProps) {
-  return {
-    url: `/x-departures/${parameters.origin}/${parameters.destination}/${parameters.date}`,
-    parameters: {
-      adult: parameters.passengers,
-    },
-  };
-}
-
-function getPollQuery(parameters: DeparturesProps) {
-  const baseQuery = getBaseQuery(parameters);
-  return {
-    url: `${baseQuery.url}/poll`,
-    parameters: {
-      adult: parameters.passengers,
-    },
-  };
-}
-
 export default function Departures(props: DeparturesProps) {
   const { t } = useTranslation();
   const [departures, setDepartures] = useState<
     DeparturesResponse["departures"]
   >([]);
+  const [locations, setLocations] = useState<DeparturesResponse["locations"]>(
+    []
+  );
 
   useEffect(() => {
     async function fetchInitialSearch() {
@@ -42,10 +27,16 @@ export default function Departures(props: DeparturesProps) {
       const { data } = await api.get<DeparturesResponse>(url, { params });
       if (data) {
         setDepartures(data.departures);
+        setLocations(data.locations);
       }
     }
     fetchInitialSearch();
   }, [props]);
+
+  const locationNamesById = useMemo(
+    () => getLocationNamesById(locations),
+    [locations]
+  );
 
   return (
     <>
@@ -54,7 +45,7 @@ export default function Departures(props: DeparturesProps) {
         <Departure
           departureTime={departure.departure_time}
           arrivalTime={departure.arrival_time}
-          location=""
+          location={locationNamesById[departure.origin_location_id]}
           price={departure.prices.total}
         />
       ))}
