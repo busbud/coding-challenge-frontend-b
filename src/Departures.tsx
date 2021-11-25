@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import api from "./api";
+import Departure from "./Departure";
 import type { DeparturesResponse } from "./types";
 
 interface DeparturesProps {
@@ -49,7 +50,9 @@ export default function Departures(props: DeparturesProps) {
   return (
     <>
       <h2>{t("Departures")}</h2>
-      {departures?.map((departure) => departure.departure_time)}
+      {departures?.map((departure) => (
+        <Departure />
+      ))}
     </>
   );
 }
