@@ -51,7 +51,12 @@ export default function Departures(props: DeparturesProps) {
     <>
       <h2>{t("Departures")}</h2>
       {departures?.map((departure) => (
-        <Departure />
+        <Departure
+          departureTime={departure.departure_time}
+          arrivalTime={departure.arrival_time}
+          location=""
+          price={departure.prices.total}
+        />
       ))}
     </>
   );

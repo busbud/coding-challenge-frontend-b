@@ -16,8 +16,8 @@ export interface DeparturesResponse {
     departure_timezone: string;
     arrival_time: string;
     arrival_timezone: string;
+    prices: {
+      total: number;
+    };
   }[];
-  prices: {
-    total: number;
-  };
 }
