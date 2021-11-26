@@ -47,6 +47,7 @@ export default function Departures(props: DeparturesProps) {
           arrivalTime={departure.arrival_time}
           location={locationNamesById[departure.origin_location_id]}
           price={departure.prices.total}
+          currency={departure.prices.currency}
         />
       ))}
     </>

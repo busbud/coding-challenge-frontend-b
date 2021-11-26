@@ -6,16 +6,22 @@ import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/system/Box";
+import Dinero, { Currency } from "dinero.js";
 
 interface Props {
   departureTime: string;
   arrivalTime: string;
   location: string;
   price: number;
+  currency?: Currency;
 }
 
 export default function Departure(props: Props) {
   const { t } = useTranslation();
+  const price = Dinero({
+    amount: props.price,
+    currency: props.currency || "USD",
+  });
 
   return (
     <Card sx={{ marginBottom: 2 }}>
@@ -39,7 +45,7 @@ export default function Departure(props: Props) {
           <Divider orientation="vertical" flexItem />
           <Grid item flexGrow={1}>
             <Box sx={{ fontSize: "2rem", fontWeight: 600 }}>
-              {t("Price: {{price}}", { price: props.price })}
+              {t("Price: {{price}}", { price: price.toFormat() })}
             </Box>
           </Grid>
         </Grid>

@@ -1,3 +1,5 @@
+import { Currency } from "dinero.js";
+
 export interface City {
   name: string;
   geohash: string;
@@ -18,6 +20,7 @@ export interface DeparturesResponse {
     arrival_timezone: string;
     prices: {
       total: number;
+      currency: Currency;
     };
     origin_location_id: number;
   }[];
