@@ -45,7 +45,7 @@ export default function Form({ onSubmit }: Props) {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={3}>
+      <Grid item xs={12} md={3}>
         <Autocomplete
           disablePortal
           id="origin"
@@ -61,7 +61,7 @@ export default function Form({ onSubmit }: Props) {
           }}
         />
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={12} md={3}>
         <Autocomplete
           disablePortal
           id="destination"
@@ -76,7 +76,7 @@ export default function Form({ onSubmit }: Props) {
           }}
         />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={12} md={2}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DatePicker
             label={t("Date")}
@@ -84,12 +84,13 @@ export default function Form({ onSubmit }: Props) {
             onChange={(date) => {
               setDate(date);
             }}
-            renderInput={(params) => <TextField {...params} />}
+            renderInput={(params) => <TextField {...params} fullWidth />}
           />
         </LocalizationProvider>
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={12} md={2}>
         <TextField
+          fullWidth
           id="passengers-number"
           label={t("Passengers")}
           type="number"
@@ -102,7 +103,7 @@ export default function Form({ onSubmit }: Props) {
           }}
         />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={12} md={2}>
         <Button variant="contained" size="large" onClick={_onSubmit}>
           {t("Search")}
         </Button>
