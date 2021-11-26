@@ -42,8 +42,12 @@ export default function Departure(props: Props) {
               {t("Location: {{location}}", { location: props.location })}
             </div>
           </Grid>
-          <Divider orientation="vertical" flexItem />
-          <Grid item flexGrow={1}>
+          <Divider
+            orientation="vertical"
+            flexItem
+            sx={{ display: { xs: "none", md: "block" } }}
+          />
+          <Grid item flexGrow={1} alignSelf="center">
             <Box sx={{ fontSize: "2rem", fontWeight: 600 }}>
               {t("Price: {{price}}", { price: price.toFormat() })}
             </Box>

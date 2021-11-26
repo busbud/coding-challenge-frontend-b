@@ -103,8 +103,8 @@ export default function Form({ onSubmit }: Props) {
           }}
         />
       </Grid>
-      <Grid item xs={12} md={2}>
-        <Button variant="contained" size="large" onClick={_onSubmit}>
+      <Grid item xs={12} md={2} alignSelf="center">
+        <Button variant="contained" size="large" onClick={_onSubmit} fullWidth>
           {t("Search")}
         </Button>
       </Grid>
