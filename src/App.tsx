@@ -16,15 +16,26 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import { useMachine } from "@xstate/react";
+import fetchDeparturesMachile from "./machines/fetch-departures";
 
 i18n.use(initReactI18next).use(LanguageDetector).init(translations);
 
 function App() {
-  const [search, setSearch] = useState<Search | null>(null);
   const { t } = useTranslation();
-  const onSubmit = useCallback((searchParameters: Search) => {
-    setSearch(searchParameters);
-  }, []);
+  const [current, send] = useMachine(fetchDeparturesMachile);
+  const onSubmit = useCallback(
+    (searchParameters: Search) => {
+      send({
+        type: "INITIALIZE",
+        adults: searchParameters.passengers,
+        date: searchParameters.date,
+        origin: searchParameters.origin,
+        destination: searchParameters.destination,
+      });
+    },
+    [send]
+  );
 
   const [anchorEl, setAnchorEl] = useState<
     (EventTarget & HTMLButtonElement) | null
@@ -97,14 +108,14 @@ function App() {
           <Form onSubmit={onSubmit} />
         </div>
         <div>
-          {search !== null && (
-            <Departures
-              origin={search.origin}
-              destination={search.destination}
-              date={search.date}
-              passengers={search.passengers}
-            />
-          )}
+          <Departures
+            departures={current.context.departures}
+            locations={current.context.locations}
+            loading={
+              current.matches("initializing") || current.matches("polling")
+            }
+            hasError={current.matches("failure")}
+          />
         </div>
       </div>
     </Container>

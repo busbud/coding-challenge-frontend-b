@@ -1,4 +1,13 @@
-import { createMachine, assign } from "xstate";
+import { createMachine, assign, DoneInvokeEvent } from "xstate";
+import { getBaseQuery } from "../libs/utils";
+import { DeparturesResponse, Search } from "../types";
+import api from "../libs/api";
+
+const initSearch = async (parameters: Search) => {
+  const { url, parameters: params } = getBaseQuery(parameters);
+  const { data } = await api.get<DeparturesResponse>(url, { params });
+  return data;
+};
 
 interface Context {
   retries: number;
@@ -6,6 +15,8 @@ interface Context {
   destination?: string;
   adults?: number;
   date?: string;
+  departures: DeparturesResponse["departures"];
+  locations: DeparturesResponse["locations"];
 }
 
 type Event =
@@ -29,6 +40,8 @@ const fetchDeparturesMachine = createMachine<Context, Event>({
   initial: "idle",
   context: {
     retries: 0,
+    departures: [],
+    locations: [],
   },
   states: {
     idle: {
@@ -45,9 +58,29 @@ const fetchDeparturesMachine = createMachine<Context, Event>({
       },
     },
     initializing: {
-      on: {
-        POLL: "polling",
-        REJECT: "failure",
+      invoke: {
+        id: "initializeSearch",
+        src: (
+          {
+            origin = "",
+            destination = "",
+            date = "",
+            adults: passengers = 1,
+          }: Context,
+          event: Event
+        ) => initSearch({ origin, destination, date, passengers }),
+        onDone: {
+          target: "polling",
+          actions: assign({
+            departures: (context, event: DoneInvokeEvent<DeparturesResponse>) =>
+              event.data.departures,
+            locations: (context, event: DoneInvokeEvent<DeparturesResponse>) =>
+              event.data.locations,
+          }),
+        },
+        onError: {
+          target: "failure",
+        },
       },
     },
     polling: {

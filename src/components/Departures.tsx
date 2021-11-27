@@ -1,69 +1,40 @@
-import Alert from "@mui/material/Alert";
 import LinearProgress from "@mui/material/LinearProgress";
-import { useEffect, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
-import api from "../libs/api";
+import { useMemo, useState } from "react";
 import Departure from "./Departure";
-import type { DeparturesResponse } from "../types";
-import { getBaseQuery, getLocationNamesById } from "../libs/utils";
+import { getLocationNamesById } from "../libs/utils";
+import { DeparturesResponse } from "../types";
+import Alert from "@mui/material/Alert";
+import { useTranslation } from "react-i18next";
 
 interface DeparturesProps {
-  origin: string;
-  destination: string;
-  date: string;
-  passengers: number;
+  departures: DeparturesResponse["departures"];
+  locations: DeparturesResponse["locations"];
+  loading?: boolean;
+  hasError?: boolean;
 }
 
 export default function Departures(props: DeparturesProps) {
   const { t } = useTranslation();
-  const [loading, setLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  const [departures, setDepartures] = useState<
-    DeparturesResponse["departures"]
-  >([]);
-  const [locations, setLocations] = useState<DeparturesResponse["locations"]>(
-    []
-  );
-
-  useEffect(() => {
-    async function fetchInitialSearch() {
-      const { url, parameters: params } = getBaseQuery(props);
-      setLoading(true);
-      try {
-        const { data, status } = await api.get<DeparturesResponse>(url, {
-          params,
-        });
-        if (data) {
-          setDepartures(data.departures);
-          setLocations(data.locations);
-        }
-        setHasError(status >= 400);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchInitialSearch();
-  }, [props]);
-
+  const [displayAlert, setDisplayAlert] = useState(true);
   const locationNamesById = useMemo(
-    () => getLocationNamesById(locations),
-    [locations]
+    () => getLocationNamesById(props.locations),
+    [props.locations]
   );
 
   return (
     <>
-      {loading && <LinearProgress />}
-      {hasError && (
+      {props.loading && <LinearProgress />}
+      {props.hasError && displayAlert && (
         <Alert
           severity="warning"
           onClose={() => {
-            setHasError(false);
+            setDisplayAlert(false);
           }}
         >
           {t("An error occured during the request. Please retry again.")}
         </Alert>
       )}
-      {departures?.map((departure) => (
+      {props.departures?.map((departure) => (
         <Departure
           departureTime={departure.departure_time}
           arrivalTime={departure.arrival_time}
