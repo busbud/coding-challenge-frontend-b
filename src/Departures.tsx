@@ -1,3 +1,4 @@
+import Alert from "@mui/material/Alert";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import api from "./api";
@@ -14,6 +15,7 @@ interface DeparturesProps {
 
 export default function Departures(props: DeparturesProps) {
   const { t } = useTranslation();
+  const [status, setStatus] = useState<number | null>(null);
   const [departures, setDepartures] = useState<
     DeparturesResponse["departures"]
   >([]);
@@ -24,11 +26,14 @@ export default function Departures(props: DeparturesProps) {
   useEffect(() => {
     async function fetchInitialSearch() {
       const { url, parameters: params } = getBaseQuery(props);
-      const { data } = await api.get<DeparturesResponse>(url, { params });
+      const { data, status } = await api.get<DeparturesResponse>(url, {
+        params,
+      });
       if (data) {
         setDepartures(data.departures);
         setLocations(data.locations);
       }
+      setStatus(status);
     }
     fetchInitialSearch();
   }, [props]);
@@ -41,6 +46,16 @@ export default function Departures(props: DeparturesProps) {
   return (
     <>
       <h2>{t("Departures")}</h2>
+      {status && status >= 400 && (
+        <Alert
+          severity="warning"
+          onClose={() => {
+            setStatus(null);
+          }}
+        >
+          {t("An error occured during the request")}
+        </Alert>
+      )}
       {departures?.map((departure) => (
         <Departure
           departureTime={departure.departure_time}

@@ -2,7 +2,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import DatePicker from "@mui/lab/DatePicker";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import Autocomplete from "@mui/material/Autocomplete";
-import Button from "@mui/material/Button";
+import Button from "@mui/lab/LoadingButton";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { useCallback, useState } from "react";
@@ -23,11 +23,12 @@ const MONTREAL = {
 const cities: City[] = [QUEBEC, MONTREAL];
 interface Props {
   onSubmit(data: Search): void;
+  loading?: boolean;
 }
 
 const DEFAULT_DATE = new Date();
 
-export default function Form({ onSubmit }: Props) {
+export default function Form({ onSubmit, loading }: Props) {
   const { t } = useTranslation();
   const [origin, setOrigin] = useState<string>(QUEBEC.geohash);
   const [destination, setDestination] = useState<string>(MONTREAL.geohash);
@@ -104,7 +105,14 @@ export default function Form({ onSubmit }: Props) {
         />
       </Grid>
       <Grid item xs={12} md={2} alignSelf="center">
-        <Button variant="contained" size="large" onClick={_onSubmit} fullWidth>
+        <Button
+          variant="contained"
+          size="large"
+          onClick={_onSubmit}
+          fullWidth
+          loading={loading}
+          disabled={loading}
+        >
           {t("Search")}
         </Button>
       </Grid>

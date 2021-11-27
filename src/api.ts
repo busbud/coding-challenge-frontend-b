@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_BASEURL || "https://napi.busbud.com",
-  timeout: 1000,
+  timeout: 15000,
   headers: {
     "X-Busbud-Token": process.env.REACT_APP_API_KEY || "",
     Accept:
