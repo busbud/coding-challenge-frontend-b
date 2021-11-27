@@ -1,5 +1,5 @@
 import LinearProgress from "@mui/material/LinearProgress";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Departure from "./Departure";
 import { getLocationNamesById } from "../libs/utils";
 import { DeparturesResponse } from "../types";
@@ -21,6 +21,12 @@ export default function Departures(props: DeparturesProps) {
     [props.locations]
   );
 
+  useEffect(() => {
+    if (props.loading && !displayAlert) {
+      setDisplayAlert(true);
+    }
+  }, [props.loading, displayAlert]);
+
   return (
     <>
       {props.loading && <LinearProgress />}
@@ -30,6 +36,7 @@ export default function Departures(props: DeparturesProps) {
           onClose={() => {
             setDisplayAlert(false);
           }}
+          sx={{ marginBottom: 2 }}
         >
           {t("An error occured during the request. Please retry again.")}
         </Alert>
