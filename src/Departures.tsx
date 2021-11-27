@@ -17,7 +17,7 @@ interface DeparturesProps {
 export default function Departures(props: DeparturesProps) {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<number | null>(null);
+  const [hasError, setHasError] = useState(false);
   const [departures, setDepartures] = useState<
     DeparturesResponse["departures"]
   >([]);
@@ -29,15 +29,18 @@ export default function Departures(props: DeparturesProps) {
     async function fetchInitialSearch() {
       const { url, parameters: params } = getBaseQuery(props);
       setLoading(true);
-      const { data, status } = await api.get<DeparturesResponse>(url, {
-        params,
-      });
-      if (data) {
-        setDepartures(data.departures);
-        setLocations(data.locations);
+      try {
+        const { data, status } = await api.get<DeparturesResponse>(url, {
+          params,
+        });
+        if (data) {
+          setDepartures(data.departures);
+          setLocations(data.locations);
+        }
+        setHasError(status >= 400);
+      } finally {
+        setLoading(false);
       }
-      setStatus(status);
-      setLoading(false);
     }
     fetchInitialSearch();
   }, [props]);
@@ -51,14 +54,14 @@ export default function Departures(props: DeparturesProps) {
     <>
       <h2>{t("Departures")}</h2>
       {loading && <LinearProgress />}
-      {status && status >= 400 && (
+      {hasError && (
         <Alert
           severity="warning"
           onClose={() => {
-            setStatus(null);
+            setHasError(false);
           }}
         >
-          {t("An error occured during the request")}
+          {t("An error occured during the request. Please retry again.")}
         </Alert>
       )}
       {departures?.map((departure) => (
