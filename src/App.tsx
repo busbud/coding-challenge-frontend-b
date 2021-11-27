@@ -15,8 +15,9 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import i18next from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 
-i18n.use(initReactI18next).init(translations);
+i18n.use(initReactI18next).use(LanguageDetector).init(translations);
 
 function App() {
   const [search, setSearch] = useState<Search | null>(null);
