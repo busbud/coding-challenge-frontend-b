@@ -14,6 +14,13 @@ describe("fetchDepartureMachie", () => {
     expect(state.matches("initializing")).toBe(true);
   });
 
+  test("retry from failure to initializing", () => {
+    const state = fetchDeparturesMachine.transition("failure", {
+      type: "RETRY",
+    });
+    expect(state.matches("initializing")).toBe(true);
+  });
+
   test("transition from initial search > polling > complete", (done) => {
     mockAxios.get.mockResolvedValueOnce({
       data: {
