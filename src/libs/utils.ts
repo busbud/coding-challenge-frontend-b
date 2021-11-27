@@ -3,18 +3,19 @@ import type { DeparturesResponse, Search } from "../types";
 export function getBaseQuery(parameters: Search) {
   return {
     url: `/x-departures/${parameters.origin}/${parameters.destination}/${parameters.date}`,
-    parameters: {
+    params: {
       adult: parameters.passengers,
     },
   };
 }
 
-export function getPollQuery(parameters: Search) {
+export function getPollQuery(parameters: Search & { index: number }) {
   const baseQuery = getBaseQuery(parameters);
   return {
     url: `${baseQuery.url}/poll`,
-    parameters: {
+    params: {
       adult: parameters.passengers,
+      index: parameters.index,
     },
   };
 }

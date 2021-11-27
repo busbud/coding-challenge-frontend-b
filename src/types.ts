@@ -29,4 +29,5 @@ export interface DeparturesResponse {
     name: string;
     address: string[];
   }[];
+  complete: boolean;
 }
