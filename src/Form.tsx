@@ -45,7 +45,7 @@ export default function Form({ onSubmit, loading }: Props) {
   }, [date, destination, onSubmit, origin, passengers]);
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} marginBottom={4}>
       <Grid item xs={12} md={3}>
         <Autocomplete
           disablePortal

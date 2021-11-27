@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import i18next from "i18next";
 
 i18n.use(initReactI18next).init(translations);
 
@@ -28,13 +29,16 @@ function App() {
     (EventTarget & HTMLButtonElement) | null
   >(null);
 
-  const handleMenu: MouseEventHandler<HTMLButtonElement> = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const handleMenu: MouseEventHandler<HTMLButtonElement> = useCallback(
+    (event) => {
+      setAnchorEl(event.currentTarget);
+    },
+    [setAnchorEl]
+  );
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setAnchorEl(null);
-  };
+  }, [setAnchorEl]);
 
   return (
     <Container>
@@ -68,8 +72,22 @@ function App() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>{t("French")}</MenuItem>
-                <MenuItem onClick={handleClose}>{t("English")}</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    i18next.changeLanguage("fr");
+                    handleClose();
+                  }}
+                >
+                  {t("Francais")}
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    i18next.changeLanguage("en");
+                    handleClose();
+                  }}
+                >
+                  {t("English")}
+                </MenuItem>
               </Menu>
             </Toolbar>
           </AppBar>

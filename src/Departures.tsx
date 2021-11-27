@@ -52,7 +52,6 @@ export default function Departures(props: DeparturesProps) {
 
   return (
     <>
-      <h2>{t("Departures")}</h2>
       {loading && <LinearProgress />}
       {hasError && (
         <Alert
