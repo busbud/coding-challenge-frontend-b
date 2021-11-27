@@ -1,4 +1,4 @@
-import type { DeparturesResponse, Search } from "./types";
+import type { DeparturesResponse, Search } from "../types";
 
 export function getBaseQuery(parameters: Search) {
   return {

@@ -2,10 +2,10 @@ import Alert from "@mui/material/Alert";
 import LinearProgress from "@mui/material/LinearProgress";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import api from "./api";
+import api from "../libs/api";
 import Departure from "./Departure";
-import type { DeparturesResponse } from "./types";
-import { getBaseQuery, getLocationNamesById } from "./utils";
+import type { DeparturesResponse } from "../types";
+import { getBaseQuery, getLocationNamesById } from "../libs/utils";
 
 interface DeparturesProps {
   origin: string;

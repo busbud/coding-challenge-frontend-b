@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import formatISO from "date-fns/formatISO";
-import type { City, Search } from "./types";
+import type { City, Search } from "../types";
 
 const QUEBEC = {
   name: "Quebec",
