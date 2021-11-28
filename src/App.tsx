@@ -20,7 +20,7 @@ function App() {
     (searchParameters: Search) => {
       send({
         type: "INITIALIZE",
-        adults: searchParameters.passengers,
+        adult: searchParameters.adult,
         date: searchParameters.date,
         origin: searchParameters.origin,
         destination: searchParameters.destination,

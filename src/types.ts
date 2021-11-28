@@ -9,7 +9,7 @@ export interface Search {
   origin: string;
   destination: string;
   date: string;
-  passengers: number;
+  adult: number;
 }
 
 export interface DeparturesResponse {

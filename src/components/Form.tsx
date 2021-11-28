@@ -32,7 +32,7 @@ export default function Form({ onSubmit, loading }: Props) {
   const { t } = useTranslation();
   const [origin, setOrigin] = useState<string>(QUEBEC.geohash);
   const [destination, setDestination] = useState<string>(MONTREAL.geohash);
-  const [passengers, setPassengers] = useState<number>(1);
+  const [adult, setAdult] = useState<number>(1);
   const [date, setDate] = useState<Date | null>(DEFAULT_DATE);
 
   const _onSubmit = useCallback(() => {
@@ -40,9 +40,9 @@ export default function Form({ onSubmit, loading }: Props) {
       origin,
       destination,
       date: formatISO(date || DEFAULT_DATE, { representation: "date" }),
-      passengers,
+      adult,
     });
-  }, [date, destination, onSubmit, origin, passengers]);
+  }, [date, destination, onSubmit, origin, adult]);
 
   return (
     <Grid container spacing={2} marginBottom={4}>
@@ -92,15 +92,15 @@ export default function Form({ onSubmit, loading }: Props) {
       <Grid item xs={12} md={2}>
         <TextField
           fullWidth
-          id="passengers-number"
-          label={t("Passengers")}
+          id="adult-passengers-number"
+          label={t("Adult Passengers")}
           type="number"
           InputLabelProps={{
             shrink: true,
           }}
-          value={passengers}
+          value={adult}
           onChange={(event) => {
-            setPassengers(parseInt(event.target.value));
+            setAdult(parseInt(event.target.value));
           }}
         />
       </Grid>

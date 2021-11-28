@@ -5,7 +5,7 @@ const translations = {
         Origin: "Depart",
         Destination: "Destination",
         Search: "Chercher",
-        Passengers: "Passagers",
+        "Adult Passengers": "Passagers adulte",
         Language: "Langue",
         "Departure time: {{date}}": "Heure de départ: {{date}}",
         "Arrival time: {{date}}": "Heure d'arrivée: {{date}}",

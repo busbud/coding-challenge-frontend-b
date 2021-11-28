@@ -7,19 +7,15 @@ interface Context {
   retries: number;
   origin?: string;
   destination?: string;
-  adults?: number;
+  adult?: number;
   date?: string;
   departures: DeparturesResponse["departures"];
   locations: DeparturesResponse["locations"];
 }
 
-type InitializeEvent = {
+type InitializeSearchEvent = {
   type: "INITIALIZE";
-  origin: string;
-  destination: string;
-  adults: number;
-  date: string;
-};
+} & Search;
 
 type RetryEvent = {
   type: "RETRY";
@@ -27,15 +23,15 @@ type RetryEvent = {
 
 type RejectEvent = { type: "REJECT" };
 
-type Event = InitializeEvent | RetryEvent | RejectEvent;
+type Event = InitializeSearchEvent | RetryEvent | RejectEvent;
 
 const initializeSearch = {
   target: "initializing",
-  actions: assign<Context, InitializeEvent>({
+  actions: assign<Context, InitializeSearchEvent>({
     origin: (context, event) => event.origin,
     destination: (context, event) => event.destination,
     date: (context, event) => event.date,
-    adults: (context, event) => event.adults,
+    adult: (context, event) => event.adult,
   }),
 };
 
@@ -88,14 +84,9 @@ const fetchDeparturesMachine = createMachine<Context, Event>({
       invoke: {
         id: "initializeSearch",
         src: (
-          {
-            origin = "",
-            destination = "",
-            date = "",
-            adults: passengers = 1,
-          }: Context,
+          { origin = "", destination = "", date = "", adult = 1 }: Context,
           event: Event
-        ) => fetchInitialSearch({ origin, destination, date, passengers }),
+        ) => fetchInitialSearch({ origin, destination, date, adult }),
         onDone: {
           target: "polling",
           actions: setResponseData,
@@ -119,7 +110,7 @@ const fetchDeparturesMachine = createMachine<Context, Event>({
             origin = "",
             destination = "",
             date = "",
-            adults: passengers = 1,
+            adult = 1,
             departures = [],
           }: Context,
           event: Event
@@ -128,7 +119,7 @@ const fetchDeparturesMachine = createMachine<Context, Event>({
             origin,
             destination,
             date,
-            passengers,
+            adult,
             index: departures.length,
           }),
         onDone: [

@@ -12,7 +12,7 @@ describe("Search form", () => {
     expect(getByLabelText(/origin/i)).toBeInTheDocument();
     expect(getByLabelText(/destination/i)).toBeInTheDocument();
     expect(getByLabelText(/date/i)).toBeInTheDocument();
-    expect(getByLabelText(/passengers/i)).toBeInTheDocument();
+    expect(getByLabelText(/adult/i)).toBeInTheDocument();
     expect(getByText(/search/i)).toBeInTheDocument();
   });
 
@@ -27,10 +27,10 @@ describe("Search form", () => {
     await waitFor(() => {
       fireEvent.click(getByText(/quebec/i));
     });
-    fireEvent.change(getByLabelText(/passengers/i), { target: { value: "2" } });
+    fireEvent.change(getByLabelText(/adult/i), { target: { value: "2" } });
     fireEvent.click(getByText(/search/i));
     expect(onSubmit).toHaveBeenCalledWith({
-      passengers: 2,
+      adult: 2,
       date: expectedDate,
       origin: "f25dvk",
       destination: "f2m673",

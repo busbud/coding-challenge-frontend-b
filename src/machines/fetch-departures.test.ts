@@ -8,7 +8,7 @@ describe("fetchDepartureMachie", () => {
       type: "INITIALIZE",
       origin: "aaaaaa",
       destination: "bbbbbb",
-      adults: 2,
+      adult: 2,
       date: "2021-01-01",
     });
     expect(state.matches("initializing")).toBe(true);
@@ -68,7 +68,7 @@ describe("fetchDepartureMachie", () => {
       type: "INITIALIZE",
       origin: "aaaaaa",
       destination: "bbbbbb",
-      adults: 2,
+      adult: 2,
       date: "2021-01-01",
     });
   });
@@ -91,7 +91,7 @@ describe("fetchDepartureMachie", () => {
       type: "INITIALIZE",
       origin: "aaaaaa",
       destination: "bbbbbb",
-      adults: 2,
+      adult: 2,
       date: "2021-01-01",
     });
   });
