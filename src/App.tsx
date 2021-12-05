@@ -1,9 +1,32 @@
 import './App.css';
 import logo from './logo.svg';
-import React, { useState } from 'react';
+import HttpClient from './network/HttpClient';
+import { formatISO } from 'date-fns';
+import React, { useEffect, useState } from 'react';
+
+const QUEBEC_GEO_HASH = 'f2m673';
+const MONTREAL_GEO_HASH = 'f25dvk';
 
 function App() {
   const [count, setCount] = useState(0);
+  // const [departures, setDepartures] = useState<any>();
+
+  useEffect(() => {
+    (async () => {
+      const testDepartureDate = new Date(2021, 7, 2);
+      const departureDate = new Date();
+      departureDate.setMinutes(testDepartureDate.getMinutes() + 30);
+      const response = await HttpClient.get(
+        `/x-departures/${QUEBEC_GEO_HASH}/${MONTREAL_GEO_HASH}/${formatISO(
+          departureDate,
+          { representation: 'date' },
+        )}`,
+      );
+
+      // eslint-disable-next-line no-undef
+      console.log(response);
+    })();
+  });
 
   return (
     <div className="App">
