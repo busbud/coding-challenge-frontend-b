@@ -2,6 +2,7 @@ import DepartureClient from './client/DepartureClient';
 import { Departures } from './components/Departures';
 import DeparturesOnBoarding from './components/DeparturesOnBoarding';
 import { Typography } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
 import Stack from '@mui/material/Stack';
 import React, { useCallback, useState } from 'react';
 
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <>
+      <CssBaseline />
       <Stack
         direction="row"
         justifyContent="center"
@@ -45,7 +47,7 @@ function App() {
       <Stack
         direction="row"
         justifyContent="center"
-        alignItems="center'"
+        alignItems="center"
         width="100%"
       >
         {departures ? <Departures departures={departures} /> : <div></div>}
