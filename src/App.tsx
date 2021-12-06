@@ -1,67 +1,64 @@
-import './App.css';
-import logo from './logo.svg';
-import HttpClient from './network/HttpClient';
-import { formatISO } from 'date-fns';
-import React, { useEffect, useState } from 'react';
+import DepartureClient from './client/DepartureClient';
+import { Departures } from './components/Departures';
+import DeparturesOnBoarding from './components/DeparturesOnBoarding';
+import { Typography } from '@mui/material';
+import Stack from '@mui/material/Stack';
+import React, { useCallback, useState } from 'react';
 
-const QUEBEC_GEO_HASH = 'f2m673';
-const MONTREAL_GEO_HASH = 'f25dvk';
+const ORIGIN_GEO_HASH = 'f2m673';
+const DESTINATION_GEO_HASH = 'f25dvk';
+const DEPARTURE_ORIGIN = 'Québec';
+const DEPARTURE_DESTINATION = 'Montréal';
+const DEPARTURE_DATE = new Date();
+DEPARTURE_DATE.setDate(DEPARTURE_DATE.getDate() + 1);
 
 function App() {
-  const [count, setCount] = useState(0);
-  // const [departures, setDepartures] = useState<any>();
+  const [isOnBoarding, setOnBoardingState] = useState<boolean>(true);
+  const [departures, setDepartures] = useState<any>();
 
-  useEffect(() => {
-    (async () => {
-      const testDepartureDate = new Date(2021, 7, 2);
-      const departureDate = new Date();
-      departureDate.setMinutes(testDepartureDate.getMinutes() + 30);
-      const response = await HttpClient.get(
-        `/x-departures/${QUEBEC_GEO_HASH}/${MONTREAL_GEO_HASH}/${formatISO(
-          departureDate,
-          { representation: 'date' },
-        )}`,
-      );
+  const showDepartures = useCallback(async () => {
+    setOnBoardingState(false);
 
-      // eslint-disable-next-line no-undef
-      console.log(response);
-    })();
-  });
+    const fetchedDepartures = await DepartureClient.list(
+      ORIGIN_GEO_HASH,
+      DESTINATION_GEO_HASH,
+      DEPARTURE_DATE,
+    );
+
+    setDepartures(fetchedDepartures);
+  }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <>
+      <Stack
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        width="100%"
+        height={40}
+        bgcolor="#282c34"
+        color="white"
+      >
+        <Typography variant="h6">Bus Buddy</Typography>
+      </Stack>
+
+      <Stack
+        direction="row"
+        justifyContent="center"
+        alignItems="center'"
+        width="100%"
+      >
+        {departures ? <Departures departures={departures} /> : <div></div>}
+      </Stack>
+
+      <DeparturesOnBoarding
+        onStart={showDepartures}
+        open={isOnBoarding}
+        origin={DEPARTURE_ORIGIN}
+        destination={DEPARTURE_DESTINATION}
+        date={DEPARTURE_DATE}
+      />
+    </>
   );
 }
 

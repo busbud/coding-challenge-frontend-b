@@ -264,7 +264,7 @@
     core-js-pure "^3.19.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.13.10", "@babel/runtime@^7.16.3", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.7":
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.5", "@babel/runtime@^7.16.3", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.7":
   version "7.16.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.3.tgz#b86f0db02a04187a3c17caa77de69840165d42d5"
   integrity sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==
@@ -469,6 +469,13 @@
     clsx "^1.1.1"
     prop-types "^15.7.2"
     react-is "^17.0.2"
+
+"@mui/icons-material@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.2.0.tgz#6c6135bb2d7891e29d6f9419df402b82dd663517"
+  integrity sha512-NvyrVaGKpP4R1yFw8BCnE0QcsQ67RtpgxPr4FtH8q60MDYPuPVczLOn5Ash5CFavoDWur/NfM/4DpT54yf3InA==
+  dependencies:
+    "@babel/runtime" "^7.16.3"
 
 "@mui/material@^5.2.2":
   version "5.2.2"
@@ -1665,6 +1672,20 @@ hoist-non-react-statics@^3.3.1, hoist-non-react-statics@^3.3.2:
   dependencies:
     react-is "^16.7.0"
 
+html-parse-stringify@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/html-parse-stringify/-/html-parse-stringify-3.0.1.tgz#dfc1017347ce9f77c8141a507f233040c59c55d2"
+  integrity sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==
+  dependencies:
+    void-elements "3.1.0"
+
+i18next@^21.5.4:
+  version "21.5.4"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.5.4.tgz#55ab39c31cc0b4f9f58c3a599db50c4515698284"
+  integrity sha512-ukwRJpLhYg4EUfCOtbaKjlwF71qyel1XMXQN78OkQMcaQG68UzlYgLC6g2fhoTNBvoH2tJkaaqzDumhC9skAhA==
+  dependencies:
+    "@babel/runtime" "^7.12.0"
+
 ignore@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
@@ -2204,6 +2225,14 @@ react-dom@^17.0.0:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
+react-i18next@^11.14.3:
+  version "11.14.3"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.14.3.tgz#b44b5c4d1aadac5211be011827a2830be60f2522"
+  integrity sha512-Hf2aanbKgYxPjG8ZdKr+PBz9sY6sxXuZWizxCYyJD2YzvJ0W9JTQcddVEjDaKyBoCyd3+5HTerdhc9ehFugc6g==
+  dependencies:
+    "@babel/runtime" "^7.14.5"
+    html-parse-stringify "^3.0.1"
+
 react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -2523,6 +2552,11 @@ vite@^2.6.4:
     rollup "^2.57.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+void-elements@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-3.1.0.tgz#614f7fbf8d801f0bb5f0661f5b2f5785750e4f09"
+  integrity sha1-YU9/v42AHwu18GYfWy9XhXUOTwk=
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"

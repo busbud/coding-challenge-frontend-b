@@ -2,10 +2,12 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "project": "./tsconfig.json",
     "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "modules": true
     }
   },
   "settings": {
@@ -16,12 +18,17 @@
 
   "extends": [
     "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:import/errors",
+    "plugin:import/typescript",
+    "plugin:import/warnings",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended"
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/react"
   ],
-  "plugins": ["@typescript-eslint",
-    "simple-import-sort", "prettier", "react-hooks"],
+  "plugins": ["@typescript-eslint", "import", "simple-import-sort", "prettier", "react-hooks"],
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "off",
     "react-hooks/rules-of-hooks": "error",
@@ -35,6 +42,7 @@
     "@typescript-eslint/semi": ["error"],
     "simple-import-sort/imports": "off",
     "simple-import-sort/exports": "off",
+    "import/no-named-as-default": "off",
     "eqeqeq": ["error", "smart"]
   }
 
