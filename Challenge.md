@@ -1,7 +1,5 @@
 # Busbud Front-End Coding Challenge
 
-![osheaga](https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png)
-
 It will be hot this summer in Montreal with the [Osheaga festival](http://www.osheaga.com/)! 
 Your challenge is to build a microsite that allows a traveler from Québec to find one-way departure schedules for the festival's opening weekend.
 
@@ -63,8 +61,7 @@ Search is performed in two steps
 Initiating kicks off a search against the various supplier systems if one has yet to be started. It also includes a wealth of related models (cities, locations, operators, etc) in its response to ensure a client has all the context necessary to present a compelling experience to the user. If the cache already holds departures for the requested search, the departures will be returned as part of the response.
 
 To get departures, search is initialized via the following endpoint:
-
-    https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date
+  https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date
 
 Path parameters:  
 
@@ -276,7 +273,6 @@ To avoid getting the same departures data multiple times, Busbud supports pagina
 > Although the cache cannot be bypassed, you can change the date or the number of passengers to trigger a new search and obtain incremental updates.
 
 While the `complete` property from the response is false, you need to call:
-
     https://napi.busbud.com/x-departures/:origin/:destination/:outbound_date/poll
 
 with ***all*** the same parameters as the previous endpoint, plus the following additional querystring parameter:

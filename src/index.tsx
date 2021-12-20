@@ -1,17 +1,24 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from 'react-dom';
+import { Router } from "@reach/router";
+import MainApp from 'views/MainApp';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+/*
+export const User = (props: any): JSX.Element => <h2>{props.userId}</h2>;
+    <nav>
+      <Link to="/">Home</Link>{" "}
+      <Link to="users/123">Bob</Link>
+      <Link to="users/abc">Sally</Link>
+    </nav>
+    */
+// <Search path="search/:originName/:destinationId" />
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <MainApp path="/"/>
+    </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

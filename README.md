@@ -29,18 +29,21 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I was on an airplane when starting this, so I just used CRA with base scripts (As I had a global version already installed)
+To avoid using an external library (Such as craco), I should have used [this library](https://www.npmjs.com/package/custom-react-scripts).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Why I used X dependency:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Typescript**: Everything should be types. All the time, always
+**Reach Router**: Simple router with accesibility options
+**Craco**: Aliases, to avoid ejecting app
+**Material UI (MUI)**: To avoid thinking on design
+**Emotion**: Came with MUI. You never know when you will ned some of its features
+**Isomorphic Fetch**: Enabling to fetch in a cross-browser compliant fashion
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# About the appplication:
+- I fully realize that I could just put a button to say "search for tickets to Go to X festival" and leave it like that, BUT Searchers are more fun.
+- Tests were not done because of lack of time. I know, lame excuse, but I usually wouldn't approve any merge like this one without coverage.
+- Some decissions were made keeping in mind the scope of this. Since this was a fairly simple challenge, folder structure was kept simple across the project. 
