@@ -1,0 +1,40 @@
+{
+  "printWidth": 100,
+  "parser": "flow",
+  "tabWidth": 4,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "overrides": [
+    {
+      "files": "*.css",
+      "options": {
+        "tabWidth": 2,
+        "parser": "css"
+      }
+    },
+    {
+      "files": "*.pcss",
+      "options": {
+        "tabWidth": 2,
+        "parser": "css"
+      }
+    },
+    {
+      "files": "*.scss",
+      "options": {
+        "tabWidth": 2,
+        "parser": "scss"
+      }
+    },
+    {
+      "files": "*.json",
+      "options": {
+        "tabWidth": 4,
+        "parser": "json",
+        "singleQuote": false,
+        "trailingComma": "none"
+      }
+    }
+  ]
+}

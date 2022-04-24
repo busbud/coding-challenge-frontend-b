@@ -1,0 +1,28 @@
+.wrapper {
+    text-align: center;
+}
+
+.main {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.button {
+    background-color: #800080;
+}
+
+.logo {
+    width: 90%;
+    height: 90%;
+}
+
+.link, .link:visited, .link:hover, .link:active {
+    color: #fff;
+    text-decoration: none;
+}

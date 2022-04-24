@@ -1,0 +1,34 @@
+.wrapper {
+    text-align: center;
+}
+
+.main {
+    padding: 20px;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.button {
+    color: #fff;
+}
+
+.loader {
+    height: 100px;
+}
+
+.dataGrid {
+    flex-grow: 1;
+    margin-top: 50px;
+}
+
+.gridWrapper {
+    padding: 20px;
+    border-top: 1px solid #fff;
+    font-size: 14px;
+}
