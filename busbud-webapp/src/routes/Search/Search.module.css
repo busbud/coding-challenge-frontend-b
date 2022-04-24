@@ -1,10 +1,9 @@
-.wrapper {
-    text-align: center;
-}
+@import '../../css/variables.css';
 
 .main {
-    padding: 20px;
-    background-color: #282c34;
+    text-align: center;
+    padding: var(--xlarge-padding);
+    background-color: var(--primary-bg-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -14,21 +13,29 @@
     color: white;
 }
 
-.button {
+.main .button {
     color: #fff;
+    background: var(--accent-color);
 }
 
 .loader {
     height: 100px;
 }
 
+@keyframes rainbow {
+    from { background-position: 0px 0px; }
+    to { background-position: 200px 0px; }
+}
+
+.animation {
+    opacity: 0.75;
+    border-radius: var(--border-radius);
+    background: #800080 linear-gradient(to right, rgba(255, 0, 0, 1) 0%, rgba(255, 154, 0, 1) 10%, rgba(208, 222, 33, 1) 20%, rgba(79, 220, 74, 1) 30%, rgba(63, 218, 216, 1) 40%, rgba(47, 201, 226, 1) 50%, rgba(28, 127, 238, 1) 60%, rgba(95, 21, 242, 1) 70%, rgba(186, 12, 248, 1) 80%, rgba(251, 7, 217, 1) 90%, rgba(255, 0, 0, 1) 100%);
+    animation: rainbow 1s linear infinite;
+}
+
 .dataGrid {
     flex-grow: 1;
     margin-top: 50px;
-}
-
-.gridWrapper {
-    padding: 20px;
-    border-top: 1px solid #fff;
-    font-size: 14px;
+    color: var(--primary-bg-color);
 }

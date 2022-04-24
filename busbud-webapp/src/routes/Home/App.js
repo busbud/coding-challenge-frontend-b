@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@mui/material/Button';
+import PrimaryButton from '../../UI/Button/PrimaryButton';
 import { Link } from 'react-router-dom';
 import s from './App.module.css';
 
@@ -8,18 +8,11 @@ function App() {
         <div className={s.wrapper}>
             <main className={s.main}>
                 <img className={s.logo} src="/Logo-Osheaga.png" alt="Osheaga logo" />
-                <Button
-                    variant="outlined"
-                    color="secondary"
-                    size="large"
-                    classes={{
-                        root: s.button,
-                    }}
-                >
+                <PrimaryButton>
                     <Link className={s.link} to="/search">
                         Ready to Party?
                     </Link>
-                </Button>
+                </PrimaryButton>
             </main>
         </div>
     );

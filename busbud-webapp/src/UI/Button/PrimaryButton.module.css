@@ -1,0 +1,21 @@
+@import '../../css/variables.css';
+
+.primaryButton {
+    background: var(--accent-color);
+    padding: var(--standard-padding) var(--xlarge-padding);
+    border-radius: var(--border-radius);
+    outline: 0;
+    border: 1px solid var(--accent-color);
+    font-size: calc(10px + 1.5vmin);
+    transition: background-color 0.2s linear;
+    color: var(--primary-text-color);
+}
+
+.primaryButton:hover {
+    border: 1px solid var(--secondary-border-color);
+    background: var(--primary-bg-color);
+}
+
+.primaryButton:focus, .primaryButton:active {
+    box-shadow: 0 0 3px 3px var(--focused-accent-color);
+}

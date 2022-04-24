@@ -4,16 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import Search from '../Search/Search';
 
-// const routerWrapper = ({ children }) => {
-//     return (
-//         <BrowserRouter>
-//             <Routes>
-//                 <Route element={children} />
-//             </Routes>
-//         </BrowserRouter>
-//     );
-// };
-
 describe('<App> component', () => {
     it('should render `Ready to Party` button link', () => {
         render(

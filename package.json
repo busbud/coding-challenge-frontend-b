@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js"
+    "test": "jest",
+    "start": "node server/index.js",
+    "build": "cd busbud-webapp && npm install && npm run build"
+  },
+  "engines": {
+    "node": "14.19.0"
   },
   "type": "module",
   "keywords": [],
@@ -16,6 +20,15 @@
     "express": "^4.17.3"
   },
   "devDependencies": {
-    "prettier": "^2.6.2"
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./setupTests.js"
+    ]
   }
 }

@@ -1,0 +1,14 @@
+body {
+    --accent-color: #800080;
+    --focused-accent-color: #E3CFE8;
+    --primary-text-color: #fff;
+    --primary-bg-color: #282c34;
+    --primary-border-color: #282c34;
+    --secondary-border-color: #E8E8E8;
+    --secondary-bg-color: #E8E8E8;
+    --small-padding: 8px;
+    --standard-padding: 12px;
+    --large-padding: 16px;
+    --xlarge-padding: 20px;
+    --border-radius: 5px;
+}

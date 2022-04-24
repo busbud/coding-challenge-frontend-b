@@ -18,4 +18,10 @@ describe('getDepartures', () => {
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(data).toBeNull();
     });
+
+    it('should pass options as query string', async () => {
+        fetch.mockResponseOnce(JSON.stringify({ departures: [{ id: 1 }] }));
+        await getDepartures({ cat: 1, dog: 0 });
+        expect(fetch).toHaveBeenCalledWith('/api/departures/?cat=1&dog=0');
+    });
 });

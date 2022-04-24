@@ -1,0 +1,56 @@
+
+.contentWrapper {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    font-size: calc(10px + 1vmin);
+    border: 1px solid var(--primary-border-color);
+    background: var(--secondary-bg-color);
+    border-radius: var(--border-radius);
+    align-items: center;
+}
+
+.summary {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.originInfo, .destinationInfo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.originInfo > span, .destinationInfo > span {
+    padding: var(--standard-padding);
+}
+
+.location {
+    flex-grow: 2;
+}
+
+.price {
+    flex-grow: 1;
+    font-weight: bold;
+    padding: var(--standard-padding);
+    color: var(--accent-color);
+}
+
+.action {
+    width: 80px;
+    text-align: right;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+    .originInfo, .destinationInfo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .action {
+        text-align: left;
+    }
+}

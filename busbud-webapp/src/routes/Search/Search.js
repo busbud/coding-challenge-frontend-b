@@ -1,18 +1,32 @@
 import React, { useCallback, useState } from 'react';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
+import PrimaryButton from '../../UI/Button/PrimaryButton';
+import FareCard from '../../businessComponents/FareCard/FareCard';
 import { getDepartures } from '../../apiClient/departures';
 import s from './Search.module.css';
 
 function Search() {
+    // Would app be extended with controls to select options like # of adults/child, currency, language
+    // I would add Redux store to the app and connect the component to read from it
+    // for such a micro app I decided not to add additional complexity
     const [data, setData] = useState(null);
     const [isLoading, setLoading] = useState(false);
     const [isError, setError] = useState(false);
+    const [options] = useState({
+        adult: 1,
+        child: 0,
+        senior: 0,
+        lang: 'en',
+        currency: 'CAD',
+        departure_date: '2022-08-01', // in the challenge, date is already in the past
+        departure_origin: 'Quebec', // will be inserted from the list of cities not free typing
+        arrival_origin: 'Montreal', // will be inserted from the list of cities not free typing
+    });
 
     const initSearch = async () => {
         setLoading(true);
+        setError(false);
         try {
-            const data = await getDepartures();
+            const data = await getDepartures(options);
             setData(data.departures);
             setError(false);
             setLoading(false);
@@ -29,89 +43,40 @@ function Search() {
 
     const renderItems = useCallback(() => {
         return data.map((item) => {
-            return (
-                <div className={s.gridWrapper} key={`grid_wrapper_${item.id}`}>
-                    <Grid container spacing={3} key={`grid_container_${item.id}`}>
-                        <Grid
-                            data-testid={`departure_time_${item.id}`}
-                            item
-                            xs={4}
-                            lg={3}
-                            key={`departure_time_${item.id}`}
-                        >{`Departing at: ${item.departure_time}`}</Grid>
-                        <Grid
-                            data-testid={`departure_location_${item.id}`}
-                            key={`departure_location_${item.id}`}
-                            item
-                            xs={4}
-                            lg={2}
-                        >{`From: ${item.departure_location}`}</Grid>
-                        <Grid
-                            data-testid={`arrival_time_${item.id}`}
-                            key={`arrival_time_${item.id}`}
-                            item
-                            xs={4}
-                            lg={2}
-                        >{`Arriving at: ${item.arrival_time}`}</Grid>
-                        <Grid
-                            data-testid={`arrival_location_${item.id}`}
-                            key={`arrival_location_${item.id}`}
-                            item
-                            xs={4}
-                            lg={3}
-                        >{`To: ${item.arrival_location}`}</Grid>
-                        <Grid
-                            data-testid={`total_price_${item.id}`}
-                            key={`total_price_${item.id}`}
-                            item
-                            xs={4}
-                            lg={2}
-                        >{`Total price:${item.total_price} ${item.currency}`}</Grid>
-                    </Grid>
-                </div>
-            );
+            const data = {
+                ...item,
+                arrival_origin: options.arrival_origin,
+                departure_origin: options.departure_origin,
+            };
+            return <FareCard key={`fareCard_${item.id}`} {...data} />;
         });
-    });
+    }, [data, options]);
 
     return (
-        <div className="App">
-            <main className={s.main}>
-                <p data-testid="header_text">
-                    Traveling from Quebec to Montreal on July 1, 2022 x 1 adult
-                </p>
-                {isLoading && (
+        <main className={s.main}>
+            <p data-testid="header_text">
+                Traveling from Quebec to Montreal on August 1, 2022 x 1 adult
+            </p>
+            {
+                // I would also extract loading into WithLoader HOC for production app
+                isLoading && (
                     <>
-                        <img
-                            data-testid="loader"
-                            className={s.loader}
-                            src="/dancing_person.gif"
-                            alt="Dancing person loader"
-                        />
+                        <div className={s.animation}>
+                            <img
+                                data-testid="loader"
+                                className={s.loader}
+                                src="/dancing_person.gif"
+                                alt="Dancing person loader"
+                            />
+                        </div>
                         <p>Searching for trips...</p>
                     </>
-                )}
-                {isError && <p data-testid="error_message">Unable to find the trips :(</p>}
-                {!isLoading && (
-                    <Button
-                        data-testid="search_button"
-                        variant="outlined"
-                        color="secondary"
-                        size="large"
-                        classes={{
-                            root: s.button,
-                        }}
-                        onClick={initSearch}
-                    >
-                        Search
-                    </Button>
-                )}
-                {ifShowData() && (
-                    <div className={s.dataGrid}>
-                        <Grid spacing={3}>{renderItems()}</Grid>
-                    </div>
-                )}
-            </main>
-        </div>
+                )
+            }
+            {isError && <p data-testid="error_message">Unable to find the trips :(</p>}
+            {!isLoading && <PrimaryButton onClick={initSearch}>Search</PrimaryButton>}
+            {ifShowData() && <div className={s.dataGrid}>{renderItems()}</div>}
+        </main>
     );
 }
 
