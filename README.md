@@ -1,5 +1,7 @@
 # Micro app to search for bus trips for a fixed date, fixed locations
 
+Deployed at:  https://busbud-challenge-baluk.herokuapp.com/
+
 ## Micro server to search for departures
 
 API accepts params to configure locations, date and other options (though geohash codes are limited to Montreal and Quebec)
