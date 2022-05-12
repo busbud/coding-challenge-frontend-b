@@ -1,9 +1,62 @@
+import { useState } from "react";
+import { toast } from "react-toastify";
+
 // components
 import SearchBar from "./components/SearchBar";
 
+// api
+import { getDepartures } from "./api";
+
+// utility
+import { processDepartures } from "./utility";
+
 const App = () => {
+	const [passengers, setPassengers] = useState(1);
+	const [isLoading, setIsLoading] = useState(true);
+	const [departures, setDepartures] = useState([]);
+
+	const handleSearch = async (e, index = 0) => {
+		e.preventDefault();
+		setIsLoading(true);
+
+		try {
+			const res = await getDepartures({
+				passengers,
+				index,
+			});
+
+			if (res.error) {
+				setIsLoading(false);
+				toast.error(
+					`${res.error.action_type.toUpperCase()}: ${
+						res.error.type
+					} - ${res.error.details}`
+				);
+				return;
+			}
+
+			if (res.index) {
+				setDepartures([...departures, ...processDepartures(res)]);
+			} else setDepartures(processDepartures(res));
+
+			if (!res.complete)
+				setTimeout(
+					() => handleSearch(e, index + res.departures.length),
+					3000
+				);
+			else setIsLoading(false);
+		} catch (error) {
+			setIsLoading(false);
+			toast.error(error.message);
+		}
+	};
+
 	return (
 		<div className="min-h-screen overflow-auto flex flex-col bg-gradient-to-r from-blue-300 via-green-200 to-pink-300">
+			{/* Progress bar */}
+			{isLoading && (
+				<progress className="progress progress-accent w-full" />
+			)}
 			{/* Osheaga logo */}
 			<div className="mt-20">
 				<a
@@ -18,10 +71,16 @@ const App = () => {
 					/>
 				</a>
 			</div>
-
 			<div className="flex flex-col mx-auto max-w-8xl mt-20">
 				{/* Search */}
-				<SearchBar />
+				<SearchBar
+					origin={"Québec"}
+					destination={"Montréal"}
+					date={"2022-08-02"}
+					passengers={passengers}
+					setPassengers={setPassengers}
+					handleSearch={handleSearch}
+				/>
 
 				{/* Busbud logo */}
 				<div className="self-end">
@@ -39,6 +98,7 @@ const App = () => {
 					</a>
 				</div>
 			</div>
+			{JSON.stringify(departures, null, 2)}
 		</div>
 	);
 };
