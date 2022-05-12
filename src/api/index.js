@@ -7,7 +7,7 @@ export const getDepartures = async ({ passengers, index = 0 } = {}) => {
 		process.env.REACT_APP_BUSBUD_API
 	}/x-departures/${ORIGIN_GEO}/${DESTINATION_GEO}/${DATE}${
 		index ? `/poll?index=${index}&` : "?"
-	}adult=${passengers}`;
+	}adult=${passengers}&currency=CAD`;
 
 	try {
 		const res = await fetch(url, {

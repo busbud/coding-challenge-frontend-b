@@ -8,6 +8,18 @@ const processDate = (dateTime, timeZone) => {
 	return date.toLocaleString("en-US", options);
 };
 
+const calculateDuration = (departureDateTime, arrivalDateTime) => {
+	const departureDate = new Date(departureDateTime);
+	const arrivalDate = new Date(arrivalDateTime);
+
+	const diff = arrivalDate.getTime() - departureDate.getTime();
+	const diffInMinutes = diff / 60000;
+	const hours = Math.floor(diffInMinutes / 60);
+	const minutes = Math.floor(diffInMinutes % 60);
+
+	return `${hours}h${minutes ? ` ${minutes}m` : ""}`;
+};
+
 export const processDepartures = (results) => {
 	const { departures, locations, cities, operators } = results;
 
@@ -35,6 +47,11 @@ export const processDepartures = (results) => {
 			departure?.arrival_timezone
 		);
 
+		const duration = calculateDuration(
+			departure?.departure_time,
+			departure?.arrival_time
+		);
+
 		const from = `${originCity?.name} - ${originLocation?.name}`;
 		const to = `${destinationCity?.name} - ${destinationLocation?.name}`;
 
@@ -53,6 +70,7 @@ export const processDepartures = (results) => {
 			id: departure?.id,
 			departureTime,
 			arrivalTime,
+			duration,
 			from,
 			to,
 			price,

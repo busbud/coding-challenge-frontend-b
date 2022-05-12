@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 
 // components
 import SearchBar from "./components/SearchBar";
+import DepartureCard from "./components/DepartureCard";
 
 // api
 import { getDepartures } from "./api";
@@ -12,7 +13,7 @@ import { processDepartures } from "./utility";
 
 const App = () => {
 	const [passengers, setPassengers] = useState(1);
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 	const [departures, setDepartures] = useState([]);
 
 	const handleSearch = async (e, index = 0) => {
@@ -80,6 +81,7 @@ const App = () => {
 					passengers={passengers}
 					setPassengers={setPassengers}
 					handleSearch={handleSearch}
+					isUpdate={departures.length}
 				/>
 
 				{/* Busbud logo */}
@@ -98,7 +100,13 @@ const App = () => {
 					</a>
 				</div>
 			</div>
-			{JSON.stringify(departures, null, 2)}
+
+			{/* Departures */}
+			<div className="flex flex-col space-y-7 w-2/3 min-w-lg max-w-8xl my-20 mx-auto">
+				{departures.map((departure) => (
+					<DepartureCard key={departure.id} departure={departure} />
+				))}
+			</div>
 		</div>
 	);
 };

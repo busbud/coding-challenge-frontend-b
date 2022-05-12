@@ -12,6 +12,7 @@ const SearchBar = ({
 	passengers,
 	setPassengers,
 	handleSearch,
+	isUpdate,
 }) => {
 	return (
 		<>
@@ -111,7 +112,9 @@ const SearchBar = ({
 						className="grow btn lg:rounded-l-none md:btn-lg min-h-max gap-2 lg:gap-5 bg-sky-700 hover:bg-sky-400 border-none"
 					>
 						<SearchIcon className="w-6 h-6 lg:w-8 md:h-8" />
-						<span className="lg:hidden xl:inline">Search</span>
+						<span className="lg:hidden xl:inline">
+							{isUpdate ? "Update" : "Search"}
+						</span>
 					</button>
 				</div>
 			</div>
