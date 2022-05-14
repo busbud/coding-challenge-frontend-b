@@ -2,12 +2,16 @@ const ORIGIN_GEO = "f2m673";
 const DESTINATION_GEO = "f25dvk";
 const DATE = "2022-08-02";
 
-export const getDepartures = async ({ passengers, index = 0 } = {}) => {
+export const getDepartures = async ({
+	passengers,
+	lang = "en",
+	index = 0,
+} = {}) => {
 	const url = `${
 		process.env.REACT_APP_BUSBUD_API
 	}/x-departures/${ORIGIN_GEO}/${DESTINATION_GEO}/${DATE}${
 		index ? `/poll?index=${index}&` : "?"
-	}adult=${passengers}&currency=CAD`;
+	}adult=${passengers}&lang=${lang}&currency=CAD`;
 
 	try {
 		const res = await fetch(url, {

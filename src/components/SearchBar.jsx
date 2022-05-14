@@ -13,6 +13,7 @@ const SearchBar = ({
 	setPassengers,
 	handleSearch,
 	isUpdate,
+	t,
 }) => {
 	return (
 		<>
@@ -22,7 +23,7 @@ const SearchBar = ({
 						{/* Origin */}
 						<label className="label py-0 mb-1">
 							<span className="text-xs uppercase text-sky-700 font-bold">
-								Origin
+								{t("origin")}
 							</span>
 						</label>
 						<input
@@ -44,7 +45,7 @@ const SearchBar = ({
 					<div className="flex flex-col grow">
 						<label className="label py-0 mb-1">
 							<span className="text-xs uppercase text-sky-700 font-bold">
-								Destination
+								{t("destination")}
 							</span>
 						</label>
 						<input
@@ -63,7 +64,7 @@ const SearchBar = ({
 					<div className="flex flex-col p-3 grow">
 						<label className="label py-0 mb-1">
 							<span className="text-xs uppercase text-sky-700 font-bold">
-								Date
+								{t("date")}
 							</span>
 						</label>
 						<input
@@ -79,7 +80,7 @@ const SearchBar = ({
 					<div className="flex flex-col p-3 grow md:items-center">
 						<label className="label py-0">
 							<span className="text-xs uppercase text-sky-700 font-bold">
-								Passengers
+								{t("passengers")}
 							</span>
 						</label>
 						<div className="flex gap-x-4 my-auto">
@@ -113,7 +114,7 @@ const SearchBar = ({
 					>
 						<SearchIcon className="w-6 h-6 lg:w-8 md:h-8" />
 						<span className="lg:hidden xl:inline">
-							{isUpdate ? "Update" : "Search"}
+							{isUpdate ? t("update") : t("search")}
 						</span>
 					</button>
 				</div>

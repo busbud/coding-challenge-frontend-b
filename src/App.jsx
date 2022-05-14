@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 // components
+import LanguageSelector from "./components/LanguageSelector";
 import SearchBar from "./components/SearchBar";
 import DepartureCard from "./components/DepartureCard";
 
@@ -12,17 +14,20 @@ import { getDepartures } from "./api";
 import { processDepartures } from "./utility";
 
 const App = () => {
+	const { i18n, t } = useTranslation([]);
+
 	const [passengers, setPassengers] = useState(1);
 	const [isLoading, setIsLoading] = useState(false);
 	const [departures, setDepartures] = useState([]);
 
-	const handleSearch = async (e, index = 0) => {
+	const handleSearch = async (e, lang = i18n.language, index = 0) => {
 		e.preventDefault();
 		setIsLoading(true);
 
 		try {
 			const res = await getDepartures({
 				passengers,
+				lang,
 				index,
 			});
 
@@ -54,8 +59,21 @@ const App = () => {
 
 	return (
 		<div className="min-h-screen overflow-auto flex flex-col bg-gradient-to-r from-blue-300 via-green-200 to-pink-300">
+			{/* Language Selector */}
+			<LanguageSelector
+				i18n={i18n}
+				handleSearch={handleSearch}
+				setDepartures={setDepartures}
+			/>
+
 			{/* Osheaga logo */}
-			<div className="mt-20">
+			<div
+				className={
+					!!departures.length
+						? "w-36 mx-auto mb-4 mt-20"
+						: "w-2/3 lg:w-1/3 mx-auto animate-pulse my-20"
+				}
+			>
 				<a
 					href="https://www.osheaga.com"
 					target="_blank"
@@ -64,11 +82,6 @@ const App = () => {
 					<img
 						src="https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png"
 						alt="Osheaga logo"
-						className={
-							!!departures.length
-								? "w-36 mx-auto mb-4"
-								: "w-2/3 lg:w-1/3 mx-auto animate-pulse mb-20"
-						}
 					/>
 				</a>
 			</div>
@@ -76,18 +89,19 @@ const App = () => {
 			<div id="search" className="flex flex-col mx-auto max-w-8xl">
 				{/* Search */}
 				<SearchBar
-					origin={"Québec"}
-					destination={"Montréal"}
+					origin={t("quebec")}
+					destination={t("montreal")}
 					date={"2022-08-02"}
 					passengers={passengers}
 					setPassengers={setPassengers}
 					handleSearch={handleSearch}
 					isUpdate={!!departures.length}
+					t={t}
 				/>
 
 				{/* Busbud logo */}
 				<div className="self-end">
-					<span className="text-xs md:text-sm">Powered by</span>
+					<span className="text-xs md:text-sm">{t("poweredBy")}</span>
 					<a
 						href="https://busbud.com"
 						target="_blank"
@@ -112,7 +126,11 @@ const App = () => {
 			{/* Departures */}
 			<div className="flex flex-col space-y-7 w-2/3 min-w-lg max-w-8xl my-20 mx-auto">
 				{departures.map((departure) => (
-					<DepartureCard key={departure.id} departure={departure} />
+					<DepartureCard
+						key={departure.id}
+						departure={departure}
+						t={t}
+					/>
 				))}
 			</div>
 		</div>

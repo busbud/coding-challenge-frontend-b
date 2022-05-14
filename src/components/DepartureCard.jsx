@@ -6,7 +6,7 @@ import {
 	ChevronRightIcon,
 } from "@heroicons/react/outline";
 
-const DepartureCard = ({ departure }) => {
+const DepartureCard = ({ departure, t }) => {
 	const {
 		departureTime,
 		arrivalTime,
@@ -70,7 +70,7 @@ const DepartureCard = ({ departure }) => {
 					className="btn bg-gray-300 hover:bg-gray-400 md:btn-md md:bg-orange-600 md:hover:bg-orange-400 lg:bnt-lg  border-none"
 					onClick={() => window.open(busbudUrl, "_blank")}
 				>
-					<span className="hidden md:inline">Select</span>
+					<span className="hidden md:inline">{t("select")}</span>
 					<ChevronRightIcon className="md:hidden h-6 w-7 text-white" />
 				</button>
 			</div>

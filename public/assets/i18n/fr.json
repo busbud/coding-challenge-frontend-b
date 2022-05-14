@@ -1,0 +1,12 @@
+{
+	"origin": "Départ",
+	"destination": "Destination",
+	"date": "Date",
+	"passengers": "Passagers",
+	"search": "Rechercher",
+	"update": "Mettre à jour",
+	"poweredBy": "Alimenté par",
+	"select": "Sélectionner",
+	"montreal": "Montréal",
+	"quebec": "Québec"
+}
