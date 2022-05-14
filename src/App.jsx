@@ -57,13 +57,20 @@ const App = () => {
 		}
 	};
 
+	const handleLanguageChange = (e, lang) => {
+		i18n.changeLanguage(lang);
+		if (departures.length) {
+			setDepartures([]);
+			handleSearch(e, lang);
+		}
+	};
+
 	return (
 		<div className="min-h-screen overflow-auto flex flex-col bg-gradient-to-r from-blue-300 via-green-200 to-pink-300">
 			{/* Language Selector */}
 			<LanguageSelector
 				i18n={i18n}
-				handleSearch={handleSearch}
-				setDepartures={setDepartures}
+				handleLanguageChange={handleLanguageChange}
 			/>
 
 			{/* Osheaga logo */}
@@ -115,6 +122,7 @@ const App = () => {
 					</a>
 				</div>
 			</div>
+
 			{/* Loading */}
 			{isLoading && (
 				<img
@@ -123,6 +131,7 @@ const App = () => {
 					className="h-64 mx-auto"
 				/>
 			)}
+
 			{/* Departures */}
 			<div className="flex flex-col space-y-7 w-2/3 min-w-lg max-w-8xl my-20 mx-auto">
 				{departures.map((departure) => (
