@@ -54,10 +54,6 @@ const App = () => {
 
 	return (
 		<div className="min-h-screen overflow-auto flex flex-col bg-gradient-to-r from-blue-300 via-green-200 to-pink-300">
-			{/* Progress bar */}
-			{isLoading && (
-				<progress className="progress progress-accent w-full" />
-			)}
 			{/* Osheaga logo */}
 			<div className="mt-20">
 				<a
@@ -68,11 +64,16 @@ const App = () => {
 					<img
 						src="https://cloud.githubusercontent.com/assets/1574577/12971188/13471bd0-d066-11e5-8729-f0ca5375752e.png"
 						alt="Osheaga logo"
-						className="w-2/3 lg:w-1/3 mx-auto"
+						className={
+							!!departures.length
+								? "w-36 mx-auto mb-4"
+								: "w-2/3 lg:w-1/3 mx-auto animate-pulse mb-20"
+						}
 					/>
 				</a>
 			</div>
-			<div className="flex flex-col mx-auto max-w-8xl mt-20">
+
+			<div id="search" className="flex flex-col mx-auto max-w-8xl">
 				{/* Search */}
 				<SearchBar
 					origin={"Québec"}
@@ -81,7 +82,7 @@ const App = () => {
 					passengers={passengers}
 					setPassengers={setPassengers}
 					handleSearch={handleSearch}
-					isUpdate={departures.length}
+					isUpdate={!!departures.length}
 				/>
 
 				{/* Busbud logo */}
@@ -100,7 +101,14 @@ const App = () => {
 					</a>
 				</div>
 			</div>
-
+			{/* Loading */}
+			{isLoading && (
+				<img
+					src="https://media.baamboozle.com/uploads/images/457198/1634627843_336127_gif-url.gif"
+					alt="Loading..."
+					className="h-64 mx-auto"
+				/>
+			)}
 			{/* Departures */}
 			<div className="flex flex-col space-y-7 w-2/3 min-w-lg max-w-8xl my-20 mx-auto">
 				{departures.map((departure) => (

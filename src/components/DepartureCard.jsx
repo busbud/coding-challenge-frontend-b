@@ -25,7 +25,7 @@ const DepartureCard = ({ departure }) => {
 				<img
 					src={operatorLogo}
 					alt={operatorName}
-					className="object-scale-down w-40 md:w-60"
+					className="w-40 md:w-60"
 				/>
 
 				<span className="text-sm md:text-xl font-bold text-sky-700 mt-1">
