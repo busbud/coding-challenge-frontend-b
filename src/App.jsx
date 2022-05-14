@@ -20,7 +20,11 @@ const App = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [departures, setDepartures] = useState([]);
 
-	const handleSearch = async (e, lang = i18n.language, index = 0) => {
+	const handleSearch = async ({
+		e,
+		lang = i18n.language,
+		index = 0,
+	} = {}) => {
 		e.preventDefault();
 		setIsLoading(true);
 
@@ -41,13 +45,18 @@ const App = () => {
 				return;
 			}
 
-			if (res.index) {
+			if (index)
 				setDepartures([...departures, ...processDepartures(res)]);
-			} else setDepartures(processDepartures(res));
+			else setDepartures(processDepartures(res));
 
 			if (!res.complete)
 				setTimeout(
-					() => handleSearch(e, index + res.departures.length),
+					() =>
+						handleSearch({
+							e,
+							lang,
+							index: index + res.departures.length,
+						}),
 					3000
 				);
 			else setIsLoading(false);
@@ -61,7 +70,7 @@ const App = () => {
 		i18n.changeLanguage(lang);
 		if (departures.length) {
 			setDepartures([]);
-			handleSearch(e, lang);
+			handleSearch({ e, lang });
 		}
 	};
 

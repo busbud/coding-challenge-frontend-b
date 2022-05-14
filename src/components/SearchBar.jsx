@@ -3,6 +3,7 @@ import {
 	PlusIcon,
 	MinusIcon,
 	SearchIcon,
+	InformationCircleIcon,
 } from "@heroicons/react/outline";
 
 const SearchBar = ({
@@ -77,7 +78,7 @@ const SearchBar = ({
 					<div className="divider divider-horizontal lg:py-3" />
 
 					{/* Passengers */}
-					<div className="flex flex-col p-3 grow md:items-center">
+					<div className="flex flex-col p-3 md:items-center">
 						<label className="label py-0">
 							<span className="text-xs uppercase text-sky-700 font-bold">
 								{t("passengers")}
@@ -96,6 +97,7 @@ const SearchBar = ({
 							<span className="font-semibold">{passengers}</span>
 							<button
 								className="btn btn-circle btn-xs bg-sky-700 hover:bg-sky-400 border-none"
+								disabled={passengers > 4}
 								onClick={() =>
 									setPassengers((prevState) => prevState + 1)
 								}
@@ -103,13 +105,22 @@ const SearchBar = ({
 								<PlusIcon className="w-3 h-3" />
 							</button>
 						</div>
+
+						{passengers > 4 && (
+							<div className="flex space-x-1">
+								<InformationCircleIcon className="w-4 h-4 text-sky-700 self-center" />
+								<span className="text-sky-700 text-xs">
+									<small>Limit of 5 passengers</small>
+								</span>
+							</div>
+						)}
 					</div>
 				</div>
 
 				{/* Button */}
 				<div className="flex flex-col grow max-w-lg mt-8 p-2 lg:p-0 lg:ml-16 lg:mt-0">
 					<button
-						onClick={handleSearch}
+						onClick={(e) => handleSearch({ e })}
 						className="grow btn lg:rounded-l-none md:btn-lg min-h-max gap-2 lg:gap-5 bg-sky-700 hover:bg-sky-400 border-none"
 					>
 						<SearchIcon className="w-6 h-6 lg:w-8 md:h-8" />

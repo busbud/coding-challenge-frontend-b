@@ -38,7 +38,12 @@ const processPrice = ({
 };
 
 export const processDepartures = (results) => {
-	const { departures, locations, cities, operators } = results;
+	const {
+		departures = [],
+		locations = [],
+		cities = [],
+		operators = [],
+	} = results;
 
 	// locations object -> key: id, value: info
 	const locationsMap = locations.reduce((acc, location) => {
@@ -88,6 +93,8 @@ export const processDepartures = (results) => {
 		const price = processPrice({
 			price: departure?.prices?.total,
 			currency: departure?.prices?.currency,
+			minDecimal: 2,
+			maxDecimal: 2,
 		});
 
 		return {
