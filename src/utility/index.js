@@ -23,20 +23,31 @@ const calculateDuration = (departureDateTime, arrivalDateTime) => {
 export const processDepartures = (results) => {
 	const { departures, locations, cities, operators } = results;
 
-	const processedDepartures = departures?.map((departure) => {
-		const originLocation = locations?.find(
-			(location) => location?.id === departure?.origin_location_id
-		);
-		const destinationLocation = locations?.find(
-			(location) => location?.id === departure?.destination_location_id
-		);
+	// locations object -> key: id, value: info
+	const locationsMap = locations.reduce((acc, location) => {
+		acc[location.id] = location;
+		return acc;
+	}, {});
 
-		const originCity = cities?.find(
-			(city) => city?.id === originLocation?.city_id
-		);
-		const destinationCity = cities.find(
-			(city) => city?.id === destinationLocation?.city_id
-		);
+	// cities object -> key: id, value: info
+	const citiesMap = cities.reduce((acc, city) => {
+		acc[city.id] = city;
+		return acc;
+	}, {});
+
+	// operators object -> key: id, value: info
+	const operatorsMap = operators.reduce((acc, operator) => {
+		acc[operator.id] = operator;
+		return acc;
+	}, {});
+
+	const processedDepartures = departures?.map((departure) => {
+		const originLocation = locationsMap[departure?.origin_location_id];
+		const destinationLocation =
+			locationsMap[departure?.destination_location_id];
+
+		const originCity = citiesMap[originLocation?.city_id];
+		const destinationCity = citiesMap[destinationLocation?.city_id];
 
 		const departureTime = processDate(
 			departure?.departure_time,
@@ -55,9 +66,7 @@ export const processDepartures = (results) => {
 		const from = `${originCity?.name} - ${originLocation?.name}`;
 		const to = `${destinationCity?.name} - ${destinationLocation?.name}`;
 
-		const operator = operators?.find(
-			(operator) => operator?.id === departure?.operator_id
-		);
+		const operator = operatorsMap[departure?.operator_id];
 
 		const price = new Intl.NumberFormat("en-US", {
 			style: "currency",
