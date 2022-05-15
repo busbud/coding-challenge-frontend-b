@@ -78,13 +78,13 @@ const SearchBar = ({
 					<div className="divider divider-horizontal lg:py-3" />
 
 					{/* Passengers */}
-					<div className="flex flex-col p-3 md:items-center">
+					<div className="flex flex-col p-3 md:items-center space-y-3">
 						<label className="label py-0">
 							<span className="text-xs uppercase text-sky-700 font-bold">
 								{t("passengers")}
 							</span>
 						</label>
-						<div className="flex gap-x-4 my-auto">
+						<div className="flex space-x-4">
 							<button
 								className="btn btn-xs btn-circle bg-sky-700 hover:bg-sky-400 border-none"
 								disabled={passengers < 2}
@@ -107,10 +107,10 @@ const SearchBar = ({
 						</div>
 
 						{passengers > 4 && (
-							<div className="flex space-x-1">
-								<InformationCircleIcon className="w-4 h-4 text-sky-700 self-center" />
+							<div className="flex space-x-1 w-28 md:w-full">
+								<InformationCircleIcon className="hidden md:inline-flex w-4 h-4 text-sky-700 self-center" />
 								<span className="text-sky-700 text-xs">
-									<small>Limit of 5 passengers</small>
+									<small>{t("limit5Passengers")}</small>
 								</span>
 							</div>
 						)}

@@ -20,23 +20,6 @@ const calculateDuration = (departureDateTime, arrivalDateTime) => {
 	return `${hours}h${minutes ? ` ${minutes}m` : ""}`;
 };
 
-const processPrice = ({
-	price,
-	currency,
-	minDecimal = 0,
-	maxDecimal = 0,
-} = {}) => {
-	const priceBeforeDecimal = price.toString().slice(0, -2);
-	const priceAfterDecimal = price.toString().slice(-2);
-
-	return new Intl.NumberFormat("en-US", {
-		style: "currency",
-		currency,
-		minimumFractionDigits: minDecimal,
-		maximumFractionDigits: maxDecimal,
-	}).format(`${priceBeforeDecimal}.${priceAfterDecimal}`);
-};
-
 export const processDepartures = (results) => {
 	const {
 		departures = [],
@@ -90,11 +73,12 @@ export const processDepartures = (results) => {
 
 		const operator = operatorsMap[departure?.operator_id];
 
-		const price = processPrice({
-			price: departure?.prices?.total,
+		// convert from cents to dollars and round to 0 decimal places
+		const price = (departure?.prices?.total / 100).toLocaleString("en-US", {
+			style: "currency",
 			currency: departure?.prices?.currency,
-			minDecimal: 2,
-			maxDecimal: 2,
+			minimumFractionDigits: 0,
+			maximumFractionDigits: 0,
 		});
 
 		return {
