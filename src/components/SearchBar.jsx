@@ -36,7 +36,7 @@ const SearchBar = ({
 					</div>
 
 					{/* Switch  */}
-					<div className="mt-2 place-self-center sm:place-self-end">
+					<div className="mt-2 place-self-center sm:place-self-center">
 						<button className="btn btn-circle border-none bg-sky-700 hover:bg-sky-400">
 							<SwitchVerticalIcon className="h-6 w-6 sm:rotate-90" />
 						</button>
@@ -105,7 +105,7 @@ const SearchBar = ({
 								<PlusIcon className="h-3 w-3" />
 							</button>
 						</div>
-						
+
 						{/* Limit Alert */}
 						{passengers > 4 && (
 							<div className="flex w-28 space-x-1 md:w-full">
