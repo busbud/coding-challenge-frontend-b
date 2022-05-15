@@ -2,18 +2,18 @@ import { ChevronDownIcon, TranslateIcon } from "@heroicons/react/outline";
 
 const LanguageSelector = ({ i18n, handleLanguageChange }) => {
 	return (
-		<div className="ml-auto mr-20 mt-6 dropdown dropdown-end">
+		<div className="dropdown dropdown-end ml-auto mr-20 mt-6">
 			<div
-				className="flex space-x-2 btn btn-sm btn-outline text-sky-700 hover:bg-sky-700 hover:bg-transparent hover:border-sky-700"
+				className="btn btn-outline btn-sm flex space-x-2 text-sky-700 hover:border-sky-400 hover:bg-sky-400"
 				tabIndex="0"
 			>
-				<TranslateIcon className="w-6 h- place-self-center" />
-				<ChevronDownIcon className="w-4 h-4 place-self-center" />
+				<TranslateIcon className="h- w-6 place-self-center" />
+				<ChevronDownIcon className="h-4 w-4 place-self-center" />
 			</div>
 
 			<ul
 				tabIndex="0"
-				className="dropdown-content menu p-2 shadow rounded-lg bg-base-100 w-52"
+				className="dropdown-content menu w-52 rounded-lg bg-base-100 p-2 shadow"
 			>
 				<li
 					onClick={(e) => handleLanguageChange(e, "en")}

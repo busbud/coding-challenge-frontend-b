@@ -75,7 +75,7 @@ const App = () => {
 	};
 
 	return (
-		<div className="min-h-screen overflow-auto flex flex-col bg-gradient-to-r from-blue-300 via-green-200 to-pink-300">
+		<div className="flex min-h-screen flex-col overflow-auto bg-gradient-to-r from-blue-300 via-green-200 to-pink-300">
 			{/* Language Selector */}
 			<LanguageSelector
 				i18n={i18n}
@@ -86,8 +86,8 @@ const App = () => {
 			<div
 				className={
 					!!departures.length
-						? "w-36 mx-auto mb-4 mt-20"
-						: "w-2/3 lg:w-1/3 mx-auto animate-pulse my-20"
+						? "mx-auto mb-4 mt-20 w-36"
+						: "mx-auto my-20 w-2/3 animate-pulse lg:w-1/3"
 				}
 			>
 				<a
@@ -102,7 +102,7 @@ const App = () => {
 				</a>
 			</div>
 
-			<div id="search" className="flex flex-col mx-auto max-w-8xl">
+			<div className="max-w-8xl mx-auto flex flex-col">
 				{/* Search */}
 				<SearchBar
 					origin={t("quebec")}
@@ -137,12 +137,12 @@ const App = () => {
 				<img
 					src="https://media.baamboozle.com/uploads/images/457198/1634627843_336127_gif-url.gif"
 					alt="Loading..."
-					className="h-64 mx-auto"
+					className="mx-auto h-64"
 				/>
 			)}
 
 			{/* Departures */}
-			<div className="flex flex-col space-y-7 w-2/3 min-w-lg max-w-8xl my-20 mx-auto">
+			<div className="min-w-lg max-w-8xl my-20 mx-auto flex w-2/3 flex-col space-y-7">
 				{departures.map((departure) => (
 					<DepartureCard
 						key={departure.id}

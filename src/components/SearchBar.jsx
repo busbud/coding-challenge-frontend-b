@@ -18,12 +18,12 @@ const SearchBar = ({
 }) => {
 	return (
 		<>
-			<div className="flex flex-col lg:flex-row bg-white rounded-lg drop-shadow-lg">
-				<div className="flex flex-col sm:flex-row p-3 gap-x-6">
-					<div className="flex flex-col grow">
+			<div className="flex flex-col rounded-lg bg-white drop-shadow-lg lg:flex-row">
+				<div className="flex flex-col gap-x-6 p-3 sm:flex-row">
+					<div className="flex grow flex-col">
 						{/* Origin */}
-						<label className="label py-0 mb-1">
-							<span className="text-xs uppercase text-sky-700 font-bold">
+						<label className="label mb-1 py-0">
+							<span className="text-xs font-bold uppercase text-sky-700">
 								{t("origin")}
 							</span>
 						</label>
@@ -36,16 +36,16 @@ const SearchBar = ({
 					</div>
 
 					{/* Switch  */}
-					<div className="place-self-center sm:place-self-end mt-2">
-						<button className="btn btn-circle bg-sky-700 hover:bg-sky-400 border-none">
-							<SwitchVerticalIcon className="w-6 h-6 sm:rotate-90" />
+					<div className="mt-2 place-self-center sm:place-self-end">
+						<button className="btn btn-circle border-none bg-sky-700 hover:bg-sky-400">
+							<SwitchVerticalIcon className="h-6 w-6 sm:rotate-90" />
 						</button>
 					</div>
 
 					{/* Destination */}
-					<div className="flex flex-col grow">
-						<label className="label py-0 mb-1">
-							<span className="text-xs uppercase text-sky-700 font-bold">
+					<div className="flex grow flex-col">
+						<label className="label mb-1 py-0">
+							<span className="text-xs font-bold uppercase text-sky-700">
 								{t("destination")}
 							</span>
 						</label>
@@ -62,9 +62,9 @@ const SearchBar = ({
 
 				<div className="flex justify-evenly">
 					{/* Date */}
-					<div className="flex flex-col p-3 grow">
-						<label className="label py-0 mb-1">
-							<span className="text-xs uppercase text-sky-700 font-bold">
+					<div className="flex grow flex-col p-3">
+						<label className="label mb-1 py-0">
+							<span className="text-xs font-bold uppercase text-sky-700">
 								{t("date")}
 							</span>
 						</label>
@@ -78,38 +78,39 @@ const SearchBar = ({
 					<div className="divider divider-horizontal lg:py-3" />
 
 					{/* Passengers */}
-					<div className="flex flex-col p-3 md:items-center space-y-3">
+					<div className="flex flex-col space-y-3 p-3 md:items-center">
 						<label className="label py-0">
-							<span className="text-xs uppercase text-sky-700 font-bold">
+							<span className="text-xs font-bold uppercase text-sky-700">
 								{t("passengers")}
 							</span>
 						</label>
 						<div className="flex space-x-4">
 							<button
-								className="btn btn-xs btn-circle bg-sky-700 hover:bg-sky-400 border-none"
+								className="btn btn-circle btn-xs border-none bg-sky-700 hover:bg-sky-400"
 								disabled={passengers < 2}
 								onClick={() =>
 									setPassengers((prevState) => prevState - 1)
 								}
 							>
-								<MinusIcon className="w-3 h-3" />
+								<MinusIcon className="h-3 w-3" />
 							</button>
 							<span className="font-semibold">{passengers}</span>
 							<button
-								className="btn btn-circle btn-xs bg-sky-700 hover:bg-sky-400 border-none"
+								className="btn btn-circle btn-xs border-none bg-sky-700 hover:bg-sky-400"
 								disabled={passengers > 4}
 								onClick={() =>
 									setPassengers((prevState) => prevState + 1)
 								}
 							>
-								<PlusIcon className="w-3 h-3" />
+								<PlusIcon className="h-3 w-3" />
 							</button>
 						</div>
-
+						
+						{/* Limit Alert */}
 						{passengers > 4 && (
-							<div className="flex space-x-1 w-28 md:w-full">
-								<InformationCircleIcon className="hidden md:inline-flex w-4 h-4 text-sky-700 self-center" />
-								<span className="text-sky-700 text-xs">
+							<div className="flex w-28 space-x-1 md:w-full">
+								<InformationCircleIcon className="hidden h-4 w-4 self-center text-sky-700 md:inline-flex" />
+								<span className="text-xs text-sky-700">
 									<small>{t("limit5Passengers")}</small>
 								</span>
 							</div>
@@ -118,12 +119,12 @@ const SearchBar = ({
 				</div>
 
 				{/* Button */}
-				<div className="flex flex-col grow max-w-lg mt-8 p-2 lg:p-0 lg:ml-16 lg:mt-0">
+				<div className="mt-8 flex max-w-lg grow flex-col p-2 lg:ml-16 lg:mt-0 lg:p-0">
 					<button
 						onClick={(e) => handleSearch({ e })}
-						className="grow btn lg:rounded-l-none md:btn-lg min-h-max gap-2 lg:gap-5 bg-sky-700 hover:bg-sky-400 border-none"
+						className="btn min-h-max grow gap-2 border-none bg-sky-700 hover:bg-sky-400 md:btn-lg lg:gap-5 lg:rounded-l-none"
 					>
-						<SearchIcon className="w-6 h-6 lg:w-8 md:h-8" />
+						<SearchIcon className="h-6 w-6 md:h-8 lg:w-8" />
 						<span className="lg:hidden xl:inline">
 							{isUpdate ? t("update") : t("search")}
 						</span>
