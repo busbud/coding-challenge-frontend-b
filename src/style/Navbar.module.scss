@@ -1,0 +1,40 @@
+.navbar {
+  position: relative;
+  top: 0;
+  height: 5rem;
+  background: #0795ff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: mistyrose;
+  text-transform: uppercase;
+  .home {
+    font-size: 1.3rem;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.5;
+    }
+  }
+  .logo {
+    display: flex;
+    img {
+      height: 4rem;
+    }
+  }
+  .translate {
+    font-size: 1.3rem;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.5;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .logo {
+    img {
+      height: 2.5rem !important;
+    }
+  }
+}
