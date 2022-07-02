@@ -5,6 +5,8 @@ import reportWebVitals from './reportWebVitals';
 
 import Home from './Pages/Home';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
