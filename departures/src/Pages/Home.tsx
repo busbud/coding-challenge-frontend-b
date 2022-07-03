@@ -23,9 +23,11 @@ const busbudColorDark = '#edfcf9';
 const titleTextColor = '#0274ca';
 
 interface TDeparture {
+    id: string,
     departureTime: string,
     arrivalTime: string,
-    locationName: string,
+    locationName_Origin: string,
+    locationName_Destination: string,
     price: number
 }
 
@@ -38,18 +40,25 @@ const Home = () => {
         const _locations = data.locations;
         const _cities = data.cities;
 
-        const _departures = data.departures.map((item: any) => {
+        //console.log('DATA ', data);
 
-            const itemLocation = _locations.filter((loc: any) => loc.id === item.origin_location_id)[0];
+        const _departures: Array<TDeparture> = data.departures.map((item: any) => {
 
-            const itemCity = _cities.filter((city: any) => city.id === itemLocation.city_id)[0];
+            const itemLocation_Origin = _locations.filter((loc: any) => loc.id === item.origin_location_id)[0];
+            const itemLocation_Destination = _locations.filter((loc: any) => loc.id === item.destination_location_id)[0];
 
-            const locationName = `${itemCity.name} - ${itemLocation.name}`;
+            const itemCity_Origin = _cities.filter((city: any) => city.id === itemLocation_Origin.city_id)[0];
+            const itemCity_Destination = _cities.filter((city: any) => city.id === itemLocation_Destination.city_id)[0];
+
+            const locationName_Origin = `${itemCity_Origin.name} - ${itemLocation_Origin.name}`;
+            const locationName_Destination = `${itemCity_Destination.name} - ${itemLocation_Destination.name}`;
 
             return {
+                id: item.id,
                 departureTime: item.departure_time,
                 arrivalTime: item.arrival_time,
-                locationName,
+                locationName_Origin,
+                locationName_Destination,
                 price: item.prices.total
             }
         });
@@ -66,7 +75,7 @@ const Home = () => {
     return (
         <div className="HomeContainer">
             {/* {Alerts()} */}
-            {Form()}
+            {Form(departures)}
         </div>
     );
 }
@@ -83,7 +92,26 @@ const Alerts = () => {
     )
 }
 
-const Form = () => {
+interface DepartureCardProps {
+    departure: TDeparture
+}
+const DepartureCard = (props: DepartureCardProps) => {
+    const { departureTime, arrivalTime, locationName_Origin, locationName_Destination, price } = props.departure;
+
+    return (
+        <div style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'beige', margin: '4px' }}>
+            <div style={{ flexGrow: 1 }}>
+                <div>{departureTime} - {locationName_Origin}</div>
+                <div>{arrivalTime} - {locationName_Destination}</div>
+            </div>
+            <div style={{ width: '120px' }}>
+                <div>{price}</div>
+            </div>
+        </div>
+    )
+}
+
+const Form = (departures: Array<TDeparture>) => {
     return (
         <Container style={{ backgroundColor: busbudColorDark }}>
             <Row style={{ backgroundColor: busbudColorLight }}>
@@ -97,18 +125,17 @@ const Form = () => {
                 </Col>
             </Row>
             <Row>
-                <Col sm={8}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        sm=8
+                <Col>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        {departures.map((departure) => <DepartureCard key={departure.id} departure={departure} />)}
                     </div>
                 </Col>
-                <Col sm={4}>sm=4</Col>
             </Row>
-            <Row>
+            {/* <Row>
                 <Col sm>sm=true</Col>
                 <Col sm>sm=true</Col>
                 <Col sm>sm=true</Col>
-            </Row>
+            </Row> */}
         </Container>
     );
 }
