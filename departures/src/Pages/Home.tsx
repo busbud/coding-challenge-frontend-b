@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-import { Alert, Container, Row, Col } from 'react-bootstrap';
+import { Alert, Container, Row, Col, Form, FloatingLabel, Popover, Overlay, OverlayTrigger, Button } from 'react-bootstrap';
 
 import moment from 'moment';
 
 import { fetchDepartures, TQueryParams } from '../Connections/connections';
 
 import { BusbudLogo } from '../Components/Icons';
+import { SelectionMenu, Popover_Origin } from '../Components/SelectionMenu';
 
 export const origin = "f2m673"; //(Québec - geohash: f2m673)
 export const destination = "f25dvk"; //(Montréal - geohash: f25dvk)
@@ -36,6 +37,14 @@ interface TDeparture {
 
 const Home = () => {
     const [departures, setDepartures] = useState<Array<TDeparture>>([]);
+    const [showDepartures, setShowDepartures] = useState<boolean>(false);
+    const [target, setTarget] = useState<any>(null);
+    const ref = useRef(null);
+
+    const clickShowDepartures = (event: any) => {
+        setShowDepartures(!showDepartures);
+        setTarget(event.target);
+    };
 
     const fetchDeparturesFromAPI = async () => {
         const data = await fetchDepartures(origin, destination, date, queryParams);
@@ -78,22 +87,38 @@ const Home = () => {
 
     return (
         <div className="HomeContainer">
-            {/* {Alerts()} */}
-            {Form(departures)}
+            <Container style={{ backgroundColor: busbudColorDark }}>
+                <Row style={{ backgroundColor: busbudColorLight }}>
+                    <Col>
+                        <div style={{ display: 'flex', color: titleTextColor, justifyContent: 'flex-start', padding: '4px 10px 4px 10px' }}>
+                            <BusbudLogo />
+                            <div style={{ display: 'flex', alignItems: 'flex-end', flexGrow: 1, padding: '0px 10px 3px 20px' }}>
+                                Departures (Coding Challenge)
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col sm={2}></Col>
+                    <Col sm={8}>
+                        {SelectionMenu(clickShowDepartures, setShowDepartures)}
+                    </Col>
+                    <Col sm={2}></Col>
+                </Row>
+                <Row>
+                    <Col sm={3}></Col>
+                    <Col sm={6}>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                            {departures.map((departure) => <DepartureCard key={departure.id} departure={departure} />)}
+                        </div>
+                    </Col>
+                    <Col sm={3}></Col>
+                </Row>
+            </Container>
+
+            {Popover_Origin(showDepartures, target, ref)}
         </div>
     );
-}
-
-const Alerts = () => {
-    return (
-        <div>
-            {['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'].map((variant) => (
-                <Alert key={variant} variant={variant}>
-                    This is a {variant} alert—check it out!
-                </Alert>
-            ))}
-        </div>
-    )
 }
 
 const FormatDate = (dateString: string) => {
@@ -124,37 +149,6 @@ const DepartureCard = (props: DepartureCardProps) => {
             </div>
         </div>
     )
-}
-
-const Form = (departures: Array<TDeparture>) => {
-    return (
-        <Container style={{ backgroundColor: busbudColorDark }}>
-            <Row style={{ backgroundColor: busbudColorLight }}>
-                <Col>
-                    <div style={{ display: 'flex', color: titleTextColor, justifyContent: 'flex-start', padding: '4px 10px 4px 10px' }}>
-                        <BusbudLogo />
-                        <div style={{ display: 'flex', alignItems: 'flex-end', flexGrow: 1, padding: '0px 10px 3px 20px' }}>
-                            Departures (Coding Challenge)
-                        </div>
-                    </div>
-                </Col>
-            </Row>
-            <Row>
-                <Col sm={3}></Col>
-                <Col sm={6}>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                        {departures.map((departure) => <DepartureCard key={departure.id} departure={departure} />)}
-                    </div>
-                </Col>
-                <Col sm={3}></Col>
-            </Row>
-            {/* <Row>
-                <Col sm>sm=true</Col>
-                <Col sm>sm=true</Col>
-                <Col sm>sm=true</Col>
-            </Row> */}
-        </Container>
-    );
 }
 
 export default Home;
