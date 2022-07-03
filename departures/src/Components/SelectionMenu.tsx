@@ -4,26 +4,15 @@ import { TLocation } from '../Pages/Home';
 
 export const SelectionMenu = (
     showDepartures: (event: any) => void,
-    setShowDepartures: React.Dispatch<React.SetStateAction<boolean>>
+    showDestinations: (event: any) => void,
+    setShowDepartures: React.Dispatch<React.SetStateAction<boolean>>,
+    setShowDestinations: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
 
     window.addEventListener('click', (e) => {
         if (document) {
-            const popOverElement = document.getElementById('popover-contained');
-            const inputElement = document.getElementById('fInputOrigin');
-            let clickedOnInputOrPopOver = false;
-
-            if (popOverElement && popOverElement.contains(e.target as HTMLElement)) {
-                clickedOnInputOrPopOver = true;
-                inputElement?.focus();
-            }
-            if (inputElement && inputElement.contains(e.target as HTMLElement)) {
-                clickedOnInputOrPopOver = true;
-            }
-
-            if (!clickedOnInputOrPopOver) {
-                setShowDepartures(false);
-            }
+            HandlingClosePopOver(e, 'popover-contained-origin', 'fInputOrigin', setShowDepartures);
+            HandlingClosePopOver(e, 'popover-contained-destination', 'fInputDestination', setShowDestinations)
         }
     });
 
@@ -38,7 +27,7 @@ export const SelectionMenu = (
                 </FloatingLabel>
             </Col>
             <Col md>
-                <FloatingLabel controlId="fInputDestination" label="Destination" style={{ boxShadow: boxShadowValue }}>
+                <FloatingLabel controlId="fInputDestination" label="Destination" onClick={showDestinations} style={{ boxShadow: boxShadowValue }}>
                     <Form.Control placeholder="destination" />
                 </FloatingLabel>
             </Col>
@@ -56,24 +45,30 @@ export const SelectionMenu = (
     )
 }
 
-export const Popover_Origin = (showDepartures: boolean, originList: Array<TLocation>, target: any, ref: any) => {
+export const LocationPopOver = (
+    title: string,
+    visible: boolean,
+    listItems: Array<TLocation>,
+    target: any,
+    ref: any
+) => {
 
     return (
         <div ref={ref}>
             <Overlay
-                show={showDepartures}
+                show={visible}
                 target={target}
                 placement="bottom-start"
                 container={ref}
                 containerPadding={20}
                 transition={true}
             >
-                <Popover id="popover-contained">
-                    <Popover.Header as="h3">Origin</Popover.Header>
+                <Popover id={`popover-contained-${title.toLocaleLowerCase()}`}>
+                    <Popover.Header as="h3">{title}</Popover.Header>
                     <Popover.Body>
                         <div style={{ display: 'flex', width: '100%', flexDirection: 'column' }}>
-                            {originList.map(origin => {
-                                const { id, city, state } = origin;
+                            {listItems.map(item => {
+                                const { id, city, state } = item;
 
                                 const displayName = `${city}, ${state}`;
 
@@ -86,4 +81,23 @@ export const Popover_Origin = (showDepartures: boolean, originList: Array<TLocat
             </Overlay>
         </div>
     )
+}
+
+const HandlingClosePopOver = (e: MouseEvent, popOverId: string, inputId: string, clickEvent: React.Dispatch<React.SetStateAction<boolean>>) => {
+    const popOverElement = document.getElementById(popOverId);
+    const inputElement = document.getElementById(inputId);
+
+    let clickedOnInputOrPopOver = false;
+
+    if (popOverElement && popOverElement.contains(e.target as HTMLElement)) {
+        clickedOnInputOrPopOver = true;
+        inputElement?.focus();
+    }
+    if (inputElement && inputElement.contains(e.target as HTMLElement)) {
+        clickedOnInputOrPopOver = true;
+    }
+
+    if (!clickedOnInputOrPopOver) {
+        clickEvent(false);
+    }
 }

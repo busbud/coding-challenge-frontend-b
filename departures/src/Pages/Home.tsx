@@ -7,7 +7,7 @@ import moment from 'moment';
 import { fetchDepartures, TQueryParams } from '../Connections/connections';
 
 import { BusbudLogo } from '../Components/Icons';
-import { SelectionMenu, Popover_Origin } from '../Components/SelectionMenu';
+import { SelectionMenu, LocationPopOver } from '../Components/SelectionMenu';
 
 export const origin = "f2m673"; //(Québec - geohash: f2m673)
 export const destination = "f25dvk"; //(Montréal - geohash: f25dvk)
@@ -47,12 +47,20 @@ interface TDeparture {
 const Home = () => {
     const [departures, setDepartures] = useState<Array<TDeparture>>([]);
     const [showDepartures, setShowDepartures] = useState<boolean>(false);
+    const [showDestinations, setShowDestinations] = useState<boolean>(false);
     const [target, setTarget] = useState<any>(null);
-    const ref = useRef(null);
+    const [targetDestination, setTargetDestination] = useState<any>(null);
+    const refOrigin = useRef(null);
+    const refDestination = useRef(null);
 
     const clickShowDepartures = (event: any) => {
         setShowDepartures(!showDepartures);
         setTarget(event.target);
+    };
+
+    const clickShowDestinations = (event: any) => {
+        setShowDestinations(!showDestinations);
+        setTargetDestination(event.target);
     };
 
     const fetchDeparturesFromAPI = async () => {
@@ -110,7 +118,7 @@ const Home = () => {
                 <Row>
                     <Col sm={2}></Col>
                     <Col sm={8}>
-                        {SelectionMenu(clickShowDepartures, setShowDepartures)}
+                        {SelectionMenu(clickShowDepartures, clickShowDestinations, setShowDepartures, setShowDestinations)}
                     </Col>
                     <Col sm={2}></Col>
                 </Row>
@@ -125,7 +133,8 @@ const Home = () => {
                 </Row>
             </Container>
 
-            {Popover_Origin(showDepartures, originAvailable, target, ref)}
+            {LocationPopOver('Origin', showDepartures, originAvailable, target, refOrigin)}
+            {LocationPopOver('Destination', showDestinations, destinationAvailable, targetDestination, refDestination)}
         </div>
     );
 }
