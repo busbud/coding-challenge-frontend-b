@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-import { Alert, Container, Row, Col, Form, FloatingLabel, Popover, Overlay, OverlayTrigger, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import moment from 'moment';
 
@@ -25,6 +25,15 @@ const busbudColorLight = '#def7fb';
 const busbudColorDark = '#edfcf9';
 const titleTextColor = '#0274ca';
 
+
+const originAvailable = [{ id: 1, city: 'Québec City', state: 'Quebec' }];
+const destinationAvailable = [{ id: 1, city: 'Montreal', state: 'Quebec' }];
+
+export interface TLocation {
+    id: number,
+    city: string,
+    state: string
+}
 interface TDeparture {
     id: string,
     departureTime: string,
@@ -116,7 +125,7 @@ const Home = () => {
                 </Row>
             </Container>
 
-            {Popover_Origin(showDepartures, target, ref)}
+            {Popover_Origin(showDepartures, originAvailable, target, ref)}
         </div>
     );
 }
