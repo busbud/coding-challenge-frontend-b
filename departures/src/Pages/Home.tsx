@@ -22,15 +22,41 @@ const busbudColorLight = '#def7fb';
 const busbudColorDark = '#edfcf9';
 const titleTextColor = '#0274ca';
 
+interface TDeparture {
+    departureTime: string,
+    arrivalTime: string,
+    locationName: string,
+    price: number
+}
+
 const Home = () => {
-    const [departures, setDepartures] = useState([]);
+    const [departures, setDepartures] = useState<Array<TDeparture>>([]);
 
     const fetchDeparturesFromAPI = async () => {
-        const _departures = await fetchDepartures(origin, destination, date, queryParams);
+        const data = await fetchDepartures(origin, destination, date, queryParams);
 
-        console.log('Departures Result 2 = ', _departures);
+        const _locations = data.locations;
+        const _cities = data.cities;
 
+        const _departures = data.departures.map((item: any) => {
 
+            const itemLocation = _locations.filter((loc: any) => loc.id === item.origin_location_id)[0];
+
+            const itemCity = _cities.filter((city: any) => city.id === itemLocation.city_id)[0];
+
+            const locationName = `${itemCity.name} - ${itemLocation.name}`;
+
+            return {
+                departureTime: item.departure_time,
+                arrivalTime: item.arrival_time,
+                locationName,
+                price: item.prices.total
+            }
+        });
+
+        setDepartures(_departures);
+
+        console.log('Departures Result = ', _departures);
     }
 
     useEffect(() => {
