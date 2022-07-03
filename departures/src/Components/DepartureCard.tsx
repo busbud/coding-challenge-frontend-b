@@ -3,7 +3,9 @@ import moment from 'moment';
 import { TDeparture } from '../Pages/Home';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot, faCircleDot } from '@fortawesome/free-solid-svg-icons'
+import { faLocationDot, faCircleDot } from '@fortawesome/free-solid-svg-icons';
+
+import { Button } from 'react-bootstrap';
 
 interface DepartureCardProps {
     departure: TDeparture
@@ -31,12 +33,20 @@ export const DepartureCard = (props: DepartureCardProps) => {
                 <div style={{ display: 'flex' }}>
                     {locationIcon('origin')} {_departureTime} - {locationName_Origin}
                 </div>
-                <div style={{ display: 'flex', marginTop: '10px' }}>
+                <div style={{ display: 'flex', marginTop: '22px' }}>
                     {locationIcon('destination')} {_arrivalTime} - {locationName_Destination}
                 </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div>{currency}${price}</div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div>
+                    <div style={{ fontWeight: '500' }}>${price}</div>
+                    <div style={{ fontSize: '10px', marginTop: '-4px', width: '100%', display: 'flex', flexDirection: 'column', textAlign: 'right' }}>{currency}</div>
+                </div>
+                <div>
+                    <Button variant="outline-secondary" style={{ borderColor: 'transparent', backgroundColor: 'orange', height: '28px' }}>
+                        <div style={{ marginTop: '-4px', color: 'white', fontSize: '13px', fontWeight: 'bold' }}>Select</div>
+                    </Button>
+                </div>
             </div>
         </div>
     )
