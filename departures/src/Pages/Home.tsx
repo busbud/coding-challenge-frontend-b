@@ -2,12 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
-import moment from 'moment';
+
 
 import { fetchDepartures, TQueryParams } from '../Connections/connections';
 
 import { BusbudLogo } from '../Components/Icons';
 import { SelectionMenu, LocationPopOver } from '../Components/SelectionMenu';
+import { DepartureCard } from '../Components/DepartureCard';
 
 export const origin = "f2m673"; //(Québec - geohash: f2m673)
 export const destination = "f25dvk"; //(Montréal - geohash: f25dvk)
@@ -21,8 +22,8 @@ export const queryParams: Array<TQueryParams> = [
     { key: 'currency', value: 'CAD' },
 ];
 
-const busbudColorLight = '#def7fb';
-const busbudColorDark = '#edfcf9';
+const busbudColorLight = 'transparent'//'#edfcf9';
+const busbudColorDark = '#def7fb'//'#edfcf9';
 const titleTextColor = '#0274ca';
 
 
@@ -34,7 +35,7 @@ export interface TLocation {
     city: string,
     state: string
 }
-interface TDeparture {
+export interface TDeparture {
     id: string,
     departureTime: string,
     arrivalTime: string,
@@ -104,8 +105,8 @@ const Home = () => {
 
     return (
         <div className="HomeContainer">
-            <Container style={{ backgroundColor: busbudColorDark }}>
-                <Row style={{ backgroundColor: busbudColorLight }}>
+            <Container style={{ backgroundColor: busbudColorLight }}>
+                <Row style={{ backgroundColor: busbudColorDark }}>
                     <Col>
                         <div style={{ display: 'flex', color: titleTextColor, justifyContent: 'flex-start', padding: '4px 10px 4px 10px' }}>
                             <BusbudLogo />
@@ -137,36 +138,6 @@ const Home = () => {
             {LocationPopOver('Destination', showDestinations, destinationAvailable, targetDestination, refDestination)}
         </div>
     );
-}
-
-const FormatDate = (dateString: string) => {
-    const date = new Date(dateString);
-
-    const time = moment(date).format('HH:mm');
-
-    return time;
-}
-
-interface DepartureCardProps {
-    departure: TDeparture
-}
-const DepartureCard = (props: DepartureCardProps) => {
-    const { departureTime, arrivalTime, locationName_Origin, locationName_Destination, price, currency } = props.departure;
-
-    const _departureTime = FormatDate(departureTime);
-    const _arrivalTime = FormatDate(arrivalTime);
-
-    return (
-        <div style={{ display: 'flex', flexDirection: 'row', width: '100%', backgroundColor: 'cyan', margin: '4px', borderRadius: '4px' }}>
-            <div style={{ flexGrow: 1 }}>
-                <div>{_departureTime} - {locationName_Origin}</div>
-                <div>{_arrivalTime} - {locationName_Destination}</div>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div>{currency}${price}</div>
-            </div>
-        </div>
-    )
 }
 
 export default Home;

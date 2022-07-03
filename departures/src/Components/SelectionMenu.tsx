@@ -64,7 +64,7 @@ export const LocationPopOver = (
                 transition={true}
             >
                 <Popover id={`popover-contained-${title.toLocaleLowerCase()}`}>
-                    <Popover.Header as="h3">{title}</Popover.Header>
+                    {/* <Popover.Header as="h3">{title}</Popover.Header> */}
                     <Popover.Body>
                         <div style={{ display: 'flex', width: '100%', flexDirection: 'column' }}>
                             {listItems.map(item => {
