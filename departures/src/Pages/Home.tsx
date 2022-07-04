@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { fetchDepartures, TQueryParams } from '../Connections/connections';
 
 import { BusbudLogo } from '../Components/Icons';
-import { SelectionMenu, LocationPopOver } from '../Components/SelectionMenu';
+import { SelectionMenu, LocationPopOver, PassengersPopOver } from '../Components/SelectionMenu';
 import { DepartureCard } from '../Components/DepartureCard';
 
 export const origin = "f2m673"; //(Québec - geohash: f2m673)
@@ -49,10 +49,13 @@ const Home = () => {
     const [departures, setDepartures] = useState<Array<TDeparture>>([]);
     const [showDepartures, setShowDepartures] = useState<boolean>(false);
     const [showDestinations, setShowDestinations] = useState<boolean>(false);
+    const [showPassengers, setShowPassengers] = useState<boolean>(false);
     const [target, setTarget] = useState<any>(null);
     const [targetDestination, setTargetDestination] = useState<any>(null);
+    const [targetPassengers, setTargetPassengers] = useState<any>(null);
     const refOrigin = useRef(null);
     const refDestination = useRef(null);
+    const refPassengers = useRef(null);
 
     const clickShowDepartures = (event: any) => {
         setShowDepartures(!showDepartures);
@@ -62,6 +65,11 @@ const Home = () => {
     const clickShowDestinations = (event: any) => {
         setShowDestinations(!showDestinations);
         setTargetDestination(event.target);
+    };
+
+    const clickShowPassengers = (event: any) => {
+        setShowPassengers(!showPassengers);
+        setTargetPassengers(event.target);
     };
 
     const fetchDeparturesFromAPI = async () => {
@@ -119,7 +127,14 @@ const Home = () => {
                 <Row>
                     <Col sm={2}></Col>
                     <Col sm={8}>
-                        {SelectionMenu(clickShowDepartures, clickShowDestinations, setShowDepartures, setShowDestinations)}
+                        {SelectionMenu(
+                            clickShowDepartures,
+                            clickShowDestinations,
+                            clickShowPassengers,
+                            setShowDepartures,
+                            setShowDestinations,
+                            setShowPassengers
+                        )}
                     </Col>
                     <Col sm={2}></Col>
                 </Row>
@@ -136,6 +151,7 @@ const Home = () => {
 
             {LocationPopOver('Origin', showDepartures, originAvailable, target, refOrigin)}
             {LocationPopOver('Destination', showDestinations, destinationAvailable, targetDestination, refDestination)}
+            {PassengersPopOver('Passengers', showPassengers, targetPassengers, refPassengers)}
         </div>
     );
 }

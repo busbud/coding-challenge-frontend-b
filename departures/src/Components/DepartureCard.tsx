@@ -28,7 +28,7 @@ export const DepartureCard = (props: DepartureCardProps) => {
     }
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', width: '100%', backgroundColor: 'white', margin: '16px 4px 16px 4px', border: 'solid 1px #dbdbdb', borderRadius: '4px', padding: '16px 16px 16px 16px', boxShadow: '1px 4px 6px rgba(200, 200, 200, 0.8)' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', width: '100%', backgroundColor: '#f2fdff', margin: '16px 4px 16px 4px', border: 'solid 1px #dbdbdb', borderRadius: '4px', padding: '16px 16px 16px 16px', boxShadow: '1px 4px 6px rgba(200, 200, 200, 0.8)' }}>
             <div style={{ flexGrow: 1 }}>
                 <div style={{ display: 'flex' }}>
                     {locationIcon('origin')} {_departureTime} - {locationName_Origin}
