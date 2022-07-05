@@ -5,6 +5,8 @@ import { TLocation } from '../Pages/Home';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSubtract, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
+import './SelectionMenu.css';
+
 const boldTextParams = {
     color: '#717578',
     fontWeight: 'bold'
@@ -17,6 +19,7 @@ export const SelectionMenu = (
     setShowDepartures: React.Dispatch<React.SetStateAction<boolean>>,
     setShowDestinations: React.Dispatch<React.SetStateAction<boolean>>,
     setShowPassengers: React.Dispatch<React.SetStateAction<boolean>>,
+    OnChange_Date: (event: any) => void,
 ) => {
 
     window.addEventListener('click', (e) => {
@@ -30,7 +33,7 @@ export const SelectionMenu = (
     const boxShadowValue = '0px 1px 4px hsl(206deg 48% 24% / 10%), 0px 6px 12px hsl(206deg 48% 24% / 10%)';
 
     return (
-        <Row className="g-2" style={{ margin: '20px 0px 20px 0px' }}>
+        <Row className="g-2" style={{ margin: '20px 0px 20px 0px', padding: '0px 4px 8px 4px', border: '1px solid #ced4da', borderRadius: '.25rem' }}>
             <Col md>
                 {/* <FloatingLabel controlId="floatingInputGrid" label="Origin" onFocus={showDepartures} onBlur={showDepartures}> */}
                 <FloatingLabel controlId="fInputOrigin" label="Origin" onClick={showDepartures} style={{ boxShadow: boxShadowValue }}>
@@ -43,15 +46,17 @@ export const SelectionMenu = (
                 </FloatingLabel>
             </Col>
             <Col md>
+                <FloatingLabel label="Date" style={{ boxShadow: boxShadowValue }}>
+                    <Form.Control type="date" name="dob" placeholder="Date of Birth" min={'2022-07-05'} onChange={OnChange_Date} />
+                </FloatingLabel>
+            </Col>
+            <Col xs lg={2}>
                 <FloatingLabel controlId="fInputPassengers" label="Passengers" onClick={showPassengers} style={{ boxShadow: boxShadowValue }}>
                     <Form.Control placeholder="passengers" />
                 </FloatingLabel>
             </Col>
-            <Col md>
-                <FloatingLabel label="Date" style={{ boxShadow: boxShadowValue }}>
-                    <Form.Control type="date" name="dob" placeholder="Date of Birth" />
-
-                </FloatingLabel>
+            <Col xs lg={2}>
+                <div className='cButton' style={{ color: 'white', fontWeight: 'bold', height: '100%', borderRadius: '.25rem', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '48px' }}>Search</div>
             </Col>
             {/* <Col md>
                     <FloatingLabel controlId="floatingSelectGrid" label="Works with selects">
@@ -71,6 +76,7 @@ export const LocationPopOver = (
     title: string,
     visible: boolean,
     listItems: Array<TLocation>,
+    onChange: (item: TLocation) => void,
     target: any,
     ref: any
 ) => {
@@ -93,7 +99,7 @@ export const LocationPopOver = (
                                 const { id, city, state } = item;
 
                                 return (
-                                    <div key={id} style={{ display: 'flex', width: '240px', height: '40px', padding: '10px 4px 10px 6px' }}>
+                                    <div key={id} style={{ display: 'flex', width: '240px', height: '40px', padding: '10px 4px 10px 6px' }} onClick={() => onChange(item)}>
                                         <FontAwesomeIcon icon={faLocationDot} style={{ width: '18px', height: '18px' }} color={'#717578'} />
                                         <div style={{ marginLeft: '4px', ...boldTextParams }}>{city},</div>
                                         <div style={{ marginLeft: '4px' }}>{state}</div>

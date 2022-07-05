@@ -1,0 +1,21 @@
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: text;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.cButton {
+    cursor: pointer;
+    background-color: #0091ff;
+}
+
+.cButton:hover {
+    background-color: #43adff;
+}

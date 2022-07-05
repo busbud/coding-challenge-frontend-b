@@ -10,30 +10,31 @@ import { BusbudLogo } from '../Components/Icons';
 import { SelectionMenu, LocationPopOver, PassengersPopOver } from '../Components/SelectionMenu';
 import { DepartureCard } from '../Components/DepartureCard';
 
-export const origin = "f2m673"; //(Québec - geohash: f2m673)
-export const destination = "f25dvk"; //(Montréal - geohash: f25dvk)
-export const date = "2022-08-02"; //(the 2nd of August 2021) for 1 adult.
+// export const origin = "f2m673"; //(Québec - geohash: f2m673)
+// export const destination = "f25dvk"; //(Montréal - geohash: f25dvk)
+// export const date = "2022-08-02"; //(the 2nd of August 2021) for 1 adult.
 
-export const queryParams: Array<TQueryParams> = [
-    { key: 'adult', value: '1' },
-    { key: 'child', value: '0' },
-    { key: 'senior', value: '0' },
-    { key: 'lang', value: 'EN' },
-    { key: 'currency', value: 'CAD' },
-];
+export const initialQueryParams: TQueryParams = {
+    adult: 1,
+    child: 0,
+    senior: 0,
+    lang: 'EN',
+    currency: 'CAD'
+};
 
 const busbudColorLight = 'transparent'//'#edfcf9';
 const busbudColorDark = '#def7fb'//'#edfcf9';
 const titleTextColor = '#0274ca';
 
 
-const originAvailable = [{ id: 1, city: 'Québec City', state: 'Quebec' }];
-const destinationAvailable = [{ id: 1, city: 'Montreal', state: 'Quebec' }];
+const originAvailable = [{ id: 1, city: 'Québec City', state: 'Quebec', geoHash: 'f2m673' }];
+const destinationAvailable = [{ id: 1, city: 'Montreal', state: 'Quebec', geoHash: 'f25dvk' }];
 
 export interface TLocation {
     id: number,
     city: string,
-    state: string
+    state: string,
+    geoHash: string
 }
 export interface TDeparture {
     id: string,
@@ -46,6 +47,11 @@ export interface TDeparture {
 }
 
 const Home = () => {
+    const [queryParams, setQueryParams] = useState<TQueryParams>(initialQueryParams);
+    const [origin, setOrigin] = useState<any>(originAvailable[0]);
+    const [destination, setDestination] = useState<any>(destinationAvailable[0]);
+    const [date, setDate] = useState<string>('2022-07-05');
+
     const [departures, setDepartures] = useState<Array<TDeparture>>([]);
     const [showDepartures, setShowDepartures] = useState<boolean>(false);
     const [showDestinations, setShowDestinations] = useState<boolean>(false);
@@ -56,6 +62,24 @@ const Home = () => {
     const refOrigin = useRef(null);
     const refDestination = useRef(null);
     const refPassengers = useRef(null);
+
+    const OnChange_Origin = (item: TLocation) => {
+        const { geoHash } = item;
+        console.log('New Origin = ', geoHash);
+        setOrigin(geoHash);
+    }
+
+    const OnChange_Destination = (item: TLocation) => {
+        const { geoHash } = item;
+        console.log('New Destination = ', geoHash);
+        setDestination(geoHash);
+    }
+
+    const OnChange_Date = (event: any) => {
+        const selectedDateString = event.target.value;
+        setDate(selectedDateString);
+        console.log('New Date = ', selectedDateString);
+    }
 
     const clickShowDepartures = (event: any) => {
         setShowDepartures(!showDepartures);
@@ -108,7 +132,7 @@ const Home = () => {
     }
 
     useEffect(() => {
-        fetchDeparturesFromAPI();
+        //fetchDeparturesFromAPI();
     }, []);
 
     return (
@@ -133,7 +157,8 @@ const Home = () => {
                             clickShowPassengers,
                             setShowDepartures,
                             setShowDestinations,
-                            setShowPassengers
+                            setShowPassengers,
+                            OnChange_Date
                         )}
                     </Col>
                     <Col sm={2}></Col>
@@ -149,8 +174,8 @@ const Home = () => {
                 </Row>
             </Container>
 
-            {LocationPopOver('Origin', showDepartures, originAvailable, targetOrigin, refOrigin)}
-            {LocationPopOver('Destination', showDestinations, destinationAvailable, targetDestination, refDestination)}
+            {LocationPopOver('Origin', showDepartures, originAvailable, OnChange_Origin, targetOrigin, refOrigin)}
+            {LocationPopOver('Destination', showDestinations, destinationAvailable, OnChange_Destination, targetDestination, refDestination)}
             {PassengersPopOver('Passengers', showPassengers, targetPassengers, refPassengers)}
         </div>
     );

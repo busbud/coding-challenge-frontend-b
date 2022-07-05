@@ -11,22 +11,35 @@ const options = {
 }
 
 export interface TQueryParams {
-    key: string,
-    value: string
+    adult: number,
+    child: number,
+    senior: number,
+    lang: string,
+    currency: string,
 }
 
-const GetParamsAsString = (params: Array<TQueryParams>) => {
+// { key: 'adult', value: '1' },
+// { key: 'child', value: '0' },
+// { key: 'senior', value: '0' },
+// { key: 'lang', value: 'EN' },
+// { key: 'currency', value: 'CAD' },
+
+const GetParamsAsString = (params: TQueryParams) => {
     let firstParam = true;
     let paramsAsString = '';
 
-    for (const param of params) {
+    let keys = Object.keys(params);
+
+    for (const param of keys) {
         const prefix = (firstParam) ? '?' : '&';
 
         if (firstParam) {
             firstParam = false;
         }
 
-        paramsAsString += `${prefix}${param.key}=${param.value}`;
+        const value = params[param as keyof TQueryParams];
+
+        paramsAsString += `${prefix}${param}=${value}`;
     }
 
     return paramsAsString;
@@ -36,7 +49,7 @@ export const fetchDepartures = async (
     _origin: string,
     _destination: string,
     _date: string,
-    _queryParams: Array<TQueryParams>
+    _queryParams: TQueryParams
 ): Promise<any> => {
 
     const queryParamsString = GetParamsAsString(_queryParams);
