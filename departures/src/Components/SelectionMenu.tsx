@@ -3,7 +3,12 @@ import { Row, Col, Form, FloatingLabel, Popover, Overlay, Button } from 'react-b
 import { TLocation } from '../Pages/Home';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faSubtract } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSubtract, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+
+const boldTextParams = {
+    color: '#717578',
+    fontWeight: 'bold'
+}
 
 export const SelectionMenu = (
     showDepartures: (event: any) => void,
@@ -40,6 +45,12 @@ export const SelectionMenu = (
             <Col md>
                 <FloatingLabel controlId="fInputPassengers" label="Passengers" onClick={showPassengers} style={{ boxShadow: boxShadowValue }}>
                     <Form.Control placeholder="passengers" />
+                </FloatingLabel>
+            </Col>
+            <Col md>
+                <FloatingLabel label="Date" style={{ boxShadow: boxShadowValue }}>
+                    <Form.Control type="date" name="dob" placeholder="Date of Birth" />
+
                 </FloatingLabel>
             </Col>
             {/* <Col md>
@@ -81,10 +92,13 @@ export const LocationPopOver = (
                             {listItems.map(item => {
                                 const { id, city, state } = item;
 
-                                const displayName = `${city}, ${state}`;
-
-                                return <Button key={id} variant="outline-secondary" style={{ width: '240px' }}>{displayName}</Button>
-                                // return <Button key={id} variant="outline-secondary" style={{ width: '240px', border: 'none' }}>{displayName}</Button>
+                                return (
+                                    <div key={id} style={{ display: 'flex', width: '240px', height: '40px', padding: '10px 4px 10px 6px' }}>
+                                        <FontAwesomeIcon icon={faLocationDot} style={{ width: '18px', height: '18px' }} color={'#717578'} />
+                                        <div style={{ marginLeft: '4px', ...boldTextParams }}>{city},</div>
+                                        <div style={{ marginLeft: '4px' }}>{state}</div>
+                                    </div>
+                                )
                             })}
                         </div>
                     </Popover.Body>
@@ -133,7 +147,7 @@ const SmallCard = (title: string, hasSaparator: boolean) => {
     return (
         <div style={{ display: 'flex', flexDirection: 'row', width: '240px', paddingBottom: '8px', borderBottom, margin: '4px 0px 4px 0px', justifyContent: 'center' }}>
             <div style={{ flexGrow: 1 }}>
-                <div style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', height: '100%' }}>{title}</div>
+                <div style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', height: '100%', ...boldTextParams }}>{title}</div>
             </div>
             {SmallCardButton(faSubtract, false, () => { })}
             <div>

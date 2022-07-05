@@ -50,7 +50,7 @@ const Home = () => {
     const [showDepartures, setShowDepartures] = useState<boolean>(false);
     const [showDestinations, setShowDestinations] = useState<boolean>(false);
     const [showPassengers, setShowPassengers] = useState<boolean>(false);
-    const [target, setTarget] = useState<any>(null);
+    const [targetOrigin, setTargetOrigin] = useState<any>(null);
     const [targetDestination, setTargetDestination] = useState<any>(null);
     const [targetPassengers, setTargetPassengers] = useState<any>(null);
     const refOrigin = useRef(null);
@@ -59,7 +59,7 @@ const Home = () => {
 
     const clickShowDepartures = (event: any) => {
         setShowDepartures(!showDepartures);
-        setTarget(event.target);
+        setTargetOrigin(event.target);
     };
 
     const clickShowDestinations = (event: any) => {
@@ -149,7 +149,7 @@ const Home = () => {
                 </Row>
             </Container>
 
-            {LocationPopOver('Origin', showDepartures, originAvailable, target, refOrigin)}
+            {LocationPopOver('Origin', showDepartures, originAvailable, targetOrigin, refOrigin)}
             {LocationPopOver('Destination', showDestinations, destinationAvailable, targetDestination, refDestination)}
             {PassengersPopOver('Passengers', showPassengers, targetPassengers, refPassengers)}
         </div>
