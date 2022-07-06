@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Row, Col, Form, FloatingLabel, Popover, Overlay, Button } from 'react-bootstrap';
 import { TLocation } from '../Pages/Home';
+
+import { OnChangeSmallButtonContext } from '../Pages/Home';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSubtract, faLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -114,30 +116,32 @@ export const LocationPopOver = (
     )
 }
 
-export const PassengersPopOver = (
+interface PassengerProps {
     title: string,
     visible: boolean,
     target: any,
-    ref: any
-) => {
+    refPassengers: any
+}
+
+export const PassengersPopOver = (props: PassengerProps) => {
+    const { title, visible, target, refPassengers } = props;
 
     return (
-        <div ref={ref}>
+        <div ref={refPassengers}>
             <Overlay
                 show={visible}
                 target={target}
                 placement="bottom-start"
-                container={ref}
+                container={refPassengers}
                 containerPadding={20}
                 transition={true}
             >
                 <Popover id={`popover-contained-${title.toLocaleLowerCase()}`}>
                     <Popover.Body>
                         <div style={{ display: 'flex', width: '100%', flexDirection: 'column' }}>
-                            {SmallCard('Adults', true)}
-                            {SmallCard('Children', true)}
-                            {SmallCard('Seniors', false)}
-
+                            {SmallCard('Adults', 'adult', true)}
+                            {SmallCard('Children', 'child', true)}
+                            {SmallCard('Seniors', 'senior', false)}
                         </div>
                     </Popover.Body>
                 </Popover>
@@ -146,32 +150,33 @@ export const PassengersPopOver = (
     )
 }
 
-const SmallCard = (title: string, hasSaparator: boolean) => {
+const SmallCard = (title: string, type: string, hasSaparator: boolean) => {
     const borderBottom = (hasSaparator) ? '1px solid #d1d1d1' : 'none';
-
 
     return (
         <div style={{ display: 'flex', flexDirection: 'row', width: '240px', paddingBottom: '8px', borderBottom, margin: '4px 0px 4px 0px', justifyContent: 'center' }}>
             <div style={{ flexGrow: 1 }}>
                 <div style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', height: '100%', ...boldTextParams }}>{title}</div>
             </div>
-            {SmallCardButton(faSubtract, false, () => { })}
+            {SmallCardButton(faSubtract, type, 'remove', true)}
             <div>
                 <div style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', height: '100%' }}>999</div>
             </div>
-            {SmallCardButton(faPlus, true, () => { })}
+            {SmallCardButton(faPlus, type, 'add', true)}
         </div>
     )
 }
 
-const SmallCardButton = (icon: any, canClick: boolean, onClick: () => void) => {
+const SmallCardButton = (icon: any, type: string, action: string, canClick: boolean) => {
     const buttonSize = '32px';
     const iconSize = '16px';
 
     const backgroundColor = '#def7fb';
 
+    const onChange = useContext(OnChangeSmallButtonContext) as ((type: string, action: string) => void);
+
     return (
-        <Button style={{ width: buttonSize, height: buttonSize, margin: '0px 6px 0px 6px', backgroundColor, border: 'none' }} onClick={onClick} disabled={!canClick}>
+        <Button style={{ width: buttonSize, height: buttonSize, margin: '0px 6px 0px 6px', backgroundColor, border: 'none' }} onClick={() => onChange(type, action)} disabled={!canClick}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <FontAwesomeIcon icon={icon} style={{ width: iconSize, height: iconSize }} color={'#717578'} />
             </div>

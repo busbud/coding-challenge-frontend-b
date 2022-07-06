@@ -1,8 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { Container, Row, Col } from 'react-bootstrap';
-
-
 
 import { fetchDepartures, TQueryParams } from '../Connections/connections';
 
@@ -46,6 +44,8 @@ export interface TDeparture {
     currency: string
 }
 
+export const OnChangeSmallButtonContext = React.createContext<((type: string, action: string) => void) | null>(null);
+
 const Home = () => {
     const [queryParams, setQueryParams] = useState<TQueryParams>(initialQueryParams);
     const [origin, setOrigin] = useState<any>(originAvailable[0]);
@@ -65,20 +65,24 @@ const Home = () => {
 
     const OnChange_Origin = (item: TLocation) => {
         const { geoHash } = item;
-        console.log('New Origin = ', geoHash);
         setOrigin(geoHash);
     }
 
     const OnChange_Destination = (item: TLocation) => {
         const { geoHash } = item;
-        console.log('New Destination = ', geoHash);
         setDestination(geoHash);
     }
 
     const OnChange_Date = (event: any) => {
         const selectedDateString = event.target.value;
         setDate(selectedDateString);
-        console.log('New Date = ', selectedDateString);
+    }
+
+    const OnChangeSmallButton = (type: string, action: string) => {
+        const previousValue = queryParams[type as keyof TQueryParams] as number;
+        const newValue = (action === 'add') ? previousValue + 1 : previousValue - 1;
+
+        setQueryParams(prevState => ({ ...prevState, [type]: newValue }))
     }
 
     const clickShowDepartures = (event: any) => {
@@ -101,8 +105,6 @@ const Home = () => {
 
         const _locations = data.locations;
         const _cities = data.cities;
-
-        console.log('DATA ', data);
 
         const _departures: Array<TDeparture> = data.departures.map((item: any) => {
 
@@ -127,8 +129,6 @@ const Home = () => {
         });
 
         setDepartures(_departures);
-
-        console.log('Departures Result = ', _departures);
     }
 
     useEffect(() => {
@@ -176,7 +176,15 @@ const Home = () => {
 
             {LocationPopOver('Origin', showDepartures, originAvailable, OnChange_Origin, targetOrigin, refOrigin)}
             {LocationPopOver('Destination', showDestinations, destinationAvailable, OnChange_Destination, targetDestination, refDestination)}
-            {PassengersPopOver('Passengers', showPassengers, targetPassengers, refPassengers)}
+
+            <OnChangeSmallButtonContext.Provider value={OnChangeSmallButton}>
+                <PassengersPopOver
+                    title={'Passengers'}
+                    visible={showPassengers}
+                    target={targetPassengers}
+                    refPassengers={refPassengers}
+                />
+            </OnChangeSmallButtonContext.Provider>
         </div>
     );
 }
