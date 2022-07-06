@@ -22,6 +22,10 @@ export const SelectionMenu = (
     setShowDestinations: React.Dispatch<React.SetStateAction<boolean>>,
     setShowPassengers: React.Dispatch<React.SetStateAction<boolean>>,
     OnChange_Date: (event: any) => void,
+    originValue: string,
+    destinationValue: string,
+    dateValue: string,
+    passengersValue: number
 ) => {
 
     window.addEventListener('click', (e) => {
@@ -35,41 +39,31 @@ export const SelectionMenu = (
     const boxShadowValue = '0px 1px 4px hsl(206deg 48% 24% / 10%), 0px 6px 12px hsl(206deg 48% 24% / 10%)';
 
     return (
-        <Row className="g-2" style={{ margin: '20px 0px 20px 0px', padding: '0px 4px 8px 4px', border: '1px solid #ced4da', borderRadius: '.25rem' }}>
-            <Col md>
-                {/* <FloatingLabel controlId="floatingInputGrid" label="Origin" onFocus={showDepartures} onBlur={showDepartures}> */}
+        <Row className="g-2" style={{ margin: '20px 0px 20px 0px', padding: '0px 4px 8px 4px', border: '1px solid #ced4da', borderRadius: '.25rem', backgroundColor: '#ffffff' }}>
+            <Col sm={6} md={3} lg={3}>
                 <FloatingLabel controlId="fInputOrigin" label="Origin" onClick={showDepartures} style={{ boxShadow: boxShadowValue }}>
-                    <Form.Control placeholder="origin" />
+                    <Form.Control placeholder="origin" value={originValue} />
                 </FloatingLabel>
             </Col>
-            <Col md>
+            <Col sm={6} md={3} lg={3}>
                 <FloatingLabel controlId="fInputDestination" label="Destination" onClick={showDestinations} style={{ boxShadow: boxShadowValue }}>
-                    <Form.Control placeholder="destination" />
+                    <Form.Control placeholder="destination" value={destinationValue} />
                 </FloatingLabel>
             </Col>
-            <Col md>
+            <Col sm={4} md={2} lg={2}>
                 <FloatingLabel label="Date" style={{ boxShadow: boxShadowValue }}>
-                    <Form.Control type="date" name="dob" placeholder="Date of Birth" min={'2022-07-05'} onChange={OnChange_Date} />
+                    <Form.Control type="date" name="dob" placeholder="Date of Birth" min={'2022-07-05'} onChange={OnChange_Date} value={dateValue} />
                 </FloatingLabel>
             </Col>
-            <Col xs lg={2}>
+            <Col sm={4} md={2} lg={2}>
                 <FloatingLabel controlId="fInputPassengers" label="Passengers" onClick={showPassengers} style={{ boxShadow: boxShadowValue }}>
-                    <Form.Control placeholder="passengers" />
+                    <Form.Control placeholder="passengers" value={passengersValue} />
                 </FloatingLabel>
+
             </Col>
-            <Col xs lg={2}>
+            <Col sm={4} md={2} lg={2}>
                 <div className='cButton' style={{ color: 'white', fontWeight: 'bold', height: '100%', borderRadius: '.25rem', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '48px' }}>Search</div>
             </Col>
-            {/* <Col md>
-                    <FloatingLabel controlId="floatingSelectGrid" label="Works with selects">
-                        <Form.Select aria-label="Floating label select example">
-                            <option>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </Form.Select>
-                    </FloatingLabel>
-                </Col> */}
         </Row>
     )
 }

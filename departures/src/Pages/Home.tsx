@@ -135,10 +135,16 @@ const Home = () => {
         //fetchDeparturesFromAPI();
     }, []);
 
+    const { adult, child, senior } = queryParams;
+    const passengersValue = adult + child + senior;
+
+    const originValue = origin.city;
+    const destinationValue = destination.city;
+
     return (
-        <div className="HomeContainer">
-            <Container style={{ backgroundColor: busbudColorLight }}>
-                <Row style={{ backgroundColor: busbudColorDark }}>
+        <div className="HomeContainer" style={{ backgroundColor: busbudColorDark }}>
+            <Container>
+                <Row>
                     <Col>
                         <div style={{ display: 'flex', color: titleTextColor, justifyContent: 'flex-start', padding: '4px 10px 4px 10px' }}>
                             <BusbudLogo />
@@ -148,21 +154,21 @@ const Home = () => {
                         </div>
                     </Col>
                 </Row>
-                <Row>
-                    <Col sm={2}></Col>
-                    <Col sm={8}>
-                        {SelectionMenu(
-                            clickShowDepartures,
-                            clickShowDestinations,
-                            clickShowPassengers,
-                            setShowDepartures,
-                            setShowDestinations,
-                            setShowPassengers,
-                            OnChange_Date
-                        )}
-                    </Col>
-                    <Col sm={2}></Col>
-                </Row>
+
+                {SelectionMenu(
+                    clickShowDepartures,
+                    clickShowDestinations,
+                    clickShowPassengers,
+                    setShowDepartures,
+                    setShowDestinations,
+                    setShowPassengers,
+                    OnChange_Date,
+                    originValue,
+                    destinationValue,
+                    date,
+                    passengersValue
+                )}
+
                 <Row>
                     <Col sm={3}></Col>
                     <Col sm={6}>
