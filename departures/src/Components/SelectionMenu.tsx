@@ -36,33 +36,48 @@ export const SelectionMenu = (
         }
     });
 
-    const boxShadowValue = '0px 1px 4px hsl(206deg 48% 24% / 10%), 0px 6px 12px hsl(206deg 48% 24% / 10%)';
+    const boxShadow = '0px 4px 4px hsl(206deg 48% 24% / 10%), 0px 4px 4px hsl(206deg 48% 24% / 10%)';
+    const boxShadow2 = '0px 4px 4px hsl(206deg 48% 24% / 15%), 0px 4px 4px hsl(206deg 48% 24% / 15%)';
+
+    const rowStyle = {
+        margin: '20px 0px 20px 0px',
+        borderRadius: '.25rem',
+        backgroundColor: 'transparent'
+    }
+
+    const colStyle = {
+        backgroundColor: 'white',
+        border: '1px solid transparent',
+        borderRadius: '.25rem',
+        padding: '4px 4px 4px 4px',
+        boxShadow
+    }
 
     return (
-        <Row className="g-2" style={{ margin: '20px 0px 20px 0px', padding: '0px 4px 8px 4px', border: '1px solid #ced4da', borderRadius: '.25rem', backgroundColor: '#ffffff' }}>
-            <Col sm={6} md={3} lg={3}>
-                <FloatingLabel controlId="fInputOrigin" label="Origin" onClick={showDepartures} style={{ boxShadow: boxShadowValue }}>
-                    <Form.Control placeholder="origin" value={originValue} />
+        <Row className="g-2" style={rowStyle}>
+            <Col sm={6} md={3} lg={3} style={colStyle}>
+                <FloatingLabel controlId="fInputOrigin" label="Origin" onClick={showDepartures}>
+                    <Form.Control placeholder="origin" value={originValue} className={'f-control'} />
                 </FloatingLabel>
             </Col>
-            <Col sm={6} md={3} lg={3}>
-                <FloatingLabel controlId="fInputDestination" label="Destination" onClick={showDestinations} style={{ boxShadow: boxShadowValue }}>
-                    <Form.Control placeholder="destination" value={destinationValue} />
+            <Col sm={6} md={3} lg={3} style={colStyle}>
+                <FloatingLabel controlId="fInputDestination" label="Destination" onClick={showDestinations} >
+                    <Form.Control placeholder="destination" value={destinationValue} className={'f-control'} />
                 </FloatingLabel>
             </Col>
-            <Col sm={4} md={2} lg={2}>
-                <FloatingLabel label="Date" style={{ boxShadow: boxShadowValue }}>
-                    <Form.Control type="date" name="dob" placeholder="Date of Birth" min={'2022-07-05'} onChange={OnChange_Date} value={dateValue} />
+            <Col sm={4} md={2} lg={2} style={colStyle}>
+                <FloatingLabel label="Date">
+                    <Form.Control type="date" name="dob" placeholder="Date of Birth" min={'2022-07-05'} onChange={OnChange_Date} value={dateValue} className={'f-control'} />
                 </FloatingLabel>
             </Col>
-            <Col sm={4} md={2} lg={2}>
-                <FloatingLabel controlId="fInputPassengers" label="Passengers" onClick={showPassengers} style={{ boxShadow: boxShadowValue }}>
-                    <Form.Control placeholder="passengers" value={passengersValue} />
+            <Col sm={4} md={2} lg={2} style={colStyle}>
+                <FloatingLabel controlId="fInputPassengers" label="Passengers" onClick={showPassengers}>
+                    <Form.Control placeholder="passengers" value={passengersValue} className={'f-control'} />
                 </FloatingLabel>
 
             </Col>
             <Col sm={4} md={2} lg={2}>
-                <div className='cButton' style={{ color: 'white', fontWeight: 'bold', height: '100%', borderRadius: '.25rem', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '48px' }}>Search</div>
+                <div className='cButton' style={{ color: 'white', fontWeight: 'bold', height: '100%', borderRadius: '.25rem', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '48px', boxShadow: boxShadow2 }}>Search</div>
             </Col>
         </Row>
     )

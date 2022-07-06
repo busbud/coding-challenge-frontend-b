@@ -21,7 +21,7 @@ export const initialQueryParams: TQueryParams = {
 };
 
 const busbudColorLight = 'transparent'//'#edfcf9';
-const busbudColorDark = '#def7fb'//'#edfcf9';
+const busbudColorDark = 'rgb(208 243 255)'//'#def7fb'//'#edfcf9';
 const titleTextColor = '#0274ca';
 
 

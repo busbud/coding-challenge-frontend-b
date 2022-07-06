@@ -19,3 +19,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .cButton:hover {
     background-color: #43adff;
 }
+
+.f-control {
+    border: 1px solid transparent !important;
+}
+
+.f-control:hover {
+    border: 1px solid #cdcdcd !important;
+}
