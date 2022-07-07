@@ -36,7 +36,8 @@ export interface PassengerProps {
     title: string,
     visible: boolean,
     target: any,
-    refPassengers: any
+    refPassengers: any,
+    queryParams: TQueryParams
 }
 
 export interface LocationProps {
@@ -46,4 +47,10 @@ export interface LocationProps {
     onChange: (item: TLocation) => void,
     target: any,
     refLocation: any
+}
+
+export interface SelectionMenuProps {
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    setMessage: React.Dispatch<React.SetStateAction<TMessage | null>>,
+    setDepartures: React.Dispatch<React.SetStateAction<TDeparture[]>>
 }

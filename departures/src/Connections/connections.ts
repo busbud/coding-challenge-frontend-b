@@ -12,12 +12,6 @@ const options = {
     }
 }
 
-// { key: 'adult', value: '1' },
-// { key: 'child', value: '0' },
-// { key: 'senior', value: '0' },
-// { key: 'lang', value: 'EN' },
-// { key: 'currency', value: 'CAD' },
-
 const GetParamsAsString = (params: TQueryParams) => {
     let firstParam = true;
     let paramsAsString = '';
