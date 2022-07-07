@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { Row, Col, Form, FloatingLabel, Popover, Overlay, Button } from 'react-bootstrap';
 import { TLocation } from '../Pages/Home';
 
-import { OnChangeSmallButtonContext } from '../Pages/Home';
+import { OnChangeSmallButtonContext, QueryParamsContext } from '../Pages/Home';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSubtract, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 import './SelectionMenu.css';
+import { TQueryParams } from '../Connections/connections';
 
 const boldTextParams = {
     color: '#717578',
@@ -22,6 +23,7 @@ export const SelectionMenu = (
     setShowDestinations: React.Dispatch<React.SetStateAction<boolean>>,
     setShowPassengers: React.Dispatch<React.SetStateAction<boolean>>,
     OnChange_Date: (event: any) => void,
+    OnSearch: (event: any) => void,
     originValue: string,
     destinationValue: string,
     dateValue: string,
@@ -37,7 +39,6 @@ export const SelectionMenu = (
     });
 
     const boxShadow = '0px 4px 4px hsl(206deg 48% 24% / 10%), 0px 4px 4px hsl(206deg 48% 24% / 10%)';
-    const boxShadow2 = '0px 4px 4px hsl(206deg 48% 24% / 15%), 0px 4px 4px hsl(206deg 48% 24% / 15%)';
 
     const rowStyle = {
         margin: '20px 0px 20px 0px',
@@ -67,7 +68,7 @@ export const SelectionMenu = (
             </Col>
             <Col sm={4} md={2} lg={2} style={colStyle}>
                 <FloatingLabel label="Date">
-                    <Form.Control type="date" name="dob" placeholder="Date of Birth" min={'2022-07-05'} onChange={OnChange_Date} value={dateValue} className={'f-control'} />
+                    <Form.Control type="date" name="dob" placeholder="date" min={'2022-07-05'} onChange={OnChange_Date} value={dateValue} className={'f-control'} />
                 </FloatingLabel>
             </Col>
             <Col sm={4} md={2} lg={2} style={colStyle}>
@@ -77,7 +78,7 @@ export const SelectionMenu = (
 
             </Col>
             <Col sm={4} md={2} lg={2}>
-                <div className='cButton' style={{ color: 'white', fontWeight: 'bold', height: '100%', borderRadius: '.25rem', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '48px', boxShadow: boxShadow2 }}>Search</div>
+                <div className='cButton' onClick={OnSearch}>Search</div>
             </Col>
         </Row>
     )
@@ -135,6 +136,10 @@ interface PassengerProps {
 export const PassengersPopOver = (props: PassengerProps) => {
     const { title, visible, target, refPassengers } = props;
 
+    const queryParams = useContext(QueryParamsContext) as TQueryParams;
+
+    const { adult, child, senior } = queryParams;
+
     return (
         <div ref={refPassengers}>
             <Overlay
@@ -148,9 +153,9 @@ export const PassengersPopOver = (props: PassengerProps) => {
                 <Popover id={`popover-contained-${title.toLocaleLowerCase()}`}>
                     <Popover.Body>
                         <div style={{ display: 'flex', width: '100%', flexDirection: 'column' }}>
-                            {SmallCard('Adults', 'adult', true)}
-                            {SmallCard('Children', 'child', true)}
-                            {SmallCard('Seniors', 'senior', false)}
+                            {SmallCard('Adults', 'adult', adult, true)}
+                            {SmallCard('Children', 'child', child, true)}
+                            {SmallCard('Seniors', 'senior', senior, false)}
                         </div>
                     </Popover.Body>
                 </Popover>
@@ -159,7 +164,7 @@ export const PassengersPopOver = (props: PassengerProps) => {
     )
 }
 
-const SmallCard = (title: string, type: string, hasSaparator: boolean) => {
+const SmallCard = (title: string, type: string, value: number, hasSaparator: boolean) => {
     const borderBottom = (hasSaparator) ? '1px solid #d1d1d1' : 'none';
 
     return (
@@ -169,7 +174,7 @@ const SmallCard = (title: string, type: string, hasSaparator: boolean) => {
             </div>
             {SmallCardButton(faSubtract, type, 'remove', true)}
             <div>
-                <div style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', height: '100%' }}>999</div>
+                <div style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', height: '100%' }}>{value}</div>
             </div>
             {SmallCardButton(faPlus, type, 'add', true)}
         </div>

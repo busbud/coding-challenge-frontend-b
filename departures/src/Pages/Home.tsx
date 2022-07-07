@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Alert } from 'react-bootstrap';
 
 import { fetchDepartures, TQueryParams } from '../Connections/connections';
 
@@ -12,6 +12,8 @@ import { DepartureCard } from '../Components/DepartureCard';
 // export const destination = "f25dvk"; //(Montréal - geohash: f25dvk)
 // export const date = "2022-08-02"; //(the 2nd of August 2021) for 1 adult.
 
+import './Home.css';
+
 export const initialQueryParams: TQueryParams = {
     adult: 1,
     child: 0,
@@ -20,7 +22,7 @@ export const initialQueryParams: TQueryParams = {
     currency: 'CAD'
 };
 
-const busbudColorLight = 'transparent'//'#edfcf9';
+const busbudColorLight = 'transparent';
 const busbudColorDark = 'rgb(208 243 255)'//'#def7fb'//'#edfcf9';
 const titleTextColor = '#0274ca';
 
@@ -43,14 +45,20 @@ export interface TDeparture {
     price: number,
     currency: string
 }
+interface TMessage {
+    details: string;
+    type: string
+}
 
 export const OnChangeSmallButtonContext = React.createContext<((type: string, action: string) => void) | null>(null);
+export const QueryParamsContext = React.createContext<TQueryParams | null>(null);
 
 const Home = () => {
     const [queryParams, setQueryParams] = useState<TQueryParams>(initialQueryParams);
-    const [origin, setOrigin] = useState<any>(originAvailable[0]);
-    const [destination, setDestination] = useState<any>(destinationAvailable[0]);
+    const [origin, setOrigin] = useState<TLocation>(originAvailable[0]);
+    const [destination, setDestination] = useState<TLocation>(destinationAvailable[0]);
     const [date, setDate] = useState<string>('2022-07-05');
+    const [message, setMessage] = useState<TMessage | null>(null);
 
     const [departures, setDepartures] = useState<Array<TDeparture>>([]);
     const [showDepartures, setShowDepartures] = useState<boolean>(false);
@@ -63,14 +71,12 @@ const Home = () => {
     const refDestination = useRef(null);
     const refPassengers = useRef(null);
 
-    const OnChange_Origin = (item: TLocation) => {
-        const { geoHash } = item;
-        setOrigin(geoHash);
+    const OnChange_Origin = (_location: TLocation) => {
+        setOrigin(_location);
     }
 
-    const OnChange_Destination = (item: TLocation) => {
-        const { geoHash } = item;
-        setDestination(geoHash);
+    const OnChange_Destination = (_location: TLocation) => {
+        setDestination(_location);
     }
 
     const OnChange_Date = (event: any) => {
@@ -100,8 +106,26 @@ const Home = () => {
         setTargetPassengers(event.target);
     };
 
+    const clickSearch = (event: any) => {
+        fetchDeparturesFromAPI();
+    };
+
     const fetchDeparturesFromAPI = async () => {
-        const data = await fetchDepartures(origin, destination, date, queryParams);
+        setDepartures([]);
+
+        const data = await fetchDepartures(origin.geoHash, destination.geoHash, date, queryParams);
+
+        console.log('RESULT = ', data);
+
+        if (data && data.error) {
+            setMessage({ type: 'danger', details: data.error.details });
+            return;
+        }
+
+        if (data && (!data.departures || data.departures.length < 1)) {
+            setMessage({ type: 'warning', details: 'We could not find any departure for this search. Please, try later or chose another departure date.' });
+            return;
+        }
 
         const _locations = data.locations;
         const _cities = data.cities;
@@ -142,55 +166,81 @@ const Home = () => {
     const destinationValue = destination.city;
 
     return (
-        <div className="HomeContainer" style={{ backgroundColor: busbudColorDark }}>
-            <Container>
-                <Row>
-                    <Col>
-                        <div style={{ display: 'flex', color: titleTextColor, justifyContent: 'flex-start', padding: '4px 10px 4px 10px' }}>
-                            <BusbudLogo />
-                            <div style={{ display: 'flex', alignItems: 'flex-end', flexGrow: 1, padding: '0px 10px 3px 20px' }}>
-                                Departures (Coding Challenge)
+        <div className="HomeContainer" >
+            <div style={{ backgroundColor: busbudColorDark, paddingBottom: '20px' }}>
+                <Container>
+                    <Row>
+                        <Col>
+                            <div style={{ display: 'flex', color: titleTextColor, justifyContent: 'flex-start', padding: '4px 10px 4px 10px' }}>
+                                <BusbudLogo />
+                                <div style={{ display: 'flex', alignItems: 'flex-end', flexGrow: 1, padding: '0px 10px 3px 20px' }}>
+                                    Departures (Coding Challenge)
+                                </div>
                             </div>
-                        </div>
-                    </Col>
-                </Row>
+                        </Col>
+                    </Row>
 
-                {SelectionMenu(
-                    clickShowDepartures,
-                    clickShowDestinations,
-                    clickShowPassengers,
-                    setShowDepartures,
-                    setShowDestinations,
-                    setShowPassengers,
-                    OnChange_Date,
-                    originValue,
-                    destinationValue,
-                    date,
-                    passengersValue
-                )}
+                    {SelectionMenu(
+                        clickShowDepartures,
+                        clickShowDestinations,
+                        clickShowPassengers,
+                        setShowDepartures,
+                        setShowDestinations,
+                        setShowPassengers,
+                        OnChange_Date,
+                        clickSearch,
+                        originValue,
+                        destinationValue,
+                        date,
+                        passengersValue
+                    )}
+                </Container>
+            </div>
+            <div style={{ background: busbudColorLight }}>
+                <Container>
+                    <Row>
+                        <Col sm={3}>
 
-                <Row>
-                    <Col sm={3}></Col>
-                    <Col sm={6}>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                            {departures.map((departure) => <DepartureCard key={departure.id} departure={departure} />)}
-                        </div>
-                    </Col>
-                    <Col sm={3}></Col>
-                </Row>
-            </Container>
+                        </Col>
+                        <Col sm={6}>
+                            {message && (
+                                <Alert variant={message.type} onClose={() => setMessage(null)} dismissible>
+                                    <Alert.Heading>{(message.type === 'danger') ? 'Error!' : 'Sorry,'}</Alert.Heading>
+                                    <p>
+                                        {message.details}
+                                    </p>
+                                </Alert>
+                            )}
+                        </Col>
+                        <Col sm={3}></Col>
+                    </Row>
+                    <Row>
+                        <Col sm={3}>
 
-            {LocationPopOver('Origin', showDepartures, originAvailable, OnChange_Origin, targetOrigin, refOrigin)}
-            {LocationPopOver('Destination', showDestinations, destinationAvailable, OnChange_Destination, targetDestination, refDestination)}
+                        </Col>
+                        <Col sm={6}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                {departures.map((departure) => <DepartureCard key={departure.id} departure={departure} />)}
+                            </div>
+                        </Col>
+                        <Col sm={3}></Col>
+                    </Row>
+                </Container>
 
-            <OnChangeSmallButtonContext.Provider value={OnChangeSmallButton}>
-                <PassengersPopOver
-                    title={'Passengers'}
-                    visible={showPassengers}
-                    target={targetPassengers}
-                    refPassengers={refPassengers}
-                />
-            </OnChangeSmallButtonContext.Provider>
+                {LocationPopOver('Origin', showDepartures, originAvailable, OnChange_Origin, targetOrigin, refOrigin)}
+                {LocationPopOver('Destination', showDestinations, destinationAvailable, OnChange_Destination, targetDestination, refDestination)}
+
+                <QueryParamsContext.Provider value={queryParams}>
+                    <OnChangeSmallButtonContext.Provider value={OnChangeSmallButton}>
+                        <PassengersPopOver
+                            title={'Passengers'}
+                            visible={showPassengers}
+                            target={targetPassengers}
+                            refPassengers={refPassengers}
+                        />
+                    </OnChangeSmallButtonContext.Provider>
+                </QueryParamsContext.Provider>
+            </div>
         </div>
     );
 }
