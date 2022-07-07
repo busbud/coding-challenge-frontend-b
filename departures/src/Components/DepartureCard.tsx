@@ -22,7 +22,7 @@ export const DepartureCard = (props: DepartureCardProps) => {
         const _size = (locationType === 'origin') ? '12px' : '13px';
         return (
             <div style={{ marginRight: '10px' }}>
-                <FontAwesomeIcon icon={_icon} style={{ width: _size, height: _size }} color={'#717578'} />
+                <FontAwesomeIcon icon={_icon} style={{ width: _size, height: _size, marginBottom: '1px' }} color={'#717578'} />
             </div>
         )
     }
@@ -30,10 +30,10 @@ export const DepartureCard = (props: DepartureCardProps) => {
     return (
         <div style={{ display: 'flex', flexDirection: 'row', width: '100%', backgroundColor: '#f2fdff', margin: '16px 4px 16px 4px', border: 'solid 1px #dbdbdb', borderRadius: '4px', padding: '20px 16px 20px 16px', boxShadow: '1px 4px 6px rgba(200, 200, 200, 0.8)' }}>
             <div style={{ flexGrow: 1, margin: '8px 0px 14px 0px' }}>
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex', textAlign: 'start' }}>
                     {locationIcon('origin')} {_departureTime} - {locationName_Origin}
                 </div>
-                <div style={{ display: 'flex', marginTop: '22px' }}>
+                <div style={{ display: 'flex', textAlign: 'start', marginTop: '22px' }}>
                     {locationIcon('destination')} {_arrivalTime} - {locationName_Destination}
                 </div>
             </div>

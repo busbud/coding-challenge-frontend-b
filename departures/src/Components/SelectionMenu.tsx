@@ -5,7 +5,7 @@ import { TLocation } from '../Pages/Home';
 import { OnChangeSmallButtonContext, QueryParamsContext } from '../Pages/Home';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faSubtract, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSubtract, faLocationDot, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import './SelectionMenu.css';
 import { TQueryParams } from '../Connections/connections';
@@ -78,7 +78,10 @@ export const SelectionMenu = (
 
             </Col>
             <Col sm={4} md={2} lg={2}>
-                <div className='cButton' onClick={OnSearch}>Search</div>
+                <div className='cButton' onClick={OnSearch}>
+                    <FontAwesomeIcon icon={faSearch} style={{ width: '18px', height: '18px', marginRight: '10px' }} color={'white'} />
+                    Search
+                </div>
             </Col>
         </Row>
     )

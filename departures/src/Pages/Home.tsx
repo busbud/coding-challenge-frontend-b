@@ -199,10 +199,8 @@ const Home = () => {
             <div style={{ background: busbudColorLight }}>
                 <Container>
                     <Row>
-                        <Col sm={3}>
-
-                        </Col>
-                        <Col sm={6}>
+                        <Col md={2} lg={3} />
+                        <Col sm={12} md={8} lg={6}>
                             {message && (
                                 <Alert variant={message.type} onClose={() => setMessage(null)} dismissible>
                                     <Alert.Heading>{(message.type === 'danger') ? 'Error!' : 'Sorry,'}</Alert.Heading>
@@ -212,18 +210,16 @@ const Home = () => {
                                 </Alert>
                             )}
                         </Col>
-                        <Col sm={3}></Col>
+                        <Col md={2} lg={3} />
                     </Row>
                     <Row>
-                        <Col sm={3}>
-
-                        </Col>
-                        <Col sm={6}>
+                        <Col md={2} lg={3} />
+                        <Col sm={12} md={8} lg={6}>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                 {departures.map((departure) => <DepartureCard key={departure.id} departure={departure} />)}
                             </div>
                         </Col>
-                        <Col sm={3}></Col>
+                        <Col md={2} lg={3} />
                     </Row>
                 </Container>
 
