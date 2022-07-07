@@ -1,21 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import moment from 'moment';
 import { Container, Row, Col, Alert, Spinner } from 'react-bootstrap';
 
 import { TLocation, TQueryParams, TMessage, TDeparture } from '../Types/Types';
-
 import { fetchDepartures } from '../Connections/Connections';
-
 import { BusbudLogo } from '../Components/Icons';
 import { SelectionMenu, LocationPopOver, PassengersPopOver } from '../Components/SelectionMenu';
 import { DepartureCard } from '../Components/DepartureCard';
 
-// export const origin = "f2m673"; //(Québec - geohash: f2m673)
-// export const destination = "f25dvk"; //(Montréal - geohash: f25dvk)
-// export const date = "2022-08-02"; //(the 2nd of August 2021) for 1 adult.
-
-import './Home.css';
-import moment from 'moment';
+import '../Styles/Home.css';
 
 export const initialQueryParams: TQueryParams = {
     adult: 1,

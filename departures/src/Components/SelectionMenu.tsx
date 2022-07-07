@@ -7,7 +7,8 @@ import { OnChangeSmallButtonContext, QueryParamsContext } from '../Pages/Home';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSubtract, faLocationDot, faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import './SelectionMenu.css';
+import '../Styles/SelectionMenu.css';
+
 import moment from 'moment';
 
 const boldTextParams = {
