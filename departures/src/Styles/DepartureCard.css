@@ -1,0 +1,53 @@
+.d-card-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #f2fdff;
+    margin: 16px 4px 16px 4px;
+    border: solid 1px #dbdbdb;
+    border-radius: 4px;
+    padding: 20px 16px 20px 16px;
+    box-shadow: 1px 4px 6px rgba(200, 200, 200, 0.8);
+}
+
+.d-card-loc-container {
+    flex-grow: 1;
+    margin: 8px 0px 14px 0px;
+}
+
+.d-card-price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.d-origin-text-container,
+.d-destination-text-container {
+    display: flex;
+    text-align: start;
+}
+
+.d-destination-text-container {
+    margin-top: 22px;
+}
+
+.d-price-text {
+    font-weight: 500;
+}
+
+.d-currency-text {
+    font-size: 10px;
+    margin-top: -4px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.d-select-button-text {
+    margin-top: -4px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faCircleDot } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'react-bootstrap';
 
+import '../Styles/DepartureCard.css';
 
 export const DepartureCard = (props: DepartureCardProps) => {
     const { departureTime, arrivalTime, locationName_Origin, locationName_Destination, price, currency } = props.departure;
@@ -12,37 +13,37 @@ export const DepartureCard = (props: DepartureCardProps) => {
     const _departureTime = FormatDate(departureTime);
     const _arrivalTime = FormatDate(arrivalTime);
 
-    const locationIcon = (locationType: string) => {
-        const _icon = (locationType === 'origin') ? faCircleDot : faLocationDot;
-        const _size = (locationType === 'origin') ? '12px' : '13px';
-        return (
-            <div style={{ marginRight: '10px' }}>
-                <FontAwesomeIcon icon={_icon} style={{ width: _size, height: _size, marginBottom: '1px' }} color={'#717578'} />
-            </div>
-        )
-    }
-
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', width: '100%', backgroundColor: '#f2fdff', margin: '16px 4px 16px 4px', border: 'solid 1px #dbdbdb', borderRadius: '4px', padding: '20px 16px 20px 16px', boxShadow: '1px 4px 6px rgba(200, 200, 200, 0.8)' }}>
-            <div style={{ flexGrow: 1, margin: '8px 0px 14px 0px' }}>
-                <div style={{ display: 'flex', textAlign: 'start' }}>
-                    {locationIcon('origin')} {_departureTime} - {locationName_Origin}
+        <div className='d-card-container'>
+            <div className='d-card-loc-container'>
+                <div className='d-origin-text-container'>
+                    <LocationIcon locationType={'origin'} /> {_departureTime} - {locationName_Origin}
                 </div>
-                <div style={{ display: 'flex', textAlign: 'start', marginTop: '22px' }}>
-                    {locationIcon('destination')} {_arrivalTime} - {locationName_Destination}
+                <div className='d-destination-text-container'>
+                    <LocationIcon locationType={'destination'} /> {_arrivalTime} - {locationName_Destination}
                 </div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div className='d-card-price-container'>
                 <div>
-                    <div style={{ fontWeight: '500' }}>${price}</div>
-                    <div style={{ fontSize: '10px', marginTop: '-4px', width: '100%', display: 'flex', flexDirection: 'column', textAlign: 'right' }}>{currency}</div>
+                    <div className='d-price-text'>${price}</div>
+                    <div className='d-currency-text'>{currency}</div>
                 </div>
                 <div>
                     <Button variant="outline-secondary" style={{ borderColor: 'transparent', backgroundColor: 'orange', height: '28px' }}>
-                        <div style={{ marginTop: '-4px', color: 'white', fontSize: '13px', fontWeight: 'bold' }}>Select</div>
+                        <div className='d-select-button-text'>Select</div>
                     </Button>
                 </div>
             </div>
+        </div>
+    )
+}
+
+const LocationIcon = ({ locationType }: { locationType: string }) => {
+    const _icon = (locationType === 'origin') ? faCircleDot : faLocationDot;
+    const _size = (locationType === 'origin') ? '12px' : '13px';
+    return (
+        <div style={{ marginRight: '10px' }}>
+            <FontAwesomeIcon icon={_icon} style={{ width: _size, height: _size, marginBottom: '1px' }} color={'#717578'} />
         </div>
     )
 }
