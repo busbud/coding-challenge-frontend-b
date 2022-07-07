@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import { Container, Row, Col, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Alert, Spinner } from 'react-bootstrap';
 
 import { fetchDepartures, TQueryParams } from '../Connections/connections';
 
@@ -59,6 +59,7 @@ const Home = () => {
     const [destination, setDestination] = useState<TLocation>(destinationAvailable[0]);
     const [date, setDate] = useState<string>('2022-07-05');
     const [message, setMessage] = useState<TMessage | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const [departures, setDepartures] = useState<Array<TDeparture>>([]);
     const [showDepartures, setShowDepartures] = useState<boolean>(false);
@@ -73,10 +74,12 @@ const Home = () => {
 
     const OnChange_Origin = (_location: TLocation) => {
         setOrigin(_location);
+        setShowDepartures(false);
     }
 
     const OnChange_Destination = (_location: TLocation) => {
         setDestination(_location);
+        setShowDestinations(false);
     }
 
     const OnChange_Date = (event: any) => {
@@ -86,7 +89,11 @@ const Home = () => {
 
     const OnChangeSmallButton = (type: string, action: string) => {
         const previousValue = queryParams[type as keyof TQueryParams] as number;
-        const newValue = (action === 'add') ? previousValue + 1 : previousValue - 1;
+        let newValue = (action === 'add') ? previousValue + 1 : previousValue - 1;
+
+        if (newValue < 0) {
+            newValue = 0;
+        }
 
         setQueryParams(prevState => ({ ...prevState, [type]: newValue }))
     }
@@ -111,9 +118,13 @@ const Home = () => {
     };
 
     const fetchDeparturesFromAPI = async () => {
+        setMessage(null);
         setDepartures([]);
+        setLoading(true);
 
         const data = await fetchDepartures(origin.geoHash, destination.geoHash, date, queryParams);
+
+        setLoading(false);
 
         console.log('RESULT = ', data);
 
@@ -208,6 +219,20 @@ const Home = () => {
                                         {message.details}
                                     </p>
                                 </Alert>
+                            )}
+                        </Col>
+                        <Col md={2} lg={3} />
+                    </Row>
+                    <Row>
+                        <Col md={2} lg={3} />
+                        <Col sm={12} md={8} lg={6}>
+                            {loading && (
+                                <>
+                                    <Spinner animation="border" role="status" style={{ marginTop: '20px' }} variant={'primary'}>
+
+                                    </Spinner>
+                                    <span style={{ color: '#0091ff', marginLeft: '6px', fontWeight: 'bold' }}>Searching departures...</span>
+                                </>
                             )}
                         </Col>
                         <Col md={2} lg={3} />

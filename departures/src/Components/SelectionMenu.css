@@ -36,3 +36,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .f-control:hover {
     border: 1px solid #cdcdcd !important;
 }
+
+.card-location {
+    display: flex;
+    width: 240px;
+    height: 40px;
+    padding: 10px 4px 10px 6px;
+    cursor: pointer;
+    border-radius: .25rem;
+}
+
+.card-location:hover {
+    background-color: rgb(208 243 255);
+}

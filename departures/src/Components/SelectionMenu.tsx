@@ -9,6 +9,7 @@ import { faPlus, faSubtract, faLocationDot, faSearch } from '@fortawesome/free-s
 
 import './SelectionMenu.css';
 import { TQueryParams } from '../Connections/connections';
+import moment from 'moment';
 
 const boldTextParams = {
     color: '#717578',
@@ -54,6 +55,10 @@ export const SelectionMenu = (
         boxShadow
     }
 
+    const todayDate = new Date();
+    const format = "YYYY-MM-DD";
+    const minDate = moment(todayDate).format(format);
+
     return (
         <Row className="g-2" style={rowStyle}>
             <Col sm={6} md={3} lg={3} style={colStyle}>
@@ -68,7 +73,7 @@ export const SelectionMenu = (
             </Col>
             <Col sm={4} md={2} lg={2} style={colStyle}>
                 <FloatingLabel label="Date">
-                    <Form.Control type="date" name="dob" placeholder="date" min={'2022-07-05'} onChange={OnChange_Date} value={dateValue} className={'f-control'} />
+                    <Form.Control type="date" name="dob" placeholder="date" min={minDate} onChange={OnChange_Date} value={dateValue} className={'f-control'} />
                 </FloatingLabel>
             </Col>
             <Col sm={4} md={2} lg={2} style={colStyle}>
@@ -114,7 +119,7 @@ export const LocationPopOver = (
                                 const { id, city, state } = item;
 
                                 return (
-                                    <div key={id} style={{ display: 'flex', width: '240px', height: '40px', padding: '10px 4px 10px 6px' }} onClick={() => onChange(item)}>
+                                    <div key={id} className={'card-location'} onClick={() => onChange(item)}>
                                         <FontAwesomeIcon icon={faLocationDot} style={{ width: '18px', height: '18px' }} color={'#717578'} />
                                         <div style={{ marginLeft: '4px', ...boldTextParams }}>{city},</div>
                                         <div style={{ marginLeft: '4px' }}>{state}</div>
@@ -170,12 +175,14 @@ export const PassengersPopOver = (props: PassengerProps) => {
 const SmallCard = (title: string, type: string, value: number, hasSaparator: boolean) => {
     const borderBottom = (hasSaparator) ? '1px solid #d1d1d1' : 'none';
 
+    const canClick = (value > 0);
+
     return (
         <div style={{ display: 'flex', flexDirection: 'row', width: '240px', paddingBottom: '8px', borderBottom, margin: '4px 0px 4px 0px', justifyContent: 'center' }}>
             <div style={{ flexGrow: 1 }}>
                 <div style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', height: '100%', ...boldTextParams }}>{title}</div>
             </div>
-            {SmallCardButton(faSubtract, type, 'remove', true)}
+            {SmallCardButton(faSubtract, type, 'remove', canClick)}
             <div>
                 <div style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', height: '100%' }}>{value}</div>
             </div>
@@ -209,7 +216,10 @@ const HandlingClosePopOver = (e: MouseEvent, popOverId: string, inputId: string,
 
     if (popOverElement && popOverElement.contains(e.target as HTMLElement)) {
         clickedOnInputOrPopOver = true;
-        inputElement?.focus();
+
+        if (inputId === 'fInputPassengers') {
+            inputElement?.focus();
+        }
     }
     if (inputElement && inputElement.contains(e.target as HTMLElement)) {
         clickedOnInputOrPopOver = true;
