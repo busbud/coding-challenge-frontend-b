@@ -223,8 +223,22 @@ const Home = () => {
                     </Row>
                 </Container>
 
-                {LocationPopOver('Origin', showDepartures, originAvailable, OnChange_Origin, targetOrigin, refOrigin)}
-                {LocationPopOver('Destination', showDestinations, destinationAvailable, OnChange_Destination, targetDestination, refDestination)}
+                <LocationPopOver
+                    title={'Origin'}
+                    visible={showDepartures}
+                    listItems={originAvailable}
+                    onChange={OnChange_Origin}
+                    target={targetOrigin}
+                    refLocation={refOrigin}
+                />
+                <LocationPopOver
+                    title={'Destination'}
+                    visible={showDestinations}
+                    listItems={destinationAvailable}
+                    onChange={OnChange_Destination}
+                    target={targetDestination}
+                    refLocation={refDestination}
+                />
 
                 <QueryParamsContext.Provider value={queryParams}>
                     <OnChangeSmallButtonContext.Provider value={OnChangeSmallButton}>

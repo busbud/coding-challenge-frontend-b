@@ -38,3 +38,12 @@ export interface PassengerProps {
     target: any,
     refPassengers: any
 }
+
+export interface LocationProps {
+    title: string,
+    visible: boolean,
+    listItems: Array<TLocation>,
+    onChange: (item: TLocation) => void,
+    target: any,
+    refLocation: any
+}

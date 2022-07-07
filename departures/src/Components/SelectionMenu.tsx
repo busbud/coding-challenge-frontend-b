@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Row, Col, Form, FloatingLabel, Popover, Overlay, Button } from 'react-bootstrap';
-import { TQueryParams, TLocation, PassengerProps } from '../Types/Types';
+import { TQueryParams, TLocation, PassengerProps, LocationProps } from '../Types/Types';
 
 import { OnChangeSmallButtonContext, QueryParamsContext } from '../Pages/Home';
 
@@ -92,22 +92,16 @@ export const SelectionMenu = (
     )
 }
 
-export const LocationPopOver = (
-    title: string,
-    visible: boolean,
-    listItems: Array<TLocation>,
-    onChange: (item: TLocation) => void,
-    target: any,
-    ref: any
-) => {
+export const LocationPopOver = (props: LocationProps) => {
+    const { title, visible, listItems, onChange, target, refLocation } = props;
 
     return (
-        <div ref={ref}>
+        <div ref={refLocation}>
             <Overlay
                 show={visible}
                 target={target}
                 placement="bottom-start"
-                container={ref}
+                container={refLocation}
                 containerPadding={20}
                 transition={true}
             >
