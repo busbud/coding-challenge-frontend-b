@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import { Container, Row, Col, Alert, Spinner } from 'react-bootstrap';
 
-import { fetchDepartures, TQueryParams } from '../Connections/connections';
+import { TLocation, TQueryParams, TMessage, TDeparture } from '../Types/Types';
+
+import { fetchDepartures } from '../Connections/Connections';
 
 import { BusbudLogo } from '../Components/Icons';
 import { SelectionMenu, LocationPopOver, PassengersPopOver } from '../Components/SelectionMenu';
@@ -27,29 +29,8 @@ const busbudColorLight = 'transparent';
 const busbudColorDark = 'rgb(208 243 255)'//'#def7fb'//'#edfcf9';
 const titleTextColor = '#0274ca';
 
-
 const originAvailable = [{ id: 1, city: 'Québec City', state: 'Quebec', geoHash: 'f2m673' }];
 const destinationAvailable = [{ id: 1, city: 'Montreal', state: 'Quebec', geoHash: 'f25dvk' }];
-
-export interface TLocation {
-    id: number,
-    city: string,
-    state: string,
-    geoHash: string
-}
-export interface TDeparture {
-    id: string,
-    departureTime: string,
-    arrivalTime: string,
-    locationName_Origin: string,
-    locationName_Destination: string,
-    price: number,
-    currency: string
-}
-interface TMessage {
-    details: string;
-    type: string
-}
 
 export const OnChangeSmallButtonContext = React.createContext<((type: string, action: string) => void) | null>(null);
 export const QueryParamsContext = React.createContext<TQueryParams | null>(null);
@@ -130,8 +111,6 @@ const Home = () => {
         const data = await fetchDepartures(origin.geoHash, destination.geoHash, date, queryParams);
 
         setLoading(false);
-
-        console.log('RESULT = ', data);
 
         if (data && data.error) {
             setMessage({ type: 'danger', details: data.error.details });

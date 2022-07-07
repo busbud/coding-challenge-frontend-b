@@ -1,15 +1,10 @@
 
 import moment from 'moment';
-import { TDeparture } from '../Pages/Home';
-
+import { DepartureCardProps } from '../Types/Types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faCircleDot } from '@fortawesome/free-solid-svg-icons';
-
 import { Button } from 'react-bootstrap';
 
-interface DepartureCardProps {
-    departure: TDeparture
-}
 
 export const DepartureCard = (props: DepartureCardProps) => {
     const { departureTime, arrivalTime, locationName_Origin, locationName_Destination, price, currency } = props.departure;

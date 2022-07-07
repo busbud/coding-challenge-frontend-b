@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Row, Col, Form, FloatingLabel, Popover, Overlay, Button } from 'react-bootstrap';
-import { TLocation } from '../Pages/Home';
+import { TQueryParams, TLocation, PassengerProps } from '../Types/Types';
 
 import { OnChangeSmallButtonContext, QueryParamsContext } from '../Pages/Home';
 
@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSubtract, faLocationDot, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import './SelectionMenu.css';
-import { TQueryParams } from '../Connections/connections';
 import moment from 'moment';
 
 const boldTextParams = {
@@ -132,13 +131,6 @@ export const LocationPopOver = (
             </Overlay>
         </div>
     )
-}
-
-interface PassengerProps {
-    title: string,
-    visible: boolean,
-    target: any,
-    refPassengers: any
 }
 
 export const PassengersPopOver = (props: PassengerProps) => {

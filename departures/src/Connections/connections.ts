@@ -1,3 +1,5 @@
+import { TQueryParams } from '../Types/Types';
+
 export const API_URL = "https://napi.busbud.com/x-departures";
 
 const token = 'PARTNER_c9g6z7V0SNqUlnar2EFsxw';
@@ -8,14 +10,6 @@ const options = {
         'Accept': 'application/vnd.busbud+json; version=2; profile=https://schema.busbud.com/v2/',
         'X-Busbud-Token': token,
     }
-}
-
-export interface TQueryParams {
-    adult: number,
-    child: number,
-    senior: number,
-    lang: string,
-    currency: string,
 }
 
 // { key: 'adult', value: '1' },
