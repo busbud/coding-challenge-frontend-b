@@ -2,3 +2,30 @@
     text-align: center;
     height: 100vh;
 }
+
+.HeaderContainer {
+    display: flex;
+    color: #0274ca;
+    justify-content: flex-start;
+    padding: 4px 10px 4px 10px;
+}
+
+.HeaderTitle {
+    display: flex;
+    align-items: flex-end;
+    flex-grow: 1;
+    padding: 0px 10px 3px 20px;
+}
+
+.SearchingDeparturesText {
+    color: #0091ff;
+    margin-left: 6px;
+    font-weight: bold;
+}
+
+.DeparturesSectionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

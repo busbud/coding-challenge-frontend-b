@@ -228,7 +228,7 @@ export const SelectionMenu = (props: SelectionMenuProps) => {
     )
 }
 
-export const LocationPopOver = (props: LocationProps) => {
+const LocationPopOver = (props: LocationProps) => {
     const { title, visible, listItems, onChange, target, refLocation } = props;
 
     return (
@@ -264,7 +264,7 @@ export const LocationPopOver = (props: LocationProps) => {
     )
 }
 
-export const PassengersPopOver = (props: PassengerProps) => {
+const PassengersPopOver = (props: PassengerProps) => {
     const { title, visible, target, refPassengers, queryParams } = props;
 
     const { adult, child, senior } = queryParams;

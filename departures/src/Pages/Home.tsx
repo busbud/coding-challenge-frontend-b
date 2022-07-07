@@ -22,9 +22,9 @@ const Home = () => {
                 <Container>
                     <Row>
                         <Col>
-                            <div style={{ display: 'flex', color: '#0274ca', justifyContent: 'flex-start', padding: '4px 10px 4px 10px' }}>
+                            <div className='HeaderContainer'>
                                 <BusbudLogo />
-                                <div style={{ display: 'flex', alignItems: 'flex-end', flexGrow: 1, padding: '0px 10px 3px 20px' }}>
+                                <div className='HeaderTitle'>
                                     Departures (Coding Challenge)
                                 </div>
                             </div>
@@ -59,7 +59,7 @@ const Home = () => {
                             {loading && (
                                 <div>
                                     <Spinner animation="border" role="status" style={{ marginTop: '20px' }} variant={'primary'} />
-                                    <span style={{ color: '#0091ff', marginLeft: '6px', fontWeight: 'bold' }}>Searching departures...</span>
+                                    <span className='SearchingDeparturesText'>Searching departures...</span>
                                 </div>
                             )}
                         </Col>
@@ -68,7 +68,7 @@ const Home = () => {
                     <Row>
                         <Col md={2} lg={3} />
                         <Col sm={12} md={8} lg={6}>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                            <div className='DeparturesSectionContainer'>
                                 {departures.map((departure) => <DepartureCard key={departure.id} departure={departure} />)}
                             </div>
                         </Col>
