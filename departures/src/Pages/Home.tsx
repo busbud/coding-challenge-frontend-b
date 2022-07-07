@@ -13,6 +13,7 @@ import { DepartureCard } from '../Components/DepartureCard';
 // export const date = "2022-08-02"; //(the 2nd of August 2021) for 1 adult.
 
 import './Home.css';
+import moment from 'moment';
 
 export const initialQueryParams: TQueryParams = {
     adult: 1,
@@ -54,10 +55,14 @@ export const OnChangeSmallButtonContext = React.createContext<((type: string, ac
 export const QueryParamsContext = React.createContext<TQueryParams | null>(null);
 
 const Home = () => {
+    const todayDate = new Date();
+    const format = "YYYY-MM-DD";
+    const minDate = moment(todayDate).format(format);
+
     const [queryParams, setQueryParams] = useState<TQueryParams>(initialQueryParams);
     const [origin, setOrigin] = useState<TLocation>(originAvailable[0]);
     const [destination, setDestination] = useState<TLocation>(destinationAvailable[0]);
-    const [date, setDate] = useState<string>('2022-07-05');
+    const [date, setDate] = useState<string>(minDate);
     const [message, setMessage] = useState<TMessage | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -213,7 +218,7 @@ const Home = () => {
                         <Col md={2} lg={3} />
                         <Col sm={12} md={8} lg={6}>
                             {message && (
-                                <Alert variant={message.type} onClose={() => setMessage(null)} dismissible>
+                                <Alert variant={message.type} onClose={() => setMessage(null)} dismissible style={{ marginTop: '20px' }}>
                                     <Alert.Heading>{(message.type === 'danger') ? 'Error!' : 'Sorry,'}</Alert.Heading>
                                     <p>
                                         {message.details}
@@ -227,12 +232,10 @@ const Home = () => {
                         <Col md={2} lg={3} />
                         <Col sm={12} md={8} lg={6}>
                             {loading && (
-                                <>
-                                    <Spinner animation="border" role="status" style={{ marginTop: '20px' }} variant={'primary'}>
-
-                                    </Spinner>
+                                <div>
+                                    <Spinner animation="border" role="status" style={{ marginTop: '20px' }} variant={'primary'} />
                                     <span style={{ color: '#0091ff', marginLeft: '6px', fontWeight: 'bold' }}>Searching departures...</span>
-                                </>
+                                </div>
                             )}
                         </Col>
                         <Col md={2} lg={3} />
