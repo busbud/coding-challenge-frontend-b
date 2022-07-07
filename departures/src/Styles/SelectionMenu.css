@@ -49,3 +49,59 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .card-location:hover {
     background-color: rgb(208 243 255);
 }
+
+.loc-name {
+    margin-left: 4px;
+}
+
+.loc-name.bold {
+    color: #717578;
+    font-weight: bold;
+}
+
+.p-popover-container,
+.l-popover-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.p-card-container {
+    display: flex;
+    flex-direction: row;
+    width: 240px;
+    padding-bottom: 8px;
+    border-bottom: none;
+    margin: 4px 0px 4px 0px;
+    justify-content: center;
+}
+
+.p-card-container.has-separator {
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.p-card-container-text {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.p-card-container-text.bold {
+    color: #717578;
+    font-weight: bold;
+}
+
+.p-card-button-container {
+    width: 32px;
+    height: 32px;
+    margin: 0px 6px 0px 6px;
+    background-color: #def7fb !important;
+    border: none !important;
+}
+
+.p-card-button-sub-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

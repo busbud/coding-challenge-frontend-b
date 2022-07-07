@@ -1,20 +1,16 @@
 import React, { useContext, useState, useRef } from 'react';
 import { Row, Col, Form, FloatingLabel, Popover, Overlay, Button } from 'react-bootstrap';
-import { TQueryParams, TLocation, PassengerProps, LocationProps, TDeparture, SelectionMenuProps } from '../Types/Types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSubtract, faLocationDot, faSearch } from '@fortawesome/free-solid-svg-icons';
+
+import { TQueryParams, TLocation, PassengerProps, LocationProps, TDeparture, SelectionMenuProps, PassengerCardProps, PassengerCardButtonProps } from '../Types/Types';
 
 import { fetchDepartures } from '../Connections/Connections';
 
 import '../Styles/SelectionMenu.css';
 
 import moment from 'moment';
-
-const boldTextParams = {
-    color: '#717578',
-    fontWeight: 'bold'
-}
 
 const originAvailable = [{ id: 1, city: 'Québec City', state: 'Quebec', geoHash: 'f2m673' }];
 const destinationAvailable = [{ id: 1, city: 'Montreal', state: 'Quebec', geoHash: 'f25dvk' }];
@@ -66,8 +62,6 @@ export const SelectionMenu = (props: SelectionMenuProps) => {
         }
     });
 
-    const boxShadow = '0px 4px 4px hsl(206deg 48% 24% / 10%), 0px 4px 4px hsl(206deg 48% 24% / 10%)';
-
     const rowStyle = {
         margin: '20px 0px 20px 0px',
         borderRadius: '.25rem',
@@ -79,7 +73,7 @@ export const SelectionMenu = (props: SelectionMenuProps) => {
         border: '1px solid transparent',
         borderRadius: '.25rem',
         padding: '4px 4px 4px 4px',
-        boxShadow
+        boxShadow: '0px 4px 4px hsl(206deg 48% 24% / 10%), 0px 4px 4px hsl(206deg 48% 24% / 10%)'
     }
 
     const OnshowDepartures = (event: any) => {
@@ -103,7 +97,7 @@ export const SelectionMenu = (props: SelectionMenuProps) => {
     }
 
     const OnSearch = (event: any) => {
-        fetchDeparturesFromAPI();
+        FetchDeparturesFromAPI();
     };
 
     const OnChange_Origin = (_location: TLocation) => {
@@ -127,7 +121,7 @@ export const SelectionMenu = (props: SelectionMenuProps) => {
         setQueryParams(prevState => ({ ...prevState, [type]: newValue }))
     }
 
-    const fetchDeparturesFromAPI = async () => {
+    const FetchDeparturesFromAPI = async () => {
         setMessage(null);
         setDepartures([]);
         setLoading(true);
@@ -175,7 +169,7 @@ export const SelectionMenu = (props: SelectionMenuProps) => {
     }
 
     return (
-        <Row className="g-2" style={rowStyle}>
+        <Row className={"g-2"} style={rowStyle}>
             <Col sm={6} md={3} lg={3} style={colStyle}>
                 <FloatingLabel controlId="fInputOrigin" label="Origin" onClick={OnshowDepartures}>
                     <Form.Control placeholder="origin" value={originValue} className={'f-control'} />
@@ -250,15 +244,15 @@ export const LocationPopOver = (props: LocationProps) => {
                 <Popover id={`popover-contained-${title.toLocaleLowerCase()}`}>
                     {/* <Popover.Header as="h3">{title}</Popover.Header> */}
                     <Popover.Body>
-                        <div style={{ display: 'flex', width: '100%', flexDirection: 'column' }}>
+                        <div className='l-popover-container'>
                             {listItems.map(item => {
                                 const { id, city, state } = item;
 
                                 return (
                                     <div key={id} className={'card-location'} onClick={() => onChange(item)}>
                                         <FontAwesomeIcon icon={faLocationDot} style={{ width: '18px', height: '18px' }} color={'#717578'} />
-                                        <div style={{ marginLeft: '4px', ...boldTextParams }}>{city},</div>
-                                        <div style={{ marginLeft: '4px' }}>{state}</div>
+                                        <div className='loc-name bold'>{city},</div>
+                                        <div className='loc-name'>{state}</div>
                                     </div>
                                 )
                             })}
@@ -287,10 +281,10 @@ export const PassengersPopOver = (props: PassengerProps) => {
             >
                 <Popover id={`popover-contained-${title.toLocaleLowerCase()}`}>
                     <Popover.Body>
-                        <div style={{ display: 'flex', width: '100%', flexDirection: 'column' }}>
-                            {SmallCard('Adults', 'adult', adult, true)}
-                            {SmallCard('Children', 'child', child, true)}
-                            {SmallCard('Seniors', 'senior', senior, false)}
+                        <div className='p-popover-container'>
+                            <PassengerCard title={'Adults'} type={'adult'} value={adult} hasSeparator={true} />
+                            <PassengerCard title={'Children'} type={'child'} value={child} hasSeparator={true} />
+                            <PassengerCard title={'Seniors'} type={'senior'} value={senior} hasSeparator={false} />
                         </div>
                     </Popover.Body>
                 </Popover>
@@ -299,36 +293,37 @@ export const PassengersPopOver = (props: PassengerProps) => {
     )
 }
 
-const SmallCard = (title: string, type: string, value: number, hasSaparator: boolean) => {
-    const borderBottom = (hasSaparator) ? '1px solid #d1d1d1' : 'none';
+const PassengerCard = (props: PassengerCardProps) => {
+    const { title, type, value, hasSeparator } = props;
 
-    const canClick = (value > 0);
+    const containerClass = (hasSeparator) ? 'p-card-container has-separator' : 'p-card-container';
+
+    const active = (value > 0);
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', width: '240px', paddingBottom: '8px', borderBottom, margin: '4px 0px 4px 0px', justifyContent: 'center' }}>
+        <div className={containerClass}>
             <div style={{ flexGrow: 1 }}>
-                <div style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', height: '100%', ...boldTextParams }}>{title}</div>
+                <div className='p-card-container-text bold'>{title}</div>
             </div>
-            {SmallCardButton(faSubtract, type, 'remove', canClick)}
+            <PassengerCardButton icon={faSubtract} type={type} action={'remove'} active={active} />
             <div>
-                <div style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', height: '100%' }}>{value}</div>
+                <div className='p-card-container-text'>{value}</div>
             </div>
-            {SmallCardButton(faPlus, type, 'add', true)}
+            <PassengerCardButton icon={faPlus} type={type} action={'add'} active={true} />
         </div>
     )
 }
 
-const SmallCardButton = (icon: any, type: string, action: string, canClick: boolean) => {
-    const buttonSize = '32px';
-    const iconSize = '16px';
+const PassengerCardButton = (props: PassengerCardButtonProps) => {
+    const { icon, type, action, active } = props;
 
-    const backgroundColor = '#def7fb';
+    const iconSize = '16px';
 
     const onChange = useContext(OnChangePassengersContext) as ((type: string, action: string) => void);
 
     return (
-        <Button style={{ width: buttonSize, height: buttonSize, margin: '0px 6px 0px 6px', backgroundColor, border: 'none' }} onClick={() => onChange(type, action)} disabled={!canClick}>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Button className='p-card-button-container' onClick={() => onChange(type, action)} disabled={!active}>
+            <div className='p-card-button-sub-container'>
                 <FontAwesomeIcon icon={icon} style={{ width: iconSize, height: iconSize }} color={'#717578'} />
             </div>
         </Button>

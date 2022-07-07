@@ -54,3 +54,17 @@ export interface SelectionMenuProps {
     setMessage: React.Dispatch<React.SetStateAction<TMessage | null>>,
     setDepartures: React.Dispatch<React.SetStateAction<TDeparture[]>>
 }
+
+export interface PassengerCardProps {
+    title: string,
+    type: string,
+    value: number,
+    hasSeparator: boolean
+}
+
+export interface PassengerCardButtonProps {
+    icon: any,
+    type: string,
+    action: string,
+    active: boolean
+}
