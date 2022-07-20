@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="261px" height="46px" viewBox="0 0 261 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon</title>
+    <defs>
+        <path d="M5,0 L33,0 C33,2.76142375 35.2385763,5 38,5 L38,22 C35.2385763,22 33,24.2385763 33,27 L5,27 C5,24.2385763 2.76142375,22 0,22 L0,5 C2.76142375,5 5,2.76142375 5,0 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Extra-Large" transform="translate(-310.000000, -80.000000)">
+            <g id="icon" transform="translate(310.000000, 80.000000)">
+                <g transform="translate(0.000000, 7.000000)">
+                    <g id="Stick" transform="translate(17.000000, 13.000000)">
+                        <rect id="Rectangle" fill="#F2AF3D" x="0" y="0" width="4" height="26" rx="2"></rect>
+                        <rect id="Rectangle" fill="#CD7D35" x="0" y="14" width="4" height="1"></rect>
+                    </g>
+                    <g id="Sign">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Rectangle" fill="#F2AF3D" xlink:href="#path-1"></use>
+                        <circle id="Oval" stroke="#CD7D35" stroke-width="2" cx="8" cy="13.5" r="3"></circle>
+                        <rect id="Rectangle" stroke="#CD7D35" fill="#D8D8D8" x="14.5" y="10" width="1" height="7" rx="0.5"></rect>
+                        <rect id="Rectangle-Copy" stroke="#CD7D35" fill="#D8D8D8" x="18.5" y="10" width="1" height="7" rx="0.5"></rect>
+                        <rect id="Rectangle-Copy-2" stroke="#CD7D35" fill="#D8D8D8" x="22.5" y="10" width="1" height="7" rx="0.5"></rect>
+                        <circle id="Oval-Copy-4" stroke="#CD7D35" stroke-width="2" cx="30" cy="13.5" r="3"></circle>
+                    </g>
+                </g>
+                <text id="cozycoach" font-family="CodecPro-News, Codec Pro" font-size="42" font-weight="300" letter-spacing="-0.12" fill="#FFFFFF">
+                    <tspan x="48" y="36">cozycoach</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

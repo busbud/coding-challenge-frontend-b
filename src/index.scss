@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* Boilerplate code to remove default padding and margin */
@@ -14,4 +15,4 @@ html {
   /* padding and margin remove the default whitespace. Without these there is still whitespace even with width=100% */
   padding: 0;
   margin: 0;
-}/*# sourceMappingURL=index.css.map */
+}
