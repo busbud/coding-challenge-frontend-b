@@ -5,14 +5,15 @@ html {
   font-size: 62.5%;
   font-family: 'Open Sans', sans-serif;
 }
+body {
+  background-color: #2a63cb;
+}
 
 /* Boilerplate code to remove default padding and margin */
 *,
 *:before,
 *:after {
-  /* Inherits border-box but also allows children to have unique box-sizing if required */
   box-sizing: inherit;
-  /* padding and margin remove the default whitespace. Without these there is still whitespace even with width=100% */
   padding: 0;
   margin: 0;
 }

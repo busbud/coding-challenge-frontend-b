@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styled from 'styled-components';
 
 const StyledLocationInput = styled.div`
@@ -8,7 +9,6 @@ const StyledLocationInput = styled.div`
   align-items: center;
   font-size: 16px;
   font-weight: 700;
-  margin: 5px;
   width: 100%;
   color: #001c3f;
 `;
@@ -33,8 +33,11 @@ const StyledTitle = styled.p`
   width: 100%;
   height: 40px;
   text-align: center;
+  /* border: none; */
+  /* cursor: pointer; */
   font-size: 18px;
   font-weight: 500;
+  /* background-color: red; */
   color: #001c3f;
 `;
 

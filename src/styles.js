@@ -3,11 +3,6 @@ import { breakpoints } from './utils';
 
 export const Container = styled.div`
   height: 100vh;
-  background-color: #2a63cb;
-  background-image: url('./images/background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +16,11 @@ export const Container = styled.div`
 
 export const Hero = styled.img`
   width: 400px;
-  padding: 40px 0px 200px 0px;
+  padding: 40px 0px 140px 0px;
+`;
+
+export const Animation = styled.div`
+  width: 320px;
 `;
 
 export const Title = styled.h1`
