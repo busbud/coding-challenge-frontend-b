@@ -165,7 +165,7 @@ Where an Operator is like:
       "profile_id": 111,
       "name": "Greyhound",
       "url": null,
-      "logo_url": "https://busbud-pubweb-assets-staging.global.ssl.fastly.net/images-service/operator-logos/greyhound.png?hash=1{&height,width}",
+      "logo_url": "https://busbud.imgix.net/operator-logos/logo_greyhound-og.png.png?h={height}&w={width}&auto=format&fit=fill&bg=0FF",
       "display_name": "Greyhound",
       "sellable": true,
       "fuzzy_prices": false,
